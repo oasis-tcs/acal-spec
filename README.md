@@ -1,12 +1,12 @@
 # README
 
-Members of the <a href="https://www.oasis-open.org/committees/xacml/">OASIS eXtensible Access Control Markup Language (XACML)</a> create and manage technical content in this TC GitHub repository ( <a href="https://github.com/oasis-tcs/xacml-spec">https://github.com/oasis-tcs/xacml-spec</a> ) as part of the TC's chartered work (the program of work and deliverables described in its <a href="https://www.oasis-open.org/committees/xacml/charter.php">charter</a>).
+Members of the <a href="https://www.oasis-open.org/committees/acal/">OASIS ACAL \[XACML\] TC</a> create and manage technical content in this TC GitHub repository ( <a href="https://github.com/oasis-tcs/acal-spec">https://github.com/oasis-tcs/acal-spec</a> ) as part of the TC's chartered work (the program of work and deliverables described in its <a href="https://www.oasis-open.org/committees/acal/charter.php">charter</a>).
 
 OASIS TC GitHub repositories, as described in <a href="https://www.oasis-open.org/resources/tcadmin/github-repositories-for-oasis-tc-members-chartered-work">GitHub Repositories for OASIS TC Members' Chartered Work</a>, are governed by the OASIS <a href="https://www.oasis-open.org/policies-guidelines/tc-process">TC Process</a>, <a href="https://www.oasis-open.org/policies-guidelines/ipr">IPR Policy</a>, and other policies, similar to TC Wikis, TC issues tracking instances, etc.  While they make use of public GitHub repositories, these TC GitHub repositories are distinct from <a href="https://www.oasis-open.org/resources/open-repositories">OASIS Open Repositories</a>, which are used for development of open source <a href="https://www.oasis-open.org/resources/open-repositories/licenses">licensed</a> content.
 
 ## Description
 
-The OASIS XACML Technical Committee is developing ACAL (Attribute-Centric Authorization Language) v1.0, the successor to XACML 3.0. ACAL separates policy semantics from serialization syntax, enabling the same authorization policies to be expressed in XML (XACML v4.0), JSON (JACAL v1.0), or YAML (YACAL v1.0). New representation formats can be more easily added on the same model. This repository contains the specifications, schemas, and supplementary artifacts for all three representations. Requests for modification can be made via <a href="https://github.com/oasis-tcs/xacml-spec/issues">GitHub Issues</a>.
+The OASIS ACAL \[XACML\] TC is developing ACAL (Attribute-Centric Authorization Language) v1.0, the successor to XACML 3.0. ACAL separates policy semantics from serialization syntax, enabling the same authorization policies to be expressed in XML (XACML v4.0), JSON (JACAL v1.0), or YAML (YACAL v1.0). New representation formats can be more easily added on the same model. This repository contains the specifications, schemas, and supplementary artifacts for all three representations. Requests for modification can be made via <a href="https://github.com/oasis-tcs/acal-spec/issues">GitHub Issues</a>.
 
 ### Specification Family
 
@@ -37,23 +37,23 @@ The OASIS XACML Technical Committee is developing ACAL (Attribute-Centric Author
 For a complete description of changes with worked examples in all three representations, see the [ACAL Adoption and Implementation Guide](acal-adoption-guide.md).
 
 ## Contributions
-As stated in this repository's <a href="https://github.com/oasis-tcs/xacml-spec/blob/master/CONTRIBUTING.md">CONTRIBUTING file</a>, contributors to this repository are expected to be Members of the OASIS XACML TC, for any substantive change requests. Anyone wishing to contribute to this GitHub project and <a href="https://www.oasis-open.org/join/participation-instructions">participate</a> in the TC's technical activity is invited to join as an OASIS TC Member.  Public feedback is also accepted, subject to the terms of the <a href="https://www.oasis-open.org/policies-guidelines/ipr#appendixa">OASIS Feedback License</a>, as noted in the <a href="https://github.com/oasis-tcs/xacml-spec/blob/master/LICENSE.md">LICENSE</a> file.  
+As stated in this repository's <a href="https://github.com/oasis-tcs/acal-spec/blob/main/CONTRIBUTING.md">CONTRIBUTING file</a>, contributors to this repository are expected to be Members of the OASIS ACAL \[XACML\] TC, for any substantive change requests. Anyone wishing to contribute to this GitHub project and <a href="https://www.oasis-open.org/join/participation-instructions">participate</a> in the TC's technical activity is invited to join as an OASIS TC Member.  Public feedback is also accepted, subject to the terms of the <a href="https://www.oasis-open.org/policies-guidelines/ipr#appendixa">OASIS Feedback License</a>, as noted in the <a href="https://github.com/oasis-tcs/acal-spec/blob/main/LICENSE.md">LICENSE</a> file.  
 
 ### Open-source Community Contributions
-A separate [GitHub public organization](https://github.com/acal-community/) (ACAL Open Source Community) was created at the initiative of the OASIS ACAL TC to support development of open source resources related to the TC work and the ACAL/XACML standard in general.
+A separate [GitHub public organization](https://github.com/acal-community/) (ACAL Open Source Community) was created at the initiative of the OASIS ACAL \[XACML\] TC to support development of open source resources related to the TC work and the ACAL/XACML standard in general.
 
 While this Github organization remains associated with the sponsor TC, its development priorities, leadership, intellectual property terms, participation rules, and other matters of governance are [separate and distinct](https://github.com/oasis-open/acal-community/blob/master/CONTRIBUTING.md#governance-distinct-from-oasis-tc-process) from the OASIS TC Process and related policies.
 
 
 ## Licensing
-Please see the <a href="https://github.com/oasis-tcs/xacml-spec/blob/master/LICENSE.md">LICENSE</a> file for description of the license terms and OASIS policies applicable to the TC's work in this GitHub project. Content in this repository is intended to be part of the XACML TC's permanent record of activity, visible and freely available for all to use, subject to applicable OASIS policies, as presented in the repository <a href="https://github.com/oasis-tcs/xacml-spec/blob/master/LICENSE.md">LICENSE</a> file.
+Please see the <a href="https://github.com/oasis-tcs/acal-spec/blob/main/LICENSE.md">LICENSE</a> file for description of the license terms and OASIS policies applicable to the TC's work in this GitHub project. Content in this repository is intended to be part of the OASIS ACAL \[XACML\] TC's permanent record of activity, visible and freely available for all to use, subject to applicable OASIS policies, as presented in the repository <a href="https://github.com/oasis-tcs/acal-spec/blob/main/LICENSE.md">LICENSE</a> file.
 
 ## Further Description of this Repository
 
-See this repository's <a href="https://github.com/oasis-tcs/xacml-spec/blob/master/CONTRIBUTING.md">CONTRIBUTING file</a> for information on how to participate in the TC's work.
+See this repository's <a href="https://github.com/oasis-tcs/acal-spec/blob/main/CONTRIBUTING.md">CONTRIBUTING file</a> for information on how to participate in the TC's work.
 
 ## Contact
-Please send questions or comments about <a href="https://www.oasis-open.org/resources/tcadmin/github-repositories-for-oasis-tc-members-chartered-work">OASIS TC GitHub repositories</a> to <a href="mailto:project-administration@oasis-open.org">Project Administration</a>.  For questions about content in this repository, please contact the TC Chair or Co-Chairs as listed on the the XACML TC's <a href="https://www.oasis-open.org/committees/xacml/">home page</a>.
+Please send questions or comments about <a href="https://www.oasis-open.org/resources/tcadmin/github-repositories-for-oasis-tc-members-chartered-work">OASIS TC GitHub repositories</a> to <a href="mailto:project-administration@oasis-open.org">Project Administration</a>.  For questions about content in this repository, please contact the TC Chair or Co-Chairs as listed on the the OASIS ACAL \[XACML\] TC's <a href="https://www.oasis-open.org/committees/acal/">home page</a>.
 
 ## Repository content description
 
@@ -236,7 +236,7 @@ Apply the constraint catalog (`acal-core-yaml-v1.0-constraints.yaml`) using a co
 
 ### How to convert a JACAL document to XACML 4.0?
 
-By the time that ACAL 1.0 is officially released as OASIS standard, it is the intention of the XACML TC to provide an example of JACAL-to-XACML conversion tool as a reference, on the [ACAL Community tools repository](https://github.com/acal-community/tools/). 
+By the time that ACAL 1.0 is officially released as OASIS standard, it is the intention of the OASIS ACAL \[XACML\] TC to provide an example of JACAL-to-XACML conversion tool as a reference, on the [ACAL Community tools repository](https://github.com/acal-community/tools/). 
 In the meantime, you may apply the following mapping rules:
 
 *For each JSON property *P* with value *V* in the JACAL document,*

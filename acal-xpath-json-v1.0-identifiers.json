@@ -1,6 +1,6 @@
 {
 	"Id": "urn:oasis:names:tc:acal:1.0:xpath:identifiers",
-	"ShortIdentifier": [
+	"ShortId": [
 		{
 			"Name": "xpathExpression",
 			"Value": "urn:oasis:names:tc:acal:1.0:data-type:xpathExpression"
@@ -16,10 +16,6 @@
 		{
 			"Name": "xpath-node-match",
 			"Value": "urn:oasis:names:tc:acal:1.0:function:xpath-node-match"
-		},
-		{
-			"Name": "xpath10",
-			"Value": "https://www.w3.org/TR/1999/REC-xpath-19991116/"
 		},
 		{
 			"Name": "xpath20",

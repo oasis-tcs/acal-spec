@@ -1,0 +1,759 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:xacml="urn:oasis:names:tc:xacml:4.0:core:schema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" targetNamespace="urn:oasis:names:tc:xacml:4.0:core:schema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+   <xs:annotation>
+      <xs:documentation> XACML, Version 4.0 (eXtensible Access Control Markup Language) Core schema.
+			Copyright (c) OASIS Open 2026. All Rights Reserved. For more license and copyright
+			information, and complete status, please see Annex A of the XACML, Version 4.0 (eXtensible Access Control Markup Language) specification, which contains the License, Document Status and
+			Notices. </xs:documentation>
+   </xs:annotation>
+   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="https://www.w3.org/2001/xml.xsd"/>
+   <xs:element name="Request" type="xacml:RequestType">
+      <xs:key name="Request_ShortIdSetReference">
+         <xs:selector xpath="xacml:ShortIdSetReference"/>
+         <xs:field xpath="."/>
+      </xs:key>
+      <xs:unique name="Request_RequestEntity_Id">
+         <xs:selector xpath="xacml:RequestEntity"/>
+         <xs:field xpath="@Id"/>
+      </xs:unique>
+      <xs:keyref name="Request_RequestEntityReference" refer="xacml:Request_RequestEntity_Id">
+         <xs:selector xpath="xacml:MultiRequests/xacml:RequestReference/xacml:RequestEntityReference"/>
+         <xs:field xpath="."/>
+      </xs:keyref>
+   </xs:element>
+   <xs:complexType name="RequestType">
+      <xs:sequence>
+         <xs:element ref="xacml:ShortIdSetReference" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:RequestDefaults" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:RequestEntity" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:MultiRequests" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="ReturnPolicyIdList" type="xs:boolean" use="optional" default="false"/>
+      <xs:attribute name="CombinedDecision" type="xs:boolean" use="optional" default="false"/>
+   </xs:complexType>
+   <xs:element name="RequestDefaults" type="xacml:DefaultsType" abstract="true"/>
+   <xs:element name="Response" type="xacml:ResponseType">
+      <xs:key name="Response_ShortIdSetReference">
+         <xs:selector xpath="xacml:ShortIdSetReference"/>
+         <xs:field xpath="."/>
+      </xs:key>
+   </xs:element>
+   <xs:complexType name="ResponseType">
+      <xs:sequence>
+         <xs:element ref="xacml:ShortIdSetReference" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:Result" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="MediaType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="[A-Za-z0-9][A-Za-z0-9!#$&amp;\-\^_.+]{0,63}/[A-Za-z0-9][A-Za-z0-9!#$&amp;\-\^_.+]{0,63}">
+            <xs:annotation>
+               <xs:documentation xml:lang="en">Pattern based on the ABNF syntax from section
+						4.2 of RFC 6838 (with the recommendation that &lt;type-name&gt; and
+						&lt;subtype-name&gt; SHOULD be limited to 64 characters). The standard
+						MediaType values defined in XACML core specification should be used whenever
+						applicable: - 'application/xml' for XML document (default); -
+						'application/json' for JSON object. For other cases, you may use </xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="ContentEncodingType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="[a-z0-9]+(-[a-z0-9]+)*">
+            <xs:annotation>
+               <xs:documentation xml:lang="en"> No special encoding is needed for XML/JSON
+						data. However, if other (custom) content types are used and require specific
+						encoding, the standard identifiers specified in [Annex
+						D.11](#d11-content-encodings) SHOULD be used whenever applicable, e.g.
+						'base64' or else one of the standard [*Transfer Encodings* names registered
+						at
+						IANA](https://www.iana.org/assignments/transfer-encodings/transfer-encodings.xhtml).
+						Or else, if a custom content encoding is really needed, as suggested by RFC
+						2045 Section 6.3, define a new one prefixed with `x-`, e.g.
+						`x-my-new-encoding`. </xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:element name="Body" type="xs:anyType">
+      <xs:annotation>
+         <xs:documentation>
+            <xs:documentation xml:lang="en"> Content body. For safety/security reasons, in
+				production, ACAL implementers shall add further restrictions to this type definition
+				and/or enforce security measures in the XML processor to mitigate possible security
+				issues when allowing any XML content like this. </xs:documentation>
+         </xs:documentation>
+      </xs:annotation>
+   </xs:element>
+   <xs:element name="Content" type="xacml:ContentType"/>
+   <xs:complexType name="ContentType">
+      <xs:sequence>
+         <xs:element ref="xacml:Body"/>
+      </xs:sequence>
+      <xs:attribute name="MediaType" type="xacml:MediaType" use="optional" default="application/xml"/>
+      <xs:attribute name="Encoding" type="xacml:ContentEncodingType" use="optional"/>
+   </xs:complexType>
+   <xs:element name="Result" type="xacml:ResultType">
+      <xs:key name="Result_ResultEntity_Category">
+         <xs:selector xpath="xacml:ResultEntity"/>
+         <xs:field xpath="@Category"/>
+      </xs:key>
+      <xs:key name="Result_ApplicablePolicyReference">
+         <xs:selector xpath="xacml:ApplicablePolicyReference"/>
+         <xs:field xpath="@Id"/>
+      </xs:key>
+   </xs:element>
+   <xs:complexType name="ResultType">
+      <xs:sequence>
+         <xs:element ref="xacml:Status" minOccurs="0"/>
+         <xs:element ref="xacml:Notice" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:ResultEntity" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:ApplicablePolicyReference" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Decision" type="xacml:DecisionType" use="required"/>
+   </xs:complexType>
+   <xs:element name="ResultEntity" type="xacml:ResultEntityType">
+      <xs:unique name="ResultEntity_Attribute_AttributeId-DataType-Issuer">
+         <xs:selector xpath="xacml:Attribute"/>
+         <xs:field xpath="@AttributeId"/>
+         <xs:field xpath="@DataType"/>
+         <xs:field xpath="@Issuer"/>
+      </xs:unique>
+   </xs:element>
+   <xs:complexType name="ResultEntityType">
+      <xs:sequence>
+         <xs:element ref="xacml:Attribute" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Category" type="xacml:IdentifierType" use="required"/>
+      <xs:attribute name="Id" type="xacml:LocalIdentifierType" use="optional"/>
+   </xs:complexType>
+   <xs:element name="ApplicablePolicyReference" type="xacml:ExactMatchIdReferenceType">
+      <xs:annotation>
+         <xs:documentation xml:lang="en">Policy reference to an applicable policy used in a
+				Result</xs:documentation>
+      </xs:annotation>
+   </xs:element>
+   <xs:complexType name="ExactMatchIdReferenceType">
+      <xs:annotation>
+         <xs:documentation xml:lang="en"> IdReferenceType with a fixed Version (to be used for
+				ApplicablePolicyReferences in a Result), as opposed to PatternMatchIdReferenceType
+				which uses Version pattern matching. </xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+         <xs:extension base="xacml:IdReferenceType">
+            <xs:attribute name="Version" type="xacml:VersionType" use="required"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:simpleType name="DecisionType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="Permit"/>
+         <xs:enumeration value="Deny"/>
+         <xs:enumeration value="Indeterminate"/>
+         <xs:enumeration value="NotApplicable"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:element name="Status" type="xacml:StatusType"/>
+   <xs:complexType name="StatusType">
+      <xs:sequence>
+         <xs:element ref="xacml:StatusCode"/>
+         <xs:element ref="xacml:StatusMessage" minOccurs="0"/>
+         <xs:element ref="xacml:StatusDetail" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="StatusCode" type="xacml:StatusCodeType"/>
+   <xs:complexType name="StatusCodeType">
+      <xs:sequence>
+         <xs:element ref="xacml:StatusCode" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="Value" type="xacml:IdentifierType" use="required"/>
+   </xs:complexType>
+   <xs:element name="StatusMessage" type="xs:string"/>
+   <xs:element name="StatusDetail" type="xacml:StatusDetailType"/>
+   <xs:complexType name="StatusDetailType">
+      <xs:sequence>
+         <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="MissingAttributeDetail" type="xacml:MissingAttributeDetailType"/>
+   <xs:complexType name="MissingAttributeDetailType">
+      <xs:sequence>
+         <xs:element ref="xacml:Value" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Category" type="xacml:IdentifierType" use="optional"/>
+      <xs:attribute name="AttributeId" type="xacml:IdentifierType" use="required"/>
+      <xs:attribute name="DataType" type="xacml:IdentifierType" use="required"/>
+      <xs:attribute name="Issuer" type="xs:Name" use="optional"/>
+   </xs:complexType>
+   <xs:element name="RequestEntity" type="xacml:RequestEntityType">
+      <xs:unique name="RequestEntity_RequestAttribute_AttributeId-DataType-Issuer">
+         <xs:selector xpath="xacml:RequestAttribute"/>
+         <xs:field xpath="@AttributeId"/>
+         <xs:field xpath="@DataType"/>
+         <xs:field xpath="@Issuer"/>
+      </xs:unique>
+   </xs:element>
+   <xs:complexType name="RequestEntityType">
+      <xs:sequence>
+         <xs:element ref="xacml:Content" minOccurs="0"/>
+         <xs:element ref="xacml:RequestAttribute" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Category" type="xacml:IdentifierType" use="required"/>
+      <xs:attribute name="Id" type="xacml:LocalIdentifierType" use="optional"/>
+   </xs:complexType>
+   <xs:element name="Attribute" type="xacml:AttributeType"/>
+   <xs:complexType name="AttributeType">
+      <xs:sequence>
+         <xs:element ref="xacml:Value" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="AttributeId" type="xacml:IdentifierType" use="required"/>
+      <xs:attribute name="Issuer" type="xs:Name" use="optional"/>
+      <xs:attribute name="DataType" type="xacml:IdentifierType" use="optional" default="urn:oasis:names:tc:acal:1.0:data-type:string"/>
+   </xs:complexType>
+   <xs:element name="RequestAttribute" type="xacml:RequestAttributeType"/>
+   <xs:complexType name="RequestAttributeType">
+      <xs:complexContent mixed="false">
+         <xs:extension base="xacml:AttributeType">
+            <xs:attribute name="IncludeInResult" type="xs:boolean" use="optional" default="false"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="MultiRequests" type="xacml:MultiRequestsType"/>
+   <xs:complexType name="MultiRequestsType">
+      <xs:sequence>
+         <xs:element ref="xacml:RequestReference" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="RequestReference" type="xacml:RequestReferenceType">
+      <xs:unique name="RequestReference_RequestEntityReference">
+         <xs:selector xpath="xacml:RequestEntityReference"/>
+         <xs:field xpath="."/>
+      </xs:unique>
+   </xs:element>
+   <xs:complexType name="RequestReferenceType">
+      <xs:sequence>
+         <xs:element ref="xacml:RequestEntityReference" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="RequestEntityReference" type="xacml:LocalIdentifierType"/>
+   <xs:element name="Notice" type="xacml:NoticeType"/>
+   <xs:complexType name="NoticeType">
+      <xs:sequence>
+         <xs:element ref="xacml:AttributeAssignment" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Id" type="xacml:IdentifierType" use="required"/>
+      <xs:attribute name="IsObligation" type="xs:boolean" use="optional" default="false"/>
+   </xs:complexType>
+   <xs:element name="AttributeAssignment" type="xacml:AttributeAssignmentType"/>
+   <xs:complexType name="AttributeAssignmentType">
+      <xs:complexContent>
+         <xs:extension base="xacml:AttributeType">
+            <xs:attribute name="Category" type="xacml:IdentifierType" use="optional"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="NoticeExpression" type="xacml:NoticeExpressionType"/>
+   <xs:complexType name="NoticeExpressionType">
+      <xs:sequence>
+         <xs:element ref="xacml:Condition" minOccurs="0"/>
+         <xs:element ref="xacml:AttributeAssignmentExpression" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Id" type="xacml:IdentifierType" use="required"/>
+      <xs:attribute name="IsObligation" type="xs:boolean" use="optional" default="false"/>
+      <xs:attribute name="AppliesTo" type="xacml:EffectType" use="optional">
+         <xs:annotation>
+            <xs:documentation xml:lang="en"> Undefined AppliesTo means it applies to both Permit
+					and Deny. </xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:element name="AttributeAssignmentExpression" type="xacml:AttributeAssignmentExpressionType"/>
+   <xs:complexType name="AttributeAssignmentExpressionType">
+      <xs:sequence>
+         <xs:element ref="xacml:Expression">
+            <xs:annotation>
+               <xs:documentation xml:lang="en"> If the Expression is a Value (literal) without
+						a defined DataType, it is assumed to be String
+						(urn:oasis:names:tc:acal:1.0:data-type:string) by default. </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="AttributeId" type="xacml:IdentifierType" use="required"/>
+      <xs:attribute name="Category" type="xacml:IdentifierType" use="optional"/>
+      <xs:attribute name="Issuer" type="xs:Name" use="optional"/>
+   </xs:complexType>
+   <xs:simpleType name="EffectType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="Permit"/>
+         <xs:enumeration value="Deny"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:element name="PolicyIssuer" type="xacml:EntityType">
+      <xs:unique name="PolicyIssuer_Attribute_AttributeId-DataType-Issuer">
+         <xs:selector xpath="xacml:Attribute"/>
+         <xs:field xpath="@AttributeId"/>
+         <xs:field xpath="@DataType"/>
+         <xs:field xpath="@Issuer"/>
+      </xs:unique>
+   </xs:element>
+   <xs:complexType name="EntityType">
+      <xs:sequence>
+         <xs:element ref="xacml:Content" minOccurs="0"/>
+         <xs:element ref="xacml:Attribute" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="LocalIdentifierType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="_*[A-Za-z][A-Za-z_0-9]*([-.]_*[A-Za-z_0-9]*)*">
+            <xs:annotation>
+               <xs:documentation xml:lang="en"> Pattern agreed with ALFA working group, except
+						the hypen is allowed as separator in addition to the dot:
+						&lt;name&gt;.&lt;name&gt;.&lt;name&gt;... or
+						&lt;name&gt;-&lt;name&gt;-&lt;name&gt;... where &lt;name&gt; is at least a
+						letter possibly preceded by underscore(s) and/or followed by
+						letter(s)/digit(s)/underscore(s) 
+					</xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:complexType name="PatternMatchIdReferenceType">
+      <xs:complexContent>
+         <xs:extension base="xacml:IdReferenceType">
+            <xs:attribute name="Version" type="xacml:VersionMatchType" use="optional"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="PolicyReference" type="xacml:PolicyReferenceType"/>
+   <xs:complexType name="PolicyReferenceType">
+      <xs:complexContent>
+         <xs:extension base="xacml:PatternMatchIdReferenceType">
+            <xs:sequence>
+               <xs:element ref="xacml:Argument" minOccurs="0" maxOccurs="unbounded">
+                  <xs:annotation>
+                     <xs:documentation xml:lang="en"> Optional argument(s) to the referenced
+								Policy The arguments SHALL match the Policy's Parameter definitions
+								in the same order of declaration. If one of the argument Expressions
+								is a Value element, it SHALL NOT set the DataType attribute value. </xs:documentation>
+                  </xs:annotation>
+               </xs:element>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="DefaultsType" abstract="true">
+      <xs:annotation>
+         <xs:documentation xml:lang="en"> ACAL Profiles may extend DefaultsType to support both
+				PolicyDefaults and RequestDefaults with one single complexType and
+				substitutionGroup(s) as follows (see XPath Profile's XSD for another example):
+						
+				<xs:complexType name="MyProfileDefaultsType">
+               <xs:complexContent>
+                  <xs:extension base="xacml:DefaultsType">
+							<!-- ...My common Defaults... -->
+						</xs:extension>
+               </xs:complexContent>
+            </xs:complexType> 
+						
+				In XSD 1.0: 
+				<xs:element name="MyProfilePolicyDefaults" type="MyProfileDefaultsType" substitutionGroup="xacml:PolicyDefaults"/>
+            <xs:element name="MyProfileRequestDefaults" type="MyProfileDefaultsType" substitutionGroup="xacml:RequestDefaults"/> 
+						
+				In XSD 1.1, substitutionGroup on multiple elements is allowed, therefore we can simplify:
+				<xs:element name="MyProfileDefaults" type="MyProfileDefaultsType" substitutionGroup="xacml:PolicyDefaults     xacml:RequestDefaults"/>
+         </xs:documentation>
+      </xs:annotation>
+   </xs:complexType>
+   <xs:element name="PolicyDefaults" type="xacml:DefaultsType" abstract="true"/>
+   <xs:complexType name="IdReferenceType" abstract="true">
+      <xs:attribute name="Id" type="xs:anyURI" use="required"/>
+   </xs:complexType>
+   <xs:simpleType name="VersionType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="(0|[1-9]\d*)(\.(0|[1-9]\d*)){0,3}"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="VersionMatchType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="(0|[1-9]\d*|\*)(\.(0|[1-9]\d*|\*|\+)){0,3}"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:element name="Parameter" type="xacml:ParameterType"/>
+   <xs:complexType name="ParameterType">
+      <xs:sequence>
+         <xs:element ref="xacml:Description" minOccurs="0">
+            <xs:annotation>
+               <xs:documentation xml:lang="en"> Parameter description </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element ref="xacml:Expression" minOccurs="0">
+            <xs:annotation>
+               <xs:documentation xml:lang="en"> Default value expression (optional), i.e. that
+						is used as default argument if no argument is passed to this parameter from
+						the policy reference. </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Name" type="xacml:LocalIdentifierType" use="required"/>
+      <xs:attribute name="DataType" type="xacml:IdentifierType" use="optional" default="urn:oasis:names:tc:acal:1.0:data-type:string"/>
+      <xs:attribute name="IsBag" type="xs:boolean" use="optional" default="false"/>
+   </xs:complexType>
+   <xs:element name="Policy" type="xacml:PolicyType">
+      <xs:key name="Policy_ShortIdSetReference">
+         <xs:selector xpath="xacml:ShortIdSetReference"/>
+         <xs:field xpath="."/>
+      </xs:key>
+      <xs:key name="Policy_Parameter_Name">
+         <xs:selector xpath="xacml:Parameter"/>
+         <xs:field xpath="@Name"/>
+      </xs:key>
+      <xs:key name="Policy_VariableDefinition_VariableId">
+         <xs:selector xpath="xacml:VariableDefinition"/>
+         <xs:field xpath="@VariableId"/>
+      </xs:key>
+      <xs:key name="Policy_PolicyId">
+         <xs:selector xpath="xacml:Policy"/>
+         <xs:field xpath="@PolicyId"/>
+      </xs:key>
+      <xs:key name="Policy_Rule_Id">
+         <xs:selector xpath="xacml:Rule"/>
+         <xs:field xpath="@Id"/>
+      </xs:key>
+   </xs:element>
+   <xs:complexType name="PolicyType">
+      <xs:sequence>
+         <xs:element ref="xacml:ShortIdSetReference" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:Description" minOccurs="0"/>
+         <xs:element ref="xacml:PolicyIssuer" minOccurs="0"/>
+         <xs:element ref="xacml:PolicyDefaults" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:Parameter" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:VariableDefinition" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:Target" minOccurs="0"/>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="xacml:Policy"/>
+            <xs:element ref="xacml:Rule"/>
+            <xs:element ref="xacml:PolicyReference"/>
+         </xs:choice>
+         <xs:element ref="xacml:NoticeExpression" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="PolicyId" type="xs:anyURI" use="required"/>
+      <xs:attribute name="Version" type="xacml:VersionType" use="required"/>
+      <xs:attribute name="CombiningAlgId" type="xacml:IdentifierType" use="required"/>
+      <xs:attribute name="MaxDelegationDepth" type="xs:nonNegativeInteger" use="optional"/>
+   </xs:complexType>
+   <xs:element name="Description" type="xs:string"/>
+   <xs:element name="Rule" type="xacml:RuleType">
+      <xs:key name="Rule_VariableDefinition_VariableId">
+         <xs:selector xpath="xacml:VariableDefinition"/>
+         <xs:field xpath="@VariableId"/>
+      </xs:key>
+   </xs:element>
+   <xs:complexType name="RuleType">
+      <xs:sequence>
+         <xs:element ref="xacml:Description" minOccurs="0"/>
+         <xs:element ref="xacml:VariableDefinition" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:Condition" minOccurs="0"/>
+         <xs:element ref="xacml:NoticeExpression" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Id" type="xacml:LocalIdentifierType" use="required"/>
+      <xs:attribute name="Effect" type="xacml:EffectType" use="required"/>
+   </xs:complexType>
+   <xs:element name="Target" type="xacml:BooleanExpressionType"/>
+   <xs:element name="VariableDefinition" type="xacml:VariableDefinitionType"/>
+   <xs:complexType name="VariableDefinitionType">
+      <xs:sequence>
+         <xs:element ref="xacml:Expression">
+            <xs:annotation>
+               <xs:documentation xml:lang="en"> If the Expression is a Value (literal) without
+						a defined DataType identifier, it is assumed to be String
+						(urn:oasis:names:tc:acal:1.0:data-type:string) by default. </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="VariableId" type="xacml:LocalIdentifierType" use="required"/>
+   </xs:complexType>
+   <xs:element name="Argument" type="xacml:ArgumentType" abstract="true"/>
+   <xs:complexType name="ArgumentType" abstract="true"/>
+   <xs:element name="Expression" type="xacml:ExpressionType" abstract="true" substitutionGroup="xacml:Argument"/>
+   <xs:complexType name="ExpressionType" abstract="true">
+      <xs:complexContent>
+         <xs:extension base="xacml:ArgumentType"/>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="NamedArgument" type="xacml:NamedArgumentType" substitutionGroup="xacml:Argument"/>
+   <xs:complexType name="NamedArgumentType">
+      <xs:complexContent>
+         <xs:extension base="xacml:ArgumentType">
+            <xs:sequence>
+               <xs:element ref="xacml:Expression"/>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xacml:LocalIdentifierType" use="required"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="NonLiteralExpression" type="xacml:NonLiteralExpressionType" abstract="true" substitutionGroup="xacml:Expression"/>
+   <xs:complexType name="NonLiteralExpressionType" abstract="true">
+      <xs:annotation>
+         <xs:documentation xml:lang="en"> NonLiteralExpressionType is an ExpressionType that is
+				neither ValueType or FunctionType. </xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+         <xs:extension base="xacml:ExpressionType"/>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="VariableReference" type="xacml:VariableReferenceType" substitutionGroup="xacml:NonLiteralExpression"/>
+   <xs:complexType name="VariableReferenceType">
+      <xs:complexContent>
+         <xs:extension base="xacml:NonLiteralExpressionType">
+            <xs:attribute name="VariableId" type="xacml:LocalIdentifierType" use="required"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:simpleType name="AttributeSelectorPathType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="\S(.*\S)?">
+            <xs:annotation>
+               <xs:documentation xml:lang="en">Non-empty string without leading/trailing
+						whitespace</xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:complexType name="BaseAttributeSelectorType" abstract="true">
+      <xs:complexContent>
+         <xs:extension base="xacml:NonLiteralExpressionType">
+            <xs:attribute name="Path" type="xacml:AttributeSelectorPathType" use="required"/>
+            <xs:attribute name="DataType" type="xacml:IdentifierType" use="optional" default="urn:oasis:names:tc:acal:1.0:data-type:string"/>
+            <xs:attribute name="MustBePresent" type="xs:boolean" use="optional" default="false"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="AttributeSelector" type="xacml:AttributeSelectorType" abstract="true" substitutionGroup="xacml:NonLiteralExpression"/>
+   <xs:complexType name="AttributeSelectorType" abstract="true">
+      <xs:complexContent>
+         <xs:extension base="xacml:BaseAttributeSelectorType">
+            <xs:attribute name="Category" type="xacml:IdentifierType" use="required"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="EntityAttributeSelector" type="xacml:EntityAttributeSelectorType" abstract="true" substitutionGroup="xacml:NonLiteralExpression"/>
+   <xs:complexType name="EntityAttributeSelectorType" abstract="true">
+      <xs:complexContent>
+         <xs:extension base="xacml:BaseAttributeSelectorType">
+            <xs:sequence>
+               <xs:element ref="xacml:Expression"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="NamedAttributeDesignatorType" abstract="true">
+      <xs:complexContent>
+         <xs:extension base="xacml:NonLiteralExpressionType">
+            <xs:attribute name="AttributeId" type="xacml:IdentifierType" use="required"/>
+            <xs:attribute name="DataType" type="xacml:IdentifierType" use="optional" default="urn:oasis:names:tc:acal:1.0:data-type:string"/>
+            <xs:attribute name="Issuer" type="xs:Name" use="optional"/>
+            <xs:attribute name="MustBePresent" type="xs:boolean" use="optional" default="false"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="AttributeDesignator" type="xacml:AttributeDesignatorType" substitutionGroup="xacml:NonLiteralExpression"/>
+   <xs:complexType name="AttributeDesignatorType">
+      <xs:complexContent>
+         <xs:extension base="xacml:NamedAttributeDesignatorType">
+            <xs:attribute name="Category" type="xacml:IdentifierType" use="required"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="EntityAttributeDesignator" type="xacml:EntityAttributeDesignatorType" substitutionGroup="xacml:NonLiteralExpression"/>
+   <xs:complexType name="EntityAttributeDesignatorType">
+      <xs:complexContent>
+         <xs:extension base="xacml:NamedAttributeDesignatorType">
+            <xs:sequence>
+               <xs:element ref="xacml:Expression"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="Value" type="xacml:ValueType" substitutionGroup="xacml:Expression"/>
+   <xs:complexType name="ValueType" mixed="true">
+      <xs:complexContent mixed="true">
+         <xs:extension base="xacml:ExpressionType">
+            <xs:sequence>
+               <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="DataType" type="xacml:IdentifierType" use="optional"/>
+            <xs:anyAttribute namespace="##any" processContents="lax"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="Function" type="xacml:FunctionType" substitutionGroup="xacml:Expression"/>
+   <xs:complexType name="FunctionType">
+      <xs:complexContent>
+         <xs:extension base="xacml:ExpressionType">
+            <xs:attribute name="Id" type="xacml:IdentifierType" use="required"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="Condition" type="xacml:BooleanExpressionType"/>
+   <xs:complexType name="BooleanExpressionType">
+      <xs:sequence>
+         <xs:element ref="xacml:NonLiteralExpression"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="Apply" type="xacml:ApplyType" substitutionGroup="xacml:NonLiteralExpression"/>
+   <xs:complexType name="ApplyType">
+      <xs:complexContent>
+         <xs:extension base="xacml:NonLiteralExpressionType">
+            <xs:sequence>
+               <xs:element ref="xacml:Description" minOccurs="0"/>
+               <xs:element ref="xacml:Argument" minOccurs="0" maxOccurs="unbounded">
+                  <xs:annotation>
+                     <xs:documentation xml:lang="en"> The datatype of each function argument
+								here must be known from the function function signature, OR it must
+								be explicitly specified by - or inferable from - the Expression
+								(passed as argument) itself. </xs:documentation>
+                  </xs:annotation>
+               </xs:element>
+            </xs:sequence>
+            <xs:attribute name="FunctionId" type="xacml:IdentifierType" use="required"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="ForAny" type="xacml:QuantifiedExpressionType" substitutionGroup="xacml:NonLiteralExpression"/>
+   <xs:element name="ForAll" type="xacml:QuantifiedExpressionType" substitutionGroup="xacml:NonLiteralExpression"/>
+   <xs:element name="Map" type="xacml:QuantifiedExpressionType" substitutionGroup="xacml:NonLiteralExpression"/>
+   <xs:element name="Select" type="xacml:QuantifiedExpressionType" substitutionGroup="xacml:NonLiteralExpression"/>
+   <xs:complexType name="QuantifiedExpressionType">
+      <xs:complexContent>
+         <xs:extension base="xacml:NonLiteralExpressionType">
+            <xs:sequence>
+               <xs:element ref="xacml:NonLiteralExpression"/>
+               <xs:element ref="xacml:Expression"/>
+            </xs:sequence>
+            <xs:attribute name="VariableId" type="xacml:LocalIdentifierType" use="required"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:simpleType name="IdentifierType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="[^{}]*(\{[A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)*\}[^{}]*)*"/>
+         <xs:minLength value="1"/>
+         <xs:whiteSpace value="collapse"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:element name="ShortIdSet" type="xacml:ShortIdSetType">
+      <xs:key name="ShortIdSetReference">
+         <xs:selector xpath="xacml:ShortIdSetReference"/>
+         <xs:field xpath="."/>
+      </xs:key>
+      <xs:key name="ShortId_Name">
+         <xs:selector xpath="xacml:ShortId"/>
+         <xs:field xpath="@Name"/>
+      </xs:key>
+   </xs:element>
+   <xs:complexType name="ShortIdSetType">
+      <xs:sequence>
+         <xs:element ref="xacml:ShortIdSetReference" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:ShortId" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Id" type="xs:anyURI" use="required"/>
+   </xs:complexType>
+   <xs:element name="ShortIdSetReference" type="xs:anyURI"/>
+   <xs:element name="ShortId" type="xacml:ShortIdType"/>
+   <xs:complexType name="ShortIdType">
+      <xs:attribute name="Name" type="xacml:ShortIdNameType" use="required"/>
+      <xs:attribute name="Value" type="xacml:ShortIdValueType" use="required"/>
+   </xs:complexType>
+   <xs:simpleType name="ShortIdNameType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="[A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)*"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="ShortIdValueType">
+      <xs:restriction base="xs:string">
+         <xs:annotation>
+            <xs:documentation xml:lang="en"> ShortId Value type. Such value is an alternating
+					sequence of URI characters and {ShortId}s (short identifier names enclosed in
+					curly braces) (reminder: the curly brace is not a valid URI character), so the
+					pattern is: ^uc*(\{s\}uc*)*$ where: - s is the pattern for a ShortId name,copied
+					from the ShortIdNameType definition (which excludes curly braces):
+					[A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)* - uc is the pattern for a valid URI
+					character based on RFC 3986 (cf. the ABNF definition of 'URI' in Appendix A),
+					which excludes curly braces: [!#-;=?-\[\]_a-z~] The minLength=1 restriction
+					prevents the empty string, i.e. there is at least one uc or {s}. An XSD pattern
+					is matched against the entire string, so the ^ and $ anchors are omitted. </xs:documentation>
+         </xs:annotation>
+         <xs:pattern value="[!#-;=?-\[\]_a-z~]*(\{[A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)*\}[!#-;=?-\[\]_a-z~]*)*"/>
+         <xs:minLength value="1"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:element name="SharedVariableDefinition" type="xacml:SharedVariableDefinitionType">
+      <xs:key name="SharedVariableDefinition_ShortIdSetReference">
+         <xs:selector xpath="xacml:ShortIdSetReference"/>
+         <xs:field xpath="."/>
+      </xs:key>
+      <xs:key name="SharedVariableDefinition_Parameter_Name">
+         <xs:selector xpath="xacml:Parameter"/>
+         <xs:field xpath="@Name"/>
+      </xs:key>
+   </xs:element>
+   <xs:complexType name="SharedVariableDefinitionType">
+      <xs:sequence>
+         <xs:element ref="xacml:Description" minOccurs="0"/>
+         <xs:element ref="xacml:ShortIdSetReference" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:Parameter" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:Expression">
+            <xs:annotation>
+               <xs:documentation xml:lang="en"> If the Expression is a Value, the DataType is
+						'urn:oasis:names:tc:acal:1.0:data-type:string' by default, if not otherwise
+						defined. </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Id" type="xs:anyURI" use="required"/>
+      <xs:attribute name="Version" type="xacml:VersionType" use="required"/>
+   </xs:complexType>
+   <xs:element name="SharedVariableReference" type="xacml:SharedVariableReferenceType"/>
+   <xs:complexType name="SharedVariableReferenceType">
+      <xs:complexContent>
+         <xs:extension base="xacml:NonLiteralExpressionType">
+            <xs:sequence>
+               <xs:element ref="xacml:Argument" minOccurs="0" maxOccurs="unbounded">
+                  <xs:annotation>
+                     <xs:documentation xml:lang="en"> Optional argument(s) to the referenced
+								SharedVariableDefinition. The arguments SHALL match the
+								SharedVariableDefinition's Parameter definitions in the same order
+								of declaration. If one of the argument Expressions is a Value
+								element, it SHALL NOT set the DataType attribute value. </xs:documentation>
+                  </xs:annotation>
+               </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Id" type="xs:anyURI" use="required"/>
+            <xs:attribute name="Version" type="xacml:VersionMatchType" use="optional"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:element name="Bundle" type="xacml:BundleType">
+      <xs:key name="Bundle_ShortIdSet_Id">
+         <xs:selector xpath="xacml:ShortIdSet"/>
+         <xs:field xpath="@Id"/>
+      </xs:key>
+      <xs:key name="Bundle_SharedVariableDefinition_Id">
+         <xs:selector xpath="xacml:SharedVariableDefinition"/>
+         <xs:field xpath="@Id"/>
+      </xs:key>
+      <xs:key name="Bundle_Policy_PolicyId">
+         <xs:selector xpath="xacml:Policy"/>
+         <xs:field xpath="@PolicyId"/>
+      </xs:key>
+   </xs:element>
+   <xs:complexType name="BundleType">
+      <xs:sequence>
+         <xs:element ref="xacml:ShortIdSet" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:SharedVariableDefinition" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:Policy" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element ref="xacml:PolicyReference" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

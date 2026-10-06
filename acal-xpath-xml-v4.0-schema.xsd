@@ -7,10 +7,9 @@
 	xmlns="urn:oasis:names:tc:xacml:4.0:xpath:schema"
 	elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:annotation>
-		<xs:documentation> XACML v4.0 (XML Representation of ACAL Version 1.0) - XPath Profile schema.
+		<xs:documentation> ACAL v1.0 XPath Profile Version 1.0 - XML schema for XACML, Version 4.0 (eXtensible Access Control Markup Language).
 			Copyright (c) OASIS Open 2026. All Rights Reserved. For more license and copyright
-			information, and complete status, please see Annex A of XACML v4.0 (XML Representation
-			of ACAL Version 1.0) specification, which contains the License, Document Status and
+			information, and complete status, please see Annex A of the ACAL v1.0 XPath Profile Version 1.0 specification, which contains the License, Document Status and
 			Notices. </xs:documentation>
 	</xs:annotation>
 

@@ -16,24 +16,26 @@ keywords: ["access", "authorization", "ABAC", "policylanguage", "standard"]
 
 ### This version
 
-- https://docs.oasis-open.org/xacml/acal/acal/core/v%version%/%stage_revision%/acal-core-v%version%-%stage_revision%.html (Authoritative)
-- https://docs.oasis-open.org/xacml/acal/acal/core/v%version%/%stage_revision%/acal-core-v%version%-%stage_revision%.pdf
-- https://docs.oasis-open.org/xacml/acal/acal/core/v%version%/%stage_revision%/acal-core-v%version%-%stage_revision%.md
+- https://docs.oasis-open.org/acal/acal/core/v%version%/%stage_revision%/acal-core-v%version%-%stage_revision%.html (Authoritative)
+- https://docs.oasis-open.org/acal/acal/core/v%version%/%stage_revision%/acal-core-v%version%-%stage_revision%.pdf
+- https://docs.oasis-open.org/acal/acal/core/v%version%/%stage_revision%/acal-core-v%version%-%stage_revision%.md
 
 ### Previous version
 
-N/A
+- https://docs.oasis-open.org/acal/acal/core/v1.0/csd01/acal-core-v1.0-csd01.html (Authoritative)
+- https://docs.oasis-open.org/acal/acal/core/v1.0/csd01/acal-core-v1.0-csd01.pdf
+- https://docs.oasis-open.org/acal/acal/core/v1.0/csd01/acal-core-v1.0-csd01.md
 
 ### Latest version
 
-- https://docs.oasis-open.org/xacml/acal/acal/core/v1.0/acal-core-v1.0.html (Authoritative)
-- https://docs.oasis-open.org/xacml/acal/acal/core/v1.0/acal-core-v1.0.pdf
-- https://docs.oasis-open.org/xacml/acal/acal/core/v1.0/acal-core-v1.0.md
+- https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html (Authoritative)
+- https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.pdf
+- https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.md
 
 
 ### Technical Committee
 
-[OASIS eXtensible Access Control Markup Language (XACML) TC](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d)
+[OASIS Attribute-Centric Authorization Language (ACAL) \[supersedes XACML\]](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d)
 
 
 ### Chairs
@@ -48,8 +50,9 @@ N/A
 
 ### Editors
 
-- Steven Legg (steven.legg@viewds.com), [ViewDS Identity Solutions](https://www.viewds.com/)
-- Cyril Dangerville (cyril.dangerville@thalesgroup.com), [THALES](https://www.thalesgroup.com/)
+- Steven Legg (steven.legg@viewds.com), ViewDS Identity Solutions
+- Cyril Dangerville (cyril.dangerville@thalesgroup.com), THALES
+- William Parducci (bill@parducci.net), Individual
 
 
 ### Abstract
@@ -63,7 +66,7 @@ When referencing this document, the following citation format should be used:
 
 **[ACAL-Core-1.0]**
 _%title%_.
-Edited by Steven Legg and Cyril Dangerville. %date%. OASIS %subtitle%. https://docs.oasis-open.org/xacml/acal/acal/core/v%version%/%stage_revision%/acal-core-v%version%-%stage_revision%.html . Latest version: https://docs.oasis-open.org/xacml/acal/acal/core/v1.0/acal-core-v1.0.html
+Edited by Steven Legg, Cyril Dangerville and William Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/acal/core/v%version%/%stage_revision%/acal-core-v%version%-%stage_revision%.html . Latest version: https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 
 ### Related Work
@@ -75,9 +78,9 @@ This document replaces or supersedes:
 
 This document is related to:
 
-- _JACAL: The JSON representation of the Attribute-Centric Authorization Language (ACAL) Version 1.0_.
-- _XACML: The XML representation of the Attribute-Centric Authorization Language (ACAL) Version 4.0_.
-- _YACAL: The YAML representation of the Attribute-Centric Authorization Language (ACAL) Version 1.0_.
+- _JACAL, Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
+- _XACML, Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
+- _YACAL, Version 1.0 (YAML Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
 
 
 ## License, Document Status, and Notices
@@ -89,48 +92,7 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
 
 
 ## Table of Contents
-<!-- ToC template from OASIS Open Specification Template Instructions:
 
-- [1 Scope](#1-scope)
-- [2 Definitions and Acronyms](#2-definitions-and-acronyms)
-  - [2.1 Definitions](#2.1-definitions)
-    - [2.1.1 Terms Defined Elsewhere](#2.1.1-terms-defined-elsewhere)
-    - [2.1.2 Terms Defined in this Document](#2.1.2-terms-defined-in-this-document)
-  - [2.2 Abbreviations and Acronyms](#2.2-abbreviations-and-acronyms)
-- [3 Document Conventions](#3-document-conventions)
-  - [3.1 Key Words](#3.1-key-words)
-  - [3.2 Typographical Conventions](#3.2-typographical-conventions)
-- [4 Introduction](#4-introduction)
-  - [4.1 Any Additional Introduction Subsections That are Needed](#4.1-any-additional-introduction-subsections-that-are-needed)
-  - [4.2 Changes From the Previous Version](#4.2-changes-from-the-previous-version)
-- [5 Level 1 Section Header](#5-level-1-section-header)
-  - [5.1 Level 2 Section Header](#5.1-level-2-section-header)
-    - [5.1.1 Level 3 Section Header](#5.1.1-level-3-section-header)
-      - [5.1.1.1 Level 4 Section Header](#5.1.1.1-level-4-section-header)
-        - [5.1.1.1.1 Level 5 Section Header](#5.1.1.1.1-level-5-section-header)
-          - [5.1.1.1.1.1 Level 6 Section Header](#5.1.1.1.1.1-level-6-section-header)
-- [6 Additional Sections as Needed](#6-additional-sections-as-needed)
-- [7 Safety, Security, and Data Protection Considerations](#7-safety,-security,-and-data-protection-considerations)
-- [8 Conformance](#8-conformance)
-- [Annex A License, Document Status and Notices](#annex-a-license,-document-status-and-notices)
-  - [A.1 Document Status](#a.1-document-status)
-  - [A.2 License and Notices](#a.2-license-and-notices)
-- [Annex B References](#annex-b-references)
-  - [B.1 Normative References](#b.1-normative-references)
-  - [B.2 Informative References](#b.2-informative-references)
-- [Annex C Additional Annex as Needed](#annex-c-additional-annex-as-needed)
-  - [C.1 Subsection Title](#c.1-subsection-title)
-  - [C.1.1 Sub-subsection](#c.1.1-sub-subsection)
-- [Appendix 1 Acknowledgments](#appendix-1-acknowledgments)
-  - [Leadership](#leadership)
-  - [Special Thanks](#special-thanks)
-  - [Participants](#participants)
-- [Appendix 2 Changes From Previous Version](#appendix-2-changes-from-previous-version)
-  - [Revision History](#revision-history)
-- [Appendix 3 Additional Appendix as Needed](#appendix-3-additional-appendix-as-needed)
-  - [Subsection Title](#subsection-title)
-- [Sub-subsection](#sub-subsection)
--->
 
 <!-- Generated ToC -->
 - [1 Scope](#1-scope)
@@ -150,7 +112,7 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
   - [4.4 Multiple Subjects](#44-multiple-subjects)
   - [4.5 Policies Based on Subject and Resource Attributes](#45-policies-based-on-subject-and-resource-attributes)
   - [4.6 Multi-Valued Attributes](#46-multi-valued-attributes)
-  - [4.7 Policies Based on Resource Contents](#47-policies-based-on-subject-and-resource-contents)
+  - [4.7 Policies Based on Subject and Resource Contents](#47-policies-based-on-subject-and-resource-contents)
   - [4.8 Operators](#48-operators)
   - [4.9 Policy Distribution](#49-policy-distribution)
   - [4.10 Policy Indexing](#410-policy-indexing)
@@ -165,7 +127,7 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
     - [5.3.1 Rule](#531-rule)
       - [5.3.1.1 Condition](#5311-condition)
       - [5.3.1.2 Effect](#5312-effect)
-      - [5.3.1.4 Notice Expressions](#5314-notice-expressions)
+      - [5.3.1.3 Notice Expressions](#5313-notice-expressions)
     - [5.3.2 Policy](#532-policy)
       - [5.3.2.1 Policy Target](#5321-policy-target)
       - [5.3.2.2 Combining Algorithm](#5322-combining-algorithm)
@@ -174,7 +136,7 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
   - [6.1 Example One](#61-example-one)
     - [6.1.1 Example Policy](#611-example-policy)
     - [6.1.2 Example Decision Request](#612-example-decision-request)
-    - [6.1.3 Example Decision Response](#613-example-response)
+    - [6.1.3 Example Response](#613-example-response)
   - [6.2 Example Two](#62-example-two)
     - [6.2.1 Example Plain-Language Rules](#621-example-plain-language-rules)
     - [6.2.2 Example Short Identifier Set](#622-example-short-identifier-set)
@@ -238,7 +200,7 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
   - [7.23 ValueType](#723-valuetype)
   - [7.24 VariableReferenceType](#724-variablereferencetype)
   - [7.24b SharedVariableReferenceType](#724b-sharedvariablereferencetype)
-  - [7.25 QuantifiedExpressionType](#725-quantifiedexpressiontype-optional)
+  - [7.25 QuantifiedExpressionType (optional)](#725-quantifiedexpressiontype-optional)
     - [7.25.1 ForAny Expression](#7251-forany-expression)
     - [7.25.2 ForAll Expression](#7252-forall-expression)
     - [7.25.3 Map Expression](#7253-map-expression)
@@ -353,7 +315,8 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
     - [C.2.2 RFC 822 Name](#c22-rfc-822-name)
     - [C.2.3 IP Address](#c23-ip-address)
     - [C.2.4 DNS Name](#c24-dns-name)
-    - [C.2.6 Entity](#c26-entity)
+    - [C.2.5 Entity](#c25-entity)
+    - [C.2.6 Data Types Defined by Reference to XML Schema](#c26-data-types-defined-by-reference-to-xml-schema)
   - [C.3 Functions](#c3-functions)
     - [C.3.1 Equality Predicates](#c31-equality-predicates)
     - [C.3.2 Arithmetic Functions](#c32-arithmetic-functions)
@@ -371,7 +334,7 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
     - [C.3.14 Aggregate Functions](#c314-aggregate-functions)
     - [C.3.15 Special Match Functions](#c315-special-match-functions)
     - [C.3.16 Other Functions](#c316-other-functions)
-    - [C.3.18 Extension Functions and Data Types](#c318-extension-functions-and-data-types)
+    - [C.3.17 Extension Functions and Data Types](#c317-extension-functions-and-data-types)
 - [Annex D ACAL Identifiers](#annex-d-acal-identifiers)
   - [D.1 ACAL Namespaces](#d1-acal-namespaces)
   - [D.2 Attribute Categories](#d2-attribute-categories)
@@ -394,10 +357,15 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
   - [E.7 Permit Unless Deny](#e7-permit-unless-deny)
   - [E.8 First Applicable](#e8-first-applicable)
 - [Annex F How to generate HTML and PDF Versions](#annex-f-how-to-generate-html-and-pdf-versions)
+  - [Online generation](#online-generation)
+  - [Offline generation](#offline-generation)
+    - [Prerequisites](#prerequisites)
+    - [CSS stylesheet](#css-stylesheet)
+    - [HTML generation](#html-generation)
+    - [PDF generation](#pdf-generation)
 - [Annex G UML Model](#annex-g-uml-model)
 - [Appendix 1 Acknowledgments](#appendix-1-acknowledgments)
   - [Leadership](#leadership)
-  - [Special Thanks](#special-thanks)
   - [Participants](#participants)
 - [Appendix 2 Changes From Previous Version](#appendix-2-changes-from-previous-version)
   - [Revision History](#revision-history)
@@ -407,18 +375,6 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
 
 # 1 Scope
 
-<!-- OASIS Open Specification Template Instructions: 
-
-What is the purpose and scope of this document?   
-Best practices: 
-
-- Expect this text to be reused in multiple other places to explain the specification in summary form.  
-- This is not the TC or OP scope (which is an IPR and rules boundary);  rather, this section is the summary intended purpose of this specification.  
-- Short is better; four paragraphs or less is recommended.  
-- If use of this spec is deliberately created to rely on or complement another standard, consider briefly mentioning that here as context.  
-- To the extent that discussion of the larger context of the spec, or its history, or the circumstances that led to its creation or revision, are necessary, they belong in the Introduction, not here. 
-
--->
 
 This specification defines a common language and processing model for:
 1. Attribute-Based Access Control policies;
@@ -442,7 +398,6 @@ Concrete representations (data formats) are to be provided as separate specifica
 
 This document uses the following terms defined elsewhere:
 
-<!-- The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. -->
 <!-- For some reason, if the line below is only 'Bag', the line break is missing from the PDF output -->
 **Bag (a.k.a. _multiset_)**
 
@@ -462,13 +417,11 @@ This document uses the following terms defined elsewhere:
 
 **Value space**
 
-: [[XS](#xs)] Part 2, Section 2.1. The set of values of a datatype.
+: [[XS](#xs)] Part 2, Section 2.2. The set of values of a datatype.
 
 ### 2.1.2 Terms Defined in this Document
 
 This document defines the following terms:
-
-<!-- The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. -->
 
 **Access**
 
@@ -508,7 +461,7 @@ This document defines the following terms:
 
 **Condition**
 
-: An expression of **_predicates_**. A function that evaluates to `True`, `False` or `Indeterminate`.
+: An expression of **_predicates_**. A function that evaluates to `true`, `false` or `Indeterminate`.
 
 **Conjunctive sequence**
 
@@ -520,7 +473,7 @@ This document defines the following terms:
 
 **Context handler**
 
-: The system entity that converts **_decision requests_** in the native request format to the XACML canonical form, coordinates with Policy Information Points to add attribute values to the request **_context_**, and converts **_authorization decisions_** in the XACML canonical form to the native response format.
+: The system entity that converts **_decision requests_** in the native request format to the ACAL **_context_**, coordinates with Policy Information Points to add attribute values to the request **_context_**, and converts **_authorization decisions_** in the ACAL **_context_** form to the native response format.
 
 **Decision**
 
@@ -548,7 +501,7 @@ This document defines the following terms:
 
 **Input acceptance limit**
 
-: A bound that an ACAL implementation applies to data where the data enters ACAL processing, for example when a request or a policy is parsed or when an attribute value is retrieved, such as a limit on the size of a request or on the length of the lexical representation of a number. An input acceptance limit does not determine the **_supported integer interval_** ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)).
+: A bound that an ACAL implementation applies to data where the data enters ACAL processing, for example when a request or a policy is parsed or when an attribute value is retrieved, such as a limit on the size of a request or on the length of the lexical representation of a number. An input acceptance limit does not determine the **_supported integer interval_** ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)).
 
 **Named attribute**
 
@@ -592,11 +545,12 @@ This document defines the following terms:
 
 **Supported integer interval**
 
-: The set of `integer` values that an ACAL implementation can evaluate, as specified in [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema).
+: The set of `integer` values that an ACAL implementation can evaluate, as specified in [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema).
 
 **Target**
 
 : An element of an XACML **_policy_** which matches specified values of **_resource_**, **_subject_**, **_environment_**, **_action_**, or other custom **_attributes_** against those provided in the request **_context_** as a part of the process of determining whether the **_policy_** is applicable to the current decision.
+
 
 ### 2.1.3 Related terms
 
@@ -614,7 +568,6 @@ Access requestors and initiators are covered by the term **_subject_**.
 ## 2.2 Abbreviations and Acronyms
 
 This document uses the following abbreviations and acronyms:
-<!-- The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. -->
 
 **Iff**
 Term used in logic and mathematic fields, that means *if and only if*.
@@ -641,7 +594,7 @@ over objects described in a model.
 
 : The system entity that acts as a source of **_attribute_** values.
 
-**UML (Unified Modelling Language)**
+**UML (Unified Modeling Language)**
 
 : [[UML](#uml)] is an international OMG (Object Management Group) and ISO standard defining a graphical language for visualizing, specifying, constructing, and documenting the artifacts of distributed software systems.
 
@@ -654,12 +607,12 @@ over objects described in a model.
 ## 3.1 Key Words
 
 
-The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in BCP 14 [[RFC2119](#rfc2119)] [[RFC8174](#rfc8174)] when, and only when, they appear in all capitals, as shown here.
 
 
 ## 3.2 Typographical Conventions
 
-<!-- From OASIS Open Specification Template Instructions: Describe any standards or typographical conventions that were followed when writing this document, such as fonts or highlighting that have special significance. If there are no typographical conventions than one is to put "None". -->
+
 None.
 
 ---
@@ -826,13 +779,12 @@ In some applications it is helpful to specify supplemental information about a d
 
 ## 4.14 Changes From the Previous Version
 
-<!-- From OASIS Open Specification Template Instructions: This section is **REQUIRED** and **MUST** be the last numbered subsection in this section. -->
 
-As illustrated in the **Figure 4-1** below, compared to [XACML v3](#xacml), this ACAL specification is a generalization of XACML model (syntax and processing model), aiming to be XML-agnostic, therefore laying the ground for other (non-XML) concrete representations to be added. In addition, ACAL benefits from extra enhancements including model simplifications and optimizations as well as new features. For purpuses of simplifying this specification, all XPath features - originally from XACML - are kept in a separate ACAL Profile. 
+As illustrated in the **Figure 4-1** below, compared to [XACML v3](#xacml), this ACAL specification is a generalization of XACML model (syntax and processing model), aiming to be XML-agnostic, therefore laying the ground for other (non-XML) concrete representations to be added. In addition, ACAL benefits from extra enhancements including model simplifications and optimizations as well as new features. For purposes of simplifying this specification, all XPath features - originally from XACML - are kept in a separate ACAL Profile. 
 
 ![ACAL](images/acal_big.svg)
 
-**Fig. 4-1.** Evolution from XACML v3 to ACAL 
+**Figure 4-1.** Evolution from XACML v3 to ACAL 
 
 
 The detailed list of changes from the previous version and any revision history can be found in [Appendix 2](#appendix-2-changes-from-previous-version).
@@ -1049,7 +1001,7 @@ digraph Fig1 {
 }
 ```
 
-**Fig. 5-1.** Data-Flow Diagram
+**Figure 5-1.** Data-Flow Diagram
 
 <span> </span>
 : Note: some of the data-flows shown in the diagram may be facilitated by a repository. For instance, the communications between the context handler and the PIP or the communications between the PDP and the PAP may be facilitated by a repository. The ACAL specification is not intended to place restrictions on the location of any such repository, or indeed to prescribe a particular communication protocol for any of the data-flows.
@@ -1073,7 +1025,7 @@ The model operates by the following steps.
 
 ## 5.2 ACAL Context
 
-ACAL is intended to be suitable for a variety of application environments. The core language is insulated from the application environment by the ACAL context, as shown in **Figure 5-2**, in which the scope of the ACAL specification is indicated by the shaded area. In the Figure 5-2, the ACAL context represents the inputs and outputs of the PDP decision. An ACAL Policy references attributes in the ACAL context via content-specific path expressions (e.g. XPath for XML content, JSONPath for JSON content) over the `ContentType` objects of the context, or *named* attribute designators that identify the attribute by its category, identifier, data type and (optionally) its issuer. Implementations MUST convert between the attribute representations in the application environment (e.g., SAML, J2SE, CORBA, and so on) and the attribute representations in the ACAL context. How this is achieved is outside the scope of the ACAL specification. In some cases, such as SAML, this conversion may be accomplished in an automated way through the use of an XSLT transformation.
+ACAL is intended to be suitable for a variety of application environments. The core language is insulated from the application environment by the ACAL context, as shown in **Figure 5-2**, in which the scope of the ACAL specification is indicated by the shaded area. In the Figure 5-2, the ACAL context represents the inputs and outputs of the PDP decision. An ACAL Policy references attributes in the ACAL context via content-specific path expressions (e.g. XPath for XML content, JSONPath for JSON content) over the `ContentType` objects of the context, or *named* attribute designators that identify the attribute by its category, identifier, data type and (optionally) its issuer. Implementations convert between the attribute representations in the application environment (e.g., SAML, J2SE, CORBA, and so on) and the attribute representations in the ACAL context ([Section 8.4](#84-attribute-evaluation)). How this is achieved is outside the scope of the ACAL specification. In some cases, such as SAML, this conversion may be accomplished in an automated way through the use of an XSLT transformation [[XSLT](#xslt)].
 
 
 ```dot
@@ -1198,7 +1150,7 @@ These are discussed in the following sub-sections.
 The condition defines the set of requests to which the rule applies, expressed as a logical expression on attributes in the request. If a rule is intended to apply to all requests to which its parent policy is applicable, the condition may be omitted.
 
 **Hierarchical Logic**
-When evaluating conditions against structured name-forms (such as directory names, file paths, or nested object keys), the matching logic MUST distinguish between a discrete node and a subtree. 
+When evaluating conditions against structured name-forms (such as directory names, file paths, or nested object keys), the matching logic needs to distinguish between a discrete node and a subtree (see [Section 8.14](#814-hierarchical-resources) and [[ACAL-Hierarchical-1.0](#acal-hierarchical-10)]). 
 
 * **Subjects:** Non-leaf subject names generally identify the set of subjects subordinate to that node.
 * **Resources:** A resource node may represent either a discrete entity or a container for a subtree of entities. 
@@ -1206,13 +1158,13 @@ When evaluating conditions against structured name-forms (such as directory name
 The interpretation of these structures is influenced by the match function selected and the hierarchy's specific delimiter (e.g., `/`, `\`, or `.`). The **Hierarchical Resource Profile** provides the specific functions and logic required to handle these variations across different data representations.
 
 **Evaluation**
-The PDP verifies that the matches defined by the condition are satisfied by the attributes in the request context. For the formal processing model, see **Section 9, "Condition Evaluation"**.
+The PDP verifies that the matches defined by the condition are satisfied by the attributes in the request context. For the formal processing model, see [Section 8.9](#89-condition-evaluation).
 
 #### 5.3.1.2 Effect
 
 The effect of the rule indicates the rule-writer's intended consequence of a `true` evaluation for the condition. Two values are allowed: `Permit` and `Deny`.
 
-#### 5.3.1.4 Notice Expressions
+#### 5.3.1.3 Notice Expressions
 
 Notice expressions may be added by the writer of the rule.
 
@@ -1275,7 +1227,7 @@ Assume that a corporation named Medi Corp (identified by its domain name: med.ex
 
 : _Any user with an e-mail name in the `med.example.com` domain is allowed to perform any action on any resource._
 
-The following XACML policy, respectively in XML, YAML and JSON, contains a rule instance expressing this access control policy (the numbers in square brackets on the left-hand side are for referencing purposes and are not part of the policy in any representation):
+The following ACAL policy, respectively in XML, YAML and JSON, contains a rule instance expressing this access control policy (the numbers in square brackets on the left-hand side are for referencing purposes and are not part of the policy in any representation):
 
 ```
 [01] <?xml version="1.0" encoding="UTF-8"?>
@@ -1334,7 +1286,7 @@ The following XACML policy, respectively in XML, YAML and JSON, contains a rule 
 ```
 
 ```
-[02] {
+[02] {"Policy":{
 [04]   "PolicyId":"urn:oasis:names:tc:acal:1.0:example:SimplePolicy1",
 [05]   "Version":"1.0",
 [06]   "CombiningAlgId":"deny-overrides",
@@ -1368,7 +1320,7 @@ The following XACML policy, respectively in XML, YAML and JSON, contains a rule 
 [35]       }
 [36]     }
 [37]   }]
-[38] }
+[38] }}
 ```
 
 [01] A standard XML document tag indicating which version of XML is being used and what the character encoding is.
@@ -1383,7 +1335,7 @@ The following XACML policy, respectively in XML, YAML and JSON, contains a rule 
 
 [07] - [08] A reference to a short identifier set imported into the policy. The names of the short identifiers in the set are available to use in this policy.
 
-[06] The algorithm that will be used to combine the results of the various rules and policies that may be contained in the policy. In this case the algorithm is nominated with the short identifier name `deny-overrides` which evaluates to `urn:oasis:names:tc:acal:1.0:combining-algorithm:deny-overrides` using the imported short identifier set. This combining algorithm specifies that, if any rule evaluates to `Deny`, then the policy must return `Deny`; otherwise, if any rule evaluates to `Permit`, then the policy must return `Permit`. The combining algorithm, which is fully described in Appendix Appendix C, also says what to do if an error were to occur when evaluating any rule, and what to do with rules that do not apply to a particular decision request.
+[06] The algorithm that will be used to combine the results of the various rules and policies that may be contained in the policy. In this case the algorithm is nominated with the short identifier name `deny-overrides` which evaluates to `urn:oasis:names:tc:acal:1.0:combining-algorithm:deny-overrides` using the imported short identifier set. This combining algorithm specifies that, if any rule evaluates to `Deny`, then the policy must return `Deny`; otherwise, if any rule evaluates to `Permit`, then the policy must return `Permit`. The combining algorithm, which is fully described in [Annex E](#annex-e-combining-algorithms), also says what to do if an error were to occur when evaluating any rule, and what to do with rules that do not apply to a particular decision request.
 
 [09] An optional text description of the policy.
 
@@ -1475,7 +1427,7 @@ The following request, respectively in XML, YAML and JSON, expresses this decisi
 ```
 
 ```
-[02] {
+[02] {"Request":{
 [03]   "ShortIdSetReference":["urn:oasis:names:tc:acal:1.0:core:identifiers"],
 [05]   "RequestEntity":[{
 [06]     "Category":"access-subject",
@@ -1505,7 +1457,7 @@ The following request, respectively in XML, YAML and JSON, expresses this decisi
 [32]       ]
 [33]     }]
 [34]   }]
-[35] }
+[35] }}
 ```
 
 [01] A standard XML document tag.
@@ -1548,11 +1500,11 @@ As a result of evaluating the policy, there is no rule in this policy that retur
 ```
 
 ```
-[02] {
+[02] {"Response":{
 [03]   "Result":[{
 [04]     "Decision":"NotApplicable"
 [05]   }]
-[06] }
+[06] }}
 ```
 
 [01] A standard XML document tag.
@@ -1591,7 +1543,7 @@ These rules may be written by different PAPs operating independently, or by a si
 
 Policy writers are able to define sets of short identifiers to provide simple alias names to use in place of URIs. A set with the identifier `urn:oasis:names:tc:acal:1.0:core:identifiers` is defined by ACAL for the various identifiers assigned by this specification. However, a deployment will usually have need for additional identifiers, especially for locally-defined attributes, so it is usually desirable to define a set of additional short identifiers to use in the deployment, that may import the first set.
 
-The following short-identifier set, respectively in XML, YAML and JSON, defines short identifiers for the additional attributes in this example and also imports the standardized set.
+The following short-identifier set, respectively in XML, YAML and JSON, defines short identifiers for the additional attributes and the notice in this example and also imports the standardized set.
 
 ```xml
 <ShortIdSet xmlns="urn:oasis:names:tc:xacml:4.0:core:schema"
@@ -1609,30 +1561,42 @@ The following short-identifier set, respectively in XML, YAML and JSON, defines 
   <ShortId Name="physician-id" Value="urn:oasis:names:tc:acal:1.0:example:attribute:physician-id"/>
   <ShortId Name="role" Value="urn:oasis:names:tc:acal:1.0:example:attribute:role"/>
   <ShortId Name="patient-contact" Value="urn:oasis:names:tc:acal:1.0:example:attribute:patient-contact"/>
+  <ShortId Name="primary-care-physician" Value="urn:oasis:names:tc:acal:1.0:example:attribute:primary-care-physician"/>
+  <ShortId Name="mailto" Value="urn:oasis:names:tc:acal:1.0:example:attribute:mailto"/>
+  <ShortId Name="text" Value="urn:oasis:names:tc:acal:1.0:example:attribute:text"/>
+  <!-- Notices -->
+  <ShortId Name="email" Value="urn:oasis:names:tc:acal:1.0:example:notice:email"/>
 
 </ShortIdSet>
 ```
 
 ```yaml
-ShortIdSet:
-  Id: "urn:oasis:names:tc:acal:1.0:example:identifiers"
-  ShortIdSetReference:
-    - "urn:oasis:names:tc:acal:1.0:core:identifiers"
-  ShortId:
-    - Name: patient-number
-      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-number"
-    - Name: collection
-      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:collection"
-    - Name: patient-date-of-birth
-      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-date-of-birth"
-    - Name: parent-guardian-id
-      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:parent-guardian-id"
-    - Name: physician-id
-      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:physician-id"
-    - Name: role
-      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:role"
-    - Name: patient-contact
-      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-contact"
+Id: "urn:oasis:names:tc:acal:1.0:example:identifiers"
+ShortIdSetReference:
+  - "urn:oasis:names:tc:acal:1.0:core:identifiers"
+ShortId:
+  - Name: patient-number
+    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-number"
+  - Name: collection
+    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:collection"
+  - Name: patient-date-of-birth
+    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-date-of-birth"
+  - Name: parent-guardian-id
+    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:parent-guardian-id"
+  - Name: physician-id
+    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:physician-id"
+  - Name: role
+    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:role"
+  - Name: patient-contact
+    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-contact"
+  - Name: primary-care-physician
+    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:primary-care-physician"
+  - Name: mailto
+    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:mailto"
+  - Name: text
+    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:text"
+  - Name: email
+    Value: "urn:oasis:names:tc:acal:1.0:example:notice:email"
 ```
 
 ```json
@@ -1646,7 +1610,11 @@ ShortIdSet:
     { "Name":"parent-guardian-id", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:parent-guardian-id" },
     { "Name":"physician-id", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:physician-id" },
     { "Name":"role", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:role" },
-    { "Name":"patient-contact", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:patient-contact" }
+    { "Name":"patient-contact", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:patient-contact" },
+    { "Name":"primary-care-physician", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:primary-care-physician" },
+    { "Name":"mailto", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:mailto" },
+    { "Name":"text", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:text" },
+    { "Name":"email", "Value":"urn:oasis:names:tc:acal:1.0:example:notice:email" }
   ]
 }
 ```
@@ -1686,7 +1654,7 @@ The following example illustrates a decision request to which the example rules 
 [41]     </RequestAttribute>
 [42]     <RequestAttribute
 [43]       AttributeId="patient-number"
-[44]       Issuer="med.example.com" DataType="integer">
+[44]       Issuer="med.example.com" DataType="string">
 [45]       <Value>555555</Value>
 [49]     </RequestAttribute>
 [50]     <RequestAttribute
@@ -1743,9 +1711,9 @@ The following example illustrates a decision request to which the example rules 
 [39]             - 1992-03-21
 [43]         - AttributeId: patient-number
 [44]           Issuer: med.example.com
-[45]           DataType: integer
+[45]           DataType: string
 [46]           Value:
-[47]             - 555555
+[47]             - "555555"
 [51]         - AttributeId: patient-contact
 [52]           Issuer: med.example.com
 [53]           DataType: rfc822Name
@@ -1766,7 +1734,7 @@ The following example illustrates a decision request to which the example rules 
 ```
 
 ```
-[02] {
+[02] {"Request":{
 [03]   "ShortIdSetReference":["urn:oasis:names:tc:acal:1.0:example:identifiers"],
 [05]   "RequestEntity":[{
 [06]     "Category":"access-subject",
@@ -1804,9 +1772,9 @@ The following example illustrates a decision request to which the example rules 
 [41]     },{
 [43]       "AttributeId":"patient-number",
 [44]       "Issuer":"med.example.com",
-[45]       "DataType":"integer",
+[45]       "DataType":"string",
 [46]       "Value":[
-[47]         555555
+[47]         "555555"
 [48]       ]
 [49]     },{
 [51]       "AttributeId":"patient-contact",
@@ -1835,7 +1803,7 @@ The following example illustrates a decision request to which the example rules 
 [76]       ]
 [77]     }]
 [78]   }]
-[79] }
+[79] }}
 ```
 
 [01] A standard XML document tag.
@@ -1907,7 +1875,7 @@ Rule 1 illustrates a policy with a simple rule containing a condition. It also i
 [63]       <Apply FunctionId="and">
 [66]         <Apply FunctionId="any-of">
 [69]           <Function Id="string-equal"/>
-[73]           <Value>read</Value>
+[73]           <Value DataType="string">read</Value>
 [78]           <AttributeDesignator
 [79]             Category="action"
 [80]             AttributeId="action-id"
@@ -1929,7 +1897,7 @@ Rule 1 illustrates a policy with a simple rule containing a condition. It also i
 [08]     - "urn:oasis:names:tc:acal:1.0:example:identifiers"
 [09]   VariableDefinition:
 [10]     - VariableId: patient_number_match
-[11]       Argument:
+[11]       Expression:
 [12]         Apply:
 [13]           FunctionId: string-equal
 [14]           Argument:
@@ -1962,7 +1930,7 @@ Rule 1 illustrates a policy with a simple rule containing a condition. It also i
 [58]     - Rule:
 [59]         Id: Rule1
 [60]         Effect: Permit
-[61]         Description: A person may read any medical record for which he or she is the designated patient
+[61]         Description: A person may read any medical record for which he or she is the designated patient.
 [62]         Condition:
 [63]           Apply:
 [64]             FunctionId: and
@@ -1984,7 +1952,7 @@ Rule 1 illustrates a policy with a simple rule containing a condition. It also i
 ```
 
 ```
-[02] {
+[02] {"Policy":{
 [04]   "PolicyId":"urn:oasis:names:tc:acal:1.0:example:policyid:1",
 [05]   "Version":"1.0",
 [06]   "CombiningAlgId":"deny-overrides",
@@ -2032,7 +2000,7 @@ Rule 1 illustrates a policy with a simple rule containing a condition. It also i
 [49]         "AttributeDesignator":{
 [50]           "Category":"resource",
 [51]           "AttributeId":"collection",
-[52]           "DataType:"anyURI"
+[52]           "DataType":"anyURI"
 [53]         }
 [54]       }]
 [55]     }
@@ -2041,7 +2009,7 @@ Rule 1 illustrates a policy with a simple rule containing a condition. It also i
 [58]     "Rule":{
 [59]       "Id":"Rule1",
 [60]       "Effect":"Permit",
-[61]       "Description":"A person may read any medical record for which he or she is the designated patient",
+[61]       "Description":"A person may read any medical record for which he or she is the designated patient.",
 [62]       "Condition":{
 [63]         "Apply":{
 [64]           "FunctionId":"and",
@@ -2074,7 +2042,7 @@ Rule 1 illustrates a policy with a simple rule containing a condition. It also i
 [91]       }
 [92]     }
 [93]   }]
-[94] }
+[94] }}
 ```
 
 [07] - [08] A reference to a short identifier set imported into the policy. The names of the short identifiers in the set are available to use in this policy.
@@ -2142,7 +2110,7 @@ Rule 2 illustrates the use of a mathematical function, i.e., `urn:oasis:names:tc
 [006]   CombiningAlgId="deny-overrides">
 [007]   <ShortIdSetReference>urn:oasis:names:tc:acal:1.0:example:identifiers</ShortIdSetReference>
 [009]   <VariableDefinition VariableId="patient-under-16">
-[012]     <Apply FunctionId="date-less-than-or-equal">
+[012]     <Apply FunctionId="date-less-than">
 [015]       <Apply FunctionId="date-one-and-only">
 [018]         <AttributeDesignator
 [019]           Category="environment"
@@ -2212,7 +2180,7 @@ Rule 2 illustrates the use of a mathematical function, i.e., `urn:oasis:names:tc
 [010]     - VariableId: patient-under-16
 [011]       Expression:
 [012]         Apply:
-[013]           FunctionId: date-less-than-or-equal
+[013]           FunctionId: date-less-than
 [014]           Argument:
 [015]             - Apply:
 [016]                 FunctionId: date-one-and-only
@@ -2286,7 +2254,7 @@ Rule 2 illustrates the use of a mathematical function, i.e., `urn:oasis:names:tc
 ```
 
 ```
-[002] {
+[002] {"Policy":{
 [004]   "PolicyId":"urn:oasis:names:tc:acal:1.0:example:policyid:2",
 [005]   "Version":"1.0",
 [006]   "CombiningAlgId":"deny-overrides",
@@ -2295,7 +2263,7 @@ Rule 2 illustrates the use of a mathematical function, i.e., `urn:oasis:names:tc
 [010]     "VariableId":"patient-under-16",
 [011]     "Expression":{
 [012]       "Apply":{
-[013]         "FunctionId":"date-less-than-or-equal",
+[013]         "FunctionId":"date-less-than",
 [014]         "Argument":[{
 [015]           "Apply":{
 [016]             "FunctionId":"date-one-and-only",
@@ -2344,7 +2312,7 @@ Rule 2 illustrates the use of a mathematical function, i.e., `urn:oasis:names:tc
 [059]         "AttributeDesignator":{
 [060]           "Category":"resource",
 [061]           "AttributeId":"collection",
-[062]           "DataType:"anyURI"
+[062]           "DataType":"anyURI"
 [063]         }
 [064]       }]
 [065]     }
@@ -2362,9 +2330,9 @@ Rule 2 illustrates the use of a mathematical function, i.e., `urn:oasis:names:tc
 [077]               "FunctionId":"string-is-in",
 [078]               "Argument":[{
 [079]                 "Value":{
-[080]                   "DataType":"string",
-[081]                   "Value":"read"
-[082]                 },{
+[080]                   "DataType":"string", "Value":"read"
+[081]                 }
+[082]               },{
 [083]                   "AttributeDesignator":{
 [084]                     "Category":"action",
 [085]                     "AttributeId":"action-id",
@@ -2408,12 +2376,12 @@ Rule 2 illustrates the use of a mathematical function, i.e., `urn:oasis:names:tc
 [123]       }
 [124]     }
 [125]   }]
-[126] }
+[126] }}
 ```
 
 [009] - [049] A variable definition containing part of the condition (i.e. is the patient under 16 years of age?).  The patient is under 16 years of age if the current date is less than the date computed by adding 16 years to the patient’s date of birth.
 
-[012] - [013] The `urn:oasis:names:tc:acal:1.0:function:date-less-than-or-equal` function (short identifier name `date-less-than-or-equal`) is used to compare the two date arguments.
+[012] - [013] The `urn:oasis:names:tc:acal:1.0:function:date-less-than` function (short identifier name `date-less-than`) is used to compare the two date arguments.
 
 [015] - [024] The first date argument uses the `urn:oasis:names:tc:acal:1.0:function:date-one-and-only` function (short identifier name `date-one-and-only`) to ensure that the bag of values selected by its argument contains exactly one value of type `urn:oasis:names:tc:acal:1.0:data-type:date` (short identifier name `date`).
 
@@ -2522,7 +2490,7 @@ Rule 3 illustrates the use of a notice expression.
 [124]         <Apply FunctionId="string-one-and-only">
 [127]           <AttributeDesignator
 [128]             Category="access-subject"
-[129]             AttributeId="subject-id"
+[129]             AttributeId="physician-id"
 [130]             DataType="string"/>
 [133]         </Apply>
 [135]       </Apply>
@@ -2620,12 +2588,12 @@ Rule 3 illustrates the use of a notice expression.
 [126]                     Argument:
 [127]                       - AttributeDesignator:
 [128]                           Category: access-subject
-[129]                           AttributeId: subject-id
+[129]                           AttributeId: physician-id
 [130]                           DataType: string
 ```
 
 ```
-[002] {
+[002] {"Policy":{
 [004]   "PolicyId":"urn:oasis:names:tc:acal:1.0:example:policyid:3",
 [005]   "Version":"1.0",
 [006]   "CombiningAlgId":"deny-overrides",
@@ -2643,7 +2611,7 @@ Rule 3 illustrates the use of a notice expression.
 [019]         "AttributeDesignator":{
 [020]           "Category":"resource",
 [021]           "AttributeId":"collection",
-[022]           "DataType:"anyURI"
+[022]           "DataType":"anyURI"
 [023]         }
 [024]       }]
 [025]     }
@@ -2749,7 +2717,7 @@ Rule 3 illustrates the use of a notice expression.
 [126]                "Argument":[{
 [127]                  "AttributeDesignator":{
 [128]                    "Category":"access-subject",
-[129]                    "AttributeId":"subject-id",
+[129]                    "AttributeId":"physician-id",
 [130]                    "DataType":"string"
 [131]                  }
 [132]                }]
@@ -2759,7 +2727,7 @@ Rule 3 illustrates the use of a notice expression.
 [136]        }
 [137]      }]
 [138]   }]
-[139] }
+[139] }}
 ```
 
 [010] - [026] The target restricts the applicability of the policy to decision requests for access to medical records belonging to Springfield Hospital.
@@ -2788,7 +2756,7 @@ Rule 3 illustrates the use of a notice expression.
 
 [103] - [112] The first attribute assignment indicates the recipient email address, which is obtained from the `urn:oasis:names:tc:acal:1.0:example:attribute:patient-contact` resource attribute using an attribute designator.
 
-[113] - [137] The second attribute assignment provides the email body text. The literal prefix and the identity of the physician (obtained from the `urn:oasis:names:tc:acal:1.0:subject:subject-id` subject attribute using an attribute designator) are combined into a single value with the `urn:oasis:names:tc:acal:1.0:function:string-concatenate` function. The attribute designator returns a bag of attribute values but `string-concatenate` takes arguments that are single string values, so the designator is wrapped in the `string-one-and-only` function to reduce the bag to a single value.
+[113] - [137] The second attribute assignment provides the email body text. The literal prefix and the identity of the physician (obtained from the `urn:oasis:names:tc:acal:1.0:example:attribute:physician-id` subject attribute using an attribute designator) are combined into a single value with the `urn:oasis:names:tc:acal:1.0:function:string-concatenate` function. The attribute designator returns a bag of attribute values but `string-concatenate` takes arguments that are single string values, so the designator is wrapped in the `string-one-and-only` function to reduce the bag to a single value.
 
 A notice expression is not required to keep its attribute assignments unique by the `(AttributeId, Category)` pair, so the body text could instead have been supplied as two separate assignments sharing the `text` `AttributeId`. Constructing the complete value in a single assignment, as shown here, is nevertheless the recommended practice: neither the order of attribute assignments within a notice nor the order of values within a bag is guaranteed to be preserved, so composing the value in the policy leaves no ambiguity for the PEP to resolve. Where a notice does accept repeated assignments, it is the definition of that individual obligation or advice — not this specification — that states how they are to be interpreted.
 
@@ -2908,7 +2876,7 @@ Rule 4 illustrates the use of the `Deny` effect value.
 ```
 
 ```
-[02] {
+[02] {"Policy":{
 [04]   "PolicyId":"urn:oasis:names:tc:acal:1.0:example:policyid:4",
 [05]   "Version":"1.0",
 [06]   "CombiningAlgId":"deny-overrides",
@@ -2995,7 +2963,7 @@ Rule 4 illustrates the use of the `Deny` effect value.
 [88]       }
 [89]     }
 [90]   }]
-[91] }
+[91] }}
 ```
 
 [10] - [73] The rule that assesses the decision request.
@@ -3055,17 +3023,17 @@ The following policy illustrates the combined policies. Rule 1, Rule 2 and Rule 
 [30]       </Apply>
 [31]     </Target>
 [33]     <Rule
-[34]       RuleId="Rule1"
+[34]       Id="Rule1"
 [35]       Effect="Permit">
 [36]       ...
 [37]     </Rule>
 [39]     <Rule
-[40]       RuleId="Rule2"
+[40]       Id="Rule2"
 [41]       Effect="Permit">
 [42]       ...
 [43]     </Rule>
 [45]     <Rule
-[46]       RuleId="Rule3"
+[46]       Id="Rule3"
 [47]       Effect="Permit">
 [48]       ...
 [49]     </Rule>
@@ -3100,15 +3068,15 @@ The following policy illustrates the combined policies. Rule 1, Rule 2 and Rule 
 [27]                   DataType: anyURI
 [32]         CombinerInput:
 [33]           - Rule:
-[34]               RuleId: Rule1
+[34]               Id: Rule1
 [35]               Effect: Permit
 [36]               ...
 [39]           - Rule:
-[40]               RuleId: Rule2
+[40]               Id: Rule2
 [41]               Effect: Permit
 [42]               ...
 [45]           - Rule:
-[46]               RuleId: Rule3
+[46]               Id: Rule3
 [47]               Effect: Permit
 [48]               ...
 [53]     - PolicyReference:
@@ -3116,7 +3084,7 @@ The following policy illustrates the combined policies. Rule 1, Rule 2 and Rule 
 ```
 
 ```
-[02] {
+[02] {"Policy":{
 [04]   "PolicyId":"urn:oasis:names:tc:acal:1.0:example:policyid:5",
 [05]   "Version":"1.0",
 [06]   "CombiningAlgId":"deny-overrides",
@@ -3146,19 +3114,19 @@ The following policy illustrates the combined policies. Rule 1, Rule 2 and Rule 
 [31]       },
 [32]       "CombinerInput":[{
 [33]         "Rule":{
-[34]           "RuleId":"Rule1",
+[34]           "Id":"Rule1",
 [35]           "Effect":"Permit",
 [36]           ...
 [37]         }
 [38]       },{
 [39]         "Rule":{
-[40]           "RuleId":"Rule2",
+[40]           "Id":"Rule2",
 [41]           "Effect":"Permit",
 [42]           ...
 [43]         }
 [44]       },{
 [45]         "Rule":{
-[46]           "RuleId":"Rule3",
+[46]           "Id":"Rule3",
 [47]           "Effect":"Permit",
 [48]           ...
 [49]         }
@@ -3169,7 +3137,7 @@ The following policy illustrates the combined policies. Rule 1, Rule 2 and Rule 
 [54]       "Id":"urn:oasis:names:tc:acal:1.0:example:policyid:4"
 [55]     }
 [56]   }]
-[57] }
+[57] }}
 ```
 
 [06] The nested policies are combined according to the `urn:oasis:names:tc:acal:1.0:combining-algorithm:deny-overrides` combining algorithm. This combining algorithm specifies that, if any nested policy evaluates to `Deny`, then the outer policy must return `Deny`; otherwise, if any policy evaluates to `Permit`, then the outer policy must return `Permit`.
@@ -3227,7 +3195,7 @@ Property-level constraints are defined at the level of a specific property as an
 **Simple uniqueness constraint:** 
 
 : For multi-valued properties of primitive type only, the UML standard `unique` (opposite `nonunique`) annotation is used to express that each value of the property MUST be unique. Combined with the previous order constraint, this determines the type of collection to be used (cf. Table 7.1 of [[UML](#uml)]). For example, the following constraint (`{unordered, unique}`) indicates that the order does not matter and each string value SHALL be unique, therefore a Set may be used as collection for the property *P*'s values:
-   ```
+   ```text
    + P: String [*] {unordered, unique}
    ```
    For uniqueness constraints on object-typed properties, see the next section.
@@ -3240,35 +3208,35 @@ Let refer to *prop* as the property to which the constraint is applied. In each 
 **Mandatory-property-based uniqueness constraint:**
 
 : For multi-valued properties of complex (object) type, the previous simple `uniqueness` constraint is not enough to define what SHALL be unique about each value object. In that case, assuming each value of *prop* has a mandatory property *itemProp* of primitive type, we use the following OCL expression to specify that the property *itemProp* of each item SHALL be unique (in other words, *itemProp* is used as the unique key): 
-  ```
+  ```text
   self->isUnique(itemProp)
   ```
 
 **Optional-property-based uniqueness constraint:**
 
 : This is a variant of the previous constraint where the property used as unique key is optional, and therefore the OCL expression only checks that the non-null values of *itemProp* are unique and ignore the rest where *itemProp* is null/undefined:
-  ```
+  ```text
   self->select(itemProp <> null)->isUnique(itemProp)
   ```
 
 **Multi-property-based uniqueness constraint:**
 
 : This is a variant of the first constraint in this section where the unique key consists of multiple properties (*itemProp1, itemProp2, ...itemPropN*) of each value of *prop*, all those properties have primitive type and at least *itemProp1* is a mandatory property. In this case, we use the following OCL expression to check that each value (i.e. each key based on those properties, i.e. it is a *compound key*) is unique:
-  ```
+  ```text
   self->isUnique(Sequence{itemProp1, itemProp2, ..., itemPropN})
   ```  
-  
+
 **Multivalued-property-based uniqueness constraint:**
 
 : This is a variant where the unique key is based on a property *itemProp* which is itself multi-valued, and has its own unique key based on a single property *itemPropKey*. In this case, the key for each *item* in *prop*'s values that is checked for uniqueness is the sequence (if ordered) or set (if unordered) of all *itemPropKey* values, i.e. the following OCL expression:
-  ```
+  ```text
   self->isUnique(itemProp->collect(itemPropKey))
   ```
 
 **Value type uniqueness constraint:**
 
 : This is a variant where the constraint only checks that the type of each value of *prop* is unique:
-  ```
+  ```text
   self->isUnique(oclType())
   ```
 
@@ -3337,7 +3305,7 @@ This primitive type is not directly used in the current ACAL model and provided 
 hide empty members
 hide circle
 class PrimitiveType <<Metaclass>>
-class RestrictedType <<stereotype>> extends PrimitiveType {
+class RestrictedString <<stereotype>> extends PrimitiveType {
    + pattern: String [1]
    + minLength: Integer [0..1]
 }
@@ -3357,11 +3325,11 @@ class URI <<primitive>>
 @enduml
 ```
 
-ACAL representation formats (in ACAL profiles) usually have a native equivalent for this type, in which case they should use that, e.g. XML schema `xs:anyURI`, JSON schema `{ "type": "string", "format": "uri" }`.
+ACAL representation formats (in ACAL profiles) usually have a native equivalent for this type, in which case they SHOULD use that, e.g. XML schema `xs:anyURI`, JSON schema `{ "type": "string", "format": "uri" }`.
 
 ###### Reserved prefix for URIs
 
-Whenever a property of this type (`URI`) is used in ACAL data model, the values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+Whenever a property of this type (`URI`) is used in ACAL data model, the values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 ##### 7.1.2.3.2 NonNegativeInteger
 
@@ -3374,7 +3342,7 @@ class NonNegativeInteger <<primitive>>
 @enduml
 ```
 
-ACAL representation formats (in ACAL profiles) may have a native equivalent for this type, in which case they should use that, e.g. XML schema `xs:nonNegativeInteger`, JSON schema `{ "type": "integer", "minimum": 0 }`.
+ACAL representation formats (in ACAL profiles) may have a native equivalent for this type, in which case they SHOULD use that, e.g. XML schema `xs:nonNegativeInteger`, JSON schema `{ "type": "integer", "minimum": 0 }`.
 
 ##### 7.1.2.3.3 Double
 
@@ -3387,7 +3355,7 @@ class Double <<primitive>>
 @enduml
 ```
 
-In UML, it may be defined as a subtype of UML standard primitive type `Real`, restricted to 64-bit length. However, each ACAL representation format should map this to their closest native equivalent if there is any, e.g. `xs:double` in XML.
+In UML, it may be defined as a subtype of UML standard primitive type `Real`, restricted to 64-bit length. However, each ACAL representation format SHOULD map this to their closest native equivalent if there is any, e.g. `xs:double` in XML.
 
 <a name="versiontype"></a>
 
@@ -3501,11 +3469,11 @@ The conversion of a value of the `IdentifierType` simple type into an absolute U
 
 ###### Reserved prefix for identifiers
 
-Whenever a property of this type (`IdentifierType`) is used in ACAL data model, the values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+Whenever a property of this type (`IdentifierType`) is used in ACAL data model, the values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 ##### 7.1.2.3.9 LocalIdentifierType
 
-`LocalIdentifierType` values are local identifiers, i.e. identifiers that are unique only within a limited scope. Examples of local identifiers are Request-local identifiers (e.g. the `Id` property of `RequestEntity`, and the value of `RequestEntityReference` itself, which is typed directly as `LocalIdentifierType` rather than having its own `Id` property), Policy-local identifiers (e.g. the `VariableId` of a policy's variable or the `ParameterName` of a policy parameter or the `RuleId` of a policy's rule), Rule-local identifiers (e.g. the `VariableId` of a rule's variable), etc.
+`LocalIdentifierType` values are local identifiers, i.e. identifiers that are unique only within a limited scope. Examples of local identifiers are Request-local identifiers (e.g. the `Id` property of `RequestEntity`, and the value of `RequestEntityReference` itself, which is typed directly as `LocalIdentifierType` rather than having its own `Id` property), Policy-local identifiers (e.g. the `VariableId` of a policy's variable or the `Name` of a policy parameter or the `Id` of a policy's rule), Rule-local identifiers (e.g. the `VariableId` of a rule's variable), etc.
 
 <!-- WARNING: for ALFA compatibility, the pattern should not be more restrictive than ALFA identifiers. 
    Pattern agreed with ALFA working group, except the hypen is allowed as separator in addition to the dot: 
@@ -3615,7 +3583,7 @@ _**Support for this type is optional, unless `ContentType` objects are supported
 
 `MediaType` is the primitive type for `ContentType` objects' `MediaType` property (see [Section 7.34](#734-contenttype-optional) ).
 
-The regular expression below follows the ABNF syntax from Section 4.2 of [[RFC6838]](#rfc6838) (with the recommendation that `<type-name>` and `<subtype-name>` SHOULD be limited to 64 characters).
+The regular expression below follows the ABNF syntax from Section 4.2 of [[RFC6838](#rfc6838)] (with the recommendation that `<type-name>` and `<subtype-name>` SHOULD be limited to 64 characters).
 
 UML definition:
 ```plantuml
@@ -3630,7 +3598,7 @@ class MediaType <<primitive>> <<restrictedString>> {
 @enduml
 ```
 
-This is the generic type definition. However, the exact possible values SHALL be defined explicitly by the `AttributeSelector` Profile(s) of ACAL, e.g. the XPath and/or JSONPath Profiles, depending on the Content Type(s) they support. In any case, the standard identifiers specified in [Annex D.10](#d10-content-types) SHOULD be used whenever applicable, or else a [media type registered at IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) according to [[RFC6838]](#rfc6838).
+This is the generic type definition. However, the exact possible values SHALL be defined explicitly by the `AttributeSelector` Profile(s) of ACAL, e.g. the XPath and/or JSONPath Profiles, depending on the Content Type(s) they support. In any case, the standard identifiers specified in [Annex D.10](#d10-content-types) SHOULD be used whenever applicable, or else a [media type registered at IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) according to [[RFC6838](#rfc6838)].
 
 
 ##### 7.1.2.3.15 ContentEncodingType (optional)
@@ -3688,20 +3656,20 @@ A `ShortIdSetType` object contains the following properties:
 `Id` [Required]
 
 : The identifier for this short identifier set. It is the responsibility of the PAP to ensure that no two short identifier sets visible to the PDP have the same identifier. This MAY be achieved by following a predefined URN or URI scheme. If the identifier is in the form of a URL, then it MAY be resolvable.
-`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `ShortIdSetReference` [Any Number]
 
 : A sequence of `URI` values referencing other short identifier sets. The short identifiers of the referenced sets are included in this set. This applies recursively to the sets referenced by a referenced set. This set SHALL NOT reference itself and SHALL NOT reference a set that directly or indirectly references this set. This set SHALL NOT directly or indirectly reference any other set more than once.
-URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `ShortId` [Any Number]
 
 : A sequence of `ShortIdType` objects, each defining a short identifier in this set.
 
-A predefined set of short identifiers for the URIs defined in this specification is provided as a convenience, in both XML (`acal-core-xml-v4.0-identifiers.xml`) and JSON (`acal-core-xml-v4.0-identifiers.json`) representations. Use of this set is OPTIONAL.
+A predefined set of short identifiers for the URIs defined in this specification is provided as a convenience, in XML (`acal-core-xml-v4.0-identifiers.xml`), JSON (`acal-core-json-v1.0-identifiers.json`) and YAML (`acal-core-yaml-v1.0-identifiers.yaml`) representations. Use of this set is OPTIONAL.
 
-<a name="shortidtype"/>
+<a name="shortidtype"></a>
 
 ## 7.3 ShortIdType
 
@@ -3734,7 +3702,7 @@ The value of the `Value` property SHALL be either one of the following:
 
 * a character string with one or more references to other short identifiers in the form of the short identifier name enclosed in curly brackets (i.e., `{` and `}`; U+007B and U+007D) optionally preceded, followed and/or separated by other characters allowed in a URI (this excludes curly brackets, which means that the curly bracket characters are not permitted in the value other than to enclose a short identifier name). In addition, the following restrictions apply:
 
-  * the value SHALL NOT reference this short identifier (i.e., shall not contain any `{s}` where `s` matches the value of the `Name` property),
+  * the value SHALL NOT reference this short identifier (i.e., SHALL NOT contain any `{s}` where `s` matches the value of the `Name` property),
 
   * the value SHALL NOT reference a short identifier that directly or indirectly references this short identifier and
 
@@ -3758,7 +3726,7 @@ A `PolicyType` object MAY contain a `PolicyIssuer` property. The interpretation 
 
 The `Target` property defines the applicability of the `PolicyType` object to a set of decision requests. If the `Target` property within the `PolicyType` object matches the request context, then the `PolicyType` object may be used by the PDP in making its authorization decision. See [Section 8.12](#812-policy-evaluation).
 
-Any `NoticeExpressionType` objects may be evaluated into notices by the PDP. Any resulting obligation notice (with `isObligation="true"`) MUST be fulfilled by the PEP in conjunction with the authorization decision. If the PEP does not understand or cannot fulfill any of the obligation notices, then it MUST act according to the PEP bias. See [Section 8.2](#82-policy-enforcement-point) and [Section 8.16](#816-notices). Any resulting advice notice MAY be safely ignored by the PEP.
+Any `NoticeExpressionType` objects may be evaluated into notices by the PDP. Any resulting obligation notice (with `IsObligation` set to `true`) MUST be fulfilled by the PEP in conjunction with the authorization decision. If the PEP does not understand or cannot fulfill any of the obligation notices, then it MUST act according to the PEP bias. See [Section 8.2](#82-policy-enforcement-point) and [Section 8.16](#816-notices). Any resulting advice notice MAY be safely ignored by the PEP.
 
 UML definition (class diagram):
 ```plantuml
@@ -3810,7 +3778,7 @@ A `PolicyType` object contains the following properties:
 `PolicyId` [Required]
 
 : A `URI` value specifying an identifier for the policy. It is the responsibility of the PAP to ensure that no two policies visible to the PDP have the same identifier. This MAY be achieved by following a predefined URN or URI scheme. If the policy identifier is in the form of a URL, then it MAY be resolvable.
-`PolicyId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`PolicyId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Version` [Required]
 
@@ -3819,16 +3787,16 @@ A `PolicyType` object contains the following properties:
 `CombiningAlgId` [Required]
 
 : An `IdentifierType` value identifying the combining algorithm by which the `PolicyType` and `RuleType` objects MUST be combined. Standard combining algorithms are listed in [Annex E](#annex-e-combining-algorithms). Standard combining algorithm identifiers are listed in [Annex D.9](#d9-combining-algorithms). 
-`CombiningAlgId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`CombiningAlgId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `MaxDelegationDepth` [Optional]
 
-: If present, an `Integer` that limits the depth of delegation which is authorized by this policy. See the delegation profile [[XACMLAdmin](#xacmladmin)].
+: If present, a `NonNegativeInteger` that limits the depth of delegation which is authorized by this policy. See the delegation profile [[XACMLAdmin](#xacmladmin)].
 
 `ShortIdSetReference` [Any Number]
 
 : A sequence of `URI` values referencing short identifier sets. Each value MUST be unique in the sequence. The short identifiers used by the policy MUST be ones defined in the referenced sets or in any further sets referenced by the referenced sets (recursively). The policy SHALL NOT directly or indirectly reference any short identifier set more than once.
-URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Description` [Optional]
 
@@ -3850,7 +3818,7 @@ URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are
 
 `VariableDefinition` [Any Number]
 
-: A sequence of `VariableDefinitionType` objects, each defining an expression that can be referenced from anywhere in a contained policy or rule where an expression can appear. Each object's `VariableId` must be unique in this sequence and in the list of `VariableDefinition`s in scope, i.e. already defined in an enclosing policy (parent or ancestor).
+: A sequence of `VariableDefinitionType` objects, each defining an expression that can be referenced from anywhere in a contained policy or rule where an expression can appear. Each object's `VariableId` MUST be unique in this sequence and in the list of `VariableDefinition`s in scope, i.e. already defined in an enclosing policy (parent or ancestor).
 
 
 `Target` [Optional]
@@ -3923,9 +3891,9 @@ A `ParameterType` object contains the following properties:
 `DataType` [Optional, Default `urn:oasis:names:tc:acal:1.0:data-type:string`]
 
 : An `IdentifierType` value specifying the data type of the parameter. If this property is omitted, then it is treated as being set to `urn:oasis:names:tc:acal:1.0:data-type:string`. 
-`DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
-`IsBag` [Optional, Default false]
+`IsBag` [Optional, Default `false`]
 
 : A `Boolean` value that specifies whether the parameter takes a single value (set to `false`) or a bag of values (set to `true`). If this property is omitted, then it is treated as being set to `false`.
 
@@ -3935,7 +3903,7 @@ A `ParameterType` object contains the following properties:
 
 `Expression` [Optional]
 
-: An expression that evaluates to a default value (if `Isbag` is `false`) or bag of values (if `IsBag` is true) for the parameter. This default value is used only if no argument is provided as input for this parameter (from a `PolicyReference` or `SharedVariableReference`). If the Expression value is a `ValueType` object, i.e. a literal value, the latter SHALL not redefine/override the DataType identifier already defined by the above `DataType` property, and SHOULD not have any DataType identifier property set at all, if possible.
+: An expression that evaluates to a default value (if `IsBag` is `false`) or bag of values (if `IsBag` is true) for the parameter. This default value is used only if no argument is provided as input for this parameter (from a `PolicyReference` or `SharedVariableReference`). If the Expression value is a `ValueType` object, i.e. a literal value, the latter SHALL NOT redefine/override the DataType identifier already defined by the above `DataType` property and SHOULD NOT have any DataType identifier property set at all, if possible.
 
 ## 7.7 BooleanExpressionType
 
@@ -3980,8 +3948,8 @@ The `IdReferenceType` object type contains the following property:
 
 `Id` [Required]
 
-: A URI being the `PolicyId` of the referenced policy. If the URI is a URL, then it MAY be resolvable to the policy. Resolution against the policies that define the PDP is specified in [Section 8.13](#813-policyreference-evaluation); any further mechanism for locating a policy that is not among them (for example retrieving it from a URL, or from an external repository or protocol) is outside the scope of this specification.
-`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+: A URI being the `PolicyId` of the referenced policy. If the URI is a URL, then it MAY be resolvable to the policy. Resolution against the policies that define the PDP, and the optional retrieval of a policy from a URL, are specified in [Section 8.13](#813-policyreference-evaluation); any other mechanism for locating a policy that is not among them (for example an external repository or protocol) is outside the scope of this specification.
+`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 ## 7.9 ExactMatchIdReferenceType (optional)
 
@@ -4051,9 +4019,9 @@ The `PolicyReferenceType` object type extends the `PatternMatchIdReferenceType` 
 
 `Argument` [Any Number]
 
-: Arguments for a parameterized policy. The sequence of argments SHALL be exclusively either one of these:
+: Arguments for a parameterized policy. The sequence of arguments SHALL be exclusively either one of these:
 - A sequence of *positional* arguments, i.e. `ExpressionType` objects declared in the same order as the `Parameter` values in the referenced policy; each argument number *n* MUST match the definition of the policy's `Parameter` number *n* (`DataType`, `IsBag`);
-- A sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the policy's `Parameter` named *x* and therefore its Expression must match that Parameter's definition (`DataType`, `IsBag`).
+- A sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the policy's `Parameter` named *x* and therefore its Expression MUST match that Parameter's definition (`DataType`, `IsBag`).
 
 The number of arguments *N* may be less than the number of declared `Parameter`s if and only if the `Parameter`s number *N* (starting at zero) and above have defined default values, in which case they are used as remaining arguments. 
 
@@ -4109,7 +4077,7 @@ A `RuleType` object contains the following properties:
 
 `NoticeExpression` [Any Number]
 
-: A sequence of `NoticeExpressionType` objects, each defining a notice expression potentially evaluated into a notice by the PDP. See [NoticeExpressionType](#729-noticeexpressiontype). Objects' `Id` values are not required to be unique in this sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignmentExpression`s. See [Section 8.16](#816-notices) for a description of how the notices to be returned by the PDP shall be determined. See [Section 8.2](#82-policy-enforcement-point) about enforcement of obligation notices.
+: A sequence of `NoticeExpressionType` objects, each defining a notice expression potentially evaluated into a notice by the PDP. See [NoticeExpressionType](#729-noticeexpressiontype). Objects' `Id` values are not required to be unique in this sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignmentExpression`s. See [Section 8.16](#816-notices) for a description of how the notices to be returned by the PDP SHALL be determined. See [Section 8.2](#82-policy-enforcement-point) about enforcement of obligation notices.
 
 ## 7.13 VariableDefinitionType
 
@@ -4163,7 +4131,7 @@ class SharedVariableDefinitionType <<dataType>> {
 `Id` [Required]
 
 : A `URI` value specifying an identifier for the shared variable. It is the responsibility of the PAP to ensure that no two shared variables visible to the PDP have the same identifier. This MAY be achieved by following a predefined URN or URI scheme. If the identifier is in the form of a URL, then it MAY be resolvable.
-`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Version` [Required]
 
@@ -4176,7 +4144,7 @@ class SharedVariableDefinitionType <<dataType>> {
 `ShortIdSetReference` [Any Number]
 
 : A sequence of `URI` values referencing short identifier sets. The short identifiers used by the shared variable MUST be ones defined in the referenced sets or in any further sets referenced by the referenced sets (recursively). The shared variable SHALL NOT directly or indirectly reference any short identifier set more than once.
-URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Parameter` [Any Number]
 
@@ -4258,11 +4226,11 @@ An `NonLiteralExpressionType` object contains exactly one of the following prope
 
 `AttributeSelector`
 
-: An `AttributeSelectorType` object specifying  Path expression - depending on the content type (e.g. XPath for XML content) - to apply to the structured content in the request context to produce a bag of ACAL values.
+: An `AttributeSelectorType` object specifying  a Path expression - depending on the content type (e.g. XPath for XML content) - to apply to the structured content in the request context to produce a bag of ACAL values.
 
 `EntityAttributeSelector`
 
-: An `EntityAttributeSelectorType` object specifying an Path expression - depending on the content type (e.g. XPath for XML content) - to apply to the structured content either in the request context or in a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type.
+: An `EntityAttributeSelectorType` object specifying a Path expression - depending on the content type (e.g. XPath for XML content) - to apply to the structured content either in the request context or in a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type.
 
 `VariableReference`
 
@@ -4311,7 +4279,7 @@ An `ApplyType` object contains the following properties:
 `FunctionId` [Required]
 
 : An `IdentifierType` value identifying the function to be applied to the arguments. ACAL-defined functions are described in [Annex C.3](#c3-functions).
-`FunctionId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`FunctionId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Description` [Optional]
 
@@ -4319,14 +4287,14 @@ An `ApplyType` object contains the following properties:
 
 `Argument` [Any Number]
 
-: A sequence of `ArgumentType` objects, each defining an expression as an argument to the function. The sequence of argments SHALL be exclusively either one of these:
+: A sequence of `ArgumentType` objects, each defining an expression as an argument to the function. The sequence of arguments SHALL be exclusively either one of these:
 - A sequence of *positional* arguments, i.e. `ExpressionType` objects declared in the same order as the parameters defined in the function's signature and matching the parameter data-types;
-- If and only if the function has defined parameter names for all its parameters, it may also be a sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the function's parameter named *x* and therefore the argument's expression must match that parameter data-type.
+- If and only if the function has defined parameter names for all its parameters, it may also be a sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the function's parameter named *x* and therefore the argument's expression MUST match that parameter data-type.
   *Note: although there is not a function with such defined parameter names in the current version of ACAL, there may be some specified in future versions of ACAL or in ACAL Profiles.*
 
 **DataType inference rule**: if an Argument's Expression has an (optional) `DataType` property (statically-typed Expression), i.e. its type is `ValueType`, `NamedAttributeDesignatorType`, `BaseAttributeSelectorType` or any subtype thereof, and if the corresponding parameter's definition in the function's signature (the function identified by `FunctionId`) has a fixed DataType, then the Expression's `DataType` property MAY be omitted, as it is already defined by the function's signature. (Else (if present) it SHALL be the same as the function parameter's DataType.)
 
-For example, if the Argument's Expression is a `ValueType` object and the function's signature defines the data-type of the corresponding argument explicity to be *T*, then the object does not need any `DataType` identifier, it is already defined implicitly to be *T*.
+For example, if the Argument's Expression is a `ValueType` object and the function's signature defines the data-type of the corresponding argument explicitly to be *T*, then the object does not need any `DataType` identifier, it is already defined implicitly to be *T*.
 
 ## 7.16 FunctionType
 
@@ -4349,7 +4317,7 @@ A `FunctionType` object contains the following property:
 `Id` [Required]
 
 : An `IdentifierType` value identifying a function.
-`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 <a name="namedattributedesignatortype"></a>
 
@@ -4379,18 +4347,18 @@ A `NamedAttributeDesignatorType` object contains the following properties:
 `AttributeId` [Required]
 
 : An `IdentifierType` value specifying the `AttributeId` of the named attribute.
-`AttributeId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`AttributeId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `DataType` [Optional]
 
 : An `IdentifierType` value specifying the `DataType` of the named attribute. The bag returned by the designator SHALL contain values of this data type. If this property is omitted, the DataType inference rule(s) of the parent object SHALL apply first, if there is any rule defined in this specification in the parent object type's section (either [ApplyType](#715-applytype), [PolicyReferenceType](#711-policyreferencetype), [SharedVariableReferenceType](#724b-sharedvariablereferencetype), or one of the subtypes of [QuantifiedExpressionType](#725-quantifiedexpressiontype-optional) ); if there is not any, or if the DataType is still undefined after applying the rule(s), then it is treated as being set to `urn:oasis:names:tc:acal:1.0:data-type:string` by default.
-`DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Issuer` [Optional]
 
-: A restricted `String` value which, if supplied, specifies the `Issuer` of the named attribute.
+: A `Name` value which, if supplied, specifies the `Issuer` of the named attribute.
 
-`MustBePresent` [Optional, Default false]
+`MustBePresent` [Optional, Default `false`]
 
 : A `Boolean` value that governs whether the designator returns `Indeterminate` or an empty bag in the event the named attribute is absent from the source of attributes. See [Section 8.4.5](#845-attribute-retrieval). Also see [Section 8.17.2](#8172-syntax-and-type-errors) and [Section 8.17.3](#8173-missing-attributes). If this property is omitted, then it is treated as being set to `false`.
 
@@ -4421,7 +4389,7 @@ The `AttributeDesignatorType` object type extends the `NamedAttributeDesignatorT
 `Category` [Required]
 
 : An `IdentifierType` value specifying an attribute category in the request context from which values of the named attribute are retrieved.
-`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 The properties inherited from `NamedAttributeDesignatorType` specify the named attribute. The attribute designator retrieves values from attributes matching the named attribute that are present in the `RequestEntityType` object having a `Category` property that matches, by identifier equality, the `Category` property of the attribute designator.
 
@@ -4490,17 +4458,17 @@ A `BaseAttributeSelectorType` object has the following properties:
 `DataType` [Optional]
 
 : An `IdentifierType` value specifying the data type of the values returned from the evaluation of the attribute selector or entity attribute selector. If this property is omitted, the DataType inference rule(s) of the parent object SHALL apply first, if there is any rule defined in this specification in the parent object type's section (either [ApplyType](#715-applytype), [PolicyReferenceType](#711-policyreferencetype), [SharedVariableReferenceType](#724b-sharedvariablereferencetype), or one of the subtypes of [QuantifiedExpressionType](#725-quantifiedexpressiontype-optional) ); if there is not any, or if the DataType is still undefined after applying the rule(s), then it is treated as being set to `urn:oasis:names:tc:acal:1.0:data-type:string` by default.
-`DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
-`MustBePresent` [Optional, Default false]
+`MustBePresent` [Optional, Default `false`]
 
-: A `Boolean` value that governs whether the attribute selector or entity attribute selector returns `Indeterminate` or an empty bag in the event that the specified content does not exist, or the content does exist but the Path expression selects no node. See [Section 8.4.5](#845-attribute-retrieval). Also see [Section 8.17.2](#8172-syntax-and-type-errors) and [Section 8.19.3](#8173-missing-attributes). If this property is omitted, then it is treated as being set to `false`.
+: A `Boolean` value that governs whether the attribute selector or entity attribute selector returns `Indeterminate` or an empty bag in the event that the specified content does not exist, or the content does exist but the Path expression selects no node. See [Section 8.4.5](#845-attribute-retrieval). Also see [Section 8.17.2](#8172-syntax-and-type-errors) and [Section 8.17.3](#8173-missing-attributes). If this property is omitted, then it is treated as being set to `false`.
 
 ## 7.21 AttributeSelectorType (optional)
 
 _**Support for this part (attribute selectors) is OPTIONAL.**_
 
-An `AttributeSelectorType` object is an abstract object type of expression that defines an attribute selector. An attribute selector produces a bag of unnamed and uncategorized ACAL attribute values. The values shall be constructed from the node(s) selected by applying the Path expression given by the attribute selector's `Path` property to the structured `Content` indicated by the attribute selector's `Category` property. Concrete types of this are defined in ACAL Profiles, e.g. XPath Profile.
+An `AttributeSelectorType` object is an abstract object type of expression that defines an attribute selector. An attribute selector produces a bag of unnamed and uncategorized ACAL attribute values. The values SHALL be constructed from the node(s) selected by applying the Path expression given by the attribute selector's `Path` property to the structured `Content` indicated by the attribute selector's `Category` property. Concrete types of this are defined in ACAL Profiles, e.g. XPath Profile.
 
 See [Section 8.4.7](#847-selector-evaluation) for details of attribute selector evaluation.
 
@@ -4520,14 +4488,14 @@ The `AttributeSelectorType` object type extends the `BaseAttributeSelectorType` 
 
 `Category` [Required]
 
-: An `IdentifierType` value specifying an attribute category in the request context. The `Content` property of that attribute categeory contains the structured content from which nodes will be selected.
-`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+: An `IdentifierType` value specifying an attribute category in the request context. The `Content` property of that attribute category contains the structured content from which nodes will be selected.
+`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 ## 7.22 EntityAttributeSelectorType (optional)
 
 _**Support for this part (entity attribute selectors) is OPTIONAL.**_
 
-An `EntityAttributeSelectorType` object is an abstract object type of expression that defines an entity attribute selector. An entity attribute selector produces a bag of unnamed and uncategorized ACAL attribute values. The values shall be constructed from the node(s) selected by applying the Path expression given by the entity attribute selector's `Path` property to the structured content in the `Content` property in either an attribute category in the request context or a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type. Concrete types of this are defined in ACAL Profiles, e.g. XPath Profile.
+An `EntityAttributeSelectorType` object is an abstract object type of expression that defines an entity attribute selector. An entity attribute selector produces a bag of unnamed and uncategorized ACAL attribute values. The values SHALL be constructed from the node(s) selected by applying the Path expression given by the entity attribute selector's `Path` property to the structured content in the `Content` property in either an attribute category in the request context or a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type. Concrete types of this are defined in ACAL Profiles, e.g. XPath Profile.
 
 See [Section 8.4.7](#847-selector-evaluation) for details of entity attribute selector evaluation.
 
@@ -4601,7 +4569,7 @@ class LiteralRestrictedStringType <<restrictedString>> extends PrimitiveValueTyp
     +Value: String [1]
 }
 
-note bottom of LiteralRestrictedStringType: Other ACAL datatypes with lexical representation \ncan be derived from this type, \ne.g. standard time, date, dateTime, \nanyURI, hexBinary, base64Binary, \ndayTimeDuration, yearMonthDuration, \nx50Name, rfc822Name, ipAddress, dnsName.
+note bottom of LiteralRestrictedStringType: Other ACAL datatypes with lexical representation \ncan be derived from this type, \ne.g. standard time, date, dateTime, \nanyURI, hexBinary, base64Binary, \ndayTimeDuration, yearMonthDuration, \nx500Name, rfc822Name, ipAddress, dnsName.
 
 PrimitiveValueType -[hidden]- LiteralBooleanType
 LiteralBooleanType -[hidden]- LiteralIntegerType
@@ -4622,7 +4590,7 @@ A `ValueType` object has the following properties:
 `DataType` [Optional]
 
 : An `IdentifierType` value specifying the data type of the attribute value. If this property is omitted, the DataType inference rule(s) of the parent object SHALL apply first, if there is any rule defined in this specification in the parent object type's section (either [ApplyType](#715-applytype), [PolicyReferenceType](#711-policyreferencetype), [SharedVariableReferenceType](#724b-sharedvariablereferencetype), or one of the subtypes of [QuantifiedExpressionType](#725-quantifiedexpressiontype-optional) ); if there is not any, or if the DataType is still undefined after applying the rule(s), then it is treated as being set to `urn:oasis:names:tc:acal:1.0:data-type:string` by default.
-`DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 A ValueType is abstract and subtypes may be either primitive types - i.e. subtypes of `PrimitiveValueType` in the above diagram (LiteralStringType, LiteralIntegerType, etc.) - or structured types (see [Section 8.4.1](#841-structured-attributes)) -  i.e. subtypes of `StructuredValueType` in the above diagram.
 
@@ -4673,17 +4641,19 @@ The `SharedVariableReferenceType` object type contains the following properties:
 `Id` [Required]
 
 : A URI being the `Id` of the referenced shared variable. If the URI is a URL, then it MAY be resolvable to the shared variable. However, the mechanism for resolving a shared variable reference to the corresponding shared variable is outside the scope of this specification.
-`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Version` [Optional]
 
-: Specifies a matching expression for selecting an acceptable version of the referenced shared variable. The matching operation is defined in [Section 7.12](#71235-versionmatchtype). If this property is present, then the selected version of the shared variable MUST match the expression. If the property is absent, then any version of the shared variable is acceptable. In the case that more than one version matches, then the most recent one SHOULD be used.
+: Specifies a matching expression for selecting an acceptable version of the referenced shared variable. The matching operation is defined in [Section 7.1.2.3.5](#71235-versionmatchtype). If this property is present, then the selected version of the shared variable MUST match the expression. If the property is absent, then any version of the shared variable is acceptable. In the case that more than one version matches, then the most recent one SHOULD be used.
 
 `Argument` [Any Number]
 
-: Arguments for a parameterized shared variable (`SharedVariableDefinitionType` object). The sequence of argments SHALL be exclusively either one of these:
+: Arguments for a parameterized shared variable (`SharedVariableDefinitionType` object). The sequence of arguments SHALL be exclusively either one of these:
 - A sequence of *positional* arguments, i.e. `ExpressionType` objects declared in the same order as the `Parameter` values in the referenced shared variable definition; each argument number *n* MUST match the definition of the shared variable's `Parameter` number *n* (`DataType`, `IsBag`);
-- A sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the shared variable's `Parameter` named *x* and therefore its Expression must match that Parameter's definition (`DataType`, `IsBag`). 
+- A sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the shared variable's `Parameter` named *x* and therefore its Expression MUST match that Parameter's definition (`DataType`, `IsBag`). 
+
+The number of arguments *N* may be less than the number of declared `Parameter`s if and only if the `Parameter`s number *N* (starting at zero) and above have defined default values, in which case they are used as remaining arguments. 
 
 **DataType inference rule**: if an Argument's Expression has an (optional) `DataType` property (statically-typed Expression), i.e. its type is `ValueType`, `NamedAttributeDesignatorType`, `BaseAttributeSelectorType` or any subtype thereof, then the Expression's `DataType` property SHOULD be omitted in this case as it is already defined by the corresponding `Parameter`'s definition in the referenced `SharedVariableDefinitionType` object. Else (if present) it SHALL match that `Parameter`'s `DataType`.
 
@@ -4714,7 +4684,7 @@ A `QuantifiedExpressionType` object contains the following properties:
 
 `Domain` [Required]
 
-: An `ExpressionType` object defining an expression. This expression is called the domain. The domain SHALL be an expression that evaluates to a bag of values of the same data type, or `Indeterminate` in the case of an error. The bag MAY be empty.
+: A `NonLiteralExpressionType` object defining an expression. This expression is called the domain. The domain SHALL be an expression that evaluates to a bag of values of the same data type, or `Indeterminate` in the case of an error. The bag MAY be empty.
 
 `Iterant` [Required]
 
@@ -4837,7 +4807,7 @@ A `NoticeType` object contains the following properties:
 `Id` [Required]
 
 : An `IdentifierType` value specifying an identifier for the notice that the PEP associates with particular processing requirements or informational content. The `Id` identifies the *semantics* of the notice — what the PEP is required to do, or is being informed of — rather than a particular occurrence of it. The same `Id` MAY therefore appear on more than one notice in a result, typically with different `AttributeAssignment`s.
-`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `IsObligation` [Optional, Default `false`]
 
@@ -4851,7 +4821,7 @@ A `NoticeType` object contains the following properties:
 
 ## 7.27 AttributeType
 
-An `AttributeType` object contains attribute meta-data and one or more attribute values. The attribute meta-data comprises the attribute identifier and the attribute issuer. Attribute designators in a policy MAY refer to attributes by means of this meta-data.
+An `AttributeType` object contains attribute meta-data and one or more attribute values. The attribute meta-data comprises the attribute identifier, the data type and the attribute issuer. Attribute designators in a policy MAY refer to attributes by means of this meta-data.
 
 UML definition (class diagram):
 ```plantuml
@@ -4873,7 +4843,7 @@ An `AttributeType` object contains the following properties:
 `AttributeId` [Required]
 
 : An `IdentifierType` value identifying the attribute. A number of identifiers are reserved by ACAL to denote commonly used attributes. See [Annex D](#annex-d-acal-identifiers).
-`AttributeId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`AttributeId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Issuer` [Optional]
 
@@ -4885,11 +4855,11 @@ An `AttributeType` object contains the following properties:
 
 `Value` [One to Many]
 
-: A sequence of `ValueType` objects, each denoting an ACAL attribute value. Duplicated attribute values are permitted. A `ValueType` object in this sequence SHALL NOT redefine or override the `DataType` identifier set by the `DataType` property above, and SHOULD NOT set a `DataType` identifier property of its own.
+: A sequence of `ValueType` objects, each denoting an ACAL attribute value. Duplicated attribute values are permitted. A `ValueType` object in this sequence SHALL NOT redefine or override the `DataType` identifier set by the `DataType` property above and SHOULD NOT set a `DataType` identifier property of its own.
 
 ## 7.28 AttributeAssignmentType
 
-An `AttributeAssignmentType` object is used in a notice expression to include an attribute in a notice. The `AttributeAssignmentType` object type extends the `AttributeType` definition by adding a `Category` property.
+An `AttributeAssignmentType` object is used to include an attribute in a notice. The `AttributeAssignmentType` object type extends the `AttributeType` definition by adding a `Category` property.
 
 The attribute specified SHALL be understood by the PEP, but it is not further specified by ACAL. See [Section 8.16](#816-notices). [Section 6.2.4.3](#6243-rule-3) provides a number of examples of attribute assignments included in notices.
 
@@ -4910,7 +4880,7 @@ The `AttributeAssignmentType` object type extends the `AttributeType` object typ
 `Category` [Optional]
 
 : An `IdentifierType` value specifying the category of the attribute. If this property is absent, the attribute has no category. The PEP SHALL interpret the significance and meaning of any `Category` property. Non-normative note: an expected use of the category is to disambiguate attributes that are relayed from the request.
-`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 None of the `Value`s may have a `DataType` property on its own since it is already defined by the `DataType` property at the `AttributeAssignmentType` object level (inherited from `AttributeType`).
 
@@ -4940,9 +4910,9 @@ A `NoticeExpressionType` object contains the following properties:
 `Id` [Required]
 
 : An `IdentifierType` value nominating the identifier for the notice that the PEP associates with particular processing requirements or informational content. The `Id` identifies the *semantics* of the notice — what the PEP is required to do, or is being informed of — rather than a particular occurrence of it. The same `Id` MAY therefore appear on more than one `NoticeExpression` within a policy or rule, typically with different `AttributeAssignmentExpression`s.
-`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Id` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
-`IsObligation` [Optional]
+`IsObligation` [Optional, Default `false`]
 
 : A `Boolean` value that determines the setting for the `IsObligation` property of the notice. If `IsObligation` is present, then the `IsObligation` property of the notice is set to the same value; otherwise, the `IsObligation` property is omitted from the notice (default value is `false`, i.e. the notice is advice).
 
@@ -4952,11 +4922,11 @@ A `NoticeExpressionType` object contains the following properties:
 
 `Condition` [Optional]
 
-: A `BooleanExpressionType` object holding an expression that must be satisfied for this notice to be provided to the PEP. An absent condition is treated as unconditionally satisfied. Evaluation of the `Condition` property is described in [Section 8.9](#89-condition-evaluation).
+: A `BooleanExpressionType` object holding an expression that MUST be satisfied for this notice to be provided to the PEP. An absent condition is treated as unconditionally satisfied. Evaluation of the `Condition` property is described in [Section 8.9](#89-condition-evaluation).
 
 `AttributeAssignmentExpression` [Any Number]
 
-: A sequence of `AttributeAssignmentExpressionType` objects, each specifying a notice argument in the form of an expression. The expressions SHALL be evaluated by the PDP to constant `ValueType` objects or bags, which shall be the attribute assignments in the notice returned to the PEP. If an `AttributeAssignmentExpressionType` object evaluates to an atomic attribute value, then there MUST be one resulting `AttributeAssignmentType` object which MUST contain this single attribute value. If the `AttributeAssignmentExpressionType` object evaluates to a bag, then there MUST be a resulting `AttributeAssignmentType` object for each of the values in the bag. If the bag is empty, there shall be no `AttributeAssignmentType` objects from this `AttributeAssignmentExpressionType` object. The values of the notice arguments SHALL be interpreted by the PEP.
+: A sequence of `AttributeAssignmentExpressionType` objects, each specifying a notice argument in the form of an expression. The expressions SHALL be evaluated by the PDP to constant `ValueType` objects or bags, which SHALL be the attribute assignments in the notice returned to the PEP. If an `AttributeAssignmentExpressionType` object evaluates to an atomic attribute value, then there MUST be one resulting `AttributeAssignmentType` object which MUST contain this single attribute value. If the `AttributeAssignmentExpressionType` object evaluates to a bag, then there MUST be a resulting `AttributeAssignmentType` object for each of the values in the bag. If the bag is empty, there SHALL be no `AttributeAssignmentType` objects from this `AttributeAssignmentExpressionType` object. The values of the notice arguments SHALL be interpreted by the PEP.
 
 ## 7.30 AttributeAssignmentExpressionType
 
@@ -4986,12 +4956,12 @@ An `AttributeAssignmentExpressionType` object contains the following properties:
 `AttributeId` [Required]
 
 : An `IdentifierType` value specifying the identifier of the attribute. The value of the `AttributeId` property in the resulting `AttributeAssignmentType` object MUST be equal to this value.
-`AttributeId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`AttributeId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Category` [Optional]
 
 : An `IdentifierType` value specifying the category of the attribute. If this property is missing, the attribute has no category. The value of the `Category` property in the resulting `AttributeAssignmentType` object MUST be equal to this value.
-`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Issuer` [Optional]
 
@@ -5027,12 +4997,12 @@ A `RequestType` object contains the following properties:
 
 `CombinedDecision` [Optional, Default `false`]
 
-: A `Boolean` value that is used to request that the PDP combines multiple decisions into a single decision. The use of this property is specified in [[Multi](#multi)]. If the PDP does not implement the relevant functionality in [[Multi](#multi)], then the PDP must return an `Indeterminate` decision with a status code of `urn:oasis:names:tc:acal:1.0:status:processing-error` if it receives a request with this property set to `true`. If this property is omitted, then it is treated as being set to `false`.
+: A `Boolean` value that is used to request that the PDP combines multiple decisions into a single decision. The use of this property is specified in [[ACAL-Multiple-1.0](#acal-multiple-10)]. If the PDP does not implement the relevant functionality in [[ACAL-Multiple-1.0](#acal-multiple-10)], then the PDP MUST return an `Indeterminate` decision with a status code of `urn:oasis:names:tc:acal:1.0:status:processing-error` if it receives a request with this property set to `true`. If this property is omitted, then it is treated as being set to `false`.
 
 `ShortIdSetReference` [Any Number]
 
 : A sequence of `URI` values referencing short identifier sets. The short identifiers used by the request MUST be ones defined in the referenced sets.
-URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `RequestDefaults` [Any Number]
 
@@ -5041,13 +5011,13 @@ URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are
 
 `RequestEntity` [One to Many]
 
-: A sequence of `RequestEntityType` objects, each containing a sequence of `RequestAttributeType` objects associated with an attribute category of the request context. Different `RequestEntityType` objects with different category identifiers are used to represent information about the subject, resource, action, environment or other categories of the access request. There may be multiple `RequestEntityType` objects with the same `Category` property value if the PDP implements the ACAL Multiple Decision Profile, see [[Multi](#multi)]. Under other conditions, it is a syntax error if there are multiple `RequestEntityType` objects with the same `Category` (see [Section 8.17.2](#8172-syntax-and-type-errors) for error codes).
+: A sequence of `RequestEntityType` objects, each containing a sequence of `RequestAttributeType` objects associated with an attribute category of the request context. Different `RequestEntityType` objects with different category identifiers are used to represent information about the subject, resource, action, environment or other categories of the access request. There may be multiple `RequestEntityType` objects with the same `Category` property value if the PDP implements the ACAL Multiple Decision Profile, see [[ACAL-Multiple-1.0](#acal-multiple-10)]. Under other conditions, it is a syntax error if there are multiple `RequestEntityType` objects with the same `Category` (see [Section 8.17.2](#8172-syntax-and-type-errors) for error codes).
 
 `MultiRequests` [Optional]
 
-: A `MultiRequestsType` object listing multiple request contexts using references to the `RequestEntityType` objects. Implementation of this property is optional. The semantics of this property are defined in [[Multi](#multi)]. If the implementation does not implement this property, it MUST return an `Indeterminate` result if it encounters this property. See [Section 7.38](#738-multirequeststype-optional).
+: A `MultiRequestsType` object listing multiple request contexts using references to the `RequestEntityType` objects. Implementation of this property is optional. The semantics of this property are defined in [[ACAL-Multiple-1.0](#acal-multiple-10)]. If the implementation does not implement this property, it MUST return an `Indeterminate` result if it encounters this property. See [Section 7.38](#738-multirequeststype-optional).
 
-<a name="requestdefaultstype">
+<a name="requestdefaultstype"></a>
 
 ## 7.32 RequestDefaultsType (optional)
 
@@ -5088,11 +5058,11 @@ A `RequestEntityType` object contains the following properties:
 `Category` [Required]
 
 : An `IdentifierType` value indicating which attribute category the contained attributes belong to, and it is used to differentiate between attributes of subject, resource, action, environment or other categories.
-`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Id` [Optional]
 
-: A unique `String` identifier for this `RequestEntityType` object. It is primarily intended to be referenced in multiple requests. See [[Multi](#multi)].
+: A unique `LocalIdentifierType` identifier for this `RequestEntityType` object. It is primarily intended to be referenced in multiple requests. See [[ACAL-Multiple-1.0](#acal-multiple-10)].
 
 `Content` [Optional]
 
@@ -5126,12 +5096,12 @@ This fifth object has the same `AttributeId` and the same effective `DataType` a
 
 ## 7.34 ContentType (optional)
 
-_**Support for this object type is optional. It is required only if the implementation must support extensions of AttributeSelectors and/or DataTypes depending on this object type.**_ Such extensions are typically defined in ACAL Profiles (e.g. XPath and JSONPath Profiles).
+_**Support for this object type is optional. It is required only if the implementation MUST support extensions of AttributeSelectors and/or DataTypes depending on this object type.**_ Such extensions are typically defined in ACAL Profiles (e.g. XPath and JSONPath Profiles).
 
 A `ContentType` object is a notional placeholder for additional attributes, typically the content of the resource.
 A `ContentType` object has a *body* property of arbitrary type.
 
-`ContentType` objects should be used only for structured data that cannot be handled by named attributes, i.e. the *body* type should be a structured data-type.
+`ContentType` objects SHOULD be used only for structured data that cannot be handled by named attributes, i.e. the *body* type SHOULD be a structured data-type.
 
 The following UML definition (class diagram) is provided for information purposes only:
 ```plantuml
@@ -5151,13 +5121,13 @@ A `ContentType` object contains the following properties:
 
 `MediaType` [Optional]
 
-: Content *media type* as defined by [[RFC 2046]](#rfc2046). The exact possible values for this property SHALL be defined by the `AttributeSelector` Profile(s) of ACAL, e.g. the XPath and/or JSONPath Profiles, that your implementation supports. Indeed, each of these profiles supports one or more specific Content Type(s), and for each one, defines the acceptable `MediaType` property value. In any case, the value(s) SHOULD be among the standard identifiers specified in [Annex D.10](#d10-content-types) whenever applicable. More information in the [MediaType section](#712314-mediatype-optional).
+: Content *media type* as defined by [[RFC2046](#rfc2046)]. The exact possible values for this property SHALL be defined by the `AttributeSelector` Profile(s) of ACAL, e.g. the XPath and/or JSONPath Profiles, that your implementation supports. Indeed, each of these profiles supports one or more specific Content Type(s), and for each one, defines the acceptable `MediaType` property value. In any case, the value(s) SHOULD be among the standard identifiers specified in [Annex D.10](#d10-content-types) whenever applicable. More information in the [MediaType section](#712314-mediatype-optional).
 
 : A default value for this property SHALL be defined by each ACAL representation format supporting this object type, and this default value SHALL be one of the standard identifiers specified in [Annex D.10](#d10-content-types).
 
 `Body` [Required]
 
-The content body which may be any data-type representable in the ACAL representation format in use (XML, JSON, etc.). In other words, each ACAL representation format SHALL define the correct representation for `AnyType` in their own format (e.g. [XSD](#xs) `xs:anyType` in XML), or simply state that *the `ContentType` is not supported at all* in that representation.
+: The content body which may be any data-type representable in the ACAL representation format in use (XML, JSON, etc.). In other words, each ACAL representation format SHALL define the correct representation for `AnyType` in their own format (e.g. `xs:anyType` [[XS](#xs)] in XML), or simply state that *the `ContentType` is not supported at all* in that representation.
 
 `Encoding` [Optional]
 
@@ -5191,7 +5161,7 @@ The `RequestAttributeType` object type extends the `AttributeType` object type w
 
 The `ResponseType` object type is an abstraction layer used by the policy language. Any proprietary system using the ACAL specification MUST transform an ACAL context `ResponseType` object into the form of its authorization decision.
 
-A `ResponseType` object encapsulates the authorization decision produced by the PDP. It includes a sequence of one or more results, with one `ResultType` object per requested resource. Multiple results MAY be returned by some implementations, in particular those that support the ACAL Multiple Decision Profile [[Multi](#multi)]. Support for multiple results is OPTIONAL.
+A `ResponseType` object encapsulates the authorization decision produced by the PDP. It includes a sequence of one or more results, with one `ResultType` object per Individual Decision Request, or a single `ResultType` object when the results are combined [[ACAL-Multiple-1.0](#acal-multiple-10)]. Multiple results MAY be returned by some implementations, in particular those that support the ACAL Multiple Decision Profile [[ACAL-Multiple-1.0](#acal-multiple-10)]. Support for multiple results is OPTIONAL.
 
 UML definition (class diagram):
 ```plantuml
@@ -5210,7 +5180,7 @@ A `ResponseType` object contains the following properties:
 `ShortIdSetReference` [Any Number]
 
 : A sequence of `URI` values referencing short identifier sets. The short identifiers used by the response MUST be ones defined in the referenced sets.
-URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Result` [One to Many]
 
@@ -5265,7 +5235,7 @@ A `ResultType` object contains the following properties:
 
 _**Support for this object type and associated property (`MultiRequests`) is optional.**_
 
-A `MultiRequestsType` object contains a list of requests by reference to `RequestEntityType` objects in the enclosing `RequestType` object. The `MultiRequests` property is of `MultiRequestsType` object type. The semantics of this property are defined in [[Multi](#multi)]. If an implementation does not support this property, but receives it, the implementation MUST generate an `Indeterminate` response.
+A `MultiRequestsType` object contains a list of requests by reference to `RequestEntityType` objects in the enclosing `RequestType` object. The `MultiRequests` property is of `MultiRequestsType` object type. The semantics of this property are defined in [[ACAL-Multiple-1.0](#acal-multiple-10)]. If an implementation does not support this property, but receives it, the implementation MUST generate an `Indeterminate` response.
 
 UML definition (class diagram):
 ```plantuml
@@ -5280,7 +5250,7 @@ class MultiRequestsType <<dataType>> {
 
 A `MultiRequestsType` object contains the following properties.
 
-`RequestReference` [one to many]
+`RequestReference` [One to Many]
 
 : A sequence of `RequestReferenceType` objects, each defining a request instance by reference to `RequestEntityType` objects in the enclosing `RequestType` object. See [Section 7.39](#739-requestreferencetype-optional).
 
@@ -5290,7 +5260,7 @@ A `MultiRequestsType` object contains the following properties.
 
 _**Support for this object type is optional.**_
 
-A `RequestReferenceType` object defines an instance of a request in terms of references to `RequestEntityType` objects. The semantics of this object type are defined in [[Multi](#multi)].
+A `RequestReferenceType` object defines an instance of a request in terms of references to `RequestEntityType` objects. The semantics of this object type are defined in [[ACAL-Multiple-1.0](#acal-multiple-10)].
 
 UML definition (class diagram):
 ```plantuml
@@ -5305,7 +5275,7 @@ class RequestReferenceType <<dataType>> {
 
 A `RequestReferenceType` object contains the following properties:
 
-`RequestEntityReference` [one to many]
+`RequestEntityReference` [One to Many]
 
 : A sequence of `LocalIdentifierType` values, each referencing a `RequestEntityType` object in the enclosing `RequestType` object by the value of its `Id` property.
 
@@ -5361,7 +5331,7 @@ A `StatusCodeType` object contains the following properties:
 `Value` [Required]
 
 : See [Annex D.8](#d8-status-codes) for a list of values. 
-`Value` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Value` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `StatusCode` [Optional]
 
@@ -5384,7 +5354,7 @@ class StatusDetailType <<dataType>> {
 @enduml
 ```
 
-The `AnyType` data-type above represents *any type* (e.g. [XSD](#xs) `anyType` in XML), and the `<any>` name is only a placeholder for any property name. 
+The `AnyType` data-type above represents *any type* (e.g. `anyType` [[XS](#xs)] in XML), and the `<any>` name is only a placeholder for any property name. 
 This UML definition is for information only, and it is the responsibility of each ACAL representation format (ACAL Profile) to either define the correct representation for arbitrary content in their own format, or simply state that *`StatusDetailType` objects are not supported at all* in that representation format.
 
 For example, this can be represented in XML as follows:
@@ -5400,29 +5370,29 @@ For example, this can be represented in XML as follows:
 
 Inclusion of a `StatusDetailType` object is optional. However, if a PDP returns one of the following ACAL-defined status code values, then the following rules apply.
 
-```
+```text
 urn:oasis:names:tc:acal:1.0:status:ok
 ```
 
 A PDP MUST NOT return a `StatusDetail` property in conjunction with the `ok` status value.
 
-```
+```text
 urn:oasis:names:tc:acal:1.0:status:missing-attribute
 ```
 
 A PDP MAY choose not to return any `StatusDetailType` object or MAY choose to return a `StatusDetailType` object containing one or more `MissingAttributeDetailType` objects.
 
-```
+```text
 urn:oasis:names:tc:acal:1.0:status:syntax-error
 ```
 
 A PDP MUST NOT return a `StatusDetailType` object in conjunction with the `syntax-error` status value. A syntax error may represent either a problem with the policy being used or with the request context. The PDP MAY return a `StatusMessage` property describing the problem.
 
-```
+```text
 urn:oasis:names:tc:acal:1.0:status:processing-error
 ```
 
-A PDP MUST NOT return a `StatusDetailType` object in conjunction with the `processing-error` status value. This status code indicates an error that occurred while the PDP processed the decision request or evaluated policy, including the refusal of a request as specified in [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema). For security reasons, the PDP MAY choose to return no further information to the PEP. In the case of a divide-by-zero error or other computational error, the PDP MAY return a `StatusMessage` property describing the nature of the error.
+A PDP MUST NOT return a `StatusDetailType` object in conjunction with the `processing-error` status value. This status code indicates an error that occurred while the PDP processed the decision request or evaluated policy, including the refusal of a request as specified in [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema). For security reasons, the PDP MAY choose to return no further information to the PEP. In the case of a divide-by-zero error or other computational error, the PDP MAY return a `StatusMessage` property describing the nature of the error.
 
 <a name="missingattributedetailtype"></a>
 
@@ -5450,22 +5420,22 @@ A `MissingAttributeDetailType` object contains the following properties:
 
 `Value` [Any Number]
 
-: A sequence of `ValueType` objects specifying the required value(s) of the missing attribute. These objects SHALL NOT redefine/override the DataType identifier already defined by the `DataType` property below, and SHOULD not have any DataType identifier property set at all, if possible.
+: A sequence of `ValueType` objects specifying the required value(s) of the missing attribute. These objects SHALL NOT redefine/override the DataType identifier already defined by the `DataType` property below and SHOULD NOT have any DataType identifier property set at all, if possible.
 
 `Category` [Optional]
 
 : An `IdentifierType` value indicating the category of the missing attribute. Note that an entity attribute designator or entity attribute selector where the `Expression` property evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type does not nominate an attribute category for the named attribute. In this case only the `Category` property is omitted.
-`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `AttributeId` [Required]
 
 : An `IdentifierType` value indicating the attribute identifier of the missing attribute.
-`AttributeId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`AttributeId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `DataType` [Required]
 
 : An `IdentifierType` value indicating the data type of the missing attribute.
-`DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Issuer` [Optional]
 
@@ -5495,11 +5465,11 @@ A `ResultEntityType` object contains the following properties:
 `Category` [Required]
 
 : An `IdentifierType` value indicating which attribute category the contained attributes belong to.
-`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the XACML TC for their exclusive use.
+`Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Id` [Optional]
 
-: A `String` identifier matching the `Id` property of the corresponding `RequestEntityType` object in the request from which the reflected attributes are obtained.
+: A `LocalIdentifierType` identifier matching the `Id` property of the corresponding `RequestEntityType` object in the request from which the reflected attributes are obtained.
 
 `Attribute` [One to Many]
 
@@ -5633,13 +5603,13 @@ An ACAL implementation MUST behave as if each normalization-sensitive operation 
 
 ### 8.1.2 Version of Unicode
 
-The version of Unicode used by ACAL is implementation defined. It is RECOMMENDED that the latest version is used. Also note security issues in [Section 10.3](#103-unicode-security-issues).
+The version of Unicode used by ACAL is implementation defined. It is RECOMMENDED that the latest version is used. An ACAL implementation SHOULD follow the advice given in the relevant version of [[UTR36](#utr36)]. Also note security issues in [Section 10.3](#103-unicode-security-issues).
 
 ## 8.2 Policy Enforcement Point
 
 This section describes the requirements for the PEP.
 
-An application functions in the role of the PEP if it guards access to a set of resources and asks the PDP for an authorization decision. The PEP MUST abide by the authorization decision as described in one of the following sub-sections
+An application functions in the role of the PEP if it guards access to a set of resources and asks the PDP for an authorization decision. The PEP MUST abide by the authorization decision as described in one of the following sub-sections.
 
 In any case any advice in the decision may be safely ignored by the PEP.
 
@@ -5647,9 +5617,9 @@ In any case any advice in the decision may be safely ignored by the PEP.
 
 If the decision is `Permit`, then the PEP SHALL permit access. If obligation notices accompany the decision, then the PEP SHALL permit access only if it understands and it can and will discharge those obligations.
 
-If the decision is `Deny`, then the PEP SHALL deny access. If obligation notices accompany the decision, then the PEP shall deny access only if it understands, and it can and will discharge those obligations.
+If the decision is `Deny`, then the PEP SHALL deny access. If obligation notices accompany the decision, then the PEP SHALL deny access only if it understands, and it can and will discharge those obligations.
 
-If the decision is `Not Applicable`, then the PEP's behavior is undefined.
+If the decision is `NotApplicable`, then the PEP's behavior is undefined.
 
 If the decision is `Indeterminate`, then the PEP's behavior is undefined.
 
@@ -5663,7 +5633,7 @@ All other decisions SHALL result in the denial of access.
 
 ### 8.2.3 Permit-Biased PEP
 
-If the decision is `Deny`, then the PEP SHALL deny access. If obligation notices accompany the decision, then the PEP shall deny access only if it understands, and it can and will discharge those obligations.
+If the decision is `Deny`, then the PEP SHALL deny access. If obligation notices accompany the decision, then the PEP SHALL deny access only if it understands, and it can and will discharge those obligations.
 
 All other decisions SHALL result in the permission of access.
 
@@ -5671,7 +5641,7 @@ All other decisions SHALL result in the permission of access.
 
 ## 8.3 Identifier Evaluation
 
-Various ACAL artifacts are uniquely identified by URI [[RFC3986](#rfc3986)]. This includes attribute categories, attributes, data types, functions, notices, status codes, combining algorithms. Values of the `IdentifierType` simple type are used to refer to such artifacts, possibly using short identifier names, which are not themselves URIs. Therefore an `IdentifierType` value containing short identifier names must undergo evaluation to convert the value to an absolute URI.
+Various ACAL artifacts are uniquely identified by URI [[RFC3986](#rfc3986)]. This includes attribute categories, attributes, data types, functions, notices, status codes, combining algorithms. Values of the `IdentifierType` simple type are used to refer to such artifacts, possibly using short identifier names, which are not themselves URIs. Therefore an `IdentifierType` value containing short identifier names MUST undergo evaluation to convert the value to an absolute URI.
 
 The value of a short identifier may also contain short identifier names. The _expanded value_ of the short identifier is the value of the short identifier with any reference to another short identifier (including the curly brackets) replaced by the _expanded value_ of the referenced short identifier (thus the expansion is applied recursively).
 
@@ -5692,7 +5662,7 @@ Given the following short identifiers:
 ```
 
 these `IdentifierType` values are all equivalent and evaluate to the URI of the string data type:
-```
+```json
 "urn:oasis:names:tc:acal:1.0:data-type:string"
 "string"
 "{string}"
@@ -5713,9 +5683,11 @@ The predefined short identifier set is not required to be used but its use is re
 
 Attributes are represented in the request context by the context handler, regardless of whether or not they appeared in the original decision request, and are referred to in the policy by attribute designators and attribute selectors. A named attribute is the term used for the criteria that the specific attribute designators use to refer to particular attributes in the `RequestEntityType` objects of the request context.
 
+Implementations MUST convert between the attribute representations in the application environment (e.g., SAML, J2SE, CORBA, and so on) and the attribute representations in the ACAL context. How this is achieved is outside the scope of this specification.
+
 ### 8.4.1 Structured Attributes
 
-`ValueType` objects MAY contain an instance of a structured data type, for example and XML element `<ds:KeyInfo>`. ACAL 1.0 supports several ways for comparing the contents of such elements.
+`ValueType` objects MAY contain an instance of a structured data type, for example an XML element `<ds:KeyInfo>`. ACAL 1.0 supports several ways for comparing the contents of such elements.
 
 1. In some cases, such elements MAY be compared using one of the ACAL string functions, such as `string-regexp-match`, described below. This requires that the element be given the data type `urn:oasis:names:tc:acal:1.0:data-type:string`. For example, a structured data type that is actually a `ds:KeyInfo/KeyName` would appear in the context as:
 
@@ -5747,9 +5719,9 @@ A named attribute includes specific criteria with which to match attributes in t
 
 ### 8.4.5 Attribute Retrieval
 
-The PDP SHALL request the values of attributes in the request context from the context handler. The context handler MAY also add attributes to the request context without the PDP requesting them. The PDP SHALL reference the attributes as if they were in a physical request context document, but the context handler is responsible for obtaining and supplying the requested values by whatever means it deems appropriate, including by retrieving them from one or more Policy Information Points. The context handler SHALL return the values of attributes that match the attribute designator, entity attribute designator, attribute selector or entity attribute selector and form them into a bag of values with the specified data type. If no attributes from the request context match, then the attribute SHALL be considered missing. If the attribute is missing, then the `MustBePresent` property governs whether the designator or selector returns an empty bag or an `Indeterminate` result. If the `MustBePresent` property is `false` (default value), then a missing attribute SHALL result in an empty bag. If the `MustBePresent` property is `true`, then a missing attribute SHALL result in `Indeterminate`. This `Indeterminate` result SHALL be handled in accordance with the specification of the encompassing expressions, rules and policies. If the result is `Indeterminate`, then the `AttributeId`, `DataType` and `Issuer` properties of the attribute MAY be listed in the authorization decision as described in [Section 8.15](#815-authorization-decision). However, a PDP MAY choose not to return such information for security reasons.
+The PDP SHALL request the values of attributes in the request context from the context handler. The context handler MAY also add attributes to the request context without the PDP requesting them. The PDP SHALL reference the attributes as if they were in a physical request context document, but the context handler is responsible for obtaining and supplying the requested values by whatever means it deems appropriate, including by retrieving them from one or more Policy Information Points. The context handler SHALL return the values of attributes that match the attribute designator, entity attribute designator, attribute selector or entity attribute selector and form them into a bag of values with the specified data type. If no attributes from the request context match, then the attribute SHALL be considered missing. If the attribute is missing, then the `MustBePresent` property governs whether the designator or selector returns an empty bag or an `Indeterminate` result. If the `MustBePresent` property is `false` (default value), then a missing attribute SHALL result in an empty bag. If the `MustBePresent` property is `true`, then a missing attribute SHALL result in `Indeterminate`. This `Indeterminate` result SHALL be handled in accordance with the specification of the encompassing expressions, rules and policies. If the result is `Indeterminate`, then the `AttributeId`, `DataType` and `Issuer` properties of the attribute MAY be listed in the authorization decision as described in [Section 8.17.3](#8173-missing-attributes). However, a PDP MAY choose not to return such information for security reasons.
 
-Regardless of any dynamic modifications of the request context during policy evaluation, the PDP SHALL behave as if each bag of attribute values is fully populated in the context before it is first tested, and is thereafter immutable during evaluation. That is, every subsequent test of that attribute shall use the same bag of values that was initially tested.
+Regardless of any dynamic modifications of the request context during policy evaluation, the PDP SHALL behave as if each bag of attribute values is fully populated in the context before it is first tested, and is thereafter immutable during evaluation. That is, every subsequent test of that attribute SHALL use the same bag of values that was initially tested.
 
 ### 8.4.6 Environment Attributes
 
@@ -5757,7 +5729,7 @@ Standard environment attributes are listed in [Annex D.7](#d7-environment-attrib
 
 ### 8.4.7 Selector Evaluation
 
-An `AttributeSelectorType` or `EntityAttributeSelector` object will be evaluated according to the following processing model.
+An `AttributeSelectorType` or `EntityAttributeSelectorType` object will be evaluated according to the following processing model.
 
 : Note: It is not necessary for an implementation to exactly follow this model. It is only necessary to produce results identical to those that would be produced by following this model.
 
@@ -5806,9 +5778,9 @@ An ACAL expression is a choice between the following object types:
 
 ## 8.6 Arithmetic Evaluation
 
-This section specifies the required behavior of `double` arithmetic. `integer` arithmetic is exact and is fully specified by [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema) and [Annex C.3.2](#c32-arithmetic-functions); it does not depend on this section and is not subject to rounding, a designated precision, or a trap-enabler, because an `integer` result is either exact or `Indeterminate`.
+This section specifies the required behavior of `double` arithmetic. `integer` arithmetic is exact and is fully specified by [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) and [Annex C.3.2](#c32-arithmetic-functions); it does not depend on this section and is not subject to rounding, a designated precision, or a trap-enabler, because an `integer` result is either exact or `Indeterminate`.
 
-A `double` value is a binary64 (double-precision) floating-point value, as given by the value space of `xs:double` ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)). An ACAL arithmetic function (`urn:oasis:names:tc:acal:1.0:function:double-add`, `-subtract`, `-multiply`, `-divide` and `-abs`, [Annex C.3.2](#c32-arithmetic-functions)) SHALL produce the mathematically exact result of the corresponding operation, rounded to the nearest binary64 value as if the exponent range were unbounded, with a tie rounded to the value whose least significant bit is zero (round-to-nearest, ties-to-even); if no finite binary64 value can represent that rounded result, the result SHALL be positive or negative infinity, matching the sign of the exact result. An operation with a NaN operand, or an operation such as `0 × ∞` that has no defined mathematically exact result, SHALL produce NaN — except where this specification states a different result, such as [Annex C.3.2](#c32-arithmetic-functions)'s rule that a division whose divisor is zero evaluates to `Indeterminate` rather than to a signed infinity or NaN. A representational detail not otherwise stated here, such as the sign of a zero result, the handling of a subnormal value, or the result of an operation on an infinite operand not covered above, follows ordinary binary64 arithmetic.
+A `double` value is a binary64 (double-precision) floating-point value, as given by the value space of `xs:double` ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)). An ACAL arithmetic function (`urn:oasis:names:tc:acal:1.0:function:double-add`, `-subtract`, `-multiply`, `-divide` and `-abs`, [Annex C.3.2](#c32-arithmetic-functions)) SHALL produce the mathematically exact result of the corresponding operation, rounded to the nearest binary64 value as if the exponent range were unbounded, with a tie rounded to the value whose least significant bit is zero (round-to-nearest, ties-to-even); if no finite binary64 value can represent that rounded result, the result SHALL be positive or negative infinity, matching the sign of the exact result. An operation with a NaN operand, or an operation such as `0 × ∞` that has no defined mathematically exact result, SHALL produce NaN — except where this specification states a different result, such as [Annex C.3.2](#c32-arithmetic-functions)'s rule that a division whose divisor is zero evaluates to `Indeterminate` rather than to a signed infinity or NaN. A representational detail not otherwise stated here, such as the sign of a zero result, the handling of a subnormal value, or the result of an operation on an infinite operand not covered above, follows ordinary binary64 arithmetic.
 
 An ACAL function comparing two `double` values — `urn:oasis:names:tc:acal:1.0:function:double-equal` ([Annex C.3.1](#c31-equality-predicates)) and the `double` functions of [Annex C.3.6](#c36-numeric-comparison-functions) — SHALL follow binary64 comparison: NaN compares unordered with every `double` value, including itself, so each of these functions SHALL evaluate to `false` if either argument is NaN; these functions SHALL treat positive zero and negative zero as equal in value, consistent with ordinary numeric comparison (so `double-equal` returns `true` for a positive-zero/negative-zero pair, and neither is greater than or less than the other).
 
@@ -5816,19 +5788,19 @@ This is the arithmetic and comparison behavior that a binary64 (or equivalent) f
 
 ## 8.7 Target Evaluation
 
-The target value SHALL be `Match` if the `Target` property is absent or the expression specified in the target evaluates to `true`. Otherwise, if the expression evaluates to `false`, then the target SHALL be `No Match`. Otherwise, the target SHALL be `Indeterminate`. The target match table is shown in Table 1.
+The target value SHALL be `Match` if the `Target` property is absent or the expression specified in the target evaluates to `true`. Otherwise, if the expression evaluates to `false`, then the target SHALL be `No-match`. Otherwise, the target SHALL be `Indeterminate`. The target match table is shown in Table 1.
 
 **Table 1:** Target Match Table
 
 | Expression value | Target value |
 | :--- | :--- |
 | `true` | `Match` |
-| `false` | `No Match` |
+| `false` | `No-match` |
 | `Indeterminate` | `Indeterminate` |
 
 ## 8.8 VariableReference Evaluation
 
-A `VariableReferenceType` object references a single `VariableDefinitionType` object that has a matching `VariableId` property value and is in the `VariableDefinition` property of an enclosing `RuleType` or `PolicyType` object. If no such `VariableDefinitionType `object exists, then the reference is invalid. The PDP MUST detect invalid references either at policy loading time or during runtime evaluation. If the PDP detects an invalid reference during runtime the variable reference evaluates to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
+A `VariableReferenceType` object references a single `VariableDefinitionType` object that has a matching `VariableId` property value and is in the `VariableDefinition` property of an enclosing `RuleType` or `PolicyType` object. If no such `VariableDefinitionType` object exists, then the reference is invalid. The PDP MUST detect invalid references either at policy loading time or during runtime evaluation. If the PDP detects an invalid reference during runtime the variable reference evaluates to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 In any place where a `VariableReferenceType` object occurs, it has the effect as if the `ExpressionType` object defined in the `VariableDefinitionType` object replaces the `VariableReferenceType` object. Any evaluation scheme that preserves this semantic is acceptable. For instance, the expression in the `VariableDefinitionType` object may be evaluated to a particular value and cached for multiple references without consequence (i.e., the value of an `ExpressionType` object remains the same for the entire policy evaluation). This characteristic is one of the benefits of ACAL being a declarative language.
 
@@ -5836,7 +5808,7 @@ Circular references are invalid. The PDP MUST detect circular references either 
 
 ## 8.9 Condition Evaluation
 
-The condition value SHALL be `true` if the `Condition` property is absent, or if the expression contained in the `Condition` property evaluates to `true`. Its value SHALL be `false` if the expression evaluates to `false`. The condition value SHALL be `Indeterminate`, if the expression evaluates to `Indeterminate.`
+The condition value SHALL be `true` if the `Condition` property is absent, or if the expression contained in the `Condition` property evaluates to `true`. Its value SHALL be `false` if the expression evaluates to `false`. The condition value SHALL be `Indeterminate` if the expression evaluates to `Indeterminate`.
 
 ## 8.10 Extended Indeterminate
 
@@ -5852,27 +5824,27 @@ The combining algorithms that are defined in terms of the extended `Indeterminat
 
 The final decision returned by a PDP cannot be an extended `Indeterminate`. Any such decision at the top level policy — the policy referenced by the `PolicyReference` property of the `BundleType` object that defines the PDP (see [Section 8.15](#815-authorization-decision)) — is returned as a plain `Indeterminate` in the response from the PDP.
 
-The tables in the following four sections define how extended `Indeterminate` values are produced during rule and policy evaluation.
+The tables in [Section 8.11](#811-rule-evaluation) and [Section 8.12](#812-policy-evaluation) define how extended `Indeterminate` values are produced during rule and policy evaluation.
 
 ## 8.11 Rule Evaluation
 
-A rule has a value that can be calculated by evaluating the rule's condition. The rule truth table is shown in Table 4.
+A rule has a value that can be calculated by evaluating the rule's condition. The rule truth table is shown in Table 2.
 
-**Table 4:** Rule Truth Table
+**Table 2:** Rule Truth Table
 
 | Condition | Rule Value |
 | :--- | :--- |
-| `true` | Effect |
+| `true` | `Effect` |
 | `false` | `NotApplicable` |
-| `Indeterminate` | `Indeterminate{P}` if the Effect is Permit, or `Indeterminate{D}` if the Effect is Deny |
+| `Indeterminate` | `Indeterminate{P}` if the `Effect` is `Permit`, or `Indeterminate{D}` if the `Effect` is `Deny` |
 
 ## 8.12 Policy Evaluation
 
 The value of a policy SHALL be determined only by its contents, considered in relation to the contents of the request context. A policy's value SHALL be determined by evaluation of the policy's target and evaluation of the specified combining algorithm on the contained policies and rules.
 
-The policy truth table is shown in Table 5.
+The policy truth table is shown in Table 3.
 
-**Table 5:** Policy Truth Table
+**Table 3:** Policy Truth Table
 
 | Target | Combining Algorithm Value | Policy Value |
 | :--- | :--- | :--- |
@@ -5896,20 +5868,22 @@ The policy truth table is shown in Table 5.
 
 A policy reference is evaluated by resolving the reference and evaluating the referenced policy.
 
-Resolving a reference means selecting, from the set of policies that the PDP evaluates requests against — represented conceptually by the `Policy` property of the `BundleType` object that defines the PDP ([Section 7.46](#746-bundletype), [Section 8.15](#815-authorization-decision)) — the policy whose `PolicyId` equals the reference's `Id` property (compared as an absolute URI, see [Section 8.3](#83-identifier-evaluation)) and whose `Version` satisfies the reference's version-matching expression if one is present ([Section 7.10](#710-patternmatchidreferencetype)). This applies to every policy reference that appears within the `CombinerInput` of another policy. The entry-point reference — a `BundleType` object's own `PolicyReference` property — MUST resolve to a policy in that set ([Section 7.46](#746-bundletype)). For any other reference, if no policy in that set matches and the `Id` property is a URL, then the reference MAY instead be resolved by retrieving the policy from that URL; the retrieved policy's `PolicyId` and `Version` MUST satisfy the same matching requirements.
+Resolving a reference means selecting, from the set of policies that the PDP evaluates requests against — represented conceptually by the `Policy` property of the `BundleType` object that defines the PDP ([Section 7.46](#746-bundletype), [Section 8.15](#815-authorization-decision)) — the policy whose `PolicyId` equals the reference's `Id` property (compared as specified in [Section 8.18](#818-identifier-equality)) and whose `Version` satisfies the reference's version-matching expression if one is present ([Section 7.10](#710-patternmatchidreferencetype)). This applies to every policy reference that appears within the `CombinerInput` of another policy. The entry-point reference — a `BundleType` object's own `PolicyReference` property — MUST resolve to a policy in that set ([Section 7.46](#746-bundletype)). For any other reference, if no policy in that set matches and the `Id` property is a URL, then the reference MAY instead be resolved by retrieving the policy from that URL; the retrieved policy's `PolicyId` and `Version` MUST satisfy the same matching requirements.
 
 If resolving the reference fails, the reference evaluates to `Indeterminate` with status code: <!--Newline to fit on PDF page -->
 `urn:oasis:names:tc:acal:1.0:status:processing-error`.
+
+If a PDP is provided with policies from distinct sources which might not be fully trusted, it is RECOMMENDED that distinct policy issuers or sources are assigned distinct namespaces for policy identifiers ([Section 10.2.5](#1025-policy-identifiers)).
 
 A policy reference containing circular references is invalid. The PDP MUST detect circular references either at policy loading time or during runtime evaluation. If the PDP detects a circular reference during runtime the reference evaluates to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 ## 8.14 Hierarchical Resources
 
-It is often the case that a resource is organized as a hierarchy (e.g., file system, XML document). ACAL provides several optional mechanisms for supporting hierarchical resources. These are described in the ACAL Hierarchical Resource Profile [[Hier](#hier)] and in the ACAL Multiple Decision Profile [[Multi](#multi)].
+It is often the case that a resource is organized as a hierarchy (e.g., file system, XML document). ACAL provides several optional mechanisms for supporting hierarchical resources. These are described in the ACAL Hierarchical Resource Profile [[ACAL-Hierarchical-1.0](#acal-hierarchical-10)] and in the ACAL Multiple Decision Profile [[ACAL-Multiple-1.0](#acal-multiple-10)].
 
 ## 8.15 Authorization Decision
 
-In relation to a particular decision request, the PDP is defined by a set of policies, a set of shared variable definitions, sets of short identifiers and a policy reference that specifies the starting point for evaluating the request. Conceptually, these items can be collected together as a single `BundleType` object, athough an implementation is free to represent and organize this information in any way it chooses as long as it produces the same result as is specified here.
+In relation to a particular decision request, the PDP is defined by a set of policies, a set of shared variable definitions, sets of short identifiers and a policy reference that specifies the starting point for evaluating the request. Conceptually, these items can be collected together as a single `BundleType` object, although an implementation is free to represent and organize this information in any way it chooses as long as it produces the same result as is specified here.
 
 The PDP SHALL return a response context as if it had evaluated the policy reference in the manner specified in [Section 7](#7-structures) and [Section 8](#8-functional-requirements). The PDP MUST return a response context, with one `Decision` property of value `Permit`, `Deny`, `Indeterminate` or `NotApplicable`.
 
@@ -5921,7 +5895,7 @@ A rule or policy may contain one or more notice expressions. When such a rule or
 
 As a consequence of this procedure, notices SHALL NOT be returned to the PEP if the rules or policies from which they are drawn are not evaluated, or if their evaluated result is `Indeterminate` or `NotApplicable`, or if the decision resulting from evaluating the rule or policy does not match the decision resulting from evaluating an enclosing policy, or if the notice expression has a condition that evaluates to `false`.
 
-If the PDP's evaluation is viewed as a tree of rules and policies, each of which returns `Permit` or `Deny`, then the collection of notices returned by the PDP to the PEP will include only the notices associated with those paths where the result at each level of evaluation is the same as the result being returned by the PDP. In situations where any lack of determinism is unacceptable, a deterministic combining algorithm, such as ordered-deny-overrides, should be used.
+If the PDP's evaluation is viewed as a tree of rules and policies, each of which returns `Permit` or `Deny`, then the collection of notices returned by the PDP to the PEP will include only the notices associated with those paths where the result at each level of evaluation is the same as the result being returned by the PDP. In situations where any lack of determinism is unacceptable, a deterministic combining algorithm, such as `ordered-deny-overrides`, SHOULD be used.
 
 Also see [Section 8.2](#82-policy-enforcement-point).
 
@@ -5931,7 +5905,7 @@ ACAL specifies behavior for the PDP in the following situations.
 
 ### 8.17.1 Unsupported Functionality
 
-If the PDP attempts to evaluate a policy that contains an optional object type or function that the PDP does not support, then the PDP SHALL return a `DecisionType` value of `Indeterminate`. If a `StatusCodeType` object is also returned, then its Value property SHALL be `urn:oasis:names:tc:acal:1.0:status:syntax-error` in the case of an unsupported object type, and `urn:oasis:names:tc:acal:1.0:status:processing-error` in the case of an unsupported function. A policy that contains an `integer` literal outside the implementation's supported integer interval is treated as [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema) specifies: the result of that policy is `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error` whenever the PDP evaluates the policy, whether or not evaluation reaches the literal, as for an unsupported function.
+If the PDP attempts to evaluate a policy that contains an optional object type or function that the PDP does not support, then the PDP SHALL return a `DecisionType` value of `Indeterminate`. If a `StatusCodeType` object is also returned, then its Value property SHALL be `urn:oasis:names:tc:acal:1.0:status:syntax-error` in the case of an unsupported object type, and `urn:oasis:names:tc:acal:1.0:status:processing-error` in the case of an unsupported function. A policy that contains an `integer` literal outside the implementation's supported integer interval is treated as [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) specifies: the result of that policy is `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error` whenever the PDP evaluates the policy, whether or not evaluation reaches the literal, as for an unsupported function.
 
 ### 8.17.2 Syntax and Type Errors
 
@@ -6039,17 +6013,6 @@ A `ValueType` object MAY contain an instance of a structured XML data type. [Sec
 # 10 Safety, Security, and Data Protection Considerations
 
 
-<!-- From OASIS Open Specification Template Instructions:
-
-
-This section is **REQUIRED** and **MUST** be the second to last numbered section in the document, right before Conformance. This section contains information about safety, security, data protection, and privacy considerations. These can be divided up into separate subsections as desired. All documents **SHOULD** have at least a security and data protection considerations section, and otherwise **MUST** have a blank section indicating “None.” Any other considerations **MAY** also be added.
-
-
-Please note that any specification that will need to register something with IANA or has plans to go on to ITU/ISO/IEC **MUST** have this section filled out. For an example please see the following section in the CACAO specification here [https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html#_Toc152256574](https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html#_Toc152256574) 
-
-
--->
-
 This section identifies possible security and privacy compromise scenarios that should be considered when implementing an ACAL-based system. The section is informative only. It is left to the implementer to decide whether these compromise scenarios are practical in their environment and to select appropriate safeguards.
 
 ## 10.1 Threat Model
@@ -6122,11 +6085,11 @@ A denial of service attack is one in which the adversary overloads an ACAL actor
 
 The `urn:oasis:names:tc:acal:1.0:function:access-permitted` function may lead to hard to predict behavior in the PDP. It is possible that the function is invoked during the recursive invocations of the PDP such that loops are formed. Such loops may in some cases lead to large numbers of requests to be generated before the PDP can detect the loop and abort evaluation. Such loops could cause a denial of service at the PDP, either because of a malicious policy or because of a mistake in a policy.
 
-Processing `integer` values can also be used for a denial of service. Parsing, converting and computing with `integer` values, including in Profile-defined expressions such as XPath expressions, can consume excessive resources even on an implementation whose supported integer interval is bounded, for example through very long lexical representations, large bags, or functions applied to many arguments; an implementation that imposes no predetermined bound on integer magnitude ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)) is also exposed to values of very large magnitude. Implementations and deployments are therefore advised to apply input acceptance limits, for example to the size of a request and to the length of the lexical representation of a number or a string, at the parser, at a gateway in front of the PDP, or in the PDP itself; for JSON, [[RFC8259](#rfc8259)] Section 9 allows a parser to set limits on the size of texts and on the range and precision of numbers. A request that exceeds such a limit can be refused before any policy is evaluated ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)). When an evaluation exhausts an execution resource, [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema) specifies its result: `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`, with no altered value.
+Processing `integer` values can also be used for a denial of service. Parsing, converting and computing with `integer` values, including in Profile-defined expressions such as XPath expressions, can consume excessive resources even on an implementation whose supported integer interval is bounded, for example through very long lexical representations, large bags, or functions applied to many arguments; an implementation that imposes no predetermined bound on integer magnitude ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)) is also exposed to values of very large magnitude. Implementations and deployments are therefore advised to apply input acceptance limits, for example to the size of a request and to the length of the lexical representation of a number or a string, at the parser, at a gateway in front of the PDP, or in the PDP itself; for JSON, [[RFC8259](#rfc8259)] Section 9 allows a parser to set limits on the size of texts and on the range and precision of numbers. A request that exceeds such a limit can be refused before any policy is evaluated ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)). When an evaluation exhausts an execution resource, [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) specifies its result: `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`, with no altered value.
 
 ### 10.1.9 Implementation-Defined Integer Limits
 
-An ACAL implementation may support only a documented interval of `integer` values ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)), and different conforming PDPs may support different intervals. When an evaluation requires an `integer` value outside the implementation's interval, the evaluation returns `Indeterminate` rather than an altered value. Two PDPs therefore do not return different integer values for the same computation, but one of them may return `Indeterminate` where the other returns a value. Implementations and deployments may also apply input acceptance limits, and an implementation may refuse, before evaluation, a request that contains an `integer` value outside its interval or that exceeds such a limit.
+An ACAL implementation may support only a documented interval of `integer` values ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)), and different conforming PDPs may support different intervals. When an evaluation requires an `integer` value outside the implementation's interval, the evaluation returns `Indeterminate` rather than an altered value. Two PDPs therefore do not return different integer values for the same computation, but one of them may return `Indeterminate` where the other returns a value. Implementations and deployments may also apply input acceptance limits, and an implementation may refuse, before evaluation, a request that contains an `integer` value outside its interval or that exceeds such a limit.
 
 Every conforming PDP supports the integers from −2<sup>63</sup> to 2<sup>63</sup>−1. When every ACAL `integer` literal contained in the evaluated policy, and every other `integer` value that the evaluation requires, is in that range (including attribute values, values produced by attribute selectors, function arguments and results, and each operand and result of an operator or function evaluated as part of a Profile-defined expression such as an XPath expression), the input acceptance limits that apply admit each value, and each value reaches the PDP exactly, integer magnitude does not cause conforming PDPs to differ. In the JSON representation of ACAL (JACAL), JSON software outside ACAL that represents every JSON number as a binary64 floating-point value can change an integer outside the range −(2<sup>53</sup>−1) to 2<sup>53</sup>−1 before an ACAL implementation receives it, and writing such an integer in the typed string form avoids this; in the YAML representation (YACAL) the typed form is needed wherever a YAML processor would not preserve an integer scalar. This covers only differences due to integer magnitude, not differences that arise from other implementation-defined behavior or from exhaustion of an execution resource. Deployments that want a portable subset of requests across conforming PDPs are advised to provide at least one request representation whose input acceptance limits admit the canonical decimal representation of every integer from −2<sup>63</sup> to 2<sup>63</sup>−1. A deployment can use narrower documented input acceptance limits where its safety, security, hardware or operational constraints require them.
 
@@ -6182,7 +6145,7 @@ ACAL policies used by the PDP to evaluate the request context are the heart of t
 
 In many cases, both aspects can be achieved by ensuring the integrity of the actors and implementing session-level mechanisms to secure the communication between actors. The selection of the appropriate mechanisms is left to the implementers. However, when policy is distributed between organizations to be acted on at a later time, or when the policy travels with the protected resource, it would be useful to sign the policy. 
 
-The particular policy signature mechanism and syntax for signed policy or policy parts will be described by the ACAL Representation Profiles (W3C XML Signature Syntax and Processing standard for XACML - XML Representation Profile).
+The particular policy signature mechanism and syntax for signed policy or policy parts will be described by the ACAL Representation Profiles (W3C XML Signature Syntax and Processing standard [[DS](#ds)] for XACML - XML Representation Profile).
 
 Digital signatures should only be used to ensure the integrity of the statements. Digital signatures should not be used as a method of selecting or evaluating policy. That is, the PDP should not request a policy based on who signed it or whether or not it has been signed (as such a basis for selection would, itself, be a matter of policy). However, the PDP must verify that the key used to sign the policy is one controlled by the purported issuer of the policy. The means to do this are dependent on the specific signature technology chosen and are outside the scope of this document.
 
@@ -6190,9 +6153,9 @@ Digital signatures should only be used to ensure the integrity of the statements
 
 Since policies can be referenced by their identifiers, it is the responsibility of the PAP to ensure that these are unique. Confusion between identifiers could lead to misidentification of the applicable policy. This specification is silent on whether a PAP must generate a new identifier when a policy is modified or may use the same identifier in the modified policy. This is a matter of administrative practice. However, care must be taken in either case. If the identifier is reused, there is a danger that other policies that reference it may be adversely affected. Conversely, if a new identifier is used, these other policies may continue to use the prior policy, unless it is deleted. In either case the results may not be what the policy administrator intends.
 
-If a PDP is provided with policies from distinct sources which might not be fully trusted, as in the use of the administration profile [XACMLAdmin], there is a concern that someone could intentionally publish a policy with an id which collides with another policy. This could cause policy references that point to the wrong policy, and may cause other unintended consequences in an implementation which is predicated upon having unique policy identifiers.
+If a PDP is provided with policies from distinct sources which might not be fully trusted, as in the use of the administration profile [[XACMLAdmin](#xacmladmin)], there is a concern that someone could intentionally publish a policy with an id which collides with another policy. This could cause policy references that point to the wrong policy, and may cause other unintended consequences in an implementation which is predicated upon having unique policy identifiers.
 
-If this issue is a concern it is RECOMMENDED that distinct policy issuers or sources are assigned distinct namespaces for policy identifiers. One method is to make sure that the policy identifier begins with a string which has been assigned to the particular policy issuer or source. The remainder of the policy identifier is an issuer-specific unique part. For instance, Alice from Example Inc. could be assigned the policy identifiers which begin with `https://example.com/xacml/policyId/alice/`. The PDP or another trusted component can then verify that the authenticated source of the policy is Alice at Example Inc, or otherwise reject the policy. Anyone else will be unable to publish policies with identifiers which collide with the policies of Alice.
+If this issue is a concern, distinct policy issuers or sources can be assigned distinct namespaces for policy identifiers, as [Section 8.13](#813-policyreference-evaluation) recommends. One method is to make sure that the policy identifier begins with a string which has been assigned to the particular policy issuer or source. The remainder of the policy identifier is an issuer-specific unique part. For instance, Alice from Example Inc. could be assigned the policy identifiers which begin with `https://example.com/xacml/policyId/alice/`. The PDP or another trusted component can then verify that the authenticated source of the policy is Alice at Example Inc, or otherwise reject the policy. Anyone else will be unable to publish policies with identifiers which collide with the policies of Alice.
 
 ### 10.2.6 Trust Model
 
@@ -6216,11 +6179,11 @@ Selection and use of privacy mechanisms appropriate to a given environment are o
 
 ## 10.3 Unicode Security Issues
 
-There are many security considerations related to use of Unicode. An ACAL implementation SHOULD follow the advice given in the relevant version of [UTR36].
+There are many security considerations related to use of Unicode. [Section 8.1.2](#812-version-of-unicode) recommends that an ACAL implementation follow the advice given in the relevant version of [[UTR36](#utr36)].
 
 ## 10.4 Identifier Equality
 
-[Section 8.18](#818-identifier-equality) defines the identifier equality operation for ACAL. This definition of equality does not do any kind of canonicalization or escaping of characters. The identifiers defined in the ACAL specification have been selected to not include any ambiguity regarding these aspects. It is RECOMMENDED that identifiers defined by extensions also do not introduce any identifiers which might be mistaken for being subject to processing, like for instance URL character encoding using `%`.
+[Section 8.18](#818-identifier-equality) defines the identifier equality operation for ACAL. This definition of equality does not do any kind of canonicalization or escaping of characters. The identifiers defined in the ACAL specification have been selected to not include any ambiguity regarding these aspects. [Section 8.18](#818-identifier-equality) recommends that identifiers defined by extensions also do not introduce any identifiers which might be mistaken for being subject to processing, like for instance URL character encoding using `%`.
 
 
 ---
@@ -6229,19 +6192,11 @@ There are many security considerations related to use of Unicode. An ACAL implem
 # 11 Conformance
 
 
-<!-- From OASIS Open Specification Template Instructions: 
-
-
-This section is **REQUIRED** and **MUST** be the last numbered section in the document. 
-
-
--->
-
 ## 11.1 Introduction
 
 The ACAL specification addresses the following aspect of conformance:
 
-The ACAL specification defines a number of functions, etc. that have somewhat special applications, therefore they are not required to be implemented in an implementation that claims to conform with to this specification.
+The ACAL specification defines a number of functions, etc. that have somewhat special applications, therefore they are not required to be implemented in an implementation that claims to conform to this specification.
 
 ## 11.2 Conformance Tables
 
@@ -6332,7 +6287,7 @@ The implementation MUST include the combining algorithms associated with the fol
 
 ### 11.2.4 Status Codes
 
-Implementation support for the `StatusCodeType` object is optional, but if the object is supported, then the following status codes must be supported and must be used in the way ACAL has specified.
+Implementation support for the `StatusCodeType` object is optional, but if the object is supported, then the following status codes MUST be supported and MUST be used in the way ACAL has specified.
 
 | Identifier | M/O | Deprecated Identifier |
 | :--- | :--- | :--- |
@@ -6384,7 +6339,7 @@ The implementation MUST use the attributes or attribute categories associated wi
 
 ### 11.2.7 Data Types
 
-The implementation MUST support the data types associated with the following identifiers marked `M`. Support for the `urn:oasis:names:tc:acal:1.0:data-type:integer` data type means support for the implementation's supported integer interval as [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema) specifies, which need not be the whole value space.
+The implementation MUST support the data types associated with the following identifiers marked `M`. Support for the `urn:oasis:names:tc:acal:1.0:data-type:integer` data type means support for the implementation's supported integer interval as [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) specifies, which need not be the whole value space.
 
 | Identifier | M/O | Deprecated Identifier |
 | :--- | :--- | :--- |
@@ -6423,7 +6378,7 @@ The implementation MUST properly process those functions associated with the ide
 | urn:oasis:names:tc:acal:1.0:function:yearMonthDuration-equal | M | urn:oasis:names:tc:xacml:3.0:function:yearMonthDuration-equal |
 | urn:oasis:names:tc:acal:1.0:function:string-equal-ignore-case | M | urn:oasis:names:tc:xacml:3.0:function:string-equal-ignore-case |
 | urn:oasis:names:tc:acal:1.0:function:anyURI-equal | M | urn:oasis:names:tc:xacml:1.0:function:anyURI-equal |
-| urn:oasis:names:tc:acal:1.0:function:x500Name-equal | M | urn:oasis:names:tc:xacml:1.0:function:x500Name-equal |
+| urn:oasis:names:tc:acal:1.0:function:x500Name-equal | M | |
 | urn:oasis:names:tc:acal:1.0:function:rfc822Name-equal | M | urn:oasis:names:tc:xacml:1.0:function:rfc822Name-equal |
 | urn:oasis:names:tc:acal:1.0:function:hexBinary-equal | M | urn:oasis:names:tc:xacml:1.0:function:hexBinary-equal |
 | urn:oasis:names:tc:acal:1.0:function:base64Binary-equal | M | urn:oasis:names:tc:xacml:1.0:function:base64Binary-equal |
@@ -6530,7 +6485,7 @@ The implementation MUST properly process those functions associated with the ide
 | urn:oasis:names:tc:acal:1.0:function:yearMonthDuration-bag | M | urn:oasis:names:tc:xacml:3.0:function:yearMonthDuration-bag |
 | urn:oasis:names:tc:acal:1.0:function:x500Name-one-and-only | M | urn:oasis:names:tc:xacml:1.0:function:x500Name-one-and-only |
 | urn:oasis:names:tc:acal:1.0:function:x500Name-bag-size | M | urn:oasis:names:tc:xacml:1.0:function:x500Name-bag-size |
-| urn:oasis:names:tc:acal:1.0:function:x500Name-is-in | M | urn:oasis:names:tc:xacml:1.0:function:x500Name-is-in |
+| urn:oasis:names:tc:acal:1.0:function:x500Name-is-in | M | |
 | urn:oasis:names:tc:acal:1.0:function:x500Name-bag | M | urn:oasis:names:tc:xacml:1.0:function:x500Name-bag |
 | urn:oasis:names:tc:acal:1.0:function:rfc822Name-one-and-only | M | urn:oasis:names:tc:xacml:1.0:function:rfc822Name-one-and-only |
 | urn:oasis:names:tc:acal:1.0:function:rfc822Name-bag-size | M | urn:oasis:names:tc:xacml:1.0:function:rfc822Name-bag-size |
@@ -6643,7 +6598,7 @@ The implementation MUST properly process those functions associated with the ide
 | urn:oasis:names:tc:acal:1.0:function:hexBinary-subset | M | urn:oasis:names:tc:xacml:1.0:function:hexBinary-subset |
 | urn:oasis:names:tc:acal:1.0:function:hexBinary-set-equals | M | urn:oasis:names:tc:xacml:1.0:function:hexBinary-set-equals |
 | urn:oasis:names:tc:acal:1.0:function:base64Binary-intersection | M | urn:oasis:names:tc:xacml:1.0:function:base64Binary-intersection |
-| urn:oasis:names:tc:acal:1.0:function:base64Binary-at-least-one-member-of | M | urn:oasis:names:tc:acal:1.0:function:base64Binary-at-least-one-member-of |
+| urn:oasis:names:tc:acal:1.0:function:base64Binary-at-least-one-member-of | M | urn:oasis:names:tc:xacml:1.0:function:base64Binary-at-least-one-member-of |
 | urn:oasis:names:tc:acal:1.0:function:base64Binary-union | M | urn:oasis:names:tc:xacml:1.0:function:base64Binary-union |
 | urn:oasis:names:tc:acal:1.0:function:base64Binary-subset | M | urn:oasis:names:tc:xacml:1.0:function:base64Binary-subset |
 | urn:oasis:names:tc:acal:1.0:function:base64Binary-set-equals | M | urn:oasis:names:tc:xacml:1.0:function:base64Binary-set-equals |
@@ -6657,11 +6612,11 @@ The implementation MUST properly process those functions associated with the ide
 | urn:oasis:names:tc:acal:1.0:function:yearMonthDuration-union | M | urn:oasis:names:tc:xacml:3.0:function:yearMonthDuration-union |
 | urn:oasis:names:tc:acal:1.0:function:yearMonthDuration-subset | M | urn:oasis:names:tc:xacml:3.0:function:yearMonthDuration-subset |
 | urn:oasis:names:tc:acal:1.0:function:yearMonthDuration-set-equals | M | urn:oasis:names:tc:xacml:3.0:function:yearMonthDuration-set-equals |
-| urn:oasis:names:tc:acal:1.0:function:x500Name-intersection | M | urn:oasis:names:tc:xacml:1.0:function:x500Name-intersection |
-| urn:oasis:names:tc:acal:1.0:function:x500Name-at-least-one-member-of | M | urn:oasis:names:tc:xacml:1.0:function:x500Name-at-least-one-member-of |
-| urn:oasis:names:tc:acal:1.0:function:x500Name-union | M | urn:oasis:names:tc:xacml:1.0:function:x500Name-union |
-| urn:oasis:names:tc:acal:1.0:function:x500Name-subset | M | urn:oasis:names:tc:xacml:1.0:function:x500Name-subset |
-| urn:oasis:names:tc:acal:1.0:function:x500Name-set-equals | M | urn:oasis:names:tc:xacml:1.0:function:x500Name-set-equals |
+| urn:oasis:names:tc:acal:1.0:function:x500Name-intersection | M | |
+| urn:oasis:names:tc:acal:1.0:function:x500Name-at-least-one-member-of | M | |
+| urn:oasis:names:tc:acal:1.0:function:x500Name-union | M | |
+| urn:oasis:names:tc:acal:1.0:function:x500Name-subset | M | |
+| urn:oasis:names:tc:acal:1.0:function:x500Name-set-equals | M | |
 | urn:oasis:names:tc:acal:1.0:function:rfc822Name-intersection | M | urn:oasis:names:tc:xacml:1.0:function:rfc822Name-intersection |
 | urn:oasis:names:tc:acal:1.0:function:rfc822Name-at-least-one-member-of | M | urn:oasis:names:tc:xacml:1.0:function:rfc822Name-at-least-one-member-of |
 | urn:oasis:names:tc:acal:1.0:function:rfc822Name-union | M | urn:oasis:names:tc:xacml:1.0:function:rfc822Name-union |
@@ -6696,10 +6651,10 @@ The implementation MUST properly process those functions associated with the ide
 ## A.1 Document Status
 
 
-This document was last revised or approved by the OASIS eXtensible Access Control Markup Language (XACML) TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
+This document was last revised or approved by the OASIS ACAL \[XACML\] TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
 
 
-TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/xacml/.
+TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/acal/.
 
 
 NOTE: any machine-readable content (Computer Language Definitions) declared Normative for this Work Product is provided in separate plain text files. In the event of a discrepancy between any such plain text file and display content in the Work Product's prose narrative document(s), the content in the separate plain text file prevails.
@@ -6720,7 +6675,7 @@ This document and translations of it may be copied and furnished to others, and 
 The limited permissions granted above are perpetual and will not be revoked by OASIS or its successors or assigns, as provided in the OASIS IPR Policy.
 
 
-This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project’s web page ([XACML IPR Policy](https://www.oasis-open.org/committees/xacml/ipr.php)).
+This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project’s web page ([OASIS ACAL \[XACML\] TC IPR page](https://www.oasis-open.org/committees/acal/ipr.php)).
 
 
 This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. OASIS AND ITS MEMBERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THIS DOCUMENT OR ANY PART THEREOF.
@@ -6755,8 +6710,6 @@ This section contains the normative and informative references that are used in 
 
 Normative references are specific (identified by date of publication and/or edition number or version number) and Informative references are either specific or non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the reference document (including any amendments) applies. While any hyperlinks included in this section were valid at the time of publication, OASIS cannot guarantee their long term validity.
 
-<!-- For IETF RFCs, refer to https://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html -->
-
 
 ## B.1 Normative References
 
@@ -6764,69 +6717,32 @@ Normative references are specific (identified by date of publication and/or edit
 The following documents are referenced in such a way that some or all of their content constitutes requirements of this document.
 
 
+###### [ACAL-Multiple-1.0]
+
+_ACAL v1.0 Multiple Decision Profile Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/profiles/multiple/v1.0/acal-multiple-v1.0.html
+
+
 ###### [CMF]
 
 Martin J. Dürst et al, eds., Character Model for the World Wide Web 1.0: Fundamentals, W3C Recommendation 15 February 2005, https://www.w3.org/TR/2005/REC-charmod-20050215/
-
-###### [DS]
-
-D. Eastlake et al., XML-Signature Syntax and Processing, https://www.w3.org/TR/xmldsig-core/, World Wide Web Consortium.
-
-###### [ENTITIES]
-
-_XACML v3.0 Related and Nested Entities Profile Version 1.0_. Edited by Steven Legg. 16 February 2021. OASIS Committee Specification 02. https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/cs02/xacml-3.0-related-entities-v1.0-cs02.html. Latest stage: https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/xacml-3.0-related-entities-v1.0.html.
-
-###### [exc-c14n]
-
-J. Boyer et al, eds., Exclusive XML Canonicalization, Version 1.0, W3C Recommendation 18 July 2002, https://www.w3.org/TR/2002/REC-xml-exc-c14n-20020718/
 
 ###### [Hancock]
 
 Hancock, Polymorphic Type Checking, in Simon L. Peyton Jones, Implementation of Functional Programming Languages, Section 8, Prentice-Hall International, 1987.
 
-###### [Hier]
-
-XACML v3.0 Hierarchical Resource Profile Version 1.0. 18 May 2014. Committee Specification 02. https://docs.oasis-open.org/xacml/3.0/hierarchical/v1.0/xacml-3.0-hierarchical-v1.0.html
-
-###### [INFOSET]
-
-XML Information Set (Second Edition), W3C Recommendation, 4 February 2004, https://www.w3.org/TR/xml-infoset/
-
-###### [ISO10181-3]
-
-ISO/IEC 10181-3:1996 Information technology – Open Systems Interconnection -- Security frameworks for open systems: Access control framework.
-
-###### [Kudo00]
-
-Kudo M and Hada S, XML document security based on provisional authorization, Proceedings of the Seventh ACM Conference on Computer and Communications Security, Nov 2000, Athens, Greece, pp 87-96.
 
 ###### [LDAP-1]
 
-RFC 2256, A summary of the X500(96) User Schema for use with LDAPv3, Section 5, M Wahl, December 1997, https://www.ietf.org/rfc/rfc2256.txt
+RFC 2256, A summary of the X500(96) User Schema for use with LDAPv3, Section 5, M Wahl, December 1997, https://www.rfc-editor.org/rfc/rfc2256.txt
 
 ###### [LDAP-2]
 
-RFC 2798, Definition of the inetOrgPerson, M. Smith, April 2000, https://www.ietf.org/rfc/rfc2798.txt
+RFC 2798, Definition of the inetOrgPerson, M. Smith, April 2000, https://www.rfc-editor.org/rfc/rfc2798.txt
 
-###### [MathML]
-
-Mathematical Markup Language (MathML), Version 2.0, W3C Recommendation, 21 October 2003, https://www.w3.org/TR/2003/REC-MathML2-20031021/
-
-###### [Multi]
-
-XACML v3.0 Multiple Decision Profile Version 1.0. 18 May 2014. Committee Specification 02. https://docs.oasis-open.org/xacml/3.0/multiple/v1.0/xacml-3.0-multiple-v1.0.html
 
 ###### [OCL]
 
 OMG, Object Constraint Language (OCL) Version 2.4 (also ISO/IEC 19507), 2014. Available online: https://www.omg.org/spec/OCL/2.4 
-
-###### [Perritt93]
-
-Perritt, H. Knowbots, Permissions Headers and Contract Law, Conference on Technological Strategies for Protecting Intellectual Property in the Networked Multimedia Environment, April 1993. Available at: https://www.cni.org/resources/historical-resources/technological-strategies-for-protecting-intellectual-property-in-the-networked-multimedia-environment/permission-headers-and-contract-law
-
-###### [RBAC]
-
-David Ferraiolo and Richard Kuhn, Role-Based Access Controls, 15th National Computer Security Conference, 1992.
 
 ###### [RFC2045]
 
@@ -6840,14 +6756,9 @@ Freed, N. and N. Borenstein, "Multipurpose Internet Mail Extensions (MIME) Part 
 
 *Key Words for Use in RFCs to Indicate Requirement Levels*, BCP 14, RFC 2119, March 1997. [Online]. Available: https://www.rfc-editor.org/info/rfc2119
 
-
-###### [RFC3198]
-
-IETF RFC 3198: Terminology for Policy-Based Management, November 2001. https://www.ietf.org/rfc/rfc3198.txt
-
 ###### [RFC3986]
 
-RFC 3986, Berners-Lee T, Fielding R, Masinter L, Uniform Resource Identifiers (URI): Generic Syntax, https://www.ietf.org/rfc/rfc3986.txt
+RFC 3986, Berners-Lee T, Fielding R, Masinter L, Uniform Resource Identifiers (URI): Generic Syntax, https://www.rfc-editor.org/rfc/rfc3986.txt
 
 ###### [RFC4289]
 
@@ -6856,6 +6767,10 @@ Freed, N. and J. Klensin, "Multipurpose Internet Mail Extensions (MIME) Part Fou
 ###### [RFC4514]
 
 Zeilenga, K., Ed., "Lightweight Directory Access Protocol (LDAP): String Representation of Distinguished Names", RFC 4514, DOI 10.17487/RFC4514, June 2006, <https://www.rfc-editor.org/info/rfc4514/>.
+
+###### [RFC5280]
+
+Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and W. Polk, "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008, <https://www.rfc-editor.org/info/rfc5280>.
 
 ###### [RFC5321]
 
@@ -6877,6 +6792,10 @@ Mark Davis, Martin Dürst, Unicode Standard Annex #15: Unicode Normalization For
 
 OMG, Unified Modeling Language (UML) Version 2.5.1 (also ISO/IEC 19505), 2017. Available online: https://www.omg.org/spec/UML/2.5.1/ 
 
+###### [X690]
+
+ITU-T Recommendation X.690 (12/1997), *Information technology - ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER)*, https://www.itu.int/rec/T-REC-X.690-199712-S
+
 ###### [UTR36]
 
 Davis, Mark, Suignard, Michel, Unicode Technical Report #36: Unicode Security Considerations, https://www.unicode.org/reports/tr36/
@@ -6889,31 +6808,67 @@ OASIS Committee Draft 03, XACML v3.0 Administration and Delegation Profile Versi
 
 Bray, Tim, et.al. eds, Extensible Markup Language (XML) 1.0 (Fifth Edition), W3C Recommendation 26 November 2008, https://www.w3.org/TR/2008/REC-xml-20081126/
 
-###### [XMLid]
-
-Marsh, Jonathan, et.al. eds, xml:id Version 1.0. W3C Recommendation 9 September 2005, https://www.w3.org/TR/2005/REC-xml-id-20050909/
-
 ###### [XF]
 
-W3C XQuery, XPath, and XSLT Functions and Operators Namespace Document (XPath and XQuery Functions and Operators 3.1) 21 March 2017, https://www.w3.org/2005/xpath-functions/
+XPath and XQuery Functions and Operators 3.1, W3C Recommendation 21 March 2017, https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/
 
 ###### [XS]
 
 XML Schema 1.1, parts 1 and 2. Available at: https://www.w3.org/TR/xmlschema11-1/ and https://www.w3.org/TR/xmlschema11-2/
 
-###### [XPath]
-
-XML Path Language (XPath) 3.1, W3C Recommendation 21 March 2017, https://www.w3.org/TR/xpath-31/
-
-###### [XSLT]
-
-XSL Transformations (XSLT) Version 1.0, W3C Recommendation 16 November 1999, https://www.w3.org/TR/xslt/
-
-
 ## B.2 Informative References
 
 
 The following referenced documents are not required for the application of this document but may assist the reader with regard to a particular subject area.
+
+###### [ACAL-Hierarchical-1.0]
+
+_ACAL v1.0 Hierarchical Resource Profile Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/profiles/hierarchical/v1.0/acal-hierarchical-v1.0.html
+
+
+###### [DS]
+
+D. Eastlake et al., XML-Signature Syntax and Processing, https://www.w3.org/TR/xmldsig-core/, World Wide Web Consortium.
+
+###### [ENTITIES]
+
+_XACML v3.0 Related and Nested Entities Profile Version 1.0_. Edited by Steven Legg. 16 February 2021. OASIS Committee Specification 02. https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/cs02/xacml-3.0-related-entities-v1.0-cs02.html. Latest stage: https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/xacml-3.0-related-entities-v1.0.html.
+
+###### [ISO10181-3]
+
+ISO/IEC 10181-3:1996 Information technology – Open Systems Interconnection -- Security frameworks for open systems: Access control framework.
+
+###### [Kudo00]
+
+Kudo M and Hada S, XML document security based on provisional authorization, Proceedings of the Seventh ACM Conference on Computer and Communications Security, Nov 2000, Athens, Greece, pp 87-96.
+
+###### [MathML]
+
+Mathematical Markup Language (MathML), Version 2.0, W3C Recommendation, 21 October 2003, https://www.w3.org/TR/2003/REC-MathML2-20031021/
+
+###### [Perritt93]
+
+Perritt, H. Knowbots, Permissions Headers and Contract Law, Conference on Technological Strategies for Protecting Intellectual Property in the Networked Multimedia Environment, April 1993. Available at: https://www.cni.org/resources/historical-resources/technological-strategies-for-protecting-intellectual-property-in-the-networked-multimedia-environment/permission-headers-and-contract-law
+
+###### [RBAC]
+
+David Ferraiolo and Richard Kuhn, Role-Based Access Controls, 15th National Computer Security Conference, 1992.
+
+###### [RFC3198]
+
+IETF RFC 3198: Terminology for Policy-Based Management, November 2001. https://www.rfc-editor.org/rfc/rfc3198.txt
+
+###### [RFC4343]
+
+Eastlake 3rd, D., "Domain Name System (DNS) Case Insensitivity Clarification", RFC 4343, DOI 10.17487/RFC4343, January 2006, <https://www.rfc-editor.org/info/rfc4343>.
+
+###### [XMLid]
+
+Marsh, Jonathan, et.al. eds, xml:id Version 1.0. W3C Recommendation 9 September 2005, https://www.w3.org/TR/2005/REC-xml-id-20050909/
+
+###### [XSLT]
+
+XSL Transformations (XSLT) Version 1.0, W3C Recommendation 16 November 1999, https://www.w3.org/TR/xslt/
 
 ###### [CM]
 
@@ -6931,7 +6886,7 @@ IEEE Std 754-2019, IEEE Standard for Floating-Point Arithmetic, DOI: 10.1109/IEE
 
 RFC 8259, Tim Bray, *The JavaScript Object Notation (JSON) Data Interchange Format*, December 2017, https://www.rfc-editor.org/info/rfc8259 .
 
-###### [NISTIR8318] 
+###### [NISTIR8318]
 
 Black, P. (2020), DADS: The On-Line Dictionary of Algorithms and Data Structures, NIST Interagency/Internal Report (NISTIR), National Institute of Standards and Technology, Gaithersburg, MD, [online](https://doi.org/10.6028/NIST.IR.8318) (Accessed December 16, 2025) 
 
@@ -6945,7 +6900,6 @@ _eXtensible Access Control Markup Language (XACML) Version 3.0 Plus Errata 01_. 
 
 
 ---
-
 
 # Annex C Data Types and Functions
 
@@ -6961,7 +6915,7 @@ This specification combines the various standards set forth by IEEE and ANSI for
 
 ## C.2 Data Types
 
-Although a syntactic representation of ACAL objects may represent most data types as strings, an ACAL PDP must operate on types of data that, while they have string representations, are not just strings. Types such as `Boolean`, `Integer`, and `Double` MUST be converted from their string representations to values that can be compared with values in their domain of discourse, such as numbers. The following data types are specified for use with ACAL and have explicit data representations:
+Although a syntactic representation of ACAL objects may represent most data types as strings, an ACAL PDP MUST operate on types of data that, while they have string representations, are not just strings. Types such as `Boolean`, `Integer`, and `Double` MUST be converted from their string representations to values that can be compared with values in their domain of discourse, such as numbers. The following data types are specified for use with ACAL and have explicit data representations:
 
 * `urn:oasis:names:tc:acal:1.0:data-type:string`
 
@@ -6995,11 +6949,11 @@ Although a syntactic representation of ACAL objects may represent most data type
 
 * `urn:oasis:names:tc:acal:1.0:data-type:dnsName`
 
-The definitions of the twelve data types that correspond to XML Schema datatypes are given in [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema).
+The definitions of the twelve data types that correspond to XML Schema datatypes are given in [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema).
 
 If a value of data type `dateTime` or `date` does not include a time zone, the equality, comparison and ordering functions of that data type ([Annex C.3.1](#c31-equality-predicates), [Annex C.3.8](#c38-non-numeric-comparison-functions)) resolve it using the *implicit timezone* of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]. (A `time` value without a time zone is resolved differently; see the `time-*` functions and `time-in-range` in [Annex C.3.8](#c38-non-numeric-comparison-functions).) This document does not specify the implicit timezone; a PDP ordinarily configures it, so two conformant PDPs MAY configure different implicit time zones and MAY therefore reach different comparison results, and different decisions, for the identical policy and the identical request when a comparison combines a value that has an explicit time zone with one that does not, or otherwise depends on the implicit timezone. It is RECOMMENDED that every `dateTime`, `time` and `date` value carried in a request or a policy include an explicit time zone, to avoid this hazard; it is not necessary that every value use the same time zone, or that any value use UTC specifically. Independently, for the sake of improved interoperability, it is RECOMMENDED that all time references be in UTC time where a choice of time zone is otherwise unconstrained.
 
-An ACAL PDP SHALL be capable of converting string representations into various data types. For the twelve data types defined by reference to XML Schema ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)), including `urn:oasis:names:tc:acal:1.0:data-type:double`, the conversion SHALL use the lexical mapping given there. Implementations SHALL represent and operate on `double` values as specified in [Section 8.6](#86-arithmetic-evaluation).
+An ACAL PDP SHALL be capable of converting string representations into various data types. For the twelve data types defined by reference to XML Schema ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)), including `urn:oasis:names:tc:acal:1.0:data-type:double`, the conversion SHALL use the lexical mapping given there. Implementations SHALL represent and operate on `double` values as specified in [Section 8.6](#86-arithmetic-evaluation).
 
 ACAL defines four data types representing identifiers for subjects or resources; these are:
 
@@ -7033,7 +6987,7 @@ The value space of `rfc822Name` is the set of pairs of a local-part and a domain
 
 The `urn:oasis:names:tc:acal:1.0:data-type:ipAddress` data type represents an IPv4 or IPv6 network address, with optional mask and optional port or port range. The syntax SHALL be:
 
-```
+```abnf
 ipAddress = address [ `/` mask ] [ `:` [ portrange ] ]
 ```
 
@@ -7047,9 +7001,9 @@ The value space of `ipAddress` is the set of triples of an IPv4 or IPv6 address,
 
 ### C.2.4 DNS Name
 
-The `urn:oasis:names:tc:acal:1.0:data-type:dnsName` data type represents a Domain Name Service (DNS) host name, with optional port or port range. The syntax SHALL be:
+The `urn:oasis:names:tc:acal:1.0:data-type:dnsName` data type represents a Domain Name System (DNS) host name, with optional port or port range. The syntax SHALL be:
 
-```
+```abnf
 dnsName = hostname [ `:` portrange ]
 ```
 
@@ -7058,19 +7012,19 @@ The hostname SHALL conform to the `reg-name` rule defined in [[RFC3986](#rfc3986
 For both the `urn:oasis:names:tc:acal:1.0:data-type:ipAddress` and <!-- Newline added to fit on PDF page -->
 `urn:oasis:names:tc:acal:1.0:data-type:dnsName` data types, the port or port range syntax SHALL be
 
-```
+```abnf
 portrange = portnumber | `-`portnumber | portnumber`-`[portnumber]
 ```
 
 where `portnumber` is a decimal port number. If the port number is of the form `-x`, where `x` is a port number, then the range is all ports numbered `x` and below. If the port number is of the form `x-`, then the range is all ports numbered `x` and above. [This syntax is taken from the Java SocketPermission.]
 
-The value space of `dnsName` is the set of pairs of a hostname (optionally beginning with a wildcard label) and an optional port or port range, each as constrained by the syntax above, together with the lexical string from which each value was constructed. The lexical space is the set of character strings conforming to that syntax, and the lexical mapping from such a string to the pair it denotes preserves the hostname's original letter case. This specification defines no equality or matching relation on `dnsName` values other than identity of the parsed pair. Per IETF RFC 4343, DNS name comparison is conventionally case-insensitive, but no standard ACAL function implements such a case-insensitive relation; a `dnsName` value's original letter case is preserved by the lexical mapping and remains observable through `urn:oasis:names:tc:acal:1.0:function:string-from-dnsName` and functions built on it, such as `urn:oasis:names:tc:acal:1.0:function:dnsName-regexp-match`.
+The value space of `dnsName` is the set of pairs of a hostname (optionally beginning with a wildcard label) and an optional port or port range, each as constrained by the syntax above, together with the lexical string from which each value was constructed. The lexical space is the set of character strings conforming to that syntax, and the lexical mapping from such a string to the pair it denotes preserves the hostname's original letter case. This specification defines no equality or matching relation on `dnsName` values other than identity of the parsed pair. Per [[RFC4343](#rfc4343)], DNS name comparison is conventionally case-insensitive, but no standard ACAL function implements such a case-insensitive relation; a `dnsName` value's original letter case is preserved by the lexical mapping and remains observable through `urn:oasis:names:tc:acal:1.0:function:string-from-dnsName` and functions built on it, such as `urn:oasis:names:tc:acal:1.0:function:dnsName-regexp-match`.
 
-### C.2.6 Entity
+### C.2.5 Entity
 
 The `urn:oasis:names:tc:acal:1.0:data-type:entity` data type is used to represent an entity nested within another entity. Values of this data type are objects of the `EntityType` object type [Section 7.45](#745-entitytype).
 
-### C.2.7 Data Types Defined by Reference to XML Schema
+### C.2.6 Data Types Defined by Reference to XML Schema
 
 Each of the twelve data types in the table below is defined as follows, for every ACAL representation format and every ACAL Profile. Its *value space* (the set of values that a value of the data type can be), its *lexical space* (the set of character strings that represent those values) and its *lexical mapping* (the mapping from each string of the lexical space to the value it represents) are those of the built-in datatype of the same name defined by [[XS](#xs)] Part 2, in the section given in the table.
 
@@ -7091,7 +7045,7 @@ Each of the twelve data types in the table below is defined as follows, for ever
 
 This specification uses those definitions of value space, lexical space and lexical mapping only. An implementation is not required to process XML, or to perform XML Schema validation, in order to support these data types. A value of one of these data types is a member of the value space of the corresponding XML Schema datatype; it is not a character string, even where an ACAL representation format represents it as one.
 
-Two consequences of this definition are stated here because they are easily overlooked. First, the value space of `urn:oasis:names:tc:acal:1.0:data-type:string` is the set of finite-length sequences of characters that match the `Char` production of [XML], and [[XS](#xs)] leaves it implementation-defined whether the XML 1.0 production, the XML 1.1 production, or both are supported. A sequence of characters that an ACAL representation format can carry but that is outside that set (for example a control character that XML excludes) is therefore not a value of the `string` data type. Second, the lexical space of `urn:oasis:names:tc:acal:1.0:data-type:anyURI` is the same set of character sequences, and its values represent IRI references; it is not the type `URI` of [Section 7.1.2.3.1](#71231-uri), which is an [[RFC3986](#rfc3986)] URI, and a value of the `anyURI` data type need not conform to [[RFC3986](#rfc3986)].
+Two consequences of this definition are stated here because they are easily overlooked. First, the value space of `urn:oasis:names:tc:acal:1.0:data-type:string` is the set of finite-length sequences of characters that match the `Char` production of [[XML](#xml)], and [[XS](#xs)] leaves it implementation-defined whether the XML 1.0 production, the XML 1.1 production, or both are supported. A sequence of characters that an ACAL representation format can carry but that is outside that set (for example a control character that XML excludes) is therefore not a value of the `string` data type. Second, the lexical space of `urn:oasis:names:tc:acal:1.0:data-type:anyURI` is the same set of character sequences, and its values represent IRI references; it is not the type `URI` of [Section 7.1.2.3.1](#71231-uri), which is an [[RFC3986](#rfc3986)] URI, and a value of the `anyURI` data type need not conform to [[RFC3986](#rfc3986)].
 
 The value space of `urn:oasis:names:tc:acal:1.0:data-type:integer` is the set of all mathematical integers. An ACAL implementation SHOULD NOT impose a predetermined bound on the magnitude of an `integer` value that it evaluates. The *supported integer interval* of an ACAL implementation is the set of `integer` values that it can evaluate. For an implementation that imposes no predetermined bound, it is the set of all integers. For any other implementation it is a contiguous interval of integers, which SHALL include every integer from −9223372036854775808 to 9223372036854775807 inclusive (−2<sup>63</sup> to 2<sup>63</sup>−1). An ACAL implementation SHALL document its supported integer interval for each version and configuration for which it claims conformance. This is the approach that XML Schema 1.1 Part 2 [[XS](#xs)] Section 5.4 (Partial Implementation of Infinite Datatypes) takes to datatypes with infinite value spaces, stated here as a requirement on ACAL implementations and with a larger minimum than that section's.
 
@@ -7117,7 +7071,7 @@ An ACAL Profile that converts a value between a profile-specific form and a valu
 
 ## C.3 Functions
 
-ACAL specifies the following functions. Unless otherwise specified, if an argument of one of these functions were to evaluate to `Indeterminate`, then the function SHALL evaluates to `Indeterminate`.
+ACAL specifies the following functions. Unless otherwise specified, if an argument of one of these functions were to evaluate to `Indeterminate`, then the function SHALL evaluate to `Indeterminate`.
 
 Note that in each case an implementation is conformant as long as it produces the same result as is specified here, regardless of how and in what order the implementation behaves internally.
 
@@ -7147,23 +7101,23 @@ The following functions are the equality functions for the various data types. E
 
 `urn:oasis:names:tc:acal:1.0:function:date-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:date` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL perform its evaluation according to the `op:date-equal` function [[XF](#xf)] Section 8.4.4.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:date` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL perform its evaluation according to the `op:date-equal` function [[XF](#xf)] Section 9.4.4.
 
 `urn:oasis:names:tc:acal:1.0:function:time-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:time` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL perform its evaluation according to the `op:time-equal` function [[XF](#xf)] Section 8.4.7.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:time` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL perform its evaluation according to the `op:time-equal` function [[XF](#xf)] Section 9.4.7.
 
 `urn:oasis:names:tc:acal:1.0:function:dateTime-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dateTime` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL perform its evaluation according to the `op:dateTime-equal` function [[XF](#xf)] Section 8.4.1.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dateTime` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL perform its evaluation according to the `op:dateTime-equal` function [[XF](#xf)] Section 9.4.1.
 
 `urn:oasis:names:tc:acal:1.0:function:dayTimeDuration-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dayTimeDuration` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. This function shall perform its evaluation according to the `op:duration-equal` function [[XF](#xf)] Section 8.2.5. Note that the lexical representation of each argument MUST be converted to a value expressed in fractional seconds [[XS](#xs)].
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dayTimeDuration` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. This function SHALL perform its evaluation according to the `op:duration-equal` function [[XF](#xf)] Section 8.2.5. Note that the lexical representation of each argument MUST be converted to a value expressed in fractional seconds [[XS](#xs)].
 
 `urn:oasis:names:tc:acal:1.0:function:yearMonthDuration-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:yearMonthDuration` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. This function shall perform its evaluation according to the `op:duration-equal` function [[XF](#xf)] Section 8.2.5. Note that the lexical representation of each argument MUST be converted to a value expressed in months [[XS](#xs)].
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:yearMonthDuration` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. This function SHALL perform its evaluation according to the `op:duration-equal` function [[XF](#xf)] Section 8.2.5. Note that the lexical representation of each argument MUST be converted to a value expressed in months [[XS](#xs)].
 
 `urn:oasis:names:tc:acal:1.0:function:anyURI-equal`
 
@@ -7171,13 +7125,13 @@ The following functions are the equality functions for the various data types. E
 
 `urn:oasis:names:tc:acal:1.0:function:x500Name-equal`
 
-: This function SHALL take two arguments of `urn:oasis:names:tc:acal:1.0:data-type:x500Name` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if each Relative Distinguished Name (RDN) in the two arguments matches. Otherwise, it SHALL return `false`. Two RDNs shall be said to match if and only if the result of the following operations is `true` .
+: This function SHALL take two arguments of `urn:oasis:names:tc:acal:1.0:data-type:x500Name` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if each Relative Distinguished Name (RDN) in the two arguments matches. Otherwise, it SHALL return `false`. Two RDNs match if and only if the result of the following operations is `true`.
 
-    1. Normalize the two arguments according to [[RFC4514](#rfc4514)] `Lightweight Directory Access Protocol (LDAP): String Representation of Distinguished Names`.
+    1. Parse each argument into its sequence of RDNs according to [[RFC4514](#rfc4514)] Section 3 `Parsing a String Back to a Distinguished Name`.
 
-    2. If any RDN contains multiple attributeTypeAndValue pairs, re-order the Attribute ValuePairs in that RDN in ascending order when compared as octet strings (described in ITU-T Rec. X.690 (1997 E) Section 11.6 `Set-of components`).
+    2. If any RDN contains multiple attributeTypeAndValue pairs, re-order the attributeTypeAndValue pairs in that RDN in ascending order when compared as octet strings (described in [[X690](#x690)] Section 11.6 `Set-of components`).
 
-    3. Compare RDNs using the rules in IETF RFC 3280 `Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile`, Section 4.1.2.4 `Issuer`.
+    3. Compare RDNs using the rules in [[RFC5280](#rfc5280)] `Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile`, Section 7.1 `Internationalized Names in Distinguished Names`.
 
 `urn:oasis:names:tc:acal:1.0:function:rfc822Name-equal`
 
@@ -7189,17 +7143,17 @@ The following functions are the equality functions for the various data types. E
 
 `urn:oasis:names:tc:acal:1.0:function:hexBinary-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:hexBinary` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if the octet sequences represented by the value of both arguments have equal length and are equal in a conjunctive, point-wise, comparison using the `urn:oasis:names:tc:acal:1.0:function:integer-equal` function. Otherwise, it SHALL return `false`. The conversion from the string representation to an octet sequence SHALL be as specified in [[XS](#xs)] Section 3.2.15.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:hexBinary` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if the octet sequences represented by the value of both arguments have equal length and are equal in a conjunctive, point-wise, comparison using the `urn:oasis:names:tc:acal:1.0:function:integer-equal` function. Otherwise, it SHALL return `false`. The conversion from the string representation to an octet sequence SHALL be as specified in [[XS](#xs)] Part 2, Section 3.3.15.
 
 `urn:oasis:names:tc:acal:1.0:function:base64Binary-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:base64Binary` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if the octet sequences represented by the value of both arguments have equal length and are equal in a conjunctive, point-wise, comparison using the `urn:oasis:names:tc:acal:1.0:function:integer-equal` function. Otherwise, it SHALL return `false`. The conversion from the string representation to an octet sequence SHALL be as specified in [[XS](#xs)] Section 3.2.16.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:base64Binary` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if the octet sequences represented by the value of both arguments have equal length and are equal in a conjunctive, point-wise, comparison using the `urn:oasis:names:tc:acal:1.0:function:integer-equal` function. Otherwise, it SHALL return `false`. The conversion from the string representation to an octet sequence SHALL be as specified in [[XS](#xs)] Part 2, Section 3.3.16.
 
 ### C.3.2 Arithmetic Functions
 
 All of the following functions SHALL take two arguments of the specified data type, integer, or double, and SHALL return a value of integer or double data type, respectively, except that the `add` and `multiply` functions SHALL take two or more arguments. Each function evaluation operating on doubles SHALL proceed as specified in [Section 8.6](#86-arithmetic-evaluation). For all of these functions, if any argument is `Indeterminate`, then the function SHALL evaluate to `Indeterminate`. In the case of `urn:oasis:names:tc:acal:1.0:function:integer-divide`, `urn:oasis:names:tc:acal:1.0:function:double-divide` and `urn:oasis:names:tc:acal:1.0:function:integer-mod`, if the second argument (the divisor) is zero, then the function SHALL evaluate to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
-An arithmetic function defined in this section whose result is of data type `urn:oasis:names:tc:acal:1.0:data-type:integer` SHALL return exactly the result that its definition prescribes, or `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error` where [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema) requires it: for a value outside the supported integer interval, or for exhaustion of an execution resource. Such a function SHALL NOT wrap around, reduce modulo, saturate or otherwise lose precision. [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema) also requires a function whose arguments and prescribed result are within the supported integer interval to return that result whatever state the implementation uses internally, so the result of `integer-add` or `integer-multiply` with more than two arguments is independent of the order of its arguments.
+An arithmetic function defined in this section whose result is of data type `urn:oasis:names:tc:acal:1.0:data-type:integer` SHALL return exactly the result that its definition prescribes, or `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error` where [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) requires it: for a value outside the supported integer interval, or for exhaustion of an execution resource. Such a function SHALL NOT wrap around, reduce modulo, saturate or otherwise lose precision. [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) also requires a function whose arguments and prescribed result are within the supported integer interval to return that result whatever state the implementation uses internally, so the result of `integer-add` or `integer-multiply` with more than two arguments is independent of the order of its arguments.
 
 : Note: An `Indeterminate` result is not a `Deny` result. If an integer error causes a child of a policy that uses `permit-unless-deny` ([Annex E.7](#e7-permit-unless-deny)) to evaluate to `Indeterminate` where that child would otherwise have evaluated to `Deny`, that policy returns `Permit` unless another child evaluates to `Deny`. See also [Section 10.1.9](#1019-implementation-defined-integer-limits).
 
@@ -7237,7 +7191,7 @@ An arithmetic function defined in this section whose result is of data type `urn
 
 `urn:oasis:names:tc:acal:1.0:function:integer-mod`
 
-: The result is the first argument minus the product of the second argument and *q*, where *q* is the first argument divided by the second argument, truncated toward zero to a whole number (the result that `urn:oasis:names:tc:acal:1.0:function:integer-divide` prescribes for the same arguments); the result is zero or has the sign of the first argument. This result is prescribed even when *q* is outside the supported integer interval ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)): for example, on an implementation whose supported integer interval is −2<sup>63</sup> to 2<sup>63</sup>−1, `integer-mod` applied to −2<sup>63</sup> and −1 returns 0, although `integer-divide` applied to the same arguments returns `Indeterminate`.
+: The result is the first argument minus the product of the second argument and *q*, where *q* is the first argument divided by the second argument, truncated toward zero to a whole number (the result that `urn:oasis:names:tc:acal:1.0:function:integer-divide` prescribes for the same arguments); the result is zero or has the sign of the first argument. This result is prescribed even when *q* is outside the supported integer interval ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)): for example, on an implementation whose supported integer interval is −2<sup>63</sup> to 2<sup>63</sup>−1, `integer-mod` applied to −2<sup>63</sup> and −1 returns 0, although `integer-divide` applied to the same arguments returns `Indeterminate`.
 
 The following functions SHALL take a single argument of the specified data type. The round and floor functions SHALL take a single argument of data type `urn:oasis:names:tc:acal:1.0:data-type:double` and return a value of the data type `urn:oasis:names:tc:acal:1.0:data-type:double`.
 
@@ -7251,27 +7205,27 @@ The following functions SHALL take a single argument of the specified data type.
 
 The result of `urn:oasis:names:tc:acal:1.0:function:integer-abs` is the absolute value of its argument.
 
-: Note: On an implementation whose supported integer interval ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)) is −2<sup>63</sup> to 2<sup>63</sup>−1, `integer-abs` applied to −2<sup>63</sup>, `integer-divide` applied to −2<sup>63</sup> and −1, and `integer-subtract` applied to 0 and −2<sup>63</sup> each return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`, because each prescribed result is 2<sup>63</sup>. In these cases two's-complement machine arithmetic gives a wrapped result, or behavior that the programming language leaves undefined; satisfying [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema) means detecting them rather than returning a wrapped value.
+: Note: On an implementation whose supported integer interval ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)) is −2<sup>63</sup> to 2<sup>63</sup>−1, `integer-abs` applied to −2<sup>63</sup>, `integer-divide` applied to −2<sup>63</sup> and −1, and `integer-subtract` applied to 0 and −2<sup>63</sup> each return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`, because each prescribed result is 2<sup>63</sup>. In these cases two's-complement machine arithmetic gives a wrapped result, or behavior that the programming language leaves undefined; satisfying [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) means detecting them rather than returning a wrapped value.
 
 ### C.3.3 String Conversion Functions
 
-The following functions convert between values of the data type `urn:oasis:names:tc:acal:1.0:data-type:string` data type.
+The following functions convert between values of the `urn:oasis:names:tc:acal:1.0:data-type:string` data type.
 
 `urn:oasis:names:tc:acal:1.0:function:string-normalize-space`
 
-: This function SHALL take one argument of data type `urn:oasis:names:tc:acal:1.0:data-type:string` and SHALL normalize the value by stripping off all leading and trailing white space characters. The whitespace characters are defined in the metasymbol S (Production 3) of [XML].
+: This function SHALL take one argument of data type `urn:oasis:names:tc:acal:1.0:data-type:string` and SHALL normalize the value by stripping off all leading and trailing white space characters. The whitespace characters are defined in the metasymbol S (Production 3) of [[XML](#xml)].
 
 `urn:oasis:names:tc:acal:1.0:function:string-normalize-to-lower-case`
 
-: This function SHALL take one argument of data type `urn:oasis:names:tc:acal:1.0:data-type:string` and SHALL normalize the value by converting each upper case character to its lower case equivalent. Case mapping shall be done as specified for the fn:lower-case function in [[XF](#xf)] with no tailoring for particular languages or environments.
+: This function SHALL take one argument of data type `urn:oasis:names:tc:acal:1.0:data-type:string` and SHALL normalize the value by converting each upper case character to its lower case equivalent. Case mapping SHALL be done as specified for the fn:lower-case function in [[XF](#xf)] with no tailoring for particular languages or environments.
 
 ### C.3.4 Numeric Data Type Conversion Functions
 
-The following functions convert values between the `urn:oasis:names:tc:acal:1.0:data-type:integer` and` urn:oasis:names:tc:acal:1.0:data-type:double` data types.
+The following functions convert values between the `urn:oasis:names:tc:acal:1.0:data-type:integer` and `urn:oasis:names:tc:acal:1.0:data-type:double` data types.
 
 `urn:oasis:names:tc:acal:1.0:function:double-to-integer`
 
-: This function SHALL take one argument of data type `urn:oasis:names:tc:acal:1.0:data-type:double` and SHALL return a value of data type `urn:oasis:names:tc:acal:1.0:data-type:integer`. If the argument is NaN or infinite, then the result SHALL be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`. Otherwise the result SHALL be exactly the argument with its fractional part discarded (truncated toward zero), unless that integer is outside the supported integer interval ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)) or the implementation cannot produce it because an execution resource is exhausted, in which case the result SHALL be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
+: This function SHALL take one argument of data type `urn:oasis:names:tc:acal:1.0:data-type:double` and SHALL return a value of data type `urn:oasis:names:tc:acal:1.0:data-type:integer`. If the argument is NaN or infinite, then the result SHALL be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`. Otherwise the result SHALL be exactly the argument with its fractional part discarded (truncated toward zero), unless that integer is outside the supported integer interval ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)) or the implementation cannot produce it because an execution resource is exhausted, in which case the result SHALL be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 `urn:oasis:names:tc:acal:1.0:function:integer-to-double`
 
@@ -7295,9 +7249,9 @@ This section contains the specification for logical functions that operate on ar
 
 `urn:oasis:names:tc:acal:1.0:function:n-of`
 
-: The first argument to this function SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:integer`. The remaining arguments (the Boolean arguments) SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:boolean`. The first argument specifies the minimum number of the Boolean arguments that must evaluate to `true` for the expression to be considered `true`.
+: The first argument to this function SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:integer`. The remaining arguments (the Boolean arguments) SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:boolean`. The first argument specifies the minimum number of the Boolean arguments that MUST evaluate to `true` for the expression to be considered `true`.
 
-: Let N be the value of the first argument and let M be the number of Boolean arguments. This functions returns `Indeterminate` if N is `Indeterminate`; otherwise, the function returns `true` if N is less than or equal to 0; otherwise, the function returns `false` if N is greater than M; otherwise, the function returns `true` if at least N of the Boolean arguments evaluate to `true`; otherwise, the function return `false` if at least (M + 1 - N) of the Boolean arguments evaluate to `false`; otherwise, the function returns `Indeterminate`.
+: Let N be the value of the first argument and let M be the number of Boolean arguments. This function returns `Indeterminate` if N is `Indeterminate`; otherwise, the function returns `true` if N is less than or equal to 0; otherwise, the function returns `false` if N is greater than M; otherwise, the function returns `true` if at least N of the Boolean arguments evaluate to `true`; otherwise, the function returns `false` if at least (M + 1 - N) of the Boolean arguments evaluate to `false`; otherwise, the function returns `Indeterminate`.
 
 : The first argument MUST be evaluated first. If it is not `Indeterminate` then the Boolean arguments may be evaluated in any order. Evaluation of the Boolean arguments MAY stop if evaluation of the remaining arguments will not change the result of the function, e.g., if the requirements to return `true` or `false` have been satisfied or if there are insufficient remaining Boolean arguments to satisfy the requirements to return either `true` or `false`.
 
@@ -7376,27 +7330,27 @@ These functions perform comparison operations on two arguments of non-numerical 
 
 `urn:oasis:names:tc:acal:1.0:function:string-less-than`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:string` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only the first argument is lexicographically strictly less than the second argument. Otherwise, it SHALL return `false`. The comparison SHALL use Unicode codepoint collation, as defined for the identifier `https://www.w3.org/2005/xpath-functions/collation/codepoint/` by [[XF](#xf)].
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:string` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is lexicographically strictly less than the second argument. Otherwise, it SHALL return `false`. The comparison SHALL use Unicode codepoint collation, as defined for the identifier `https://www.w3.org/2005/xpath-functions/collation/codepoint/` by [[XF](#xf)].
 
 `urn:oasis:names:tc:acal:1.0:function:string-less-than-or-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:string` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only the first argument is lexicographically less than or equal to the second argument. Otherwise, it SHALL return `false`. The comparison SHALL use Unicode codepoint collation, as defined for the identifier `https://www.w3.org/2005/xpath-functions/collation/codepoint/` by [[XF](#xf)].
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:string` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is lexicographically less than or equal to the second argument. Otherwise, it SHALL return `false`. The comparison SHALL use Unicode codepoint collation, as defined for the identifier `https://www.w3.org/2005/xpath-functions/collation/codepoint/` by [[XF](#xf)].
 
 `urn:oasis:names:tc:acal:1.0:function:time-greater-than`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:time` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#time` by [[XS](#xs)] part 2, Section 3.2.8. Otherwise, it SHALL return `false`. Note: it is illegal to compare a time that includes a time-zone value with one that does not. In such cases, the `time-in-range` function should be used.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:time` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#time` by [[XS](#xs)] Part 2, Section 3.3.8. Otherwise, it SHALL return `false`. Note: it is illegal to compare a time that includes a time-zone value with one that does not. In such cases, the `time-in-range` function SHOULD be used.
 
 `urn:oasis:names:tc:acal:1.0:function:time-greater-than-or-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:time` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#time` by [[XS](#xs)] part 2, Section 3.2.8. Otherwise, it SHALL return `false`. Note: it is illegal to compare a time that includes a time-zone value with one that does not. In such cases, the `time-in-range` function should be used.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:time` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#time` by [[XS](#xs)] Part 2, Section 3.3.8. Otherwise, it SHALL return `false`. Note: it is illegal to compare a time that includes a time-zone value with one that does not. In such cases, the `time-in-range` function SHOULD be used.
 
 `urn:oasis:names:tc:acal:1.0:function:time-less-than`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:time` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#time` by [[XS](#xs)] part 2, Section 3.2.8. Otherwise, it SHALL return `false`. Note: it is illegal to compare a time that includes a time-zone value with one that does not. In such cases, the `time-in-range` function should be used.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:time` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#time` by [[XS](#xs)] Part 2, Section 3.3.8. Otherwise, it SHALL return `false`. Note: it is illegal to compare a time that includes a time-zone value with one that does not. In such cases, the `time-in-range` function SHOULD be used.
 
 `urn:oasis:names:tc:acal:1.0:function:time-less-than-or-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:time` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#time` by [[XS](#xs)] part 2, Section 3.2.8. Otherwise, it SHALL return `false`. Note: it is illegal to compare a time that includes a time-zone value with one that does not. In such cases, the `time-in-range` function should be used.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:time` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#time` by [[XS](#xs)] Part 2, Section 3.3.8. Otherwise, it SHALL return `false`. Note: it is illegal to compare a time that includes a time-zone value with one that does not. In such cases, the `time-in-range` function SHOULD be used.
 
 `urn:oasis:names:tc:acal:1.0:function:time-in-range`
 
@@ -7404,35 +7358,35 @@ These functions perform comparison operations on two arguments of non-numerical 
 
 `urn:oasis:names:tc:acal:1.0:function:dateTime-greater-than`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dateTime` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)] part 2, Section 3.2.7. Otherwise, it SHALL return `false`. Note: if a `dateTime` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dateTime` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)] Part 2, Section 3.3.7. Otherwise, it SHALL return `false`. Note: if a `dateTime` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
 
 `urn:oasis:names:tc:acal:1.0:function:dateTime-greater-than-or-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dateTime` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)] part 2, Section 3.2.7. Otherwise, it SHALL return `false`. Note: if a `dateTime` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dateTime` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)] Part 2, Section 3.3.7. Otherwise, it SHALL return `false`. Note: if a `dateTime` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
 
 `urn:oasis:names:tc:acal:1.0:function:dateTime-less-than`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dateTime` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than the second argument according to the order relation specified for `urn:oasis:names:tc:acal:1.0:data-type:dateTime` by [XS, part 2, Section 3.2.7]. Otherwise, it SHALL return `false`. Note: if a `dateTime` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dateTime` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)] Part 2, Section 3.3.7. Otherwise, it SHALL return `false`. Note: if a `dateTime` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
 
 `urn:oasis:names:tc:acal:1.0:function:dateTime-less-than-or-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type: dateTime` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)] part 2, Section 3.2.7. Otherwise, it SHALL return `false`. Note: if a `dateTime` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:dateTime` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)] Part 2, Section 3.3.7. Otherwise, it SHALL return `false`. Note: if a `dateTime` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
 
 `urn:oasis:names:tc:acal:1.0:function:date-greater-than`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:date` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] part 2, Section 3.2.9. Otherwise, it SHALL return `false`. Note: if a `date` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:date` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] Part 2, Section 3.3.9. Otherwise, it SHALL return `false`. Note: if a `date` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
 
 `urn:oasis:names:tc:acal:1.0:function:date-greater-than-or-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:date` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] part 2, Section 3.2.9. Otherwise, it SHALL return `false`. Note: if a `date` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:date` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is greater than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] Part 2, Section 3.3.9. Otherwise, it SHALL return `false`. Note: if a `date` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
 
 `urn:oasis:names:tc:acal:1.0:function:date-less-than`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:date` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] part 2, Section 3.2.9. Otherwise, it SHALL return `false`. Note: if a `date` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:date` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] Part 2, Section 3.3.9. Otherwise, it SHALL return `false`. Note: if a `date` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
 
 `urn:oasis:names:tc:acal:1.0:function:date-less-than-or-equal`
 
-: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:date` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] part 2, Section 3.2.9. Otherwise, it SHALL return `false`. Note: if a `date` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
+: This function SHALL take two arguments of data type `urn:oasis:names:tc:acal:1.0:data-type:date` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the first argument is less than or equal to the second argument according to the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] Part 2, Section 3.3.9. Otherwise, it SHALL return `false`. Note: if a `date` value does not include a time-zone value, this function SHALL resolve it using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; see [Annex C.2](#c2-data-types) for the resulting cross-PDP hazard and the recommendation that every value carry an explicit time zone.
 
 ### C.3.9 String Functions
 
@@ -7452,7 +7406,7 @@ The following functions operate on strings and convert to and from other data ty
 
 `urn:oasis:names:tc:acal:1.0:function:integer-from-string`
 
-: This function SHALL take one argument of data type `urn:oasis:names:tc:acal:1.0:data-type:string`, and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:integer`. The result SHALL be the string converted to an integer. If the argument is not a valid lexical representation of an integer, then the result SHALL be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. If the argument is a valid lexical representation of an integer, then the result SHALL be exactly that integer, unless that integer is outside the supported integer interval ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)) or the implementation cannot produce it because an execution resource is exhausted, in which case the result SHALL be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
+: This function SHALL take one argument of data type `urn:oasis:names:tc:acal:1.0:data-type:string`, and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:integer`. The result SHALL be the string converted to an integer. If the argument is not a valid lexical representation of an integer, then the result SHALL be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. If the argument is a valid lexical representation of an integer, then the result SHALL be exactly that integer, unless that integer is outside the supported integer interval ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)) or the implementation cannot produce it because an execution resource is exhausted, in which case the result SHALL be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 `urn:oasis:names:tc:acal:1.0:function:string-from-integer`
 
@@ -7584,11 +7538,11 @@ The following functions operate on strings and convert to and from other data ty
 
 `urn:oasis:names:tc:acal:1.0:function:string-substring`
 
-: This function SHALL take a first argument of data type `urn:oasis:names:tc:acal:1.0:data-type:string` and a second and a third argument of type `urn:oasis:names:tc:acal:1.0:data-type:integer` and SHALL return a `urn:oasis:names:tc:acal:1.0:data-type:string`. The result SHALL be the substring of the first argument beginning at the position given by the second argument and ending at the position before the position given by the third argument. The first character of the string has position zero. The negative integer value -1 given for the third arguments indicates the end of the string. If the second or third arguments are out of bounds, then the function MUST evaluate to `Indeterminate` with a status code of `urn:oasis:names:tc:acal:1.0:status:processing-error`.
+: This function SHALL take a first argument of data type `urn:oasis:names:tc:acal:1.0:data-type:string` and a second and a third argument of type `urn:oasis:names:tc:acal:1.0:data-type:integer` and SHALL return a `urn:oasis:names:tc:acal:1.0:data-type:string`. The result SHALL be the substring of the first argument beginning at the position given by the second argument and ending at the position before the position given by the third argument. The first character of the string has position zero. The negative integer value -1 given for the third argument indicates the end of the string. If the second or third arguments are out of bounds, then the function MUST evaluate to `Indeterminate` with a status code of `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 `urn:oasis:names:tc:acal:1.0:function:anyURI-substring`
 
-: This function SHALL take a first argument of data type `urn:oasis:names:tc:acal:1.0:data-type:anyURI` and a second and a third argument of type `urn:oasis:names:tc:acal:1.0:data-type:integer` and SHALL return a `urn:oasis:names:tc:acal:1.0:data-type:string`. The result SHALL be the substring of the first argument converted to a string with `urn:oasis:names:tc:acal:1.0:function:string-from-anyURI` beginning at the position given by the second argument and ending at the position before the position given by the third argument. The first character of the URI converted to a string has position zero. The negative integer value -1 given for the third arguments indicates the end of the string. If the second or third arguments are out of bounds, then the function MUST evaluate to `Indeterminate` with a status code of `urn:oasis:names:tc:acal:1.0:status:processing-error`. If the resulting substring is not syntactically a valid URI, then the function MUST evaluate to `Indeterminate` with a status code of `urn:oasis:names:tc:acal:1.0:status:processing-error`.
+: This function SHALL take a first argument of data type `urn:oasis:names:tc:acal:1.0:data-type:anyURI` and a second and a third argument of type `urn:oasis:names:tc:acal:1.0:data-type:integer` and SHALL return a `urn:oasis:names:tc:acal:1.0:data-type:string`. The result SHALL be the substring of the first argument converted to a string with `urn:oasis:names:tc:acal:1.0:function:string-from-anyURI` beginning at the position given by the second argument and ending at the position before the position given by the third argument. The first character of the URI converted to a string has position zero. The negative integer value -1 given for the third argument indicates the end of the string. If the second or third arguments are out of bounds, then the function MUST evaluate to `Indeterminate` with a status code of `urn:oasis:names:tc:acal:1.0:status:processing-error`. If the resulting substring is not syntactically a valid URI, then the function MUST evaluate to `Indeterminate` with a status code of `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 ### C.3.10 Bag Functions
 
@@ -7705,7 +7659,7 @@ Examples in this section are presented in both the XML and JSON representations 
   ```xml
   <Apply FunctionId="all-of">
     <Function Id="integer-greater-than"/>
-    <Value>10</Value>
+    <Value DataType="integer">10</Value>
     <Apply FunctionId="integer-bag">
       <Value>9</Value>
       <Value>3</Value>
@@ -7741,7 +7695,7 @@ Examples in this section are presented in both the XML and JSON representations 
 
   This function applies a Boolean function on each tuple from the cross product on all bag arguments, and returns `true` if and only if the function is `true` for at least one inside-function call.
 
-  This function SHALL take n+1 arguments, where n is one or greater. The first argument SHALL be an `FunctionType` object that names a Boolean function that takes n single-value arguments. The remaining arguments are either single values or bags of values. The expression SHALL be evaluated as if the function named in the `FunctionType` object was applied between every tuple of the cross product on all bags and single values, and the results were combined using `urn:oasis:names:tc:acal:1.0:function:or`. The semantics are that the result of the expression SHALL be `true` if and only if the applied function is `true` for at least one function call on the tuples from the bags and single values.
+This function SHALL take n+1 arguments, where n is one or greater. The first argument SHALL be a `FunctionType` object that names a Boolean function that takes n single-value arguments. The remaining arguments are either single values or bags of values. The expression SHALL be evaluated as if the function named in the `FunctionType` object was applied between every tuple of the cross product on all bags and single values, and the results were combined using `urn:oasis:names:tc:acal:1.0:function:or`. The semantics are that the result of the expression SHALL be `true` if and only if the applied function is `true` for at least one function call on the tuples from the bags and single values.
 
   For example, the following expression evaluates to `true`:
 
@@ -7897,7 +7851,7 @@ Examples in this section are presented in both the XML and JSON representations 
 
   This function applies a Boolean function between the values of two bags. The expression SHALL be `true` if and only if the supplied function is `true` between each and every value of the first bag collectively against all the values of the second bag.
 
-  This function SHALL take three arguments. The first argument SHALL be an `FunctionType` object that names a Boolean function that takes two single-value arguments. The second argument SHALL be a bag of values. The third argument SHALL be a bag of values. The expression is evaluated as if the function named in the `FunctionType` object were applied between every value in the second argument and every value in the third argument and the results were combined using `urn:oasis:names:tc:acal:1.0:function:and`. The semantics are that the result of the expression is `true` if and only if the applied function is `true` for all the values of the first bag compared to all the values of the second bag.
+This function SHALL take three arguments. The first argument SHALL be a `FunctionType` object that names a Boolean function that takes two single-value arguments. The second argument SHALL be a bag of values. The third argument SHALL be a bag of values. The expression is evaluated as if the function named in the `FunctionType` object were applied between every value in the second argument and every value in the third argument and the results were combined using `urn:oasis:names:tc:acal:1.0:function:and`. The semantics are that the result of the expression is `true` if and only if the applied function is `true` for all the values of the first bag compared to all the values of the second bag.
 
   For example, the following expression evaluates to `true`:
 
@@ -7991,9 +7945,9 @@ Note that the arguments to these functions are swapped compared to the similarly
 
 * `urn:oasis:names:tc:acal:1.0:function:string-regexp-match`
 
-  This function decides a regular expression match. It SHALL take two arguments of <!-- Line break added for the previous line to fit on a PDF page -->
+This function decides a regular expression match. It SHALL take two arguments of <!-- Line break added for the previous line to fit on a PDF page -->
   `urn:oasis:names:tc:acal:1.0:data-type:string` and SHALL return an
-  `urn:oasis:names:tc:acal:1.0:data-type:boolean`. The first argument SHALL be a general string and the second argument SHALL be a regular expression. The function specification SHALL be that of the `xf:matches` function [[XF](#xf)] Section 5.6.3.
+  `urn:oasis:names:tc:acal:1.0:data-type:boolean`. The first argument SHALL be a general string and the second argument SHALL be a regular expression. The function specification SHALL be that of the `fn:matches` function [[XF](#xf)] Section 5.6.3.
 
 * `urn:oasis:names:tc:acal:1.0:function:anyURI-regexp-match`
 
@@ -8080,19 +8034,19 @@ These functions perform a calculation on a bag of values to produce a summary re
 
 `urn:oasis:names:tc:acal:1.0:function:dateTime-minimum`
 
-: This function returns the least dateTime in a bag of dateTime values. The function takes one or two arguments. The first argument MUST be a bag of the `urn:oasis:names:tc:acal:1.0:data-type:dateTime` data type. The second argument, if present, MUST be a value of the `urn:oasis:names:tc:acal:1.0:data-type:dateTime` data type. If a dateTime value does not include a time-zone, then the time-zone SHALL be assumed to be `+14:00`. If such a value is determined to be the least dateTime then it is returned as is, without a time-zone. If the first argument evaluates to a bag with at least one value then the function SHALL return the least value in the bag, which may occur more than once. The comparison SHALL use the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)], part 2, Section 3.2.7]. If multiple dateTime values are equally least, then a value with a time-zone MUST be preferred over one without. If the first argument evaluates to an empty bag and the second argument is present, then the function SHALL return the value of the second argument. If the first argument evaluates to an empty bag and the second argument is absent, then the function SHALL return `Indeterminate`.
+: This function returns the least dateTime in a bag of dateTime values. The function takes one or two arguments. The first argument MUST be a bag of the `urn:oasis:names:tc:acal:1.0:data-type:dateTime` data type. The second argument, if present, MUST be a value of the `urn:oasis:names:tc:acal:1.0:data-type:dateTime` data type. If a dateTime value does not include a time-zone, then the time-zone SHALL be assumed to be `+14:00`. If such a value is determined to be the least dateTime then it is returned as is, without a time-zone. If the first argument evaluates to a bag with at least one value then the function SHALL return the least value in the bag, which may occur more than once. The comparison SHALL use the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)] Part 2, Section 3.3.7. If multiple dateTime values are equally least, then a value with a time-zone MUST be preferred over one without. If the first argument evaluates to an empty bag and the second argument is present, then the function SHALL return the value of the second argument. If the first argument evaluates to an empty bag and the second argument is absent, then the function SHALL return `Indeterminate`.
 
 `urn:oasis:names:tc:acal:1.0:function:dateTime-maximum`
 
-: This function returns the greatest dateTime in a bag of dateTime values. The function takes one or two arguments. The first argument MUST be a bag of the `urn:oasis:names:tc:acal:1.0:data-type:dateTime` data type. The second argument, if present, MUST be a value of the `urn:oasis:names:tc:acal:1.0:data-type:dateTime` data type. If a dateTime value does not include a time-zone, then the time-zone SHALL be assumed to be `-14:00`. If such a value is determined to be the greatest dateTime then it is returned as is, without a time-zone. If the first argument evaluates to a bag with at least one value then the function SHALL return the greatest value in the bag, which may occur more than once. The comparison SHALL use the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)] part 2, Section 3.2.7]. If multiple dateTime values are equally greatest, then a value with a time-zone MUST be preferred over one without. If the first argument evaluates to an empty bag and the second argument is present, then the function SHALL return the value of the second argument. If the first argument evaluates to an empty bag and the second argument is absent, then the function SHALL return `Indeterminate`.
+: This function returns the greatest dateTime in a bag of dateTime values. The function takes one or two arguments. The first argument MUST be a bag of the `urn:oasis:names:tc:acal:1.0:data-type:dateTime` data type. The second argument, if present, MUST be a value of the `urn:oasis:names:tc:acal:1.0:data-type:dateTime` data type. If a dateTime value does not include a time-zone, then the time-zone SHALL be assumed to be `-14:00`. If such a value is determined to be the greatest dateTime then it is returned as is, without a time-zone. If the first argument evaluates to a bag with at least one value then the function SHALL return the greatest value in the bag, which may occur more than once. The comparison SHALL use the order relation specified for `https://www.w3.org/2001/XMLSchema#dateTime` by [[XS](#xs)] Part 2, Section 3.3.7. If multiple dateTime values are equally greatest, then a value with a time-zone MUST be preferred over one without. If the first argument evaluates to an empty bag and the second argument is present, then the function SHALL return the value of the second argument. If the first argument evaluates to an empty bag and the second argument is absent, then the function SHALL return `Indeterminate`.
 
 `urn:oasis:names:tc:acal:1.0:function:date-minimum`
 
-: This function returns the least date in a bag of date values. The function takes one or two arguments. The first argument MUST be a bag of the `urn:oasis:names:tc:acal:1.0:data-type:date` data type. The second argument, if present, MUST be a value of the `urn:oasis:names:tc:acal:1.0:data-type:date` data type. If a date value does not include a time-zone, then the time-zone SHALL be assumed to be `+14:00`. If such a value is determined to be the least date then it is returned as is, without a time-zone. If the first argument evaluates to a bag with at least one value then the function SHALL return the least value in the bag, which may occur more than once. The comparison SHALL use the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] part 2, Section 3.2.9]. If multiple date values are equally least, then a value with a time-zone MUST be preferred over one without. If the first argument evaluates to an empty bag and the second argument is present, then the function SHALL return the value of the second argument. If the first argument evaluates to an empty bag and the second argument is absent, then the function SHALL return `Indeterminate`.
+: This function returns the least date in a bag of date values. The function takes one or two arguments. The first argument MUST be a bag of the `urn:oasis:names:tc:acal:1.0:data-type:date` data type. The second argument, if present, MUST be a value of the `urn:oasis:names:tc:acal:1.0:data-type:date` data type. If a date value does not include a time-zone, then the time-zone SHALL be assumed to be `+14:00`. If such a value is determined to be the least date then it is returned as is, without a time-zone. If the first argument evaluates to a bag with at least one value then the function SHALL return the least value in the bag, which may occur more than once. The comparison SHALL use the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] Part 2, Section 3.3.9. If multiple date values are equally least, then a value with a time-zone MUST be preferred over one without. If the first argument evaluates to an empty bag and the second argument is present, then the function SHALL return the value of the second argument. If the first argument evaluates to an empty bag and the second argument is absent, then the function SHALL return `Indeterminate`.
 
 `urn:oasis:names:tc:acal:1.0:function:date-maximum`
 
-: This function returns the greatest date in a bag of date values. The function takes one or two arguments. The first argument MUST be a bag of the `urn:oasis:names:tc:acal:1.0:data-type:date` data type. The second argument, if present, MUST be a value of the `urn:oasis:names:tc:acal:1.0:data-type:date` data type. If a date value does not include a time-zone, then the time-zone SHALL be assumed to be `-14:00`. If such a value is determined to be the greatest date then it is returned as is, without a time-zone. If the first argument evaluates to a bag with at least one value then the function SHALL return the greatest value in the bag, which may occur more than once. The comparison SHALL use the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] part 2, Section 3.2.9]. If multiple date values are equally greatest, then a value with a time-zone MUST be preferred over one without. If the first argument evaluates to an empty bag and the second argument is present, then the function SHALL return the value of the second argument. If the first argument evaluates to an empty bag and the second argument is absent, then the function SHALL return `Indeterminate`.
+: This function returns the greatest date in a bag of date values. The function takes one or two arguments. The first argument MUST be a bag of the `urn:oasis:names:tc:acal:1.0:data-type:date` data type. The second argument, if present, MUST be a value of the `urn:oasis:names:tc:acal:1.0:data-type:date` data type. If a date value does not include a time-zone, then the time-zone SHALL be assumed to be `-14:00`. If such a value is determined to be the greatest date then it is returned as is, without a time-zone. If the first argument evaluates to a bag with at least one value then the function SHALL return the greatest value in the bag, which may occur more than once. The comparison SHALL use the order relation specified for `https://www.w3.org/2001/XMLSchema#date` by [[XS](#xs)] Part 2, Section 3.3.9. If multiple date values are equally greatest, then a value with a time-zone MUST be preferred over one without. If the first argument evaluates to an empty bag and the second argument is present, then the function SHALL return the value of the second argument. If the first argument evaluates to an empty bag and the second argument is absent, then the function SHALL return `Indeterminate`.
 
 ### C.3.15 Special Match Functions
 
@@ -8100,7 +8054,7 @@ These functions operate on various types and evaluate to `urn:oasis:names:tc:aca
 
 `urn:oasis:names:tc:acal:1.0:function:x500Name-match`
 
-: This function shall take two arguments of `urn:oasis:names:tc:acal:1.0:data-type:x500Name` and shall return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It shall return `true` if and only if the second argument matches some terminal sequence of RDNs from the first argument when compared using `x500Name-equal`.
+: This function SHALL take two arguments of `urn:oasis:names:tc:acal:1.0:data-type:x500Name` and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. It SHALL return `true` if and only if the second argument matches some terminal sequence of RDNs from the first argument when compared using `x500Name-equal`.
 
 : As an example (non-normative), if the first argument is `cn=John Smith,o=Medico Corp,c=US` and the second argument is `O=Medico Corp,C=US`, then the function will return `true`.
 
@@ -8114,11 +8068,11 @@ These functions operate on various types and evaluate to `urn:oasis:names:tc:aca
 
 : The first argument contains a complete rfc822Name. The second argument is a complete or partial rfc822Name used to select appropriate values in the first argument as follows.
 
-: In order to match a particular address in the first argument, the second argument must specify the complete mail address to be matched. For example, if the second argument is `Anderson@sun.com`, this matches a value in the first argument of `Anderson@sun.com` and `Anderson@SUN.COM`, but not `Anne.Anderson@sun.com`, `anderson@sun.com` or `Anderson@east.sun.com`.
+: In order to match a particular address in the first argument, the second argument MUST specify the complete mail address to be matched. For example, if the second argument is `Anderson@sun.com`, this matches a value in the first argument of `Anderson@sun.com` and `Anderson@SUN.COM`, but not `Anne.Anderson@sun.com`, `anderson@sun.com` or `Anderson@east.sun.com`.
 
-: In order to match any address at a particular domain in the first argument, the second argument must specify only a domain name (usually a DNS name). For example, if the second argument is `sun.com`, this matches a value in the first argument of `Anderson@sun.com` or `Baxter@SUN.COM`, but not `Anderson@east.sun.com`.
+: In order to match any address at a particular domain in the first argument, the second argument MUST specify only a domain name (usually a DNS name). For example, if the second argument is `sun.com`, this matches a value in the first argument of `Anderson@sun.com` or `Baxter@SUN.COM`, but not `Anderson@east.sun.com`.
 
-: In order to match any address in a particular domain in the first argument, the second argument must specify the desired domain-part with a leading `.`. For example, if the second argument is `.east.sun.com`, this matches a value in the first argument of `Anderson@east.sun.com` and `anne.anderson@ISRG.EAST.SUN.COM` but not `Anderson@sun.com`.
+: In order to match any address in a particular domain in the first argument, the second argument MUST specify the desired domain-part with a leading `.`. For example, if the second argument is `.east.sun.com`, this matches a value in the first argument of `Anderson@east.sun.com` and `anne.anderson@ISRG.EAST.SUN.COM` but not `Anderson@sun.com`.
 
 : Note that the arguments to this function are swapped compared to the similarly-named function in XACML [[XACML](#xacml)].
 
@@ -8127,17 +8081,17 @@ These functions operate on various types and evaluate to `urn:oasis:names:tc:aca
 `urn:oasis:names:tc:acal:1.0:function:access-permitted`
 
 : This function SHALL take an `urn:oasis:names:tc:acal:1.0:data-type:anyURI` and an <!-- Line break added for the previous line to fit on a PDF page -->
-`urn:oasis:names:tc:acal:1.0:data-type:entity` as arguments. The first argument SHALL be interpreted as an attribute category. The second argument SHALL be interpreted as a `RequestEntityType` object with the `Category` property set to the value of first argument. The function evaluates to an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. This function SHALL return `true` if and only if the policy evaluation described below returns the value of `Permit`.
+`urn:oasis:names:tc:acal:1.0:data-type:entity` as arguments. The first argument SHALL be interpreted as an attribute category. The second argument SHALL be interpreted as a `RequestEntityType` object with the `Category` property set to the value of the first argument. The function evaluates to an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. This function SHALL return `true` if and only if the policy evaluation described below returns the value of `Permit`.
 
 : The following evaluation is described as if the context is actually instantiated, but it is only required that an equivalent result be obtained.
 
-: The function SHALL construct a new context, by copying all the information from the current context, omitting any `RequestEntityType` object with `Category` property equal to the first argument. The second function argument SHALL be added to the context as a `RequestEntityType` object with the `Category` property set to the value of first argument.
+: The function SHALL construct a new context, by copying all the information from the current context, omitting any `RequestEntityType` object with `Category` property equal to the first argument. The second function argument SHALL be added to the context as a `RequestEntityType` object with the `Category` property set to the value of the first argument.
 
-: The function SHALL invoke a complete policy evaluation using the newly constructed context. This evaluation SHALL be completely isolated from the evaluation which invoked the function, but shall use all current policies and combining algorithms, including any per-request policies.
+: The function SHALL invoke a complete policy evaluation using the newly constructed context. This evaluation SHALL be completely isolated from the evaluation which invoked the function, but SHALL use all current policies and combining algorithms, including any per-request policies.
 
 : The PDP SHALL detect any loop which may occur if successive evaluations invoke this function by counting the number of total invocations of any instance of this function during any single initial invocation of the PDP. If the total number of invocations exceeds the bound for such invocations, the initial invocation of this function evaluates to `Indeterminate` with a `urn:oasis:names:tc:acal:1.0:status:processing-error` status code. Also, see the security considerations in [Section 10.1.8](#1018-denial-of-service).
 
-### C.3.18 Extension Functions and Data Types
+### C.3.17 Extension Functions and Data Types
 
 Functions and data types are specified by string identifiers allowing for the introduction of functions in addition to those specified by ACAL. This approach allows one to extend the ACAL module with special functions and special data types.
 
@@ -8203,7 +8157,9 @@ The following identifiers indicate data types that are defined in [Annex C.2](#c
 
 * `urn:oasis:names:tc:acal:1.0:data-type:dnsName`
 
-The following data type identifiers are defined in [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema) by reference to W3C XML Schema [[XS](#xs)] (each `urn:oasis:names:tc:acal:1.0:data-type:<name>` below corresponds to the `xs:<name>` type in the XML schema Data Types specification):
+* `urn:oasis:names:tc:acal:1.0:data-type:entity`
+
+The following data type identifiers are defined in [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) by reference to W3C XML Schema [[XS](#xs)] (each `urn:oasis:names:tc:acal:1.0:data-type:<name>` below corresponds to the `xs:<name>` type in the XML schema Data Types specification):
 
 * `urn:oasis:names:tc:acal:1.0:data-type:string`
 
@@ -8277,7 +8233,7 @@ The following identifiers indicate the location where authentication credentials
 
   The corresponding attribute SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:dnsName`.
 
-Where a suitable attribute is already defined in LDAP [LDAP-1], [LDAP-2], the ACAL identifier SHALL be the OID of the LDAP attribute represented as a URN. For example, the ACAL attribute identifier for the LDAP `title` attribute defined in RFC 2256 with the OID `2.5.4.12` would be `urn:oid:2.5.4.12`.
+Where a suitable attribute is already defined in LDAP [[LDAP-1](#ldap-1)], [[LDAP-2](#ldap-2)], the ACAL identifier SHALL be the OID of the LDAP attribute represented as a URN. For example, the ACAL attribute identifier for the LDAP `title` attribute defined in RFC 2256 with the OID `2.5.4.12` would be `urn:oid:2.5.4.12`.
 
 Short identifiers can be used to improve readability. For example `title` could be defined as a short identifier name for `urn:oid:2.5.4.12`.
 
@@ -8360,7 +8316,7 @@ This identifier indicates that some attribute value contained a syntax error, su
 
 `urn:oasis:names:tc:acal:1.0:status:syntax-error`
 
-This identifier indicates that an error occurred while the PDP processed the decision request or evaluated policy (examples would be division by zero, or the refusal of a request as specified in [Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)):
+This identifier indicates that an error occurred while the PDP processed the decision request or evaluated policy (examples would be division by zero, or the refusal of a request as specified in [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)):
 
 `urn:oasis:names:tc:acal:1.0:status:processing-error`
 
@@ -8397,14 +8353,14 @@ The permit-unless-deny combining algorithm has the following value for the `Comb
 
 ## D.10 Content Types
 
-These standard *Media Type* identifiers ([[RFC 2046]](#rfc2046)) - registered at IANA ( [[RFC6838]](#rfc6838) ) - SHALL be used as values for the `MediaType` property of `ContentType` objects, whenever applicable to the Content type: 
+These standard *Media Type* identifiers ([[RFC2046](#rfc2046)]) - registered at IANA ( [[RFC6838](#rfc6838)] ) - SHALL be used as values for the `MediaType` property of `ContentType` objects, whenever applicable to the Content type: 
 
 - For XML content: `application/xml`;
 - For JSON content: `application/json`.
 
 ## D.11 Content Encodings
 
-This standard *Encoding mechanism* identifier ([[RFC 2045]](#rfc2045) Section 6) - registered at IANA ( [[RFC4289]](#rfc4289) ) - SHALL be used as values for the `Encoding` property of `ContentType` objects, whenever applicable to the Content type: 
+This standard *Encoding mechanism* identifier ([[RFC2045](#rfc2045)] Section 6) - registered at IANA ( [[RFC4289](#rfc4289)] ) - SHALL be used as values for the `Encoding` property of `ContentType` objects, whenever applicable to the Content type: 
 
 - `base64`.
 
@@ -8443,7 +8399,7 @@ The following is a non-normative description of this combining algorithm. The `d
 
 2. Otherwise, if any decision is `Indeterminate{DP}`, the result is `Indeterminate{DP}`.
 
-3. Otherwise, if any decision is `Indeterminate{D}` and another decision is `Indeterminate{P} or `Permit`, the result is `Indeterminate{DP}`.
+3. Otherwise, if any decision is `Indeterminate{D}` and another decision is `Indeterminate{P}` or `Permit`, the result is `Indeterminate{DP}`.
 
 4. Otherwise, if any decision is `Indeterminate{D}`, the result is `Indeterminate{D}`.
 
@@ -8538,7 +8494,7 @@ The combining algorithm defined here has the following identifier:
 
 `urn:oasis:names:tc:acal:1.0:combining-algorithm:permit-overrides`
 
-The following is a non-normative informative description of this combining algorithm. The `permit-overrides` combining algorithm is intended for those cases where a `Permit` decision should have priority over a `Deny` decision. This algorithm has the following behavior.
+The following is a non-normative description of this combining algorithm. The `permit-overrides` combining algorithm is intended for those cases where a `Permit` decision should have priority over a `Deny` decision. This algorithm has the following behavior.
 
 1. If any decision is `Permit`, the result is `Permit`.
 
@@ -8637,7 +8593,7 @@ The combining algorithm defined here has the following identifier:
 
 `urn:oasis:names:tc:acal:1.0:combining-algorithm:deny-unless-permit`
 
-The following is a non-normative informative description of this combining algorithm. The `deny-unless-permit` combining algorithm is intended for those cases where a `Permit` decision should have priority over a `Deny` decision, and an `Indeterminate` or `NotApplicable` must never be the result. It is particularly useful at the top level in a policy structure to ensure that a PDP will always return a definite `Permit` or `Deny` result. This algorithm has the following behavior.
+The following is a non-normative description of this combining algorithm. The `deny-unless-permit` combining algorithm is intended for those cases where a `Permit` decision should have priority over a `Deny` decision, and an `Indeterminate` or `NotApplicable` must never be the result. It is particularly useful at the top level in a policy structure to ensure that a PDP will always return a definite `Permit` or `Deny` result. This algorithm has the following behavior.
 
 1. If any decision is `Permit`, the result is `Permit`.
 
@@ -8669,7 +8625,7 @@ The combining algorithm defined here has the following identifier:
 
 `urn:oasis:names:tc:acal:1.0:combining-algorithm:permit-unless-deny`
 
-The following is a non-normative informative description of this combining algorithm. The `permit-unless-deny` combining algorithm is intended for those cases where a `Deny` decision should have priority over a `Permit` decision, and an `Indeterminate` or `NotApplicable` must never be the result. It is particularly useful at the top level in a policy structure to ensure that a PDP will always return a definite `Permit` or `Deny` result. This algorithm has the following behavior.
+The following is a non-normative description of this combining algorithm. The `permit-unless-deny` combining algorithm is intended for those cases where a `Deny` decision should have priority over a `Permit` decision, and an `Indeterminate` or `NotApplicable` must never be the result. It is particularly useful at the top level in a policy structure to ensure that a PDP will always return a definite `Permit` or `Deny` result. This algorithm has the following behavior.
 
 1. If any decision is `Deny`, the result is `Deny`.
 
@@ -8693,7 +8649,7 @@ Decision permitUnlessDenyCombiningAlgorithm(Node[] children)
 
 Notices SHALL be combined as described in [Section 8.16](#816-notices).
 
-: Note: A child that evaluates to `Indeterminate` does not prevent this algorithm from returning `Permit`. In particular, if an integer error causes a child that would otherwise have evaluated to `Deny` to evaluate to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`, this algorithm returns `Permit` unless another child evaluates to `Deny` ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema), [Annex C.3.2](#c32-arithmetic-functions), [Section 10.1.9](#1019-implementation-defined-integer-limits)).
+: Note: A child that evaluates to `Indeterminate` does not prevent this algorithm from returning `Permit`. In particular, if an integer error causes a child that would otherwise have evaluated to `Deny` to evaluate to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`, this algorithm returns `Permit` unless another child evaluates to `Deny` ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema), [Annex C.3.2](#c32-arithmetic-functions), [Section 10.1.9](#1019-implementation-defined-integer-limits)).
 
 ## E.8 First Applicable
 
@@ -8703,7 +8659,7 @@ The combining algorithm defined here has the following identifier:
 
 `urn:oasis:names:tc:acal:1.0:combining-algorithm:first-applicable`
 
-The following is a non-normative informative description of the `first-Applicable` combining algorithm of a policy.
+The following is a non-normative description of the `first-applicable` combining algorithm of a policy.
 
 For a particular child policy or rule, if that policy or rule evaluates to `Permit`, `Deny` or `Indeterminate`, then the evaluation SHALL halt and the enclosing policy shall evaluate to the value of that policy or rule. If the policy or rule evaluates to `NotApplicable`, then the next child policy or rule in the order SHALL be evaluated. If no further child policy or rule exists in the order, then the enclosing policy shall evaluate to `NotApplicable`. If an error occurs while evaluating a policy or rule, or a policy reference is considered invalid, then the evaluation SHALL halt, and the enclosing policy shall evaluate to `Indeterminate`, with the appropriate error status.
 
@@ -8743,21 +8699,24 @@ Notices SHALL be combined as described in [Section 8.16](#816-notices).
 
 # Annex F How to generate HTML and PDF Versions
 
+(This annex does not form an integral part of this Specification and is informational.)
+
 ## Online generation
 
-HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS XACML TC Github repository](https://github.com/oasis-tcs/xacml-spec/). Go to Github Actions on the github repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
+HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/). Go to Github Actions on the github repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
 
 ## Offline generation
 
 ### Prerequisites
 
-Install Pandoc **v3.2.1 or later** ( [latest release](https://github.com/jgm/pandoc/releases/latest) ), Graphviz and PlantUML on your system; or simply use Docker with the following shell alias:
-```
-$ alias pandoc='docker run --rm --volume "$(pwd):/data" ghcr.io/oasis-tcs/pandoc-plantuml'
-```
-_The Dockerfile (named `Dockerfile`) of the docker image used in the alias above is provided in the [pandoc](pandoc) folder next to this markdown file for your convenience if you wish to build it yourself._  
+The following tools are required:
+- [Pandoc](https://pandoc.org/) **v3.2.1 or later** ( [latest release](https://github.com/jgm/pandoc/releases/latest) );
+- [Pandoc-include filter](https://github.com/DCsunset/pandoc-include);
+- [PlantUML](https://plantuml.com/starting) and [Graphviz](https://graphviz.org/), for the UML diagrams.
 
-Git clone or get a local copy of [OASIS XACML TC Github repository](https://github.com/oasis-tcs/xacml-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+Install them on your system.
+
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
 
 ### CSS stylesheet
 
@@ -8796,15 +8755,15 @@ In this case, the generation will use a public Linux container image (`ghcr.io/o
 
 ---
 
-# Annex G UML model
+# Annex G UML Model
 
 The full UML Class diagram of the ACAL model is shown in the **Figure G-1** below. 
 
 ![ACAL UML Model](images/ACAL_UML_Model.png)
 
-**Fig. G-1.** ACAL UML class diagram
+**Figure G-1.** ACAL UML class diagram
 
-As a courtesy to software architects, the UML Model is also provided in the standard machine-readable format *XMI* (XML Metadata Interchange) on [OASIS XACML TC's github repository](https://github.com/oasis-tcs/xacml-spec/tree/v%version%-%stage_revision%/UML/Eclipse_Papyrus_project) to facilitate reuse in UML-aware software engineering tools.
+As a courtesy to software architects, the UML Model is also provided in the standard machine-readable format *XMI* (XML Metadata Interchange) on [OASIS ACAL \[XACML\] TC's github repository](https://github.com/oasis-tcs/acal-spec/tree/v%version%-%stage_revision%/UML/Eclipse_Papyrus_project) to facilitate reuse in UML-aware software engineering tools.
 
 To facilitate the reading of the model and its implementation in ACAL systems, the model is split in three packages:
 - `PDP_API` contains the part of the model that a PEP should support for interacting with a PDP, i.e. send authorization decision requests to a PDP and receive decision responses from it.
@@ -8820,29 +8779,11 @@ Obviously, a PDP should support all of them, with the possible exception of cert
 (This appendix does not form an integral part of this Specification and is informational.)
 
 
-<!-- From OASIS Open Specification Template Instructions:
-
-
-All parts in this appendix are optional to the TC. Individuals or companies, past or present, may request that their name and/or affiliation is not included in this list. 
-
-
--->
-
-
 ## Leadership
 
 
 The following individuals have had significant leadership positions during the development of this document, not just this version of the document, and they are gratefully acknowledged:
 
-
-<!-- From OASIS Open Specification Template Instructions:
-
-
-This section **SHOULD** include the leadership (chairs, sub committees chairs, secretaries, editors, etc.) of this document, and not just for this version of the document, even if they are no longer members of the TC.
-
-- Position, First Name Last Name, Company, [optional time frames] 
-
--->
 
 - Chairs
   - Bill Parducci, Individual
@@ -8851,21 +8792,7 @@ This section **SHOULD** include the leadership (chairs, sub committees chairs, s
 - Editors
   - Steven Legg, ViewDS Identity Solutions
   - Cyril Dangerville, THALES
-
-
-## Special Thanks
-
-
-The following individuals have made substantial contributions to this document, not just this version of the document, and their contributions are gratefully acknowledged:
-<!-- From OASIS Open Specification Template Instructions:
-
-
-This section **SHOULD** include individuals that have made significant contributions to this document, and not just this version of the document, even if they are no longer members of the TC or were never members of the TC but sent in a contribution through one of the public comment methods. 
-
--->
-
-- Steven Legg, ViewDS Identity Solutions
-- Cyril Dangerville, THALES
+  - William Parducci, Individual
 
 
 ## Participants
@@ -8873,9 +8800,8 @@ This section **SHOULD** include individuals that have made significant contribut
 
 The following individuals were members of this committee during the creation of this document, not just this version of the document, and their contributions are gratefully acknowledged:
 
-**XACML TC Members:**
+**OASIS ACAL \[XACML\] TC Members:**
 
-- Hal Lockhart, Individual
 - Bill Parducci, Individual
 - Steven Legg, ViewDS Identity Solutions
 - Cyril Dangerville, THALES
@@ -8889,11 +8815,46 @@ The following individuals were members of this committee during the creation of 
 
 (This appendix does not form an integral part of this Specification and is informational.)
 
-<!-- From OASIS Open Specification Template Instructions: 
 
-The appendix **SHOULD** contain any explanatory text about the reason for this version including any major changes. The level of detail that is included in this appendix is up to the editors and chairs of the TC to determine. This appendix is **REQUIRED**, if there are no changes then one is to put "None." In addition to any descriptive text, all major changes **SHOULD** be in a bulleted list so that reviewers and implementers can easily understand what they need to know.
+The changes made since the previous version (Committee Specification Draft 01) are the following. Section numbers refer to this version.
 
--->
+- The `Expression` property of `ApplyType`, `PolicyReferenceType` and `SharedVariableReferenceType` is renamed `Argument`, and a function, parameterized policy or shared variable may now be given *named* arguments as an alternative to positional ones, using the new `ArgumentType` and `NamedArgumentType` object types ([Section 7.11](#711-policyreferencetype), [Section 7.15](#715-applytype), [Section 7.24b](#724b-sharedvariablereferencetype), [Section 7.47](#747-argumenttype-and-namedargumenttype)).
+- `RequestEntityReferenceType` is removed. The `RequestEntityReference` property of `RequestReferenceType` is now a sequence of `LocalIdentifierType` values ([Section 7.39](#739-requestreferencetype-optional)); the subsequent sections of Section 7 are renumbered accordingly.
+- Attributes within a `RequestEntityType`, `ResultEntityType` or `EntityType` object are unique by the combination `(AttributeId, DataType, Issuer)` instead of by `AttributeId` alone ([Section 7.33](#733-requestentitytype), with a worked example in [Section 7.33.1](#7331-uniqueness-example-non-normative); [Section 7.44](#744-resultentitytype); [Section 7.45](#745-entitytype)).
+- The `Id` of a notice or notice expression identifies the semantics of the notice, and the same `Id` may now occur more than once in a sequence of notices or notice expressions; the `(AttributeId, Category)` uniqueness constraint on the `AttributeAssignment` and `AttributeAssignmentExpression` properties is removed ([Section 7.26](#726-noticetype), [Section 7.29](#729-noticeexpressiontype)). The `IsObligation` property of `NoticeExpressionType` now has the default value `false`.
+- The `Category` property of `MissingAttributeDetailType` is now optional ([Section 7.43](#743-missingattributedetailtype)).
+- `IdentifierType` values have a minimum length of one character, so the empty string is not a valid identifier ([Section 7.1.2.3.8](#71238-identifiertype)).
+- The rules for identifying the concrete `ValueType` subtype of a value in a concrete representation are stated: a representation may distinguish the literal subtypes by native scalar syntax or use a uniform literal form, and the subtype is determined from the effective `DataType`, not by inspecting a structured value's content ([Section 7.23](#723-valuetype)).
+- Attribute retrieval and the handling of missing attributes explicitly cover entity attribute designators and entity attribute selectors as well as attribute designators and attribute selectors ([Section 8.4.5](#845-attribute-retrieval), [Section 8.17.3](#8173-missing-attributes)).
+- Identifier values and URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved for the exclusive use of the OASIS ACAL \[XACML\] TC ([Section 7.1.2.3.1](#71231-uri), [Section 7.1.2.3.8](#71238-identifiertype) and the identifier-valued properties of Section 7). The predefined short identifier set gains four entries (`resource-location`, `simple-file-name`, `is-empty` and `is-not-empty`) and is also provided in YAML, and the JSON artifact is `acal-core-json-v1.0-identifiers.json` (csd01 cited `acal-core-xml-v4.0-identifiers.json`) ([Section 7.2](#72-shortidsettype)).
+- A `PolicyDefaults` object now also applies within the policies nested in its policy; a nested policy's own object of the same concrete type applies inside that nested policy in place of the enclosing object; a policy included by a `PolicyReference` is not nested ([Section 7.4](#74-policytype), [Section 7.5](#75-policydefaultstype-optional)).
+- Resolving a policy reference is defined as a selection from the policies that define the PDP: the entry-point reference of a `BundleType` object is required to resolve within that set, and another reference that matches no policy in it may be resolved by retrieving the policy from its `Id` when that is a URL ([Section 8.13](#813-policyreference-evaluation)).
+- The conversion of the result of an attribute selector's or entity attribute selector's `Path` expression to a bag of values is now specified by the ACAL Profile that defines the concrete selector type; the XPath-specific conversion rules moved to the XPath Profile ([Section 8.4.7](#847-selector-evaluation)).
+- The value space, lexical space and lexical mapping of the twelve data types that correspond to XML Schema datatypes are stated explicitly, and the value spaces, lexical spaces and lexical mappings of `x500Name`, `rfc822Name`, `ipAddress` and `dnsName` are defined ([Annex C.2](#c2-data-types), [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)). The `integer` value space is unbounded; an implementation that applies a bound documents its *supported integer interval*, which includes at least −2<sup>63</sup> to 2<sup>63</sup>−1, and an integer result is exact or `Indeterminate`. Input acceptance limits are defined, and so is the optional refusal of a request before evaluation. Support for the `integer` data type means support for the implementation's supported integer interval ([Section 11.2.7](#1127-data-types)), and a policy containing an `integer` literal outside that interval evaluates to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error` whenever it is evaluated ([Section 8.17.1](#8171-unsupported-functionality)).
+- The syntax of `ipAddress` and `dnsName` values is stated as conformance to the `IPv4address`, `IP-literal` and `reg-name` rules of [[RFC3986](#rfc3986)] ([Annex C.2.3](#c23-ip-address), [Annex C.2.4](#c24-dns-name)).
+- `double` arithmetic and comparison are specified as binary64 operations with round-to-nearest, ties-to-even, replacing the former IEEE 754 context settings (flags, trap-enablers, precision and rounding) ([Section 8.6](#86-arithmetic-evaluation)). The integer arithmetic and conversion functions state their exact results, including truncation toward zero for `integer-divide` and `integer-mod`, and the `add` and `multiply` functions are required to take two or more arguments, where csd01 only permitted it (the `integer-add` and `integer-multiply` entries already required it) ([Annex C.3.2](#c32-arithmetic-functions), [Annex C.3.4](#c34-numeric-data-type-conversion-functions)). A zero divisor of `integer-divide`, `double-divide` or `integer-mod` evaluates to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error` (csd01 named only the divide functions and no status code) ([Annex C.3.2](#c32-arithmetic-functions)). `integer-from-string` keeps `syntax-error` for an invalid lexical form and returns `processing-error` for a valid integer outside the supported integer interval or one the implementation cannot produce ([Annex C.3.9](#c39-string-functions)).
+- The `or` and `and` functions may evaluate their arguments in any order, and so may `n-of` after its first argument, instead of strictly from first to last ([Annex C.3.5](#c35-logical-functions)).
+- `x500Name-equal` compares Relative Distinguished Names using the rules of [[RFC5280](#rfc5280)] Section 7.1 (LDAP StringPrep with case-insensitive matching) instead of those of the obsoleted RFC 3280 Section 4.1.2.4, and its first step now parses each argument according to [[RFC4514](#rfc4514)] Section 3 instead of "normalizing" it ([Annex C.3.1](#c31-equality-predicates)); because its result can now differ from that of XACML's `x500Name-equal`, the XACML identifiers of `x500Name-equal` and of the `x500Name` bag and set functions defined through it (`x500Name-is-in`, `-intersection`, `-at-least-one-member-of`, `-union`, `-subset`, `-set-equals`) are no longer listed as equivalent ([Section 11.2.8](#1128-functions)).
+- In the equality, comparison and ordering functions of [Annex C.3.1](#c31-equality-predicates) and [Annex C.3.8](#c38-non-numeric-comparison-functions), a `dateTime` or `date` value without a time zone is resolved using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; the resulting dependence of a decision on the PDP's configuration is stated, and an explicit time zone on every `dateTime`, `time` and `date` value is recommended ([Annex C.2](#c2-data-types), [Annex C.3.8](#c38-non-numeric-comparison-functions)).
+- New security considerations for integer processing ([Section 10.1.8](#1018-denial-of-service), [Section 10.1.9](#1019-implementation-defined-integer-limits)).
+- `RequestType.MultiRequests` gains an OCL constraint that every `RequestEntityReference` value equals the `Id` of a `RequestEntity` ([Section 7.31](#731-requesttype)).
+- The `IsObligation` property of a `NoticeExpressionType` object states its default value, `false` ([Section 7.29](#729-noticeexpressiontype)), as the `NoticeType` object already did.
+- Property descriptions are aligned with the UML, which is unchanged: `MaxDelegationDepth` is a `NonNegativeInteger` ([Section 7.4](#74-policytype)), `Issuer` is a `Name` ([Section 7.17](#717-namedattributedesignatortype)), the quantified-expression domain is a `NonLiteralExpressionType` ([Section 7.25](#725-quantifiedexpressiontype-optional)), and the `Id` of a `RequestEntityType` or `ResultEntityType` object is a `LocalIdentifierType` ([Section 7.33](#733-requestentitytype), [Section 7.44](#744-resultentitytype)). The conditions under which the `MediaType` and `ContentEncodingType` types and the `ContentType` object are required are stated in terms of what the implementation supports ([Section 7.1.2.3.14](#712314-mediatype-optional), [Section 7.1.2.3.15](#712315-contentencodingtype-optional), [Section 7.34](#734-contenttype-optional)).
+- The non-normative description of a policy target ([Section 5.3.2.1](#5321-policy-target)) no longer offers a target calculated from the components' targets and conditions, or rules inheriting the policy target; a component policy or rule applies only when both the outer policy's target and its own target or condition are satisfied.
+- The normative [[XF](#xf)] reference is the XPath and XQuery Functions and Operators 3.1 Recommendation (csd01 cited its namespace document), and the `op:dateTime-equal`, `op:date-equal` and `op:time-equal` citations are corrected to its Sections 9.4.1, 9.4.4 and 9.4.7 ([Annex C.3.1](#c31-equality-predicates)); `string-regexp-match` cites `fn:matches` ([Annex C.3.13](#c313-regular-expression-based-functions)).
+- The `processing-error` status code is described as an error while the PDP processes the decision request or evaluates policy, including the refusal of a request as specified in [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) (csd01: an error during policy evaluation) ([Annex D.8](#d8-status-codes)). The target value "No Match" is written `No-match`, as in the policy truth table ([Section 8.7](#87-target-evaluation)). In the glossary, "Context handler" refers to the ACAL context instead of the XACML canonical form, and the Condition definition writes its values `true` and `false` (csd01: `True`, `False`) ([Section 2.1.2](#212-terms-defined-in-this-document)).
+- The base-PEP decision value "Not Applicable" is written `NotApplicable` ([Section 8.2.1](#821-base-pep)); [Section 8.10](#810-extended-indeterminate) defines the top-level policy, at which an extended `Indeterminate` is returned as a plain `Indeterminate`, as the policy referenced by the `PolicyReference` property of the `BundleType` object that defines the PDP; and the local-identifier examples of [Section 7.1.2.3.9](#71239-localidentifiertype) use `Name` for a parameter and `Id` for a rule (csd01: `ParameterName` and `RuleId`) and describe `RequestEntityReference` as a `LocalIdentifierType` value.
+- The `entity` data type is listed among the data type identifiers ([Annex D.3](#d3-data-types)).
+- Requirement keywords previously written in lowercase or mixed case ("must", "shall", "should", "SHALL not") are written in uppercase, with the wording otherwise unchanged (Sections 7.1.2.3, 7.3, 7.4, 7.6, 7.11, 7.12, 7.15, 7.21, 7.22, 7.24b, 7.29, 7.31, 7.34, 7.43, 8.2.1, 8.2.3, 8.3, 8.4.5, 8.16 and 11.2.4, and Annexes C.2, C.3.1, C.3.3, C.3.5, C.3.8, C.3.15 and C.3.16).
+- In the object-type conformance table, `NamedArgumentType` (optional) and `PatternMatchIdReferenceType` are added, `SharedVariableReferenceType` is now optional, and `DecisionType` (a simple type), `DescriptionType` (not defined by the model) and `PolicyIssuerType` (the policy issuer is an `EntityType`) are no longer listed, `PatternMatchIdReferenceType` is mandatory, and the deprecated identifier of `base64Binary-at-least-one-member-of` is corrected to its XACML 1.0 identifier ([Section 11.2.8](#1128-functions)); the other changes are in the object-type table ([Section 11.2.1](#1121-object-types)). The reference to conformance test cases is removed from [Section 11.2](#112-conformance-tables).
+- A response holds one `ResultType` object per Individual Decision Request, or a single combined `ResultType` object, instead of one per requested resource ([Section 7.36](#736-responsetype)).
+- Requirements formerly stated in non-normative sections are moved into normative ones: the conversion of attribute representations ([Section 8.4](#84-attribute-evaluation)), the advice of [[UTR36](#utr36)] ([Section 8.1.2](#812-version-of-unicode)) and distinct namespaces for policy identifiers from distinct sources ([Section 8.13](#813-policyreference-evaluation)). [Section 5.2](#52-acal-context), [Section 10.2.5](#1025-policy-identifiers) and [Section 10.3](#103-unicode-security-issues) now refer to those sections, [Section 10.4](#104-identifier-equality) refers to [Section 8.18](#818-identifier-equality), which already stated its recommendation, and [Section 5.3.1.1](#5311-condition) no longer states a requirement of its own but refers to [[ACAL-Hierarchical-1.0](#acal-hierarchical-10)].
+- The examples are corrected so that each validates against its representation's schema and evaluates as its text describes: in [Section 6](#6-examples-non-normative) the JSON examples carry their JACAL root key, the YAML short-identifier set is a bare mapping, the example short-identifier set defines every short identifier the rules use, Rule 1's YAML variable definition uses `Expression`, Rule 2 tests "under 16" with `date-less-than`, Rule 2's JSON is well-formed, and Rule 3's notice reads the physician's `physician-id`; in [Annex C.3.12](#c312-higher-order-bag-functions) the `all-of` example's XML literal is typed `integer`.
+- New glossary terms: lexical mapping, lexical space and value space ([Section 2.1.1](#211-terms-defined-elsewhere)); input acceptance limit and supported integer interval ([Section 2.1.2](#212-terms-defined-in-this-document)). The examples of [Section 6](#6-examples-non-normative) are also given in YAML; in them, `RuleId` is replaced by `Id`, and the example request's `patient-number` attribute is a `string`, as Rule 1 reads it. The complete UML class diagram is added as [Annex G](#annex-g-uml-model).
+- [Annex F](#annex-f-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
+- Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; references to the multiple decision and hierarchical resource profiles now cite the ACAL profiles; section and table numbering, cross-references and the table of contents are corrected (in Annex C, "Entity" moves from C.2.6 to C.2.5 and "Extension Functions and Data Types" from C.3.18 to C.3.17, closing numbering gaps); citations of XML Schema datatype sections use the XML Schema 1.1 numbering of [[XS](#xs)] (e.g. Section 3.3.7 for `dateTime`, formerly the XML Schema 1.0 number 3.2.7); references to RFC 2396, RFC 2253 and RFC 2821 are replaced by [[RFC3986](#rfc3986)], [[RFC4514](#rfc4514)] and [[RFC5321](#rfc5321)]; the property descriptions of `ResultType`, `StatusCodeType` and `ResultEntityType` now state the same multiplicities as their UML definitions; and the `isBag` property of `ParameterType` is spelled `IsBag`, as in the XML Schema.
+
+The remainder of this appendix describes how ACAL 1.0 differs from XACML 3.0.
 
 ACAL 1.0 is a successor to XACML 3.0. ACAL 1.0 differs from XACML 3.0 in the following ways:
 
@@ -8905,9 +8866,9 @@ ACAL 1.0 is a successor to XACML 3.0. ACAL 1.0 differs from XACML 3.0 in the fol
 
   - Compared to XACML 3.0, the `PolicyType` type now allows child `<Policy>` and `<PolicyReference>` (was `PolicyIdReference`) elements.
 
-  - Compared to XACML 3.0, a `Policy` may contain more than one `PolicyDefaults` element, one per ACAL Profile possibly. 
+  - Compared to XACML 3.0, a `Policy` may contain more than one `PolicyDefaults` element, one per ACAL Profile possibly.
 
-  - A `PolicyDefaults` object applies to the enclosing policy and to any policy nested within it; a nested policy's own `PolicyDefaults` object of the same concrete type applies within that policy in place of the enclosing policy's. A policy included by a `PolicyReference` is not nested within the referencing policy, and does not use the referencing policy's `PolicyDefaults`.
+  - The scope of the `PolicyDefaults` property now extends into policies nested within the enclosing policy; a nested policy that carries its own `PolicyDefaults` object of a given concrete type overrides the enclosing policy's object of that type within the nested policy. A policy included by a `PolicyReference` is not nested within the referencing policy, and does not use the referencing policy's `PolicyDefaults`. (In XACML 3.0, `<PolicyDefaults>` applied only within its own `<Policy>` and `<PolicySetDefaults>` only within its own `<PolicySet>`; neither was inherited by a nested policy set or policy.)
 
   - Separate rule and policy combining algorithms have been replaced with a single collection of combining algorithms. Legacy combining algorithms have been removed. The `only-one-applicable` policy combining algorithm has been removed.
 
@@ -8936,35 +8897,37 @@ ACAL 1.0 is a successor to XACML 3.0. ACAL 1.0 differs from XACML 3.0 in the fol
 
 - `Attribute` has a new optional `DataType` attribute (set to the standard string type as default), to have a common data-type for all the attribute values. In XACML 3.0, defining the data-type for each `AttributeValue` individually led to the risk of mixing different datatypes in the same attribute. We consider this bad practice (one may simply split in different attributes if using different data-types).
 
-- `AttributeValue` is replaced with more generic `Value` whose `DataType` is now optional, i.e. it may be omitted when it is already defined by at the parent or ancestor level, which simplifies expressions with literal values. In particular, as a result of the previous change, in an `Attribute`, the `Value`'s `DataType` is now omitted since defined at the `Attribute` level already.
+- The uniqueness rule for attributes within a `RequestEntity`, `ResultEntity` or `entity` data type value keys on the combination `(AttributeId, DataType, Issuer)` — where `DataType` is compared on its effective value after applying its default, and an absent `Issuer` is never a duplicate of a present one. (This replaces an earlier ACAL draft rule that keyed on `AttributeId` alone, which contradicted the attribute-designator matching rule and could not represent, for example, a node's ancestors given in more than one data type as the Hierarchical Resource Profile allows.)
+
+- `AttributeValue` is replaced with more generic `Value` whose `DataType` is now optional, i.e. it may be omitted when it is already defined at the parent or ancestor level, which simplifies expressions with literal values. In particular, as a result of the previous change, in an `Attribute`, the `Value`'s `DataType` is now omitted since defined at the `Attribute` level already.
 
 - A `Content` may now contain XML, JSON and possibly other content types in the future, and therefore has a new data model - more generic - that consists of three properties: `Body` (content body which is similar to former Content value), `MediaType` (Content media type which indicates whether it is XML, JSON or some other content type) and `Encoding` which indicates whether the body is encoded with a particular mechanism, e.g. Base64-encoded data.
 
 - `AttributeSelector` changes:
-  
+
   - `DataType` attribute changed to be optional with the standard string type as default value to simplify the element declaration in most cases.
    * `MustBePresent`: changed to be optional with `false` as default value, to simplify the element declaration in most cases.
    * `AttributeSelector` and `Path` type of expression are abstract in ACAL model, concrete types of AttributeSelector Path expressions to be defined in ACAL Profiles, e.g. XPath Profile.
    * The conversion of the result of a `Path` expression to a bag of values of the `DataType` ([Section 8.4.7](#847-selector-evaluation)) is likewise specified by the ACAL Profile that defines the concrete selector type; this Core specification keeps only the rules that apply whatever the profile (an empty result, a result matching no conversion case, a data type extension, an error during conversion). The XPath Profile's conversion is in its Section 7, written for the sequence-of-items result of the supported XPath versions instead of XPath 1.0's node-set, and differs from the former Core table in ways that section's changes list describes.
 
-- The value space, lexical space and lexical mapping of the twelve data types that correspond to XML Schema datatypes are stated explicitly ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema)), by reference to the like-named XML Schema 1.1 Part 2 datatype and independently of any ACAL representation format.
+- The value space, lexical space and lexical mapping of the twelve data types that correspond to XML Schema datatypes are stated explicitly ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)), by reference to the like-named XML Schema 1.1 Part 2 datatype and independently of any ACAL representation format.
 
-- The value space of the `integer` data type, and the behavior of integer results, are now stated explicitly ([Annex C.2.7](#c27-data-types-defined-by-reference-to-xml-schema), [Annex C.3.2](#c32-arithmetic-functions)). The value space is unbounded. An implementation should not impose a predetermined bound on the integers it evaluates; one that does documents its *supported integer interval*, which includes at least −2<sup>63</sup> to 2<sup>63</sup>−1. An integer result is exact, or is `Indeterminate` with status code `processing-error` when a required value is outside that interval, cannot be obtained because of an input acceptance limit, or cannot be preserved because an execution resource is exhausted, and is never wrapped around, reduced modulo a bound, saturated or rounded. An implementation may apply documented input acceptance limits and may refuse, before evaluation, a request that exceeds them or that contains an integer outside its interval. A function that takes an `integer` argument or a bag of `integer` values, or that prescribes an `integer` result, returns its prescribed result independently of argument or bag order if every supplied integer value, and any prescribed integer result, is within the interval, unless an argument is `Indeterminate` or an execution resource is exhausted; this includes `integer-average`, whose result is a `double`. `integer-divide`, `integer-mod` and `integer-abs` now state their results, and `integer-to-double` and `double-to-integer` state their rounding and error behavior ([Annex C.3.4](#c34-numeric-data-type-conversion-functions)). The terms *input acceptance limit* and *supported integer interval* are defined in [Section 2.1.2](#212-terms-defined-in-this-document), and the consequences for policy portability, testing and combining algorithms are described in the new [Section 10.1.9](#1019-implementation-defined-integer-limits).
+- The value space of the `integer` data type, and the behavior of integer results, are now stated explicitly ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema), [Annex C.3.2](#c32-arithmetic-functions)). The value space is unbounded. An implementation should not impose a predetermined bound on the integers it evaluates; one that does documents its *supported integer interval*, which includes at least −2<sup>63</sup> to 2<sup>63</sup>−1. An integer result is exact, or is `Indeterminate` with status code `processing-error` when a required value is outside that interval, cannot be obtained because of an input acceptance limit, or cannot be preserved because an execution resource is exhausted, and is never wrapped around, reduced modulo a bound, saturated or rounded. An implementation may apply documented input acceptance limits and may refuse, before evaluation, a request that exceeds them or that contains an integer outside its interval. A function that takes an `integer` argument or a bag of `integer` values, or that prescribes an `integer` result, returns its prescribed result independently of argument or bag order if every supplied integer value, and any prescribed integer result, is within the interval, unless an argument is `Indeterminate` or an execution resource is exhausted; this includes `integer-average`, whose result is a `double`. `integer-divide`, `integer-mod` and `integer-abs` now state their results, and `integer-to-double` and `double-to-integer` state their rounding and error behavior ([Annex C.3.4](#c34-numeric-data-type-conversion-functions)). The terms *input acceptance limit* and *supported integer interval* are defined in [Section 2.1.2](#212-terms-defined-in-this-document), and the consequences for policy portability, testing and combining algorithms are described in the new [Section 10.1.9](#1019-implementation-defined-integer-limits).
 
 - `AttributeDesignator` changes to simplify the declaration in most cases: 
 
   * `DataType` attribute changed to be optional, with the standard string type as default.
   * `MustBePresent`: changed to be optional with `false` as default value.
 
-- The `xml:id` attribute ([XMLid]) for an attribute category is replaced by a generic 'Id' property so that all ACAL representation formats are on an equal footing.
+- The `xml:id` attribute ([[XMLid](#xmlid)]) for an attribute category is replaced by a generic 'Id' property so that all ACAL representation formats are on an equal footing.
 
 - `Apply` changes: `Expression` elements are now `Argument` elements which may be either positional arguments (simple `Expression` elements) or named arguments (`Expressions` associated to a function parameter if the function has defined parameter names). 
 
 - New `ArgumentType` and `NamedArgumentType` adding support for *named arguments* in `Apply` expressions as described above.
 
-- The quantified expressions (`ForAny`, `ForAll`, `Select` and `Map`) and the `entity` data type from the XACML 3.0 Entities Profile [[ENTITIES](#entities)] have been incorporated in ACAL version 1.0. The `attribute-designator` function from the profile has been reinvented as the `EntityAttributeDesignatorType` expression object type and the `attribute-selector` function from the the profile has been reinvented as the `EntityAttributeSelectorType` expression object type.
+- The quantified expressions (`ForAny`, `ForAll`, `Select` and `Map`) and the `entity` data type from the XACML 3.0 Entities Profile [[ENTITIES](#entities)] have been incorporated in ACAL version 1.0. The `attribute-designator` function from the profile has been reinvented as the `EntityAttributeDesignatorType` expression object type and the `attribute-selector` function from the profile has been reinvented as the `EntityAttributeSelectorType` expression object type.
 
-- Added new `BundleType` object which allows to bundle variable definitions (`SharedVariableDefintion`), short identifiers (`ShortIdSet`) and policies together in order to be portable / reused from one ACAL system to another, more particularly one PDP to another.
+- Added new `BundleType` object which allows to bundle variable definitions (`SharedVariableDefinition`), short identifiers (`ShortIdSet`) and policies together in order to be portable / reused from one ACAL system to another, more particularly one PDP to another.
 
 - The arguments to each of the following functions have been swapped: `string-starts-with`, `anyURI-starts-with`, `string-ends-with`, `anyURI-ends-with`, `string-contains`, `anyURI-contains`, `x500Name-match`, `rfc822Name-match`, `string-regexp-match`, `anyURI-regexp-match`, `ipAddress-regexp-match`, `dnsName-regexp-match`, `rfc822Name-regexp-match` and `x500Name-regexp-match`.
 
@@ -8972,7 +8935,7 @@ ACAL 1.0 is a successor to XACML 3.0. ACAL 1.0 differs from XACML 3.0 in the fol
 
 - Added new aggregate functions (annex C.3) for computing:
   - Sums and averages of integers/doubles;
-  - Minimum and maximum values among integers, doubles, strings, times, dates, date-times.
+  - Minimum and maximum values among integers, doubles, strings, dates, date-times.
 
 - XPath features moved to separate ACAL XPath Profile: XPath-based AttributeSelector, XPath-based functions, XPath expression datatype.
 
@@ -8980,12 +8943,8 @@ ACAL 1.0 is a successor to XACML 3.0. ACAL 1.0 differs from XACML 3.0 in the fol
 
 ## Revision History
 
-Latest revision history can be obtained from [OASIS XACML TC's github repository](https://github.com/oasis-tcs/xacml-spec/blob/v%version%-%stage_revision%/acal-core-v%version%-%stage_revision%.md).
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's github repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-core-v%version%-%stage_revision%.md).
 
-<!--
-- \< Date in yyyy-mm-dd format \>, \< Revision number \>  
-- \< Date in yyyy-mm-dd format \>, \< Revision number \>
--->
 
 <!-- The following centered line represents the end of the document -->  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_

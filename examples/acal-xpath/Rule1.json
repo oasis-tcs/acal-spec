@@ -110,7 +110,8 @@
                                             {
                                                 "AttributeDesignator": {
                                                     "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:resource",
-                                                    "AttributeId": "urn:oasis:names:tc:acal:1.0:content-selector"
+                                                    "AttributeId": "urn:oasis:names:tc:acal:1.0:content-selector",
+                                                    "DataType": "urn:oasis:names:tc:acal:1.0:data-type:xpathExpression"
                                                 }
                                             },
                                             {

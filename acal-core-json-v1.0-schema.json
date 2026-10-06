@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "urn:oasis:names:tc:jacal:1.0:core:schema",
-	"title": "JSON schema for the JSON Representation of ACAL Core Version 1.0 (JACAL)",
+	"title": "Core JSON schema for JACAL, Version 1.0 (JSON Representation of ACAL)",
 	"description": "Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright information, and complete status, please see Annex A which contains the License, Document Status and Notices.",
 	"examples": [
 		{
@@ -208,7 +208,7 @@
 					"default": "urn:oasis:names:tc:acal:1.0:data-type:string",
 					"$ref": "#/$defs/IdentifierType"
 				},
-				"isBag": {
+				"IsBag": {
 					"default": false,
 					"type": "boolean"
 				},

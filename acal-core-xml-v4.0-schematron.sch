@@ -93,13 +93,13 @@
 	</rule>
  </pattern>
  <pattern id="ACAL_constraint_on_PolicyReferenceType_Expression_property">
-	<title>ACAL constraint (textual) on PolicyReference's Expression property (DataType already specified in the corresponding Parameter of the referenced element SHALL not be redefined)</title>
+	<title>ACAL constraint (textual) on PolicyReference's Expression property (DataType already specified in the corresponding Parameter of the referenced element SHALL NOT be redefined)</title>
 	<rule context="xacml:PolicyReference">
 	  <assert test="not(xacml:Value/@DataType)"></assert>
 	</rule>
  </pattern>
  <pattern id="ACAL_constraint_on_SharedVariableReferenceType_Expression_property">
-	<title>ACAL constraint (textual) on SharedVariableReference's Expression property (DataType already specified in the corresponding Parameter of the referenced element SHALL not be redefined)</title>
+	<title>ACAL constraint (textual) on SharedVariableReference's Expression property (DataType already specified in the corresponding Parameter of the referenced element SHALL NOT be redefined)</title>
 	<rule context="xacml:SharedVariableReference">
 	  <assert test="not(xacml:Value/@DataType)"></assert>
 	</rule>

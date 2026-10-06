@@ -120,7 +120,7 @@ applied IEEE 754 evaluation "enhanced with double precision" to integer
 functions as well as double ones, without saying what an integer
 result too large to represent becomes. ACAL Core now defines `integer` as the unbounded value space
 of `xs:integer`
-([Annex C.2.7](acal-core-v1.0.md#c27-data-types-defined-by-reference-to-xml-schema))
+([Annex C.2.6](acal-core-v1.0.md#c26-data-types-defined-by-reference-to-xml-schema))
 and lets an implementation support only part of it:
 
 - An implementation should not impose a predetermined bound on the

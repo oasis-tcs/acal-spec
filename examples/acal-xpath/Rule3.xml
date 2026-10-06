@@ -27,11 +27,12 @@
                 </Apply>
                 <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:any-of">
                     <Function Id="urn:oasis:names:tc:acal:1.0:function:xpath-node-match" />
-                    <Value
-                        XPathCategory="urn:oasis:names:tc:acal:1.0:attribute-category:resource" XPath="md:record/md:medical"/>
                     <AttributeDesignator
                         Category="urn:oasis:names:tc:acal:1.0:attribute-category:resource"
-                        AttributeId="urn:oasis:names:tc:acal:1.0:content-selector" />
+                        AttributeId="urn:oasis:names:tc:acal:1.0:content-selector"
+                        DataType="urn:oasis:names:tc:acal:1.0:data-type:xpathExpression"/>
+                    <Value
+                        XPathCategory="urn:oasis:names:tc:acal:1.0:attribute-category:resource" XPath="md:record/md:medical"/>
                 </Apply>
                 <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:string-is-in">
                     <Value>write</Value>

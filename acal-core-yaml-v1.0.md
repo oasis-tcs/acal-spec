@@ -1,14 +1,24 @@
-# YAML Representation of ACAL (YACAL) Version 1.0
+---
+# Document metadata processed by Pandoc:
+logo: |
+  ![OASIS](images/OASISLogo-v3.0.png)
+# Original logo: http://docs.oasis-open.org/templates/OASISLogo-v3.0.png
+title: YACAL, Version 1.0 (YAML Representation of ACAL)
+subtitle: Committee Specification Draft 02
+version: "1.0"
+stage_revision: csd02 # [stage-abbrev][revisionNumber] as defined in https://docs.oasis-open.org/specGuidelines/ndr/namingDirectives.html
+lang: en
+keywords: ["access control", "authorization", "ABAC", "policy language", "YAML", "standard"]
+# date metadata is set automatically to current date, unless specified on pandoc commandline: --metadata date="..."
 
-## Working Draft 01
-
-## 23 March 2026
-
-------------------------------------------------------------------------
+# If metadata 'x' is a string, any placeholder %x% will be replaced with the value of metadata 'x' (using meta_vars.lua filter), e.g. %version% will be replaced with the version metadata value.
+---
 
 ### This version
 
-- `acal-core-yaml-wd01-v1.0.md` (working draft source)
+- https://docs.oasis-open.org/acal/yacal/core/v%version%/%stage_revision%/acal-core-yaml-v%version%-%stage_revision%.html (Authoritative)
+- https://docs.oasis-open.org/acal/yacal/core/v%version%/%stage_revision%/acal-core-yaml-v%version%-%stage_revision%.pdf
+- https://docs.oasis-open.org/acal/yacal/core/v%version%/%stage_revision%/acal-core-yaml-v%version%-%stage_revision%.md
 
 ### Previous version
 
@@ -16,11 +26,13 @@ N/A
 
 ### Latest version
 
-- `acal-core-yaml-wd01-v1.0.md` (current working draft)
+- https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html (Authoritative)
+- https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.pdf
+- https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.md
 
 ### Technical Committee
 
-OASIS eXtensible Access Control Markup Language (XACML) TC
+[OASIS Attribute-Centric Authorization Language (ACAL) \[supersedes XACML\]](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d)
 
 ### Chairs
 
@@ -34,17 +46,17 @@ OASIS eXtensible Access Control Markup Language (XACML) TC
 
 - Steven Legg (steven.legg@viewds.com), ViewDS Identity Solutions
 - Cyril Dangerville (cyril.dangerville@thalesgroup.com), THALES
+- William Parducci (bill@parducci.net), Individual
 
 ### Additional artifacts
 
-This work product includes the following machine-readable YACAL
-artifacts.
+This document is one component of a Work Product that also includes the following machine-readable YACAL artifacts.
 
 Normative artifacts:
 
-- `acal-core-yaml-v1.0-structure.schema.yaml` (core YACAL structural schema)
-- `acal-core-yaml-v1.0-constraints.yaml` (core YACAL constraint catalog)
-- `acal-core-yaml-v1.0-identifiers.yaml` (core YACAL short-identifier set)
+- [Core YACAL structural schema](acal-core-yaml-v%version%-structure.schema.yaml)
+- [Core YACAL constraint catalog](acal-core-yaml-v%version%-constraints.yaml)
+- [Core YACAL short-identifier set](acal-core-yaml-v%version%-identifiers.yaml)
 
 The XPath and JSONPath Profiles are separate Work Products with their own machine-readable artifacts; see those profiles' specifications for details.
 
@@ -55,92 +67,185 @@ Informative example artifacts:
 - `yacal-root-structure-example-using-xpath-and-jsonpath-profiles.schema.yaml`
 - `yacal-root-structure-example-custom-plus-profile.schema.yaml`
 
-NOTE: any machine-readable content (Computer Language Definitions)
-declared Normative for this Work Product is provided in separate plain
-text files.  In the event of a discrepancy between any such plain text
-file and display content in the Work Product's prose narrative
-document(s), the content in the separate plain text file prevails.
-
-### Related Work
-
-This specification is a concrete representation format for the abstract
-policy language defined in [[ACAL-Core](#acal-core)].  It is a
-companion to the XML and JSON concrete representations of ACAL defined
-by separate specifications.
+NOTE: any machine-readable content (Computer Language Definitions) declared Normative for this Work Product is provided in separate plain text files. In the event of a discrepancy between any such plain text file and display content in the Work Product's prose narrative document(s), the content in the separate plain text file prevails.
 
 ### Abstract
 
-This document defines YACAL, a YAML-based concrete representation of the
-Attribute-Centric Authorization Language (ACAL) Version 1.0 abstract
-model.  YACAL specifies a mapping from every ACAL abstract model type to
-a corresponding YAML structure, using YAML 1.2 block style with the
-Core Schema.  YACAL is a first-class ACAL representation, parallel in
-authority to the XML and JSON representations.  This specification
-defines YAML syntax and YAML-specific processing rules for ACAL
-constructs, together with companion machine-readable structural,
-constraint, and identifier artifacts.  ACAL semantics are defined by
-[[ACAL-Core](#acal-core)], not by any concrete representation.
-Conversion between peer concrete representations is outside the scope of
-this specification.
+This document defines YACAL, a YAML-based concrete representation of the Attribute-Centric Authorization Language (ACAL) Version 1.0 abstract model. YACAL specifies a mapping from every ACAL abstract model type to a corresponding YAML structure, using YAML 1.2 block style with the Core Schema. YACAL is a first-class ACAL representation, parallel in authority to the XML and JSON representations. This specification defines YAML syntax and YAML-specific processing rules for ACAL constructs, together with companion machine-readable structural, constraint, and identifier artifacts. ACAL semantics are defined by [[ACAL-Core-1.0](#acal-core-10)], not by any concrete representation. Conversion between peer concrete representations is outside the scope of this specification.
 
-### Citation format
+### Citation Format
 
-When referencing this specification the following citation format should
-be used:
+When referencing this document, the following citation format should be used:
 
 **[YACAL-Core-1.0]**
-_YAML Representation of ACAL (YACAL) Version 1.0_.
-Edited by Steven Legg and Cyril Dangerville.
-23 March 2026.
-Working Draft 01.
-`acal-core-yaml-wd01-v1.0.md`.
+_%title%_.
+Edited by Steven Legg, Cyril Dangerville and William Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/yacal/core/v%version%/%stage_revision%/acal-core-yaml-v%version%-%stage_revision%.html. Latest version: https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
 
-------------------------------------------------------------------------
+### Related Work
+
+This document is related to:
+
+* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
+* _JACAL, Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
+* _XACML, Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
 
 ## License, Document Status, and Notices
 
-Copyright © OASIS Open 2026. All Rights Reserved.  For license,
-copyright, and document-status information, see
-[Annex A](#annex-a-license-document-status-and-notices).
+Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright information, and complete status, please see Annex A which contains the License, Document Status and Notices.
 
-------------------------------------------------------------------------
+---
 
 # Table of Contents
 
-1. [Scope](#1-scope)
-2. [Definitions and Acronyms](#2-definitions-and-acronyms)
-3. [Document Conventions](#3-document-conventions)
-4. [Introduction (non-normative)](#4-introduction-non-normative)
-5. [Syntax (normative)](#5-syntax-normative)
-6. [Safety, Security and Privacy Considerations (non-normative)](#6-safety-security-and-privacy-considerations-non-normative)
-7. [Conformance](#7-conformance)
-
-Annex A [License, Document Status and Notices](#annex-a-license-document-status-and-notices)
+- [1 Scope](#1-scope)
+- [2 Definitions and Acronyms](#2-definitions-and-acronyms)
+  - [2.1 Definitions](#21-definitions)
+    - [2.1.1 Terms Defined Elsewhere](#211-terms-defined-elsewhere)
+    - [2.1.2 Terms Defined in This Document](#212-terms-defined-in-this-document)
+  - [2.2 Abbreviations and Acronyms](#22-abbreviations-and-acronyms)
+- [3 Document Conventions](#3-document-conventions)
+  - [3.1 Key Words](#31-key-words)
+  - [3.2 Typographic Conventions](#32-typographic-conventions)
+  - [3.3 YAML Presentation Conventions](#33-yaml-presentation-conventions)
+- [4 Introduction (non-normative)](#4-introduction-non-normative)
+  - [4.1 Relationship to ACAL](#41-relationship-to-acal)
+  - [4.2 Relationship to Peer Representations](#42-relationship-to-peer-representations)
+  - [4.3 Design Principles](#43-design-principles)
+- [5 Syntax (normative)](#5-syntax-normative)
+  - [5.1 YAML Baseline](#51-yaml-baseline)
+    - [5.1.1 YAML Version](#511-yaml-version)
+    - [5.1.2 Core Schema](#512-core-schema)
+    - [5.1.3 String Quoting](#513-string-quoting)
+    - [5.1.4 Prohibited YAML Features](#514-prohibited-yaml-features)
+  - [5.2 Document Structure](#52-document-structure)
+    - [5.2.1 Root Element](#521-root-element)
+    - [5.2.2 Property Names](#522-property-names)
+    - [5.2.3 Property Ordering](#523-property-ordering)
+    - [5.2.4 Omitted Properties](#524-omitted-properties)
+  - [5.3 Simple Type Mapping](#53-simple-type-mapping)
+    - [5.3.1 Mapping Model](#531-mapping-model)
+    - [5.3.2 Selected Simple Types Mapped to Native YAML Scalars](#532-selected-simple-types-mapped-to-native-yaml-scalars)
+    - [5.3.3 Restricted String Types](#533-restricted-string-types)
+    - [5.3.4 Enumeration Types](#534-enumeration-types)
+    - [5.3.5 Identifier-Like and URI Types](#535-identifier-like-and-uri-types)
+    - [5.3.6 Simple Type Summary](#536-simple-type-summary)
+  - [5.4 Complex Type Mapping](#54-complex-type-mapping)
+    - [5.4.1 Default Mapping Rules for Complex ACAL Types](#541-default-mapping-rules-for-complex-acal-types)
+    - [5.4.2 Property Mapping Rules](#542-property-mapping-rules)
+    - [5.4.3 Null and Omission](#543-null-and-omission)
+    - [5.4.4 ValueType Mapping Rules](#544-valuetype-mapping-rules)
+    - [5.4.5 StructuredValueType Mapping](#545-structuredvaluetype-mapping)
+    - [5.4.6 Polymorphism and Wrapper-Key Discrimination](#546-polymorphism-and-wrapper-key-discrimination)
+    - [5.4.7 Inheritance and Subtype Resolution](#547-inheritance-and-subtype-resolution)
+    - [5.4.8 Extensible Abstract Types](#548-extensible-abstract-types)
+    - [5.4.9 Ordering and Presentation Rules](#549-ordering-and-presentation-rules)
+    - [5.4.10 AnyType Mapping](#5410-anytype-mapping)
+    - [5.4.11 ContentType Mapping](#5411-contenttype-mapping)
+    - [5.4.12 AttributeType Mapping](#5412-attributetype-mapping)
+    - [5.4.13 EntityType Mapping](#5413-entitytype-mapping)
+    - [5.4.14 Common Scalar Property Conventions](#5414-common-scalar-property-conventions)
+  - [5.5 Expression Representation](#55-expression-representation)
+    - [5.5.1 ExpressionType](#551-expressiontype)
+    - [5.5.2 ApplyType](#552-applytype)
+    - [5.5.3 AttributeDesignatorType](#553-attributedesignatortype)
+    - [5.5.4 EntityAttributeDesignatorType](#554-entityattributedesignatortype)
+    - [5.5.5 VariableReferenceType](#555-variablereferencetype)
+    - [5.5.6 SharedVariableReferenceType](#556-sharedvariablereferencetype)
+    - [5.5.7 FunctionType](#557-functiontype)
+    - [5.5.8 QuantifiedExpressionTypes](#558-quantifiedexpressiontypes)
+    - [5.5.9 BooleanExpressionType](#559-booleanexpressiontype)
+    - [5.5.10 AttributeSelectorType](#5510-attributeselectortype)
+    - [5.5.11 EntityAttributeSelectorType](#5511-entityattributeselectortype)
+  - [5.6 Policy and Rule Representation](#56-policy-and-rule-representation)
+    - [5.6.1 PolicyType](#561-policytype)
+    - [5.6.2 RuleType](#562-ruletype)
+    - [5.6.3 CombinerInputType](#563-combinerinputtype)
+    - [5.6.4 VariableDefinitionType](#564-variabledefinitiontype)
+    - [5.6.5 ParameterType](#565-parametertype)
+    - [5.6.6 PolicyReferenceType](#566-policyreferencetype)
+    - [5.6.7 PolicyIssuer](#567-policyissuer)
+    - [5.6.8 PatternMatchIdReferenceType](#568-patternmatchidreferencetype)
+    - [5.6.9 PolicyDefaultsType](#569-policydefaultstype)
+    - [5.6.10 ArgumentType and NamedArgumentType](#5610-argumenttype-and-namedargumenttype)
+  - [5.7 Bundle Representation](#57-bundle-representation)
+    - [5.7.1 BundleType](#571-bundletype)
+    - [5.7.2 SharedVariableDefinitionType](#572-sharedvariabledefinitiontype)
+  - [5.8 Request and Response Representation](#58-request-and-response-representation)
+    - [5.8.1 RequestType](#581-requesttype)
+    - [5.8.2 RequestEntityType](#582-requestentitytype)
+    - [5.8.3 RequestAttributeType](#583-requestattributetype)
+    - [5.8.4 MultiRequestsType](#584-multirequeststype)
+    - [5.8.5 RequestReferenceType](#585-requestreferencetype)
+    - [5.8.6 ResponseType](#586-responsetype)
+    - [5.8.7 ResultType](#587-resulttype)
+    - [5.8.8 ResultEntityType](#588-resultentitytype)
+    - [5.8.9 ApplicablePolicyReference](#589-applicablepolicyreference)
+    - [5.8.10 RequestDefaultsType](#5810-requestdefaultstype)
+  - [5.9 Notice Representation](#59-notice-representation)
+    - [5.9.1 NoticeExpressionType](#591-noticeexpressiontype)
+    - [5.9.2 AttributeAssignmentExpressionType](#592-attributeassignmentexpressiontype)
+    - [5.9.3 NoticeType](#593-noticetype)
+    - [5.9.4 AttributeAssignmentType](#594-attributeassignmenttype)
+  - [5.10 Status Representation](#510-status-representation)
+    - [5.10.1 StatusType](#5101-statustype)
+    - [5.10.2 StatusCodeType](#5102-statuscodetype)
+    - [5.10.3 StatusDetailType](#5103-statusdetailtype)
+    - [5.10.4 MissingAttributeDetailType](#5104-missingattributedetailtype)
+  - [5.11 Short Identifier Representation](#511-short-identifier-representation)
+    - [5.11.1 ShortIdSetType](#5111-shortidsettype)
+    - [5.11.2 ShortIdType](#5112-shortidtype)
+    - [5.11.3 ShortIdSetReference](#5113-shortidsetreference)
+    - [5.11.4 Usage in Policies](#5114-usage-in-policies)
+  - [5.12 Constraint Handling](#512-constraint-handling)
+    - [5.12.1 Constraint Categories](#5121-constraint-categories)
+    - [5.12.2 Property-Level Constraints](#5122-property-level-constraints)
+    - [5.12.3 Object-Level Constraints and Cross-Property Invariants](#5123-object-level-constraints-and-cross-property-invariants)
+    - [5.12.4 Enforcement Expectations](#5124-enforcement-expectations)
+- [6 Safety, Security and Privacy Considerations (non-normative)](#6-safety-security-and-privacy-considerations-non-normative)
+  - [6.1 YAML Parser and Processor Safety](#61-yaml-parser-and-processor-safety)
+  - [6.2 Interoperability and Content Handling](#62-interoperability-and-content-handling)
+- [7 Conformance](#7-conformance)
+  - [7.1 Introduction](#71-introduction)
+  - [7.2 Conformance Categories](#72-conformance-categories)
+  - [7.3 Conformance Tables](#73-conformance-tables)
+    - [7.3.1 ACAL Object-Type Conformance](#731-acal-object-type-conformance)
+    - [7.3.2 Machine-Readable Artifact Support](#732-machine-readable-artifact-support)
+  - [7.4 Conformant YACAL Document](#74-conformant-yacal-document)
+  - [7.5 Conformant YACAL Processor](#75-conformant-yacal-processor)
+  - [7.6 Validation Support and Error Reporting](#76-validation-support-and-error-reporting)
+- [Annex A License, Document Status and Notices](#annex-a-license-document-status-and-notices)
   - [A.1 Document Status](#a1-document-status)
   - [A.2 License and Notices](#a2-license-and-notices)
-Annex B [References](#annex-b-references)
+- [Annex B References](#annex-b-references)
   - [B.1 Normative References](#b1-normative-references)
-Annex C [YACAL Identifiers and Machine-Readable Artifacts](#annex-c-yacal-identifiers-and-machine-readable-artifacts)
+- [Annex C YACAL Identifiers and Machine-Readable Artifacts](#annex-c-yacal-identifiers-and-machine-readable-artifacts)
   - [C.1 Core Short-Identifier Set](#c1-core-short-identifier-set)
   - [C.2 Core YACAL Artifacts](#c2-core-yacal-artifacts)
   - [C.3 Informative Composition Schemas](#c3-informative-composition-schemas)
-Annex D [Complete Example: Website Content Access Policy](#annex-d-complete-example-website-content-access-policy)
-Annex E [Complete Example: Healthcare Chart Access Policy](#annex-e-complete-example-healthcare-chart-access-policy)
-Appendix 1 [Acknowledgments](#appendix-1-acknowledgments)
+- [Annex D Complete Example: Website Content Access Policy](#annex-d-complete-example-website-content-access-policy)
+- [Annex E Complete Example: Healthcare Chart Access Policy](#annex-e-complete-example-healthcare-chart-access-policy)
+- [Annex F How to generate HTML and PDF versions](#annex-f-how-to-generate-html-and-pdf-versions)
+  - [Online generation](#online-generation)
+  - [Offline generation](#offline-generation)
+    - [Prerequisites](#prerequisites)
+    - [CSS stylesheet](#css-stylesheet)
+    - [HTML generation](#html-generation)
+    - [PDF generation](#pdf-generation)
+- [Appendix 1 Acknowledgments](#appendix-1-acknowledgments)
   - [Leadership](#leadership)
-  - [Special Thanks](#special-thanks)
   - [Participants](#participants)
-Appendix 2 [Changes From Previous Version](#appendix-2-changes-from-previous-version)
+- [Appendix 2 Changes From Previous Version](#appendix-2-changes-from-previous-version)
   - [Revision History](#revision-history)
+
 
 ------------------------------------------------------------------------
 
 # 1 Scope
 
 This specification defines the YAML syntax of the
-[[ACAL-Core](#acal-core)] model and the YAML-specific syntax and
+[[ACAL-Core-1.0](#acal-core-10)] model and the YAML-specific syntax and
 processing rules that are not already specified by
-[[ACAL-Core](#acal-core)].
+[[ACAL-Core-1.0](#acal-core-10)].
 
 YACAL is a concrete representation of ACAL.  It is a peer to the XML
 and JSON ACAL representations and is not defined as a derivative of
@@ -150,7 +255,7 @@ standardized, should be defined separately as interoperability
 guidance.
 
 For ACAL semantics, evaluation behavior, and abstract conformance
-requirements, this specification relies on [[ACAL-Core](#acal-core)].
+requirements, this specification relies on [[ACAL-Core-1.0](#acal-core-10)].
 
 ------------------------------------------------------------------------
 
@@ -228,7 +333,7 @@ is the preferred presentation form in this specification.
 # 4 Introduction (non-normative)
 
 The Attribute-Centric Authorization Language (ACAL) Version 1.0
-[[ACAL-Core](#acal-core)] defines an abstract policy language for
+[[ACAL-Core-1.0](#acal-core-10)] defines an abstract policy language for
 attribute-based access control (ABAC) decisions.  The ACAL abstract
 model is independent of any concrete representation format; concrete
 representations are defined by companion specifications.
@@ -247,14 +352,14 @@ YACAL is a concrete representation format for ACAL.  Every construct in
 the ACAL abstract model has a corresponding YACAL representation defined
 in this specification.  The normative reference for semantics,
 evaluation rules, and abstract conformance requirements is
-[[ACAL-Core](#acal-core)].  This specification defines how ACAL abstract
+[[ACAL-Core-1.0](#acal-core-10)].  This specification defines how ACAL abstract
 model types are expressed in YAML.
 
 The authoritative definitions of ACAL simple types, object structures,
 inheritance relationships, and `ValueType` subtypes remain in
-[[ACAL-Core](#acal-core)] Section 7.  Likewise, the mandatory-versus-
+[[ACAL-Core-1.0](#acal-core-10)] Section 7.  Likewise, the mandatory-versus-
 optional support classification of ACAL object types remains in
-[[ACAL-Core](#acal-core)] Section 11.2.  YACAL does not redefine those
+[[ACAL-Core-1.0](#acal-core-10)] Section 11.2.  YACAL does not redefine those
 abstract model elements; it defines only their YAML representation.
 
 ## 4.2 Relationship to Peer Representations
@@ -314,7 +419,7 @@ Under the Core Schema, the following scalar resolutions apply (depending on the 
 | `true \| True \| TRUE \| false \| False \| FALSE` | `true`, `false` | Boolean | `urn:oasis:names:tc:acal:1.0:data-type:boolean` |
 | `[-+]? [0-9]+` | `42`, `-7`, `0` | Integer (base 10) | `urn:oasis:names:tc:acal:1.0:data-type:integer` |
 | `0o [0-7]+` | `0o7` | Integer (base 8) | *Not a valid ACAL value, see Section 5.1.4* |
-| `0x [0-9a-fA-F]+` | `Ox3A` | Integer (base 16) | `urn:oasis:names:tc:acal:1.0:data-type:hexBinary` |
+| `0x [0-9a-fA-F]+` | `0x3A` | Integer (base 16) | `urn:oasis:names:tc:acal:1.0:data-type:hexBinary` |
 | `[-+]? ( \. [0-9]+ \| [0-9]+ ( \. [0-9]* )? ) ( [eE] [-+]? [0-9]+ )?` | `0.`, `-0.0`, `.5`, `+12e03`, `-2E+05` | Float (number) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
 | `[-+]? ( \.inf \| \.Inf \| \.INF )` | `.inf`, `-.Inf`, `+.INF` | Float (Infinity) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
 | `\.nan \| \.NaN \| \.NAN` | `.nan`, `.NAN` | Float (not-a-number) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
@@ -329,7 +434,7 @@ resolved as strings (not dates), and `010` is resolved as the integer 10
 YAML does not require quotes around string scalars unless the value
 contains characters that would cause misinterpretation. Quoting is
 not merely a stylistic convention: during parsing, non-plain scalars
-(values enclosed in single or double quotes) — are unconditionally
+(quoted scalars and block scalars) are unconditionally
 assigned the non-specific tag `!`, which resolves to
 `tag:yaml.org,2002:str` (string).  Plain (unquoted) scalars are
 assigned the non-specific tag `?`, which is then resolved by
@@ -338,14 +443,16 @@ Core Schema required by [Section 5.1.2](#512-core-schema), this means `true` res
 
 In YACAL:
 
--   **URIs MUST be quoted** (double or single quotes) because they
-    contain colons, which YAML interprets as key-value separators:
+-   **URIs MUST be quoted** (double or single quotes). This is a YACAL
+    presentation rule: YAML itself reads a colon inside a plain scalar as
+    part of the scalar unless the colon is followed by a space, but
+    quoting keeps every URI unambiguous whatever characters it contains:
 
     ```yaml
     # Correct:
     FunctionId: "urn:oasis:names:tc:acal:1.0:function:string-equal"
 
-    # Incorrect — YAML misparses at the first colon:
+    # Valid YAML, but not permitted by this YACAL rule:
     FunctionId: urn:oasis:names:tc:acal:1.0:function:string-equal
     ```
 
@@ -393,15 +500,18 @@ documents:
     document is a single YAML document.  Bundles are expressed using
     `BundleType`, not YAML multi-document streams.
 -   **Merge keys** (`<<`): a YAML 1.1 feature not part of YAML 1.2.
--   **Null** values (i.e. `null`, `Null`, `NULL`, `~` or the absence of value are considered invalid).
--   **Octal notation** for integers (to align with JSON integer type), i.e. any value matching the pattern `0o [0-7]+` is forbidden.
+-   **Null** values (`null`, `Null`, `NULL`, `~`, or a key present with an empty value such as `myProperty:`). Omitting an optional property is not a null value; see [Section 5.4.3](#543-null-and-omission).
+-   **Octal notation** for integers (to align with JSON integer type), i.e. any value matching the pattern `0o[0-7]+` is forbidden.
 
 ## 5.2 Document Structure
 
 ### 5.2.1 Root Element
 
-A YACAL document is a single YAML mapping with exactly one key at the
-root level.  The key identifies the document type:
+Except for a standalone short-identifier set
+([Section 5.11.1](#5111-shortidsettype)), whose root is a bare
+`ShortIdSetType` mapping, a YACAL document is a single YAML mapping
+with exactly one key at the root level.  The key identifies the
+document type:
 
 | Root Key | ACAL Type | Description |
 |---|---|---|
@@ -417,6 +527,8 @@ Policy:
   PolicyId: "urn:example:yacal:policy:my-first-policy"
   Version: "1.0"
   CombiningAlgId: deny-unless-permit
+  ShortIdSetReference:
+    - "urn:oasis:names:tc:acal:1.0:core:identifiers"
   CombinerInput:
     - Rule:
         Id: AllowRead
@@ -449,7 +561,7 @@ An optional property that is absent from a YACAL document takes the default valu
 
 This section defines the default YACAL mapping rules for ACAL simple
 types.  The simple types themselves remain defined by
-[[ACAL-Core](#acal-core)] Section 7.1, including the ACAL-defined simple
+[[ACAL-Core-1.0](#acal-core-10)] Section 7.1, including the ACAL-defined simple
 types in ACAL Core Section 7.1.2.3.  Unless a more specific rule
 applies, a simple ACAL value is represented as a YAML scalar.
 
@@ -465,7 +577,7 @@ represented.
 The following table defines the YAML scalar forms used for selected ACAL
 simple types whose lexical space aligns with native YAML scalars.  It
 specifies the YACAL representation only; the underlying ACAL type
-definitions remain those of [[ACAL-Core](#acal-core)] Section 7.1.
+definitions remain those of [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.
 
 | ACAL Type | YAML Form | Notes |
 |---|---|---|
@@ -506,7 +618,7 @@ by property context or wrapper context.
 Examples of ACAL core restricted string types include `VersionType`,
 `VersionMatchType`, `ShortIdNameType`, `ShortIdValueType`, and
 `LocalIdentifierType`; their authoritative definitions remain in
-[[ACAL-Core](#acal-core)] Section 7.1.2.3.
+[[ACAL-Core-1.0](#acal-core-10)] Section 7.1.2.3.
 
 Examples:
 
@@ -590,7 +702,7 @@ The following rules summarize simple type mapping in YACAL:
 
 The authoritative definitions of ACAL complex types, their properties,
 multiplicities, inheritance relationships, and abstract-versus-concrete
-status remain in [[ACAL-Core](#acal-core)] Section 7.  This section
+status remain in [[ACAL-Core-1.0](#acal-core-10)] Section 7.  This section
 defines only how those ACAL structures are represented in YAML.
 
 Unless a more specific rule in this specification applies, a complex
@@ -653,7 +765,7 @@ ShortIdSetReference:
   - "urn:oasis:names:tc:acal:1.0:core:identifiers"
   - "urn:example:yacal:ids:local"
 
-Expression:
+Argument:
   - Value: read
   - Value: write
 ```
@@ -670,7 +782,7 @@ property whose value is YAML `null`.
 ### 5.4.4 ValueType Mapping Rules
 
 The ACAL `ValueType` model is defined in
-[[ACAL-Core](#acal-core)] Section 7.23.  The ACAL `ValueType` and its
+[[ACAL-Core-1.0](#acal-core-10)] Section 7.23.  The ACAL `ValueType` and its
 literal subtypes are mapped specially because YAML provides native
 scalar forms.
 
@@ -724,11 +836,11 @@ The following rules apply to primitive `ValueType` forms:
    not accept.  A YACAL processor MAY reject an integer scalar or a
    `Value` string, without determining the integer that it denotes,
    because it exceeds an input acceptance limit
-   ([[ACAL-Core](#acal-core)] Section 2.1.2 and Annex C.2.7).
+   ([[ACAL-Core-1.0](#acal-core-10)] Section 2.1.2 and Annex C.2.6).
    Rejecting an integer scalar or a `Value` string because the
    integer that it denotes is outside the processor's supported
    integer interval is a refusal of the containing request or policy,
-   which [[ACAL-Core](#acal-core)] Annex C.2.7 governs; a YACAL
+   which [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6 governs; a YACAL
    processor SHALL NOT reject a representation for that reason within
    a request that the implementation has admitted to evaluation.  A
    YACAL processor that does not reject, under this item, a YAML
@@ -743,7 +855,7 @@ The following rules apply to primitive `ValueType` forms:
    the standard ACAL Double applies to it and its text is a decimal
    integer (matching `[-+]?[0-9]+`, which is in the lexical space of
    `xs:double`); it then denotes the `xs:double` value that the lexical
-   mapping of `xs:double` ([[ACAL-Core](#acal-core)] Annex C.2.7)
+   mapping of `xs:double` ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6)
    assigns to the scalar's text.  For example,
    `DataType: "urn:oasis:names:tc:acal:1.0:data-type:double"` with
    `Value: 3` represents the double 3.0.  A YAML scalar in hexadecimal
@@ -861,7 +973,7 @@ because the surrounding context already fixes it.
 ### 5.4.5 StructuredValueType Mapping
 
 `StructuredValueType` is the abstract structured-value branch of
-`ValueType` defined by [[ACAL-Core](#acal-core)] Section 7.23.  A
+`ValueType` defined by [[ACAL-Core-1.0](#acal-core-10)] Section 7.23.  A
 concrete `StructuredValueType` subtype is represented as a YAML mapping
 containing the profile-defined properties of that subtype.
 
@@ -882,22 +994,26 @@ A concrete structured-value subtype MUST NOT redefine `DataType` with a
 conflicting meaning or create ambiguity between the core `DataType`
 property and profile-defined properties.
 
-Examples:
+Examples, using the implementation-defined structured value of the
+informative composition schema
+`yacal-root-structure-example-custom-plus-profile.schema.yaml`
+([Annex C.3](#c3-informative-composition-schemas)), against which they
+validate:
 
 ```yaml
 Value:
-  DataType: "urn:example:yacal:data-type:structured-example"
-  FieldA: alpha
-  FieldB: 3
+  DataType: "urn:example:yacal:data-type:template"
+  TemplateLanguage: "urn:example:yacal:template-language:mustache"
+  Template: "Dear {{name}}"
 ```
 
 ```yaml
 RequestAttribute:
-  - AttributeId: "urn:example:yacal:resource:structured-attribute"
-    DataType: "urn:example:yacal:data-type:structured-example"
+  - AttributeId: "urn:example:yacal:resource:notice-template"
+    DataType: "urn:example:yacal:data-type:template"
     Value:
-      - FieldA: alpha
-        FieldB: 3
+      - TemplateLanguage: "urn:example:yacal:template-language:mustache"
+        Template: "Dear {{name}}"
 ```
 
 ### 5.4.6 Polymorphism and Wrapper-Key Discrimination
@@ -1119,11 +1235,11 @@ Example:
 
 ```yaml
 Attribute:
-  AttributeId: "urn:example:yacal:resource:classification"
-  DataType: "urn:oasis:names:tc:acal:1.0:data-type:string"
-  Value:
-    - confidential
-    - restricted
+  - AttributeId: "urn:example:yacal:resource:classification"
+    DataType: "urn:oasis:names:tc:acal:1.0:data-type:string"
+    Value:
+      - confidential
+      - restricted
 ```
 
 Subtypes of `AttributeType`, such as `RequestAttributeType` and
@@ -1230,7 +1346,7 @@ Properties:
 |---|---|---|---|
 | `FunctionId` | Yes | `IdentifierType` | Function identifier |
 | `Description` | No | String | Free-form description |
-| `Argument` | No | Sequence of `ArgumentType` | Arguments in order, or named arguments (`NamedArgumentType`) in any order if the function has *named parameters* (more info in the `ApplyType` section of [[ACAL-Core](#acal-core)] ); empty if function takes no arguments. When the function signature fixes an argument `DataType`, a statically typed child expression such as `Value` SHOULD omit `DataType`; if present, it MUST agree with the function signature. |
+| `Argument` | No | Sequence of `ArgumentType` | Arguments in order, or named arguments (`NamedArgumentType`) in any order if the function has *named parameters* (more info in the `ApplyType` section of [[ACAL-Core-1.0](#acal-core-10)] ); empty if function takes no arguments. When the function signature fixes an argument `DataType`, a statically typed child expression such as `Value` SHOULD omit `DataType`; if present, it MUST agree with the function signature. |
 
 ### 5.5.3 AttributeDesignatorType
 
@@ -1288,7 +1404,7 @@ SharedVariableReference:
 ```
 
 Each item in `Argument` SHALL correspond  to a `Parameter`
-definition in the referenced shared variable definition, either positionally (declared in the same order) or by name using only `NamedArgument` properties. More info in the `SharedVariableReferenceType` section of [[ACAL-Core](#acal-core)].
+definition in the referenced shared variable definition, either positionally (declared in the same order) or by name using only `NamedArgument` properties. More info in the `SharedVariableReferenceType` section of [[ACAL-Core-1.0](#acal-core-10)].
 A nested `ValueType` SHOULD omit `DataType` as it is already fixed by the `Parameter` in the referenced shared variable; if present, it MUST agree.
 
 ### 5.5.7 FunctionType
@@ -1611,7 +1727,7 @@ PolicyReference:
 ```
 
 Each item in `Argument` SHALL correspond  to a `Parameter`
-definition in the referenced policy, either positionally (declared in the same order) or by name using only `NamedArgument` properties. More info in the `PolicyReferenceType` section of [[ACAL-Core](#acal-core)].
+definition in the referenced policy, either positionally (declared in the same order) or by name using only `NamedArgument` properties. More info in the `PolicyReferenceType` section of [[ACAL-Core-1.0](#acal-core-10)].
 A nested `ValueType` SHOULD omit `DataType` as it is already fixed by the `Parameter` in the referenced policy; if present, it MUST agree.
 
 ### 5.6.7 PolicyIssuer
@@ -1675,15 +1791,15 @@ set for `PolicyDefaultsType`.
 
 ### 5.6.10 ArgumentType and NamedArgumentType
 
-The `ArgumentType` is a generic type for `Argument` properties which represent arguments passed to function calls (`ApplyType`), parameterized policies (`PolicyType`) or shared variables (`SharedVariableDefinitionType`).
+The `ArgumentType` is a generic type for `Argument` properties which represent arguments passed to function calls (`ApplyType`), to parameterized policies through policy references (`PolicyReferenceType`) or to parameterized shared variables through shared variable references (`SharedVariableReferenceType`).
 
-Based on the corresponding definition from [[ACAL-Core](#acal-core)], an `Argument` in YACAL is either one of these:
+Based on the corresponding definition from [[ACAL-Core-1.0](#acal-core-10)], an `Argument` in YACAL is either one of these:
 1. A positional argument, represented as any one of the `ExpressionType` YAML representations defined in the [ExpressionType section](#551-expressiontype);
 2. A named argument, represented as a YAML mapping with key `NamedArgument` and the following mapping as value:
 
-    | Property | Required | Default | Type | Notes |
+| Property | Required | Default | Type | Notes |
     |---|---|---|---|---|
-    | `Name` | Yes | — | `LocalIdentifierType` | Name of the the referenced function / policy / shared variable's `Parameter` that this argument is associated with. |
+    | `Name` | Yes | — | `LocalIdentifierType` | Name of the referenced function / policy / shared variable's `Parameter` that this argument is associated with. |
     | `Expression` | Yes | - | `ExpressionType` | The argument's value expression; same as for a positional argument. |
 
 ------------------------------------------------------------------------
@@ -1708,38 +1824,38 @@ Bundle:
     - Id: "urn:example:yacal:shared:is-business-hours"
       Version: "1.0"
       Description: Returns true during business hours.
+      ShortIdSetReference:
+        - "urn:example:yacal:ids:common"
       Expression:
         Apply:
           FunctionId: and
           Argument:
             - Apply:
-                FunctionId: integer-greater-than-or-equal
+                FunctionId: time-greater-than-or-equal
                 Argument:
                   - Apply:
-                      FunctionId: time-hour-from-time
+                      FunctionId: time-one-and-only
                       Argument:
-                        - Apply:
-                            FunctionId: time-one-and-only
-                            Argument:
-                              - AttributeDesignator:
-                                  Category: "urn:oasis:names:tc:acal:1.0:attribute-category:environment"
-                                  AttributeId: "urn:oasis:names:tc:acal:1.0:environment:current-time"
-                                  MustBePresent: true
-                  - Value: 9
+                        - AttributeDesignator:
+                            Category: "urn:oasis:names:tc:acal:1.0:attribute-category:environment"
+                            AttributeId: "urn:oasis:names:tc:acal:1.0:environment:current-time"
+                            MustBePresent: true
+                  - Value:
+                      DataType: time
+                      Value: "09:00:00"
             - Apply:
-                FunctionId: integer-less-than
+                FunctionId: time-less-than
                 Argument:
                   - Apply:
-                      FunctionId: time-hour-from-time
+                      FunctionId: time-one-and-only
                       Argument:
-                        - Apply:
-                            FunctionId: time-one-and-only
-                            Argument:
-                              - AttributeDesignator:
-                                  Category: "urn:oasis:names:tc:acal:1.0:attribute-category:environment"
-                                  AttributeId: "urn:oasis:names:tc:acal:1.0:environment:current-time"
-                                  MustBePresent: true
-                  - Value: 17
+                        - AttributeDesignator:
+                            Category: "urn:oasis:names:tc:acal:1.0:attribute-category:environment"
+                            AttributeId: "urn:oasis:names:tc:acal:1.0:environment:current-time"
+                            MustBePresent: true
+                  - Value:
+                      DataType: time
+                      Value: "17:00:00"
 
   Policy:
     - PolicyId: "urn:example:yacal:policy:office-access"
@@ -1781,6 +1897,8 @@ SharedVariableDefinition:
     Description: >
       Returns true when the environment timezone matches the
       specified timezone parameter.
+    ShortIdSetReference:
+      - "urn:oasis:names:tc:acal:1.0:core:identifiers"
     Parameter:
       - Name: timezone
         DataType: "urn:oasis:names:tc:acal:1.0:data-type:string"
@@ -2130,7 +2248,7 @@ Properties:
 | Property | Required | Default | Type | Cardinality |
 |---|---|---|---|---|
 | `Id` | Yes | — | `IdentifierType` | 1 |
-| `IsObligation` | No | omitted | Boolean | 0..1 |
+| `IsObligation` | No | `false` | Boolean | 0..1 |
 | `AppliesTo` | No | Permit or Deny | `EffectType` | 0..1 |
 | `Condition` | No | satisfied | `BooleanExpressionType` | 0..1 |
 | `AttributeAssignmentExpression` | No | — | `AttributeAssignmentExpressionType` | * |
@@ -2142,7 +2260,7 @@ If `AppliesTo` is omitted, the notice expression is eligible for either
 `(AttributeId, Category)`. Whether a given notice accepts repeated attribute
 assignments, and how a consumer combines them, is left to the definition of the
 individual obligation or advice, as defined for `NoticeExpressionType` in
-[[ACAL-Core](#acal-core)].
+[[ACAL-Core-1.0](#acal-core-10)].
 
 ### 5.9.2 AttributeAssignmentExpressionType
 
@@ -2347,26 +2465,33 @@ defines it.
 ## 5.11 Short Identifier Representation
 
 YACAL uses the ACAL core identifier sets defined by
-[[ACAL-Core](#acal-core)] directly.  It defines no separate
-YACAL-specific core identifier inventory for WD01.  Any
+[[ACAL-Core-1.0](#acal-core-10)] directly.  It defines no separate
+YACAL-specific core identifier inventory.  Any
 `ShortIdSetReference` in a YACAL document therefore refers to the same
 identifier sets and short identifier semantics defined by ACAL core or
 by the relevant ACAL profile.
 
 ### 5.11.1 ShortIdSetType
 
+A `ShortIdSetType` object is represented as a YAML mapping of its
+properties.  A short identifier set provided as a standalone artifact,
+such as `acal-core-yaml-v1.0-identifiers.yaml`, is such a mapping at the
+root of the YAML document, with no `ShortIdSet` wrapper key, as in JACAL;
+it is not one of the document forms of
+[Section 5.2.1](#521-root-element).  Within a `BundleType`, short
+identifier sets are the items of the `ShortIdSet` sequence.
+
 ```yaml
-ShortIdSet:
-  - Id: "urn:example:yacal:ids:healthcare"
-    ShortIdSetReference:
-      - "urn:oasis:names:tc:acal:1.0:core:identifiers"
-    ShortId:
-      - Name: subject-role
-        Value: "urn:example:yacal:healthcare:subject:role"
-      - Name: resource-type
-        Value: "urn:example:yacal:healthcare:resource:type"
-      - Name: record-type
-        Value: "urn:example:yacal:healthcare:resource:record-type"
+Id: "urn:example:yacal:ids:healthcare"
+ShortIdSetReference:
+  - "urn:oasis:names:tc:acal:1.0:core:identifiers"
+ShortId:
+  - Name: subject-role
+    Value: "urn:example:yacal:healthcare:subject:role"
+  - Name: resource-type
+    Value: "urn:example:yacal:healthcare:resource:type"
+  - Name: record-type
+    Value: "urn:example:yacal:healthcare:resource:record-type"
 ```
 
 Properties:
@@ -2599,8 +2724,8 @@ implement the corresponding YACAL syntax, typing, and constraint rules
 consistently.
 
 This specification is accompanied by normative machine-readable
-artifacts for core YACAL structure, core constraints, core short
-identifiers, and selected ACAL profiles.  These artifacts support
+artifacts for core YACAL structure, core constraints and core short
+identifiers.  These artifacts support
 consistent implementation and validation of YACAL, but they do not
 change the peer relationship between YACAL and the XML and JSON ACAL
 representations.
@@ -2614,19 +2739,20 @@ For the purposes of this specification:
 - **O** means optional-to-implement
 
 For ACAL object types, these categories are inherited unchanged from
-[[ACAL-Core](#acal-core)] Section 11.2.1.  YACAL uses the same notation
+[[ACAL-Core-1.0](#acal-core-10)] Section 11.2.1.  YACAL uses the same notation
 again in [Section 7.3.2](#732-machine-readable-artifact-support) for
 YACAL-specific artifacts.
 
 An implementation MUST follow [Section 5](#5-syntax-normative) where it
-applies to implemented items in the following tables.
+applies to the ACAL object types and machine-readable artifacts that the
+implementation supports.
 
 ## 7.3 Conformance Tables
 
 ### 7.3.1 ACAL Object-Type Conformance
 
 YACAL inherits ACAL object-type conformance from
-[[ACAL-Core](#acal-core)] Section 11.2.1.
+[[ACAL-Core-1.0](#acal-core-10)] Section 11.2.1.
 
 A processor claiming core YACAL conformance MUST support the YACAL
 representation of every ACAL object type marked `M` in that table.  It
@@ -2636,7 +2762,7 @@ corresponding optional ACAL feature.
 This specification therefore does not repeat the ACAL core object-type
 conformance table.  [Section 5](#5-syntax-normative) defines the YAML
 representation of those same ACAL object types, while
-[[ACAL-Core](#acal-core)] remains authoritative for their
+[[ACAL-Core-1.0](#acal-core-10)] remains authoritative for their
 mandatory/optional classification.
 
 Some ACAL object types, such as `DecisionType`, `DescriptionType`,
@@ -2676,19 +2802,23 @@ A conformant YACAL document:
     specification for representing the applicable ACAL Section 7
     structures in YAML.
 4.  MUST correspond to a semantically valid ACAL instance when
-    interpreted according to this specification and [[ACAL-Core](#acal-core)].
+    interpreted according to this specification and [[ACAL-Core-1.0](#acal-core-10)].
 5.  MUST satisfy the applicable constraint rules in
     [Section 5.12](#512-constraint-handling).
 6.  MUST NOT use YAML tags (e.g., `!!str`, `!custom`).
 7.  MUST NOT use YAML anchors (`&name`) or aliases (`*name`).
 8.  MUST NOT use YAML merge keys or multi-document streams.
-9.  MUST NOT use YAML null values (e.g. `null`, `Null`, `NULL`, `~` or undefined).
-10. MUST NOT use the YAML octal notation for integers (any value matching the regular expression `0o [0-7]+`).
+9.  MUST NOT use YAML null values (`null`, `Null`, `NULL`, `~`, or a key present with an empty value); omitting an optional property is not a null value ([Section 5.1.4](#514-prohibited-yaml-features)).
+10. MUST NOT use the YAML octal notation for integers (any value matching the regular expression `0o[0-7]+`).
 11. SHOULD use YAML block style for mappings and sequences.  Flow style
     MAY be used where it improves readability (e.g., for short inline
     values).
-12. If it uses only core YACAL features, it MUST be structurally
-    compatible with `acal-core-yaml-v1.0-structure.schema.yaml`.
+12. If it uses only core YACAL features and is one of the root forms
+    of [Section 5.2.1](#521-root-element), it MUST be structurally
+    compatible with `acal-core-yaml-v1.0-structure.schema.yaml`. A
+    standalone short-identifier set
+    ([Section 5.11.1](#5111-shortidsettype)) MUST instead conform to that
+    schema's `#/$defs/ShortIdSetType`.
 13. If it uses XPath or JSONPath profile features, it MUST be
     structurally compatible with a composition schema that enables the
     corresponding profile artifacts.
@@ -2701,7 +2831,7 @@ A conformant YACAL processor:
 2.  MUST reject documents that use prohibited YAML features.
 3.  MUST interpret conformant YACAL documents according to this
     specification and ACAL evaluation semantics as defined in
-    [[ACAL-Core](#acal-core)].
+    [[ACAL-Core-1.0](#acal-core-10)].
 4.  MUST enforce the applicable structural and semantic constraints
     defined in this specification and in ACAL for all supported
     objects and features.
@@ -2742,37 +2872,60 @@ derived intermediate representation.
 
 # Annex A License, Document Status and Notices
 
+
 (This annex forms an integral part of this Specification.)
+
 
 ## A.1 Document Status
 
-This working draft was prepared for the OASIS eXtensible Access Control
-Markup Language (XACML) TC on the date shown above.
 
-This document is a working draft rather than an approved OASIS final
-deliverable.  Stable publication metadata, publication URLs, and any
-required formal OASIS boilerplate should be updated when the document
-advances to committee publication.
+This document was last revised or approved by the OASIS ACAL \[XACML\] TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
 
-This working draft declares the machine-readable artifacts listed in the
-front matter as part of the work product.  Normative artifacts are also
-summarized in [Annex C](#annex-c-yacal-identifiers-and-machine-readable-artifacts).
 
-NOTE: any machine-readable content (Computer Language Definitions)
-declared Normative for this Work Product is provided in separate plain
-text files.  In the event of a discrepancy between any such plain text
-file and display content in the Work Product's prose narrative
-document(s), the content in the separate plain text file prevails.
+TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/acal/.
+
+
+NOTE: any machine-readable content (Computer Language Definitions) declared Normative for this Work Product is provided in separate plain text files. In the event of a discrepancy between any such plain text file and display content in the Work Product's prose narrative document(s), the content in the separate plain text file prevails.
+
 
 ## A.2 License and Notices
 
+
 Copyright © OASIS Open 2026. All Rights Reserved.
 
-This working draft is prepared for committee review.  Formal OASIS
-license and notice text should be confirmed and updated at publication
-time.
 
-------------------------------------------------------------------------
+All capitalized terms in the following text have the meanings assigned to them in the OASIS Intellectual Property Rights Policy (the "OASIS IPR Policy"). The full Policy, which governs the licensure of this document, may be found at the OASIS website: [[https://www.oasis-open.org/policies-guidelines/ipr/](https://www.oasis-open.org/policies-guidelines/ipr/)]
+
+
+This document and translations of it may be copied and furnished to others, and derivative works that comment on or otherwise explain it or assist in its implementation may be prepared, copied, published, and distributed, in whole or in part, without restriction of any kind, provided that the above copyright notice and this section are included on all such copies and derivative works. However, this document itself may not be modified in any way, including by removing the copyright notice or references to OASIS, except as needed for the purpose of developing any document or deliverable produced by an OASIS Technical Committee (in which case the rules applicable to copyrights, as set forth in the OASIS IPR Policy, must be followed) or as required to translate it into languages other than English.
+
+
+The limited permissions granted above are perpetual and will not be revoked by OASIS or its successors or assigns, as provided in the OASIS IPR Policy.
+
+
+This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited-Mode) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project’s web page ([OASIS ACAL \[XACML\] TC IPR page](https://www.oasis-open.org/committees/acal/ipr.php)).
+
+
+This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. OASIS AND ITS MEMBERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THIS DOCUMENT OR ANY PART THEREOF.
+
+
+As stated in the OASIS IPR Policy, the following three paragraphs in brackets apply to OASIS Standards Final Deliverable documents (Committee Specifications, OASIS Standards, or Approved Errata).
+
+
+OASIS requests that any OASIS Party or any other party that believes it has patent claims that would necessarily be infringed by implementations of this OASIS Standards Final Deliverable, to notify OASIS TC Administrator and provide an indication of its willingness to grant patent licenses to such patent claims in a manner consistent with the IPR Mode of the OASIS Technical Committee that produced this deliverable.
+
+
+OASIS invites any party to contact the OASIS TC Administrator if it is aware of a claim of ownership of any patent claims that would necessarily be infringed by implementations of this OASIS Standards Final Deliverable by a patent holder that is not willing to provide a license to such patent claims in a manner consistent with the IPR Mode of the OASIS Technical Committee that produced this OASIS Standards Final Deliverable. OASIS may include such claims on its website, but disclaims any obligation to do so.
+
+
+OASIS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this OASIS Standards Final Deliverable or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on OASIS' procedures with respect to rights in any document or deliverable produced by an OASIS Technical Committee can be found on the OASIS website. Copies of claims of rights made available for publication and any assurances of licenses to be made available, or the result of an attempt made to obtain a general license or permission for the use of such proprietary rights by implementers or users of this OASIS Standards Final Deliverable, can be obtained from the OASIS TC Administrator. OASIS makes no representation that any information or list of intellectual property rights will at any time be complete, or that any claims in such list are, in fact, Essential Claims.
+
+
+The name "OASIS" is a trademark of OASIS, the owner and developer of this document, and should be used only to refer to the organization and its official outputs. OASIS welcomes reference to, and implementation and use of, its documents, while reserving the right to enforce its marks against misleading uses. Please see [OASIS Trademark Policy](https://www.oasis-open.org/policies-guidelines/trademark/) for guidance.
+
+
+---
+
 
 # Annex B References
 
@@ -2785,32 +2938,29 @@ this specification.
 
 ## B.1 Normative References
 
-<a id="acal-core"></a>**[ACAL-Core]**
-: *Attribute-Centric Authorization Language (ACAL) Version 1.0*.
-  OASIS Committee Specification.
-  https://docs.oasis-open.org/xacml/acal/acal/core/v1.0/acal-core-v1.0.html
+###### [ACAL-Core-1.0]
 
-<a id="yaml12"></a>**[YAML1.2]**
-: *YAML Ain't Markup Language (YAML) Version 1.2*.
-  https://yaml.org/spec/1.2.2/
+_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
-<a id="rfc2119"></a>**[RFC2119]**
-: Bradner, S., "Key words for use in RFCs to Indicate Requirement
-  Levels", BCP 14, RFC 2119, March 1997.
-  https://www.rfc-editor.org/rfc/rfc2119
-  
-<a id="rfc3986"></a>**[RFC3986]**
-: Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform Resource
-  Identifier (URI): Generic Syntax", STD 66, RFC 3986, January 2005.
-  https://www.rfc-editor.org/rfc/rfc3986
+###### [YAML1.2]
 
-<a id="rfc4648"></a>**[RFC4648]**               
-: RFC 4648, *The Base16, Base32, and Base64 Data Encodings.* October 2006. IETF RFC 4648. http://tools.ietf.org/html/rfc4648
+*YAML Ain't Markup Language (YAML) Version 1.2*, Revision 1.2.2, 1 October 2021. https://yaml.org/spec/1.2.2/
 
-<a id="rfc8174"></a>**[RFC8174]**
-: Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key
-  Words", BCP 14, RFC 8174, May 2017.
-  https://www.rfc-editor.org/rfc/rfc8174
+###### [RFC2119]
+
+Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997. https://www.rfc-editor.org/rfc/rfc2119
+
+###### [RFC3986]
+
+Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform Resource Identifier (URI): Generic Syntax", STD 66, RFC 3986, DOI 10.17487/RFC3986, January 2005, <https://www.rfc-editor.org/info/rfc3986>.
+
+###### [RFC4648]
+
+RFC 4648, *The Base16, Base32, and Base64 Data Encodings.* October 2006. IETF RFC 4648. https://www.rfc-editor.org/info/rfc4648
+
+###### [RFC8174]
+
+Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, May 2017. https://www.rfc-editor.org/rfc/rfc8174
 
 ------------------------------------------------------------------------
 
@@ -2824,11 +2974,11 @@ This work product provides the standard YACAL serialization of the ACAL
 core short-identifier set in the file
 `acal-core-yaml-v1.0-identifiers.yaml`.
 
-The `ShortIdSet.Id` value of this artifact is:
+The `Id` of this `ShortIdSetType` artifact is:
 
 `urn:oasis:names:tc:acal:1.0:core:identifiers`
 
-**CAUTION:** This short identifier set SHALL NOT be modified except by the XACML TC. Since its `ShortIdSet.Id` is using one of the prefixes reserved for XACML TC use (`urn:oasis:names:tc:acal:`), users outside the TC SHALL NOT create a new short identifier set of their own with the same `Id`. 
+**CAUTION:** This short identifier set SHALL NOT be modified except by the OASIS ACAL \[XACML\] TC. Since its `Id` is using one of the prefixes reserved for OASIS ACAL \[XACML\] TC use (`urn:oasis:names:tc:acal:`), users outside the TC SHALL NOT create a new short identifier set of their own with the same `Id`. 
 
 YACAL uses the ACAL core identifier inventory directly.  The YACAL
 artifact is therefore the YAML serialization of the same underlying ACAL
@@ -3040,16 +3190,73 @@ Policy:
 
 ------------------------------------------------------------------------
 
+# Annex F How to generate HTML and PDF versions
+
+(This annex does not form an integral part of this Specification and is informational.)
+
+## Online generation
+
+HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/). Go to Github Actions on the github repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
+
+## Offline generation
+
+### Prerequisites
+
+The following tools are required:
+- [Pandoc](https://pandoc.org/) **v3.2.1 or later** ( [latest release](https://github.com/jgm/pandoc/releases/latest) );
+- [Pandoc-include filter](https://github.com/DCsunset/pandoc-include).
+
+Install them on your system.
+
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+
+### CSS stylesheet
+
+The generation command uses the CSS stylesheet file `pandoc/styles/markdown-styles-v1.7.3b.css` (with `-c` argument) based on the [v1.7.3a](https://docs.oasis-open.org/templates/css/markdown-styles-v1.7.3a.css) provided by OASIS.
+
+### HTML generation
+
+Run the following command line to generate the HTML from this markdown file (input file specified as last argument):
+
+```console
+$ pandoc/mkdocs.sh --output /tmp acal-core-yaml-v%version%.md
+```
+The `--output` option sets the output directory, and the output filename is the same as the input file (last argument) except `.md` extension is replaced with `.html`.
+
+The publication date is automatically set to the current date by default (using Lua filter `pandoc/meta_vars.lua`). However, you may set a specific date of your choice instead, by adding the argument `--metadata date="My date in the form DD Month YYYY"` at the end of the command. 
+
+### PDF generation
+
+For PDF output, add the `--pdf` option as follows:
+
+```console
+$ pandoc/mkdocs.sh --pdf --output /tmp acal-core-yaml-v%version%.md
+```
+
+The HTML file is generated like the previous command and, in addition, a PDF file is generated with the same name as the input file except the `.md` extension is replaced with `.pdf` in this case.
+
+Beware that **the result PDF - the embedded fonts in particular - may differ depending on the system/machine** where you run this command. Mainly, it depends on which fonts are actually installed on the system, as the HTML-to-PDF converter (Chrome / Chromium in this case) selects available fonts according to the prioritized lists defined by `font-family` properties in the CSS.
+
+**For official TC publications**, add the `--official` argument to avoid this issue and produce a system-independent output:
+
+```console
+$ pandoc/mkdocs.sh --pdf --official --output /tmp acal-core-yaml-v%version%.md
+```
+
+In this case, the generation will use a public Linux container image (`ghcr.io/oasis-tcs/chrome-headless`) with a fixed installed set of fonts to generate the PDF.
+
+------------------------------------------------------------------------
+
 # Appendix 1 Acknowledgments
 
-(This appendix does not form an integral part of this Specification and
-is informational.)
+(This appendix does not form an integral part of this Specification and is informational.)
+
 
 ## Leadership
 
-The following individuals have had significant leadership roles in the
-development of related ACAL representation work and are gratefully
-acknowledged:
+
+The following individuals have had significant leadership positions during the development of this document, not just this version of the document, and they are gratefully acknowledged:
+
 
 - Chairs
   - Bill Parducci, Individual
@@ -3058,32 +3265,34 @@ acknowledged:
 - Editors
   - Steven Legg, ViewDS Identity Solutions
   - Cyril Dangerville, THALES
+  - William Parducci, Individual
 
-## Special Thanks
-
-Substantial drafting and review contributions from Steven Legg, Cyril
-Dangerville, and Bill Parducci are gratefully acknowledged.
 
 ## Participants
 
-The following individuals are acknowledged as members of the committee
-active during the creation of this working draft:
 
-- Hal Lockhart, Individual
+The following individuals were members of this committee during the creation of this document, not just this version of the document, and their contributions are gratefully acknowledged:
+
+**OASIS ACAL \[XACML\] TC Members:**
+
 - Bill Parducci, Individual
 - Steven Legg, ViewDS Identity Solutions
 - Cyril Dangerville, THALES
 
-------------------------------------------------------------------------
+-------
 
 # Appendix 2 Changes From Previous Version
 
-(This appendix does not form an integral part of this Specification and
-is informational.)
 
-This is the first public working draft of the YACAL representation
-document.
+(This appendix does not form an integral part of this Specification and is informational.)
+
+
+None. This is the first version of the document.
 
 ## Revision History
 
-- 2026-03-23, Working Draft 01
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's github repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-core-yaml-v%version%-%stage_revision%.md).
+
+
+<!-- The following centered line represents the end of the document -->  
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_

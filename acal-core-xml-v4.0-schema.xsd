@@ -6,10 +6,9 @@
 	elementFormDefault="qualified"
 	attributeFormDefault="unqualified">
 	<xs:annotation>
-		<xs:documentation> XACML v4.0 (XML Representation of ACAL Version 1.0) Core schema.
+		<xs:documentation> XACML, Version 4.0 (eXtensible Access Control Markup Language) Core schema.
 			Copyright (c) OASIS Open 2026. All Rights Reserved. For more license and copyright
-			information, and complete status, please see Annex A of XACML v4.0 (XML Representation
-			of ACAL Version 1.0) specification, which contains the License, Document Status and
+			information, and complete status, please see Annex A of the XACML, Version 4.0 (eXtensible Access Control Markup Language) specification, which contains the License, Document Status and
 			Notices. </xs:documentation>
 	</xs:annotation>
 
@@ -639,7 +638,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 							<xs:documentation xml:lang="en"> Optional argument(s) to the referenced
 								Policy The arguments SHALL match the Policy's Parameter definitions
 								in the same order of declaration. If one of the argument Expressions
-								is a Value element, it SHALL not set the DataType attribute value. </xs:documentation>
+								is a Value element, it SHALL NOT set the DataType attribute value. </xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -659,7 +658,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 				<xs:complexType name="MyProfileDefaultsType">
 					<xs:complexContent> 
 						<xs:extension base="xacml:DefaultsType">
-							...My common Defaults... 
+							<!-- ...My common Defaults... -->
 						</xs:extension> 
 					</xs:complexContent>
 				</xs:complexType> 
@@ -1276,7 +1275,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 								SharedVariableDefinition. The arguments SHALL match the
 								SharedVariableDefinition's Parameter definitions in the same order
 								of declaration. If one of the argument Expressions is a Value
-								element, it SHALL not set the DataType attribute value. </xs:documentation>
+								element, it SHALL NOT set the DataType attribute value. </xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>

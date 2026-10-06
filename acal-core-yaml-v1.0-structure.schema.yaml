@@ -8,8 +8,10 @@ description: >
   reusable primitive patterns. YAML parser conformance rules and higher-order
   ACAL constraints remain outside this artifact.
 $comment: >
-  This first core schema draft covers the core YACAL document forms plus the
-  standalone ShortIdSet artifact form used by the YACAL work product. Profile
+  This core schema covers the core YACAL document forms (Policy, Bundle,
+  Request, Response). A standalone short identifier set artifact is a
+  ShortIdSetType mapping, as in JACAL, and is validated against
+  #/$defs/ShortIdSetType rather than against the root forms. Profile
   extension points such as PolicyDefaults, RequestDefaults, StatusDetail, and
   selector extensions are exposed through explicit dynamic extension hooks for
   later composition. Higher-order invariants are complemented by the companion
@@ -19,7 +21,6 @@ oneOf:
   - $ref: "#/$defs/BundleDocument"
   - $ref: "#/$defs/RequestDocument"
   - $ref: "#/$defs/ResponseDocument"
-  - $ref: "#/$defs/ShortIdSetDocument"
 $defs:
   URIType:
     type: string
@@ -445,10 +446,11 @@ $defs:
     additionalProperties: false
   
   QuantifiedExpressionTypeTree:
-    - $ref: "#/$defs/ForAnyTypeTree"
-    - $ref: "#/$defs/ForAllTypeTree"
-    - $ref: "#/$defs/MapTypeTree"
-    - $ref: "#/$defs/SelectTypeTree"
+    oneOf:
+      - $ref: "#/$defs/ForAnyTypeTree"
+      - $ref: "#/$defs/ForAllTypeTree"
+      - $ref: "#/$defs/MapTypeTree"
+      - $ref: "#/$defs/SelectTypeTree"
 
   ExpressionTypeTree:
     oneOf:
@@ -820,6 +822,7 @@ $defs:
         items:
           $ref: "#/$defs/LocalIdentifierType"
         minItems: 1
+        uniqueItems: true
     additionalProperties: false
 
   MultiRequestsType:
@@ -927,7 +930,7 @@ $defs:
     additionalProperties: false
 
   StatusDetailType:
-    allOf:
+    anyOf:
       - $ref: "#/$defs/StatusDetailTypeCore"
       - $dynamicRef: "#StatusDetailTypeExtensions"
     unevaluatedProperties: false
@@ -1124,11 +1127,3 @@ $defs:
         $ref: "#/$defs/ResponseType"
     additionalProperties: false
 
-  ShortIdSetDocument:
-    type: object
-    required:
-      - ShortIdSet
-    properties:
-      ShortIdSet:
-        $ref: "#/$defs/ShortIdSetType"
-    additionalProperties: false
