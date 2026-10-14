@@ -1,37 +1,39 @@
 {
-	"Id": "urn:oasis:names:tc:acal:1.0:xpath:identifiers",
-	"ShortId": [
-		{
-			"Name": "xpathExpression",
-			"Value": "urn:oasis:names:tc:acal:1.0:data-type:xpathExpression"
-		},
-		{
-			"Name": "xpath-node-count",
-			"Value": "urn:oasis:names:tc:acal:1.0:function:xpath-node-count"
-		},
-		{
-			"Name": "xpath-node-equal",
-			"Value": "urn:oasis:names:tc:acal:1.0:function:xpath-node-equal"
-		},
-		{
-			"Name": "xpath-node-match",
-			"Value": "urn:oasis:names:tc:acal:1.0:function:xpath-node-match"
-		},
-		{
-			"Name": "xpath20",
-			"Value": "https://www.w3.org/TR/xpath20/"
-		},
-		{
-			"Name": "xpath30",
-			"Value": "https://www.w3.org/TR/xpath-30/"
-		},
-		{
-			"Name": "xpath31",
-			"Value": "https://www.w3.org/TR/xpath-31/"
-		},
-		{
-			"Name": "content-selector",
-			"Value": "urn:oasis:names:tc:acal:1.0:content-selector"
-		}
-	]
+	"ShortIdSet": {
+		"Id": "urn:oasis:names:tc:acal:1.0:xpath:identifiers",
+		"ShortId": [
+			{
+				"Name": "xpathExpression",
+				"Value": "urn:oasis:names:tc:acal:1.0:data-type:xpathExpression"
+			},
+			{
+				"Name": "xpath-node-count",
+				"Value": "urn:oasis:names:tc:acal:1.0:function:xpath-node-count"
+			},
+			{
+				"Name": "xpath-node-equal",
+				"Value": "urn:oasis:names:tc:acal:1.0:function:xpath-node-equal"
+			},
+			{
+				"Name": "xpath-node-match",
+				"Value": "urn:oasis:names:tc:acal:1.0:function:xpath-node-match"
+			},
+			{
+				"Name": "xpath20",
+				"Value": "https://www.w3.org/TR/xpath20/"
+			},
+			{
+				"Name": "xpath30",
+				"Value": "https://www.w3.org/TR/xpath-30/"
+			},
+			{
+				"Name": "xpath31",
+				"Value": "https://www.w3.org/TR/xpath-31/"
+			},
+			{
+				"Name": "content-selector",
+				"Value": "urn:oasis:names:tc:acal:1.0:content-selector"
+			}
+		]
+	}
 }

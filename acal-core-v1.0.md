@@ -78,9 +78,9 @@ This document replaces or supersedes:
 
 This document is related to:
 
-- _JACAL, Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
-- _XACML, Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
-- _YACAL, Version 1.0 (YAML Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
+- _JACAL Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
+- _XACML Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
+- _YACAL Version 1.0 (YAML Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
 
 
 ## License, Document Status, and Notices
@@ -1571,51 +1571,54 @@ The following short-identifier set, respectively in XML, YAML and JSON, defines 
 ```
 
 ```yaml
-Id: "urn:oasis:names:tc:acal:1.0:example:identifiers"
-ShortIdSetReference:
-  - "urn:oasis:names:tc:acal:1.0:core:identifiers"
-ShortId:
-  - Name: patient-number
-    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-number"
-  - Name: collection
-    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:collection"
-  - Name: patient-date-of-birth
-    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-date-of-birth"
-  - Name: parent-guardian-id
-    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:parent-guardian-id"
-  - Name: physician-id
-    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:physician-id"
-  - Name: role
-    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:role"
-  - Name: patient-contact
-    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-contact"
-  - Name: primary-care-physician
-    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:primary-care-physician"
-  - Name: mailto
-    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:mailto"
-  - Name: text
-    Value: "urn:oasis:names:tc:acal:1.0:example:attribute:text"
-  - Name: email
-    Value: "urn:oasis:names:tc:acal:1.0:example:notice:email"
+ShortIdSet:
+  Id: "urn:oasis:names:tc:acal:1.0:example:identifiers"
+  ShortIdSetReference:
+    - "urn:oasis:names:tc:acal:1.0:core:identifiers"
+  ShortId:
+    - Name: patient-number
+      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-number"
+    - Name: collection
+      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:collection"
+    - Name: patient-date-of-birth
+      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-date-of-birth"
+    - Name: parent-guardian-id
+      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:parent-guardian-id"
+    - Name: physician-id
+      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:physician-id"
+    - Name: role
+      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:role"
+    - Name: patient-contact
+      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:patient-contact"
+    - Name: primary-care-physician
+      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:primary-care-physician"
+    - Name: mailto
+      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:mailto"
+    - Name: text
+      Value: "urn:oasis:names:tc:acal:1.0:example:attribute:text"
+    - Name: email
+      Value: "urn:oasis:names:tc:acal:1.0:example:notice:email"
 ```
 
 ```json
 {
-  "Id":"urn:oasis:names:tc:acal:1.0:example:identifiers",
-  "ShortIdSetReference":["urn:oasis:names:tc:acal:1.0:core:identifiers"],
-  "ShortId":[
-    { "Name":"patient-number", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:patient-number" },
-    { "Name":"collection", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:collection" },
-    { "Name":"patient-date-of-birth", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:patient-date-of-birth" },
-    { "Name":"parent-guardian-id", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:parent-guardian-id" },
-    { "Name":"physician-id", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:physician-id" },
-    { "Name":"role", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:role" },
-    { "Name":"patient-contact", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:patient-contact" },
-    { "Name":"primary-care-physician", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:primary-care-physician" },
-    { "Name":"mailto", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:mailto" },
-    { "Name":"text", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:text" },
-    { "Name":"email", "Value":"urn:oasis:names:tc:acal:1.0:example:notice:email" }
-  ]
+  "ShortIdSet": {
+    "Id":"urn:oasis:names:tc:acal:1.0:example:identifiers",
+    "ShortIdSetReference":["urn:oasis:names:tc:acal:1.0:core:identifiers"],
+    "ShortId":[
+      { "Name":"patient-number", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:patient-number" },
+      { "Name":"collection", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:collection" },
+      { "Name":"patient-date-of-birth", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:patient-date-of-birth" },
+      { "Name":"parent-guardian-id", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:parent-guardian-id" },
+      { "Name":"physician-id", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:physician-id" },
+      { "Name":"role", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:role" },
+      { "Name":"patient-contact", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:patient-contact" },
+      { "Name":"primary-care-physician", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:primary-care-physician" },
+      { "Name":"mailto", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:mailto" },
+      { "Name":"text", "Value":"urn:oasis:names:tc:acal:1.0:example:attribute:text" },
+      { "Name":"email", "Value":"urn:oasis:names:tc:acal:1.0:example:notice:email" }
+    ]
+  }
 }
 ```
 
@@ -4077,7 +4080,7 @@ A `RuleType` object contains the following properties:
 
 `NoticeExpression` [Any Number]
 
-: A sequence of `NoticeExpressionType` objects, each defining a notice expression potentially evaluated into a notice by the PDP. See [NoticeExpressionType](#729-noticeexpressiontype). Objects' `Id` values are not required to be unique in this sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignmentExpression`s. See [Section 8.16](#816-notices) for a description of how the notices to be returned by the PDP SHALL be determined. See [Section 8.2](#82-policy-enforcement-point) about enforcement of obligation notices.
+: A sequence of `NoticeExpressionType` objects, each defining a notice expression potentially evaluated into a notice by the PDP. See [NoticeExpressionType](#729-noticeexpressiontype). Objects' `Id` values are not required to be unique in this sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignmentExpression`s. See [Section 8.16](#816-notices) for a description of how the notices to be returned by the PDP shall be determined. See [Section 8.2](#82-policy-enforcement-point) about enforcement of obligation notices.
 
 ## 7.13 VariableDefinitionType
 
@@ -4226,7 +4229,7 @@ An `NonLiteralExpressionType` object contains exactly one of the following prope
 
 `AttributeSelector`
 
-: An `AttributeSelectorType` object specifying  a Path expression - depending on the content type (e.g. XPath for XML content) - to apply to the structured content in the request context to produce a bag of ACAL values.
+: An `AttributeSelectorType` object specifying a Path expression - depending on the content type (e.g. XPath for XML content) - to apply to the structured content in the request context to produce a bag of ACAL values.
 
 `EntityAttributeSelector`
 
@@ -4922,7 +4925,7 @@ A `NoticeExpressionType` object contains the following properties:
 
 `Condition` [Optional]
 
-: A `BooleanExpressionType` object holding an expression that MUST be satisfied for this notice to be provided to the PEP. An absent condition is treated as unconditionally satisfied. Evaluation of the `Condition` property is described in [Section 8.9](#89-condition-evaluation).
+: A `BooleanExpressionType` object holding an expression that must be satisfied for this notice to be provided to the PEP. An absent condition is treated as unconditionally satisfied. Evaluation of the `Condition` property is described in [Section 8.9](#89-condition-evaluation).
 
 `AttributeAssignmentExpression` [Any Number]
 
@@ -5096,7 +5099,7 @@ This fifth object has the same `AttributeId` and the same effective `DataType` a
 
 ## 7.34 ContentType (optional)
 
-_**Support for this object type is optional. It is required only if the implementation MUST support extensions of AttributeSelectors and/or DataTypes depending on this object type.**_ Such extensions are typically defined in ACAL Profiles (e.g. XPath and JSONPath Profiles).
+_**Support for this object type is optional. It is required only if the implementation supports extensions of AttributeSelectors and/or DataTypes depending on this object type.**_ Such extensions are typically defined in ACAL Profiles (e.g. XPath and JSONPath Profiles).
 
 A `ContentType` object is a notional placeholder for additional attributes, typically the content of the resource.
 A `ContentType` object has a *body* property of arbitrary type.
@@ -5617,7 +5620,7 @@ In any case any advice in the decision may be safely ignored by the PEP.
 
 If the decision is `Permit`, then the PEP SHALL permit access. If obligation notices accompany the decision, then the PEP SHALL permit access only if it understands and it can and will discharge those obligations.
 
-If the decision is `Deny`, then the PEP SHALL deny access. If obligation notices accompany the decision, then the PEP SHALL deny access only if it understands, and it can and will discharge those obligations.
+If the decision is `Deny`, then the PEP SHALL deny access. If obligation notices accompany the decision, then the PEP MUST discharge any obligation it understands to the best of its ability.
 
 If the decision is `NotApplicable`, then the PEP's behavior is undefined.
 
@@ -5633,7 +5636,7 @@ All other decisions SHALL result in the denial of access.
 
 ### 8.2.3 Permit-Biased PEP
 
-If the decision is `Deny`, then the PEP SHALL deny access. If obligation notices accompany the decision, then the PEP SHALL deny access only if it understands, and it can and will discharge those obligations.
+If the decision is `Deny`, then the PEP SHALL deny access. If obligation notices accompany the decision, then the PEP MUST discharge any obligation it understands to the best of its ability.
 
 All other decisions SHALL result in the permission of access.
 
@@ -6915,7 +6918,7 @@ This specification combines the various standards set forth by IEEE and ANSI for
 
 ## C.2 Data Types
 
-Although a syntactic representation of ACAL objects may represent most data types as strings, an ACAL PDP MUST operate on types of data that, while they have string representations, are not just strings. Types such as `Boolean`, `Integer`, and `Double` MUST be converted from their string representations to values that can be compared with values in their domain of discourse, such as numbers. The following data types are specified for use with ACAL and have explicit data representations:
+Although a syntactic representation of ACAL objects may represent most data types as strings, an ACAL PDP must operate on types of data that, while they have string representations, are not just strings. Types such as `Boolean`, `Integer`, and `Double` MUST be converted from their string representations to values that can be compared with values in their domain of discourse, such as numbers. The following data types are specified for use with ACAL and have explicit data representations:
 
 * `urn:oasis:names:tc:acal:1.0:data-type:string`
 
@@ -7249,7 +7252,7 @@ This section contains the specification for logical functions that operate on ar
 
 `urn:oasis:names:tc:acal:1.0:function:n-of`
 
-: The first argument to this function SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:integer`. The remaining arguments (the Boolean arguments) SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:boolean`. The first argument specifies the minimum number of the Boolean arguments that MUST evaluate to `true` for the expression to be considered `true`.
+: The first argument to this function SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:integer`. The remaining arguments (the Boolean arguments) SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:boolean`. The first argument specifies the minimum number of the Boolean arguments that must evaluate to `true` for the expression to be considered `true`.
 
 : Let N be the value of the first argument and let M be the number of Boolean arguments. This function returns `Indeterminate` if N is `Indeterminate`; otherwise, the function returns `true` if N is less than or equal to 0; otherwise, the function returns `false` if N is greater than M; otherwise, the function returns `true` if at least N of the Boolean arguments evaluate to `true`; otherwise, the function returns `false` if at least (M + 1 - N) of the Boolean arguments evaluate to `false`; otherwise, the function returns `Indeterminate`.
 
@@ -8068,11 +8071,11 @@ These functions operate on various types and evaluate to `urn:oasis:names:tc:aca
 
 : The first argument contains a complete rfc822Name. The second argument is a complete or partial rfc822Name used to select appropriate values in the first argument as follows.
 
-: In order to match a particular address in the first argument, the second argument MUST specify the complete mail address to be matched. For example, if the second argument is `Anderson@sun.com`, this matches a value in the first argument of `Anderson@sun.com` and `Anderson@SUN.COM`, but not `Anne.Anderson@sun.com`, `anderson@sun.com` or `Anderson@east.sun.com`.
+: In order to match a particular address in the first argument, the second argument must specify the complete mail address to be matched. For example, if the second argument is `Anderson@sun.com`, this matches a value in the first argument of `Anderson@sun.com` and `Anderson@SUN.COM`, but not `Anne.Anderson@sun.com`, `anderson@sun.com` or `Anderson@east.sun.com`.
 
-: In order to match any address at a particular domain in the first argument, the second argument MUST specify only a domain name (usually a DNS name). For example, if the second argument is `sun.com`, this matches a value in the first argument of `Anderson@sun.com` or `Baxter@SUN.COM`, but not `Anderson@east.sun.com`.
+: In order to match any address at a particular domain in the first argument, the second argument must specify only a domain name (usually a DNS name). For example, if the second argument is `sun.com`, this matches a value in the first argument of `Anderson@sun.com` or `Baxter@SUN.COM`, but not `Anderson@east.sun.com`.
 
-: In order to match any address in a particular domain in the first argument, the second argument MUST specify the desired domain-part with a leading `.`. For example, if the second argument is `.east.sun.com`, this matches a value in the first argument of `Anderson@east.sun.com` and `anne.anderson@ISRG.EAST.SUN.COM` but not `Anderson@sun.com`.
+: In order to match any address in a particular domain in the first argument, the second argument must specify the desired domain-part with a leading `.`. For example, if the second argument is `.east.sun.com`, this matches a value in the first argument of `Anderson@east.sun.com` and `anne.anderson@ISRG.EAST.SUN.COM` but not `Anderson@sun.com`.
 
 : Note that the arguments to this function are swapped compared to the similarly-named function in XACML [[XACML](#xacml)].
 
@@ -8845,11 +8848,12 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - The `processing-error` status code is described as an error while the PDP processes the decision request or evaluates policy, including the refusal of a request as specified in [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) (csd01: an error during policy evaluation) ([Annex D.8](#d8-status-codes)). The target value "No Match" is written `No-match`, as in the policy truth table ([Section 8.7](#87-target-evaluation)). In the glossary, "Context handler" refers to the ACAL context instead of the XACML canonical form, and the Condition definition writes its values `true` and `false` (csd01: `True`, `False`) ([Section 2.1.2](#212-terms-defined-in-this-document)).
 - The base-PEP decision value "Not Applicable" is written `NotApplicable` ([Section 8.2.1](#821-base-pep)); [Section 8.10](#810-extended-indeterminate) defines the top-level policy, at which an extended `Indeterminate` is returned as a plain `Indeterminate`, as the policy referenced by the `PolicyReference` property of the `BundleType` object that defines the PDP; and the local-identifier examples of [Section 7.1.2.3.9](#71239-localidentifiertype) use `Name` for a parameter and `Id` for a rule (csd01: `ParameterName` and `RuleId`) and describe `RequestEntityReference` as a `LocalIdentifierType` value.
 - The `entity` data type is listed among the data type identifiers ([Annex D.3](#d3-data-types)).
-- Requirement keywords previously written in lowercase or mixed case ("must", "shall", "should", "SHALL not") are written in uppercase, with the wording otherwise unchanged (Sections 7.1.2.3, 7.3, 7.4, 7.6, 7.11, 7.12, 7.15, 7.21, 7.22, 7.24b, 7.29, 7.31, 7.34, 7.43, 8.2.1, 8.2.3, 8.3, 8.4.5, 8.16 and 11.2.4, and Annexes C.2, C.3.1, C.3.3, C.3.5, C.3.8, C.3.15 and C.3.16).
+- On a `Deny` decision, the base PEP and the Permit-biased PEP no longer deny access "only if" they understand and can discharge the accompanying obligations; they deny access in every case and MUST discharge any obligation they understand to the best of their ability ([Section 8.2.1](#821-base-pep), [Section 8.2.3](#823-permit-biased-pep)).
+- Requirement keywords previously written in lowercase or mixed case ("must", "shall", "should", "SHALL not") are written in uppercase, with the wording otherwise unchanged (Sections 7.1.2.3, 7.3, 7.4, 7.6, 7.11, 7.15, 7.21, 7.22, 7.24b, 7.29, 7.31, 7.34, 7.43, 8.3, 8.4.5, 8.16 and 11.2.4, and Annexes C.3.1, C.3.3, C.3.8, C.3.15 and C.3.16). A lowercase "must" or "shall" that states a condition or a consequence rather than a requirement stays lowercase, and in [Section 7.34](#734-contenttype-optional) "required only if the implementation must support extensions" reads "required only if the implementation supports extensions".
 - In the object-type conformance table, `NamedArgumentType` (optional) and `PatternMatchIdReferenceType` are added, `SharedVariableReferenceType` is now optional, and `DecisionType` (a simple type), `DescriptionType` (not defined by the model) and `PolicyIssuerType` (the policy issuer is an `EntityType`) are no longer listed, `PatternMatchIdReferenceType` is mandatory, and the deprecated identifier of `base64Binary-at-least-one-member-of` is corrected to its XACML 1.0 identifier ([Section 11.2.8](#1128-functions)); the other changes are in the object-type table ([Section 11.2.1](#1121-object-types)). The reference to conformance test cases is removed from [Section 11.2](#112-conformance-tables).
 - A response holds one `ResultType` object per Individual Decision Request, or a single combined `ResultType` object, instead of one per requested resource ([Section 7.36](#736-responsetype)).
 - Requirements formerly stated in non-normative sections are moved into normative ones: the conversion of attribute representations ([Section 8.4](#84-attribute-evaluation)), the advice of [[UTR36](#utr36)] ([Section 8.1.2](#812-version-of-unicode)) and distinct namespaces for policy identifiers from distinct sources ([Section 8.13](#813-policyreference-evaluation)). [Section 5.2](#52-acal-context), [Section 10.2.5](#1025-policy-identifiers) and [Section 10.3](#103-unicode-security-issues) now refer to those sections, [Section 10.4](#104-identifier-equality) refers to [Section 8.18](#818-identifier-equality), which already stated its recommendation, and [Section 5.3.1.1](#5311-condition) no longer states a requirement of its own but refers to [[ACAL-Hierarchical-1.0](#acal-hierarchical-10)].
-- The examples are corrected so that each validates against its representation's schema and evaluates as its text describes: in [Section 6](#6-examples-non-normative) the JSON examples carry their JACAL root key, the YAML short-identifier set is a bare mapping, the example short-identifier set defines every short identifier the rules use, Rule 1's YAML variable definition uses `Expression`, Rule 2 tests "under 16" with `date-less-than`, Rule 2's JSON is well-formed, and Rule 3's notice reads the physician's `physician-id`; in [Annex C.3.12](#c312-higher-order-bag-functions) the `all-of` example's XML literal is typed `integer`.
+- The examples are corrected so that each validates against its representation's schema and evaluates as its text describes: in [Section 6](#6-examples-non-normative) the JSON examples carry their JACAL root key, the example short-identifier set defines every short identifier the rules use, Rule 1's YAML variable definition uses `Expression`, Rule 2 tests "under 16" with `date-less-than`, Rule 2's JSON is well-formed, and Rule 3's notice reads the physician's `physician-id`; in [Annex C.3.12](#c312-higher-order-bag-functions) the `all-of` example's XML literal is typed `integer`.
 - New glossary terms: lexical mapping, lexical space and value space ([Section 2.1.1](#211-terms-defined-elsewhere)); input acceptance limit and supported integer interval ([Section 2.1.2](#212-terms-defined-in-this-document)). The examples of [Section 6](#6-examples-non-normative) are also given in YAML; in them, `RuleId` is replaced by `Id`, and the example request's `patient-number` attribute is a `string`, as Rule 1 reads it. The complete UML class diagram is added as [Annex G](#annex-g-uml-model).
 - [Annex F](#annex-f-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
 - Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; references to the multiple decision and hierarchical resource profiles now cite the ACAL profiles; section and table numbering, cross-references and the table of contents are corrected (in Annex C, "Entity" moves from C.2.6 to C.2.5 and "Extension Functions and Data Types" from C.3.18 to C.3.17, closing numbering gaps); citations of XML Schema datatype sections use the XML Schema 1.1 numbering of [[XS](#xs)] (e.g. Section 3.3.7 for `dateTime`, formerly the XML Schema 1.0 number 3.2.7); references to RFC 2396, RFC 2253 and RFC 2821 are replaced by [[RFC3986](#rfc3986)], [[RFC4514](#rfc4514)] and [[RFC5321](#rfc5321)]; the property descriptions of `ResultType`, `StatusCodeType` and `ResultEntityType` now state the same multiplicities as their UML definitions; and the `isBag` property of `ParameterType` is spelled `IsBag`, as in the XML Schema.
@@ -8897,7 +8901,7 @@ ACAL 1.0 is a successor to XACML 3.0. ACAL 1.0 differs from XACML 3.0 in the fol
 
 - `Attribute` has a new optional `DataType` attribute (set to the standard string type as default), to have a common data-type for all the attribute values. In XACML 3.0, defining the data-type for each `AttributeValue` individually led to the risk of mixing different datatypes in the same attribute. We consider this bad practice (one may simply split in different attributes if using different data-types).
 
-- The uniqueness rule for attributes within a `RequestEntity`, `ResultEntity` or `entity` data type value keys on the combination `(AttributeId, DataType, Issuer)` — where `DataType` is compared on its effective value after applying its default, and an absent `Issuer` is never a duplicate of a present one. (This replaces an earlier ACAL draft rule that keyed on `AttributeId` alone, which contradicted the attribute-designator matching rule and could not represent, for example, a node's ancestors given in more than one data type as the Hierarchical Resource Profile allows.)
+- The uniqueness rule for attributes within a `RequestEntity`, `ResultEntity` or `entity` data type value keys on the combination `(AttributeId, DataType, Issuer)` — where `DataType` is compared on its effective value after applying its default, and an absent `Issuer` is never a duplicate of a present one. (This replaces the csd01 rule that keyed on `AttributeId` alone, which contradicted the attribute-designator matching rule and could not represent, for example, a node's ancestors given in more than one data type as the Hierarchical Resource Profile allows.)
 
 - `AttributeValue` is replaced with more generic `Value` whose `DataType` is now optional, i.e. it may be omitted when it is already defined at the parent or ancestor level, which simplifies expressions with literal values. In particular, as a result of the previous change, in an `Attribute`, the `Value`'s `DataType` is now omitted since defined at the `Attribute` level already.
 

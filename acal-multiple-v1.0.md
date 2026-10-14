@@ -241,7 +241,7 @@ This is the first ACAL version of this profile, ported from _XACML v3.0 Multiple
 
 Porting this profile involves more than renaming its XML vocabulary; every scheme needs rework, for the following reasons:
 
-- **`Attributes` → `RequestEntityType`; `xml:id` → unqualified `Id`.** These are the names ACAL Core uses (`RequestEntity`, `RequestEntityReference`); intermediate names considered while ACAL was drafted, such as `RequestCategory`/`RequestCategoryReference`, were not adopted.
+- **`Attributes` → `RequestEntityType`; `xml:id` → unqualified `Id`.** These are the names ACAL Core uses (`RequestEntity`, `RequestEntityReference`).
 - **`AttributesReference ReferenceId="x"` → `RequestEntityReference` whose value *is* `x`.** ACAL Core has no `RequestEntityReferenceType` wrapper around an `Id` property; the reference element is now typed directly as `LocalIdentifierType`, so `RequestEntityReference` *is* a `LocalIdentifierType` value, not an element with its own `Id`/`ReferenceId` attribute. `LocalIdentifierType` is a restricted `String`, not `xs:ID`/`xs:IDREF` — referenced ids need not be XML NCNames and do not share a document-wide `xml:id` namespace.
 - **The `Notice` merge rewrites the combined-decision rules.** XACML 3.0 MDP's combined-decision rule about "obligations or advice" is restated over ACAL's merged `NoticeType`/`IsObligation` model — see [Section 6](#6-combined-decision).
 - **Two schemes depend on the ACAL Hierarchical Resource Profile.** The scope scheme's `Children`/`Descendants` values need a definition of hierarchy membership; the XPath-expression scheme rewrites its `multiple:content-selector` attribute into the plain `content-selector` HRP takes a normative dependency on. This is why this profile includes all four schemes.
@@ -1113,15 +1113,15 @@ The following documents are referenced in such a way that some or all of their c
 
 ###### [YACAL-Core-1.0]
 
-_YACAL, Version 1.0 (YAML Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
+_YACAL Version 1.0 (YAML Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
 
 ###### [JACAL-Core-1.0]
 
-_JACAL, Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
+_JACAL Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
 
 ###### [XACML-Core-4.0]
 
-_XACML, Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
+_XACML Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
 
 ###### [ACAL-Core-1.0]
 

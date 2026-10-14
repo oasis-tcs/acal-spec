@@ -3,7 +3,7 @@
 logo: |
   ![OASIS](images/OASISLogo-v3.0.png)
 # Original logo: http://docs.oasis-open.org/templates/OASISLogo-v3.0.png
-title: JACAL, Version 1.0 (JSON Representation of ACAL)
+title: JACAL Version 1.0 (JSON Representation of ACAL)
 subtitle: Committee Specification Draft 02
 version: "1.0"
 stage_revision: csd02 # [stage-abbrev][revisionNumber] as defined in https://docs.oasis-open.org/specGuidelines/ndr/namingDirectives.html
@@ -64,7 +64,7 @@ This document is one component of a Work Product that also includes:
 
 ### Abstract
 
-This specification defines JACAL, Version 1.0 (JSON Representation of ACAL): the JSON representation of the ACAL Version 1.0 model.
+This specification defines JACAL Version 1.0: the JSON representation of the ACAL Version 1.0 model.
 
 ### Citation Format
 
@@ -286,12 +286,14 @@ The following short-identifier set defines a JSON representation of short identi
 
 ```json
 {
-  "Id": "urn:oasis:names:tc:acal:1.0:example:identifiers",
-  "ShortIdSetReference": ["urn:oasis:names:tc:acal:1.0:core:identifiers"],
-  "ShortId": [
-    { "Name": "patient-number", "Value": "urn:oasis:names:tc:acal:1.0:example:attribute:patient-number" },
-    { "Name": "collection", "Value": "urn:oasis:names:tc:acal:1.0:example:attribute:collection" }
-  ]
+  "ShortIdSet": {
+    "Id": "urn:oasis:names:tc:acal:1.0:example:identifiers",
+    "ShortIdSetReference": ["urn:oasis:names:tc:acal:1.0:core:identifiers"],
+    "ShortId": [
+      { "Name": "patient-number", "Value": "urn:oasis:names:tc:acal:1.0:example:attribute:patient-number" },
+      { "Name": "collection", "Value": "urn:oasis:names:tc:acal:1.0:example:attribute:collection" }
+    ]
+  }
 }
 ```
 
@@ -326,13 +328,13 @@ The list of changes from the previous version and any revision history can be fo
 The next sections describe the rules that SHALL be applied for mapping the [[ACAL-Core-1.0](#acal-core-10)] agnostic model (UML-based) to [JSON schema Draft 2020-12](#jsonschemacore) definitions for this JSON representation (JACAL).
 These rules have been applied to produce JACAL's core JSON schema in [Annex D](#annex-d-json-schema-normative) (also in the [Core JSON schema file](acal-core-json-v%version%-schema.json) accompanying this document) from [[ACAL-Core-1.0](#acal-core-10)] core model.
 
-We consider `PolicyType`, `BundleType`, `RequestType` and `ResponseType` as the root JSON objects to be used by JACAL users. Except for a standalone short-identifier set ([Section 4.3](#43-example-short-identifier-set), [Annex C.2](#c2-core-short-identifier-set)), whose root is a bare `ShortIdSetType` object, a JACAL document is a JSON object with a single property, named `Policy`, `Bundle`, `Request` or `Response`, whose value is the root object; therefore the final JACAL core schema has the following structure:
+We consider `PolicyType`, `BundleType`, `RequestType`, `ResponseType`, `ShortIdSetType` and `SharedVariableDefinitionType` as the root JSON objects to be used by JACAL users. A JACAL document, including a standalone short-identifier set ([Section 4.3](#43-example-short-identifier-set), [Annex C.2](#c2-core-short-identifier-set)), is a JSON object with a single property, named `Policy`, `Bundle`, `Request`, `Response`, `ShortIdSet` or `SharedVariableDefinition`, whose value is the root object; therefore the final JACAL core schema has the following structure:
 
 ```json
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "urn:oasis:names:tc:jacal:1.0:core:schema",
-	"title": "Core JSON schema for JACAL, Version 1.0 (JSON Representation of ACAL)",
+	"title": "Core JSON schema for JACAL Version 1.0 (JSON Representation of ACAL)",
 	"anyOf": [
 		{
 			"type": "object",
@@ -363,6 +365,22 @@ We consider `PolicyType`, `BundleType`, `RequestType` and `ResponseType` as the 
 			"required": ["Response"],
 			"properties": {
 				"Response": {"$ref": "#/$defs/ResponseType"}
+			},
+			"additionalProperties": false
+		},
+		{
+			"type": "object",
+			"required": ["ShortIdSet"],
+			"properties": {
+				"ShortIdSet": {"$ref": "#/$defs/ShortIdSetType"}
+			},
+			"additionalProperties": false
+		},
+		{
+			"type": "object",
+			"required": ["SharedVariableDefinition"],
+			"properties": {
+				"SharedVariableDefinition": {"$ref": "#/$defs/SharedVariableDefinitionType"}
 			},
 			"additionalProperties": false
 		}
@@ -431,7 +449,7 @@ Each ACAL primitive type `FooType` with stereotype `<<restrictedString>>` in Sec
 }
 ```
 
-For example, ACAL `VersionType` translates to the following subschema definition (backslashes MUST be escaped in JSON):
+For example, ACAL `VersionType` translates to the following subschema definition (backslashes must be escaped in JSON):
 
 ```json
 {
@@ -920,7 +938,7 @@ where:
 
     **The standard `uniqueItems` keyword does not allow to enforce uniqueness of array items based on a specific key when such items are JSON objects, in the current latest JSON schema draft (version 2020-12).** 
 
-Therefore, the mapping of **property-based uniqueness constraints** - defined in [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.1.1.1.2 - on properties of complex/structured type (mapped to JSON object) is left implementation-defined by this specification, since there is no standard mechanism in the current latest JSON schema standard to enforce such constraints. However, as a general guidance, implementations MAY use the third-party [ArrayExt extension vocabulary](https://github.com/json-schema-org/json-schema-vocabularies) and more particularly the `uniqueKeys` keyword (instead of `uniqueItems`) to implement this feature. Implementers evaluating this option SHOULD be aware of two limitations, verified against the vocabulary's reference implementation ([JsonSchema.Net](https://github.com/json-everything/json-everything), at the time of writing the only known implementation, and .NET-specific): first, `uniqueKeys` compares key values by a raw JSON Pointer lookup with no schema-normalization step, so a key property that is absent from one item and present with its schema `default` value on another is not recognized as a duplicate pair, even though the two denote the same effective value; second, being a non-standard vocabulary extension with limited implementation availability, its fitness for a given constraint SHOULD be assessed against the implementer's own toolchain rather than assumed.
+Therefore, the mapping of **property-based uniqueness constraints** - defined in [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.1.1.1.2 - on properties of complex/structured type (mapped to JSON object) is left implementation-defined by this specification, since there is no standard mechanism in the current latest JSON schema standard to enforce such constraints. However, as a general guidance, implementations MAY use the third-party [ArrayExt extension vocabulary](https://github.com/json-schema-org/json-schema-vocabularies) and more particularly the `uniqueKeys` keyword (instead of `uniqueItems`) to implement this feature. Implementers evaluating this option should be aware of two limitations, verified against the vocabulary's reference implementation ([JsonSchema.Net](https://github.com/json-everything/json-everything), at the time of writing the only known implementation, and .NET-specific): first, `uniqueKeys` compares key values by a raw JSON Pointer lookup with no schema-normalization step, so a key property that is absent from one item and present with its schema `default` value on another is not recognized as a duplicate pair, even though the two denote the same effective value; second, being a non-standard vocabulary extension with limited implementation availability, its fitness for a given constraint should be assessed against the implementer's own toolchain rather than assumed.
 
     **Attribute uniqueness (see [[ACAL-Core-1.0](#acal-core-10)] Sections 7.33, 7.44 and 7.45).** The `RequestAttribute` property of `RequestEntityType`, and the `Attribute` property of `ResultEntityType` and `EntityType`, each carry a multi-property-based uniqueness constraint over the combination of `AttributeId`, `DataType` and `Issuer`, compared per [[ACAL-Core-1.0](#acal-core-10)] Section 8.18's identifier-equality rules, Section 7.27's `DataType` default, and an absent `Issuer` never being a duplicate of a present one. This constraint is not enforced by the JSON subschemas produced by the rules above: `uniqueItems` cannot express a keyed comparison (rule 2.2), and, for the reason given above, `uniqueKeys` does not correctly enforce it either, since `DataType` is a key property with a schema `default` value. Implementations enforcing this constraint SHALL therefore do so outside JSON Schema validation, having first (1) applied the short-identifier expansion of [[ACAL-Core-1.0](#acal-core-10)] Section 8.3 to the `AttributeId` and `DataType` values being compared, and (2) set `DataType` to its default value (`urn:oasis:names:tc:acal:1.0:data-type:string`) wherever the property is absent from the value being compared. See the equivalent statement in `acal-core-yaml-v1.0-constraints.yaml`'s `request-attribute-id-unique-within-entity`, `resultentity-attribute-attributeid-unique` and `policyissuer-attribute-attributeid-unique` rules.
 
@@ -974,7 +992,7 @@ The implementation SHALL support a given content type in this list if and only i
 
 **If the implementation does not support any extension, you may use the JACAL core schema (provided with this specification) as is, and ignore this section.**
 
-Extending JACAL syntax means extending JACAL core JSON schema (obtained from the mapping rules in Sections 5.1 and 5.2). As explained in the mapping rule 1.2.1 of Section 5.2.3, JACAL core schema uses a `$dynamicRef` for any extensible ACAL type that may be extended by a separate JSON schema (overriding a matching `$dynamicAnchor`), depending on which extensions the ACAL implementation SHALL support.
+Extending JACAL syntax means extending JACAL core JSON schema (obtained from the mapping rules in Sections 5.1 and 5.2). As explained in the mapping rule 1.2.1 of Section 5.2.3, JACAL core schema uses a `$dynamicRef` for any extensible ACAL type that may be extended by a separate JSON schema (overriding a matching `$dynamicAnchor`), depending on which extensions the ACAL implementation supports.
 
 To explain how to use this extension mechanism, we go through various concrete examples in the next sections.
 
@@ -1269,7 +1287,7 @@ The JACAL core schema is defined using this identifier (`$id`):
 
 This work product provides the standard JSON serialization of the ACAL
 core short-identifier set in the file
-`acal-core-json-v1.0-identifiers.json`.
+`acal-core-json-v1.0-identifiers.json`. The artifact is a JACAL document: a JSON object whose single property, `ShortIdSet`, holds the short-identifier set ([Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments)).
 
 The `ShortIdSet.Id` value of this artifact is:
 
@@ -1402,10 +1420,10 @@ This is the first version of JACAL; its previous stage was Committee Specificati
 - The Conformance section is restructured: JACAL inherits ACAL object-type conformance from [[ACAL-Core-1.0](#acal-core-10)] instead of repeating a schema-object table, and lists the machine-readable artifacts that accompany this specification ([Section 7](#7-conformance)). The JSON Schemas of the XPath and JSONPath Profiles are now artifacts of those Profiles, and the extension examples of [Section 5.4](#54-jacal-extension-mechanism) refer to them there. An implementation follows Section 5 and Annex C where they apply to the ACAL object types and machine-readable artifacts that the implementation supports ([Section 7.2](#72-conformance-categories)).
 - The core short identifier set artifact and its reserved `ShortIdSet` identifier are described in [Annex C.2](#c2-core-short-identifier-set).
 - The schema templates of the mapping rules ([Section 5.2.3](#523-default-mapping-rules-for-complex-acal-types-other-than-valuetype)) are corrected: references use the JSON Pointer form `#/$defs/...`; `$comment` is placed as a schema keyword rather than inside `properties`, where it named a property; and `additionalProperties: false` is no longer placed beside a `$ref`, where in JSON Schema 2020-12 it rejected every property.
-- Requirement keywords previously written in lowercase are written in uppercase, with the wording otherwise unchanged ([Section 5.1.2](#512-restricted-string-types-uml-stereotype-restrictedstring), [Section 5.1.2.1](#5121-identifiertype-pattern), [Section 5.2.1](#521-anytype-mapping-rule), [Section 5.2.4](#524-property-mapping-rules), [Section 5.4](#54-jacal-extension-mechanism), [Section 5.4.2](#542-example-using-extensions-from-multiple-acal-profiles), [Section 5.4.3](#543-example-combining-a-custom-extension-with-a-standard-profile-defined-extension)).
-- The description of the core schema's structure in [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments) now shows the single-property `Policy`, `Bundle`, `Request` or `Response` wrapper object that the schema requires around a root object, and states that a standalone short-identifier set is instead a bare `ShortIdSetType` object.
+- Requirement keywords previously written in lowercase are written in uppercase, with the wording otherwise unchanged ([Section 5.1.2.1](#5121-identifiertype-pattern), [Section 5.2.1](#521-anytype-mapping-rule), [Section 5.4.2](#542-example-using-extensions-from-multiple-acal-profiles), [Section 5.4.3](#543-example-combining-a-custom-extension-with-a-standard-profile-defined-extension)). A lowercase "should" or "must" that states a condition or a consequence rather than a requirement stays lowercase, and in [Section 5.4](#54-jacal-extension-mechanism) "depending on which extensions the ACAL implementation shall support" reads "depending on which extensions the ACAL implementation supports".
+- The description of the core schema's structure in [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments) now shows the single-property wrapper object that the schema requires around a root object. A standalone short-identifier set or shared variable definition is a root object in the same way as a policy: the schema gains `ShortIdSet` and `SharedVariableDefinition` root forms, the core short-identifier set file is wrapped in a `ShortIdSet` property (csd01: a bare `ShortIdSetType` object), and the short-identifier set example of [Section 4.3](#43-example-short-identifier-set) is wrapped accordingly.
 - [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
-- Editorial: the title is now "JACAL, Version 1.0 (JSON Representation of ACAL)" (csd01: "JSON Representation of ACAL Version 1.0 (JACAL)"), and the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references and citations are corrected, including the reference for Base64 encoding ([[RFC4648](#rfc4648)]). Cross-references are corrected: the safety and security sections cite [[ACAL-Core-1.0](#acal-core-10)] Sections 10.1 and 10.2 (csd01 cited Sections 11.1 and 11.2, which are about conformance), bold-italic terms refer to [[ACAL-Core-1.0](#acal-core-10)] Section 2, and [Section 5.2.5](#525-mapping-acal-object-level-constraints-ocl) cites rule 2.2 of [Section 5.2.4](#524-property-mapping-rules) (csd01 cited a nonexistent rule 2.2.2); [Section 5.3](#53-content-types-and-body-representations-optional) calls `MediaType` and `Encoding` properties.
+- Editorial: the title is now "JACAL Version 1.0 (JSON Representation of ACAL)" (csd01: "JSON Representation of ACAL Version 1.0 (JACAL)"), and the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references and citations are corrected, including the reference for Base64 encoding ([[RFC4648](#rfc4648)]). Cross-references are corrected: the safety and security sections cite [[ACAL-Core-1.0](#acal-core-10)] Sections 10.1 and 10.2 (csd01 cited Sections 11.1 and 11.2, which are about conformance), bold-italic terms refer to [[ACAL-Core-1.0](#acal-core-10)] Section 2, and [Section 5.2.5](#525-mapping-acal-object-level-constraints-ocl) cites rule 2.2 of [Section 5.2.4](#524-property-mapping-rules) (csd01 cited a nonexistent rule 2.2.2); [Section 5.3](#53-content-types-and-body-representations-optional) calls `MediaType` and `Encoding` properties.
 
 ## Revision History
 

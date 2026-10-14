@@ -3,7 +3,7 @@
 logo: |
   ![OASIS](images/OASISLogo-v3.0.png)
 # Original logo: http://docs.oasis-open.org/templates/OASISLogo-v3.0.png
-title: YACAL, Version 1.0 (YAML Representation of ACAL)
+title: YACAL Version 1.0 (YAML Representation of ACAL)
 subtitle: Committee Specification Draft 02
 version: "1.0"
 stage_revision: csd02 # [stage-abbrev][revisionNumber] as defined in https://docs.oasis-open.org/specGuidelines/ndr/namingDirectives.html
@@ -86,8 +86,8 @@ Edited by Steven Legg, Cyril Dangerville and William Parducci. %date%. OASIS %su
 This document is related to:
 
 * _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
-* _JACAL, Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
-* _XACML, Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
+* _JACAL Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
+* _XACML Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
 
 ## License, Document Status, and Notices
 
@@ -507,9 +507,8 @@ documents:
 
 ### 5.2.1 Root Element
 
-Except for a standalone short-identifier set
-([Section 5.11.1](#5111-shortidsettype)), whose root is a bare
-`ShortIdSetType` mapping, a YACAL document is a single YAML mapping
+A YACAL document, including a standalone short-identifier set
+([Section 5.11.1](#5111-shortidsettype)), is a single YAML mapping
 with exactly one key at the root level.  The key identifies the
 document type:
 
@@ -519,6 +518,8 @@ document type:
 | `Bundle` | `BundleType` | A collection of policies, shared variables, and identifiers |
 | `Request` | `RequestType` | An authorization decision request |
 | `Response` | `ResponseType` | An authorization decision response |
+| `ShortIdSet` | `ShortIdSetType` | A set of short identifiers |
+| `SharedVariableDefinition` | `SharedVariableDefinitionType` | A shared variable definition |
 
 Example:
 
@@ -2475,23 +2476,24 @@ by the relevant ACAL profile.
 
 A `ShortIdSetType` object is represented as a YAML mapping of its
 properties.  A short identifier set provided as a standalone artifact,
-such as `acal-core-yaml-v1.0-identifiers.yaml`, is such a mapping at the
-root of the YAML document, with no `ShortIdSet` wrapper key, as in JACAL;
-it is not one of the document forms of
-[Section 5.2.1](#521-root-element).  Within a `BundleType`, short
-identifier sets are the items of the `ShortIdSet` sequence.
+such as `acal-core-yaml-v1.0-identifiers.yaml`, is a YACAL document
+whose root key is `ShortIdSet`
+([Section 5.2.1](#521-root-element)), with this mapping as its value.
+Within a `BundleType`, short identifier sets are the items of the
+`ShortIdSet` sequence.
 
 ```yaml
-Id: "urn:example:yacal:ids:healthcare"
-ShortIdSetReference:
-  - "urn:oasis:names:tc:acal:1.0:core:identifiers"
-ShortId:
-  - Name: subject-role
-    Value: "urn:example:yacal:healthcare:subject:role"
-  - Name: resource-type
-    Value: "urn:example:yacal:healthcare:resource:type"
-  - Name: record-type
-    Value: "urn:example:yacal:healthcare:resource:record-type"
+ShortIdSet:
+  Id: "urn:example:yacal:ids:healthcare"
+  ShortIdSetReference:
+    - "urn:oasis:names:tc:acal:1.0:core:identifiers"
+  ShortId:
+    - Name: subject-role
+      Value: "urn:example:yacal:healthcare:subject:role"
+    - Name: resource-type
+      Value: "urn:example:yacal:healthcare:resource:type"
+    - Name: record-type
+      Value: "urn:example:yacal:healthcare:resource:record-type"
 ```
 
 Properties:
@@ -2813,12 +2815,8 @@ A conformant YACAL document:
 11. SHOULD use YAML block style for mappings and sequences.  Flow style
     MAY be used where it improves readability (e.g., for short inline
     values).
-12. If it uses only core YACAL features and is one of the root forms
-    of [Section 5.2.1](#521-root-element), it MUST be structurally
-    compatible with `acal-core-yaml-v1.0-structure.schema.yaml`. A
-    standalone short-identifier set
-    ([Section 5.11.1](#5111-shortidsettype)) MUST instead conform to that
-    schema's `#/$defs/ShortIdSetType`.
+12. If it uses only core YACAL features, it MUST be structurally
+    compatible with `acal-core-yaml-v1.0-structure.schema.yaml`.
 13. If it uses XPath or JSONPath profile features, it MUST be
     structurally compatible with a composition schema that enables the
     corresponding profile artifacts.
@@ -2974,11 +2972,11 @@ This work product provides the standard YACAL serialization of the ACAL
 core short-identifier set in the file
 `acal-core-yaml-v1.0-identifiers.yaml`.
 
-The `Id` of this `ShortIdSetType` artifact is:
+The `ShortIdSet.Id` value of this artifact is:
 
 `urn:oasis:names:tc:acal:1.0:core:identifiers`
 
-**CAUTION:** This short identifier set SHALL NOT be modified except by the OASIS ACAL \[XACML\] TC. Since its `Id` is using one of the prefixes reserved for OASIS ACAL \[XACML\] TC use (`urn:oasis:names:tc:acal:`), users outside the TC SHALL NOT create a new short identifier set of their own with the same `Id`. 
+**CAUTION:** This short identifier set SHALL NOT be modified except by the OASIS ACAL \[XACML\] TC. Since its `ShortIdSet.Id` is using one of the prefixes reserved for OASIS ACAL \[XACML\] TC use (`urn:oasis:names:tc:acal:`), users outside the TC SHALL NOT create a new short identifier set of their own with the same `Id`. 
 
 YACAL uses the ACAL core identifier inventory directly.  The YACAL
 artifact is therefore the YAML serialization of the same underlying ACAL

@@ -3,7 +3,7 @@
 logo: |
   ![OASIS](images/OASISLogo-v3.0.png)
 # Original logo: http://docs.oasis-open.org/templates/OASISLogo-v3.0.png
-title: XACML, Version 4.0 (eXtensible Access Control Markup Language)
+title: XACML Version 4.0 (eXtensible Access Control Markup Language)
 subtitle: Committee Specification Draft 02
 version: "4.0"
 stage_revision: csd02 # [stage-abbrev][revisionNumber] as defined in https://docs.oasis-open.org/specGuidelines/ndr/namingDirectives.html
@@ -66,7 +66,7 @@ The XPath and JSONPath Profiles are separate Work Products with their own machin
 
 ### Abstract
 
-This specification defines XACML, Version 4.0 (eXtensible Access Control Markup Language), which is now the XML representation of the ACAL Version 1.0 model, also produced by the OASIS ACAL \[XACML\] TC.
+This specification defines XACML Version 4.0 (eXtensible Access Control Markup Language), which is now the XML representation of the ACAL Version 1.0 model, also produced by the OASIS ACAL \[XACML\] TC.
 
 ### Citation Format
 
@@ -1127,7 +1127,7 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - The simple-type mapping covers `<<restrictedString>>` types alongside `<<primitive>>` and `<<enumeration>>` types, and the property mapping rule applies to all three ([Section 5.1](#51-mapping-acal-simple-types), [Section 5.2.5](#525-property-mapping-rules) rule 2).
 - [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
 - The example short-identifier set in [Section 4.3](#43-example-short-identifier-set-non-normative) is well-formed (its `ShortIdSet` element had been closed before its children), and the example `IdentifierType` values are written without quotation marks.
-- Editorial: the title is now "XACML, Version 4.0 (eXtensible Access Control Markup Language)" (csd01: "eXtensible Access Control Markup Language (XACML) Version 4.0 (XML Representation of ACAL Version 1.0)"), and the Technical Committee is renamed, and document and repository URLs are updated accordingly; the references and citations are corrected; and the example short identifier set is marked non-normative ([Section 4.3](#43-example-short-identifier-set-non-normative)) and repaired so that its `ShortIdSet` element is well-formed (csd01 closed it before its children).
+- Editorial: the title is now "XACML Version 4.0 (eXtensible Access Control Markup Language)" (csd01: "eXtensible Access Control Markup Language (XACML) Version 4.0 (XML Representation of ACAL Version 1.0)"), and the Technical Committee is renamed, and document and repository URLs are updated accordingly; the references and citations are corrected; and the example short identifier set is marked non-normative ([Section 4.3](#43-example-short-identifier-set-non-normative)) and repaired so that its `ShortIdSet` element is well-formed (csd01 closed it before its children).
 
 The remainder of this appendix describes how XACML 4.0 differs from XACML 3.0.
 

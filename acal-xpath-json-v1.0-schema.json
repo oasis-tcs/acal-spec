@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "urn:oasis:names:tc:jacal:1.0:xpath:schema",
 	"title": "JACAL - XPath Profile schema",
-	"description": "ACAL v1.0 XPath Profile Version 1.0 - JSON schema for JACAL, Version 1.0 (JSON Representation of ACAL). Copyright (c) OASIS Open 2026. All Rights Reserved. For more license and copyright information, and complete status, please see Annex A of the ACAL v1.0 XPath Profile Version 1.0 specification, which contains the License, Document Status and Notices.",
+	"description": "ACAL v1.0 XPath Profile Version 1.0 - JSON schema for JACAL Version 1.0 (JSON Representation of ACAL). Copyright (c) OASIS Open 2026. All Rights Reserved. For more license and copyright information, and complete status, please see Annex A of the ACAL v1.0 XPath Profile Version 1.0 specification, which contains the License, Document Status and Notices.",
 	"$defs": {
 		"NamespaceDeclarationsType": {
 			"type": "object",

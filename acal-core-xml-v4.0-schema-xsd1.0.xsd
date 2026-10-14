@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <xs:schema xmlns:xacml="urn:oasis:names:tc:xacml:4.0:core:schema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" targetNamespace="urn:oasis:names:tc:xacml:4.0:core:schema" elementFormDefault="qualified" attributeFormDefault="unqualified">
    <xs:annotation>
-      <xs:documentation> XACML, Version 4.0 (eXtensible Access Control Markup Language) Core schema.
+      <xs:documentation> XACML Version 4.0 (eXtensible Access Control Markup Language) Core schema.
 			Copyright (c) OASIS Open 2026. All Rights Reserved. For more license and copyright
-			information, and complete status, please see Annex A of the XACML, Version 4.0 (eXtensible Access Control Markup Language) specification, which contains the License, Document Status and
+			information, and complete status, please see Annex A of the XACML Version 4.0 (eXtensible Access Control Markup Language) specification, which contains the License, Document Status and
 			Notices. </xs:documentation>
    </xs:annotation>
    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="https://www.w3.org/2001/xml.xsd"/>

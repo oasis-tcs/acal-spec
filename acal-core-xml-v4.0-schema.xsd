@@ -6,9 +6,9 @@
 	elementFormDefault="qualified"
 	attributeFormDefault="unqualified">
 	<xs:annotation>
-		<xs:documentation> XACML, Version 4.0 (eXtensible Access Control Markup Language) Core schema.
+		<xs:documentation> XACML Version 4.0 (eXtensible Access Control Markup Language) Core schema.
 			Copyright (c) OASIS Open 2026. All Rights Reserved. For more license and copyright
-			information, and complete status, please see Annex A of the XACML, Version 4.0 (eXtensible Access Control Markup Language) specification, which contains the License, Document Status and
+			information, and complete status, please see Annex A of the XACML Version 4.0 (eXtensible Access Control Markup Language) specification, which contains the License, Document Status and
 			Notices. </xs:documentation>
 	</xs:annotation>
 
