@@ -50,14 +50,13 @@ keywords: ["access", "authorization", "ABAC", "policylanguage", "XML", "standard
 
 - Steven Legg (steven.legg@viewds.com), ViewDS Identity Solutions
 - Cyril Dangerville (cyril.dangerville@thalesgroup.com), THALES
-- William Parducci (bill@parducci.net), Individual
+- Bill Parducci (bill@parducci.net), Individual
 
 ### Additional artifacts
 
 This document is one component of a Work Product that also includes:
 
 * [Core XML schema](acal-core-xml-v%version%-schema.xsd);
-* [Core XML schema, XSD 1.0 version](acal-core-xml-v%version%-schema-xsd1.0.xsd) (see Section 5.2.6.2);
 * [Core Schematron rules](acal-core-xml-v%version%-schematron.sch);
 * [Short identifier set](acal-core-xml-v%version%-identifiers.xml).
 
@@ -74,7 +73,7 @@ When referencing this specification the following citation format should be used
 
 **[XACML-Core-4.0]**
 _%title%_.
-Edited by Steven Legg, Cyril Dangerville and William Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/xacml/core/v%version%/%stage_revision%/acal-core-xml-v%version%-%stage_revision%.html. Latest version: https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html.
+Edited by Steven Legg, Cyril Dangerville and Bill Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/xacml/core/v%version%/%stage_revision%/acal-core-xml-v%version%-%stage_revision%.html. Latest version: https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html.
 
 ### Related Work
 
@@ -84,7 +83,7 @@ This specification replaces or supersedes:
 
 This specification is related to:
 
-* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
+* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 
 ## License, Document Status, and Notices
@@ -721,7 +720,7 @@ You may find further guidance about XSD-1.1-based validation on [OASIS ACAL \[XA
 
 Due to the current general lack of adoption of XSD 1.1 (and limited availability of implementations), implementations only supporting XSD 1.0 MAY achieve the same result by combining the following: 
 
-- An XSD 1.0 version of the *Core XML Schema*, obtained by filtering out all the schema elements with attribute `vc:minVersion="1.1"` (according to [[XSV](#xsv)]) from the XSD 1.1 schema (e.g. with an [[XSLT](#xslt)] stylesheet). That XSD 1.0 schema is provided with this document as `acal-core-xml-v4.0-schema-xsd1.0.xsd`;
+- An XSD 1.0 version of the *Core XML Schema*, obtained by filtering out all the schema elements with attribute `vc:minVersion="1.1"` (according to [[XSV](#xsv)]) from the XSD 1.1 schema (e.g. with an [[XSLT](#xslt)] stylesheet);
 - [ISO Schematron](#schematron) rules provided with this document (file with `.sch` extension), that implement the complex OCL constraints with similar - if not the same - XPath expressions as the XSD 1.1 assertions in the previous Option 1. Therefore, like XSD 1.1 assertions, certain generic Schematron assertions may be problematic for certain XSLT / XPath engines or use cases, in which case alternative assertions are suggested in XML comments before or after each possibly problematic `<assert>` element currently in use in the schema. Implementers SHOULD review these before use. Moreover, implementers MAY choose to replace some of the assertions with possibly more optimal implementations as long as they provide equivalent constraint enforcement. Each Schematron `pattern` element has the corresponding  [[ACAL-Core-1.0](#acal-core-10)] model's UML constraint (with OCL expression) reminded in the child `title` element. You may find further guidance about Schematron-based validation on [OASIS ACAL \[XACML\] TC's code repository](https://github.com/oasis-tcs/acal-spec/).
 
 #### 5.2.6.3 Limitations common to both options: identifier-typed keys
@@ -845,7 +844,6 @@ The following machine-readable artifacts accompany this specification:
 |:---|:---:|:---|
 | `acal-core-xml-v4.0-schema.xsd` | M | Core XML Schema |
 | `acal-core-xml-v4.0-identifiers.xml` | M | Core short identifier set represented in XML |
-| `acal-core-xml-v4.0-schema-xsd1.0.xsd` | O | XSD 1.0 version of the Core XML Schema ([Section 5.2.6.2](#5262-option-2-schematron-rules)) |
 | `acal-core-xml-v4.0-schematron.sch` | O | Schematron rules used with the XSD 1.0 version ([Section 5.2.6.2](#5262-option-2-schematron-rules)) |
 
 The XML Schemas and short identifier sets for XPath Profile and JSONPath Profile support are artifacts of those Profiles' own Work Products, not of this Core specification.
@@ -924,7 +922,7 @@ The following documents are referenced in such a way that some or all of their c
 
 ###### [ACAL-Core-1.0]
 
-_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
+_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 ###### [DS]
 
@@ -1090,7 +1088,7 @@ The following individuals have had significant leadership positions during the d
 - Editors
   - Steven Legg, ViewDS Identity Solutions
   - Cyril Dangerville, THALES
-  - William Parducci, Individual
+  - Bill Parducci, Individual
 
 
 ## Participants
@@ -1123,7 +1121,6 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - The Conformance section is restructured: XACML inherits ACAL object-type conformance from [[ACAL-Core-1.0](#acal-core-10)] instead of repeating a schema-element table, and lists the machine-readable artifacts that accompany this specification ([Section 7](#7-conformance)). The XML Schemas of the XPath and JSONPath Profiles are now artifacts of those Profiles. An implementation follows Section 5 and Annex C where they apply to the ACAL object types and machine-readable artifacts that the implementation supports ([Section 7.2](#72-conformance-categories)).
 - The core short identifier set artifact and its reserved `ShortIdSet` identifier are described in [Annex C.2](#c2-core-short-identifier-set).
 - Requirements and recommendations previously written in lowercase or mixed case are written with the uppercase BCP 14 keywords: a single-use empty datatype "SHALL NOT be mapped" to a dedicated XML type ([Section 5.2.2](#522-single-use-empty-datatypes)), and the recommendation that implementers add further restrictions to the XML schema in production ([Section 5.2.1](#521-anytype-mapping-rule)) now uses "SHOULD"; and "SHALL not" in the `PolicyReference` and `SharedVariableReference` annotations of the XML schema and in the corresponding Schematron rule titles is written "SHALL NOT".
-- The XSD 1.0 version of the Core XML Schema ([Section 5.2.6.2](#5262-option-2-schematron-rules)) is listed among this document's artifacts, and the machine-readable artifact table ([Section 7.3.2](#732-machine-readable-artifact-support)) lists it and the Schematron rules.
 - The simple-type mapping covers `<<restrictedString>>` types alongside `<<primitive>>` and `<<enumeration>>` types, and the property mapping rule applies to all three ([Section 5.1](#51-mapping-acal-simple-types), [Section 5.2.5](#525-property-mapping-rules) rule 2).
 - [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
 - The example short-identifier set in [Section 4.3](#43-example-short-identifier-set-non-normative) is well-formed (its `ShortIdSet` element had been closed before its children), and the example `IdentifierType` values are written without quotation marks.

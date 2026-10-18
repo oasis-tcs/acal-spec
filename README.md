@@ -123,7 +123,7 @@ Here is an example of how to do that with the **XML schema 1.0-only version of X
    $ wget https://codeberg.org/SchXslt/schxslt2/raw/branch/main/src/main/resources/content/transpile.xsl -P /tmp
    ```
 
-2. Generate (once and for all validations) the XSD 1.0 version of the core schema using the XSLT stylesheet `xsd1.1-to-1.0.xslt` with [Saxon HE](https://www.saxonica.com/html/download/java.html) (tested with v12.5) as the XSLT engine:
+2. Generate (once and for all validations) the XSD 1.0 version of the core schema using the XSLT stylesheet `xsd1.1-to-1.0.xsl` with [Saxon HE](https://www.saxonica.com/html/download/java.html) (tested with v12.5) as the XSLT engine:
    ```console
    # Tested with Java 21 LTS
    $ java -jar saxon-he-12.5.jar -xsl:xsd1.1-to-1.0.xsl -s:acal-core-xml-v4.0-schema.xsd -o:/tmp/acal-core-xml-v4.0-schema-xsd1.0.xsd

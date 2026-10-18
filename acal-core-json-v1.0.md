@@ -51,7 +51,7 @@ keywords: ["access control", "authorization", "ABAC", "policy language", "JSON",
 
 - Steven Legg (steven.legg@viewds.com), ViewDS Identity Solutions
 - Cyril Dangerville (cyril.dangerville@thalesgroup.com), THALES
-- William Parducci (bill@parducci.net), Individual
+- Bill Parducci (bill@parducci.net), Individual
 
 
 ### Additional artifacts
@@ -72,14 +72,14 @@ When referencing this specification the following citation format should be used
 
 **[JACAL-Core-1.0]**
 _%title%_.
-Edited by Steven Legg, Cyril Dangerville and William Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/jacal/core/v%version%/%stage_revision%/acal-core-json-v%version%-%stage_revision%.html . Latest version: https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html.
+Edited by Steven Legg, Cyril Dangerville and Bill Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/jacal/core/v%version%/%stage_revision%/acal-core-json-v%version%-%stage_revision%.html . Latest version: https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html.
 
 
 ### Related Work
 
 This document is related to:
 
-* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
+* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 
 ## License, Document Status, and Notices
@@ -328,7 +328,7 @@ The list of changes from the previous version and any revision history can be fo
 The next sections describe the rules that SHALL be applied for mapping the [[ACAL-Core-1.0](#acal-core-10)] agnostic model (UML-based) to [JSON schema Draft 2020-12](#jsonschemacore) definitions for this JSON representation (JACAL).
 These rules have been applied to produce JACAL's core JSON schema in [Annex D](#annex-d-json-schema-normative) (also in the [Core JSON schema file](acal-core-json-v%version%-schema.json) accompanying this document) from [[ACAL-Core-1.0](#acal-core-10)] core model.
 
-We consider `PolicyType`, `BundleType`, `RequestType`, `ResponseType`, `ShortIdSetType` and `SharedVariableDefinitionType` as the root JSON objects to be used by JACAL users. A JACAL document, including a standalone short-identifier set ([Section 4.3](#43-example-short-identifier-set), [Annex C.2](#c2-core-short-identifier-set)), is a JSON object with a single property, named `Policy`, `Bundle`, `Request`, `Response`, `ShortIdSet` or `SharedVariableDefinition`, whose value is the root object; therefore the final JACAL core schema has the following structure:
+We consider `PolicyType`, `BundleType`, `RequestType`, `ResponseType`, `ShortIdSetType` and `SharedVariableDefinitionType` as the root JSON objects to be used by JACAL users. A JACAL document is a JSON object with a single property, named `Policy`, `Bundle`, `Request`, `Response`, `ShortIdSet` or `SharedVariableDefinition`, whose value is the root object; therefore the final JACAL core schema has the following structure:
 
 ```json
 {
@@ -1225,7 +1225,7 @@ The following documents are referenced in such a way that some or all of their c
 
 ###### [ACAL-Core-1.0]
 
-_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
+_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 ###### [JsonSchemaCore]
 
@@ -1383,7 +1383,7 @@ The following individuals have had significant leadership positions during the d
 - Editors
   - Steven Legg, ViewDS Identity Solutions
   - Cyril Dangerville, THALES
-  - William Parducci, Individual
+  - Bill Parducci, Individual
 
 
 ## Participants

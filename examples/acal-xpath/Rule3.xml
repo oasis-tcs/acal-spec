@@ -29,8 +29,7 @@
                     <Function Id="urn:oasis:names:tc:acal:1.0:function:xpath-node-match" />
                     <AttributeDesignator
                         Category="urn:oasis:names:tc:acal:1.0:attribute-category:resource"
-                        AttributeId="urn:oasis:names:tc:acal:1.0:content-selector"
-                        DataType="urn:oasis:names:tc:acal:1.0:data-type:xpathExpression"/>
+                        AttributeId="urn:oasis:names:tc:acal:1.0:content-selector"/>
                     <Value
                         XPathCategory="urn:oasis:names:tc:acal:1.0:attribute-category:resource" XPath="md:record/md:medical"/>
                 </Apply>

@@ -57,7 +57,7 @@ keywords: ["access", "authorization", "ABAC", "policylanguage", "XML", "XPath", 
 
 - Steven Legg (steven.legg@viewds.com), ViewDS Identity Solutions
 - Cyril Dangerville (cyril.dangerville@thalesgroup.com), THALES
-- William Parducci (bill@parducci.net), Individual
+- Bill Parducci (bill@parducci.net), Individual
 
 
 ### Additional artifacts
@@ -84,14 +84,14 @@ When referencing this document, the following citation format should be used:
 
 **[ACAL-XPath-1.0]**
 _%title%_.
-Edited by Steven Legg, Cyril Dangerville and William Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/acal/profiles/xpath/v%version%/%stage_revision%/acal-xpath-v%version%-%stage_revision%.html . Latest version: https://docs.oasis-open.org/acal/acal/profiles/xpath/v1.0/acal-xpath-v1.0.html .
+Edited by Steven Legg, Cyril Dangerville and Bill Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/acal/profiles/xpath/v%version%/%stage_revision%/acal-xpath-v%version%-%stage_revision%.html . Latest version: https://docs.oasis-open.org/acal/acal/profiles/xpath/v1.0/acal-xpath-v1.0.html .
 
 
 ### Related Work
 
 This document is related to:
 
-- _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
+- _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 
 ## License, Document Status, and Notices
@@ -315,7 +315,7 @@ Line 8: XPath expressions in the policy are to be interpreted according to the 2
 
 Line 17: The `<XPathAttributeSelector>` element selects a bag of values from the resource content using a free-form XPath expression. In this case, it selects the value of the patient-number in the resource.  Note that the namespace prefixes in the XPath expression are resolved with the standard XML namespace declarations.
 
-Lines 41-49: This Apply expression compares the results of two XPath expressions applied to the `<Content>` element of the resource category in the Request earlier. The first XPath expression is the location path to the requested XML element and the second XPath expression is the literal value `md:record`. The `xpath-node-match` function evaluates to `true` if the requested XML element is below the `md:record` element.
+Lines 41-48: This Apply expression compares the results of two XPath expressions applied to the `<Content>` element of the resource category in the Request earlier. The first XPath expression is the location path to the requested XML element and the second XPath expression is the literal value `md:record`. The `xpath-node-match` function evaluates to `true` if the requested XML element is below the `md:record` element.
 
 Here is the equivalent example in JACAL syntax (JSON representation of ACAL):
 
@@ -334,7 +334,7 @@ The following ACAL `<Rule>` instance expresses *Rule* 2:
 
 Line 18: The `<XPathAttributeSelector>` element selects the patient's date of birth by taking the XPath expression over the resource content.
 
-Line 61: The second argument selects the value of the `<md:parentGuardianId>` element from the resource content using the `<XPathAttributeSelector>` element. This element contains a free-form XPath expression, pointing into the `<Content>` element of the resource category. Note that all namespace prefixes in the XPath expression are resolved with standard namespace declarations. The AttributeSelector evaluates to the bag of values of type `urn:oasis:names:tc:acal:1.0:data-type:string`.
+Line 60: The second argument selects the value of the `<md:parentGuardianId>` element from the resource content using the `<XPathAttributeSelector>` element. This element contains a free-form XPath expression, pointing into the `<Content>` element of the resource category. Note that all namespace prefixes in the XPath expression are resolved with standard namespace declarations. The AttributeSelector evaluates to the bag of values of type `urn:oasis:names:tc:acal:1.0:data-type:string`.
 
 Here is the equivalent example in JACAL syntax (JSON representation of ACAL):
 
@@ -351,9 +351,9 @@ The following ACAL `<Rule>` instance expresses *Rule* 3:
 !include examples/acal-xpath/Rule3.xml
 ```
 
-Lines 28-36: The `<Apply>` element targets resources that match the XPath expression `md:record/md:medical`.
+Lines 28-35: The `<Apply>` element targets resources that match the XPath expression `md:record/md:medical`.
 
-Lines 60-65: The first parameter of the obligation indicates where the PEP will find the email address in the resource. The PDP will evaluate the `<XPathAttributeSelector>` and return the result to the PEP inside the resulting obligation.
+Lines 59-64: The first parameter of the obligation indicates where the PEP will find the email address in the resource. The PDP will evaluate the `<XPathAttributeSelector>` and return the result to the PEP inside the resulting obligation.
 
 Here is the equivalent example in JACAL syntax (JSON representation of ACAL):
 
@@ -969,11 +969,11 @@ The following documents are referenced in such a way that some or all of their c
 
 ###### [ACAL-Core-1.0]
 
-_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
+_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 ###### [JACAL-Core-1.0]
 
-_JACAL Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
+_JACAL Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
 
 ###### [exc-c14n]
 
@@ -1013,11 +1013,11 @@ XML Path Language (XPath) 3.1, W3C Recommendation 21 March 2017, https://www.w3.
 
 ###### [XACML-Core-4.0]
 
-_XACML Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
+_XACML Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
 
 ###### [YACAL-Core-1.0]
 
-_YACAL Version 1.0 (YAML Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
+_YACAL Version 1.0 (YAML Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
 
 ## B.2 Informative References
 
@@ -1211,7 +1211,7 @@ The following individuals have had significant leadership positions during the d
 - Editors
   - Steven Legg, ViewDS Identity Solutions
   - Cyril Dangerville, THALES
-  - William Parducci, Individual
+  - Bill Parducci, Individual
 
 
 ## Participants
@@ -1245,7 +1245,7 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - `xs:integer` operations no longer have a modulo mode; an implementation's integer limit is the supported integer interval of [[ACAL-Core-1.0](#acal-core-10)] ([Section 6](#6-xpath-definitions)).
 - The `content-selector` attribute identifier is defined by this profile ([Annex D.3](#d3-attributes)).
 - The Scope no longer says that concrete representations are out of scope of this document: this profile now defines its extensions to the XML, JSON and YAML representations and provides the corresponding schemas and short identifier sets ([Section 1](#1-scope), Additional artifacts).
-- In the worked examples of [Section 4.4](#44-example), Rules 2 and 3 pass the `xpath-node-match` arguments in the order [Annex C.3.1](#c31-xpath-based-functions) defines (candidate node first); they had been missed when the arguments were swapped. In the same examples, each `content-selector` attribute designator declares the `xpathExpression` data type (without it the designator defaulted to `string`), and Rule 2 uses `date-less-than` in place of the undefined `date-less-or-equal` and tests the subject's `parent-guardian-id` attribute (it tested `physician-id`, which a parent or guardian does not have) against the record's `<md:parentGuardianId>`, as in [[XACML 3.0](#xacml)].
+- In the worked examples of [Section 4.4](#44-example), Rules 2 and 3 pass the `xpath-node-match` arguments in the order [Annex C.3.1](#c31-xpath-based-functions) defines (candidate node first); they had been missed when the arguments were swapped. In the same examples, Rule 2 uses `date-less-than` in place of the undefined `date-less-or-equal` and tests the subject's `parent-guardian-id` attribute (it tested `physician-id`, which a parent or guardian does not have) against the record's `<md:parentGuardianId>`, as in [[XACML 3.0](#xacml)].
 - The XPath-based functions are restated for the sequence-of-items data model, and the arguments of `xpath-node-match` are swapped ([Annex C.3.1](#c31-xpath-based-functions)), so its XACML 3.0 identifier is no longer listed as an equivalent deprecated identifier ([Section 9.2.3](#923-functions)).
 - Requirement keywords previously written in lowercase are written in uppercase, with the wording otherwise unchanged ([Section 7](#7-attribute-selector-evaluation)); in [Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype) the XPath expression of a `ContextSelectorId` attribute "must select a single node" now reads "must be designed to select a single node", which states the intent without contradicting Section 7, where an evaluation that returns no node or more than one node is an error; and [Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype) states the syntax-error outcome for a missing XPath version as a MUST with its status code.
 - [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.

@@ -46,7 +46,7 @@ N/A
 
 - Steven Legg (steven.legg@viewds.com), ViewDS Identity Solutions
 - Cyril Dangerville (cyril.dangerville@thalesgroup.com), THALES
-- William Parducci (bill@parducci.net), Individual
+- Bill Parducci (bill@parducci.net), Individual
 
 ### Additional artifacts
 
@@ -79,15 +79,15 @@ When referencing this document, the following citation format should be used:
 
 **[YACAL-Core-1.0]**
 _%title%_.
-Edited by Steven Legg, Cyril Dangerville and William Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/yacal/core/v%version%/%stage_revision%/acal-core-yaml-v%version%-%stage_revision%.html. Latest version: https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
+Edited by Steven Legg, Cyril Dangerville and Bill Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/yacal/core/v%version%/%stage_revision%/acal-core-yaml-v%version%-%stage_revision%.html. Latest version: https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
 
 ### Related Work
 
 This document is related to:
 
-* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
-* _JACAL Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
-* _XACML Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
+* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
+* _JACAL Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
+* _XACML Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
 
 ## License, Document Status, and Notices
 
@@ -507,8 +507,7 @@ documents:
 
 ### 5.2.1 Root Element
 
-A YACAL document, including a standalone short-identifier set
-([Section 5.11.1](#5111-shortidsettype)), is a single YAML mapping
+A YACAL document is a single YAML mapping
 with exactly one key at the root level.  The key identifies the
 document type:
 
@@ -1841,9 +1840,7 @@ Bundle:
                             Category: "urn:oasis:names:tc:acal:1.0:attribute-category:environment"
                             AttributeId: "urn:oasis:names:tc:acal:1.0:environment:current-time"
                             MustBePresent: true
-                  - Value:
-                      DataType: time
-                      Value: "09:00:00"
+                  - Value: "09:00:00"
             - Apply:
                 FunctionId: time-less-than
                 Argument:
@@ -1854,9 +1851,7 @@ Bundle:
                             Category: "urn:oasis:names:tc:acal:1.0:attribute-category:environment"
                             AttributeId: "urn:oasis:names:tc:acal:1.0:environment:current-time"
                             MustBePresent: true
-                  - Value:
-                      DataType: time
-                      Value: "17:00:00"
+                  - Value: "17:00:00"
 
   Policy:
     - PolicyId: "urn:example:yacal:policy:office-access"
@@ -2938,7 +2933,7 @@ this specification.
 
 ###### [ACAL-Core-1.0]
 
-_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and William Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
+_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 ###### [YAML1.2]
 
@@ -3263,7 +3258,7 @@ The following individuals have had significant leadership positions during the d
 - Editors
   - Steven Legg, ViewDS Identity Solutions
   - Cyril Dangerville, THALES
-  - William Parducci, Individual
+  - Bill Parducci, Individual
 
 
 ## Participants
