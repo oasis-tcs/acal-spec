@@ -416,7 +416,7 @@ Under the Core Schema, the following scalar resolutions apply (depending on the 
 | YAML Scalar regex | Examples | Resolved YAML Type | ACAL DataType |
 |---|---|---|---|
 | `null \| Null \| NULL \| ~` | `null` | null | *Not a valid ACAL value; see Section 5.4.3* |
-| `true \| True \| TRUE \| false \| False \| FALSE` | `true`, `false` | Boolean | `urn:oasis:names:tc:acal:1.0:data-type:boolean` |
+| `true \| True \| TRUE \| false \| False \| FALSE` | `true`, `false` | Boolean | `urn:oasis:names:tc:acal:1.0:data-type:boolean` (only `true` and `false` are valid YACAL booleans, see [Section 5.3.2](#532-selected-simple-types-mapped-to-native-yaml-scalars)) |
 | `[-+]? [0-9]+` | `42`, `-7`, `0` | Integer (base 10) | `urn:oasis:names:tc:acal:1.0:data-type:integer` |
 | `0o [0-7]+` | `0o7` | Integer (base 8) | *Not a valid ACAL value, see Section 5.1.4* |
 | `0x [0-9a-fA-F]+` | `0x3A` | Integer (base 16) | `urn:oasis:names:tc:acal:1.0:data-type:hexBinary` |
@@ -585,8 +585,8 @@ definitions remain those of [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.
 | `Boolean` | YAML boolean scalar | MUST use `true` or `false` |
 | `Integer` | YAML integer scalar | MUST resolve as integer under the Core Schema |
 | `Double` | YAML float scalar | MUST resolve as float under the Core Schema, except for an integer scalar under an explicit or inherited standard ACAL Double `DataType` ([Section 5.4.4](#544-valuetype-mapping-rules), rule 3) |
-| `NonNegativeInteger` | YAML integer scalar without the `-` sign, i.e. matching the regex `-?[0-9]+` under the Core Schema||
-| `URI`| YAML string scalar matching the same syntax as JSON schema's `format` assertion set to `uri-reference`||
+| `NonNegativeInteger` | YAML integer scalar without the `-` sign, i.e. matching the regex `[0-9]+` under the Core Schema|
+| `URI`| YAML string scalar matching the same syntax as JSON schema's `format` assertion set to `uri-reference`|
 
 Examples:
 
@@ -1035,8 +1035,8 @@ The following rules apply:
    the relevant polymorphic context.
 5. The value associated with the wrapper key MUST conform to the direct
    representation rules of the identified subtype.
-6. No additional sibling keys are permitted alongside the wrapper key in
-   the same polymorphic wrapper mapping.
+6. A polymorphic wrapper mapping SHALL NOT contain any key in addition to
+   its wrapper key.
 7. In a sequence of polymorphic values, each sequence item is wrapped
    independently.
 8. A wrapper key identifies the concrete subtype used in that context,
@@ -1798,9 +1798,9 @@ Based on the corresponding definition from [[ACAL-Core-1.0](#acal-core-10)], an 
 2. A named argument, represented as a YAML mapping with key `NamedArgument` and the following mapping as value:
 
 | Property | Required | Default | Type | Notes |
-    |---|---|---|---|---|
-    | `Name` | Yes | — | `LocalIdentifierType` | Name of the referenced function / policy / shared variable's `Parameter` that this argument is associated with. |
-    | `Expression` | Yes | - | `ExpressionType` | The argument's value expression; same as for a positional argument. |
+|---|---|---|---|---|
+| `Name` | Yes | — | `LocalIdentifierType` | Name of the referenced function / policy / shared variable's `Parameter` that this argument is associated with. |
+| `Expression` | Yes | - | `ExpressionType` | The argument's value expression; same as for a positional argument. |
 
 ------------------------------------------------------------------------
 
@@ -1881,8 +1881,8 @@ Properties:
 | `Policy` | No | `PolicyType` | * |
 | `PolicyReference` | No | `PolicyReferenceType` | 0..1 |
 
-If `PolicyReference` is present, the `Policy` sequence MUST NOT be
-empty.
+If `PolicyReference` is present, the `Policy` sequence MUST be present and
+non-empty.
 
 ### 5.7.2 SharedVariableDefinitionType
 
@@ -1931,7 +1931,8 @@ variable dependencies.
 
 Because the `SharedVariableDefinitionType` object is not within the
 scope of any `VariableDefinitionType`, its expression SHALL NOT contain
-`VariableReferenceType` objects.
+`VariableReferenceType` objects, except references to a `Parameter` of the
+same `SharedVariableDefinitionType` object.
 
 ------------------------------------------------------------------------
 
@@ -2515,8 +2516,8 @@ Properties:
 
 | Property | Required | Type | Cardinality |
 |---|---|---|---|
-| `Name` | Yes | `LocalIdentifierType` | 1 |
-| `Value` | Yes | URI | 1 |
+| `Name` | Yes | `ShortIdNameType` | 1 |
+| `Value` | Yes | `ShortIdValueType` | 1 |
 
 Within a single `ShortIdSetType`, `Name` values MUST be unique.
 
@@ -2591,7 +2592,7 @@ constraints apply:
 1. Lower and upper multiplicity constraints from ACAL MUST be enforced.
 2. If an ACAL property is declared ordered, the order of items in the
    YAML sequence is semantically significant and MUST be preserved.
-3. If an ACAL property is declared unordered, the YAML sequence MAY still
+3. If an ACAL property is declared unordered, the YAML sequence MUST still
    preserve presentation order, but processors MUST NOT assign semantic
    meaning to that order unless ACAL does so separately.
 4. If an ACAL property is constrained to have unique primitive values,
@@ -2762,7 +2763,7 @@ representation of those same ACAL object types, while
 [[ACAL-Core-1.0](#acal-core-10)] remains authoritative for their
 mandatory/optional classification.
 
-Some ACAL object types, such as `DecisionType`, `DescriptionType`,
+Some ACAL object types, such as `DecisionType`,
 `ParameterType`, `NamedAttributeDesignatorType`,
 `BaseAttributeSelectorType`, and `QuantifiedExpressionType`, do not
 correspond to standalone YACAL root keys.  Their conformance status
@@ -2971,7 +2972,7 @@ The `ShortIdSet.Id` value of this artifact is:
 
 `urn:oasis:names:tc:acal:1.0:core:identifiers`
 
-**CAUTION:** This short identifier set SHALL NOT be modified except by the OASIS ACAL \[XACML\] TC. Since its `ShortIdSet.Id` is using one of the prefixes reserved for OASIS ACAL \[XACML\] TC use (`urn:oasis:names:tc:acal:`), users outside the TC SHALL NOT create a new short identifier set of their own with the same `Id`. 
+**CAUTION:** This short identifier set SHALL NOT be modified except by the OASIS ACAL \[XACML\] TC. Since its `ShortIdSet.Id` is using one of the prefixes reserved for OASIS ACAL \[XACML\] TC use (`urn:oasis:names:tc:acal:`), a user outside the TC SHALL NOT create a short identifier set of their own with the same `Id`. 
 
 YACAL uses the ACAL core identifier inventory directly.  The YACAL
 artifact is therefore the YAML serialization of the same underlying ACAL
@@ -3189,7 +3190,7 @@ Policy:
 
 ## Online generation
 
-HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/). Go to Github Actions on the github repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
+HTML/PDF versions are generated automatically online via GitHub Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/). Go to GitHub Actions on the GitHub repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
 
 ## Offline generation
 
@@ -3201,7 +3202,7 @@ The following tools are required:
 
 Install them on your system.
 
-Git clone or get a local copy of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
 
 ### CSS stylesheet
 
@@ -3284,7 +3285,7 @@ None. This is the first version of the document.
 
 ## Revision History
 
-Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's github repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-core-yaml-v%version%-%stage_revision%.md).
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's GitHub repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-core-yaml-v%version%-%stage_revision%.md).
 
 
 <!-- The following centered line represents the end of the document -->  

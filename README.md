@@ -114,7 +114,7 @@ $ java -cp "xerces-2_12_2-xml-schema-1.1/*" jaxp.SourceValidator -i MyPolicy.xml
 
 As an alternative to the XSD 1.1 core schema (with XSD 1.1 assertions) previously mentioned, implementers that only support XSD 1.0 may use an XSD 1.0 version of the core schema - obtained by filtering out all the schema elements with attribute `vc:minVersion="1.1"` according to the [XML Schema Versioning standard](https://www.w3.org/2007/XMLSchema-versioning/) (e.g. using a [XSLT](https://www.w3.org/TR/xslt20/) stylesheet) - in combination with the core [Schematron](https://www.iso.org/standard/85625.html) [schema](acal-core-xml-v4.0-schematron.sch), which provides an equivalent for XSD 1.1 assertions.
 
-Here is an example of how to do that with the **XML schema 1.0-only version of Xerces2 Java 2.12.3** (instead of the *XML Schema 1.1* one) for the XML schema 1.0 validation and **[Schxslt2](https://codeberg.org/SchXslt/schxslt2/)** for the Schematron validation.
+Here is an example of how to do that with the **XML schema 1.0-only version of Xerces2 Java 2.12.2** (instead of the *XML Schema 1.1* one) for the XML schema 1.0 validation and **[Schxslt2](https://codeberg.org/SchXslt/schxslt2/)** for the Schematron validation.
 
 1. Download and unzip the XML schema 1.0 version of Xerces2, then download Schxslt2's XSLT stylesheet:
    ```console
@@ -205,7 +205,7 @@ We provide two concrete examples of combining schemas on this Github repository 
 
    To use this schema, the previous JSON schema validation command is modified as follows:
    ```console
-   $ jsonschema validate --resolve acal-core-json-v1.0-schema.json --resolve acal-jsonpath-json-v1.0-schema.json --resolve acal-xpath-json-v1.0-schema.json examples/jacal-root-schema-example-using-xpath-and-jsonpath-profiles.json policy.json
+   $ jsonschema validate --resolve acal-core-json-v1.0-schema.json --resolve acal-jsonpath-json-v1.0-schema.json --resolve acal-xpath-json-v1.0-schema.json examples/acal-core-json/jacal-root-schema-example-using-xpath-and-jsonpath-profiles.json policy.json
    ```
 
 ### How to validate YACAL (YAML) documents with the YACAL schemas?

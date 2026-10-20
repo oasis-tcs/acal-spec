@@ -245,8 +245,8 @@ Porting this profile involves more than renaming its XML vocabulary; every schem
 - **`AttributesReference ReferenceId="x"` → `RequestEntityReference` whose value *is* `x`.** ACAL Core has no `RequestEntityReferenceType` wrapper around an `Id` property; the reference element is now typed directly as `LocalIdentifierType`, so `RequestEntityReference` *is* a `LocalIdentifierType` value, not an element with its own `Id`/`ReferenceId` attribute. `LocalIdentifierType` is a restricted `String`, not `xs:ID`/`xs:IDREF` — referenced ids need not be XML NCNames and do not share a document-wide `xml:id` namespace.
 - **The `Notice` merge rewrites the combined-decision rules.** XACML 3.0 MDP's combined-decision rule about "obligations or advice" is restated over ACAL's merged `NoticeType`/`IsObligation` model — see [Section 6](#6-combined-decision).
 - **Two schemes depend on the ACAL Hierarchical Resource Profile.** The scope scheme's `Children`/`Descendants` values need a definition of hierarchy membership; the XPath-expression scheme rewrites its `multiple:content-selector` attribute into the plain `content-selector` HRP takes a normative dependency on. This is why this profile includes all four schemes.
-- **The XPath-expression scheme** ([Section 5.2](#52-nodes-identified-by-xpath-expression)) **applies only when the resource's `Content` is itself an XML document**, for the same reason and by the same decision as the ACAL Hierarchical Resource Profile's XML-document scheme: the ACAL JSONPath Profile does not yet define the identifier and conformance apparatus a JSON-*content* counterpart would depend on. This restricts the resource's `Content`, not the serialization carrying the request — see [Section 8.2](#82-nodes-identified-by-xpath-expression) for a worked example of this scheme in all three ACAL representations. Disclosed here as a deliberate, tracked gap, not silent incompleteness.
-- **The dangling-reference layering question** ([Section 5.4](#54-reference)) is resolved: both the schema-validation layer and the runtime-evaluation layer apply, and a non-validating implementation MUST still produce the runtime error.
+- **The XPath-expression scheme** ([Section 5.2](#52-nodes-identified-by-xpath-expression)) **applies only when the resource's `Content` is itself an XML document**, for the same reason and by the same decision as the ACAL Hierarchical Resource Profile's XML-document scheme: the ACAL JSONPath Profile does not yet define the identifier and conformance apparatus a JSON-*content* counterpart would depend on. This restricts the resource's `Content`, not the serialization carrying the request — see [Section 8.2](#82-nodes-identified-by-xpath-expression) for a worked example of this scheme in all three ACAL representations. A JSON-content counterpart is outside the scope of this version.
+- **The dangling-reference layering question** ([Section 5.4](#54-reference)) is resolved: both the schema-validation layer and the runtime-evaluation layer apply, and a non-validating implementation still has to produce the runtime error.
 - **Identifier namespace.** All identifiers introduced by this profile use the `urn:oasis:names:tc:acal:1.0:` prefix, with the XACML 3.0 identifiers recorded as deprecated equivalents. The XACML identifier `…:multiple:repeated-attribute-categories` is respelled `…:multiple:repeated-categories`, since ACAL's `RequestEntity` rename already dropped "Attributes" from the underlying object type's name.
 - **Target restructure.** Example policies in this document use the boolean `Apply` form rather than XACML 3.0's `AnyOf`/`AllOf`/`Match` structure, consistent with ACAL Core.
 - **No new schema artifacts.** Like the ACAL Hierarchical Resource Profile, this profile defines attribute identifiers and request-construction/evaluation rules, not new object types; `MultiRequestsType`, `RequestReferenceType` and `RequestEntityReference` already exist in ACAL Core's XSD, JSON Schema and YAML structural schema.
@@ -314,12 +314,12 @@ A request names several other requests by reference to `RequestEntityType` objec
 
 **Dangling references.** A `RequestEntityReference` value that does not match the `Id` of any `RequestEntityType` object in the request is invalid. Two enforcement layers apply and are both normative:
 
-1. A schema-validating implementation using the XML representation rejects a dangling reference at validation time, before evaluation begins, via [[XACML-Core-4.0](#xacml-core-40)]'s XSD keyref. Neither JSON Schema nor a structural YAML check provides an equivalent validation-time mechanism for this rule — see [Section 9](#9-representation-considerations) for what each representation's own schema tooling actually enforces.
+1. A schema-validating implementation using the XML representation SHALL reject a dangling reference at validation time, before evaluation begins, via [[XACML-Core-4.0](#xacml-core-40)]'s XSD keyref. Neither JSON Schema nor a structural YAML check provides an equivalent validation-time mechanism for this rule — see [Section 9](#9-representation-considerations) for what each representation's own schema tooling actually enforces.
 2. A non-schema-validating implementation MUST still detect a dangling reference at evaluation time and produce `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error` for the corresponding `Individual Decision Request`.
 
 Both layers exist so the same guarantee holds whether or not an implementation validates against the schema before evaluating.
 
-**Sibling uniqueness.** Sibling `RequestReferenceType` objects MUST NOT denote the same set of `RequestEntityType` objects ([[ACAL-Core-1.0](#acal-core-10)] Section 7.38's `MultiRequestsType` OCL constraint `self->isUnique(RequestEntityReference->asSet())`) — a constraint XACML 3.0 MDP [[Multi](#multi)] did not have, introduced by ACAL Core independent of this profile.
+**Sibling uniqueness.** A `RequestReferenceType` object MUST NOT denote the same set of `RequestEntityType` objects as a sibling `RequestReferenceType` object ([[ACAL-Core-1.0](#acal-core-10)] Section 7.38's `MultiRequestsType` OCL constraint `self->isUnique(RequestEntityReference->asSet())`) — a constraint XACML 3.0 MDP [[Multi](#multi)] did not have, introduced by ACAL Core independent of this profile.
 
 **RequestEntityReference uniqueness**: a `RequestReferenceType` object SHALL NOT contain duplicate `RequestEntityReference` values, as per the `RequestEntityReference` property definition in [[ACAL-Core-1.0](#acal-core-10)] Section 7.39 (`unique` modifier).
 
@@ -982,7 +982,7 @@ Dangling-reference detection is enforced by the *Core XML Schema*'s `<xs:keyref 
 
 ## 9.2 JSON
 
-JSON Schema 2020-12 has no keyword analogous to XSD's `keyref`: nothing in the vocabulary can require that a string value elsewhere in the document match some other value used as a key. **Dangling-reference detection is not enforced by JSON Schema validation at all**, so a JACAL implementation is necessarily in [Section 5.4](#54-reference) item 2's "non-schema-validating" case for this specific rule regardless of whether it validates the rest of the request against JSON Schema — that item's `MUST` therefore governs unconditionally for JACAL, not merely as a fallback. Sibling uniqueness fares no better: the *Core JSON Schema* itself marks the corresponding constraint an open TODO (`"$comment": "TODO: translate/enforce ACAL constraint: {OCL} self->isUnique(RequestEntityReference->asSet())"`), since it is a uniqueness test over *derived sets* of values rather than over individual values, which neither `uniqueItems` nor the `uniqueKeys` extension [[JACAL-Core-1.0](#jacal-core-10)] Section 5.2.4 discusses can express.
+JSON Schema 2020-12 has no keyword analogous to XSD's `keyref`: nothing in the vocabulary can require that a string value elsewhere in the document match some other value used as a key. **Dangling-reference detection is not enforced by JSON Schema validation at all**, so a JACAL implementation is necessarily in [Section 5.4](#54-reference) item 2's "non-schema-validating" case for this specific rule regardless of whether it validates the rest of the request against JSON Schema — that item's `MUST` therefore governs unconditionally for JACAL, not merely as a fallback. Sibling uniqueness fares no better: the *Core JSON Schema* itself notes that it does not enforce the corresponding constraint (`"$comment": "Not enforced by this schema; ACAL constraint: {OCL} self->isUnique(RequestEntityReference->asSet())"`), since it is a uniqueness test over *derived sets* of values rather than over individual values, which neither `uniqueItems` nor the `uniqueKeys` extension [[JACAL-Core-1.0](#jacal-core-10)] Section 5.2.4 discusses can express.
 
 ## 9.3 YAML
 
@@ -1192,7 +1192,7 @@ This attribute, used within a `RequestEntityType` object with `Category` evaluat
 
 ## Online generation
 
-HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/). Go to  Github Actions on the github repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
+HTML/PDF versions are generated automatically online via GitHub Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/). Go to GitHub Actions on the GitHub repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
 
 ## Offline generation
 
@@ -1204,7 +1204,7 @@ The following tools are required:
 
 Install them on your system.
 
-Git clone or get a local copy of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
 
 ### CSS stylesheet
 
@@ -1291,7 +1291,7 @@ This is the first version of this profile. See [Section 4.2](#42-changes-from-th
 
 ## Revision History
 
-Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's github repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-multiple-v%version%-%stage_revision%.md).
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's GitHub repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-multiple-v%version%-%stage_revision%.md).
 
 <!-- The following centered line represents the end of the document -->
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_

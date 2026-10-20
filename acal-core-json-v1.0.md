@@ -180,7 +180,7 @@ This specification defines the JSON syntax of the [[ACAL-Core-1.0](#acal-core-10
 
 ### 2.1.1 Terms Defined Elsewhere
 
-None.
+Terms in bold-face italic have the meaning defined in [[ACAL-Core-1.0](#acal-core-10)] Section 2.
 
 ### 2.1.2 Terms Defined in this Document
 
@@ -209,7 +209,7 @@ This document uses the following abbreviations and acronyms:
 
 **JSONPath**
 
-: XPath equivalent for JSON as defined in [[RFC9535](#rfc9535)]
+: Query expressions for selecting values from JSON, as defined in [[RFC9535](#rfc9535)]
 
 ---
 
@@ -280,7 +280,7 @@ Similarly, in the case where the resource to which access is requested is a JSON
 
 ## 4.3 Example Short Identifier Set
 
-A set of Short Identifiers with the Id `urn:oasis:names:tc:acal:1.0:core:identifiers` is defined by ACAL in the JSON Representation according to this specification, for the various identifiers assigned by ACAL, and provided attached to this profile. However, a deployment will usually have need for additional identifiers, especially for locally-defined attributes, so it is usually desirable to define a set of additional short identifiers to use in the deployment, that may import the first set.
+A set of Short Identifiers with the Id `urn:oasis:names:tc:acal:1.0:core:identifiers` is defined by ACAL in the JSON Representation according to this specification, for the various identifiers assigned by ACAL, and provided with this specification as a machine-readable artifact. However, a deployment will usually have need for additional identifiers, especially for locally-defined attributes, so it is usually desirable to define a set of additional short identifiers to use in the deployment, that may import the first set.
 
 The following short-identifier set defines a JSON representation of short identifiers for the additional attributes in this example and also imports the standardized set.
 
@@ -472,7 +472,7 @@ For basic validation of ACAL `IdentifierType` values with JSON schema, the follo
 }
 ```
 
-However, this still allows some undesirable identifiers. Therefore, ACAL system implementers SHALL implement the necessary extra validation according to the [[ACAL-Core-1.0](#acal-core-10)] definition of `IdentifierType` in the way they see fit, which should be more optimal than using a more complete - therefore more complex - regular expression than the above. 
+However, this still allows some undesirable identifiers. Therefore, ACAL system implementers SHALL implement the necessary extra validation according to the [[ACAL-Core-1.0](#acal-core-10)] definition of `IdentifierType` in the way they see fit, which may be more efficient than using a more complete - and therefore more complex - regular expression than the above. 
 
 Regardless, we provide the more complete JSON-schema-compatible regex below for stricter validation, but only for information purposes and implementation guidance:
 
@@ -548,7 +548,7 @@ The authoritative definition of ACAL `ValueType` and subtypes is in [[ACAL-Core-
      ```json
      {"DataType": "urn:oasis:names:tc:acal:1.0:data-type:double", "Value": "INF" }
      ```
-     A JACAL processor SHALL accept the `Value` string of such an object only if the string is in the lexical space of `xs:double` and the processor preserves the exact value it denotes.
+     A JACAL processor SHALL NOT accept the `Value` string of such an object unless the string is in the lexical space of `xs:double` and the processor preserves the exact value it denotes.
 
    A JSON number that represents a `LiteralDoubleType` object denotes the `xs:double` value that the lexical mapping of `xs:double` ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6) assigns to the number's text; every JSON number is in the lexical space of `xs:double`. If that mapping yields positive or negative infinity (for example for `1e400`), that infinity is the denoted value. A JACAL generator SHALL NOT use a JSON number to represent positive infinity, negative infinity, or not-a-number; the object form above is required for those values. A JSON number with a zero fractional part represents a `LiteralDoubleType` object only when a `DataType` property sets the standard ACAL Double as specified above; otherwise item 2 determines what it represents (the standard ACAL Integer, or a numeric data type recognized by an ACAL extension).
 4. A `LiteralStringType` object is represented as a JSON string without any JSON property named `DataType`. If a `DataType` property is present at an upper level, i.e. in the parent or an ancestor object (e.g. `AttributeType` object), its value MUST be `urn:oasis:names:tc:acal:1.0:data-type:string`. Else the ACAL data-type is implicitly set to `urn:oasis:names:tc:acal:1.0:data-type:string`.
@@ -704,7 +704,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
 - Let `FooSub1FinalType`, `FooSub2FinalType`, etc. be referred to as the final subtypes of `FooType` if there is any.
 - Let `FooSub1NonFinalType`, `FooSub2NonFinalType`, etc. be referred to as the non-final subtypes of `FooType` if there is any.
 - Let *p<sub>n</sub>* be the n-th property defined in *FooType* class model specifically (not already defined in a supertype of *FooType* if any).
-- Let *\<s<sub>i</sub>\>* be the JSON subschema obtained by applying Property mapping rules of Section 5.2.4 to the property *p<sub>n</sub>*.
+- Let *\<s<sub>n</sub>\>* be the JSON subschema obtained by applying Property mapping rules of Section 5.2.4 to the property *p<sub>n</sub>*.
 - Let *\<LR>* be the list of all required properties *p<sub>n</sub>*, i.e. such that the lower bound of *p<sub>n</sub>*'s multiplicity is 1.
 
 **Mapping rules**:
@@ -803,7 +803,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
         ]
       }
       ```
-(Else it is only used as a base type for other ACAL types, in which case the `FooType` subschema created by the next rules is enough.)
+(Else it is only used as a base type for other ACAL types, in which case the `FooType` subschema created by rule 1.1 is enough.)
 
 2. Else (`FooType` is a *concrete* type):
    - 2.1. If `FooType` is *final* (no subtype), then:
@@ -1061,7 +1061,7 @@ In this example, we consider an ACAL implementation that supports two extensions
 # 6 Safety, Security and Privacy Considerations (non-normative)
 
 
-This section identifies possible security and privacy compromise scenarios that should be considered when implementing this profile. The section is informative only. It is left to the implementer to decide whether these compromise scenarios are practical in their environment and to select appropriate safeguards.
+This section identifies possible security and privacy compromise scenarios that should be considered when implementing this specification. The section is informative only. It is left to the implementer to decide whether these compromise scenarios are practical in their environment and to select appropriate safeguards.
 
 ## 6.1 Threat model
 
@@ -1073,11 +1073,11 @@ Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 10.2 for general consideration
 
 ### 6.2.1 Policy confidentiality
 
-Where the policy is represented in JSON Representation (JACAL) defined by this profile, the *JSON Web Encryption (JWE)* [[RFC7516](#rfc7516)] standard can be used to encrypt all or parts of a JSON document. This specification is recommended for use with JACAL.
+Where the policy is represented in JSON Representation (JACAL) defined by this specification, the *JSON Web Encryption (JWE)* [[RFC7516](#rfc7516)] standard can be used to encrypt all or parts of a JSON document. JWE is recommended for use with JACAL.
 
 ### 6.2.2 Policy integrity
 
-The selection of the appropriate mechanisms is left to the implementers. However, when **_policy_** is distributed between organizations to be acted on at a later time, or when the **_policy_** travels with the protected **_resource_**, it would be useful to sign the **_policy_**. In these cases and when the JSON representation of policies (according to this profile) is used, the *JSON Web Signature (JWS)* [[RFC7515](#rfc7515)] is recommended to be used with JACAL.
+The selection of the appropriate mechanisms is left to the implementers. However, when **_policy_** is distributed between organizations to be acted on at a later time, or when the **_policy_** travels with the protected **_resource_**, it would be useful to sign the **_policy_**. In these cases and when the JSON representation of policies (according to this specification) is used, the *JSON Web Signature (JWS)* [[RFC7515](#rfc7515)] is recommended to be used with JACAL.
 
 -------
 
@@ -1293,7 +1293,7 @@ The `ShortIdSet.Id` value of this artifact is:
 
 `urn:oasis:names:tc:acal:1.0:core:identifiers`
 
-**CAUTION:** This short identifier set SHALL NOT be modified except by the OASIS ACAL \[XACML\] TC. Since its `ShortIdSet.Id` is using one of the prefixes reserved for OASIS ACAL \[XACML\] TC use (`urn:oasis:names:tc:acal:`), users outside the TC SHALL NOT create a new short identifier set of their own with the same `Id`.
+**CAUTION:** This short identifier set SHALL NOT be modified except by the OASIS ACAL \[XACML\] TC. Since its `ShortIdSet.Id` is using one of the prefixes reserved for OASIS ACAL \[XACML\] TC use (`urn:oasis:names:tc:acal:`), a user outside the TC SHALL NOT create a short identifier set of their own with the same `Id`.
 
 -------
 
@@ -1313,7 +1313,7 @@ This section includes the JSON Schema for the JACAL syntax defined in this speci
 
 ## Online generation
 
-HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/). Go to Github Actions on the github repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
+HTML/PDF versions are generated automatically online via GitHub Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/). Go to GitHub Actions on the GitHub repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
 
 ## Offline generation
 
@@ -1325,7 +1325,7 @@ The following tools are required:
 
 Install them on your system.
 
-Git clone or get a local copy of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
 
 ### CSS stylesheet
 
@@ -1421,13 +1421,14 @@ This is the first version of JACAL; its previous stage was Committee Specificati
 - The core short identifier set artifact and its reserved `ShortIdSet` identifier are described in [Annex C.2](#c2-core-short-identifier-set).
 - The schema templates of the mapping rules ([Section 5.2.3](#523-default-mapping-rules-for-complex-acal-types-other-than-valuetype)) are corrected: references use the JSON Pointer form `#/$defs/...`; `$comment` is placed as a schema keyword rather than inside `properties`, where it named a property; and `additionalProperties: false` is no longer placed beside a `$ref`, where in JSON Schema 2020-12 it rejected every property.
 - Requirement keywords previously written in lowercase are written in uppercase, with the wording otherwise unchanged ([Section 5.1.2.1](#5121-identifiertype-pattern), [Section 5.2.1](#521-anytype-mapping-rule), [Section 5.4.2](#542-example-using-extensions-from-multiple-acal-profiles), [Section 5.4.3](#543-example-combining-a-custom-extension-with-a-standard-profile-defined-extension)). A lowercase "should" or "must" that states a condition or a consequence rather than a requirement stays lowercase, and in [Section 5.4](#54-jacal-extension-mechanism) "depending on which extensions the ACAL implementation shall support" reads "depending on which extensions the ACAL implementation supports".
+- The `Function` and `Apply` expression wrappers of the core schema do not allow additional properties, like the other wrappers; the `version` match pattern allows `+` only as the last component; a processor SHALL NOT accept the `Value` string of a special double unless the string is in the lexical space of `xs:double` (wording only); comments with issue numbers and TODO markers are removed from the schema, and [Section 2](#2-definitions-and-acronyms) no longer says that no terms are defined elsewhere.
 - The description of the core schema's structure in [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments) now shows the single-property wrapper object that the schema requires around a root object. A standalone short-identifier set or shared variable definition is a root object in the same way as a policy: the schema gains `ShortIdSet` and `SharedVariableDefinition` root forms, the core short-identifier set file is wrapped in a `ShortIdSet` property (csd01: a bare `ShortIdSetType` object), and the short-identifier set example of [Section 4.3](#43-example-short-identifier-set) is wrapped accordingly.
 - [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
 - Editorial: the title is now "JACAL Version 1.0 (JSON Representation of ACAL)" (csd01: "JSON Representation of ACAL Version 1.0 (JACAL)"), and the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references and citations are corrected, including the reference for Base64 encoding ([[RFC4648](#rfc4648)]). Cross-references are corrected: the safety and security sections cite [[ACAL-Core-1.0](#acal-core-10)] Sections 10.1 and 10.2 (csd01 cited Sections 11.1 and 11.2, which are about conformance), bold-italic terms refer to [[ACAL-Core-1.0](#acal-core-10)] Section 2, and [Section 5.2.5](#525-mapping-acal-object-level-constraints-ocl) cites rule 2.2 of [Section 5.2.4](#524-property-mapping-rules) (csd01 cited a nonexistent rule 2.2.2); [Section 5.3](#53-content-types-and-body-representations-optional) calls `MediaType` and `Encoding` properties.
 
 ## Revision History
 
-Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's github repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-core-json-v%version%-%stage_revision%.md).
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's GitHub repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-core-json-v%version%-%stage_revision%.md).
 
 
 <!-- The following centered line represents the end of the document -->  

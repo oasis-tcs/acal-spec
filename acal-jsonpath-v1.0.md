@@ -506,7 +506,7 @@ This ACAL Profile is defined using this identifier.
 
 ## D.1 Online generation {.unnumbered}
 
-HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/). Go to  Github Actions on the github repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
+HTML/PDF versions are generated automatically online via GitHub Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/). Go to GitHub Actions on the GitHub repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
 
 ## D.2 Offline generation {.unnumbered}
 
@@ -514,10 +514,10 @@ HTML/PDF versions are generated automatically online via Github Actions after ea
 
 The following software must be installed on the system:
 - Pandoc **v3.2.1 or later** ( [latest release](https://github.com/jgm/pandoc/releases/latest) )
-- Pandoc filters: [pandoc-include](https://github.com/DCsunset/pandoc-include), [pandoc-xnos filter (Timothy Elder's fork! not the original one) ](https://github.com/TimothyElder/pandoc-xnos), [pandoc-secnos](https://github.com/tomduck/pandoc-secnos). The two latter MUST be installed in that order (make sure any old pandoc-xnos install that is not coming from Elder's fork has been removed and replaced with the fork);
+- Pandoc filters: [pandoc-include](https://github.com/DCsunset/pandoc-include), [pandoc-xnos filter (Timothy Elder's fork! not the original one) ](https://github.com/TimothyElder/pandoc-xnos), [pandoc-secnos](https://github.com/tomduck/pandoc-secnos). Install the two latter in that order (make sure any old pandoc-xnos install that is not coming from Elder's fork has been removed and replaced with the fork);
 - [PlantUML](https://plantuml.com/starting) and [Graphviz](https://graphviz.org/), for the UML diagrams.
 
-Git clone or get a local copy of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
 
 ### CSS stylesheet {.unnumbered}
 
@@ -525,12 +525,12 @@ The generation command uses the CSS stylesheet file `pandoc/styles/markdown-styl
 
 ### HTML generation {.unnumbered}
 
-Run the following command line to generate the HTML from this markdown file (input file specified as last argument):
+Run the following command line to generate the HTML from this markdown file (input file specified as the first argument after the options, followed by the extra Pandoc arguments):
 
 ```console
 $ pandoc/mkdocs.sh --number-lines --output /tmp acal-jsonpath-v%version%.md --number-sections=true --filter pandoc-secnos --lua-filter=pandoc/abstract-section.lua --toc=true --variable toc-title="Table of Contents" --toc-depth=5
 ```
-The `--output` option sets the output directory, and the output filename is the same as the input file (last argument) except `.md` extension is replaced with `.html`.
+The `--output` option sets the output directory, and the output filename is the same as the input file except `.md` extension is replaced with `.html`.
 
 The publication date is automatically set to the current date by default (using Lua filter `pandoc/meta_vars.lua`). However, you may set a specific date of your choice instead, by adding the argument `--metadata date="My date in the form DD Month YYYY"` at the end of the command. 
 
@@ -605,12 +605,13 @@ This is the first version of this profile; its previous stage was Committee Spec
 - The conformance section no longer says that special functions are not required to be implemented, and no longer carries the deprecated-identifier paragraph (this profile defines no deprecated identifiers); the Introduction subsection of the conformance section, which held the first of these, is removed.
 - Requirements previously written with lowercase "shall" in the selector type descriptions (@sec:structures) and in the attribute selector evaluation (@sec:attribute-selector-evaluation) are written with the uppercase keyword SHALL.
 - Sections are numbered automatically, and the cross-references to sections of this profile and of [[ACAL-Core-1.0](#acal-core-10)] are corrected.
+- [Annex D](#annex-d-how-to-generate-html-and-pdf-versions): the input file of the generation commands follows the options, and installing the Pandoc filters in order is an instruction, not a requirement.
 - [Annex D](#annex-d-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
 - Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references are corrected.
 
 ## Revision History {.unnumbered}
 
-Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's github repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.md).
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's GitHub repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.md).
 
 
 <!-- The following centered line represents the end of the document -->  

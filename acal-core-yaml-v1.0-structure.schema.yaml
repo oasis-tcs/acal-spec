@@ -8,11 +8,11 @@ description: >
   reusable primitive patterns. YAML parser conformance rules and higher-order
   ACAL constraints remain outside this artifact.
 $comment: >
-  This first core schema draft covers the core YACAL document forms plus the
+  This core schema covers the core YACAL document forms plus the
   standalone ShortIdSet artifact form used by the YACAL work product. Profile
   extension points such as PolicyDefaults, RequestDefaults, StatusDetail, and
   selector extensions are exposed through explicit dynamic extension hooks for
-  later composition. Higher-order invariants are complemented by the companion
+  composition with profile schemas. Higher-order invariants are complemented by the companion
   core constraint catalog in acal-core-yaml-v1.0-constraints.yaml.
 oneOf:
   - $ref: "#/$defs/PolicyDocument"
@@ -43,7 +43,7 @@ $defs:
 
   VersionMatchType:
     type: string
-    pattern: "^(0|[1-9]\\d*|\\*)(\\.(0|[1-9]\\d*|\\*|\\+)){0,3}$"
+    pattern: "^(0|[1-9]\\d*|\\*)(\\.(0|[1-9]\\d*|\\*)){0,2}(\\.(0|[1-9]\\d*|\\*|\\+))?$"
 
   ShortIdNameType:
     type: string
@@ -59,7 +59,7 @@ $defs:
     pattern: "^[^{}]*(\\{[A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)*\\}[^{}]*)*$"
     minLength: 1
     $comment: >
-      The pattern may be improved for stricter validation as this allows some undesirable identifiers. However, if your ACAL implementation is already parsing and validating such values strictly according to the ACAL core specification, then your implementation-specific validation is probably more optimal than using an improved - more complex - pattern. For a more complete regex, refer to the JACAL specification, section 5.1.2.1."
+      This pattern allows some strings that are not valid identifiers. An implementation that already parses and validates such values strictly according to the ACAL core specification does not need a stricter - and more complex - pattern. For a more complete regex, refer to the JACAL specification, section 5.1.2.1.
 
   LocalIdentifierType:
     type: string
@@ -98,6 +98,7 @@ $defs:
   AnyType:
     type:
       - object
+      - array
       - string
       - number
       - boolean
@@ -338,7 +339,7 @@ $defs:
           $ref: "#/$defs/EntityAttributeDesignatorType"
       required:
       - EntityAttributeDesignator
-      additionalProperties": false
+      additionalProperties: false
 
   BaseAttributeSelectorType:
     type: object
@@ -479,6 +480,7 @@ $defs:
         properties:
           NamedArgument:
             $ref: "#/$defs/NamedArgumentType"
+        additionalProperties: false
 
   NamedArgumentType: 
     type: object
@@ -490,6 +492,7 @@ $defs:
         $ref: "#/$defs/LocalIdentifierType"
       Expression:
         $ref: "#/$defs/ExpressionTypeTree"
+    additionalProperties: false
 
   ApplyTypeTree:
     type: object

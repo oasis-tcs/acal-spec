@@ -21,7 +21,7 @@
 				"type": "string",
 				"format": "uri-reference"
 			},
-			"$comment": "Maps each namespace Prefix (the empty string denotes the default namespace) directly to its Name (URI), rather than an array of {Prefix, Name} pair-objects, per issue #134. A producer SHALL NOT emit a duplicate key; a consumer SHALL reject one. JSON Schema cannot enforce this, since a validator only sees the instance after parsing, by which point a duplicate key has already been resolved in an implementation-defined way (RFC 8259) - see acal-xpath-v1.0.md Section 5.2 for the normative producer/consumer requirement."
+			"$comment": "Maps each namespace Prefix (the empty string denotes the default namespace) directly to its Name (URI), rather than an array of {Prefix, Name} pair-objects. A producer SHALL NOT emit a duplicate key; a consumer SHALL reject one. JSON Schema cannot enforce this, since a validator only sees the instance after parsing, by which point a duplicate key has already been resolved in an implementation-defined way (RFC 8259) - see acal-xpath-v1.0.md Section 5.2 for the normative producer/consumer requirement."
 		},
 		"XPathDefaultsType": {
 			"type": "object",
@@ -74,7 +74,7 @@
 							"$ref": "#/$defs/NamespaceDeclarationsType"
 						}
 					},
-					"$comment": "Namespaces is OPTIONAL (issue #134): absent (equivalently empty) means the Path expression needs no supplied namespace-prefix bindings - all its names resolve without one, or it matches namespaces via wildcards / namespace-uri() / URIQualifiedNames. There is no Defaults-level namespace table to fall back on - see acal-xpath-v1.0.md Section 5.3.3."
+					"$comment": "Namespaces is OPTIONAL: absent (equivalently empty) means the Path expression needs no supplied namespace-prefix bindings - all its names resolve without one, or it matches namespaces via wildcards / namespace-uri() / URIQualifiedNames. There is no Defaults-level namespace table to fall back on - see acal-xpath-v1.0.md Section 5.3.3."
 				}
 			],
 			"unevaluatedProperties": false
@@ -94,7 +94,7 @@
 							"$ref": "#/$defs/NamespaceDeclarationsType"
 						}
 					},
-					"$comment": "Namespaces is OPTIONAL (issue #134): absent means the Path expression needs no namespace-prefix bindings. Same rule as XPathAttributeSelectorType - see acal-xpath-v1.0.md Section 5.3.4."
+					"$comment": "Namespaces is OPTIONAL: absent means the Path expression needs no namespace-prefix bindings. Same rule as XPathAttributeSelectorType - see acal-xpath-v1.0.md Section 5.3.4."
 				}
 			],
 			"unevaluatedProperties": false
@@ -129,7 +129,7 @@
 				"XPathCategory",
 				"XPath"
 			],
-			"$comment": "XPathVersion and Namespaces are both OPTIONAL here (issue #134). XPathVersion: in a Request or Policy, a value with no local XPathVersion takes it from the applicable XPathRequestDefaults / XPathPolicyDefaults; a value in a response, or with no applicable Defaults in scope, MUST carry XPathVersion locally - that contextual requirement cannot be expressed in JSON Schema. Namespaces: absent means the XPath expression needs no namespace-prefix bindings; there is no Defaults-level namespace table to fall back on. See acal-xpath-v1.0.md Section 5.3.5.",
+			"$comment": "XPathVersion and Namespaces are both OPTIONAL here. XPathVersion: in a Request or Policy, a value with no local XPathVersion takes it from the applicable XPathRequestDefaults / XPathPolicyDefaults; a value in a response, or with no applicable Defaults in scope, MUST carry XPathVersion locally - that contextual requirement cannot be expressed in JSON Schema. Namespaces: absent means the XPath expression needs no namespace-prefix bindings; there is no Defaults-level namespace table to fall back on. See acal-xpath-v1.0.md Section 5.3.5.",
 			"properties": {
 				"XPathVersion": {
 					"$ref": "urn:oasis:names:tc:jacal:1.0:core:schema#/$defs/IdentifierType"

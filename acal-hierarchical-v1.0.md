@@ -245,11 +245,11 @@ This profile addresses three kinds of hierarchy:
 
 `DAG (Directed Acyclic Graph)`
 
-: A node MAY have more than one parent (multi-rooted), but no node is its own ancestor.
+: A node may have more than one parent, but no node is its own ancestor.
 
 `Polyarchy`
 
-: Multiple disjoint hierarchies that MAY be related to one another, including via cycles introduced by switching from one hierarchy to another. The most general case; this profile's ancestor-attribute scheme ([Section 5.3](#53-nodes-identified-by-ancestor-attributes)) makes no assumption about which of the three shapes is in use.
+: Multiple disjoint hierarchies that may be related to one another, including via cycles introduced by switching from one hierarchy to another. The most general case; this profile's ancestor-attribute scheme ([Section 5.3](#53-nodes-identified-by-ancestor-attributes)) makes no assumption about which of the three shapes is in use.
 
 ## 4.3 Changes From the Previous Version
 
@@ -257,18 +257,18 @@ This is the first ACAL version of this profile, ported from _XACML v3.0 Hierarch
 
 The following substantive changes and decisions apply relative to the XACML 3.0 source:
 
-- **No narrowing of the ancestor-attribute scheme.** An earlier analysis of this port considered requiring a single data type per ancestor attribute per request, because ACAL's original `isUnique(AttributeId)` constraint on `RequestEntityType`/`ResultEntityType`/`EntityType` made [XACML 3.0 HRP](#hier) §2.3's mixed-data-type ancestor representations unrepresentable. That constraint was independently identified as contradicting ACAL Core's own designator-matching rule ([[ACAL-Core-1.0](#acal-core-10)] Section 7.17) and was relaxed to `isUnique(Sequence{AttributeId, DataType, Issuer})` ([[ACAL-Core-1.0](#acal-core-10)] Section 7.33) before this profile was drafted. As a result, **no narrowing is needed**: a node's ancestors, and a node itself, MAY be identified using attributes of any ACAL data type, and there is no requirement that different nodes, or nodes in the same hierarchy, use the same data type — exactly as [XACML 3.0 HRP](#hier) §2.3 permits. See [Section 5.3](#53-nodes-identified-by-ancestor-attributes).
+- **No narrowing of the ancestor-attribute scheme.** An earlier analysis of this port considered requiring a single data type per ancestor attribute per request, because ACAL's original `isUnique(AttributeId)` constraint on `RequestEntityType`/`ResultEntityType`/`EntityType` made [XACML 3.0 HRP](#hier) §2.3's mixed-data-type ancestor representations unrepresentable. That constraint was independently identified as contradicting ACAL Core's own designator-matching rule ([[ACAL-Core-1.0](#acal-core-10)] Section 7.17) and was relaxed to `isUnique(Sequence{AttributeId, DataType, Issuer})` ([[ACAL-Core-1.0](#acal-core-10)] Section 7.33) before this profile was drafted. As a result, **no narrowing is needed**: a node's ancestors, and a node itself, may be identified using attributes of any ACAL data type, and there is no requirement that different nodes, or nodes in the same hierarchy, use the same data type — exactly as [XACML 3.0 HRP](#hier) §2.3 permits. See [Section 5.3](#53-nodes-identified-by-ancestor-attributes).
 - **Erratum 1 (identifier naming).** The published CS02 body (§2.2, §2.3, §3.2, §3.3, §7.2, §7.3) and its §6 identifier summary disagree on the names of two of the three scheme identifiers — the body uses `URI-node-id` and `attribute-node-id`, §6 instead lists `non-xml-node-id` and `non-xml-node-req` (and omits `attribute-node-id` entirely). This document follows the body's spelling, which is used three times each against §6's one occurrence each: `urn:oasis:names:tc:acal:1.0:profile:hierarchical:URI-node-id` and `urn:oasis:names:tc:acal:1.0:profile:hierarchical:attribute-node-id`. Because an implementation of the published profile could have followed either spelling, [Section 10.2.1](#1021-profile-identifiers) records both as deprecated identifiers rather than only the one this document follows.
-- **Erratum 2 (version-segment contradiction).** The three optional sub-identifiers for partial ancestor-attribute support appear in CS02 §3.3 as `…:xacml:2.0:profile:hierarchical:non-xml-node-req:resource-*` and in §6 as `…:xacml:3.0:profile:…`. This document uses the `3.0` segment consistently, matching the version segment already used by the rest of this profile's identifiers. As with Erratum 1, [Section 10.2.1](#1021-profile-identifiers) records both version segments as deprecated identifiers, since an implementation of the published profile could have followed either.
+- **Erratum 2 (version-segment contradiction).** The three optional sub-identifiers for partial ancestor-attribute support appear in CS02 §3.3 as `…:xacml:2.0:profile:hierarchical:non-xml-node-req:resource-*` and in §6 as `…:xacml:3.0:profile:…`. All current identifiers of this document use the `acal:1.0` segment. As with Erratum 1, [Section 10.2.1](#1021-profile-identifiers) records both the `2.0` and the `3.0` segments as deprecated identifiers, since an implementation of the published profile could have followed either.
 - **Erratum 3 (malformed URNs).** CS02 §5 gives five attribute identifiers with a doubled colon after `oasis` (`urn:oasis::names:tc:xacml:…`). This document's identifiers ([Annex C.3](#c3-attributes)) correct this.
 - **Erratum 4 (non-existent datatype).** CS02 §2.2/§5.2 specify the `resource-id`/`document-id` DataType as `http://urn:oasis:names:tc:xacml:1.0:data-type:anyURI` (§2.2) or the same URN without the `http://` prefix (§5.2) — neither identifies an actual XACML or ACAL data type. This document uses ACAL's own `urn:oasis:names:tc:acal:1.0:data-type:anyURI`.
 - **Erratum 5 (XACML 2.0 leftover).** CS02 §3.1 refers to XACML 2.0's `<Resource>` element, which does not exist in XACML 3.0 or ACAL. This document uses `RequestEntityType`.
-- **§2.2.1 (the `xpointer(…)` URI-reference representation for XML documents) is dropped from ACAL 1.0.** It is referenced by neither CS02 §6 nor §7 (no conformance clause exists for it in the published profile), and its percent-encoded XPath-in-a-fragment syntax duplicates the function of [Section 5.1](#51-nodes-in-xml-documents)'s `content-selector`-based scheme without adding capability. It MAY be reconsidered for a future version if an implementer needs it.
-- **JSON content is out of scope for this version.** [Section 5.1](#51-nodes-in-xml-documents) (nodes in XML documents) applies only to XML `Content`; a JSONPath counterpart, paired with the ACAL JSONPath Profile, is a known and deliberate gap rather than an oversight — the JSONPath Profile does not yet define the identifier and conformance apparatus such a counterpart would depend on. This is tracked as follow-up work once the JSONPath Profile itself is more complete, and the ACAL Multiple Decision Profile's own XPath/JSONPath-expression scheme is expected to make the same choice for the same reason.
+- **§2.2.1 (the `xpointer(…)` URI-reference representation for XML documents) is dropped from ACAL 1.0.** It is referenced by neither CS02 §6 nor §7 (no conformance clause exists for it in the published profile), and its percent-encoded XPath-in-a-fragment syntax duplicates the function of [Section 5.1](#51-nodes-in-xml-documents)'s `content-selector`-based scheme without adding capability. It may be reconsidered for a future version if an implementer needs it.
+- **JSON content is out of scope for this version.** [Section 5.1](#51-nodes-in-xml-documents) (nodes in XML documents) applies only to XML `Content`; a JSONPath counterpart, paired with the ACAL JSONPath Profile, is a known and deliberate gap rather than an oversight — the JSONPath Profile does not yet define the identifier and conformance apparatus such a counterpart would depend on. This version does not define such a counterpart, and the XPath-expression scheme of the ACAL Multiple Decision Profile makes the same choice for the same reason.
 - **Renames**, consistent with ACAL Core: `<Attributes>` → `RequestEntityType`; `<Attribute>` → `RequestAttributeType`; `<AttributeValue>` → `Value`; `<Resource>` → gone (erratum 5, above).
 - **Identifier namespace.** All identifiers introduced by this profile use the `urn:oasis:names:tc:acal:1.0:` prefix, with the XACML 3.0 identifiers recorded as deprecated identifiers per the standard ACAL convention.
 - **`content-selector` is defined in the ACAL XPath Profile, not here.** In XACML 3.0, `urn:oasis:names:tc:xacml:3.0:content-selector` is defined by this profile (§5.1) but consumed by XACML core's `ContextSelectorId` mechanism. ACAL inverts that arrangement: `urn:oasis:names:tc:acal:1.0:content-selector` is defined alongside the mechanism that consumes it, in [[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3, because the identifier is not specific to hierarchical resources. This document references that definition (see [Section 5.1](#51-nodes-in-xml-documents)) rather than restating it.
-- **Function argument order.** [XACML 3.0 HRP](#hier) §4.3's `regexp-uri-match` takes the URI argument first and the regular expression second. ACAL's equivalent, `urn:oasis:names:tc:acal:1.0:function:anyURI-regexp-match`, takes the regular expression first, matching the argument order of ACAL's other `*-regexp-match` functions. Any policy text carried over from an [XACML 3.0 HRP](#hier) example MUST have its arguments swapped — see [Section 6.3](#63-matching-uris).
+- **Function argument order.** [XACML 3.0 HRP](#hier) §4.3's `regexp-uri-match` takes the URI argument first and the regular expression second. ACAL's equivalent, `urn:oasis:names:tc:acal:1.0:function:anyURI-regexp-match`, takes the regular expression first, matching the argument order of ACAL's other `*-regexp-match` functions. Any policy text carried over from an [XACML 3.0 HRP](#hier) example has to have its arguments swapped — see [Section 6.3](#63-matching-uris).
 - **Target restructure.** Example policies in this document use the boolean `Apply` form rather than XACML 3.0's `AnyOf`/`AllOf`/`Match` structure, consistent with ACAL Core.
 - **No new schema artifacts.** Like the ACAL Multiple Decision Profile, this profile defines attribute identifiers and node-identity/request-construction rules, not new object types; it needs no new XSD, JSON Schema or YAML structure/constraint artifacts.
 
@@ -310,7 +310,7 @@ A node is identified by a single, fully-resolved hierarchical URI, such as a fil
 
 **Request construction.** The `RequestEntityType` object holding the resource's attributes SHALL include exactly one `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:resource:resource-id` (defined by [[ACAL-Core-1.0](#acal-core-10)] Annex D.5) and `DataType` `urn:oasis:names:tc:acal:1.0:data-type:anyURI`, whose value is the fully-resolved URI.
 
-Parent and ancestor attributes ([Section 5.3](#53-nodes-identified-by-ancestor-attributes)) SHALL NOT be provided for a resource identified using this scheme — the URI already encodes the node's position in the hierarchy, so separate ancestor attributes would be redundant and could contradict it.
+A `RequestEntityType` object identifying a resource using this scheme SHALL NOT contain a parent or ancestor attribute ([Section 5.3](#53-nodes-identified-by-ancestor-attributes)) — the URI already encodes the node's position in the hierarchy, so separate ancestor attributes would be redundant and could contradict it.
 
 **Profile identifier.** `urn:oasis:names:tc:acal:1.0:profile:hierarchical:URI-node-id` (deprecated identifiers: `urn:oasis:names:tc:xacml:3.0:profile:hierarchical:URI-node-id` and `urn:oasis:names:tc:xacml:3.0:profile:hierarchical:non-xml-node-id`; see Erratum 1 in [Section 4.3](#43-changes-from-the-previous-version)).
 
@@ -378,7 +378,7 @@ This section gives one worked example for each of the three schemes in [Section 
 
 ## 7.1 Nodes in XML Documents
 
-A request for read access to the `<md:patientDoB>` node inside a medical-record document, using [Section 5.1](#51-nodes-in-xml-documents)'s scheme. The scheme's XML-content restriction ([Section 4.3](#43-changes-from-the-previous-version)) applies to the resource's `Content.Body`, not to the serialization carrying the request itself — the same `content-selector` attribute and XPath expression work unchanged whether the request is XACML, JACAL, or YACAL.
+A request for read access to the `<md:patientDoB>` node inside a medical-record document, using [Section 5.1](#51-nodes-in-xml-documents)'s scheme. The scheme's XML-content restriction ([Section 4.3](#43-changes-from-the-previous-version)) applies to the resource's `Content.Body`, not to the serialization carrying the request itself — the same `content-selector` attribute and XPath string are used whether the request is XACML, JACAL, or YACAL; XML binds the namespace prefix with an in-scope `xmlns` declaration, whereas JACAL and YACAL carry the same binding in the `Namespaces` property, as shown below.
 
 **Plain language**: Permit read access to the date-of-birth element inside this patient record, identified by an XPath expression rather than by a named attribute.
 
@@ -478,7 +478,7 @@ RequestEntity:
 
 - The `md` prefix used inside the `XPath` expression string needs its own namespace binding, independent of `Content.Body`'s embedded `xmlns:md` declaration — the two are separate namespace scopes, one for the embedded document, one for the expression text itself ([[ACAL-XPath-1.0](#acal-xpath-10)] Annex C.2.1). In XML that binding comes from ordinary in-scope namespaces, so declaring `xmlns:md` on `RequestEntity` (an ancestor of the `Value` element carrying the expression) is sufficient — XML namespace resolution here is unchanged from XACML 3.0. JACAL and YACAL have no ancestor-based namespace inheritance, so the same binding is carried explicitly on the value's own `Namespaces` property, a mapping from prefix to namespace name ([[ACAL-XPath-1.0](#acal-xpath-10)] Section 5.2).
 - The `xpathExpression` value carries its own `XPathVersion` here — in all three representations — because these examples are bare `RequestEntity` fragments with no enclosing `Request` and therefore no `XPathRequestDefaults` for the value to take its version from ([[ACAL-XPath-1.0](#acal-xpath-10)] Section 5.3.5). In a complete `Request` carrying an `XPathRequestDefaults`, the local `XPathVersion` could be omitted.
-- In XML, `Content.Body` holds the medical-record document as literal child elements. In JACAL, the same document is a JSON string, escaped per [[JACAL-Core-1.0](#jacal-core-10)] Section 5.3's rules for XML content in a JSON `Content` object. In YACAL, a block scalar (`|`) carries the same string without JSON's escaping.
+- In XML, `Content.Body` holds the medical-record document as literal child elements. In JACAL, the same document is a JSON string, escaped per [[JACAL-Core-1.0](#jacal-core-10)] Section 5.3's rules for XML content in a JSON `Content` object. In YACAL, a block scalar (`|-`) carries the same string without JSON's escaping.
 - The `content-selector` attribute's value — an `xpathExpression` — is itself a structured value (`XPath`, `XPathCategory`, a namespace context, and an XPath version), not a plain string, in every representation. In JACAL/YACAL the namespace context is the value's own `Namespaces` property; in XML it is ordinary in-scope namespaces.
 - `document-id` is included to disambiguate which document instance the `content-selector` expression applies to, in case the same request references more than one such document.
 
@@ -867,7 +867,7 @@ This ACAL Profile is defined using this identifier.
 
 ## C.2 Profile Identifiers
 
-See [Section 10.2.1](#1021-profile-identifiers) for the six profile identifiers this document defines, their meaning, and their deprecated XACML 3.0 equivalents.
+See [Section 10.2.1](#1021-profile-identifiers) for the six profile identifiers this document defines, their meaning, and their deprecated XACML equivalents.
 
 ## C.3 Attributes
 
@@ -901,7 +901,7 @@ These attributes identify a node's ancestors, per [Section 5.3](#53-nodes-identi
 
 ## Online generation
 
-HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/). Go to  Github Actions on the github repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
+HTML/PDF versions are generated automatically online via GitHub Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/). Go to GitHub Actions on the GitHub repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
 
 ## Offline generation
 
@@ -913,7 +913,7 @@ The following tools are required:
 
 Install them on your system.
 
-Git clone or get a local copy of [OASIS ACAL \[XACML\] TC Github repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
 
 ### CSS stylesheet
 
@@ -1000,7 +1000,7 @@ This is the first version of this profile. See [Section 4.3](#43-changes-from-th
 
 ## Revision History
 
-Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's github repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-hierarchical-v%version%-%stage_revision%.md).
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's GitHub repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-hierarchical-v%version%-%stage_revision%.md).
 
 <!-- The following centered line represents the end of the document -->
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_

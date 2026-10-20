@@ -8,10 +8,10 @@ Description: >
   schema. It is evaluated over parsed YACAL data after YAML parsing and
   structural validation.
 StructuralArtifact: "acal-core-yaml-v1.0-structure.schema.yaml"
-Specification: "acal-core-yaml-wd01-v1.0.md"
-Status: "draft"
+Specification: "acal-core-yaml-v1.0.md"
+Status: "csd02"
 PathNotation:
-  Name: "yacal-path-v1-draft"
+  Name: "yacal-path-v1"
   Description: >
     Paths are evaluated over parsed YACAL data after successful
     structural validation. The notation is intentionally small and
@@ -20,9 +20,10 @@ PathNotation:
     - "$ denotes the document root."
     - ".Property selects a child property."
     - "[] iterates over all items of a sequence-valued property."
+    - "..Property selects every descendant property named Property, at any depth below the current node; the result is the set of the selected property values."
     - "Wrapper keys such as Policy, Rule, or Value are expressed as ordinary property names."
     - "A path ending in a property name denotes that property's value."
-    - "Paths in this first draft are descriptive and implementation-neutral."
+    - "Paths are descriptive and implementation-neutral."
 EvaluationModel:
   Layers:
     - "YAML parsing"
@@ -63,6 +64,20 @@ Rule:
     AppliesTo:
       ObjectType: ShortIdSetType
       CollectionPath: "$.ShortIdSet.ShortId"
+    KeyProperties:
+      - Name
+    Requirement: >
+      Within a single ShortIdSetType, Name values MUST be unique.
+    Provenance:
+      YACALSection: "5.11.2"
+      ACALSection: "7.2"
+
+  - Id: "bundle-shortidset-shortid-name-unique"
+    Kind: uniqueByProperty
+    Severity: error
+    AppliesTo:
+      ObjectType: ShortIdSetType
+      CollectionPath: "$.Bundle.ShortIdSet[].ShortId"
     KeyProperties:
       - Name
     Requirement: >
@@ -201,9 +216,11 @@ Rule:
       ObjectType: SharedVariableDefinitionType
       ExpressionPath: "$.Bundle.SharedVariableDefinition[].Expression"
     ProhibitedWrapperKey: VariableReference
+    ExceptReferenceTargets: "A Parameter of the same SharedVariableDefinitionType"
     Requirement: >
       A SharedVariableDefinitionType expression SHALL NOT contain
-      VariableReferenceType objects.
+      VariableReferenceType objects, except references to a Parameter of
+      the same SharedVariableDefinitionType.
     Provenance:
       YACALSection: "5.7.2"
       ACALSection: "7.13b"
@@ -221,7 +238,7 @@ Rule:
       present and non-empty.
     Provenance:
       YACALSection: "5.7.1"
-      ACALSection: "7.47"
+      ACALSection: "7.46"
 
   - Id: "request-defaults-unique-concrete-subtype"
     Kind: uniqueByConcreteSubtype
@@ -457,7 +474,7 @@ Rule:
       If an AttributeAssignmentType specifies DataType and a nested Value
       mapping also specifies DataType, the two values MUST agree.
     Provenance:
-      YACALSection: "5.9.2"
+      YACALSection: "5.9.4"
 
   - Id: "parameter-valuetype-datatype-agreement"
     Kind: propertyAgreement
@@ -517,7 +534,7 @@ Rule:
       YACALSection: "5.6.6"
       ACALSection: "7.11"
 
-  # Issue #99: "noticeexpression-attributeassignmentexpression-unique" (ACAL 7.29) and
+  # "noticeexpression-attributeassignmentexpression-unique" (ACAL 7.29) and
   # "notice-attributeassignment-unique" (ACAL 7.26) were removed. The (AttributeId, Category)
   # pair is no longer required to be unique within a NoticeExpression or a Notice; whether a
   # notice accepts repeated attribute assignments, and how they combine, is left to the
@@ -534,7 +551,7 @@ Rule:
     Requirement: >
       ResultEntity Category values within a ResultType MUST be unique.
     Provenance:
-      YACALSection: "5.8.9"
+      YACALSection: "5.8.8"
       ACALSection: "7.37"
 
   - Id: "result-applicablepolicyreference-id-unique"
@@ -549,7 +566,7 @@ Rule:
       ApplicablePolicyReference Id values within a ResultType MUST be
       unique.
     Provenance:
-      YACALSection: "5.8.10"
+      YACALSection: "5.8.9"
       ACALSection: "7.37"
 
   - Id: "bundle-shortidset-id-unique"
@@ -564,7 +581,7 @@ Rule:
       ShortIdSet Id values within a BundleType MUST be unique.
     Provenance:
       YACALSection: "5.7.1"
-      ACALSection: "7.47"
+      ACALSection: "7.46"
 
   - Id: "bundle-sharedvariabledefinition-id-unique"
     Kind: uniqueByProperty
@@ -579,7 +596,7 @@ Rule:
       unique.
     Provenance:
       YACALSection: "5.7.1"
-      ACALSection: "7.47"
+      ACALSection: "7.46"
 
   - Id: "bundle-policy-policyid-unique"
     Kind: uniqueByProperty
@@ -593,7 +610,7 @@ Rule:
       Policy PolicyId values within a BundleType MUST be unique.
     Provenance:
       YACALSection: "5.7.1"
-      ACALSection: "7.47"
+      ACALSection: "7.46"
 
   - Id: "resultentity-attribute-attributeid-unique"
     Kind: uniqueByProperty
@@ -654,7 +671,7 @@ Rule:
       2) set DataType to its default value
       (urn:oasis:names:tc:acal:1.0:data-type:string) where the property is
       absent. A raw, unnormalized property comparison will under-detect
-      duplicates in exactly the cases described above. (Prior to Issue #120,
+      duplicates in exactly the cases described above. (Previously,
       this catalog had no rule at all for PolicyIssuer's Attribute
       uniqueness.)
     Provenance:

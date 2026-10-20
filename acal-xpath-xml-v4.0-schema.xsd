@@ -17,7 +17,7 @@
 	<xs:import namespace="urn:oasis:names:tc:xacml:4.0:core:schema"
 		schemaLocation="acal-core-xml-v4.0-schema.xsd" />
 
-	<!-- Change to XACML 3.0 (issue #33): Moved XPath-specific features to separate XPath profile and XSD  -->
+	<!-- Change to XACML 3.0: Moved XPath-specific features to separate XPath profile and XSD  -->
 	<xs:element name="XPathAttributeSelector" type="XPathAttributeSelectorType" substitutionGroup="xacml:AttributeSelector">
 	<xs:annotation>
 			<xs:documentation xml:lang="en">The namespace context for the value of the Path attribute is given by the [in-scope namespaces]
@@ -32,7 +32,7 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<!-- Change to XACML 3.0 (issue #33): Moved XPath-specific features to separate XPath profile and XSD  -->
+	<!-- Change to XACML 3.0: Moved XPath-specific features to separate XPath profile and XSD  -->
 	<xs:element name="XPathEntityAttributeSelector" type="XPathEntityAttributeSelectorType"	substitutionGroup="xacml:EntityAttributeSelector" />
 	<xs:complexType name="XPathEntityAttributeSelectorType">
 		<xs:complexContent>
@@ -42,17 +42,17 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<!-- Change to XACML 3.0 (issue #33 and #36): Moved XPath-specific features to separate XPath profile and XSD, including Defaults -->
+	<!-- Change to XACML 3.0: Moved XPath-specific features to separate XPath profile and XSD, including Defaults -->
 	<xs:complexType name="XPathDefaultsType">
 		<xs:complexContent>
 			<xs:extension base="xacml:DefaultsType">
-				<!-- Change to XACML 3.0 (issue #48): XPathVersion type changed to IdentifierType for supporting Short Identifiers -->
+				<!-- Change to XACML 3.0: XPathVersion type changed to IdentifierType for supporting Short Identifiers -->
 				<xs:attribute name="XPathVersion" type="xacml:IdentifierType" use="required"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 
-	<!-- Change (issue #134): XPathDefaultsType lost its namespace attribute/table.
+	<!-- Change: XPathDefaultsType lost its namespace attribute/table.
 	Namespace bindings for XPath expressions are now attached per expression: to each
 	xpathExpression value and to each JACAL/YACAL attribute selector (in XML, selectors
 	and values both use ordinary in-scope namespaces). XPathDefaultsType now carries only

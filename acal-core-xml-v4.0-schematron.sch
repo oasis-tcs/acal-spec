@@ -118,8 +118,7 @@
 	  <assert test="xacml:Content or xacml:Attribute"></assert>
 	</rule>
  </pattern>
- <!--
- Issue #120: the three patterns below complement the corresponding xs:unique constraints in
+ <!-- The three patterns below complement the corresponding xs:unique constraints in
  acal-core-xml-v4.0-schema.xsd (which cannot catch a duplicate AttributeId/DataType pair when
  Issuer is absent from both compared Attribute/RequestAttribute elements), for XSD 1.0-only
  consumers. Neither these patterns nor xs:unique can perform the Section 8.3 short-identifier
@@ -174,8 +173,7 @@
 	  <assert test="every $elt in xacml:RequestReference satisfies (every $following in $elt/following-sibling::xacml:RequestReference satisfies count($elt/xacml:RequestEntityReference) != count($following/xacml:RequestEntityReference) or (some $id in $elt/xacml:RequestEntityReference satisfies not($id = $following/xacml:RequestEntityReference)))"></assert>
 	</rule>
  </pattern>
- <!--
- Issue #99: the patterns that enforced (AttributeId, Category) uniqueness on
+ <!-- The patterns that enforced (AttributeId, Category) uniqueness on
  NoticeExpression/AttributeAssignmentExpression and Notice/AttributeAssignment have been removed.
  Those pairs are no longer required to be unique; whether a notice accepts repeated attribute
  assignments, and how they combine, is left to the definition of the individual obligation or
