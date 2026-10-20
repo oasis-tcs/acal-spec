@@ -62,7 +62,7 @@ Rule:
     Severity: error
     AppliesTo:
       ObjectType: ShortIdSetType
-      CollectionPath: "$.ShortIdSet[].ShortId"
+      CollectionPath: "$.ShortIdSet.ShortId"
     KeyProperties:
       - Name
     Requirement: >
@@ -79,7 +79,7 @@ Rule:
       NodeIdentityProperty: Id
       ReferencePath: ShortIdSetReference
       ObjectLocations:
-        - "$.ShortIdSet[]"
+        - "$.ShortIdSet"
         - "$.Bundle.ShortIdSet[]"
     Requirement: >
       A ShortIdSetType object MUST NOT directly or indirectly reference
@@ -99,7 +99,7 @@ Rule:
       NodeIdentityProperty: Id
       ReferencePath: ShortIdSetReference
       ObjectLocations:
-        - "$.ShortIdSet[]"
+        - "$.ShortIdSet"
         - "$.Bundle.ShortIdSet[]"
     Requirement: >
       A ShortIdSetType object MUST NOT directly or indirectly reference

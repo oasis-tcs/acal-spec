@@ -770,7 +770,7 @@ The benefit of this approach is that policies may be written and analyzed indepe
 
 ## 4.12 Actions Performed in Conjunction with Enforcement
 
-In many applications, policies specify actions that MUST be performed, either instead of, or in addition to, actions that MAY be performed. This idea was described by Sloman [[Sloman94](#sloman94)]. ACAL provides facilities to specify actions that MUST be performed in conjunction with policy evaluation through obligation notices. This idea was described as a provisional action by Kudo [[Kudo00](#kudo00)]. There are no standard definitions for these actions in version 1.0 of ACAL. Therefore, bilateral agreement between a PAP and the PEP that will enforce its policies is required for correct interpretation. PEPs that conform to v1.0 of ACAL are required to deny access unless they understand and can discharge all of the obligation notices associated with the applicable policy. Obligation notices are returned to the PEP for enforcement.
+In many applications, policies specify actions that MUST be performed, either instead of, or in addition to, actions that MAY be performed. This idea was described by Sloman [[Sloman94](#sloman94)]. ACAL provides facilities to specify actions that MUST be performed in conjunction with policy evaluation through obligation notices. This idea was described as a provisional action by Kudo [[Kudo00](#kudo00)]. There are no standard definitions for these actions in version 1.0 of ACAL. Therefore, bilateral agreement between a PAP and the PEP that will enforce its policies is required for correct interpretation. PEPs that conform to v1.0 of ACAL permit access on a `Permit` decision only if they understand and can and will discharge all of the obligation notices accompanying it, and discharge any obligation that they understand and that accompanies a `Deny` decision to the best of their ability ([Section 8.2](#82-policy-enforcement-point)). Obligation notices are returned to the PEP for enforcement.
 
 ## 4.13 Supplemental Information About a Decision
 
@@ -3727,7 +3727,7 @@ A `PolicyType` object MAY contain a `PolicyIssuer` property. The interpretation 
 
 The `Target` property defines the applicability of the `PolicyType` object to a set of decision requests. If the `Target` property within the `PolicyType` object matches the request context, then the `PolicyType` object may be used by the PDP in making its authorization decision. See [Section 8.12](#812-policy-evaluation).
 
-Any `NoticeExpressionType` objects may be evaluated into notices by the PDP. Any resulting obligation notice (with `IsObligation` set to `true`) MUST be fulfilled by the PEP in conjunction with the authorization decision. If the PEP does not understand or cannot fulfill any of the obligation notices, then it MUST act according to the PEP bias. See [Section 8.2](#82-policy-enforcement-point) and [Section 8.16](#816-notices). Any resulting advice notice MAY be safely ignored by the PEP.
+Any `NoticeExpressionType` objects may be evaluated into notices by the PDP. Any resulting obligation notice (with `IsObligation` set to `true`) accompanies the authorization decision, and the PEP handles it as specified in [Section 8.2](#82-policy-enforcement-point). See also [Section 8.16](#816-notices). Any resulting advice notice MAY be safely ignored by the PEP.
 
 UML definition (class diagram):
 ```plantuml
@@ -4022,7 +4022,7 @@ The `PolicyReferenceType` object type extends the `PatternMatchIdReferenceType` 
 
 : Arguments for a parameterized policy. The sequence of arguments SHALL be exclusively either one of these:
 - A sequence of *positional* arguments, i.e. `ExpressionType` objects declared in the same order as the `Parameter` values in the referenced policy; each argument number *n* MUST match the definition of the policy's `Parameter` number *n* (`DataType`, `IsBag`);
-- A sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the policy's `Parameter` named *x* and therefore its Expression MUST match that Parameter's definition (`DataType`, `IsBag`).
+- A sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the policy's `Parameter` named *x*. Its Expression MUST match that Parameter's definition (`DataType`, `IsBag`).
 
 The number of arguments *N* may be less than the number of declared `Parameter`s if and only if the `Parameter`s number *N* (starting at zero) and above have defined default values, in which case they are used as remaining arguments. 
 
@@ -4074,7 +4074,7 @@ A `RuleType` object contains the following properties:
 
 `Condition` [Optional]
 
-: A `BooleanExpressionType` object holding an expression that MUST be satisfied for the rule to be assigned its `Effect` value. Evaluation of the `Condition` property is described in [Section 8.9](#89-condition-evaluation). The Condition expression MUST NOT be a literal boolean value (`ValueType` object).
+: A `BooleanExpressionType` object holding an expression that must be satisfied for the rule to be assigned its `Effect` value. Evaluation of the `Condition` property is described in [Section 8.9](#89-condition-evaluation). The Condition expression MUST NOT be a literal boolean value (`ValueType` object).
 
 `NoticeExpression` [Any Number]
 
@@ -4290,12 +4290,16 @@ An `ApplyType` object contains the following properties:
 
 : A sequence of `ArgumentType` objects, each defining an expression as an argument to the function. The sequence of arguments SHALL be exclusively either one of these:
 - A sequence of *positional* arguments, i.e. `ExpressionType` objects declared in the same order as the parameters defined in the function's signature and matching the parameter data-types;
-- If and only if the function has defined parameter names for all its parameters, it may also be a sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the function's parameter named *x* and therefore the argument's expression MUST match that parameter data-type.
+- If and only if the function has defined parameter names for all its parameters, it may also be a sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the function's parameter named *x*. Its Expression MUST match that parameter data-type.
   *Note: although there is not a function with such defined parameter names in the current version of ACAL, there may be some specified in future versions of ACAL or in ACAL Profiles.*
 
-**DataType inference rule**: if an Argument's Expression has an (optional) `DataType` property (statically-typed Expression), i.e. its type is `ValueType`, `NamedAttributeDesignatorType`, `BaseAttributeSelectorType` or any subtype thereof, and if the corresponding parameter's definition in the function's signature (the function identified by `FunctionId`) has a fixed DataType, then the Expression's `DataType` property MAY be omitted, as it is already defined by the function's signature. (Else (if present) it SHALL be the same as the function parameter's DataType.)
+**DataType inference rule**:
 
-For example, if the Argument's Expression is a `ValueType` object and the function's signature defines the data-type of the corresponding argument explicitly to be *T*, then the object does not need any `DataType` identifier, it is already defined implicitly to be *T*.
+The *expected data type* of a parameter is given by the parameter's definition in the function signature of the function identified by the `FunctionId` property. In the case of a higher-order bag function ([Annex C.3.12](#c312-higher-order-bag-functions)), the expected data type of each parameter after the first is instead given by the definition of the corresponding parameter in the function signature of the function identified by the `FunctionType` object that is the first argument: the *i*th argument after the first corresponds to the *i*th parameter of that function, and an argument that is a bag corresponds to a parameter of the same data type as the values in the bag. Note that some functions allow more than one data type for some of their parameters.
+
+If an Argument's Expression has an (optional) `DataType` property (statically-typed Expression), i.e. its type is `ValueType`, `NamedAttributeDesignatorType`, `BaseAttributeSelectorType` or any subtype thereof, and the expected data type of the corresponding parameter is fixed, then the Expression's `DataType` property MAY be omitted, as it is already defined by a function signature. If present, the `DataType` property MUST specify an allowed data type for that parameter. If the property is omitted and the expected data type is not fixed, the Expression has the default data type specified for its type, and that data type MUST be an allowed data type for that parameter.
+
+For example, if the Argument's Expression is a `ValueType` object and the function's signature defines the data-type of the corresponding argument explicitly to be *T*, then the object does not need any `DataType` identifier, it is already defined implicitly to be *T*. Likewise, in an `Apply` of `all-of` whose first argument is the function `integer-greater-than`, a `Value` argument without a `DataType` identifier has the data type `integer` (see the `all-of` example in [Annex C.3.12](#c312-higher-order-bag-functions)).
 
 ## 7.16 FunctionType
 
@@ -4652,7 +4656,7 @@ The `SharedVariableReferenceType` object type contains the following properties:
 
 : Arguments for a parameterized shared variable (`SharedVariableDefinitionType` object). The sequence of arguments SHALL be exclusively either one of these:
 - A sequence of *positional* arguments, i.e. `ExpressionType` objects declared in the same order as the `Parameter` values in the referenced shared variable definition; each argument number *n* MUST match the definition of the shared variable's `Parameter` number *n* (`DataType`, `IsBag`);
-- A sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the shared variable's `Parameter` named *x* and therefore its Expression MUST match that Parameter's definition (`DataType`, `IsBag`). 
+- A sequence of *named* arguments, i.e. `NamedArgumentType` objects declared in any order, where each argument has a unique name *x* that associates it with the shared variable's `Parameter` named *x*. Its Expression MUST match that Parameter's definition (`DataType`, `IsBag`). 
 
 The number of arguments *N* may be less than the number of declared `Parameter`s if and only if the `Parameter`s number *N* (starting at zero) and above have defined default values, in which case they are used as remaining arguments. 
 
@@ -5191,7 +5195,7 @@ URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are
 
 ## 7.37 ResultType
 
-A `ResultType` object represents an authorization decision result. It MAY include a list of notices. If the PEP does not understand or cannot fulfill an obligation notice, then the action of the PEP is determined by its bias, see [Section 8.2](#82-policy-enforcement-point). Any advice notices MAY be safely ignored by the PEP.
+A `ResultType` object represents an authorization decision result. It MAY include a list of notices. The PEP handles an obligation notice that accompanies the decision as specified in [Section 8.2](#82-policy-enforcement-point). Any advice notices MAY be safely ignored by the PEP.
 
 UML definition (class diagram):
 ```plantuml
@@ -5220,7 +5224,7 @@ A `ResultType` object contains the following properties:
 
 `Notice` [Any Number]
 
-: A sequence of `NoticeType` objects, each a notice to be interpreted by the PEP. Objects' `Id` values are not required to be unique in the sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignment`s, for instance when it is drawn from more than one rule or policy. See [Section 7.26](#726-noticetype). If the PEP does not understand or cannot fulfill an obligation notice, then the action of the PEP is determined by its bias, see [Section 8.2](#82-policy-enforcement-point). If the PEP does not understand an advice notice, the PEP may safely ignore the notice. See [Section 8.16](#816-notices) for a description of how the list of notices to be returned by the PDP is determined.
+: A sequence of `NoticeType` objects, each a notice to be interpreted by the PEP. Objects' `Id` values are not required to be unique in the sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignment`s, for instance when it is drawn from more than one rule or policy. See [Section 7.26](#726-noticetype). The PEP handles an obligation notice that accompanies the decision as specified in [Section 8.2](#82-policy-enforcement-point). If the PEP does not understand an advice notice, the PEP may safely ignore the notice. See [Section 8.16](#816-notices) for a description of how the list of notices to be returned by the PDP is determined.
 
 `ResultEntity` [Any Number]
 
@@ -5628,11 +5632,15 @@ If the decision is `Indeterminate`, then the PEP's behavior is undefined.
 
 If the decision is `Permit`, then the PEP SHALL permit access. If obligation notices accompany the decision, then the PEP SHALL permit access only if it understands and it can and will discharge those obligations.
 
+If the decision is `Deny`, then the PEP SHALL deny access. If obligation notices accompany the decision, then the PEP MUST discharge any obligation it understands to the best of its ability.
+
 All other decisions SHALL result in the denial of access.
 
 : Note: other actions, e.g. consultation of additional PDPs, reformulation/resubmission of the decision request, etc., are not prohibited.
 
 ### 8.2.3 Permit-Biased PEP
+
+If the decision is `Permit`, then the PEP SHALL permit access. If obligation notices accompany the decision, then the PEP SHALL permit access only if it understands and it can and will discharge those obligations.
 
 If the decision is `Deny`, then the PEP SHALL deny access. If obligation notices accompany the decision, then the PEP MUST discharge any obligation it understands to the best of its ability.
 
@@ -8847,7 +8855,9 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - The base-PEP decision value "Not Applicable" is written `NotApplicable` ([Section 8.2.1](#821-base-pep)); [Section 8.10](#810-extended-indeterminate) defines the top-level policy, at which an extended `Indeterminate` is returned as a plain `Indeterminate`, as the policy referenced by the `PolicyReference` property of the `BundleType` object that defines the PDP; and the local-identifier examples of [Section 7.1.2.3.9](#71239-localidentifiertype) use `Name` for a parameter and `Id` for a rule (csd01: `ParameterName` and `RuleId`) and describe `RequestEntityReference` as a `LocalIdentifierType` value.
 - The `entity` data type is listed among the data type identifiers ([Annex D.3](#d3-data-types)).
 - On a `Deny` decision, the base PEP and the Permit-biased PEP no longer deny access "only if" they understand and can discharge the accompanying obligations; they deny access in every case and MUST discharge any obligation they understand to the best of their ability ([Section 8.2.1](#821-base-pep), [Section 8.2.3](#823-permit-biased-pep)).
-- Requirement keywords previously written in lowercase or mixed case ("must", "shall", "should", "SHALL not") are written in uppercase, with the wording otherwise unchanged (Sections 7.1.2.3, 7.3, 7.4, 7.6, 7.11, 7.15, 7.21, 7.22, 7.24b, 7.29, 7.31, 7.34, 7.43, 8.3, 8.4.5, 8.16 and 11.2.4, and Annexes C.3.1, C.3.3, C.3.8, C.3.15 and C.3.16). A lowercase "must" or "shall" that states a condition or a consequence rather than a requirement stays lowercase, and in [Section 7.34](#734-contenttype-optional) "required only if the implementation must support extensions" reads "required only if the implementation supports extensions".
+- The PEP's handling of obligation notices is specified in [Section 8.2](#82-policy-enforcement-point), and the other sections refer to it or agree with it. [Section 7.4](#74-policytype), [Section 7.37](#737-resulttype) and the `Notice` property of `ResultType` no longer say that a PEP that does not understand or cannot fulfill an obligation notice acts according to its bias, because the PEP bias applies only to a `NotApplicable` or `Indeterminate` decision, and an obligation notice accompanies only a `Permit` or a `Deny` decision. [Section 4.12](#412-actions-performed-in-conjunction-with-enforcement) no longer says that a PEP denies access unless it understands and can discharge all obligation notices, which is wrong for a `Deny` decision, where access is denied in every case. [Section 8.2.2](#822-deny-biased-pep) and [Section 8.2.3](#823-permit-biased-pep) now state both the `Permit` and the `Deny` handling, as [Section 8.2.1](#821-base-pep) does. As a result a Permit-biased PEP, like the other two, permits access on a `Permit` decision only if it understands and can and will discharge the accompanying obligations; XACML 3.0 Section 7.2.3 did not state this for the Permit-biased PEP.
+- The DataType inference rule of [Section 7.15](#715-applytype) takes the expected data type of an argument of a higher-order bag function from the function named by the first argument, and requires the data type of a statically-typed argument expression, including one that defaults to `string`, to be an allowed data type for its parameter. Before, the rule looked only at the signature of the function identified by `FunctionId`, which defines no fixed data type for the arguments of `any-of`, `all-of` and the other higher-order functions, so the rule gave nothing for them; and it required a present data type to be "the same as" the parameter's even where a parameter allows several types.
+- Requirement keywords previously written in lowercase or mixed case ("must", "shall", "should", "SHALL not") are written in uppercase, with the wording otherwise unchanged (Sections 7.1.2.3, 7.3, 7.4, 7.6, 7.11, 7.15, 7.21, 7.22, 7.24b, 7.29, 7.31, 7.34, 7.43, 8.3, 8.4.5, 8.16 and 11.2.4, and Annexes C.3.1, C.3.3, C.3.8, C.3.15 and C.3.16). A lowercase "must" or "shall" that states a condition or a consequence rather than a requirement stays lowercase. The uppercase "MUST be satisfied" of the `Condition` property in [Section 7.12](#712-ruletype) is written "must be satisfied" for the same reason, and the sentence on named arguments in [Section 7.11](#711-policyreferencetype), [Section 7.15](#715-applytype) and [Section 7.24b](#724b-sharedvariablereferencetype) is split after "named *x*", so that "Its Expression MUST match" states the requirement on its own. In [Section 7.34](#734-contenttype-optional) "required only if the implementation must support extensions" reads "required only if the implementation supports extensions".
 - In the object-type conformance table, `NamedArgumentType` (optional) and `PatternMatchIdReferenceType` are added, `SharedVariableReferenceType` is now optional, and `DecisionType` (a simple type), `DescriptionType` (not defined by the model) and `PolicyIssuerType` (the policy issuer is an `EntityType`) are no longer listed, `PatternMatchIdReferenceType` is mandatory, and the deprecated identifier of `base64Binary-at-least-one-member-of` is corrected to its XACML 1.0 identifier ([Section 11.2.8](#1128-functions)); the other changes are in the object-type table ([Section 11.2.1](#1121-object-types)). The reference to conformance test cases is removed from [Section 11.2](#112-conformance-tables).
 - A response holds one `ResultType` object per Individual Decision Request, or a single combined `ResultType` object, instead of one per requested resource ([Section 7.36](#736-responsetype)).
 - Requirements formerly stated in non-normative sections are moved into normative ones: the conversion of attribute representations ([Section 8.4](#84-attribute-evaluation)), the advice of [[UTR36](#utr36)] ([Section 8.1.2](#812-version-of-unicode)) and distinct namespaces for policy identifiers from distinct sources ([Section 8.13](#813-policyreference-evaluation)). [Section 5.2](#52-acal-context), [Section 10.2.5](#1025-policy-identifiers) and [Section 10.3](#103-unicode-security-issues) now refer to those sections, [Section 10.4](#104-identifier-equality) refers to [Section 8.18](#818-identifier-equality), which already stated its recommendation, and [Section 5.3.1.1](#5311-condition) no longer states a requirement of its own but refers to [[ACAL-Hierarchical-1.0](#acal-hierarchical-10)].
