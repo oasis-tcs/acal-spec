@@ -26,29 +26,29 @@ abstract-section:
 
 # Prologue {#prologue .unnumbered .unlisted}
 
-### This version: {.unnumbered .unlisted}
+### This version {.unnumbered .unlisted}
 
 
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v%version%/%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.html (Authoritative)
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v%version%/%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.pdf
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v%version%/%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.md
+- https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v%version%/%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.html (Authoritative)
+- https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v%version%/%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.pdf
+- https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v%version%/%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.md
 
-### Previous version: {.unnumbered .unlisted}
+### Previous version {.unnumbered .unlisted}
 
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v1.0/csd01/acal-jsonpath-v1.0-csd01.html (Authoritative)
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v1.0/csd01/acal-jsonpath-v1.0-csd01.pdf
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v1.0/csd01/acal-jsonpath-v1.0-csd01.md
+- https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v1.0/csd01/acal-jsonpath-v1.0-csd01.html (Authoritative)
+- https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v1.0/csd01/acal-jsonpath-v1.0-csd01.pdf
+- https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v1.0/csd01/acal-jsonpath-v1.0-csd01.md
 
-### Latest version: {.unnumbered .unlisted}
+### Latest version {.unnumbered .unlisted}
 
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v1.0/acal-jsonpath-v1.0.html (Authoritative)
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v1.0/acal-jsonpath-v1.0.pdf
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v1.0/acal-jsonpath-v1.0.md
+- https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v1.0/acal-jsonpath-v1.0.html (Authoritative)
+- https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v1.0/acal-jsonpath-v1.0.pdf
+- https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v1.0/acal-jsonpath-v1.0.md
 
 
 ### Technical Committee {.unnumbered .unlisted}
 
-[OASIS eXtensible Access Control Markup Language (XACML) TC](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d)
+[OASIS Attribute-Centric Authorization Language (ACAL) \[supersedes XACML\]](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d)
 
 
 ### Chairs {.unnumbered .unlisted}
@@ -66,14 +66,25 @@ abstract-section:
 ### Editors {.unnumbered .unlisted}
 
 
-- Steven Legg (steven.legg@viewds.com), [ViewDS Identity Solutions](https://www.viewds.com/)
-- Cyril Dangerville (cyril.dangerville@thalesgroup.com), [THALES](https://www.thalesgroup.com/)
+- Steven Legg (steven.legg@viewds.com), ViewDS Identity Solutions
+- Cyril Dangerville (cyril.dangerville@thalesgroup.com), THALES
+- Bill Parducci (bill@parducci.net), Individual
+
+
+### Additional artifacts {.unnumbered .unlisted}
+
+
+This document is one component of a Work Product that also includes:
+
+* [XML schema](acal-jsonpath-xml-v4.0-schema.xsd) (XACML representation);
+* [JSON schema](acal-jsonpath-json-v%version%-schema.json) (JACAL representation);
+* [YAML structural schema](acal-jsonpath-yaml-v%version%-structure.schema.yaml) (YACAL representation).
 
 
 ### Abstract {.unnumbered .unlisted}
 
 
-This specification is a profile of ACAL that provides ACAL extensions based on the JSONPath standard, such as JSONPath-based AttributeSelector. 
+This specification is a profile of ACAL that provides ACAL extensions based on the JSONPath standard, such as the JSONPath attribute selectors `JSONPathAttributeSelectorType` and `JSONPathEntityAttributeSelectorType`. 
 
 
 ### Citation Format {.unnumbered .unlisted}
@@ -83,14 +94,14 @@ When referencing this document, the following citation format should be used:
 
 **[ACAL-JSONPath-1.0]**
 _%title%_.
-Edited by Steven Legg and Cyril Dangerville. %date%. OASIS %subtitle%. https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v%version%/%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.html. Latest stage: https://docs.oasis-open.org/xacml/acal/acal/profiles/jsonpath/v1.0/acal-jsonpath-v1.0.html.
+Edited by Steven Legg, Cyril Dangerville and Bill Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v%version%/%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.html. Latest version: https://docs.oasis-open.org/acal/acal/profiles/jsonpath/v1.0/acal-jsonpath-v1.0.html.
 
 
 ### Related Work {.unnumbered .unlisted}
 
 This document is related to:
 
-- _Attribute-Centric Authorization Language (ACAL) Version 1.0_.
+- _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 
 ## License, Document Status, and Notices {.unnumbered .unlisted}
@@ -101,50 +112,6 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
 ---
 
 
-<!-- ToC template from OASIS Open Specification Template Instructions:
-## Table of Contents
-
-- [1 Scope](#1-scope)
-- [2 Definitions and Acronyms](#2-definitions-and-acronyms)
-  - [2.1 Definitions](#2.1-definitions)
-    - [2.1.1 Terms Defined Elsewhere](#2.1.1-terms-defined-elsewhere)
-    - [2.1.2 Terms Defined in this Document](#2.1.2-terms-defined-in-this-document)
-  - [2.2 Abbreviations and Acronyms](#2.2-abbreviations-and-acronyms)
-- [3 Document Conventions](#3-document-conventions)
-  - [3.1 Key Words](#3.1-key-words)
-  - [3.2 Typographical Conventions](#3.2-typographical-conventions)
-- [4 Introduction](#4-introduction)
-  - [4.1 Any Additional Introduction Subsections That are Needed](#4.1-any-additional-introduction-subsections-that-are-needed)
-  - [4.2 Changes From the Previous Version](#4.2-changes-from-the-previous-version)
-- [5 Level 1 Section Header](#5-level-1-section-header)
-  - [5.1 Level 2 Section Header](#5.1-level-2-section-header)
-    - [5.1.1 Level 3 Section Header](#5.1.1-level-3-section-header)
-      - [5.1.1.1 Level 4 Section Header](#5.1.1.1-level-4-section-header)
-        - [5.1.1.1.1 Level 5 Section Header](#5.1.1.1.1-level-5-section-header)
-          - [5.1.1.1.1.1 Level 6 Section Header](#5.1.1.1.1.1-level-6-section-header)
-- [6 Additional Sections as Needed](#6-additional-sections-as-needed)
-- [7 Safety, Security, and Data Protection Considerations](#7-safety,-security,-and-data-protection-considerations)
-- [8 Conformance](#8-conformance)
-- [Annex A License, Document Status and Notices](#annex-a-license,-document-status-and-notices)
-  - [A.1 Document Status](#a.1-document-status)
-  - [A.2 License and Notices](#a.2-license-and-notices)
-- [Annex B References](#annex-b-references)
-  - [B.1 Normative References](#b.1-normative-references)
-  - [B.2 Informative References](#b.2-informative-references)
-- [Annex C Additional Annex as Needed](#annex-c-additional-annex-as-needed)
-  - [C.1 Subsection Title](#c.1-subsection-title)
-  - [C.1.1 Sub-subsection](#c.1.1-sub-subsection)
-- [Appendix 1 Acknowledgments](#appendix-1-acknowledgments
-  - [Leadership](#leadership)
-  - [Special Thanks](#special-thanks)
-  - [Participants](#participants)
-- [Appendix 2 Changes From Previous Version](#appendix-2-changes-from-previous-version)
-  - [Revision History](#revision-history)
-- [Appendix 3 Additional Appendix as Needed](#appendix-3-additional-appendix-as-needed)
-  - [Subsection Title](#subsection-title)
-- [Sub-subsection](#sub-subsection)
--->
-
 <!-- ToC auto-generated by Pandoc (including the section numbers, except for Annexes/Appendices which don't follow the same numbering scheme (start with a letter)) with ToC title coming from -- variable toc-title="..." argument -->
 
 ---
@@ -152,22 +119,11 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
 
 # Scope
 
-<!-- OASIS Open Specification Template Instructions: 
 
-What is the purpose and scope of this document?   
-Best practices: 
+This ACAL profile defines concrete types of [[ACAL-Core-1.0](#acal-core-10)] `AttributeSelectorType` and `EntityAttributeSelectorType` using JSONPath [[RFC9535](#rfc9535)] expressions to extract attributes from ACAL Request's `Content`.
 
-- Expect this text to be reused in multiple other places to explain the specification in summary form.  
-- This is not the TC or OP scope (which is an IPR and rules boundary);  rather, this section is the summary intended purpose of this specification.  
-- Short is better; four paragraphs or less is recommended.  
-- If use of this spec is deliberately created to rely on or complement another standard, consider briefly mentioning that here as context.  
-- To the extent that discussion of the larger context of the spec, or its history, or the circumstances that led to its creation or revision, are necessary, they belong in the Introduction, not here. 
+The XML, JSON and YAML representations of ACAL are defined by separate specifications (XACML [[XACML-Core-4.0](#xacml-core-40)], JACAL [[JACAL-Core-1.0](#jacal-core-10)] and YACAL [[YACAL-Core-1.0](#yacal-core-10)]); this profile defines its extensions to those representations and provides the corresponding schemas.
 
--->
-
-This ACAL profile defines concrete types of [[ACAL-Core-1.0](#acal-core-10)] `AttributeSelector` and `EntityAttributeSelector` using JSONPath [[RFC9535]](#rfc9535) expressions to extract attributes from ACAL Request's `Content`.
-
-Concrete representations (data formats) are to be provided as separate specifications and therefore out of scope of this document.
 
 ---
 
@@ -183,7 +139,6 @@ Concrete representations (data formats) are to be provided as separate specifica
 
 This document uses the following terms defined elsewhere:
 
-<!-- The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. -->
 See Section 2 of [[ACAL-Core-1.0](#acal-core-10)].
 
 ### Terms Defined in this Document
@@ -208,12 +163,12 @@ None.
 ## Key Words
 
 
-The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in BCP 14 [[RFC2119](#rfc2119)] [[RFC8174](#rfc8174)] when, and only when, they appear in all capitals, as shown here.
 
 
 ## Typographical Conventions
 
-<!-- From OASIS Open Specification Template Instructions: Describe any standards or typographical conventions that were followed when writing this document, such as fonts or highlighting that have special significance. If there are no typographical conventions than one is to put "None". -->
+
 None.
 
 ---
@@ -224,19 +179,17 @@ None.
 
 ## Requirements
 
-JSON is a common format to represent structured objects that may be supplied by the PEP as subject attribute or resource attribute's Content inside the Request to the PDP, typically a JSON Web token (JWT) in the case of subject attributes (JWT is commonly used in OpenID Connect and OAuth protocols), or any JSON document as resource data. JSON is a common data exchange format used by Web APIs. For such cases, supporting JSONPath [RFC9535] expressions in ACAL is the standard way and therefore a must-have to extract the necessary values from the JSON content for policy evaluation. For instance, a common rule of a privacy policy is that a person should be allowed to read records (in JSON) for which he or she is the subject. The corresponding policy must contain a reference - JSONPath expression - to the subject identified in the information resource - JSON record - itself.
+JSON is a common format to represent structured objects that may be supplied by the PEP as subject attribute or resource attribute's Content inside the Request to the PDP, typically a JSON Web token (JWT) in the case of subject attributes (JWT is commonly used in OpenID Connect and OAuth protocols), or any JSON document as resource data. JSON is a common data exchange format used by Web APIs. For such cases, supporting JSONPath [[RFC9535](#rfc9535)] expressions in ACAL is the standard way and therefore a must-have to extract the necessary values from the JSON content for policy evaluation. For instance, a common rule of a privacy policy is that a person should be allowed to read records (in JSON) for which he or she is the subject. The corresponding policy must contain a reference - JSONPath expression - to the subject identified in the information resource - JSON record - itself.
 
 ## Policies Based on Subject and Resource Attributes
 
-Attribute selectors (`AttributeSelectorType` objects) defined by this profile use a JSONPath expression [RFC9535] over the `ContentType` object of the subject (resp. resource) to identify a particular subject (resp. resource) attribute value by its location in the context (see Section 4.11 of [[ACAL-Core-1.0](#acal-core-10)] for an explanation of context).
+Attribute selectors (`AttributeSelectorType` objects) defined by this profile use a JSONPath expression [[RFC9535](#rfc9535)] over the `ContentType` object of the subject (resp. resource) to identify a particular subject (resp. resource) attribute value by its location in the context (see Section 5.2 of [[ACAL-Core-1.0](#acal-core-10)] for an explanation of context).
 
 
 ## Changes From the Previous Version
 
 
-<!-- From OASIS Open Specification Template Instructions: This section is **REQUIRED** and **MUST** be the last numbered subsection in this section. -->
-
-None. This is the first version of this profile.
+The list of changes from the previous version and any revision history can be found in [Appendix 2](#appendix-2-changes-from-previous-version).
 
 ---
 
@@ -250,15 +203,15 @@ This profile applies to a `Content` object (defined in [[ACAL-Core-1.0](#acal-co
 
 ## ACAL extensions
 
-The structures in this profile are extensions to [[ACAL-Core-1.0](#acal-core-10)] model and described here in abstract terms. The concrete representations of these structures are defined for a variety of syntaxes each in a separate profile.
+The structures in this profile are extensions to [[ACAL-Core-1.0](#acal-core-10)] model and described here in abstract terms. The representation of these structures in XML, JSON and YAML follows the XACML, JACAL and YACAL specifications; the corresponding schemas are artifacts of this profile.
 
 The types `AttributeSelectorType` and `EntityAttributeSelectorType` used in the next UML models are defined in [[ACAL-Core-1.0](#acal-core-10)].
 
 ### AttributeSelectorType extension - JSONPathAttributeSelectorType
 
-A `JSONPathAttributeSelectorType` object is a concrete type of `AttributeSelectorType` from [[ACAL-Core-1.0](#acal-core-10)] that uses JSONPath ([RFC9535](#rfc9535)) for `Path` expressions and expects a JSON object as value of the `Body` property of a `RequestEntityType` object's `Content` object. More precisely, the returned values shall be constructed from the node(s) selected by applying the JSONPath expression given by the attribute selector's `Path` property to the JSON object in the `Body` property of the `Content` object in the `RequestEntityType` object matching the attribute selector's `Category` property. 
+A `JSONPathAttributeSelectorType` object is a concrete type of `AttributeSelectorType` from [[ACAL-Core-1.0](#acal-core-10)] that uses JSONPath [[RFC9535](#rfc9535)] for `Path` expressions and expects a JSON object as value of the `Body` property of a `RequestEntityType` object's `Content` object. More precisely, the returned values SHALL be constructed from the node(s) selected by applying the JSONPath expression given by the attribute selector's `Path` property to the JSON object in the `Body` property of the `Content` object in the `RequestEntityType` object matching the attribute selector's `Category` property. 
 
-See the @sec:attribute-selector-evaluation for details of attribute selector evaluation.
+See @sec:attribute-selector-evaluation for details of attribute selector evaluation.
 
 UML definition (class diagram):
 ```plantuml
@@ -270,14 +223,14 @@ class JSONPathAttributeSelectorType <<dataType>> extends AttributeSelectorType
 @enduml
 ```
 
-In the context of this profile, the required `Path` property inherited from the supertype `AttributeSelectorType` SHALL be a JSONPath expression [RFC9535](#rfc9535).
+In the context of this profile, the required `Path` property inherited from the supertype `AttributeSelectorType` SHALL be a JSONPath expression [[RFC9535](#rfc9535)].
 
 
-## EntityAttributeSelectorType extension - JSONPathEntityAttributeSelectorType
+### EntityAttributeSelectorType extension - JSONPathEntityAttributeSelectorType
 
-A `JSONPathEntityAttributeSelectorType` object is a concrete type of `EntityAttributeSelectorType` [[ACAL-Core-1.0](#acal-core-10)] that uses JSONPath [RFC9535](#rfc9535) for `Path` expressions and expects a JSON object in the value returned by the attribute selector's `Expression` property. In other words, the values shall be constructed from the node(s) selected by applying the JSONPath expression given by the entity attribute selector's `Path` property to the JSON object of the `Body` property of the `Content` object in either an attribute category in the request context (`RequestEntity`) or the value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type returned by its `Expression` evaluation.
+A `JSONPathEntityAttributeSelectorType` object is a concrete type of `EntityAttributeSelectorType` [[ACAL-Core-1.0](#acal-core-10)] that uses JSONPath [[RFC9535](#rfc9535)] for `Path` expressions and expects a JSON object in the value returned by the attribute selector's `Expression` property. In other words, the values SHALL be constructed from the node(s) selected by applying the JSONPath expression given by the entity attribute selector's `Path` property to the JSON object of the `Body` property of the `Content` object in either an attribute category in the request context (`RequestEntity`) or the value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type returned by its `Expression` evaluation.
 
-See the @sec:attribute-selector-evaluation for details of entity attribute selector evaluation.
+See @sec:attribute-selector-evaluation for details of entity attribute selector evaluation.
 
 UML definition (class diagram):
 ```plantuml
@@ -297,25 +250,26 @@ The `Path` property is also defined the same as in `JSONPathAttributeSelectorTyp
 # Attribute Selector Evaluation
 
 
-A `JSONPathAttributeSelectorType` or `JSONPathEntityAttributeSelector` object SHALL be evaluated according to the following processing model.
+A `JSONPathAttributeSelectorType` or `JSONPathEntityAttributeSelectorType` object SHALL be evaluated according to the following processing model.
 
 : Note: It is not necessary for an implementation to exactly follow this model. It is only necessary to produce results identical to those that would be produced by following this model.
 
 The first steps are already described in [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7 and provided here as a reminder:
 
+
 - If the attribute category given by the `Category` property is not found or does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
 
-- If the `Expression` property of an `JSONPathEntityAttributeSelector` object evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type and that value does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
+- If the `Expression` property of a `JSONPathEntityAttributeSelectorType` object evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type and that value does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
 
-- If the `Expression` property of an `JSONPathEntityAttributeSelector` object evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:anyURI` data type and an attribute category with that value as its `Category` is not found or does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
+- If the `Expression` property of a `JSONPathEntityAttributeSelectorType` object evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:anyURI` data type and an attribute category with that value as its `Category` is not found or does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
 
 If the designated attribute category or entity value has a `Content` property, then follow the steps below:
 
-1. Construct a JSON object (RFC 8259) from the value of the `Body` property of the `Content` property. If the content is not a valid JSON object, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
+1. Construct a JSON object ([[RFC8259](#rfc8259)]) from the value of the `Body` property of the `Content` property. If the content is not a valid JSON object, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
 
-2. The root node of the data structure (JSON object) shall be used as context node of evaluation (JSONPath *query argument*).
+2. The root node of the data structure (JSON object) SHALL be used as context node of evaluation (JSONPath *query argument*).
 
-3. Evaluate the JSONPath expression given in the `Path` property against the context node selected in the previous step, according to the syntax and semantics of the JSONPath standard [RFC9535].
+3. Evaluate the JSONPath expression given in the `Path` property against the context node selected in the previous step, according to the syntax and semantics of the JSONPath standard [[RFC9535](#rfc9535)].
 
 4. The result of the previous step is a nodelist that is converted to a bag of values of the data type specified by the `DataType` property. In most cases the conversion depends on the string value of a node's JSON value, defined as follows:
 
@@ -378,10 +332,10 @@ If the designated attribute category or entity value has a `Content` property, t
 : If the data type is one of the types referred to above and the result of step 3 does not satisfy any of the cases, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
 
 &nbsp;
-: If the data type is not one of the types referred to above, then the return values shall be constructed from the nodelist in a manner specified by the particular data type extension specification. If the data type extension does not specify an appropriate conversion function, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
+: If the data type is not one of the types referred to above, then the return values SHALL be constructed from the nodelist in a manner specified by the particular data type extension specification. If the data type extension does not specify an appropriate conversion function, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
 
 &nbsp;
-: If an error occurs when converting the values returned by the expression to the specified data type — including a `urn:oasis:names:tc:acal:1.0:function:x500Name-from-string`, `-rfc822Name-from-string`, `-ipAddress-from-string` or `-dnsName-from-string` function evaluating to `Indeterminate` for a node's string value — then the result of the attribute selector MUST be `Indeterminate`, with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`
+: If an error occurs when converting the values returned by the expression to the specified data type — including a `urn:oasis:names:tc:acal:1.0:function:x500Name-from-string`, `urn:oasis:names:tc:acal:1.0:function:rfc822Name-from-string`, `urn:oasis:names:tc:acal:1.0:function:ipAddress-from-string` or `urn:oasis:names:tc:acal:1.0:function:dnsName-from-string` function evaluating to `Indeterminate` for a node's string value — then the result of the attribute selector MUST be `Indeterminate`, with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 &nbsp;
 : If the result of step 3 is an empty nodelist, then the return value is either `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`, or an empty bag, as determined by the `MustBePresent` property.
@@ -394,36 +348,12 @@ An implementation can be optimized to emit errors without going to the effort of
 # Safety, Security, and Data Protection Considerations
 
 
-<!-- From OASIS Open Specification Template Instructions:
-
-This section is **REQUIRED** and **MUST** be the second to last numbered section in the document, right before Conformance. This section contains information about safety, security, data protection, and privacy considerations. These can be divided up into separate subsections as desired. All documents **SHOULD** have at least a security and data protection considerations section, and otherwise **MUST** have a blank section indicating “None.” Any other considerations **MAY** also be added.
-
-
-Please note that any specification that will need to register something with IANA or has plans to go on to ITU/ISO/IEC **MUST** have this section filled out. For an example please see the following section in the CACAO specification here [https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html#_Toc152256574](https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html#_Toc152256574) 
-
--->
-
-Refer to [[ACAL-Core-1.0](#acal-core-10)] section 10, and Section 4 (Security Considerations) of [RFC 9535](#rfc9535).
+Refer to [[ACAL-Core-1.0](#acal-core-10)] section 10, and Section 4 (Security Considerations) of [[RFC9535](#rfc9535)].
 
 ---
 
 
 # Conformance
-
-
-<!-- From OASIS Open Specification Template Instructions: 
-
-
-This section is **REQUIRED** and **MUST** be the last numbered section in the document. 
-
-
--->
-
-## Introduction
-
-The specification addresses the following aspect of conformance:
-
-The specification defines a number of functions, etc. that have somewhat special applications, therefore they are not required to be implemented in an implementation that claims to conform with to this specification.
 
 ## Conformance Tables
 
@@ -432,8 +362,6 @@ This section lists those portions of the specification that MUST be included in 
 : Note: "M" means mandatory-to-implement. "O" means optional.
 
 The implementation MUST follow the @sec:structures, @sec:attribute-selector-evaluation and [Annex C](#annex-c-acal-identifiers) where they apply to implemented items in the following tables.
-
-Many of these items are associated with versions of XACML preceding ACAL but have been assigned new identifiers with the `urn:oasis:names:tc:acal:1.0:` prefix. The older XACML identifiers have been listed in the tables as deprecated identifiers. Implementations MUST support a new identifier defined in this specification but MAY recognize the corresponding deprecated identifier as equivalent. It is RECOMMENDED that these deprecated identifiers not be used in new policies and requests; they are planned to be removed in a subsequent version of ACAL. Note that some items appear to be carried over from a preceding version of XACML but do not list the XACML identifier. This is because ACAL has redefined the item in some way that means it is no longer identical to the original definition in XACML, and so the identifiers can no longer be considered equivalent. Items new to ACAL 1.0 will also not list an XACML identifier.
 
 ### Object Types
 
@@ -456,10 +384,10 @@ The implementation MUST support the object types that are marked `M`.
 ## A.1 Document Status {.unnumbered}
 
 
-This document was last revised or approved by the OASIS eXtensible Access Control Markup Language (XACML) TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
+This document was last revised or approved by the OASIS ACAL \[XACML\] TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
 
 
-TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/xacml/.
+TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/acal/.
 
 
 NOTE: any machine-readable content (Computer Language Definitions) declared Normative for this Work Product is provided in separate plain text files. In the event of a discrepancy between any such plain text file and display content in the Work Product's prose narrative document(s), the content in the separate plain text file prevails.
@@ -480,7 +408,7 @@ This document and translations of it may be copied and furnished to others, and 
 The limited permissions granted above are perpetual and will not be revoked by OASIS or its successors or assigns, as provided in the OASIS IPR Policy.
 
 
-This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited-Mode) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project’s web page ([XACML IPR Policy](https://www.oasis-open.org/committees/xacml/ipr.php)).
+This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited-Mode) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project’s web page ([OASIS ACAL \[XACML\] TC IPR page](https://www.oasis-open.org/committees/acal/ipr.php)).
 
 
 This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. OASIS AND ITS MEMBERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THIS DOCUMENT OR ANY PART THEREOF.
@@ -510,7 +438,7 @@ The name "OASIS" is a trademark of OASIS, the owner and developer of this docume
 (This annex forms an integral part of this Specification.)
 
 
-This section contains the normative and informative references that are used in this document. 
+This section contains the normative references that are used in this document; it has no informative references. 
 
 
 Normative references are specific (identified by date of publication and/or edition number or version number) and Informative references are either specific or non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the reference document (including any amendments) applies. While any hyperlinks included in this section were valid at the time of publication, OASIS cannot guarantee their long term validity.
@@ -523,150 +451,39 @@ The following documents are referenced in such a way that some or all of their c
 
 ###### [ACAL-Core-1.0] {#acal-core-10}
 
-Attribute-Centric Authorization Language (ACAL) Version 1.0. Edited by Steven Legg and Cyril Dangerville. 18 February 2026. OASIS Committee Specification Draft 01.
+_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
+###### [JACAL-Core-1.0] {#jacal-core-10}
 
-###### [CMF]
-
-Martin J. Dürst et al, eds., Character Model for the World Wide Web 1.0: Fundamentals, W3C Recommendation 15 February 2005, https://www.w3.org/TR/2005/REC-charmod-20050215/
-
-###### [DS]
-
-D. Eastlake et al., XML-Signature Syntax and Processing, https://www.w3.org/TR/xmldsig-core/, World Wide Web Consortium.
-
-###### [exc-c14n]
-
-J. Boyer et al, eds., Exclusive XML Canonicalization, Version 1.0, W3C Recommendation 18 July 2002, https://www.w3.org/TR/2002/REC-xml-exc-c14n-20020718/
-
-###### [Hancock]
-
-Hancock, Polymorphic Type Checking, in Simon L. Peyton Jones, Implementation of Functional Programming Languages, Section 8, Prentice-Hall International, 1987.
-
-###### [INFOSET]
-
-XML Information Set (Second Edition), W3C Recommendation, 4 February 2004, https://www.w3.org/TR/xml-infoset/
-
-###### [ISO10181-3]
-
-ISO/IEC 10181-3:1996 Information technology – Open Systems Interconnection -- Security frameworks for open systems: Access control framework.
-
-###### [Kudo00]
-
-Kudo M and Hada S, XML document security based on provisional authorization, Proceedings of the Seventh ACM Conference on Computer and Communications Security, Nov 2000, Athens, Greece, pp 87-96.
-
-###### [LDAP-1]
-
-RFC 2256, A summary of the X500(96) User Schema for use with LDAPv3, Section 5, M Wahl, December 1997, https://www.ietf.org/rfc/rfc2256.txt
-
-###### [LDAP-2]
-
-RFC 2798, Definition of the inetOrgPerson, M. Smith, April 2000, https://www.ietf.org/rfc/rfc2798.txt
-
-###### [MathML]
-
-Mathematical Markup Language (MathML), Version 2.0, W3C Recommendation, 21 October 2003, https://www.w3.org/TR/2003/REC-MathML2-20031021/
-
-###### [Perritt93]
-
-Perritt, H. Knowbots, Permissions Headers and Contract Law, Conference on Technological Strategies for Protecting Intellectual Property in the Networked Multimedia Environment, April 1993. Available at: https://www.cni.org/resources/historical-resources/technological-strategies-for-protecting-intellectual-property-in-the-networked-multimedia-environment/permission-headers-and-contract-law
-
-###### [RBAC]
-
-David Ferraiolo and Richard Kuhn, Role-Based Access Controls, 15th National Computer Security Conference, 1992.
+_JACAL Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
 
 ###### [RFC2119]
 
 *Key Words for Use in RFCs to Indicate Requirement Levels*, BCP 14, RFC 2119, March 1997. [Online]. Available: https://www.rfc-editor.org/info/rfc2119
 
-###### [RFC2732]
-
-Hinden R, Carpenter B, Masinter L, Format for Literal IPv6 Addresses in URL's,  https://www.ietf.org/rfc/rfc2732.txt
-
-###### [RFC3198]
-
-IETF RFC 3198: Terminology for Policy-Based Management, November 2001. https://www.ietf.org/rfc/rfc3198.txt
-
 ###### [RFC8174]
 
 *Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words*, BCP 14, RFC 8174, May 2017. [Online]. Available: https://www.rfc-editor.org/info/rfc8174
+
+###### [RFC8259] {#rfc8259}
+
+Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", STD 90, RFC 8259, DOI 10.17487/RFC8259, December 2017, <https://www.rfc-editor.org/info/rfc8259>.
 
 ###### [RFC9535]
 
 RFC 9535, *JSONPath: Query Expressions for JSON*, February 2024. [Online]. Available: https://datatracker.ietf.org/doc/html/rfc9535
 
-###### [UAX15]
-
-Mark Davis, Martin Dürst, Unicode Standard Annex #15: Unicode Normalization Forms, Unicode 5.1, https://unicode.org/reports/tr15/
-
-###### [UTR36]
-
-Davis, Mark, Suignard, Michel, Unicode Technical Report #36: Unicode Security Considerations, https://www.unicode.org/reports/tr36/
-
-###### [XACMLAdmin]
-
-OASIS Committee Draft 03, XACML v3.0 Administration and Delegation Profile Version 1.0. 11 March 2010, https://docs.oasis-open.org/xacml/3.0/xacml-3.0-administration-v1-spec-cd-03-en.doc
-
 ###### [XF]
 
 XPath and XQuery Functions and Operators 3.1, 21 March 2017, https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/
 
-###### [XML]
+###### [XACML-Core-4.0] {#xacml-core-40}
 
-Bray, Tim, et.al. eds, Extensible Markup Language (XML) 1.0 (Fifth Edition), W3C Recommendation 26 November 2008, https://www.w3.org/TR/2008/REC-xml-20081126/
+_XACML Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
 
-###### [XMLid]
+###### [YACAL-Core-1.0] {#yacal-core-10}
 
-Marsh, Jonathan, et.al. eds, xml:id Version 1.0. W3C Recommendation 9 September 2005, https://www.w3.org/TR/2005/REC-xml-id-20050909/
-
-###### [XS]
-
-XML Schema 1.1, parts 1 and 2. Available at: https://www.w3.org/TR/xmlschema11-1/ and https://www.w3.org/TR/xmlschema11-2/
-
-###### [XPath]
-
-XML Path Language (XPath) 3.1, W3C Recommendation 21 March 2017, https://www.w3.org/TR/xpath-31/
-
-###### [XPathFunc]
-
-W3C XQuery, XPath, and XSLT Functions and Operators Namespace Document (XPath and XQuery Functions and Operators 3.1) 21 March 2017, https://www.w3.org/2005/xpath-functions/
-
-###### [XSLT]
-
-XSL Transformations (XSLT) Version 1.0, W3C Recommendation 16 November 1999, https://www.w3.org/TR/xslt/
-
-
-## B.2 Informative References {.unnumbered}
-
-
-The following referenced documents are not required for the application of this document but may assist the reader with regard to a particular subject area.
-
-###### [CM]
-
-Character Model for the World Wide Web: String Matching W3C Working Group Note 11 August 2021, https://www.w3.org/TR/charmod-norm/, World Wide Web Consortium.
-
-###### [Hinton94]
-
-Hinton, H, M, Lee, E, S, The Compatibility of Policies, Proceedings 2nd ACM Conference on Computer and Communications Security, Nov 1994, Fairfax, Virginia, USA.
-
-###### [NISTIR8318] 
-
-Black, P. (2020), DADS: The On-Line Dictionary of Algorithms and Data Structures, NIST Interagency/Internal Report (NISTIR), National Institute of Standards and Technology, Gaithersburg, MD, [online](https://doi.org/10.6028/NIST.IR.8318) (Accessed December 16, 2025) 
-
-###### [Sloman94]
-
-Sloman, M. Policy Driven Management for Distributed Systems. Journal of Network and Systems Management, Volume 2, part 4. Plenum Press. 1994.
-
-###### [XACML]
-
-_eXtensible Access Control Markup Language (XACML) Version 3.0 Plus Errata 01_. Edited by Erik Rissanen. OASIS Standard incorporating Approved Errata. https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-en.html.
-
-###### [ENTITIES]
-
-_XACML v3.0 Related and Nested Entities Profile Version 1.0_. Edited by Steven Legg. 16 February 2021. OASIS Committee Specification 02. https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/cs02/xacml-3.0-related-entities-v1.0-cs02.html. Latest stage: https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/xacml-3.0-related-entities-v1.0.html.
-
-
----
-
+_YACAL Version 1.0 (YAML Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
 
 # Annex C ACAL Identifiers {.unnumbered}
 
@@ -685,27 +502,22 @@ This ACAL Profile is defined using this identifier.
 
 # Annex D How to generate HTML and PDF versions {.unnumbered}
 
+(This annex does not form an integral part of this Specification and is informational.)
+
 ## D.1 Online generation {.unnumbered}
 
-HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS XACML TC Github repository](https://github.com/oasis-tcs/xacml-spec/). Go to  Github Actions on the github repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
+HTML/PDF versions are generated automatically online via GitHub Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/). Go to GitHub Actions on the GitHub repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
 
 ## D.2 Offline generation {.unnumbered}
 
 ### Prerequisites {.unnumbered}
 
-The following software must be installed on the sytem:
+The following software must be installed on the system:
 - Pandoc **v3.2.1 or later** ( [latest release](https://github.com/jgm/pandoc/releases/latest) )
-- Pandoc filters: [pandoc-include](https://github.com/DCsunset/pandoc-include), [pandoc-xnos filter (Timothy Elder's fork! not the original one) ](https://github.com/TimothyElder/pandoc-xnos), [pandoc-secnos](https://github.com/tomduck/pandoc-secnos). The two latter MUST be installed in that order (make sure any old pandoc-xnos install that is not coming from Elder's fork has been removed and replaced with the fork);
-- Graphviz;
-- PlantUML.
+- Pandoc filters: [pandoc-include](https://github.com/DCsunset/pandoc-include), [pandoc-xnos filter (Timothy Elder's fork! not the original one) ](https://github.com/TimothyElder/pandoc-xnos), [pandoc-secnos](https://github.com/tomduck/pandoc-secnos). Install the two latter in that order (make sure any old pandoc-xnos install that is not coming from Elder's fork has been removed and replaced with the fork);
+- [PlantUML](https://plantuml.com/starting) and [Graphviz](https://graphviz.org/), for the UML diagrams.
 
-As an alternative to installing the above manually, you may simply use Docker with the following shell alias instead:
-```
-$ alias pandoc='docker run --rm --volume "$(pwd):/data" ghcr.io/oasis-tcs/pandoc-plantuml'
-```
-_The Dockerfile (named `Dockerfile`) of the docker image used in the alias above is provided in the [pandoc](https://github.com/oasis-tcs/xacml-spec/tree/main/pandoc) folder next to this markdown file for your convenience if you wish to build it yourself._ 
-
-Git clone or get a local copy of [OASIS XACML TC Github repository](https://github.com/oasis-tcs/xacml-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
 
 ### CSS stylesheet {.unnumbered}
 
@@ -713,12 +525,12 @@ The generation command uses the CSS stylesheet file `pandoc/styles/markdown-styl
 
 ### HTML generation {.unnumbered}
 
-Run the following command line to generate the HTML from this markdown file (input file specified as last argument):
+Run the following command line to generate the HTML from this markdown file (input file specified as the first argument after the options, followed by the extra Pandoc arguments):
 
 ```console
 $ pandoc/mkdocs.sh --number-lines --output /tmp acal-jsonpath-v%version%.md --number-sections=true --filter pandoc-secnos --lua-filter=pandoc/abstract-section.lua --toc=true --variable toc-title="Table of Contents" --toc-depth=5
 ```
-The `--output` option sets the output directory, and the output filename is the same as the input file (last argument) except `.md` extension is replaced with `.html`.
+The `--output` option sets the output directory, and the output filename is the same as the input file except `.md` extension is replaced with `.html`.
 
 The publication date is automatically set to the current date by default (using Lua filter `pandoc/meta_vars.lua`). However, you may set a specific date of your choice instead, by adding the argument `--metadata date="My date in the form DD Month YYYY"` at the end of the command. 
 
@@ -737,7 +549,7 @@ Beware that **the result PDF - the embedded fonts in particular - may differ dep
 **For official TC publications**, add the `--official` argument to avoid this issue and produce a system-independent output:
 
 ```console
-$ pandoc/mkdocs.sh --pdf --official --output /tmp acal-core-v%version%.md
+$ pandoc/mkdocs.sh --number-lines --pdf --official --output /tmp acal-jsonpath-v%version%.md --number-sections=true --filter pandoc-secnos --lua-filter=pandoc/abstract-section.lua --toc=true --variable toc-title="Table of Contents" --toc-depth=5
 ```
 
 In this case, the generation will use a public Linux container image (`ghcr.io/oasis-tcs/chrome-headless`) with a fixed installed set of fonts to generate the PDF.
@@ -748,29 +560,10 @@ In this case, the generation will use a public Linux container image (`ghcr.io/o
 (This appendix does not form an integral part of this Specification and is informational.)
 
 
-<!-- From OASIS Open Specification Template Instructions:
-
-
-All parts in this appendix are optional to the TC. Individuals or companies, past or present, may request that their name and/or affiliation is not included in this list. 
-
-
--->
-
-
 ## Leadership {.unnumbered}
 
 
 The following individuals have had significant leadership positions during the development of this document, not just this version of the document, and they are gratefully acknowledged:
-
-
-<!-- From OASIS Open Specification Template Instructions:
-
-
-This section **SHOULD** include the leadership (chairs, sub committees chairs, secretaries, editors, etc.) of this document, and not just for this version of the document, even if they are no longer members of the TC.
-
-- Position, First Name Last Name, Company, [optional time frames] 
-
--->
 
 
 - Chairs
@@ -780,21 +573,7 @@ This section **SHOULD** include the leadership (chairs, sub committees chairs, s
 - Editors
   - Steven Legg, ViewDS Identity Solutions
   - Cyril Dangerville, THALES
-
-
-## Special Thanks {.unnumbered}
-
-
-The following individuals have made substantial contributions to this document, not just this version of the document, and their contributions are gratefully acknowledged:
-<!-- From OASIS Open Specification Template Instructions:
-
-
-This section **SHOULD** include individuals that have made significant contributions to this document, and not just this version of the document, even if they are no longer members of the TC or were never members of the TC but sent in a contribution through one of the public comment methods. 
-
--->
-
-- Steven Legg, ViewDS Identity Solutions
-- Cyril Dangerville, THALES
+  - Bill Parducci, Individual
 
 
 ## Participants {.unnumbered}
@@ -802,9 +581,8 @@ This section **SHOULD** include individuals that have made significant contribut
 
 The following individuals were members of this committee during the creation of this document, not just this version of the document, and their contributions are gratefully acknowledged:
 
-**XACML TC Members:**
+**OASIS ACAL \[XACML\] TC Members:**
 
-- Hal Lockhart, Individual
 - Bill Parducci, Individual
 - Steven Legg, ViewDS Identity Solutions
 - Cyril Dangerville, THALES
@@ -818,22 +596,23 @@ The following individuals were members of this committee during the creation of 
 
 (This appendix does not form an integral part of this Specification and is informational.)
 
-<!-- From OASIS Open Specification Template Instructions: 
 
-The appendix **SHOULD** contain any explanatory text about the reason for this version including any major changes. The level of detail that is included in this appendix is up to the editors and chairs of the TC to determine. This appendix is **REQUIRED**, if there are no changes then one is to put "None." In addition to any descriptive text, all major changes **SHOULD** be in a bulleted list so that reviewers and implementers can easily understand what they need to know.
+This is the first version of this profile; its previous stage was Committee Specification Draft 01. The changes made since then are the following.
 
--->
-
-This is the first version of this profile.
+- The attribute selector evaluation (@sec:attribute-selector-evaluation) now converts a node's string value to a value of data type `urn:oasis:names:tc:acal:1.0:data-type:x500Name`, `rfc822Name`, `ipAddress` or `dnsName` using the corresponding `-from-string` function of [[ACAL-Core-1.0](#acal-core-10)] Annex C.3.9; when that function evaluates to `Indeterminate`, the attribute selector returns `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
+- The Scope no longer says that concrete representations are out of scope of this document: this profile now defines its extensions to the XML, JSON and YAML representations and provides the corresponding schemas.
+- The XML, JSON and YAML schemas for this profile's extensions are listed as artifacts of this profile (Additional artifacts); at csd01 only the XML schema was listed, with the XACML representation specification.
+- The conformance section no longer says that special functions are not required to be implemented, and no longer carries the deprecated-identifier paragraph (this profile defines no deprecated identifiers); the Introduction subsection of the conformance section, which held the first of these, is removed.
+- Requirements previously written with lowercase "shall" in the selector type descriptions (@sec:structures) and in the attribute selector evaluation (@sec:attribute-selector-evaluation) are written with the uppercase keyword SHALL.
+- Sections are numbered automatically, and the cross-references to sections of this profile and of [[ACAL-Core-1.0](#acal-core-10)] are corrected.
+- [Annex D](#annex-d-how-to-generate-html-and-pdf-versions): the input file of the generation commands follows the options, and installing the Pandoc filters in order is an instruction, not a requirement.
+- [Annex D](#annex-d-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
+- Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references are corrected.
 
 ## Revision History {.unnumbered}
 
-Latest revision history can be obtained from [OASIS XACML TC's github repository](https://github.com/oasis-tcs/xacml-spec/blob/v%version%-%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.md).
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's GitHub repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-jsonpath-v%version%-%stage_revision%.md).
 
-<!--
-- \< Date in yyyy-mm-dd format \>, \< Revision number \>  
-- \< Date in yyyy-mm-dd format \>, \< Revision number \>
--->
 
 <!-- The following centered line represents the end of the document -->  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_

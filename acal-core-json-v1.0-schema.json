@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "urn:oasis:names:tc:jacal:1.0:core:schema",
-	"title": "JSON schema for the JSON Representation of ACAL Core Version 1.0 (JACAL)",
+	"title": "Core JSON schema for JACAL Version 1.0 (JSON Representation of ACAL)",
 	"description": "Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright information, and complete status, please see Annex A which contains the License, Document Status and Notices.",
 	"examples": [
 		{
@@ -56,6 +56,30 @@
 				}
 			},
 			"additionalProperties": false
+		},
+		{
+			"type": "object",
+			"required": [
+				"ShortIdSet"
+			],
+			"properties": {
+				"ShortIdSet": {
+					"$ref": "#/$defs/ShortIdSetType"
+				}
+			},
+			"additionalProperties": false
+		},
+		{
+			"type": "object",
+			"required": [
+				"SharedVariableDefinition"
+			],
+			"properties": {
+				"SharedVariableDefinition": {
+					"$ref": "#/$defs/SharedVariableDefinitionType"
+				}
+			},
+			"additionalProperties": false
 		}
 	],
 	"$defs": {
@@ -79,7 +103,7 @@
 		"VersionMatchType": {
 			"description": "Policy version match pattern (backslashes must be escaped in JSON)",
 			"type": "string",
-			"pattern": "^(0|[1-9]\\d*|\\*)(\\.(0|[1-9]\\d*|\\*|\\+)){0,3}$"
+			"pattern": "^(0|[1-9]\\d*|\\*)(\\.(0|[1-9]\\d*|\\*)){0,2}(\\.(0|[1-9]\\d*|\\*|\\+))?$"
 		},
 		"ShortIdNameType": {
 			"description": "Short Identifier alias",
@@ -176,7 +200,7 @@
 					}
 				},
 				"ShortId": {
-					"$comment": "TODO: add 'uniqueKeys': ['/Name'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/Name' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -187,7 +211,7 @@
 			"additionalProperties": false
 		},
 		"PolicyDefaultsTypeTree": {
-			"$comment": "This is meant to be overridden in a custom schema that combines the enabled extensions (matching the ACAL implementation) in a 'oneOf' schema in order to have one and only one property per type of PolicyDefaults (i.e. one per ACAL profile). TODO: add similar properties for other PolicyDefaults extensions defined by other JACAL Profiles supported by the implementation (one property per profile), if there is any.",
+			"$comment": "This is meant to be overridden in a custom schema that combines the enabled extensions (matching the ACAL implementation) in a 'oneOf' schema in order to have one and only one property per type of PolicyDefaults (i.e. one per ACAL profile). Add similar properties for other PolicyDefaults extensions defined by other JACAL Profiles supported by the implementation (one property per profile), if there is any.",
 			"$dynamicRef": "#PolicyDefaultsTypeExtensions"
 		},
 		"PolicyDefaultsTypeExtensionsDisabled": {
@@ -208,7 +232,7 @@
 					"default": "urn:oasis:names:tc:acal:1.0:data-type:string",
 					"$ref": "#/$defs/IdentifierType"
 				},
-				"isBag": {
+				"IsBag": {
 					"default": false,
 					"type": "boolean"
 				},
@@ -376,7 +400,7 @@
 					}
 				},
 				"Parameter": {
-					"$comment": "TODO: add 'uniqueKeys': ['/Name'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/Name' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -441,7 +465,7 @@
 					"type": "string"
 				},
 				"VariableDefinition": {
-					"$comment": "TODO: add 'uniqueKeys': ['/VariableId'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/VariableId' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -503,7 +527,7 @@
 				    }
 				},
 				"Parameter": {
-					"$comment": "TODO: add 'uniqueKeys': ['/Name'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/Name' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -511,7 +535,7 @@
 					}
 				},
 				"VariableDefinition": {
-					"$comment": "TODO: add 'uniqueKeys': ['/VariableId'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/VariableId' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -993,7 +1017,8 @@
 						"Function": {
 							"$ref": "#/$defs/FunctionType"
 						}
-					}
+					},
+					"additionalProperties": false
 				},
 				{
 					"$ref": "#/$defs/NonLiteralExpressionTypeTree"
@@ -1001,7 +1026,7 @@
 			]
 		},
 		"NonLiteralExpressionTypeTree": {
-			"$comment": "ExpressionType's direct subtypes except ValueType",
+			"$comment": "ExpressionType subtypes other than Value and Function",
 			"anyOf": [
 				{
 					"type": "object",
@@ -1036,17 +1061,18 @@
 						"Apply": {
 							"$ref": "#/$defs/ApplyType"
 						}
-					}
+					},
+					"additionalProperties": false
 				},
 				{
 					"$ref": "#/$defs/NamedAttributeDesignatorTypeTree"
 				},
 				{
-					"$comment": "TODO: remove this subschema if (Entity)AttributeSelectorType is not supported by the implementation",
+					"$comment": "Optional: this subschema can be removed if (Entity)AttributeSelectorType is not supported by the implementation",
 					"$ref": "#/$defs/BaseAttributeSelectorTypeTree"
 				},
 				{
-					"$comment": "TODO: remove this subschema if QuantifiedExpressionType is not supported by the implementation",
+					"$comment": "Optional: this subschema can be removed if QuantifiedExpressionType is not supported by the implementation",
 					"$ref": "#/$defs/QuantifiedExpressionTypeTree"
 				}
 			]
@@ -1093,7 +1119,7 @@
 					"$ref": "#/$defs/BooleanExpressionType"
 				},
 				"AttributeAssignmentExpression": {
-					"$comment": "Issue #99: the (AttributeId, Category) pair is not required to be unique. Whether a notice accepts repeated attribute assignments, and how they combine, is left to the definition of the individual obligation or advice.",
+					"$comment": "the (AttributeId, Category) pair is not required to be unique. Whether a notice accepts repeated attribute assignments, and how they combine, is left to the definition of the individual obligation or advice.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1117,7 +1143,7 @@
 					"type": "boolean"
 				},
 				"AttributeAssignment": {
-					"$comment": "Issue #99: the (AttributeId, Category) pair is not required to be unique. Whether a notice accepts repeated attribute assignments, and how they combine, is left to the definition of the individual obligation or advice.",
+					"$comment": "the (AttributeId, Category) pair is not required to be unique. Whether a notice accepts repeated attribute assignments, and how they combine, is left to the definition of the individual obligation or advice.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1190,7 +1216,7 @@
 					"$ref": "#/$defs/LocalIdentifierType"
 				},
 				"Attribute": {
-					"$comment": "Issue #120: Attribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.44). Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's resultentity-attribute-attributeid-unique rule for the equivalent YACAL-side statement.",
+					"$comment": "Attribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.44). Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's resultentity-attribute-attributeid-unique rule for the equivalent YACAL-side statement.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1200,7 +1226,7 @@
 			}
 		},
 		"RequestDefaultsTypeTree": {
-			"$comment": "This is meant to be overridden in a custom schema that combines the enabled extensions (matching the ACAL implementation) in a 'oneOf' schema in order to have one and only one property per type of RequestDefaults (i.e. one per ACAL profile). TODO: add similar properties for other RequestDefaults extensions defined by other JACAL Profiles supported by the implementation (one property per profile), if there is any.",
+			"$comment": "This is meant to be overridden in a custom schema that combines the enabled extensions (matching the ACAL implementation) in a 'oneOf' schema in order to have one and only one property per type of RequestDefaults (i.e. one per ACAL profile). Add similar properties for other RequestDefaults extensions defined by other JACAL Profiles supported by the implementation (one property per profile), if there is any.",
 			"$dynamicRef": "#RequestDefaultsTypeExtensions"
 		},
 		"RequestDefaultsTypeExtensionsDisabled": {
@@ -1230,7 +1256,7 @@
 				    }
 				},
 				"RequestEntity": {
-					"$comment": "TODO: add 'uniqueKeys': ['/Id'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/Id' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1267,7 +1293,7 @@
 					"$ref": "#/$defs/ContentType"
 				},
 				"RequestAttribute": {
-					"$comment": "Issue #120: RequestAttribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.33). Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's request-attribute-id-unique-within-entity rule for the equivalent YACAL-side statement.",
+					"$comment": "RequestAttribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.33). Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's request-attribute-id-unique-within-entity rule for the equivalent YACAL-side statement.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1278,7 +1304,7 @@
 			"additionalProperties": false
 		},
 		"ContentType": {
-			"$comment": "TODO: supporting this is optional. Remove this subschema if your implementation does not support 'ContentType' objects. Or else, for safety/security reasons, in production, ACAL system users and/or implementers should add further restrictions to the schema of the Body property and/or enforce security measures in the JSON processor to mitigate possible security issues that may occur when allowing any JSON object like this as Body input.",
+			"$comment": "Supporting this is optional. This subschema can be removed if the implementation does not support 'ContentType' objects. Otherwise, for safety/security reasons, in production, ACAL system users and/or implementers should add further restrictions to the schema of the Body property and/or enforce security measures in the JSON processor to mitigate possible security issues that may occur when allowing any JSON object like this as Body input.",
 			"type": "object",
 			"properties": {
 				"MediaType": {
@@ -1360,7 +1386,7 @@
 					}
 				},
 				"ResultEntity": {
-					"$comment": "TODO: add 'uniqueKeys': ['/Category'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/Category' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1368,7 +1394,7 @@
 					}
 				},
 				"ApplicablePolicyReference": {
-					"$comment": "TODO: add 'uniqueKeys': ['/Id'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/Id' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1379,14 +1405,14 @@
 			"additionalProperties": false
 		},
 		"MultiRequestsType": {
-			"$comment": "TODO: remove this if your implementation does not support MultiRequests (the Multiple Decision Profile)",
+			"$comment": "Optional: this can be removed if the implementation does not support MultiRequests (the Multiple Decision Profile)",
 			"type": "object",
 			"required": [
 				"RequestReference"
 			],
 			"properties": {
 				"RequestReference": {
-					"$comment": "TODO: translate/enforce ACAL constraint: {OCL} self->isUnique(RequestEntityReference->asSet())",
+					"$comment": "Not enforced by this schema; ACAL constraint: {OCL} self->isUnique(RequestEntityReference->asSet())",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1397,7 +1423,7 @@
 			"additionalProperties": false
 		},
 		"RequestReferenceType": {
-			"$comment": "TODO: remove this subschema if your implementation does not support MultiRequests (the Multiple Decision Profile)",
+			"$comment": "Optional: this subschema can be removed if the implementation does not support MultiRequests (the Multiple Decision Profile)",
 			"type": "object",
 			"required": [
 				"RequestEntityReference"
@@ -1448,7 +1474,7 @@
 			"additionalProperties": false
 		},
 		"StatusDetailType": {
-			"$comment": "TODO: supporting this is optional. Remove this subschema if your implementation does not support 'StatusDetailType' objects. Or else, for safety/security reasons, in production, ACAL system users and/or implementers should add further restrictions to this schema and/or enforce security measures in the JSON processor to mitigate possible security issues that may occur when allowing any JSON object like this as input",
+			"$comment": "Supporting this is optional. This subschema can be removed if the implementation does not support 'StatusDetailType' objects. Otherwise, for safety/security reasons, in production, ACAL system users and/or implementers should add further restrictions to this schema and/or enforce security measures in the JSON processor to mitigate possible security issues that may occur when allowing any JSON object like this as input",
 			"type": "object",
 			"properties": {
 				"MissingAttributeDetail": {
@@ -1505,7 +1531,7 @@
 					"$ref": "#/$defs/ContentType"
 				},
 				"Attribute": {
-					"$comment": "Issue #120: Attribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.45). Applies to every use of EntityType, including PolicyIssuer. Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's policyissuer-attribute-attributeid-unique rule for the equivalent YACAL-side statement.",
+					"$comment": "Attribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.45). Applies to every use of EntityType, including PolicyIssuer. Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's policyissuer-attribute-attributeid-unique rule for the equivalent YACAL-side statement.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1531,7 +1557,7 @@
 			"required": [],
 			"properties": {
 				"ShortIdSet": {
-					"$comment": "TODO: add 'uniqueKeys': ['/Id'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/Id' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1539,7 +1565,7 @@
 					}
 				},
 				"SharedVariableDefinition": {
-					"$comment": "TODO: add 'uniqueKeys': ['/Id'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/Id' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1547,7 +1573,7 @@
 					}
 				},
 				"Policy": {
-					"$comment": "TODO: add 'uniqueKeys': ['/PolicyId'] from ArrayExt vocabulary - https://docs.json-everything.net/schema/vocabs/array-ext/",
+					"$comment": "Uniqueness by '/PolicyId' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {

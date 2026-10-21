@@ -5,10 +5,8 @@
 	xmlns="urn:oasis:names:tc:xacml:4.0:jsonpath:schema"
 	elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:annotation>
-		<xs:documentation> XACML v4.0 (XML Representation of ACAL Version 1.0) - JSONPath Profile
-			schema. Copyright (c) OASIS Open 2026. All Rights Reserved. For more license and
-			copyright information, and complete status, please see Annex A of XACML v4.0 (XML
-			Representation of ACAL Version 1.0) specification, which contains the License, Document
+		<xs:documentation> ACAL v1.0 JSONPath Profile Version 1.0 - XML schema for XACML Version 4.0 (eXtensible Access Control Markup Language). Copyright (c) OASIS Open 2026. All Rights Reserved. For more license and
+			copyright information, and complete status, please see Annex A of the ACAL v1.0 JSONPath Profile Version 1.0 specification, which contains the License, Document
 			Status and Notices. </xs:documentation>
 	</xs:annotation>
 
@@ -16,7 +14,7 @@
 	<xs:import namespace="urn:oasis:names:tc:xacml:4.0:core:schema"
 		schemaLocation="acal-core-xml-v4.0-schema.xsd" />
 
-	<!-- Issue #5: adding support for JSONPath (RFC 9535) in AttributeSelector -->
+	<!-- Adding support for JSONPath (RFC 9535) in AttributeSelector -->
 	<xs:element name="JSONPathAttributeSelector" type="JSONPathAttributeSelectorType" substitutionGroup="xacml:AttributeSelector" />
 	<xs:complexType name="JSONPathAttributeSelectorType">
 		<xs:complexContent>

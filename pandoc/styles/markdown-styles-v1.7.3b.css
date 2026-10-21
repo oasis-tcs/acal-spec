@@ -12,12 +12,12 @@
 /* pk 2019-05-23 - v1.7.2 (based on 1.7.1) changed monospace "code" font to Courier New */
 /* pk 2019-08-01 - v1.7.3 substitute PostScript name for fonts (LiberationSans for "Liberation Sans" and CourierNew for "Courier New") to address a flaw in "wkhtmltopdf" which rendered all text as bold. Changed "bigtitle" to "h1big"*/
 /* dk 2020-10-21 - v1.7.3a (unofficial for jadn, based on 1.7.3) update block quotes and code blocks */
-/* XACML TC 2026-08-12 - v1.7.3b (unofficial for xacml/acal, based on 1.7.3a) reformatted, changed 'img' max-width/height, added Roboto Mono to monospace "code" font-family, and Roboto to other font-families, and reduced font-size for 'td' elements (table cells) as a fix to avoid truncated tables in PDF */ 
+/* OASIS ACAL [XACML] TC 2026-08-12 - v1.7.3b (unofficial for ACAL, based on 1.7.3a) reformatted, changed 'img' max-width/height, added Roboto Mono to monospace "code" font-family, and Roboto to other font-families, and reduced font-size for 'td' elements (table cells) as a fix to avoid truncated tables in PDF */ 
 
 body {
     margin-left: 3pc;
     margin-right: 3pc;
-	/* XACML TC change: added the font Roboto */
+	/* OASIS ACAL [XACML] TC change: added the font Roboto */
     font-family: Roboto, LiberationSans, Arial, Helvetica, sans-serif;
 	font-size:12pt;
 	line-height:1.2;
@@ -30,7 +30,7 @@ h1{font-size:18pt}h2{font-size:14pt}h3{font-size:13pt}h4{font-size:12pt}h5{font-
 h1big{font-size: 24pt}
 
 h1,h2,h3,h4,h5,h1big{
-	/* XACML TC change: added the font Roboto */
+	/* OASIS ACAL [XACML] TC change: added the font Roboto */
 	font-family: Roboto, LiberationSans, Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	margin:8pt 0;
@@ -41,7 +41,7 @@ h1,h2,h3,h4,h5,h1big{
 h6{
 	font-size:12pt; 
 	line-height:1.0;
-	/* XACML TC change: added the font Roboto */
+	/* OASIS ACAL [XACML] TC change: added the font Roboto */
 	font-family: Roboto, LiberationSans, Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	margin:0pt;
@@ -95,7 +95,7 @@ pre {
 
 code,kbd,pre,samp{
     background-color:#f0f0f0;
-	/* XACML TC customization: added font "Roboto Mono" */
+	/* OASIS ACAL [XACML] TC customization: added font "Roboto Mono" */
     font-family: "Roboto Mono", CourierNew, monospace;
     white-space: pre-wrap;
     font-size: 10pt;
@@ -113,7 +113,7 @@ li {
     margin: 3px 0;
 }
 
-/* XACML TC change */
+/* OASIS ACAL [XACML] TC change */
 img {
   max-width: 100%;
   height: auto;

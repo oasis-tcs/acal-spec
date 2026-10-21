@@ -3,7 +3,7 @@
 logo: |
   ![OASIS](images/OASISLogo-v3.0.png)
 # Original logo: http://docs.oasis-open.org/templates/OASISLogo-v3.0.png
-title: JSON Representation of ACAL Version 1.0 (JACAL)
+title: JACAL Version 1.0 (JSON Representation of ACAL)
 subtitle: Committee Specification Draft 02
 version: "1.0"
 stage_revision: csd02 # [stage-abbrev][revisionNumber] as defined in https://docs.oasis-open.org/specGuidelines/ndr/namingDirectives.html
@@ -16,30 +16,30 @@ keywords: ["access control", "authorization", "ABAC", "policy language", "JSON",
 
 ### This version
 
-- https://docs.oasis-open.org/xacml/acal/jacal/core/v%version%/%stage_revision%/acal-core-json-v%version%-%stage_revision%.html (Authoritative) 
-- https://docs.oasis-open.org/xacml/acal/jacal/core/v%version%/%stage_revision%/acal-core-json-v%version%-%stage_revision%.pdf
-- https://docs.oasis-open.org/xacml/acal/jacal/core/v%version%/%stage_revision%/acal-core-json-v%version%-%stage_revision%.md
+- https://docs.oasis-open.org/acal/jacal/core/v%version%/%stage_revision%/acal-core-json-v%version%-%stage_revision%.html (Authoritative) 
+- https://docs.oasis-open.org/acal/jacal/core/v%version%/%stage_revision%/acal-core-json-v%version%-%stage_revision%.pdf
+- https://docs.oasis-open.org/acal/jacal/core/v%version%/%stage_revision%/acal-core-json-v%version%-%stage_revision%.md
 
 
 ### Previous version
 
-
-N/A
-
+- https://docs.oasis-open.org/acal/jacal/core/v1.0/csd01/acal-core-json-v1.0-csd01.html (Authoritative)
+- https://docs.oasis-open.org/acal/jacal/core/v1.0/csd01/acal-core-json-v1.0-csd01.pdf
+- https://docs.oasis-open.org/acal/jacal/core/v1.0/csd01/acal-core-json-v1.0-csd01.md
 
 ### Latest version
 
 
-- https://docs.oasis-open.org/xacml/acal/jacal/core/v1.0/acal-core-json-v1.0.html (Authoritative)
-- https://docs.oasis-open.org/xacml/acal/jacal/core/v1.0/acal-core-json-v1.0.pdf
-- https://docs.oasis-open.org/xacml/acal/jacal/core/v1.0/acal-xpath-v1.0.md
+- https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html (Authoritative)
+- https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.pdf
+- https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.md
 
 
-### Technical Committee:
+### Technical Committee
 
-[OASIS eXtensible Access Control Markup Language (XACML) TC](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d)
+[OASIS Attribute-Centric Authorization Language (ACAL) \[supersedes XACML\]](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d)
 
-### Chairs:
+### Chairs
 
 - Bill Parducci (bill@parducci.net), Individual
 
@@ -47,41 +47,39 @@ N/A
 
 - Bill Parducci (bill@parducci.net), Individual  
 
-### Editors:
+### Editors
 
-- Steven Legg (steven.legg@viewds.com), [ViewDS Identity Solutions](https://www.viewds.com/)
-- Cyril Dangerville (cyril.dangerville@thalesgroup.com), [THALES](https://www.thalesgroup.com/)
+- Steven Legg (steven.legg@viewds.com), ViewDS Identity Solutions
+- Cyril Dangerville (cyril.dangerville@thalesgroup.com), THALES
+- Bill Parducci (bill@parducci.net), Individual
 
 
-### Additional artifacts:
+### Additional artifacts
 
 This document is one component of a Work Product that also includes:
 
 * [Core JSON schema](acal-core-json-v%version%-schema.json);
 * [Short identifier set](acal-core-json-v%version%-identifiers.json).
 
-<!-- Note: Any normative computer language definitions that are part of the Work Product, such as XML instances, schemas and Java(TM) code, including fragments of such, must be (a) well formed and valid, (b) provided in separate plain text files, (c) referenced from the Work Product; and (d) where any definition in these separate files disagrees with the definition found in the specification, the definition in the separate file prevails. Remove this note before submitting for publication.)
--->
 
+### Abstract
 
-### Abstract:
+This specification defines JACAL Version 1.0: the JSON representation of the ACAL Version 1.0 model.
 
-This specification defines Version 1.0 of the JSON Representation Profile of the ACAL (JACAL) Version 1.0.
-
-### Citation format:
+### Citation Format
 
 When referencing this specification the following citation format should be used:
 
 **[JACAL-Core-1.0]**
 _%title%_.
-Edited by Steven Legg and Cyril Dangerville. %date%. OASIS %subtitle%. https://docs.oasis-open.org/xacml/acal/jacal/core/v%version%/%stage_revision%/acal-core-json-v%version%-%stage_revision%.html . Latest stage: https://docs.oasis-open.org/xacml/acal/jacal/core/v1.0/acal-core-json-v1.0.html.
+Edited by Steven Legg, Cyril Dangerville and Bill Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/jacal/core/v%version%/%stage_revision%/acal-core-json-v%version%-%stage_revision%.html . Latest version: https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html.
 
 
-### Related work:
+### Related Work
 
 This document is related to:
 
-* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg and Cyril Dangerville. 18 February 2026. OASIS Committee Specification Draft 01.
+* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 
 ## License, Document Status, and Notices
@@ -92,48 +90,6 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
 
 # Table of Contents
 
-<!-- ToC template from OASIS Open Specification Template Instructions:
-
-- [1 Scope](#1-scope)
-- [2 Definitions and Acronyms](#2-definitions-and-acronyms)
-  - [2.1 Definitions](#2.1-definitions)
-    - [2.1.1 Terms Defined Elsewhere](#2.1.1-terms-defined-elsewhere)
-    - [2.1.2 Terms Defined in this Document](#2.1.2-terms-defined-in-this-document)
-  - [2.2 Abbreviations and Acronyms](#2.2-abbreviations-and-acronyms)
-- [3 Document Conventions](#3-document-conventions)
-  - [3.1 Key Words](#3.1-key-words)
-  - [3.2 Typographical Conventions](#3.2-typographical-conventions)
-- [4 Introduction](#4-introduction)
-  - [4.1 Any Additional Introduction Subsections That are Needed](#4.1-any-additional-introduction-subsections-that-are-needed)
-  - [4.2 Changes From the Previous Version](#4.2-changes-from-the-previous-version)
-- [5 Level 1 Section Header](#5-level-1-section-header)
-  - [5.1 Level 2 Section Header](#5.1-level-2-section-header)
-    - [5.1.1 Level 3 Section Header](#5.1.1-level-3-section-header)
-      - [5.1.1.1 Level 4 Section Header](#5.1.1.1-level-4-section-header)
-        - [5.1.1.1.1 Level 5 Section Header](#5.1.1.1.1-level-5-section-header)
-          - [5.1.1.1.1.1 Level 6 Section Header](#5.1.1.1.1.1-level-6-section-header)
-- [6 Additional Sections as Needed](#6-additional-sections-as-needed)
-- [7 Safety, Security, and Data Protection Considerations](#7-safety,-security,-and-data-protection-considerations)
-- [8 Conformance](#8-conformance)
-- [Annex A License, Document Status and Notices](#annex-a-license,-document-status-and-notices)
-  - [A.1 Document Status](#a.1-document-status)
-  - [A.2 License and Notices](#a.2-license-and-notices)
-- [Annex B References](#annex-b-references)
-  - [B.1 Normative References](#b.1-normative-references)
-  - [B.2 Informative References](#b.2-informative-references)
-- [Annex C Additional Annex as Needed](#annex-c-additional-annex-as-needed)
-  - [C.1 Subsection Title](#c.1-subsection-title)
-  - [C.1.1 Sub-subsection](#c.1.1-sub-subsection)
-- [Appendix 1 Acknowledgments](#appendix-1-acknowledgments)
-  - [Leadership](#leadership)
-  - [Special Thanks](#special-thanks)
-  - [Participants](#participants)
-- [Appendix 2 Changes From Previous Version](#appendix-2-changes-from-previous-version)
-  - [Revision History](#revision-history)
-- [Appendix 3 Additional Appendix as Needed](#appendix-3-additional-appendix-as-needed)
-  - [Subsection Title](#subsection-title)
-- [Sub-subsection](#sub-subsection)
--->
 
 <!-- Generated ToC -->
 - [1 Scope](#1-scope)
@@ -156,9 +112,10 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
   - [5.1 Mapping ACAL simple types](#51-mapping-acal-simple-types)
     - [5.1.1 Primitive types mapped to native JSON schema definitions](#511-primitive-types-mapped-to-native-json-schema-definitions)
     - [5.1.2 Restricted String types (UML stereotype `<<restrictedString>>`)](#512-restricted-string-types-uml-stereotype-restrictedstring)
+      - [5.1.2.1 IdentifierType pattern](#5121-identifiertype-pattern)
     - [5.1.3 Enum types (UML stereotype `<<enumeration>>`)](#513-enum-types-uml-stereotype-enumeration)
   - [5.2 Mapping complex ACAL types (UML stereotype `<<dataType>>`)](#52-mapping-complex-acal-types-uml-stereotype-datatype)
-    - [5.2.1 AnyType mapping rule](#521-anytype-mapping-rule) 
+    - [5.2.1 AnyType mapping rule](#521-anytype-mapping-rule)
     - [5.2.2 ValueType mapping rules](#522-valuetype-mapping-rules)
       - [5.2.2.1 Primitive value mappings](#5221-primitive-value-mappings)
       - [5.2.2.2 Structured value mappings](#5222-structured-value-mappings)
@@ -167,6 +124,9 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
     - [5.2.5 Mapping ACAL object-level constraints (OCL)](#525-mapping-acal-object-level-constraints-ocl)
   - [5.3 Content Types and Body representations (optional)](#53-content-types-and-body-representations-optional)
   - [5.4 JACAL Extension Mechanism](#54-jacal-extension-mechanism)
+    - [5.4.1 Example using extensions from a single ACAL Profile](#541-example-using-extensions-from-a-single-acal-profile)
+    - [5.4.2 Example using extensions from multiple ACAL Profiles](#542-example-using-extensions-from-multiple-acal-profiles)
+    - [5.4.3 Example combining a custom extension with a standard profile-defined extension](#543-example-combining-a-custom-extension-with-a-standard-profile-defined-extension)
 - [6 Safety, Security and Privacy Considerations (non-normative)](#6-safety-security-and-privacy-considerations-non-normative)
   - [6.1 Threat model](#61-threat-model)
   - [6.2 Safeguards](#62-safeguards)
@@ -186,31 +146,26 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
   - [B.2 Informative References](#b2-informative-references)
 - [Annex C JACAL identifiers (normative)](#annex-c-jacal-identifiers-normative)
   - [C.1 JACAL schema identifier](#c1-jacal-schema-identifier)
-- [Annex D JACAL schema (normative)](#annex-c-jacal-identifiers-normative)
-- [Annex E How to generate HTML and PDF Versions](#annex-e-how-to-generate-html-and-pdf-versions)
+  - [C.2 Core Short-Identifier Set](#c2-core-short-identifier-set)
+- [Annex D JSON Schema (normative)](#annex-d-json-schema-normative)
+- [Annex E How to generate HTML and PDF versions](#annex-e-how-to-generate-html-and-pdf-versions)
+  - [Online generation](#online-generation)
+  - [Offline generation](#offline-generation)
+    - [Prerequisites](#prerequisites)
+    - [CSS stylesheet](#css-stylesheet)
+    - [HTML generation](#html-generation)
+    - [PDF generation](#pdf-generation)
 - [Appendix 1 Acknowledgments](#appendix-1-acknowledgments)
   - [Leadership](#leadership)
-  - [Special Thanks](#special-thanks)
   - [Participants](#participants)
 - [Appendix 2 Changes From Previous Version](#appendix-2-changes-from-previous-version)
   - [Revision History](#revision-history)
 
--------
+
+---
 
 # 1 Scope
 
-<!-- OASIS Open Specification Template Instructions: 
-
-What is the purpose and scope of this document?   
-Best practices: 
-
-- Expect this text to be reused in multiple other places to explain the specification in summary form.  
-- This is not the TC or OP scope (which is an IPR and rules boundary);  rather, this section is the summary intended purpose of this specification.  
-- Short is better; four paragraphs or less is recommended.  
-- If use of this spec is deliberately created to rely on or complement another standard, consider briefly mentioning that here as context.  
-- To the extent that discussion of the larger context of the spec, or its history, or the circumstances that led to its creation or revision, are necessary, they belong in the Introduction, not here. 
-
--->
 
 This specification defines the JSON syntax of the [[ACAL-Core-1.0](#acal-core-10)] model and any JSON-specific syntax, semantics and processing instructions that are not already specified by [[ACAL-Core-1.0](#acal-core-10)]. For more information on the scope, please refer to [[ACAL-Core-1.0](#acal-core-10)].
 
@@ -225,31 +180,11 @@ This specification defines the JSON syntax of the [[ACAL-Core-1.0](#acal-core-10
 
 ### 2.1.1 Terms Defined Elsewhere
 
-
-<!-- 
-This document uses the following terms defined elsewhere:...
-
-The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. 
-
-**Term**
-
-: [REF] Definition.
--->
-
-None.
+Terms in bold-face italic have the meaning defined in [[ACAL-Core-1.0](#acal-core-10)] Section 2.
 
 ### 2.1.2 Terms Defined in this Document
 
-<!-- 
-This document defines the following terms:...
 
-The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. 
-
-**Term**
-
-: Definition.
-
--->
 None.
 
 ### 2.1.3 Related terms
@@ -259,13 +194,6 @@ None.
 ## 2.2 Abbreviations and Acronyms
 
 This document uses the following abbreviations and acronyms:
-<!-- The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. 
-
-**Acronym (Full Term)**
-
-: Definition.
-
--->
 
 **JACAL**
 
@@ -281,7 +209,7 @@ This document uses the following abbreviations and acronyms:
 
 **JSONPath**
 
-: XPath equivalent for JSON as defined in [[RFC9535](#rfc9535)]
+: Query expressions for selecting values from JSON, as defined in [[RFC9535](#rfc9535)]
 
 ---
 
@@ -291,12 +219,11 @@ This document uses the following abbreviations and acronyms:
 ## 3.1 Key Words
 
 
-The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in BCP 14 [[RFC2119](#rfc2119)] [[RFC8174](#rfc8174)] when, and only when, they appear in all capitals, as shown here.
 
 
 ## 3.2 Typographical Conventions
 
-<!-- From OASIS Open Specification Template Instructions: Describe any standards or typographical conventions that were followed when writing this document, such as fonts or highlighting that have special significance. If there are no typographical conventions than one is to put "None". -->
 
 This specification contains schema conforming to [JSON Schema](#jsonschemavalidation) and normative text to describe the syntax and semantics of JSON-encoded ACAL objects.
 
@@ -304,7 +231,7 @@ This specification contains schema conforming to [JSON Schema](#jsonschemavalida
 Listings of JSON schema and code listings appear like this.
 ```
 
-This specification uses the following typographical conventions in text: `JSONPropertyName`, `JSONDataType`, `OtherCode`. Terms in **_bold-face italic_** are intended to have the meaning defined in Section 2.
+This specification uses the following typographical conventions in text: `JSONPropertyName`, `JSONDataType`, `OtherCode`. Terms in **_bold-face italic_** are intended to have the meaning defined in [[ACAL-Core-1.0](#acal-core-10)] Section 2.
 
 
 ## 3.3 Schema organization and identifier(s)
@@ -318,10 +245,8 @@ The JACAL syntax is defined in a [JSON Schema](#jsonschemavalidation) associated
 
 # 4 Introduction (non-normative)
 
-<!-- All text is normative unless otherwise labeled -->
-
 The Attribute-Centric Authorization Language (ACAL) Version 1.0
-[[ACAL-Core](#acal-core-10)] defines an abstract policy language for
+[[ACAL-Core-1.0](#acal-core-10)] defines an abstract policy language for
 attribute-based access control (ABAC) decisions.  The ACAL abstract
 model is independent of any concrete representation format; concrete
 representations are defined by companion specifications.
@@ -336,15 +261,15 @@ The JSON representation (JACAL) should be as aligned as possible with [[ACAL-Cor
 the ACAL abstract model has a corresponding JACAL representation defined
 in this specification.  The normative reference for semantics,
 evaluation rules, and abstract conformance requirements is
-[[ACAL-Core](#acal-core-10)].  This specification defines how ACAL abstract
+[[ACAL-Core-1.0](#acal-core-10)].  This specification defines how ACAL abstract
 model types are expressed in JSON.
 
 The authoritative definitions of ACAL simple types, object structures,
 inheritance relationships, and `ValueType` subtypes remain in
-[[ACAL-Core](#acal-core-10)] Section 7.  Likewise, the
+[[ACAL-Core-1.0](#acal-core-10)] Section 7.  Likewise, the
 mandatory-versus-optional
 support classification of ACAL object types remains in
-[[ACAL-Core](#acal-core-10)] Section 11.2.  JACAL does not redefine those
+[[ACAL-Core-1.0](#acal-core-10)] Section 11.2.  JACAL does not redefine those
 abstract model elements; it defines only their JSON representation.
 
 ## 4.2 Abstraction Layer
@@ -355,18 +280,20 @@ Similarly, in the case where the resource to which access is requested is a JSON
 
 ## 4.3 Example Short Identifier Set
 
-A set of Short Identifiers with the Id `urn:oasis:names:tc:acal:1.0:core:identifiers` is defined by ACAL in the JSON Representation according to this specification, for the various identifiers assigned by ACAL, and provided attached to this profile. However, a deployment will usually have need for additional identifiers, especially for locally-defined attributes, so it is usually desirable to define a set of additional short identifiers to use in the deployment, that may import the first set.
+A set of Short Identifiers with the Id `urn:oasis:names:tc:acal:1.0:core:identifiers` is defined by ACAL in the JSON Representation according to this specification, for the various identifiers assigned by ACAL, and provided with this specification as a machine-readable artifact. However, a deployment will usually have need for additional identifiers, especially for locally-defined attributes, so it is usually desirable to define a set of additional short identifiers to use in the deployment, that may import the first set.
 
-The following short-identifier set defines an JSON representation of short identifiers for the additional attributes in this example and also imports the standardized set.
+The following short-identifier set defines a JSON representation of short identifiers for the additional attributes in this example and also imports the standardized set.
 
 ```json
 {
-  "Id": "urn:oasis:names:tc:acal:1.0:example:identifiers",
-  "ShortIdSetReference": ["urn:oasis:names:tc:acal:1.0:core:identifiers"],
-  "ShortId": [
-    { "Name": "patient-number", "Value": "urn:oasis:names:tc:acal:1.0:example:attribute:patient-number" },
-    { "Name": "collection", "Value": "urn:oasis:names:tc:acal:1.0:example:attribute:collection" }
-  ]
+  "ShortIdSet": {
+    "Id": "urn:oasis:names:tc:acal:1.0:example:identifiers",
+    "ShortIdSetReference": ["urn:oasis:names:tc:acal:1.0:core:identifiers"],
+    "ShortId": [
+      { "Name": "patient-number", "Value": "urn:oasis:names:tc:acal:1.0:example:attribute:patient-number" },
+      { "Name": "collection", "Value": "urn:oasis:names:tc:acal:1.0:example:attribute:collection" }
+    ]
+  }
 }
 ```
 
@@ -380,7 +307,7 @@ Short Identifiers can reuse other Short Identifiers in their values, typically a
 }
 ```
 the following `IdentifierType` values are all equivalent and evaluate to the URI of the string data type:
-```
+```json
 "string"
 "{string}"
 "{xs}string"
@@ -389,7 +316,6 @@ the following `IdentifierType` values are all equivalent and evaluate to the URI
 
 ## 4.4 Changes From the Previous Version
 
-<!-- From OASIS Open Specification Template Instructions: This section is **REQUIRED** and **MUST** be the last numbered subsection in this section. -->
 
 The list of changes from the previous version and any revision history can be found in [Appendix 2](#appendix-2-changes-from-previous-version).
 
@@ -402,40 +328,76 @@ The list of changes from the previous version and any revision history can be fo
 The next sections describe the rules that SHALL be applied for mapping the [[ACAL-Core-1.0](#acal-core-10)] agnostic model (UML-based) to [JSON schema Draft 2020-12](#jsonschemacore) definitions for this JSON representation (JACAL).
 These rules have been applied to produce JACAL's core JSON schema in [Annex D](#annex-d-json-schema-normative) (also in the [Core JSON schema file](acal-core-json-v%version%-schema.json) accompanying this document) from [[ACAL-Core-1.0](#acal-core-10)] core model.
 
-We consider `PolicyType`, `BundleType`, `RequestType` and `ResponseType` as the root JSON objects to be used by JACAL users, therefore the final JACAL core schema has the following structure:
+We consider `PolicyType`, `BundleType`, `RequestType`, `ResponseType`, `ShortIdSetType` and `SharedVariableDefinitionType` as the root JSON objects to be used by JACAL users. A JACAL document is a JSON object with a single property, named `Policy`, `Bundle`, `Request`, `Response`, `ShortIdSet` or `SharedVariableDefinition`, whose value is the root object; therefore the final JACAL core schema has the following structure:
 
 ```json
 {
-	"$id": "urn:oasis:names:tc:jacal:1.0:core:schema",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"title": "JSON schema of ACAL Version 1.0 (JACAL)",
+	"$id": "urn:oasis:names:tc:jacal:1.0:core:schema",
+	"title": "Core JSON schema for JACAL Version 1.0 (JSON Representation of ACAL)",
 	"anyOf": [
 		{
-			"$ref": "#/$defs/PolicyType"
-		},
-    {
-			"$ref": "#/$defs/BundleType"
+			"type": "object",
+			"required": ["Policy"],
+			"properties": {
+				"Policy": {"$ref": "#/$defs/PolicyType"}
+			},
+			"additionalProperties": false
 		},
 		{
-			"$ref": "#/$defs/RequestType"
+			"type": "object",
+			"required": ["Bundle"],
+			"properties": {
+				"Bundle": {"$ref": "#/$defs/BundleType"}
+			},
+			"additionalProperties": false
 		},
 		{
-			"$ref": "#/$defs/ResponseType"
+			"type": "object",
+			"required": ["Request"],
+			"properties": {
+				"Request": {"$ref": "#/$defs/RequestType"}
+			},
+			"additionalProperties": false
+		},
+		{
+			"type": "object",
+			"required": ["Response"],
+			"properties": {
+				"Response": {"$ref": "#/$defs/ResponseType"}
+			},
+			"additionalProperties": false
+		},
+		{
+			"type": "object",
+			"required": ["ShortIdSet"],
+			"properties": {
+				"ShortIdSet": {"$ref": "#/$defs/ShortIdSetType"}
+			},
+			"additionalProperties": false
+		},
+		{
+			"type": "object",
+			"required": ["SharedVariableDefinition"],
+			"properties": {
+				"SharedVariableDefinition": {"$ref": "#/$defs/SharedVariableDefinitionType"}
+			},
+			"additionalProperties": false
 		}
 	],
 	"$defs": {
-    <subschema 1>,
-    <subschema 2>,
-    ...
-    <subschema N>
-  }
+		<subschema 1>,
+		<subschema 2>,
+		...
+		<subschema N>
+	}
 }
 ```
-where `<subschema 1>`,`<subschema 2>`, etc. are the reusable JSON subschemas created by applying the ACAL model mapping rules described in sections 5.1 and 5.2. For the rest of the document, the JSON object containing these subschemas is simply referred to as *the `$defs` object*.
+where `<subschema 1>`,`<subschema 2>`, etc. are the reusable JSON subschemas created by applying the ACAL model mapping rules described in Sections 5.1 and 5.2. For the rest of the document, the JSON object containing these subschemas is simply referred to as *the `$defs` object*.
 
 ## 5.1 Mapping ACAL simple types
 
-For each simple type (stereotyped `<<primitive>>` or `<<enumeration>>`) in Section 7.1.2 of the [[ACAL-Core-1.0](#acal-core-10)] model, apply the mapping rules in the next subsections to obtain the JSON representation.
+For each simple type (stereotyped `<<primitive>>`, `<<restrictedString>>` or `<<enumeration>>`) in Section 7.1.2 of the [[ACAL-Core-1.0](#acal-core-10)] model, apply the mapping rules in the next subsections to obtain the JSON representation.
 
 ### 5.1.1 Primitive types mapped to native JSON schema definitions
 
@@ -450,7 +412,7 @@ The ACAL primitive types in the following table have a direct JSON equivalent in
 |Double|`{"type": "number"}`|
 |Integer|`{"type": "integer"}`|
 
-Contrary to the above subschemas which are not added as first-class reusable schemas to the `\$defs` object of the JSON schema, the ACAL `NonNegativeInteger`, `URI` and `Name` type's corresponding subschemas are added as such:
+Contrary to the above subschemas which are not added as first-class reusable schemas to the `$defs` object of the JSON schema, the ACAL `NonNegativeInteger`, `URI` and `Name` types' corresponding subschemas are added as such:
 ```json
 {
   "$defs": {
@@ -510,17 +472,17 @@ For basic validation of ACAL `IdentifierType` values with JSON schema, the follo
 }
 ```
 
-However, this still allows some undesirable identifiers. Therefore, ACAL system implementers shall implement the necessary extra validation according to the [[ACAL-Core](#acal-core-10)] definition of `IdentifierType` in the way they see fit, which should be more optimal than using a more complete - therefore more complex - regular expression than the above. 
+However, this still allows some undesirable identifiers. Therefore, ACAL system implementers SHALL implement the necessary extra validation according to the [[ACAL-Core-1.0](#acal-core-10)] definition of `IdentifierType` in the way they see fit, which may be more efficient than using a more complete - and therefore more complex - regular expression than the above. 
 
 Regardless, we provide the more complete JSON-schema-compatible regex below for stricter validation, but only for information purposes and implementation guidance:
 
-```
+```text
 ^([A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)*|[!#-;=?-\[\]_a-z~]*(\{[A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)*\}[!#-;=?-\[\]_a-z~]*)+|[A-Za-z][A-Za-z0-9+\-.]*:[!#-;=?-\[\]_a-z~]+)$
 ```
 
 This is a union of three regular expressions (either one must match) representing each matching rule in the ACAL definition:
 1. The regex for ShortIdNameType, referred to as `<SHORTNAME>`;
-2. The regex for absolute URIs (ASCII-restricted): `^[A-Za-z][A-Za-z0-9+\-.]*:<URI_CHAR>+$'`, where `<URI_CHAR>` is the regex for ASCII-only URI characters ( `[!#-;=?-\[\]_a-z~]` );
+2. The regex for absolute URIs (ASCII-restricted): `^[A-Za-z][A-Za-z0-9+\-.]*:<URI_CHAR>+$`, where `<URI_CHAR>` is the regex for ASCII-only URI characters ( `[!#-;=?-\[\]_a-z~]` );
 3. The regex for {shortname}s possibly preceded or followed by URI characters: `^<URI_CHAR>*(\{<SHORTNAME>\}<URI_CHAR>*)+$` .
 
 ### 5.1.3 Enum types (UML stereotype `<<enumeration>>`)
@@ -561,7 +523,7 @@ The ACAL `AnyType` used in `ContentType` objects is mapped to the following subs
 ```
 The `object` type is used for JSON object (which can be used to wrap a JSON array as well), and the `string` type for non-JSON structured data, e.g. XML, possibly escaped or encoded to fit in a JSON string. See the [Content Types section](#53-content-types-and-body-representations-optional) for examples.
 
-**WARNING:** for safety/security reasons, in production, ACAL implementers should add further restrictions to this JSON schema and/or enforce security measures in the JSON processor to mitigate possible security issues that may occur when allowing any JSON object as input.
+**WARNING:** for safety/security reasons, in production, ACAL implementers SHOULD add further restrictions to this JSON schema and/or enforce security measures in the JSON processor to mitigate possible security issues that may occur when allowing any JSON object as input.
 
 ### 5.2.2 ValueType mapping rules
 
@@ -570,9 +532,9 @@ The authoritative definition of ACAL `ValueType` and subtypes is in [[ACAL-Core-
 #### 5.2.2.1 Primitive value mappings
 
 1. A `LiteralBooleanType` object is represented as a JSON boolean. The ACAL data-type is implicitly set to the standard ACAL Boolean (`urn:oasis:names:tc:acal:1.0:data-type:boolean`).
-2. A `LiteralIntegerType` object is represented as a JSON integer as defined by [[JsonSchemaValidation](#jsonschemavalidation)] section 6.1.1 (JSON number with a zero fractional part). The ACAL data-type is implicitly set to `urn:oasis:names:tc:acal:1.0:data-type:integer`, unless a `DataType` property present at an upper level, i.e. in the parent or an ancestor object (e.g. an `AttributeType` object, or a JSON object whose `Value` property is the number), explicitly sets a different numeric data type: the standard ACAL Double (item 3), or a numeric data type recognized by an ACAL extension whose value space includes the number. The remaining requirements of this item apply only to a JSON number or `Value` string that represents an ACAL integer. An ACAL integer MAY also be represented as a JSON object with a `DataType` property set to the standard ACAL Integer and a `Value` property holding the integer as a JSON string in the lexical space of `xs:integer` ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7). This profile does not restrict the magnitude of a JSON number that represents an ACAL integer. It is RECOMMENDED that a JACAL generator represent an integer outside the interval −9007199254740991 to 9007199254740991 inclusive (i.e. [-2<sup>53</sup>+1, 2<sup>53</sup>-1]) in that typed string form, unless the generator knows that every JSON processor between it and the ACAL implementation preserves the exact value of a JSON number: [[RFC8259](#rfc8259)] Section 6 identifies that interval as the one in which implementations agree exactly on the numeric value when IEEE 754 binary64 software is used, and JSON software that represents every number as a binary64 value can change a larger integer before an ACAL implementation receives it. A JACAL processor SHALL NOT accept a JSON number as an ACAL integer unless it has determined the exact integer value that the number denotes. A JACAL processor SHALL NOT accept the `Value` string of such an object if the string is not in the lexical space of `xs:integer`. A JACAL processor SHALL NOT continue with an altered integer value in place of a representation that it does not accept. A JACAL processor MAY reject a JSON number or a `Value` string, without determining the integer that it denotes, because it exceeds an input acceptance limit ([[ACAL-Core-1.0](#acal-core-10)] Section 2.1.2 and Annex C.2.7). A JACAL processor SHALL document the limits that it applies when accepting JSON numbers as ACAL integers. Rejecting a JSON number or a `Value` string because the integer that it denotes is outside the processor's supported integer interval is a refusal of the containing request or policy, which [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7 governs; a JACAL processor SHALL NOT reject a representation for that reason within a request that the implementation has admitted to evaluation. A JACAL processor that does not reject, under this item, a JSON number whose exact integer value it has determined, or a `Value` string in the lexical space of `xs:integer`, SHALL accept it as denoting the exact integer.
+2. A `LiteralIntegerType` object is represented as a JSON integer as defined by [[JsonSchemaValidation](#jsonschemavalidation)] section 6.1.1 (JSON number with a zero fractional part). The ACAL data-type is implicitly set to `urn:oasis:names:tc:acal:1.0:data-type:integer`, unless a `DataType` property present at an upper level, i.e. in the parent or an ancestor object (e.g. an `AttributeType` object, or a JSON object whose `Value` property is the number), explicitly sets a different numeric data type: the standard ACAL Double (item 3), or a numeric data type recognized by an ACAL extension whose value space includes the number. The remaining requirements of this item apply only to a JSON number or `Value` string that represents an ACAL integer. An ACAL integer MAY also be represented as a JSON object with a `DataType` property set to the standard ACAL Integer and a `Value` property holding the integer as a JSON string in the lexical space of `xs:integer` ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6). This profile does not restrict the magnitude of a JSON number that represents an ACAL integer. It is RECOMMENDED that a JACAL generator represent an integer outside the interval −9007199254740991 to 9007199254740991 inclusive (i.e. [-2<sup>53</sup>+1, 2<sup>53</sup>-1]) in that typed string form, unless the generator knows that every JSON processor between it and the ACAL implementation preserves the exact value of a JSON number: [[RFC8259](#rfc8259)] Section 6 identifies that interval as the one in which implementations agree exactly on the numeric value when IEEE 754 binary64 software is used, and JSON software that represents every number as a binary64 value can change a larger integer before an ACAL implementation receives it. A JACAL processor SHALL NOT accept a JSON number as an ACAL integer unless it has determined the exact integer value that the number denotes. A JACAL processor SHALL NOT accept the `Value` string of such an object if the string is not in the lexical space of `xs:integer`. A JACAL processor SHALL NOT continue with an altered integer value in place of a representation that it does not accept. A JACAL processor MAY reject a JSON number or a `Value` string, without determining the integer that it denotes, because it exceeds an input acceptance limit ([[ACAL-Core-1.0](#acal-core-10)] Section 2.1.2 and Annex C.2.6). A JACAL processor SHALL document the limits that it applies when accepting JSON numbers as ACAL integers. Rejecting a JSON number or a `Value` string because the integer that it denotes is outside the processor's supported integer interval is a refusal of the containing request or policy, which [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6 governs; a JACAL processor SHALL NOT reject a representation for that reason within a request that the implementation has admitted to evaluation. A JACAL processor that does not reject, under this item, a JSON number whose exact integer value it has determined, or a `Value` string in the lexical space of `xs:integer`, SHALL accept it as denoting the exact integer.
 3. A `LiteralDoubleType` object is represented as one of these:
-   
+
    - A JSON number with a non-zero fractional part, in absence of a `DataType` property, in which case the ACAL data-type is implicitly set to the standard ACAL Double (`urn:oasis:names:tc:acal:1.0:data-type:double`).
    - A JSON number, with or without a fractional part, when a `DataType` property present at an upper level, i.e. in the parent or an ancestor object (e.g. an `AttributeType` object, or a JSON object whose `Value` property is the number), explicitly sets the standard ACAL Double. For example:
      ```json
@@ -582,13 +544,13 @@ The authoritative definition of ACAL `ValueType` and subtypes is in [[ACAL-Core-
      ```json
      {"DataType": "urn:oasis:names:tc:acal:1.0:data-type:double", "Value": "1.0" }
      ```
-   - A JSON object, for an `xs:double` value that is positive infinity, negative infinity, or not-a-number; JSON number syntax cannot directly carry the corresponding `xs:double` special lexical representations (`INF`, `-INF` and `NaN`). Such a value SHALL NOT be represented as a JSON number; it SHALL be represented as a JSON object with a `DataType` property set to the standard ACAL Double and a `Value` property holding the value as a JSON string in the lexical space of `xs:double` given in [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7 (`INF`, `-INF` or `NaN`). For example:
+   - A JSON object, for an `xs:double` value that is positive infinity, negative infinity, or not-a-number; JSON number syntax cannot directly carry the corresponding `xs:double` special lexical representations (`INF`, `-INF` and `NaN`). Such a value SHALL NOT be represented as a JSON number; it SHALL be represented as a JSON object with a `DataType` property set to the standard ACAL Double and a `Value` property holding the value as a JSON string in the lexical space of `xs:double` given in [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6 (`INF`, `-INF` or `NaN`). For example:
      ```json
      {"DataType": "urn:oasis:names:tc:acal:1.0:data-type:double", "Value": "INF" }
      ```
-     A JACAL processor SHALL accept the `Value` string of such an object only if the string is in the lexical space of `xs:double` and the processor preserves the exact value it denotes.
+     A JACAL processor SHALL NOT accept the `Value` string of such an object unless the string is in the lexical space of `xs:double` and the processor preserves the exact value it denotes.
 
-   A JSON number that represents a `LiteralDoubleType` object denotes the `xs:double` value that the lexical mapping of `xs:double` ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7) assigns to the number's text; every JSON number is in the lexical space of `xs:double`. If that mapping yields positive or negative infinity (for example for `1e400`), that infinity is the denoted value. A JACAL generator SHALL NOT use a JSON number to represent positive infinity, negative infinity, or not-a-number; the object form above is required for those values. A JSON number with a zero fractional part represents a `LiteralDoubleType` object only when a `DataType` property sets the standard ACAL Double as specified above; otherwise item 2 determines what it represents (the standard ACAL Integer, or a numeric data type recognized by an ACAL extension).
+   A JSON number that represents a `LiteralDoubleType` object denotes the `xs:double` value that the lexical mapping of `xs:double` ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6) assigns to the number's text; every JSON number is in the lexical space of `xs:double`. If that mapping yields positive or negative infinity (for example for `1e400`), that infinity is the denoted value. A JACAL generator SHALL NOT use a JSON number to represent positive infinity, negative infinity, or not-a-number; the object form above is required for those values. A JSON number with a zero fractional part represents a `LiteralDoubleType` object only when a `DataType` property sets the standard ACAL Double as specified above; otherwise item 2 determines what it represents (the standard ACAL Integer, or a numeric data type recognized by an ACAL extension).
 4. A `LiteralStringType` object is represented as a JSON string without any JSON property named `DataType`. If a `DataType` property is present at an upper level, i.e. in the parent or an ancestor object (e.g. `AttributeType` object), its value MUST be `urn:oasis:names:tc:acal:1.0:data-type:string`. Else the ACAL data-type is implicitly set to `urn:oasis:names:tc:acal:1.0:data-type:string`.
 5. A `LiteralRestrictedStringType` object, which may be used for any primitive type with a lexical representation, is represented in either of two forms:
    - If the `DataType` property is already present at an upper level, i.e. in the parent or an ancestor object (e.g. an `AttributeType` object), then this object may be represented simply as a JSON string. The ACAL data-type is inferred from the aforementioned `DataType` property.
@@ -620,24 +582,22 @@ If no support for structured data-types is needed, the following JSON subschema 
 },
 "TypedPrimitiveValueType": {
   "description": "PrimitiveValueType with an explicit DataType property",
-      "type": "object",
-      "properties": {
-        "DataType": {
-          "$ref": "#/$defs/IdentifierType"
-        },
-        "Value": {
-          "$comment": "boolean values not included here because their DataType is fixed to ACAL Boolean",
-          "type": [
-            "number",
-            "string"
-          ]
-        }
-      },
-      "required": [
-        "DataType",
-        "Value"
+  "type": "object",
+  "properties": {
+    "DataType": {
+      "$ref": "#/$defs/IdentifierType"
+    },
+    "Value": {
+      "$comment": "boolean values not included here because their DataType is fixed to ACAL Boolean",
+      "type": [
+        "number",
+        "string"
       ]
     }
+  },
+  "required": [
+    "DataType",
+    "Value"
   ],
   "additionalProperties": false
 }
@@ -728,12 +688,12 @@ Therefore, the `ValueType`'s JSON schema SHALL be enhanced as follows in order t
 }
 ```
 
- This enables ACAL implementers to extend `StructuredValueType` with new concrete subtypes of their own or from standard JACAL Profiles, by overriding the `$dynamicAnchor` (redeclare with the same name) in a implementation-specific JSON schema, as described in Section [5.4](#54-jacal-extension-mechanism). That section gives an example where `StructuredValueType` is extended with the `XPathExpressionValueType` (`urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` data-type) from the XPath Profile.
+This enables ACAL implementers to extend `StructuredValueType` with new concrete subtypes of their own or from standard JACAL Profiles, by overriding the `$dynamicAnchor` (redeclare with the same name) in an implementation-specific JSON schema, as described in Section [5.4](#54-jacal-extension-mechanism). That section gives an example where `StructuredValueType` is extended with the `XPathExpressionValueType` (`urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` data-type) from the XPath Profile.
 
 
 ### 5.2.3 Default mapping rules for complex ACAL types (other than ValueType)
 
-For each complex ACAL type `FooType` that does not fall under any of the previous cases (Section 5.2.1 and 5.2.2), apply the mappings rules defined in this section.
+For each complex ACAL type `FooType` that does not fall under any of the previous cases (Section 5.2.1 and 5.2.2), apply the mapping rules defined in this section.
 
 **Definitions**:
 - The term *concrete type* is used as synonym for *non-abstract type*.
@@ -744,7 +704,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
 - Let `FooSub1FinalType`, `FooSub2FinalType`, etc. be referred to as the final subtypes of `FooType` if there is any.
 - Let `FooSub1NonFinalType`, `FooSub2NonFinalType`, etc. be referred to as the non-final subtypes of `FooType` if there is any.
 - Let *p<sub>n</sub>* be the n-th property defined in *FooType* class model specifically (not already defined in a supertype of *FooType* if any).
-- Let *\<s<sub>i</sub>\>* be the JSON subschema obtained by applying Property mapping rules of Section 5.2.4 to the property *p<sub>n</sub>*.
+- Let *\<s<sub>n</sub>\>* be the JSON subschema obtained by applying Property mapping rules of Section 5.2.4 to the property *p<sub>n</sub>*.
 - Let *\<LR>* be the list of all required properties *p<sub>n</sub>*, i.e. such that the lower bound of *p<sub>n</sub>*'s multiplicity is 1.
 
 **Mapping rules**:
@@ -756,7 +716,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
        "FooType": {
           "$comment": "Used by subtypes of FooType to combine FooType properties (via $ref) with their own properties",
           "allOf": [
-            { "$ref": "#$defs/BarType" },
+            { "$ref": "#/$defs/BarType" },
             {
               "type": "object",
               "properties": {
@@ -798,16 +758,16 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
        }
        ```
        This enables ACAL implementers to extend `FooType` with concrete subtypes of their own or from standard JACAL Profiles, by overriding the `$dynamicAnchor` with the same name in a new (implementation-specific) JSON schema. See Section [5.4](#54-jacal-extension-mechanism) for more information.
-  
+
      - 1.2.2. Else (`FooType` has one or more subtypes in ACAL core model), then add also the following JSON subschema to the *`$defs` object*:
       ```json 
       "FooTypeTree": {
         "$comment": "FooType's subtypes",
         "anyOf": [
           {
+            "$comment": "FooSub1FinalType is final (no 'FooSub1FinalTypeTree' subschema)",
             "type": "object",
             "properties": {
-              "$comment": "FooSub1FinalType is final (no 'FooSub1FinalTypeTree' subschema)",
               "FooSub1Final": {
                 "$ref": "#/$defs/FooSub1FinalType"
               }
@@ -818,9 +778,9 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
             "additionalProperties": false
           },
           {
+            "$comment": "FooSub2FinalType is final",
             "type": "object",
             "properties": {
-              "$comment": "FooSub2FinalType is final",
               "FooSub2Final": {       
                 "$ref": "#/$defs/FooSub2FinalType"
               }
@@ -843,7 +803,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
         ]
       }
       ```
-      (Else it is only used as a base type for other ACAL types, in which case the `FooType` subschema created by the next rules is enough.)
+(Else it is only used as a base type for other ACAL types, in which case the `FooType` subschema created by rule 1.1 is enough.)
 
 2. Else (`FooType` is a *concrete* type):
    - 2.1. If `FooType` is *final* (no subtype), then:
@@ -851,7 +811,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
        ```json
        "FooType": {
           "allOf": [
-            { "$ref": "#$defs/BarType" },
+            { "$ref": "#/$defs/BarType" },
             {
               "type": "object",
               "properties": {
@@ -879,7 +839,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
           "unevaluatedProperties": false
         }
         ```
-   
+
    - 2.2. Else (`FooType` is concrete and non-final):
      - 2.2.1. If `FooType` inherits from a non-empty type `BarType`, same mapping as rule 1.1.1.
      - 2.2.2. Else (`FooType` is concrete, non-final and does not inherit a non-empty class) same mapping as rule 1.1.2.
@@ -892,17 +852,16 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
               "properties":
               {
                 "Foo": {
-                  "$ref": "#$defs/FooType",
-                  "additionalProperties": false
+                  "$ref": "#/$defs/FooType"
                 }
               },
               "required": ["Foo"],
               "additionalProperties": false
             },
             {
+              "$comment": "FooSub1FinalType is final (no 'FooSub1FinalTypeTree' subschema)",
               "type": "object",
               "properties": {
-                "$comment": "FooSub1FinalType is final (no 'FooSub1FinalTypeTree' subschema)",
                 "FooSub1Final": {
                   "$ref": "#/$defs/FooSub1FinalType"
                 }
@@ -913,9 +872,9 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
               "additionalProperties": false
             },
             {
+              "$comment": "FooSub2FinalType is final",
               "type": "object",
               "properties": {
-                "$comment": "FooSub2FinalType is final",
                 "FooSub2Final": {
                   "$ref": "#/$defs/FooSub2FinalType"
                 }
@@ -938,7 +897,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
           ]
         }
         ```
-    
+
 
 ### 5.2.4 Property mapping rules
 
@@ -973,19 +932,19 @@ For each of an ACAL Datatype's property *Prop* with value type *PropType*, the c
          "uniqueItems": <is_unique>
      }
      ```
-     where:
-     - `<min>` is set to the lower bound of *Prop*'s multiplicity unless the lower bound is zero, in which case `<min>` is set 1 regardless, since the lower bound zero is already achieved by making the JSON property optional;
+where:
+     - `<min>` is set to the lower bound of *Prop*'s multiplicity unless the lower bound is zero, in which case `<min>` is set to 1 regardless, since the lower bound zero is already achieved by making the JSON property optional;
      - `<is_unique>` is set to `true` if and only if the `unique` constraint is specified on the ACAL property, else `false`.
 
     **The standard `uniqueItems` keyword does not allow to enforce uniqueness of array items based on a specific key when such items are JSON objects, in the current latest JSON schema draft (version 2020-12).** 
 
-    Therefore, the mapping of **property-based uniqueness constraints** - defined in [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.1.1.1.2 - on properties of complex/structured type (mapped to JSON object) is left implementation-defined by this specification, since there is no standard mechanism in the current latest JSON schema standard to enforce the such constraints. However, as a general guidance, implementations MAY use the third-party [ArrayExt extension vocabulary](https://github.com/json-schema-org/json-schema-vocabularies) and more particulary the `uniqueKeys` keyword (instead of `uniqueItems`) to implement this feature. Implementers evaluating this option should be aware of two limitations, verified against the vocabulary's reference implementation ([JsonSchema.Net](https://github.com/gregsdennis/json-everything), at the time of writing the only known implementation, and .NET-specific): first, `uniqueKeys` compares key values by a raw JSON Pointer lookup with no schema-normalization step, so a key property that is absent from one item and present with its schema `default` value on another is not recognized as a duplicate pair, even though the two denote the same effective value; second, being a non-standard vocabulary extension with limited implementation availability, its fitness for a given constraint should be assessed against the implementer's own toolchain rather than assumed.
+Therefore, the mapping of **property-based uniqueness constraints** - defined in [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.1.1.1.2 - on properties of complex/structured type (mapped to JSON object) is left implementation-defined by this specification, since there is no standard mechanism in the current latest JSON schema standard to enforce such constraints. However, as a general guidance, implementations MAY use the third-party [ArrayExt extension vocabulary](https://github.com/json-schema-org/json-schema-vocabularies) and more particularly the `uniqueKeys` keyword (instead of `uniqueItems`) to implement this feature. Implementers evaluating this option should be aware of two limitations, verified against the vocabulary's reference implementation ([JsonSchema.Net](https://github.com/json-everything/json-everything), at the time of writing the only known implementation, and .NET-specific): first, `uniqueKeys` compares key values by a raw JSON Pointer lookup with no schema-normalization step, so a key property that is absent from one item and present with its schema `default` value on another is not recognized as a duplicate pair, even though the two denote the same effective value; second, being a non-standard vocabulary extension with limited implementation availability, its fitness for a given constraint should be assessed against the implementer's own toolchain rather than assumed.
 
     **Attribute uniqueness (see [[ACAL-Core-1.0](#acal-core-10)] Sections 7.33, 7.44 and 7.45).** The `RequestAttribute` property of `RequestEntityType`, and the `Attribute` property of `ResultEntityType` and `EntityType`, each carry a multi-property-based uniqueness constraint over the combination of `AttributeId`, `DataType` and `Issuer`, compared per [[ACAL-Core-1.0](#acal-core-10)] Section 8.18's identifier-equality rules, Section 7.27's `DataType` default, and an absent `Issuer` never being a duplicate of a present one. This constraint is not enforced by the JSON subschemas produced by the rules above: `uniqueItems` cannot express a keyed comparison (rule 2.2), and, for the reason given above, `uniqueKeys` does not correctly enforce it either, since `DataType` is a key property with a schema `default` value. Implementations enforcing this constraint SHALL therefore do so outside JSON Schema validation, having first (1) applied the short-identifier expansion of [[ACAL-Core-1.0](#acal-core-10)] Section 8.3 to the `AttributeId` and `DataType` values being compared, and (2) set `DataType` to its default value (`urn:oasis:names:tc:acal:1.0:data-type:string`) wherever the property is absent from the value being compared. See the equivalent statement in `acal-core-yaml-v1.0-constraints.yaml`'s `request-attribute-id-unique-within-entity`, `resultentity-attribute-attributeid-unique` and `policyissuer-attribute-attributeid-unique` rules.
 
 ### 5.2.5 Mapping ACAL object-level constraints (OCL)
 
-ACAL object-level constraints defined in [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.1.1.2 may be translated into JSON subschema(s) to be added the corresponding JSON schema definition of the ACAL Datatype, according to the table below:
+ACAL object-level constraints defined in [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.1.1.2 may be translated into JSON subschema(s) to be added to the corresponding JSON schema definition of the ACAL Datatype, according to the table below:
 
 **Table 2:** ACAL/UML constraints mapped to JSON schema
 
@@ -993,23 +952,23 @@ ACAL object-level constraints defined in [[ACAL-Core-1.0](#acal-core-10)] Sectio
 | :--- | :--- |
 | `X or Y` <br> *(`X`, `Y` can be any of the predicates below)* | `"if": {"not": <X_subschema>}, "then": <Y_subschema>` |
 | `prop <> null`<br> *(`prop` is single-valued)* | `{"required": ["prop"]}` |
-| `prop = null` <br>*(`prop` is single-valued)* | `{"not": {"required": ["prop"]}}` <br> *(any resulting `{"not": {"not": <X_subschema>}}` in a `X or Y` expressoin is replaced with `<X_subschema>`)* |
-| `prop->notEmpty()` <br>*(`prop` is multivalued)* | `{"required": ["prop"]}` <br> *(`minItems` is already set by rule 2.2.2 (previous section) to 1 or greater in the property's subschema (array type))* |
+| `prop = null` <br>*(`prop` is single-valued)* | `{"not": {"required": ["prop"]}}` <br> *(any resulting `{"not": {"not": <X_subschema>}}` in a `X or Y` expression is replaced with `<X_subschema>`)* |
+| `prop->notEmpty()` <br>*(`prop` is multivalued)* | `{"required": ["prop"]}` <br> *(`minItems` is already set by rule 2.2 of [Section 5.2.4](#524-property-mapping-rules) to 1 or greater in the property's subschema (array type))* |
 
 
 ## 5.3 Content Types and Body representations (optional)
 
-Although this specification defines an JSON representation, both JSON and non-JSON data may be represented in a `Content` object (corresponding to an ACAL `ContentType` object).
+Although this specification defines a JSON representation, both JSON and non-JSON data may be represented in a `Content` object (corresponding to an ACAL `ContentType` object).
 This specification defines the following `Content` types in order to support ACAL Profiles with AttributeSelector and/or DataType extensions based on such Content (e.g. XPath and JSONPath Profiles):
 
 - JSON object *(note that a JSON array can be wrapped in a JSON object if there is a need to support JSON arrays)*:
   - `MediaType` property SHALL be set to `application/json` (default value);
-  - `Encoding` attribute unused;
+  - `Encoding` property unused;
   - `Body` property is set to the JSON object itself.
 
 - XML document:
-  - `MediaType` attribute SHALL be set to `application/xml`;
-  - `Encoding` attribute is either unused/undefined or set to `base64`.
+  - `MediaType` property SHALL be set to `application/xml`;
+  - `Encoding` property is either unused/undefined or set to `base64`.
   - `Body` property is set to a JSON string containing the XML document in one of the following forms:
      1) **Escaped:** if `Encoding` is undefined, the XML is escaped to be a valid JSON string using escaping rules described in Section 7 of [[RFC8259](#rfc8259)], i.e. in particular the double quote (`"`), backslash (`\`) and control characters are escaped with a backslash `\` (the new line escaped as `\n`, the carriage return as `\r`, and the horizontal tab as `\t`). For example:
      ```json
@@ -1033,7 +992,7 @@ The implementation SHALL support a given content type in this list if and only i
 
 **If the implementation does not support any extension, you may use the JACAL core schema (provided with this specification) as is, and ignore this section.**
 
-Extending JACAL syntax means extending JACAL core JSON schema (obtained from the mapping rules in the previous section). As explained in the mapping rule 1.2.1 of Section 5.2.3, JACAL core schema uses a `$dynamicRef` for any extensible ACAL type that may be extended by a separate JSON schema (overriding a matching `$dynamicAnchor`), depending on which extensions the ACAL implementation shall support.
+Extending JACAL syntax means extending JACAL core JSON schema (obtained from the mapping rules in Sections 5.1 and 5.2). As explained in the mapping rule 1.2.1 of Section 5.2.3, JACAL core schema uses a `$dynamicRef` for any extensible ACAL type that may be extended by a separate JSON schema (overriding a matching `$dynamicAnchor`), depending on which extensions the ACAL implementation supports.
 
 To explain how to use this extension mechanism, we go through various concrete examples in the next sections.
 
@@ -1041,7 +1000,7 @@ To explain how to use this extension mechanism, we go through various concrete e
 
 In this example, we consider an ACAL implementation that supports the `AttributeSelectorType` extension from the standard JSONPath Profile of ACAL. In this case, the implementation may use as root schema the following combining schema, which combines the core schema with the supported extension's schema:
 
-```xml
+```json
 !include examples/acal-core-json/jacal-root-schema-example-using-jsonpath-profile-only.json
 ```
 
@@ -1050,9 +1009,9 @@ This schema refers to (and therefore depends on) the JSONPath Profile's JSON sch
 
 ### 5.4.2 Example using extensions from multiple ACAL Profiles
 
-In this example, we consider an ACAL implementation that supports various extensions (RequestDefaultsType, PolicyDefaultsType, AttributeSelectorType, StructuredValueType) from the XPath Profile of ACAL, and the `AttributeSelectorType` extension from the JSONPath Profile of ACAL. In this case, the implementation should use as root schema the following combining schema, which combines the core schema with the supported extensions' schemas:
+In this example, we consider an ACAL implementation that supports various extensions (RequestDefaultsType, PolicyDefaultsType, AttributeSelectorType, StructuredValueType) from the XPath Profile of ACAL, and the `AttributeSelectorType` extension from the JSONPath Profile of ACAL. In this case, the implementation SHOULD use as root schema the following combining schema, which combines the core schema with the supported extensions' schemas:
 
-```xml
+```json
 !include examples/acal-core-json/jacal-root-schema-example-using-xpath-and-jsonpath-profiles.json
 ```
 
@@ -1060,8 +1019,8 @@ This schema refers to (and therefore depends on) both the JSONPath Profile's JSO
 
 ### 5.4.3 Example combining a custom extension with a standard profile-defined extension
 
-In this example, we consider an ACAL implementation that supports two extensions of some type `FooType` defined in the core schema: one custom extension `CustomFooSubType` and another extension `SomeProfileFooSubType` defined in an existing JACAL Profile with a schema identified `urn:some:profile:schema`. In this case, the implementation should use as root schema the following combining schema, which combines the core schema with the supported extensions' schemas:
-  
+In this example, we consider an ACAL implementation that supports two extensions of some type `FooType` defined in the core schema: one custom extension `CustomFooSubType` and another extension `SomeProfileFooSubType` defined in an existing JACAL Profile with a schema identified `urn:some:profile:schema`. In this case, the implementation SHOULD use as root schema the following combining schema, which combines the core schema with the supported extensions' schemas:
+
   ```json
   {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -1101,46 +1060,29 @@ In this example, we consider an ACAL implementation that supports two extensions
 
 # 6 Safety, Security and Privacy Considerations (non-normative)
 
-<!-- From OASIS Open Specification Template Instructions:
 
-
-This section is **REQUIRED** and **MUST** be the second to last numbered section in the document, right before Conformance. This section contains information about safety, security, data protection, and privacy considerations. These can be divided up into separate subsections as desired. All documents **SHOULD** have at least a security and data protection considerations section, and otherwise **MUST** have a blank section indicating “None.” Any other considerations **MAY** also be added.
-
-
-Please note that any specification that will need to register something with IANA or has plans to go on to ITU/ISO/IEC **MUST** have this section filled out. For an example please see the following section in the CACAO specification here [https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html#_Toc152256574](https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html#_Toc152256574) 
-
-
--->
-
-This section identifies possible security and privacy compromise scenarios that should be considered when implementing this profile. The section is informative only. It is left to the implementer to decide whether these compromise scenarios are practical in their environment and to select appropriate safeguards.
+This section identifies possible security and privacy compromise scenarios that should be considered when implementing this specification. The section is informative only. It is left to the implementer to decide whether these compromise scenarios are practical in their environment and to select appropriate safeguards.
 
 ## 6.1 Threat model
 
-Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 11.1.
+Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 10.1.
 
 ## 6.2 Safeguards
 
-Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 11.2 for general considerations.
+Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 10.2 for general considerations.
 
 ### 6.2.1 Policy confidentiality
 
-Where the policy is represented in JSON Representation (JACAL) defined by this profile, the *RFC 7516 - JSON Web Encryption (JWE)* standard can be used to encrypt all or parts of a JSON document. This specification is recommended for use with JACAL.
+Where the policy is represented in JSON Representation (JACAL) defined by this specification, the *JSON Web Encryption (JWE)* [[RFC7516](#rfc7516)] standard can be used to encrypt all or parts of a JSON document. JWE is recommended for use with JACAL.
 
 ### 6.2.2 Policy integrity
 
-The selection of the appropriate mechanisms is left to the implementers. However, when **_policy_** is distributed between organizations to be acted on at a later time, or when the **_policy_** travels with the protected **_resource_**, it would be useful to sign the **_policy_**. In these cases and when the JSON representation of policies (according to this profile) is used, the *RFC 7515 - JSON Web Signature (JWS)* is recommended to be used with JACAL.
+The selection of the appropriate mechanisms is left to the implementers. However, when **_policy_** is distributed between organizations to be acted on at a later time, or when the **_policy_** travels with the protected **_resource_**, it would be useful to sign the **_policy_**. In these cases and when the JSON representation of policies (according to this specification) is used, the *JSON Web Signature (JWS)* [[RFC7515](#rfc7515)] is recommended to be used with JACAL.
 
 -------
 
 # 7 Conformance
 
-<!-- From OASIS Open Specification Template Instructions: 
-
-
-This section is **REQUIRED** and **MUST** be the last numbered section in the document. 
-
-
--->
 
 ## 7.1 Introduction
 
@@ -1154,8 +1096,8 @@ implement the corresponding JACAL syntax, typing, and constraint rules
 consistently.
 
 This specification is accompanied by normative machine-readable
-artifacts for core JACAL structure, core short
-identifiers, and selected ACAL profiles. These artifacts support
+artifacts for core JACAL structure and core short
+identifiers. These artifacts support
 consistent implementation and validation of JACAL, but they do not
 change the peer relationship between JACAL and the XML and YAML ACAL
 representations.
@@ -1169,21 +1111,22 @@ For the purposes of this specification:
 - **O** means optional-to-implement
 
 For ACAL object types, these categories are inherited unchanged from
-[[ACAL-Core](#acal-core-10)] Section 11.2.1. JACAL uses the same notation
+[[ACAL-Core-1.0](#acal-core-10)] Section 11.2.1. JACAL uses the same notation
 again in [Section 7.3.2](#732-machine-readable-artifact-support) for
 JACAL-specific artifacts.
 
 An implementation MUST follow
 [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments)
 and [Annex C](#annex-c-jacal-identifiers-normative) where they apply to
-implemented items in the following tables.
+the ACAL object types and machine-readable artifacts that the
+implementation supports.
 
 ## 7.3 Conformance Tables
 
 ### 7.3.1 ACAL Object-Type Conformance
 
 JACAL inherits ACAL object-type conformance from
-[[ACAL-Core](#acal-core-10)] Section 11.2.1.
+[[ACAL-Core-1.0](#acal-core-10)] Section 11.2.1.
 
 A processor claiming core JACAL conformance MUST support the JACAL
 representation of every ACAL object type marked `M` in that table.  It
@@ -1194,7 +1137,7 @@ This specification therefore does not repeat the ACAL core object-type
 conformance table.
 [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments)
 defines the JSON representation of those same ACAL object types, while
-[[ACAL-Core](#acal-core-10)] remains authoritative for their
+[[ACAL-Core-1.0](#acal-core-10)] remains authoritative for their
 mandatory/optional classification.
 
 ### 7.3.2 Machine-Readable Artifact Support
@@ -1220,10 +1163,10 @@ The JSON Schemas and short identifier sets for XPath Profile and JSONPath Profil
 ## A.1 Document Status
 
 
-This document was last revised or approved by the OASIS eXtensible Access Control Markup Language (XACML) TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
+This document was last revised or approved by the OASIS ACAL \[XACML\] TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
 
 
-TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/xacml/.
+TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/acal/.
 
 
 NOTE: any machine-readable content (Computer Language Definitions) declared Normative for this Work Product is provided in separate plain text files. In the event of a discrepancy between any such plain text file and display content in the Work Product's prose narrative document(s), the content in the separate plain text file prevails.
@@ -1244,7 +1187,7 @@ This document and translations of it may be copied and furnished to others, and 
 The limited permissions granted above are perpetual and will not be revoked by OASIS or its successors or assigns, as provided in the OASIS IPR Policy.
 
 
-This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited-Mode) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project’s web page ([XACML IPR Policy](https://www.oasis-open.org/committees/xacml/ipr.php)).
+This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited-Mode) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project’s web page ([OASIS ACAL \[XACML\] TC IPR page](https://www.oasis-open.org/committees/acal/ipr.php)).
 
 
 This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. OASIS AND ITS MEMBERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THIS DOCUMENT OR ANY PART THEREOF.
@@ -1278,97 +1221,27 @@ Normative references are specific (identified by date of publication and/or edit
 
 ## B.1 Normative References
 
-<!-- (Reference sources:
-For references to IETF RFCs, use the approved citation formats at:  
-https://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html. 
-
-For references to W3C Recommendations, use the approved citation formats at: 
-https://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html.  
-Remove this note before submitting for publication.
--->
-
 The following documents are referenced in such a way that some or all of their content constitutes requirements of this document.
 
 ###### [ACAL-Core-1.0]
 
-Attribute-Centric Authorization Language (ACAL) Version 1.0. Edited by Steven Legg and Cyril Dangerville. 18 February 2026. OASIS Committee Specification Draft 01.
+_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
-##### [JsonSchemaCore] 
+###### [JsonSchemaCore]
 
-A. Wright and al., *JSON Schema: A Media Type for Describing JSON Documents*, June 2022, https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01
+A. Wright et al., *JSON Schema: A Media Type for Describing JSON Documents*, June 2022, https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01
 
-##### [JsonSchemaValidation] 
+###### [JsonSchemaValidation]
 
-A. Wright and al., *JSON Schema Validation: A Vocabulary for Structural Validation of JSON*, June 2022, json-schema.org/draft/2020-12/json-schema-validation
-
-###### [CMF]
-
-Martin J. Dürst et al, eds., Character Model for the World Wide Web 1.0: Fundamentals, W3C Recommendation 15 February 2005, https://www.w3.org/TR/2005/REC-charmod-20050215/
-
-###### [DS]
-
-D. Eastlake et al., XML-Signature Syntax and Processing, https://www.w3.org/TR/xmldsig-core/, World Wide Web Consortium.
-
-###### [exc-c14n]
-
-J. Boyer et al, eds., Exclusive XML Canonicalization, Version 1.0, W3C Recommendation 18 July 2002, https://www.w3.org/TR/2002/REC-xml-exc-c14n-20020718/
-
-###### [Hancock]
-
-Hancock, Polymorphic Type Checking, in Simon L. Peyton Jones, Implementation of Functional Programming Languages, Section 8, Prentice-Hall International, 1987.
-
-###### [INFOSET]
-
-XML Information Set (Second Edition), W3C Recommendation, 4 February 2004, https://www.w3.org/TR/xml-infoset/
-
-###### [ISO10181-3]
-
-ISO/IEC 10181-3:1996 Information technology – Open Systems Interconnection -- Security frameworks for open systems: Access control framework.
-
-
-###### [JSLT]
-
-Schibsted Media AS, *JSLT: JSON Query and Transformation Language*, 2022, https://github.com/schibsted/jslt
-
-###### [Kudo00]
-
-Kudo M and Hada S, XML document security based on provisional authorization, Proceedings of the Seventh ACM Conference on Computer and Communications Security, Nov 2000, Athens, Greece, pp 87-96.
-
-###### [LDAP-1]
-
-RFC2256, A summary of the X500(96) User Schema for use with LDAPv3, Section 5, M Wahl, December 1997, https://www.ietf.org/rfc/rfc2256.txt
-
-###### [LDAP-2]
-
-RFC2798, Definition of the inetOrgPerson, M. Smith, April 2000, https://www.ietf.org/rfc/rfc2798.txt
-
-###### [MathML]
-
-Mathematical Markup Language (MathML), Version 2.0, W3C Recommendation, 21 October 2003, https://www.w3.org/TR/2003/REC-MathML2-20031021/
-
-###### [Perritt93]
-
-Perritt, H. Knowbots, Permissions Headers and Contract Law, Conference on Technological Strategies for Protecting Intellectual Property in the Networked Multimedia Environment, April 1993. Available at: https://www.cni.org/resources/historical-resources/technological-strategies-for-protecting-intellectual-property-in-the-networked-multimedia-environment/permission-headers-and-contract-law
-
-###### [RBAC]
-
-David Ferraiolo and Richard Kuhn, Role-Based Access Controls, 15th National Computer Security Conference, 1992.
+A. Wright et al., *JSON Schema Validation: A Vocabulary for Structural Validation of JSON*, June 2022, https://json-schema.org/draft/2020-12/json-schema-validation
 
 ###### [RFC2119]
 
 Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, https://www.rfc-editor.org/info/rfc2119.
 
-###### [RFC2732]
+###### [RFC4648]
 
-RFC 2732, Hinden R, Carpenter B, Masinter L, Format for Literal IPv6 Addresses in URL's,  https://www.ietf.org/rfc/rfc2732.txt
-
-###### [RFC3198]
-
-IETF RFC 3198: Terminology for Policy-Based Management, November 2001. https://www.ietf.org/rfc/rfc3198.txt
-
-######  [RFC4648]                
-
-RFC 4648, *The Base16, Base32, and Base64 Data Encodings.* October 2006. IETF RFC 4648. http://tools.ietf.org/html/rfc4648
+Josefsson, S., "The Base16, Base32, and Base64 Data Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006, <https://www.rfc-editor.org/info/rfc4648>.
 
 ###### [RFC8174]
 
@@ -1376,49 +1249,31 @@ Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, 
 
 ###### [RFC8259]
 
-RFC 8259, Tim Bray, *The JavaScript Object Notation (JSON) Data Interchange Format*, December 2017, https://www.rfc-editor.org/info/rfc8259 .
-
-###### [RFC9535]
-
-RFC 9535, *JSONPath: Query Expressions for JSON*, February 2024. Available online: https://datatracker.ietf.org/doc/html/rfc9535
-
-###### [UAX15]
-
-Mark Davis, Martin Dürst, Unicode Standard Annex #15: Unicode Normalization Forms, Unicode 5.1, https://unicode.org/reports/tr15/
-
-###### [UTR36]
-
-Davis, Mark, Suignard, Michel, Unicode Technical Report #36: Unicode Security Considerations, https://www.unicode.org/reports/tr36/
-
-###### [XF]
-
-W3C XQuery, XPath, and XSLT Functions and Operators Namespace Document (XPath and XQuery Functions and Operators 3.1) 21 March 2017, https://www.w3.org/2005/xpath-functions/
-
-###### [XS]
-
-XML Schema, parts 1 and 2. Available at: https://www.w3.org/TR/xmlschema-1/ and https://www.w3.org/TR/xmlschema-2/
-
+Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", STD 90, RFC 8259, DOI 10.17487/RFC8259, December 2017, <https://www.rfc-editor.org/info/rfc8259>.
 
 ## B.2 Informative References
 
 The following referenced documents are not required for the application of this document but may assist the reader with regard to a particular subject area.
 
-###### [CM]
+###### [JSLT]
 
-Character Model for the World Wide Web: String Matching W3C Working Group Note 11 August 2021, https://www.w3.org/TR/charmod-norm/, World Wide Web Consortium.
+Schibsted Media AS, *JSLT: JSON Query and Transformation Language*, 2022, https://github.com/schibsted/jslt
 
-###### [Hinton94]
+###### [RFC7515]
 
-Hinton, H, M, Lee, E, S, The Compatibility of Policies, Proceedings 2nd ACM Conference on Computer and Communications Security, Nov 1994, Fairfax, Virginia, USA.
+Jones, M., Bradley, J., and N. Sakimura, "JSON Web Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May 2015, <https://www.rfc-editor.org/info/rfc7515>.
 
-###### [Sloman94]
+###### [RFC7516]
 
-Sloman, M. Policy Driven Management for Distributed Systems. Journal of Network and Systems Management, Volume 2, part 4. Plenum Press. 1994.
+Jones, M. and J. Hildebrand, "JSON Web Encryption (JWE)", RFC 7516, DOI 10.17487/RFC7516, May 2015, <https://www.rfc-editor.org/info/rfc7516>.
 
--------
+###### [RFC9535]
 
+Gössner, S., Ed., Normington, G., Ed., and C. Bormann, Ed., "JSONPath: Query Expressions for JSON", RFC 9535, DOI 10.17487/RFC9535, February 2024, <https://www.rfc-editor.org/info/rfc9535>.
 
 # Annex C JACAL identifiers (normative)
+
+(This annex forms an integral part of this Specification.)
 
 This section defines standard identifiers for commonly used entities.
 
@@ -1432,17 +1287,19 @@ The JACAL core schema is defined using this identifier (`$id`):
 
 This work product provides the standard JSON serialization of the ACAL
 core short-identifier set in the file
-`acal-core-json-v1.0-identifiers.json`.
+`acal-core-json-v1.0-identifiers.json`. The artifact is a JACAL document: a JSON object whose single property, `ShortIdSet`, holds the short-identifier set ([Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments)).
 
 The `ShortIdSet.Id` value of this artifact is:
 
 `urn:oasis:names:tc:acal:1.0:core:identifiers`
 
-**CAUTION:** This short identifier set SHALL NOT be modified except by the XACML TC. Since its `ShortIdSet.Id` is using one of the prefixes reserved for XACML TC use (`urn:oasis:names:tc:acal:`), users outside the TC SHALL NOT create a new short identifier set of their own with the same `Id`.
+**CAUTION:** This short identifier set SHALL NOT be modified except by the OASIS ACAL \[XACML\] TC. Since its `ShortIdSet.Id` is using one of the prefixes reserved for OASIS ACAL \[XACML\] TC use (`urn:oasis:names:tc:acal:`), a user outside the TC SHALL NOT create a short identifier set of their own with the same `Id`.
 
 -------
 
 # Annex D JSON Schema (normative)
+
+(This annex forms an integral part of this Specification.)
 
 This section includes the JSON Schema for the JACAL syntax defined in this specification, more particularly in Section 5 (i.e. obtained by applying the ACAL-to-JSON mapping rules):
 
@@ -1452,16 +1309,25 @@ This section includes the JSON Schema for the JACAL syntax defined in this speci
 
 # Annex E How to generate HTML and PDF versions
 
-## Prerequisites
+(This annex does not form an integral part of this Specification and is informational.)
 
-Install Pandoc **v3.2.1 or later** ( [latest release](https://github.com/jgm/pandoc/releases/latest) ) on your system; or simply use Docker with the following shell alias:
-```
-$ alias pandoc='docker run --rm --volume "$(pwd):/data" pandoc/extra'
-```
+## Online generation
 
-Git clone or get a local copy of [OASIS XACML TC Github repository](https://github.com/oasis-tcs/xacml-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+HTML/PDF versions are generated automatically online via GitHub Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/). Go to GitHub Actions on the GitHub repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
 
-## CSS stylesheet
+## Offline generation
+
+### Prerequisites
+
+The following tools are required:
+- [Pandoc](https://pandoc.org/) **v3.2.1 or later** ( [latest release](https://github.com/jgm/pandoc/releases/latest) );
+- [Pandoc-include filter](https://github.com/DCsunset/pandoc-include).
+
+Install them on your system.
+
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+
+### CSS stylesheet
 
 The generation command uses the CSS stylesheet file `pandoc/styles/markdown-styles-v1.7.3b.css` (with `-c` argument) based on the [v1.7.3a](https://docs.oasis-open.org/templates/css/markdown-styles-v1.7.3a.css) provided by OASIS.
 
@@ -1491,7 +1357,7 @@ Beware that **the result PDF - the embedded fonts in particular - may differ dep
 **For official TC publications**, add the `--official` argument to avoid this issue and produce a system-independent output:
 
 ```console
-$ pandoc/mkdocs.sh --pdf --official --output /tmp acal-core-v%version%.md
+$ pandoc/mkdocs.sh --pdf --official --output /tmp acal-core-json-v%version%.md
 ```
 
 In this case, the generation will use a public Linux container image (`ghcr.io/oasis-tcs/chrome-headless`) with a fixed installed set of fonts to generate the PDF.
@@ -1504,28 +1370,10 @@ In this case, the generation will use a public Linux container image (`ghcr.io/o
 (This appendix does not form an integral part of this Specification and is informational.)
 
 
-<!-- From OASIS Open Specification Template Instructions:
-
-
-All parts in this appendix are optional to the TC. Individuals or companies, past or present, may request that their name and/or affiliation is not included in this list. 
-
-
--->
-
-
 ## Leadership
 
 
 The following individuals have had significant leadership positions during the development of this document, not just this version of the document, and they are gratefully acknowledged:
-
-
-<!-- From OASIS Open Specification Template Instructions:
-
-
-This section **SHOULD** include the leadership (chairs, sub committees chairs, secretaries, editors, etc.) of this document, and not just for this version of the document, even if they are no longer members of the TC.
-
-
--->
 
 
 - Chairs
@@ -1535,26 +1383,16 @@ This section **SHOULD** include the leadership (chairs, sub committees chairs, s
 - Editors
   - Steven Legg, ViewDS Identity Solutions
   - Cyril Dangerville, THALES
+  - Bill Parducci, Individual
 
-
-## Special Thanks
-
-<!-- This is an optional subsection to call out contributions from TC members. If a TC wants to thank non-TC members then they should avoid using the term "contribution" and instead thank them for their "expertise" or "assistance". -->
-
-Substantial contributions to this document from the following individuals are gratefully acknowledged:
-
-Steven Legg, ViewDS Identity Solutions \
-Cyril Dangerville, THALES
 
 ## Participants
 
-<!-- A TC can determine who they list here, however, TC Observers must not be listed. It is common practice for TCs to list everyone that was part of the TC during the creation of the document, but this is ultimately a TC decision on who they want to list and not list, and in what order. -->
 
 The following individuals were members of this committee during the creation of this document, not just this version of the document, and their contributions are gratefully acknowledged:
 
-**XACML TC Members:**
+**OASIS ACAL \[XACML\] TC Members:**
 
-- Hal Lockhart, Individual
 - Bill Parducci, Individual
 - Steven Legg, ViewDS Identity Solutions
 - Cyril Dangerville, THALES
@@ -1566,22 +1404,31 @@ The following individuals were members of this committee during the creation of 
 
 (This appendix does not form an integral part of this Specification and is informational.)
 
-<!-- From OASIS Open Specification Template Instructions: 
 
-The appendix **SHOULD** contain any explanatory text about the reason for this version including any major changes. The level of detail that is included in this appendix is up to the editors and chairs of the TC to determine. This appendix is **REQUIRED**, if there are no changes then one is to put "None." In addition to any descriptive text, all major changes **SHOULD** be in a bulleted list so that reviewers and implementers can easily understand what they need to know.
+This is the first version of JACAL; its previous stage was Committee Specification Draft 01. The changes made since then are the following. Section numbers refer to this version.
 
--->
-
-None. This is the first version of the document.
+- The JSON Schema follows the changes to the ACAL model made since that version, which [[ACAL-Core-1.0](#acal-core-10)] Appendix 2 lists: among them, `Argument` replaces `Expression` in `Apply`, `PolicyReference` and `SharedVariableReference`, with named arguments; `RequestEntityReference` is a sequence of local identifiers instead of `RequestEntityReferenceType` objects; attributes are unique by `(AttributeId, DataType, Issuer)`; notice identifiers need not be unique; and the `Category` of `MissingAttributeDetail` is optional. The schema also corrects `PolicyDefaults` and `RequestDefaults`, which are now arrays (one object per ACAL Profile) as the ACAL model specifies, and spells the `ParameterType` property `IsBag` as the ACAL model does (it was `isBag`).
+- This specification states that [[ACAL-Core-1.0](#acal-core-10)] remains authoritative for the ACAL model, its evaluation semantics and the mandatory or optional status of each object type, and that JACAL defines only their JSON representation ([Section 4.1](#41-requirements)).
+- The ACAL `NonNegativeInteger` and `URI` types are mapped to reusable schema definitions ([Section 5.1.1](#511-primitive-types-mapped-to-native-json-schema-definitions)), and a basic `pattern` for validating `IdentifierType` values is given, together with the requirement that implementations perform the further validation that the ACAL `IdentifierType` definition needs ([Section 5.1.2.1](#5121-identifiertype-pattern)). The JSON mapping of `AnyType` admits Boolean and numeric JSON values as well as strings and objects ([Section 5.2.1](#521-anytype-mapping-rule)).
+- Primitive value mappings ([Section 5.2.2.1](#5221-primitive-value-mappings)):
+  - A value that needs an explicit data type is wrapped in a JSON object whose value property is named `Value` instead of `$`.
+  - An ACAL integer may also be written as a JSON string in a typed object. This specification does not restrict the magnitude of a JSON number that represents an integer, and a generator is recommended to use the typed string form for an integer outside −(2<sup>53</sup>−1) to 2<sup>53</sup>−1 unless every JSON processor on the path preserves the exact value of a JSON number.
+  - A value whose declared data type is the standard ACAL Double may be written as a JSON number with or without a fractional part, or as a JSON string in a typed object; positive and negative infinity and not-a-number are written as typed objects with the `xs:double` lexical forms `INF`, `-INF` and `NaN`.
+  - The obligations of a JACAL processor are stated: it accepts a JSON number or typed string as an integer only once it has determined the exact integer, does not continue with an altered integer value, documents the limits it applies when accepting JSON numbers as integers, does not reject a representation within an admitted request because an integer is outside its supported integer interval, and accepts the typed `Value` string of an infinity or not-a-number only if the string is in the lexical space of `xs:double` and the exact value is preserved; a JACAL generator does not use a JSON number for an infinity or not-a-number.
+- The schema definitions for `ValueType` are restructured into separate definitions for untyped primitive values, typed primitive values and typed values, and the `$defs` entries holding the disabled extension anchors are renamed from `…TreeEmpty` to `…ExtensionsDisabled` (the `$dynamicAnchor` values are unchanged) ([Section 5.2.2](#522-valuetype-mapping-rules), [Section 5.2.3](#523-default-mapping-rules-for-complex-acal-types-other-than-valuetype)).
+- The limitations of the `uniqueKeys` keyword are stated, and an implementation that enforces the attribute uniqueness constraint, which JSON Schema validation does not enforce, does so outside it after short-identifier expansion and the application of the `DataType` default ([Section 5.2.4](#524-property-mapping-rules)).
+- The Conformance section is restructured: JACAL inherits ACAL object-type conformance from [[ACAL-Core-1.0](#acal-core-10)] instead of repeating a schema-object table, and lists the machine-readable artifacts that accompany this specification ([Section 7](#7-conformance)). The JSON Schemas of the XPath and JSONPath Profiles are now artifacts of those Profiles, and the extension examples of [Section 5.4](#54-jacal-extension-mechanism) refer to them there. An implementation follows Section 5 and Annex C where they apply to the ACAL object types and machine-readable artifacts that the implementation supports ([Section 7.2](#72-conformance-categories)).
+- The core short identifier set artifact and its reserved `ShortIdSet` identifier are described in [Annex C.2](#c2-core-short-identifier-set).
+- The schema templates of the mapping rules ([Section 5.2.3](#523-default-mapping-rules-for-complex-acal-types-other-than-valuetype)) are corrected: references use the JSON Pointer form `#/$defs/...`; `$comment` is placed as a schema keyword rather than inside `properties`, where it named a property; and `additionalProperties: false` is no longer placed beside a `$ref`, where in JSON Schema 2020-12 it rejected every property.
+- Requirement keywords previously written in lowercase are written in uppercase, with the wording otherwise unchanged ([Section 5.1.2.1](#5121-identifiertype-pattern), [Section 5.2.1](#521-anytype-mapping-rule), [Section 5.4.2](#542-example-using-extensions-from-multiple-acal-profiles), [Section 5.4.3](#543-example-combining-a-custom-extension-with-a-standard-profile-defined-extension)). A lowercase "should" or "must" that states a condition or a consequence rather than a requirement stays lowercase, and in [Section 5.4](#54-jacal-extension-mechanism) "depending on which extensions the ACAL implementation shall support" reads "depending on which extensions the ACAL implementation supports".
+- The `Function` and `Apply` expression wrappers of the core schema do not allow additional properties, like the other wrappers; the `version` match pattern allows `+` only as the last component; a processor SHALL NOT accept the `Value` string of a special double unless the string is in the lexical space of `xs:double` (wording only); comments with issue numbers and TODO markers are removed from the schema, and [Section 2](#2-definitions-and-acronyms) no longer says that no terms are defined elsewhere.
+- The description of the core schema's structure in [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments) now shows the single-property wrapper object that the schema requires around a root object. A standalone short-identifier set or shared variable definition is a root object in the same way as a policy: the schema gains `ShortIdSet` and `SharedVariableDefinition` root forms, the core short-identifier set file is wrapped in a `ShortIdSet` property (csd01: a bare `ShortIdSetType` object), and the short-identifier set example of [Section 4.3](#43-example-short-identifier-set) is wrapped accordingly.
+- [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
+- Editorial: the title is now "JACAL Version 1.0 (JSON Representation of ACAL)" (csd01: "JSON Representation of ACAL Version 1.0 (JACAL)"), and the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references and citations are corrected, including the reference for Base64 encoding ([[RFC4648](#rfc4648)]). Cross-references are corrected: the safety and security sections cite [[ACAL-Core-1.0](#acal-core-10)] Sections 10.1 and 10.2 (csd01 cited Sections 11.1 and 11.2, which are about conformance), bold-italic terms refer to [[ACAL-Core-1.0](#acal-core-10)] Section 2, and [Section 5.2.5](#525-mapping-acal-object-level-constraints-ocl) cites rule 2.2 of [Section 5.2.4](#524-property-mapping-rules) (csd01 cited a nonexistent rule 2.2.2); [Section 5.3](#53-content-types-and-body-representations-optional) calls `MediaType` and `Encoding` properties.
 
 ## Revision History
 
-Latest revision history can be obtained from [OASIS XACML TC's github repository](https://github.com/oasis-tcs/xacml-spec/blob/v%version%-%stage_revision%/acal-core-json-v%version%-%stage_revision%.md).
-
-<!--
-- \< Date in yyyy-mm-dd format \>, \< Revision number \>  
-- \< Date in yyyy-mm-dd format \>, \< Revision number \>
--->
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's GitHub repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-core-json-v%version%-%stage_revision%.md).
 
 
 <!-- The following centered line represents the end of the document -->  

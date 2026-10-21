@@ -1,4 +1,0 @@
-FROM pandoc/extra:latest-ubuntu
-LABEL org.opencontainers.image.description="This image adds Graphviz / PlantUML to the official pandoc/extra image in order to support Graphviz / PlantUML diagrams and pandoc-secnos filter in pandoc generation (esp. for GitHub Actions)."
-RUN apt-get update && apt-get install default-jre graphviz plantuml git -y && apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log}/
-RUN pip install git+https://github.com/TimothyElder/pandoc-xnos pandoc-secnos --break-system-packages

@@ -13,7 +13,6 @@
 
 	<!-- XPath Versions -->
 
-	<ShortId Name="xpath10" Value="https://www.w3.org/TR/1999/REC-xpath-19991116/"/>
 	<ShortId Name="xpath20" Value="https://www.w3.org/TR/xpath20/" />
 	<ShortId Name="xpath30" Value="https://www.w3.org/TR/xpath-30/" />
 	<ShortId Name="xpath31" Value="https://www.w3.org/TR/xpath-31/" />

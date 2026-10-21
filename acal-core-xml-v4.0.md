@@ -3,7 +3,7 @@
 logo: |
   ![OASIS](images/OASISLogo-v3.0.png)
 # Original logo: http://docs.oasis-open.org/templates/OASISLogo-v3.0.png
-title: eXtensible Access Control Markup Language (XACML) Version 4.0
+title: XACML Version 4.0 (eXtensible Access Control Markup Language)
 subtitle: Committee Specification Draft 02
 version: "4.0"
 stage_revision: csd02 # [stage-abbrev][revisionNumber] as defined in https://docs.oasis-open.org/specGuidelines/ndr/namingDirectives.html
@@ -14,31 +14,31 @@ keywords: ["access", "authorization", "ABAC", "policylanguage", "XML", "standard
 # If metadata 'x' is a string, any placeholder %x% will be replaced with the value of metadata 'x' (using meta_vars.lua filter), e.g. %version% will be replaced with the version metadata value.
 ---
 
-### This version:
+### This version
 
 
-- https://docs.oasis-open.org/xacml/acal/xacml/core/v%version%/%stage_revision%/acal-core-xml-v%version%-%stage_revision%.html (Authoritative)
-- https://docs.oasis-open.org/xacml/acal/xacml/core/v%version%/%stage_revision%/acal-core-xml-v%version%-%stage_revision%.pdf
-- https://docs.oasis-open.org/xacml/acal/xacml/core/v%version%/%stage_revision%/acal-core-xml-v%version%-%stage_revision%.md
+- https://docs.oasis-open.org/acal/xacml/core/v%version%/%stage_revision%/acal-core-xml-v%version%-%stage_revision%.html (Authoritative)
+- https://docs.oasis-open.org/acal/xacml/core/v%version%/%stage_revision%/acal-core-xml-v%version%-%stage_revision%.pdf
+- https://docs.oasis-open.org/acal/xacml/core/v%version%/%stage_revision%/acal-core-xml-v%version%-%stage_revision%.md
 
-### Previous version:
+### Previous version
 
-- http://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-en.doc (Authoritative)
-- http://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-en.html
-- http://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-en.pdf
+- https://docs.oasis-open.org/acal/xacml/core/v4.0/csd01/acal-core-xml-v4.0-csd01.html (Authoritative)
+- https://docs.oasis-open.org/acal/xacml/core/v4.0/csd01/acal-core-xml-v4.0-csd01.pdf
+- https://docs.oasis-open.org/acal/xacml/core/v4.0/csd01/acal-core-xml-v4.0-csd01.md
 
-### Latest version:
+### Latest version
 
-- https://docs.oasis-open.org/xacml/acal/xacml/core/v4.0/acal-core-xml-v4.0.html (Authoritative)
-- https://docs.oasis-open.org/xacml/acal/xacml/core/v4.0/acal-core-xml-v4.0.pdf
-- https://docs.oasis-open.org/xacml/acal/xacml/core/v4.0/acal-core-xml-v4.0.md
+- https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html (Authoritative)
+- https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.pdf
+- https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.md
 
 
-### Technical Committee:
+### Technical Committee
 
-[OASIS eXtensible Access Control Markup Language (XACML) TC](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical)
+[OASIS Attribute-Centric Authorization Language (ACAL) \[supersedes XACML\]](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d)
 
-### Chairs:
+### Chairs
 
 - Bill Parducci (bill@parducci.net), Individual
 
@@ -46,12 +46,13 @@ keywords: ["access", "authorization", "ABAC", "policylanguage", "XML", "standard
 
 - Bill Parducci (bill@parducci.net), Individual  
 
-### Editors:
+### Editors
 
-- Steven Legg (steven.legg@viewds.com), [ViewDS Identity Solutions](https://www.viewds.com/)
-- Cyril Dangerville (cyril.dangerville@thalesgroup.com), [THALES](https://www.thalesgroup.com/)
+- Steven Legg (steven.legg@viewds.com), ViewDS Identity Solutions
+- Cyril Dangerville (cyril.dangerville@thalesgroup.com), THALES
+- Bill Parducci (bill@parducci.net), Individual
 
-### Additional artifacts:
+### Additional artifacts
 
 This document is one component of a Work Product that also includes:
 
@@ -61,22 +62,20 @@ This document is one component of a Work Product that also includes:
 
 The XPath and JSONPath Profiles are separate Work Products with their own machine-readable artifacts; see those profiles' specifications for details.
 
-<!-- Note: Any normative computer language definitions that are part of the Work Product, such as XML instances, schemas and Java(TM) code, including fragments of such, must be (a) well formed and valid, (b) provided in separate plain text files, (c) referenced from the Work Product; and (d) where any definition in these separate files disagrees with the definition found in the specification, the definition in the separate file prevails. Remove this note before submitting for publication.)
--->
 
-### Abstract:
+### Abstract
 
-This specification defines Version 4.0 of the eXtensible Access Control Markup Language which now represents the XML representation Profile of the ACAL Version 1.0, also produced by the same OASIS XACML Technical Committee.
+This specification defines XACML Version 4.0 (eXtensible Access Control Markup Language), which is now the XML representation of the ACAL Version 1.0 model, also produced by the OASIS ACAL \[XACML\] TC.
 
-### Citation format:
+### Citation Format
 
 When referencing this specification the following citation format should be used:
 
 **[XACML-Core-4.0]**
 _%title%_.
-Edited by Steven Legg and Cyril Dangerville. %date%. OASIS %subtitle%. https://docs.oasis-open.org/xacml/acal/xacml/core/v%version%/%stage_revision%/acal-core-xml-v%version%-%stage_revision%.html. Latest stage: https://docs.oasis-open.org/xacml/acal/xacml/core/v4.0/acal-core-xml-v4.0.html.
+Edited by Steven Legg, Cyril Dangerville and Bill Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/xacml/core/v%version%/%stage_revision%/acal-core-xml-v%version%-%stage_revision%.html. Latest version: https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html.
 
-### Related work:
+### Related Work
 
 This specification replaces or supersedes:
 
@@ -84,7 +83,7 @@ This specification replaces or supersedes:
 
 This specification is related to:
 
-* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg and Cyril Dangerville. 18 February 2026. OASIS Committee Specification Draft 01.
+* _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 
 ## License, Document Status, and Notices
@@ -95,48 +94,6 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
 
 # Table of Contents
 
-<!-- ToC template from OASIS Open Specification Template Instructions:
-
-- [1 Scope](#1-scope)
-- [2 Definitions and Acronyms](#2-definitions-and-acronyms)
-  - [2.1 Definitions](#2.1-definitions)
-    - [2.1.1 Terms Defined Elsewhere](#2.1.1-terms-defined-elsewhere)
-    - [2.1.2 Terms Defined in this Document](#2.1.2-terms-defined-in-this-document)
-  - [2.2 Abbreviations and Acronyms](#2.2-abbreviations-and-acronyms)
-- [3 Document Conventions](#3-document-conventions)
-  - [3.1 Key Words](#3.1-key-words)
-  - [3.2 Typographical Conventions](#3.2-typographical-conventions)
-- [4 Introduction](#4-introduction)
-  - [4.1 Any Additional Introduction Subsections That are Needed](#4.1-any-additional-introduction-subsections-that-are-needed)
-  - [4.2 Changes From the Previous Version](#4.2-changes-from-the-previous-version)
-- [5 Level 1 Section Header](#5-level-1-section-header)
-  - [5.1 Level 2 Section Header](#5.1-level-2-section-header)
-    - [5.1.1 Level 3 Section Header](#5.1.1-level-3-section-header)
-      - [5.1.1.1 Level 4 Section Header](#5.1.1.1-level-4-section-header)
-        - [5.1.1.1.1 Level 5 Section Header](#5.1.1.1.1-level-5-section-header)
-          - [5.1.1.1.1.1 Level 6 Section Header](#5.1.1.1.1.1-level-6-section-header)
-- [6 Additional Sections as Needed](#6-additional-sections-as-needed)
-- [7 Safety, Security, and Data Protection Considerations](#7-safety,-security,-and-data-protection-considerations)
-- [8 Conformance](#8-conformance)
-- [Annex A License, Document Status and Notices](#annex-a-license,-document-status-and-notices)
-  - [A.1 Document Status](#a.1-document-status)
-  - [A.2 License and Notices](#a.2-license-and-notices)
-- [Annex B References](#annex-b-references)
-  - [B.1 Normative References](#b.1-normative-references)
-  - [B.2 Informative References](#b.2-informative-references)
-- [Annex C Additional Annex as Needed](#annex-c-additional-annex-as-needed)
-  - [C.1 Subsection Title](#c.1-subsection-title)
-  - [C.1.1 Sub-subsection](#c.1.1-sub-subsection)
-- [Appendix 1 Acknowledgments](#appendix-1-acknowledgments)
-  - [Leadership](#leadership)
-  - [Special Thanks](#special-thanks)
-  - [Participants](#participants)
-- [Appendix 2 Changes From Previous Version](#appendix-2-changes-from-previous-version)
-  - [Revision History](#revision-history)
-- [Appendix 3 Additional Appendix as Needed](#appendix-3-additional-appendix-as-needed)
-  - [Subsection Title](#subsection-title)
-- [Sub-subsection](#sub-subsection)
--->
 
 <!-- Generated ToC -->
 - [1 Scope](#1-scope)
@@ -169,6 +126,7 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
     - [5.2.6 Mapping complex ACAL constraints (OCL)](#526-mapping-complex-acal-constraints-ocl)
       - [5.2.6.1 Option 1: XML Schema 1.1 assertions](#5261-option-1-xml-schema-11-assertions)
       - [5.2.6.2 Option 2: Schematron rules](#5262-option-2-schematron-rules)
+      - [5.2.6.3 Limitations common to both options: identifier-typed keys](#5263-limitations-common-to-both-options-identifier-typed-keys)
   - [5.3 Content Types and Body representations (optional)](#53-content-types-and-body-representations-optional)
 - [6 Safety, Security and Privacy Considerations (non-normative)](#6-safety-security-and-privacy-considerations-non-normative)
   - [6.1 Threat model](#61-threat-model)
@@ -189,11 +147,17 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
   - [B.2 Informative References](#b2-informative-references)
 - [Annex C XACML identifiers (normative)](#annex-c-xacml-identifiers-normative)
   - [C.1 XACML namespaces](#c1-xacml-namespaces)
+  - [C.2 Core Short-Identifier Set](#c2-core-short-identifier-set)
 - [Annex D XML Schema (normative)](#annex-d-xml-schema-normative)
-- [Annex E How to generate HTML and PDF Versions](#annex-e-how-to-generate-html-and-pdf-versions)
+- [Annex E How to generate HTML and PDF versions](#annex-e-how-to-generate-html-and-pdf-versions)
+  - [Online generation](#online-generation)
+  - [Offline generation](#offline-generation)
+    - [Prerequisites](#prerequisites)
+    - [CSS stylesheet](#css-stylesheet)
+    - [HTML generation](#html-generation)
+    - [PDF generation](#pdf-generation)
 - [Appendix 1 Acknowledgments](#appendix-1-acknowledgments)
   - [Leadership](#leadership)
-  - [Special Thanks](#special-thanks)
   - [Participants](#participants)
 - [Appendix 2 Changes From Previous Version](#appendix-2-changes-from-previous-version)
   - [Revision History](#revision-history)
@@ -203,20 +167,8 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
 
 # 1 Scope
 
-<!-- OASIS Open Specification Template Instructions: 
 
-What is the purpose and scope of this document?   
-Best practices: 
-
-- Expect this text to be reused in multiple other places to explain the specification in summary form.  
-- This is not the TC or OP scope (which is an IPR and rules boundary);  rather, this section is the summary intended purpose of this specification.  
-- Short is better; four paragraphs or less is recommended.  
-- If use of this spec is deliberately created to rely on or complement another standard, consider briefly mentioning that here as context.  
-- To the extent that discussion of the larger context of the spec, or its history, or the circumstances that led to its creation or revision, are necessary, they belong in the Introduction, not here. 
-
--->
-
-This specification defines the XML representation format of the [[ACAL-Core-1.0](#acal-core-10)] model and any XML-specific syntax, semantics and processing instructions that are not already specified by [[ACAL-Core-1.0](#acal-core-10)]. For more information on the scope, please refer to [[ACAL-Core-1.0](#acal-core-10)].
+This specification defines the XML [[XML](#xml)] representation format of the [[ACAL-Core-1.0](#acal-core-10)] model and any XML-specific syntax, semantics and processing instructions that are not already specified by [[ACAL-Core-1.0](#acal-core-10)]. For more information on the scope, please refer to [[ACAL-Core-1.0](#acal-core-10)].
 
 ---
 
@@ -232,26 +184,12 @@ This specification defines the XML representation format of the [[ACAL-Core-1.0]
 
 This document uses the following terms defined elsewhere:
 
-<!-- The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. 
-
-**Term**
-
-: [REF] Definition.
--->
-
-None.
+Terms in bold-face italic, such as **_policy_** and **_resource_**, have the meaning defined in [[ACAL-Core-1.0](#acal-core-10)] Section 2.
 
 ### 2.1.2 Terms Defined in this Document
 
 This document defines the following terms:
 
-<!-- The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. 
-
-**Term**
-
-: Definition.
-
--->
 None.
 
 ### 2.1.3 Related terms
@@ -260,14 +198,7 @@ None.
 
 ## 2.2 Abbreviations and Acronyms
 
-This document uses the following abbreviations and acronyms:
-<!-- The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. 
-
-**Acronym (Full Term)**
-
-: Definition.
-
--->
+This document uses the abbreviations and acronyms defined in [[ACAL-Core-1.0](#acal-core-10)] Section 2.2.
 
 ---
 
@@ -277,12 +208,11 @@ This document uses the following abbreviations and acronyms:
 ## 3.1 Key Words
 
 
-The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in BCP 14 [[RFC2119](#rfc2119)] [[RFC8174](#rfc8174)] when, and only when, they appear in all capitals, as shown here.
 
 
 ## 3.2 Typographical Conventions
 
-<!-- From OASIS Open Specification Template Instructions: Describe any standards or typographical conventions that were followed when writing this document, such as fonts or highlighting that have special significance. If there are no typographical conventions than one is to put "None". -->
 
 This specification contains schema conforming to W3C XML Schema and normative text to describe the syntax and semantics of XML-encoded **_policy_** statements.
 
@@ -302,7 +232,7 @@ Conventional XML namespace prefixes are used throughout the listings in this spe
 
 * The prefix `xml:` stands for the XML namespace https://www.w3.org/XML/1998/namespace.
 
-This specification uses the following typographical conventions in text: `<XACMLElement>`, `<ns:ForeignElement>`, `Attribute`, `Datatype`, `OtherCode`. Terms in **_bold-face italic_** are intended to have the meaning defined in Section 2.
+This specification uses the following typographical conventions in text: `<XACMLElement>`, `<ns:ForeignElement>`, `Attribute`, `Datatype`, `OtherCode`. Terms in **_bold-face italic_** are intended to have the meaning defined in [[ACAL-Core-1.0](#acal-core-10)] Section 2.
 
 
 ## 3.3 Schema organization and namespaces
@@ -317,10 +247,8 @@ The XACML syntax is defined in a schema associated with the following XML namesp
 
 # 4 Introduction (non-normative)
 
-<!-- All text is normative unless otherwise labeled -->
-
 The Attribute-Centric Authorization Language (ACAL) Version 1.0
-[[ACAL-Core](#acal-core-10)] defines an abstract policy language for
+[[ACAL-Core-1.0](#acal-core-10)] defines an abstract policy language for
 attribute-based access control (ABAC) decisions. The ACAL abstract
 model is independent of any concrete representation format; concrete
 representations are defined by companion specifications.
@@ -337,14 +265,14 @@ Indeed, XACML is a concrete representation format for ACAL.
 Every construct in the ACAL abstract model has a corresponding XACML
 representation defined in this specification.
 The normative reference for semantics, evaluation rules, and abstract
-conformance requirements is [[ACAL-Core](#acal-core-10)].
+conformance requirements is [[ACAL-Core-1.0](#acal-core-10)].
 This specification defines how ACAL abstract model types are expressed in XML.
 
 The authoritative definitions of ACAL simple types, object structures,
 inheritance relationships, and `ValueType` subtypes remain in
-[[ACAL-Core](#acal-core-10)] Section 7.
+[[ACAL-Core-1.0](#acal-core-10)] Section 7.
 Likewise, the mandatory-versus-optional support classification of ACAL object
-types remains in [[ACAL-Core](#acal-core-10)] Section 11.2.
+types remains in [[ACAL-Core-1.0](#acal-core-10)] Section 11.2.
 XACML does not redefine those abstract model elements;
 it defines only their XML representation.
 
@@ -356,13 +284,13 @@ Similarly, in the case where the resource to which access is requested is an XML
 
 ## 4.3 Example Short Identifier Set (Non-normative)
 
-A set of Short Identifiers with the Id `urn:oasis:names:tc:acal:1.0:core:identifiers` is defined by ACAL in the XML Representation according to this specification, for the various identifiers assigned by ACAL, and provided attached to this profile. However, a deployment will usually have need for additional identifiers, especially for locally-defined attributes, so it is usually desirable to define a set of additional short identifiers to use in the deployment, that may import the first set.
+A set of Short Identifiers with the Id `urn:oasis:names:tc:acal:1.0:core:identifiers` is defined by ACAL in the XML Representation according to this specification, for the various identifiers assigned by ACAL, and provided with this specification as a machine-readable artifact. However, a deployment will usually have need for additional identifiers, especially for locally-defined attributes, so it is usually desirable to define a set of additional short identifiers to use in the deployment, that may import the first set.
 
 The following short-identifier set defines an XML representation of short identifiers for the additional attributes in this example and also imports the standardized set.
 
 ```xml
 <ShortIdSet xmlns="urn:oasis:names:tc:xacml:4.0:core:schema"
-  Id="urn:oasis:names:tc:acal:1.0:example:identifiers"/>
+  Id="urn:oasis:names:tc:acal:1.0:example:identifiers">
 
   <!-- Include the short identifiers for standard URIs. -->
   <ShortIdSetReference>urn:oasis:names:tc:acal:1.0:core:identifiers</ShortIdSetReference>
@@ -383,14 +311,13 @@ Short Identifiers can reuse other Short Identifiers in their values, typically a
 
 The following `IdentifierType` values are all equivalent and evaluate to the URI of the string data type:
 ```
-"string"
-"{string}"
-"{xs}string"
+string
+{string}
+{xs}string
 ```
 
 ## 4.4 Changes From the Previous Version
 
-<!-- From OASIS Open Specification Template Instructions: This section is **REQUIRED** and **MUST** be the last numbered subsection in this section. -->
 
 The list of changes from the previous version and any revision history can be found in [Appendix 2](#appendix-2-changes-from-previous-version).
 
@@ -408,7 +335,7 @@ In all XSD definitions from now, the XACML core namespace `urn:oasis:names:tc:xa
 
 ## 5.1 Mapping ACAL simple types
 
-For each simple type (stereotyped `<<primitive>>` or `<<enumeration>>`) in
+For each simple type (stereotyped `<<primitive>>`, `<<restrictedString>>` or `<<enumeration>>`) in
 Section 7.1.2 of the [[ACAL-Core-1.0](#acal-core-10)] model, apply the mapping
 rules in the next subsections to obtain the XML representation.
 
@@ -428,11 +355,11 @@ Table 1: Mapping ACAL primitive types to standard XSD data-types
 |URI|xs:anyURI|
 |Name|xs:Name|
 
-An `xs:integer` value that denotes an integer outside an implementation's supported integer interval ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7) is a valid `xs:integer` value. An ACAL implementation SHALL NOT treat such a value as schema-invalid solely because of its magnitude. [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7 specifies when an implementation is permitted to refuse the containing request or policy instead, and the result when an evaluation requires the value.
+An `xs:integer` value that denotes an integer outside an implementation's supported integer interval ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6) is a valid `xs:integer` value. An ACAL implementation SHALL NOT treat such a value as schema-invalid solely because of its magnitude. [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6 specifies when an implementation is permitted to refuse the containing request or policy instead, and the result when an evaluation requires the value.
 
 ### 5.1.2 Restricted String types (UML stereotype `<<restrictedString>>`)
 
-Each ACAL primitive type `FooType` with stereotype `<<restrictedString>>` in Section 7.1.2.3 of [[ACAL-Core-1.0](#acal-core-10)] (e.g., `VersionType`, `VersionMatchType`, `ShortIdNameType`, `ShortIdValueType`, `IdentifierType`, `LocalIdentifierType`, etc.), i.e., with a given `pattern` property set to a regular expression *\<REGEX>*, is mapped to the following XSD definition:
+Each ACAL restricted-string simple type `FooType` with stereotype `<<restrictedString>>` in Section 7.1.2.3 of [[ACAL-Core-1.0](#acal-core-10)] (e.g., `VersionType`, `VersionMatchType`, `ShortIdNameType`, `ShortIdValueType`, `IdentifierType`, `LocalIdentifierType`, etc.), i.e., with a given `pattern` property set to a regular expression *\<REGEX>*, is mapped to the following XSD definition:
 
 ```xml
 <xs:simpleType name="FooType">
@@ -504,13 +431,13 @@ The expression *`xs:foo` type (respectively element)* means the `foo` type (resp
 
 The ACAL `AnyType` is mapped to the `xs:anyType` type in XML.
 
-**WARNING:** for safety/security reasons, in production, ACAL implementers should add further restrictions to the XML schema and/or enforce security measures in the XML processor to mitigate possible security issues that may occur when allowing any XML type as input. 
+**WARNING:** for safety/security reasons, in production, ACAL implementers SHOULD add further restrictions to the XML schema and/or enforce security measures in the XML processor to mitigate possible security issues that may occur when allowing any XML type as input. 
 
 ### 5.2.2 Single-use empty datatypes
 
 There are complex ACAL datatypes playing the role of *Union* datatype, such as `CombinerInputType`, which are *empty* (no property and no class inheritance) and have as many subtypes as possible types in the *union*. These are usually used once for a property that can take one of multiple alternative types, such as `CombinerInput`. 
 
-Except the `AnyType` already addressed in the previous section, a single-use empty ACAL datatype `FooType` (i.e. used only for one property `P` in the whole ACAL model (e.g. `CombinerInput`) and not to be used in any ACAL extension) SHALL not be mapped to any dedicated XML type, element or attribute in the XSD. The mapping is done only at the level of property `P` (Section 5.2.5) to a `xs:choice` of XSD elements corresponding to the subtypes of `FooType`.
+Except the `AnyType` already addressed in the previous section, a single-use empty ACAL datatype `FooType` (i.e. used only for one property `P` in the whole ACAL model (e.g. `CombinerInput`) and not to be used in any ACAL extension) SHALL NOT be mapped to any dedicated XML type, element or attribute in the XSD. The mapping is done only at the level of property `P` (Section 5.2.5) to a `xs:choice` of XSD elements corresponding to the subtypes of `FooType`.
 
 ### 5.2.3 ValueType mapping rules
 
@@ -544,11 +471,11 @@ If a complex ACAL type `FooType` is not in the previous cases (Section 5.2.1, 5.
        <xs:complexType name="FooType" abstract="true"/>
        ```
      - 1.1.2. Else (it is single-used) skip it as instructed in Section 5.2.2.
-  
+
    * 1.2. Else (`FooType` is not empty, i.e. inherits a type and/or has at least one property):
      - 1.2.1. If  `FooType` inherits from a Datatype `BarType` (Generalization relationship), then:
        + 1.2.1.1. If `BarType` is a single-use empty type as defined in Section 5.2.2, `BarType` is not mapped to any XSD type (mapping is done only at the property level), therefore `FooType` SHALL be mapped to the following XSD definition (not inheriting from `BarType`):
-  
+
           ```xml
           <xs:element name="Foo" type="FooType" abstract="true" />
           <xs:complexType name="FooType" abstract="true">
@@ -556,8 +483,8 @@ If a complex ACAL type `FooType` is not in the previous cases (Section 5.2.1, 5.
           </xs:complexType>
           ```
 
-       + 1.2.1.2. Else (`BarType` is not a single-use empty type, therefore mapped to a dedicated XML type and element) if `FooType` has no property (e.g. `ExpressionType`), map it to the following XSD element definition:
-         
++ 1.2.1.2. Else (`BarType` is not a single-use empty type, therefore mapped to a dedicated XML type and element) if `FooType` has no property (e.g. `ExpressionType`), map it to the following XSD element definition:
+
          ```xml
          <xs:element name="Foo" type="FooType" substitutionGroup="Bar" abstract="true"/>
          <xs:complexType name="FooType" abstract="true">
@@ -568,7 +495,7 @@ If a complex ACAL type `FooType` is not in the previous cases (Section 5.2.1, 5.
          ```
 
 	    + 1.2.1.3. Else (`FooType` has at least one property):
-  
+
             ```xml
             <xs:element name="Foo" type="FooType" substitutionGroup="Bar" abstract="true"/>
             <xs:complexType name="FooType" abstract="true">
@@ -589,7 +516,7 @@ If a complex ACAL type `FooType` is not in the previous cases (Section 5.2.1, 5.
        ```
 2. Else (`FooType` is not abstract) apply the same mapping rules as in the first case, except remove `abstract="true"` from the `xs:complexType` and `xs:element` definitions.
 
-3. If `FooType` has a UML *link* (kind of *Association*) via its property *keyRefProp* to another type `BarType`'s property *keyProp* (e.g. a reference to a BarType instance via its identifier), then add a `<xs:keyRef>` element as defined in Section 3.11.2 of [[XS](#xs11)] (Identity-constraint Definitions), into the XML element declaration of the root object type (*RootObjectType*) enclosing the property(ies) of type *FooType* and *BarType* (created previously), as follows:
+3. If `FooType` has a UML *link* (kind of *Association*) via its property *keyRefProp* to another type `BarType`'s property *keyProp* (e.g. a reference to a BarType instance via its identifier), then add a `<xs:keyref>` element as defined in Section 3.11.2 of [[XS11](#xs11)] (Identity-constraint Definitions), into the XML element declaration of the root object type (*RootObjectType*) enclosing the property(ies) of type *FooType* and *BarType* (created previously), as follows:
    ```xml
    <xs:element name="RootObject" ...>
      ...
@@ -607,12 +534,12 @@ If a complex ACAL type `FooType` is not in the previous cases (Section 5.2.1, 5.
    </xs:element>
    ```
    where `<XPath_to_Foo_element>` is the XPath expression to select the *Foo* element of `FooType`.
-   
+
 4. If `FooType` has *Object-level constraints* as defined in Section 7.1.1.1.2 of [[ACAL-Core-1.0](#acal-core-10)], implementers SHOULD apply the recommended mappings in the Section [5.2.6](#526-mapping-complex-acal-constraints-ocl), or they MAY also apply alternative implementation-specific mapping mechanisms as they see fit.
 
 ### 5.2.5 Property mapping rules
 
-Inside the `xs:complexType` or `xs:extension` element created by the previous mapping rules, go the property mappings for each property *Prop* of the complex ACAL type. Let *PropType* be *Prop*'s datatype.
+Inside the `xs:complexType` or `xs:extension` element created by the previous mapping rules, apply the property mappings for each property *Prop* of the complex ACAL type. Let *PropType* be *Prop*'s datatype.
 
 1. If *Prop* has special name `<any>` (and special type `AnyType`) in ACAL, then map the property to the following XSD definition (replace *{min}* with the lower bound of *Prop*'s multiplicity in the ACAL (UML) model, and *{max}* with the upper bound, using `unbounded` as equivalent for `*`):
    ```xml
@@ -621,8 +548,8 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
 	 </xs:sequence>
    ```
 
-2. Else if *PropType* is a primitive type, then:
-   
+2. Else if *PropType* is a simple type (stereotyped `<<primitive>>`, `<<restrictedString>>` or `<<enumeration>>`, Section 5.1), then:
+
    - 2.1. Map *PropType* to a XSD type according to mapping rules of Section 5.1. The obtained XSD type is referred to as `PropXsdType` in the next steps.
    - 2.2. If *PropType* is other than (unrestricted) `String` (it may be a restricted String type as in Section 5.1.2) AND single-valued (the upper bound of the multiplicity is 1), then map to an XML attribute as follows (if *Prop*'s multiplicity is `0..1`, replace `$use` with `optional`, else with `required`):
 
@@ -634,13 +561,13 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
      <xs:attribute name="Prop" type="PropXsdType" use="$use" default="$default"/>
      ```
    - 2.3. Else (if *PropType* is `String` (unrestricted, i.e. not a derived type) or multi-valued), then:
-        
+
      Define a global element named *Prop* in XACML namespace:
 
      ```xml
      <xs:element name="Prop" type="PropXsdType"/>
      ```
-     
+
      If this is the first property in the datatype, then create  a `<xs:sequence>`. 
 
      Add an element reference to the *Prop* global element above inside the `<xs:sequence>` as follows (replace `$min` with the lower bound and `$max` with the upper bound of *Prop*'s multiplicity in the ACAL (UML) model, using `unbounded` as equivalent for `*`):
@@ -653,8 +580,8 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
         </xs:sequence>
         ```
 
-   - 2.4. If *Prop* is multivalued and has a *simple uniqueness constraint* as defined in Section 7.1.1.1.1.1 of [[ACAL-Core-1.0](#acal-core-10)], i.e. a UML `unique` annotation, then add an `<xs:key>` element as defined in Section 3.11.2 of [[XS](#xs11)] (Identity-constraint Definitions), into the XML element declaration of the root object type enclosing *Prop* (created previously), as follows:
-  
+   - 2.4. If *Prop* is multivalued and has a *simple uniqueness constraint* as defined in Section 7.1.1.1.1.1 of [[ACAL-Core-1.0](#acal-core-10)], i.e. a UML `unique` annotation, then add an `<xs:key>` element as defined in Section 3.11.2 of [[XS11](#xs11)] (Identity-constraint Definitions), into the XML element declaration of the root object type enclosing *Prop* (created previously), as follows:
+
      ```xml
      <xs:element name="RootAncestorOfProp" ...>
         ...
@@ -666,9 +593,9 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
      ```
 
      where `<XPath_to_Prop>` is the XPath expression to select the *Prop* element from `RootAncestorOfProp` element.
-   
+
 3. Else if *PropType* is a *single-use empty type* as defined in Section 5.2.2 (e.g.`CombinerInputType`), i.e. an empty abstract type only used by *Prop* in the ACAL model, with subtypes *Sub1Type, Sub2Type, etc.*, then for each subtype *SubXType* of *PropType*, apply the mapping rules in the previous section and this section to *SubXType*, and create an element `<xs:element name="SubX" type="SubXType" />` in XACML namespace if it does not already exist (`<xs:element name="SubX" type="SubXType" abstract="true"/>` if *SubXType* is abstract). Then *PropType* maps to the following XSD definition (replace `$min` with the lower bound of *Prop*'s multiplicity in the ACAL (UML) model, and `$max` with the upper bound, using `unbounded` as equivalent for `*`):
-   
+
    ```xml
    <xs:choice minOccurs="$min" maxOccurs="$max">
       <xs:element ref="Sub1"/>
@@ -678,9 +605,9 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
    ``` 
 
 4. Else (*PropType* is not a single-use empty type), apply the mapping rules in the previous section and this section to *PropType*, then:
-   
+
    - 4.1. Define a global element named `Prop` of type `PropType` in XACML namespace if it does not already exist:
-  
+
      ```xml
      <xs:element name="Prop" type="PropType"/>
      ```
@@ -690,14 +617,14 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
      <xs:element name="Prop" type="PropType" abstract="true"/>
      ``` 
 
-     If `PropType` inherits from a type `BarType`, apply the mapping rules in the previous section and this section to `BarType` if the XSD type `BarType` is not already defined, then create a global element named `Bar` of type `BarType` in XACML namespace by re-appling this same rule 4.1 with `Bar` as *Prop* and `BarType` as *PropType*, if the element `Bar` does not already exist. Then add *Prop* element to `Bar` substitution group:
+If `PropType` inherits from a type `BarType`, apply the mapping rules in the previous section and this section to `BarType` if the XSD type `BarType` is not already defined, then create a global element named `Bar` of type `BarType` in XACML namespace by re-applying this same rule 4.1 with `Bar` as *Prop* and `BarType` as *PropType*, if the element `Bar` does not already exist. Then add *Prop* element to `Bar` substitution group:
 
      ```xml
      <xs:element name="Prop" type="PropType" substitutionGroup="Bar"/>
      ```
-        
+
    - 4.2. Map *Prop* to the following XSD definition (replace `$min` with the lower bound of *Prop*'s multiplicity in the ACAL (UML) model, and `$max` with the upper bound, using `unbounded` as equivalent for `*`):
-  
+
      ```xml
      <xs:sequence>
        ...other properties mapped to elements...
@@ -706,8 +633,8 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
      </xs:sequence>
      ```
 
-   - 4.3. If *Prop* has a *mandatory-property-based uniqueness constraint* as defined in Section 7.1.1.1.1.2 of [[ACAL-Core-1.0](#acal-core-10)], i.e. `self->isUnique(itemProp)`, then add an `<xs:key>` element as defined in Section 3.11.2 of [[XS](#xs11)] (Identity-constraint Definitions), into the XML element of the root object type enclosing *Prop* (created previously), as follows (such `itemProp` is always mapped to an XML attribute in this case):
-  
+   - 4.3. If *Prop* has a *mandatory-property-based uniqueness constraint* as defined in Section 7.1.1.1.1.2 of [[ACAL-Core-1.0](#acal-core-10)], i.e. `self->isUnique(itemProp)`, then add an `<xs:key>` element as defined in Section 3.11.2 of [[XS11](#xs11)] (Identity-constraint Definitions), into the XML element of the root object type enclosing *Prop* (created previously), as follows (such `itemProp` is always mapped to an XML attribute in this case):
+
      ```xml
      <xs:element name="RootAncestorOfProp" ...>
         <xs:key name="RootAncestorOfProp_Prop">
@@ -718,8 +645,8 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
      ```
      where `<XPath_to_Prop>` is the XPath expression to select the *Prop* element from `RootAncestorOfProp` element.
 
-   - 4.4 Else if *Prop* has a *optional-property-based uniqueness constraint* as defined in Section 7.1.1.1.1.2 of [[ACAL-Core-1.0](#acal-core-10)], i.e. `self->select(itemProp <> null)->isUnique(itemProp)`, then add an `<xs:unique>` element as defined in Section 3.11.2 of [[XS](#xs11)] (Identity-constraint Definitions), into the XML element of the root object type enclosing *Prop* (created previously), as follows (such `itemProp` is always mapped to an XML attribute in this case):
-  
+   - 4.4 Else if *Prop* has a *optional-property-based uniqueness constraint* as defined in Section 7.1.1.1.1.2 of [[ACAL-Core-1.0](#acal-core-10)], i.e. `self->select(itemProp <> null)->isUnique(itemProp)`, then add an `<xs:unique>` element as defined in Section 3.11.2 of [[XS11](#xs11)] (Identity-constraint Definitions), into the XML element of the root object type enclosing *Prop* (created previously), as follows (such `itemProp` is always mapped to an XML attribute in this case):
+
      ```xml
      <xs:element name="RootAncestorOfProp" ...>
         <xs:unique name="RootAncestorOfProp_Prop">
@@ -731,8 +658,8 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
 
      where `<XPath_to_Prop>` is the XPath expression to select the *Prop* element from `RootAncestorOfProp` element.
 
-   - 4.5. Else if *Prop* has a *multi-property-based uniqueness constraint* as defined in Section 7.1.1.1.1.2 of [[ACAL-Core-1.0](#acal-core-10)], i.e. ` self->isUnique(Sequence{itemProp1, itemProp2, ...})`, then add an `<xs:unique>` element as defined in Section 3.11.2 of [[XS](#xs11)] (Identity-constraint Definitions), into the XML element of the root object type enclosing *Prop* (created previously), as follows (such `itemProp1`, `itemProp2`, etc. are always mapped to XML attributes in this case):
-  
+   - 4.5. Else if *Prop* has a *multi-property-based uniqueness constraint* as defined in Section 7.1.1.1.1.2 of [[ACAL-Core-1.0](#acal-core-10)], i.e. ` self->isUnique(Sequence{itemProp1, itemProp2, ...})`, then add an `<xs:unique>` element as defined in Section 3.11.2 of [[XS11](#xs11)] (Identity-constraint Definitions), into the XML element of the root object type enclosing *Prop* (created previously), as follows (such `itemProp1`, `itemProp2`, etc. are always mapped to XML attributes in this case):
+
      ```xml
      <xs:element name="RootAncestorOfProp" ...>
         <xs:unique name="RootAncestorOfProp_Prop">
@@ -746,7 +673,7 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
 
      where `<XPath_to_Prop>` is the XPath expression to select the *Prop* element from `RootAncestorOfProp` element.
 
-     When one or more of `itemProp1`, `itemProp2`, etc. is itself optional (i.e. may be absent from an element instance), the `<xs:unique>` element above is necessarily incomplete: per Section 3.11.4 of [[XS](#xs11)], an element for which any `{field}` has no corresponding value is excluded from the *qualified node set* entirely, rather than being compared as holding a distinct or absent value for that field. Two elements that are otherwise identical, including sharing the same absence of the optional property, will therefore validate successfully as if they were not duplicates. Implementers requiring full enforcement of the constraint in this case SHOULD additionally apply Section 5.2.6's Option 1 (XSD 1.1 assertions) or Option 2 (Schematron rules) alongside the `<xs:unique>` element above; the `<xs:unique>` element alone is not sufficient. The *Core XML schema* accompanying this document applies this pattern at `RequestEntityType`, `ResultEntityType` and `EntityType` (see [[ACAL-Core-1.0](#acal-core-10)] Sections 7.33, 7.44 and 7.45).
+     When one or more of `itemProp1`, `itemProp2`, etc. is itself optional (i.e. may be absent from an element instance), the `<xs:unique>` element above is necessarily incomplete: per Section 3.11.4 of [[XS11](#xs11)], an element for which any `{field}` has no corresponding value is excluded from the *qualified node set* entirely, rather than being compared as holding a distinct or absent value for that field. Two elements that are otherwise identical, including sharing the same absence of the optional property, will therefore validate successfully as if they were not duplicates. Implementers requiring full enforcement of the constraint in this case SHOULD additionally apply Section 5.2.6's Option 1 (XSD 1.1 assertions) or Option 2 (Schematron rules) alongside the `<xs:unique>` element above; the `<xs:unique>` element alone is not sufficient. The *Core XML schema* accompanying this document applies this pattern at `RequestEntityType`, `ResultEntityType` and `EntityType` (see [[ACAL-Core-1.0](#acal-core-10)] Sections 7.33, 7.44 and 7.45).
 
    - 4.6. Else if *Prop* has other kinds of constraints defined in Section 7.1.1.1.1.2 of [[ACAL-Core-1.0](#acal-core-10)] not mentioned previously, implementers SHOULD apply the recommended mappings in the next section, or they MAY also apply alternative implementation-specific mapping mechanisms as they see fit.
 
@@ -761,7 +688,7 @@ The following kinds of OCL-defined UML constraints in the [[ACAL-Core-1.0](#acal
   - Value type uniqueness constraint.
 - All object-level constraints in [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.1.1.2.
 
-This document does not mandate a particular method to map and/or implement these more complex constraints, and leaves this part of the specification implementation-defined. Instead, this document provides only an implementation guidance that recommends to possible options described in the next sections:
+This document does not mandate a particular method to map and/or implement these more complex constraints, and leaves this part of the specification implementation-defined. Instead, this document provides only an implementation guidance that recommends two possible options described in the next sections:
 
 - Option 1: [[XSD 1.1](#xs11)] schema with XML Schema 1.1 *assertions*;
 - Option 2: [[XSD 1.0](#xs)] schema with [ISO Schematron](#schematron) rules.
@@ -786,21 +713,21 @@ For information only, the following table suggests generic mappings for some of 
 | `prop = null` <br> *(`prop` is single-valued)* | `not(prop)` <br> *(no `prop` element occurs)* |
 | `prop->notEmpty()` <br> *(`prop` is multivalued)* | `prop` <br> *(at least one `prop` element occurs)* |
 
-You may find further guidance about XSD-1.1-based validation on [OASIS XACML TC's code repository](https://github.com/oasis-tcs/xacml-spec/).
+You may find further guidance about XSD-1.1-based validation on [OASIS ACAL \[XACML\] TC's code repository](https://github.com/oasis-tcs/acal-spec/).
 
 
 #### 5.2.6.2 Option 2: Schematron rules
 
 Due to the current general lack of adoption of XSD 1.1 (and limited availability of implementations), implementations only supporting XSD 1.0 MAY achieve the same result by combining the following: 
 
-- An XSD 1.0 version of the *Core XML Schema*, obtained by filtering out all the schema elements with attribute `vc:minVersion="1.1"` (according to [XSV]) from the XSD 1.1 schema (e.g. with an [XSLT] stylesheet);
-- [ISO Schematron](#schematron) rules provided with this document (file with `.sch` extension), that implement the complex OCL constraints with similar - if not the same - XPath expressions as the XSD 1.1 assertions in the previous Option 1. Therefore, like XSD 1.1 assertions, certain generic Schematron assertions may be problematic for certain XSLT / XPath engines or use cases, in which case alternative assertions are suggested in XML comments before or after each possibly problematic `<assert>` element currently in use in the schema. Implementers SHOULD review these before use. Moreover, implementers MAY choose to replace some of the assertions with possibly more optimal implementations as long as they provide equivalent constraint enforcement. Each Schematron `pattern` element has the corresponding  [[ACAL-Core-1.0](#acal-core-10)] model's UML constraint (with OCL expression) reminded in the child `title` element. You may find further guidance about Schematron-based validation on [OASIS XACML TC's code repository](https://github.com/oasis-tcs/xacml-spec/).
+- An XSD 1.0 version of the *Core XML Schema*, obtained by filtering out all the schema elements with attribute `vc:minVersion="1.1"` (according to [[XSV](#xsv)]) from the XSD 1.1 schema (e.g. with an [[XSLT](#xslt)] stylesheet);
+- [ISO Schematron](#schematron) rules provided with this document (file with `.sch` extension), that implement the complex OCL constraints with similar - if not the same - XPath expressions as the XSD 1.1 assertions in the previous Option 1. Therefore, like XSD 1.1 assertions, certain generic Schematron assertions may be problematic for certain XSLT / XPath engines or use cases, in which case alternative assertions are suggested in XML comments before or after each possibly problematic `<assert>` element currently in use in the Schematron rules. Implementers SHOULD review these before use. Moreover, implementers MAY choose to replace some of the assertions with possibly more optimal implementations as long as they provide equivalent constraint enforcement. Each Schematron `pattern` element has the corresponding  [[ACAL-Core-1.0](#acal-core-10)] model's UML constraint (with OCL expression) reminded in the child `title` element. You may find further guidance about Schematron-based validation on [OASIS ACAL \[XACML\] TC's code repository](https://github.com/oasis-tcs/acal-spec/).
 
 #### 5.2.6.3 Limitations common to both options: identifier-typed keys
 
 Neither Option 1 nor Option 2 can achieve full enforcement of a constraint whose key properties (whether from Section 5.2.5 rules 4.3 through 4.5, or from this section) include a value of the `IdentifierType` simple type (see [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.2.3.8). Determining identifier equality for such properties requires first resolving any short identifier name to its full URI per [[ACAL-Core-1.0](#acal-core-10)] Section 8.3, a processing step that XML Schema validation and Schematron validation do not, and cannot, perform. Two elements whose `IdentifierType`-typed key properties differ only in short-identifier-name-vs-URI spelling will not be recognized as duplicates by either option. Implementers requiring full enforcement of such a constraint MUST perform this expansion themselves — for example with a preliminary XSLT canonicalization pass — before schema and/or Schematron validation.
 
-Where this limitation applies to a specific constraint in the *Core XML Schema* or Schematron rules accompanying this document, it is noted in an XML comment adjacent to the corresponding `<xs:assert>` or Schematron `<pattern>` element; those comments illustrate this general limitation rather than being exceptions to it. Implementers deriving an XSD 1.0 schema via the filtering procedure described in Section 5.2.6.2 should note that XML comments, including these, are not preserved by that procedure (a plain [XSLT] identity transform does not copy comment nodes unless it explicitly says to); this section is the durable statement of the limitation for implementers relying on that derivation path.
+Where this limitation applies to a specific constraint in the *Core XML Schema* or Schematron rules accompanying this document, it is noted in an XML comment adjacent to the corresponding `<xs:assert>` or Schematron `<pattern>` element; those comments illustrate this general limitation rather than being exceptions to it. Implementers deriving an XSD 1.0 schema via the filtering procedure described in Section 5.2.6.2 should note that XML comments, including these, are not preserved by that procedure (the [XSLT] stylesheet `xsd1.1-to-1.0.xsl` provided with this repository does not copy comment nodes, and a filtering stylesheet must say so explicitly if it is to copy them); this section is the durable statement of the limitation for implementers relying on that derivation path.
 
 ## 5.3 Content Types and Body representations (optional)
 
@@ -830,35 +757,28 @@ The implementation SHALL support a given content type in this list if and only i
 
 # 6 Safety, Security and Privacy Considerations (non-normative)
 
-This section identifies possible security and privacy compromise scenarios that should be considered when implementing this profile. The section is informative only. It is left to the implementer to decide whether these compromise scenarios are practical in their environment and to select appropriate safeguards.
+This section identifies possible security and privacy compromise scenarios that should be considered when implementing this specification. The section is informative only. It is left to the implementer to decide whether these compromise scenarios are practical in their environment and to select appropriate safeguards.
 
 ## 6.1 Threat model
 
-Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 11.1.
+Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 10.1.
 
 ## 6.2 Safeguards
 
-Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 11.2 for general considerations.
+Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 10.2 for general considerations.
 
 ### 6.2.1 Policy confidentiality
 
-Where the policy is represented in XML Representation defined by this profile, the *XML Encryption Syntax and Processing Candidate Recommendation* from W3C can be used to encrypt all or parts of an XML document. This specification is recommended for use with XACML.
+Where the policy is represented in XML Representation defined by this specification, the *XML Encryption Syntax and Processing* W3C Recommendation can be used to encrypt all or parts of an XML document. XML Encryption is recommended for use with XACML.
 
 ### 6.2.2 Policy integrity
 
-The selection of the appropriate mechanisms is left to the implementers. However, when **_policy_** is distributed between organizations to be acted on at a later time, or when the **_policy_** travels with the protected **_resource_**, it would be useful to sign the **_policy_**. In these cases and when the XML representation of policies (according to this profile) is used, the *XML Signature Syntax and Processing standard* from W3C is recommended to be used with XACML.
+The selection of the appropriate mechanisms is left to the implementers. However, when **_policy_** is distributed between organizations to be acted on at a later time, or when the **_policy_** travels with the protected **_resource_**, it would be useful to sign the **_policy_**. In these cases and when the XML representation of policies (according to this specification) is used, the *XML Signature Syntax and Processing standard* from W3C is recommended to be used with XACML.
 
 -------
 
 # 7 Conformance
 
-<!-- From OASIS Open Specification Template Instructions: 
-
-
-This section is **REQUIRED** and **MUST** be the last numbered section in the document. 
-
-
--->
 
 ## 7.1 Introduction
 
@@ -872,8 +792,8 @@ implement the corresponding XML syntax, typing, and constraint rules
 consistently.
 
 This specification is accompanied by normative machine-readable
-artifacts for core XACML syntax, core short
-identifiers, and selected ACAL profiles. These artifacts support
+artifacts for core XACML syntax and core short
+identifiers. These artifacts support
 consistent implementation and validation of XACML, but they do not
 change the peer relationship between XACML and the YAML and JSON ACAL
 representations.
@@ -887,21 +807,22 @@ For the purposes of this specification:
 - **O** means optional-to-implement
 
 For ACAL object types, these categories are inherited unchanged from
-[[ACAL-Core](#acal-core-10)] Section 11.2.1. XACML uses the same notation
+[[ACAL-Core-1.0](#acal-core-10)] Section 11.2.1. XACML uses the same notation
 again in [Section 7.3.2](#732-machine-readable-artifact-support) for
 XACML-specific artifacts.
 
 An implementation MUST follow
 [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments)
 and [Annex C](#annex-c-xacml-identifiers-normative) where they apply to
-implemented items in the following tables.
+the ACAL object types and machine-readable artifacts that the
+implementation supports.
 
 ## 7.3 Conformance Tables
 
 ### 7.3.1 ACAL Object-Type Conformance
 
 XACML inherits ACAL object-type conformance from
-[[ACAL-Core](#acal-core-10)] Section 11.2.1.
+[[ACAL-Core-1.0](#acal-core-10)] Section 11.2.1.
 
 A processor claiming core XACML conformance MUST support the XACML
 representation of every ACAL object type marked `M` in that table. It
@@ -912,7 +833,7 @@ This specification therefore does not repeat the ACAL core object-type
 conformance table.
 [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments)
 defines the XML representation of those same ACAL object types, while
-[[ACAL-Core](#acal-core-10)] remains authoritative for their
+[[ACAL-Core-1.0](#acal-core-10)] remains authoritative for their
 mandatory/optional classification.
 
 ### 7.3.2 Machine-Readable Artifact Support
@@ -923,6 +844,7 @@ The following machine-readable artifacts accompany this specification:
 |:---|:---:|:---|
 | `acal-core-xml-v4.0-schema.xsd` | M | Core XML Schema |
 | `acal-core-xml-v4.0-identifiers.xml` | M | Core short identifier set represented in XML |
+| `acal-core-xml-v4.0-schematron.sch` | O | Schematron rules used with the XSD 1.0 version ([Section 5.2.6.2](#5262-option-2-schematron-rules)) |
 
 The XML Schemas and short identifier sets for XPath Profile and JSONPath Profile support are artifacts of those Profiles' own Work Products, not of this Core specification.
 
@@ -938,10 +860,10 @@ The XML Schemas and short identifier sets for XPath Profile and JSONPath Profile
 ## A.1 Document Status
 
 
-This document was last revised or approved by the OASIS eXtensible Access Control Markup Language (XACML) TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
+This document was last revised or approved by the OASIS ACAL \[XACML\] TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
 
 
-TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/xacml/.
+TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/acal/.
 
 
 NOTE: any machine-readable content (Computer Language Definitions) declared Normative for this Work Product is provided in separate plain text files. In the event of a discrepancy between any such plain text file and display content in the Work Product's prose narrative document(s), the content in the separate plain text file prevails.
@@ -962,7 +884,7 @@ This document and translations of it may be copied and furnished to others, and 
 The limited permissions granted above are perpetual and will not be revoked by OASIS or its successors or assigns, as provided in the OASIS IPR Policy.
 
 
-This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited-Mode) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project’s web page ([XACML IPR Policy](https://www.oasis-open.org/committees/xacml/ipr.php)).
+This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited-Mode) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project’s web page ([OASIS ACAL \[XACML\] TC IPR page](https://www.oasis-open.org/committees/acal/ipr.php)).
 
 
 This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. OASIS AND ITS MEMBERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THIS DOCUMENT OR ANY PART THEREOF.
@@ -996,111 +918,23 @@ Normative references are specific (identified by date of publication and/or edit
 
 ## B.1 Normative References
 
-<!-- (Reference sources:
-For references to IETF RFCs, use the approved citation formats at:  
-https://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html. 
-
-For references to W3C Recommendations, use the approved citation formats at: 
-https://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html.  
-Remove this note before submitting for publication.
--->
-
 The following documents are referenced in such a way that some or all of their content constitutes requirements of this document.
 
 ###### [ACAL-Core-1.0]
 
-Attribute-Centric Authorization Language (ACAL) Version 1.0. Edited by Steven Legg and Cyril Dangerville. 18 February 2026. OASIS Committee Specification Draft 01.
-
-###### [CMF]
-
-Martin J. Dürst et al, eds., Character Model for the World Wide Web 1.0: Fundamentals, W3C Recommendation 15 February 2005, https://www.w3.org/TR/2005/REC-charmod-20050215/
+_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 ###### [DS]
 
-D. Eastlake et al., XML-Signature Syntax and Processing, https://www.w3.org/TR/xmldsig-core/, World Wide Web Consortium.
-
-###### [ENTITIES]
-
-_XACML v3.0 Related and Nested Entities Profile Version 1.0_. Edited by Steven Legg. 16 February 2021. OASIS Committee Specification 02. https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/cs02/xacml-3.0-related-entities-v1.0-cs02.html. Latest stage: https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/xacml-3.0-related-entities-v1.0.html.
-
-###### [exc-c14n]
-
-J. Boyer et al, eds., Exclusive XML Canonicalization, Version 1.0, W3C Recommendation 18 July 2002, https://www.w3.org/TR/2002/REC-xml-exc-c14n-20020718/
-
-###### [Hancock]
-
-Hancock, Polymorphic Type Checking, in Simon L. Peyton Jones, Implementation of Functional Programming Languages, Section 8, Prentice-Hall International, 1987.
-
-###### [INFOSET]
-
-XML Information Set (Second Edition), W3C Recommendation, 4 February 2004, https://www.w3.org/TR/xml-infoset/
-
-###### [ISO10181-3]
-
-ISO/IEC 10181-3:1996 Information technology – Open Systems Interconnection -- Security frameworks for open systems: Access control framework.
-
-###### [Kudo00]
-
-Kudo M and Hada S, XML document security based on provisional authorization, Proceedings of the Seventh ACM Conference on Computer and Communications Security, Nov 2000, Athens, Greece, pp 87-96.
-
-###### [LDAP-1]
-
-RFC2256, A summary of the X500(96) User Schema for use with LDAPv3, Section 5, M Wahl, December 1997, https://www.ietf.org/rfc/rfc2256.txt
-
-###### [LDAP-2]
-
-RFC2798, Definition of the inetOrgPerson, M. Smith, April 2000, https://www.ietf.org/rfc/rfc2798.txt
-
-###### [MathML]
-
-Mathematical Markup Language (MathML), Version 2.0, W3C Recommendation, 21 October 2003, https://www.w3.org/TR/2003/REC-MathML2-20031021/
-
-###### [Perritt93]
-
-Perritt, H. Knowbots, Permissions Headers and Contract Law, Conference on Technological Strategies for Protecting Intellectual Property in the Networked Multimedia Environment, April 1993. Available at: https://www.cni.org/resources/historical-resources/technological-strategies-for-protecting-intellectual-property-in-the-networked-multimedia-environment/permission-headers-and-contract-law
-
-###### [RBAC]
-
-David Ferraiolo and Richard Kuhn, Role-Based Access Controls, 15th National Computer Security Conference, 1992.
+D. Eastlake et al., XML Signature Syntax and Processing (Second Edition), W3C Recommendation 10 June 2008, https://www.w3.org/TR/2008/REC-xmldsig-core-20080610/
 
 ###### [RFC2119]
 
 Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, https://www.rfc-editor.org/info/rfc2119.
 
-###### [RFC2732]
-
-RFC 2732, Hinden R, Carpenter B, Masinter L, Format for Literal IPv6 Addresses in URL's,  https://www.ietf.org/rfc/rfc2732.txt
-
-###### [RFC3198]
-
-IETF RFC 3198: Terminology for Policy-Based Management, November 2001. https://www.ietf.org/rfc/rfc3198.txt
-
 ###### [RFC8174]
 
 Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, https://www.rfc-editor.org/info/rfc8174.
-
-###### [Schematron]
-
-ISO/IEC 19757-3:2025, Information technology — Document Schema Definition Languages (DSDL) - Part 3: Rule-based validation using Schematron, Edition 4, September 2025. Online: https://www.iso.org/standard/85625.html.
-
-###### [UAX15]
-
-Mark Davis, Martin Dürst, Unicode Standard Annex #15: Unicode Normalization Forms, Unicode 5.1, https://unicode.org/reports/tr15/
-
-###### [UTR36]
-
-Davis, Mark, Suignard, Michel, Unicode Technical Report #36: Unicode Security Considerations, https://www.unicode.org/reports/tr36/
-
-###### [XACMLAdmin]
-
-OASIS Committee Draft 03, XACML v3.0 Administration and Delegation Profile Version 1.0. 11 March 2010, https://docs.oasis-open.org/xacml/3.0/xacml-3.0-administration-v1-spec-cd-03-en.doc
-
-
-
-
-###### [XACMLv1.1]
-
-OASIS Committee Specification, Extensible access control markup language (XACML) Version 1.1. 7 August 2003, https://www.oasis-open.org/committees/xacml/repository/cs-xacml-specification-1.1.pdf
 
 ###### [XF]
 
@@ -1110,19 +944,6 @@ W3C XQuery, XPath, and XSLT Functions and Operators Namespace Document (XPath an
 
 Bray, Tim, et.al. eds, Extensible Markup Language (XML) 1.0 (Fifth Edition), W3C Recommendation 26 November 2008, https://www.w3.org/TR/2008/REC-xml-20081126/
 
-###### [XMLid]
-
-Marsh, Jonathan, et.al. eds, xml:id Version 1.0. W3C Recommendation 9 September 2005, https://www.w3.org/TR/2005/REC-xml-id-20050909/
-
-###### [XPath]
-
-XML Path Language (XPath) 3.1, W3C Recommendation 21 March 2017, https://www.w3.org/TR/xpath-31/
-
-###### [XPathFunc]
-
-W3C XQuery, XPath, and XSLT Functions and Operators Namespace Document (XPath and XQuery Functions and Operators 3.1) 21 March 2017, https://www.w3.org/2005/xpath-functions/
-
-
 ###### [XS]
 
 XML Schema 1.0, parts 1 and 2. Available at: https://www.w3.org/TR/xmlschema-1/ and https://www.w3.org/TR/xmlschema-2/
@@ -1130,6 +951,14 @@ XML Schema 1.0, parts 1 and 2. Available at: https://www.w3.org/TR/xmlschema-1/ 
 ###### [XS11]
 
 XML Schema 1.1, parts 1 and 2. Available at: https://www.w3.org/TR/xmlschema11-1/ and https://www.w3.org/TR/xmlschema11-2/
+
+## B.2 Informative References
+
+The following referenced documents are not required for the application of this document but may assist the reader with regard to a particular subject area.
+
+###### [Schematron]
+
+ISO/IEC 19757-3:2025, Information technology — Document Schema Definition Languages (DSDL) - Part 3: Rule-based validation using Schematron, Edition 4, September 2025. Online: https://www.iso.org/standard/85625.html.
 
 ###### [XSLT]
 
@@ -1139,27 +968,17 @@ XSL Transformations (XSLT) Version 1.0, W3C Recommendation 16 November 1999, htt
 
 W3C, XML Schema Versioning namespace, August 2007. Online: https://www.w3.org/2007/XMLSchema-versioning/
 
+###### [ENTITIES]
 
-## B.2 Informative References
+_XACML v3.0 Related and Nested Entities Profile Version 1.0_. Edited by Steven Legg. 16 February 2021. OASIS Committee Specification 02. https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/cs02/xacml-3.0-related-entities-v1.0-cs02.html. Latest stage: https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/xacml-3.0-related-entities-v1.0.html.
 
-The following referenced documents are not required for the application of this document but may assist the reader with regard to a particular subject area.
+###### [XPath]
 
-###### [CM]
-
-Character Model for the World Wide Web: String Matching W3C Working Group Note 11 August 2021, https://www.w3.org/TR/charmod-norm/, World Wide Web Consortium.
-
-###### [Hinton94]
-
-Hinton, H, M, Lee, E, S, The Compatibility of Policies, Proceedings 2nd ACM Conference on Computer and Communications Security, Nov 1994, Fairfax, Virginia, USA.
-
-###### [Sloman94]
-
-Sloman, M. Policy Driven Management for Distributed Systems. Journal of Network and Systems Management, Volume 2, part 4. Plenum Press. 1994.
-
--------
-
+XML Path Language (XPath) 3.1, W3C Recommendation 21 March 2017, https://www.w3.org/TR/xpath-31/
 
 # Annex C XACML identifiers (normative)
+
+(This annex forms an integral part of this Specification.)
 
 This section defines standard identifiers for commonly used entities.
 
@@ -1179,11 +998,13 @@ The `ShortIdSet.Id` value of this artifact is:
 
 `urn:oasis:names:tc:acal:1.0:core:identifiers`
 
-**CAUTION:** This short identifier set SHALL NOT be modified except by the XACML TC. Since its `ShortIdSet.Id` is using one of the prefixes reserved for XACML TC use (`urn:oasis:names:tc:acal:`), users outside the TC SHALL NOT create a new short identifier set of their own with the same `Id`.
+**CAUTION:** This short identifier set SHALL NOT be modified except by the OASIS ACAL \[XACML\] TC. Since its `ShortIdSet.Id` is using one of the prefixes reserved for OASIS ACAL \[XACML\] TC use (`urn:oasis:names:tc:acal:`), a user outside the TC SHALL NOT create a short identifier set of their own with the same `Id`.
 
 -------
 
 # Annex D XML Schema (normative)
+
+(This annex forms an integral part of this Specification.)
 
 This section includes the XML Schema for the XACML syntax defined in this specification, more particularly in Section 5 (i.e. obtained by applying the ACAL-to-XML mapping rules):
 
@@ -1195,25 +1016,23 @@ This section includes the XML Schema for the XACML syntax defined in this specif
 
 # Annex E How to generate HTML and PDF versions
 
+(This annex does not form an integral part of this Specification and is informational.)
+
 ## Online generation
 
-HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS XACML TC code repository](https://github.com/oasis-tcs/xacml-spec/). Go to  Github Actions on the repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
+HTML/PDF versions are generated automatically online via GitHub Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC code repository](https://github.com/oasis-tcs/acal-spec/). Go to GitHub Actions on the repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
 
 ## Offline generation
 
 ### Prerequisites
 
 The following tools are required:
-
 - [Pandoc](https://pandoc.org/) **v3.2.1 or later** ( [latest release](https://github.com/jgm/pandoc/releases/latest) );
 - [Pandoc-include filter](https://github.com/DCsunset/pandoc-include).
 
-Either install them on your system or, if you have Docker installed already, simply use the following shell alias:
-```
-$ alias pandoc='docker run --rm --volume "$(pwd):/data" pandoc/extra'
-```
+Install them on your system.
 
-Git clone or get a local copy of [OASIS XACML TC code repository](https://github.com/oasis-tcs/xacml-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC code repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
 
 ### CSS stylesheet
 
@@ -1245,7 +1064,7 @@ Beware that **the result PDF - the embedded fonts in particular - may differ dep
 **For official TC publications**, add the `--official` argument to avoid this issue and produce a system-independent output:
 
 ```console
-$ pandoc/mkdocs.sh --pdf --official --output /tmp acal-core-v%version%.md
+$ pandoc/mkdocs.sh --pdf --official --output /tmp acal-core-xml-v%version%.md
 ```
 
 In this case, the generation will use a public Linux container image (`ghcr.io/oasis-tcs/chrome-headless`) with a fixed installed set of fonts to generate the PDF.
@@ -1256,25 +1075,11 @@ In this case, the generation will use a public Linux container image (`ghcr.io/o
 (This appendix does not form an integral part of this Specification and is informational.)
 
 
-<!-- From OASIS Open Specification Template Instructions:
-
-
-All parts in this appendix are optional to the TC. Individuals or companies, past or present, may request that their name and/or affiliation is not included in this list. 
-
-
--->
-
-
 ## Leadership
 
 
 The following individuals have had significant leadership positions during the development of this document, not just this version of the document, and they are gratefully acknowledged:
 
-<!-- From OASIS Open Specification Template Instructions:
-
-This section **SHOULD** include the leadership (chairs, sub committees chairs, secretaries, editors, etc.) of this document, and not just for this version of the document, even if they are no longer members of the TC.
-
--->
 
 - Chairs
   - Bill Parducci, Individual
@@ -1283,26 +1088,16 @@ This section **SHOULD** include the leadership (chairs, sub committees chairs, s
 - Editors
   - Steven Legg, ViewDS Identity Solutions
   - Cyril Dangerville, THALES
+  - Bill Parducci, Individual
 
-
-## Special Thanks
-
-<!-- This is an optional subsection to call out contributions from TC members. If a TC wants to thank non-TC members then they should avoid using the term "contribution" and instead thank them for their "expertise" or "assistance". -->
-
-Substantial contributions to this document from the following individuals are gratefully acknowledged:
-
-Steven Legg, ViewDS Identity Solutions \
-Cyril Dangerville, THALES
 
 ## Participants
 
-<!-- A TC can determine who they list here, however, TC Observers must not be listed. It is common practice for TCs to list everyone that was part of the TC during the creation of the document, but this is ultimately a TC decision on who they want to list and not list, and in what order. -->
 
 The following individuals were members of this committee during the creation of this document, not just this version of the document, and their contributions are gratefully acknowledged:
 
-**XACML TC Members:**
+**OASIS ACAL \[XACML\] TC Members:**
 
-- Hal Lockhart, Individual
 - Bill Parducci, Individual
 - Steven Legg, ViewDS Identity Solutions
 - Cyril Dangerville, THALES
@@ -1314,11 +1109,24 @@ The following individuals were members of this committee during the creation of 
 
 (This appendix does not form an integral part of this Specification and is informational.)
 
-<!-- From OASIS Open Specification Template Instructions: 
 
-The appendix **SHOULD** contain any explanatory text about the reason for this version including any major changes. The level of detail that is included in this appendix is up to the editors and chairs of the TC to determine. This appendix is **REQUIRED**, if there are no changes then one is to put "None." In addition to any descriptive text, all major changes **SHOULD** be in a bulleted list so that reviewers and implementers can easily understand what they need to know.
+The changes made since the previous version (Committee Specification Draft 01) are the following. Section numbers refer to this version.
 
--->
+- The XML Schema follows the changes to the ACAL model made since that version, which [[ACAL-Core-1.0](#acal-core-10)] Appendix 2 lists: among them, `Argument` replaces `Expression` in `Apply`, `PolicyReference` and `SharedVariableReference`, with named arguments; `RequestReference` contains a sequence of `RequestEntityReference` elements, each a local identifier, instead of a sequence of `RequestEntityReferenceType` objects; attributes are unique by `(AttributeId, DataType, Issuer)`; notice identifiers need not be unique; and the `Category` of `MissingAttributeDetail` is optional.
+- This specification states that [[ACAL-Core-1.0](#acal-core-10)] remains authoritative for the ACAL model, its evaluation semantics and the mandatory or optional status of each object type, and that XACML defines only their XML representation ([Section 4.1](#41-requirements)).
+- An `xs:integer` value outside an implementation's supported integer interval is a valid `xs:integer` value and is not to be treated as schema-invalid solely because of its magnitude ([Section 5.1.1](#511-primitive-types-mapped-to-standard-xsd-data-types)).
+- The `ValueType` mapping states how the concrete `ValueType` subtype is determined from the effective `DataType` and the XML content form ([Section 5.2.3](#523-valuetype-mapping-rules)).
+- Under the default mapping rules ([Section 5.2.4](#524-default-mapping-rules-for-complex-acal-types-other-than-valuetype)), an abstract XSD element is now defined for an empty abstract type used by more than one property (rule 1.1.1) and for an abstract type that inherits from another type (rules 1.2.1.1 to 1.2.1.3). Where the supertype is mapped to an element, the subtype's element is in the substitution group of its direct supertype's element (rules 1.2.1.2 and 1.2.1.3), replacing csd01's rule based on the closest supertype used as a property's datatype; and a subtype with no property now has its own abstract complex type extending its supertype (rule 1.2.1.2).
+- The limits of XML Schema and Schematron enforcement are stated for a multi-property uniqueness constraint whose key properties are optional ([Section 5.2.5](#525-property-mapping-rules), rule 4.5) and for any key that contains an `IdentifierType` value ([Section 5.2.6.3](#5263-limitations-common-to-both-options-identifier-typed-keys)).
+- The Conformance section is restructured: XACML inherits ACAL object-type conformance from [[ACAL-Core-1.0](#acal-core-10)] instead of repeating a schema-element table, and lists the machine-readable artifacts that accompany this specification ([Section 7](#7-conformance)). The XML Schemas of the XPath and JSONPath Profiles are now artifacts of those Profiles. An implementation follows Section 5 and Annex C where they apply to the ACAL object types and machine-readable artifacts that the implementation supports ([Section 7.2](#72-conformance-categories)).
+- The core short identifier set artifact and its reserved `ShortIdSet` identifier are described in [Annex C.2](#c2-core-short-identifier-set).
+- Requirements and recommendations previously written in lowercase or mixed case are written with the uppercase BCP 14 keywords: a single-use empty datatype "SHALL NOT be mapped" to a dedicated XML type ([Section 5.2.2](#522-single-use-empty-datatypes)), and the recommendation that implementers add further restrictions to the XML schema in production ([Section 5.2.1](#521-anytype-mapping-rule)) now uses "SHOULD"; and "SHALL not" in the `PolicyReference` and `SharedVariableReference` annotations of the XML schema and in the corresponding Schematron rule titles is written "SHALL NOT".
+- The simple-type mapping covers `<<restrictedString>>` types alongside `<<primitive>>` and `<<enumeration>>` types, and the property mapping rule applies to all three ([Section 5.1](#51-mapping-acal-simple-types), [Section 5.2.5](#525-property-mapping-rules) rule 2).
+- [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
+- The example short-identifier set in [Section 4.3](#43-example-short-identifier-set-non-normative) is well-formed (its `ShortIdSet` element had been closed before its children), and the example `IdentifierType` values are written without quotation marks.
+- Editorial: the title is now "XACML Version 4.0 (eXtensible Access Control Markup Language)" (csd01: "eXtensible Access Control Markup Language (XACML) Version 4.0 (XML Representation of ACAL Version 1.0)"), and the Technical Committee is renamed, and document and repository URLs are updated accordingly; the references and citations are corrected; and the example short identifier set is marked non-normative ([Section 4.3](#43-example-short-identifier-set-non-normative)) and repaired so that its `ShortIdSet` element is well-formed (csd01 closed it before its children).
+
+The remainder of this appendix describes how XACML 4.0 differs from XACML 3.0.
 
 XACML 4.0 differs from XACML 3.0 in the following ways:
 
@@ -1326,10 +1134,10 @@ XACML 4.0 differs from XACML 3.0 in the following ways:
 
   - Compared to XACML 3.0, the `<PolicySet>`, `<PolicySetIdReference>`, `<PolicySetCombinerParameters>` and `<PolicySetDefaults>` elements and `PolicySet` type no longer appear.
 
-  - Compared to XACML 3.0, the `PolicyType` type now allows child `<Policy>` and `<PolicyReference>` (was `PolicyIdReference`) elements.
+  - Compared to XACML 3.0, the `PolicyType` type now allows child `<Policy>` and `<PolicyReference>` (was `PolicyIdReference`, which also replaces `PolicySetIdReference`) elements.
 
   - Compared to XACML 3.0, a `Policy` may contain more than one `PolicyDefaults` element, one per ACAL Profile possibly. 
-  
+
   -  EarliestVersion and LatestVersion attributes removed from `<PolicyReference>`
 
 - The target (`Target` element) of a policy has been changed to have the same structure as the condition of a rule (i.e., a single Boolean expression). From the XML perspective, this means that the `<AnyOf>`, `<AllOf>` and `<Match>` elements no longer appear.
@@ -1355,12 +1163,12 @@ XACML 4.0 differs from XACML 3.0 in the following ways:
 
 - `Attribute` has a new optional `DataType` attribute (set to the standard string type as default), to have a common data-type for all the attribute values. In XACML 3.0, defining the data-type for each `AttributeValue` individually led to the risk of mixing different datatypes in the same attribute. We consider this bad practice (one may simply split in different attributes if using different data-types).
 
-- `AttributeValue` is replaced with more generic `Value` whose `DataType` is now optional, i.e. it may be omitted when it is already defined by at the parent or ancestor level, which simplifies expressions with literal values. In particular, as a result of the previous change, in an `Attribute`, the `Value`'s `DataType` is now omitted since defined at the `Attribute` level already.
+- `AttributeValue` is replaced with more generic `Value` whose `DataType` is now optional, i.e. it may be omitted when it is already defined at the parent or ancestor level, which simplifies expressions with literal values. In particular, as a result of the previous change, in an `Attribute`, the `Value`'s `DataType` is now omitted since defined at the `Attribute` level already.
 
 - `Content` may now contain XML, JSON and possibly other content types in the future, and therefore has a new data model - more generic - that consists of a `Body` element (content body which is similar to former Content value) and two attributes: `MediaType` (Content media type which indicates whether it is XML, JSON or some other content type) and `Encoding` (indicates whether the body is encoded with a particular mechanism, e.g. Base64-encoded data).
 
 - `AttributeSelector` changes:
-  
+
   - `DataType` attribute changed to be optional with the standard string type as default value to simplify the element declaration in most cases.
    * `MustBePresent`: changed to be optional with `false` as default value, to simplify the element declaration in most cases.
    * `AttributeSelector` and `Path` type of expression are abstract in ACAL model, concrete types of AttributeSelector Path expressions to be defined in ACAL Profiles, e.g. XPath Profile.
@@ -1372,24 +1180,26 @@ XACML 4.0 differs from XACML 3.0 in the following ways:
 
 - The `xml:id` attribute for an attribute category is replaced by a generic 'Id' property so that all ACAL representation formats are on an equal footing.
 
-- The quantified expressions (`ForAny`, `ForAll`, `Select` and `Map`) and the `entity` data type from the XACML 3.0 Entities Profile [[ENTITIES](#entities)] have been incorporated in ACAL version 1.0. The `attribute-designator` function from the profile has been reinvented as the `EntityAttributeDesignatorType` expression object type and the `attribute-selector` function from the the profile has been reinvented as the `EntityAttributeSelectorType` expression object type.
+- The quantified expressions (`ForAny`, `ForAll`, `Select` and `Map`) and the `entity` data type from the XACML 3.0 Entities Profile [[ENTITIES](#entities)] have been incorporated in ACAL version 1.0. The `attribute-designator` function from the profile has been reinvented as the `EntityAttributeDesignatorType` expression object type and the `attribute-selector` function from the profile has been reinvented as the `EntityAttributeSelectorType` expression object type.
 
-- Added new `BundleType` object which allows to bundle variable definitions (`SharedVariableDefintion`), short identifiers (`ShortIdSet`) and policies together in order to be portable / reused from one ACAL system to another, more particularly one PDP to another.
+- Added new `BundleType` object which allows to bundle variable definitions (`SharedVariableDefinition`), short identifiers (`ShortIdSet`) and policies together in order to be portable / reused from one ACAL system to another, more particularly one PDP to another.
 - Changed `Decision` element to an XML attribute in `Result`.
 
 - XPath features moved to separate ACAL XPath Profile: XPath-based AttributeSelector, XPath-based functions, XPath expression datatype.
 
-- Deprecated prefixes `urn:oasis:names:tc:xacml:` and `https://www.w3.org/2001/XMLSchema#` in favor of `urn:oasis:names:tc:acal:` for all standard identifiers (algorithms, status codes, data-types, functions, attributes and categories)
+- Deprecated prefixes `urn:oasis:names:tc:xacml:` and `http://www.w3.org/2001/XMLSchema#` in favor of `urn:oasis:names:tc:acal:` for all standard identifiers (algorithms, status codes, data-types, functions, attributes and categories)
+- `SharedVariableReference` is in the substitution group of `NonLiteralExpression` like the other expression elements, so that it can be used where an expression is expected; the `VersionMatchType` pattern allows `+` only as the last component; the XML Schema data types' deprecated identifiers begin with `http://`; drafting comments with issue numbers and typos are removed from the schemas.
+- Editorial: the terms of [ACAL Core](#acal-core-10) Section 2 and its abbreviations apply ([Section 2](#2-definitions-and-acronyms)); the documentation of the `Body` element recommends (SHOULD) that implementers add restrictions, as [Section 5.2.1](#521-anytype-mapping-rule) does (it said "shall"); a sentence on the location of Schematron alternatives and the description of `RequestEntityReference` of this appendix are corrected.
 
 - An `xs:integer` value that is outside an implementation's supported integer interval is not schema-invalid, although the implementation may refuse the containing request or policy ([Section 5.1.1](#511-primitive-types-mapped-to-standard-xsd-data-types)).
 
 ## Revision History
 
-Latest revision history can be obtained from [OASIS XACML TC's code repository](https://github.com/oasis-tcs/xacml-spec/blob/v%version%-%stage_revision%/acal-core-xml-v%version%-%stage_revision%.md).
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's code repository](https://github.com/oasis-tcs/acal-spec/blob/v1.0-%stage_revision%/acal-core-xml-v%version%-%stage_revision%.md).
 
 | Revision | Date | Editor | Changes Made |
 | :--- | :--- | :--- | :--- |
-| specname-v1.0-wd01 | 2024-08-09 | Steven Legg | Initial working draft |
+| acal-core-xml-v4.0-wd01 | 2024-08-09 | Steven Legg | Initial working draft |
 | | 2024-09-09 | Steven Legg | Changed **_targets_** to a single child expression. |
 | | | | Removed the `<AnyOf>`, `<AllOf>` and `<Match>` elements. |
 | | | | Removed **_targets_** from rules. |

@@ -16,27 +16,28 @@ keywords: ["access", "authorization", "ABAC", "policylanguage", "XML", "XPath", 
 
 ### This version
 
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/xpath/v%version%/%stage_revision%/acal-xpath-v%version%-%stage_revision%.html (Authoritative)
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/xpath/v%version%/%stage_revision%/acal-xpath-v%version%-%stage_revision%.pdf
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/xpath/v%version%/%stage_revision%/acal-xpath-v%version%-%stage_revision%.md
+- https://docs.oasis-open.org/acal/acal/profiles/xpath/v%version%/%stage_revision%/acal-xpath-v%version%-%stage_revision%.html (Authoritative)
+- https://docs.oasis-open.org/acal/acal/profiles/xpath/v%version%/%stage_revision%/acal-xpath-v%version%-%stage_revision%.pdf
+- https://docs.oasis-open.org/acal/acal/profiles/xpath/v%version%/%stage_revision%/acal-xpath-v%version%-%stage_revision%.md
 
 
 ### Previous version
 
-
-N/A
+- https://docs.oasis-open.org/acal/acal/profiles/xpath/v1.0/csd01/acal-xpath-v1.0-csd01.html (Authoritative)
+- https://docs.oasis-open.org/acal/acal/profiles/xpath/v1.0/csd01/acal-xpath-v1.0-csd01.pdf
+- https://docs.oasis-open.org/acal/acal/profiles/xpath/v1.0/csd01/acal-xpath-v1.0-csd01.md
 
 ### Latest version
 
 
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/xpath/v1.0/acal-xpath-v1.0.html (Authoritative)
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/xpath/v1.0/acal-xpath-v1.0.pdf
-- https://docs.oasis-open.org/xacml/acal/acal/profiles/xpath/v1.0/acal-xpath-v1.0.md
+- https://docs.oasis-open.org/acal/acal/profiles/xpath/v1.0/acal-xpath-v1.0.html (Authoritative)
+- https://docs.oasis-open.org/acal/acal/profiles/xpath/v1.0/acal-xpath-v1.0.pdf
+- https://docs.oasis-open.org/acal/acal/profiles/xpath/v1.0/acal-xpath-v1.0.md
 
 
 ### Technical Committee
 
-[OASIS eXtensible Access Control Markup Language (XACML) TC](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d)
+[OASIS Attribute-Centric Authorization Language (ACAL) \[supersedes XACML\]](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d)
 
 
 ### Chairs
@@ -54,8 +55,20 @@ N/A
 ### Editors
 
 
-- Steven Legg (steven.legg@viewds.com), [ViewDS Identity Solutions](https://www.viewds.com/)
-- Cyril Dangerville (cyril.dangerville@thalesgroup.com), [THALES](https://www.thalesgroup.com/)
+- Steven Legg (steven.legg@viewds.com), ViewDS Identity Solutions
+- Cyril Dangerville (cyril.dangerville@thalesgroup.com), THALES
+- Bill Parducci (bill@parducci.net), Individual
+
+
+### Additional artifacts
+
+
+This document is one component of a Work Product that also includes:
+
+* [XML schema](acal-xpath-xml-v4.0-schema.xsd) (XACML representation);
+* [JSON schema](acal-xpath-json-v%version%-schema.json) (JACAL representation);
+* [YAML structural schema](acal-xpath-yaml-v%version%-structure.schema.yaml) (YACAL representation);
+* Short identifier sets in [XML](acal-xpath-xml-v4.0-identifiers.xml), [JSON](acal-xpath-json-v%version%-identifiers.json) and [YAML](acal-xpath-yaml-v%version%-identifiers.yaml).
 
 
 ### Abstract
@@ -71,14 +84,14 @@ When referencing this document, the following citation format should be used:
 
 **[ACAL-XPath-1.0]**
 _%title%_.
-Edited by Steven Legg and Cyril Dangerville. %date%. OASIS %subtitle%. https://docs.oasis-open.org/xacml/acal/acal/profiles/xpath/v%version%/%stage_revision%/acal-xpath-v%version%-%stage_revision%.html . Latest stage: https://docs.oasis-open.org/xacml/acal/acal/profiles/xpath/v1.0/acal-xpath-v1.0.html .
+Edited by Steven Legg, Cyril Dangerville and Bill Parducci. %date%. OASIS %subtitle%. https://docs.oasis-open.org/acal/acal/profiles/xpath/v%version%/%stage_revision%/acal-xpath-v%version%-%stage_revision%.html . Latest version: https://docs.oasis-open.org/acal/acal/profiles/xpath/v1.0/acal-xpath-v1.0.html .
 
 
 ### Related Work
 
 This document is related to:
 
-- _Attribute-Centric Authorization Language (ACAL) Version 1.0_.
+- _Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
 
 ## License, Document Status, and Notices
@@ -90,48 +103,7 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
 
 
 ## Table of Contents
-<!-- ToC template from OASIS Open Specification Template Instructions:
 
-- [1 Scope](#1-scope)
-- [2 Definitions and Acronyms](#2-definitions-and-acronyms)
-  - [2.1 Definitions](#2.1-definitions)
-    - [2.1.1 Terms Defined Elsewhere](#2.1.1-terms-defined-elsewhere)
-    - [2.1.2 Terms Defined in this Document](#2.1.2-terms-defined-in-this-document)
-  - [2.2 Abbreviations and Acronyms](#2.2-abbreviations-and-acronyms)
-- [3 Document Conventions](#3-document-conventions)
-  - [3.1 Key Words](#3.1-key-words)
-  - [3.2 Typographical Conventions](#3.2-typographical-conventions)
-- [4 Introduction](#4-introduction)
-  - [4.1 Any Additional Introduction Subsections That are Needed](#4.1-any-additional-introduction-subsections-that-are-needed)
-  - [4.2 Changes From the Previous Version](#4.2-changes-from-the-previous-version)
-- [5 Level 1 Section Header](#5-level-1-section-header)
-  - [5.1 Level 2 Section Header](#5.1-level-2-section-header)
-    - [5.1.1 Level 3 Section Header](#5.1.1-level-3-section-header)
-      - [5.1.1.1 Level 4 Section Header](#5.1.1.1-level-4-section-header)
-        - [5.1.1.1.1 Level 5 Section Header](#5.1.1.1.1-level-5-section-header)
-          - [5.1.1.1.1.1 Level 6 Section Header](#5.1.1.1.1.1-level-6-section-header)
-- [6 Additional Sections as Needed](#6-additional-sections-as-needed)
-- [7 Safety, Security, and Data Protection Considerations](#7-safety,-security,-and-data-protection-considerations)
-- [8 Conformance](#8-conformance)
-- [Annex A License, Document Status and Notices](#annex-a-license,-document-status-and-notices)
-  - [A.1 Document Status](#a.1-document-status)
-  - [A.2 License and Notices](#a.2-license-and-notices)
-- [Annex B References](#annex-b-references)
-  - [B.1 Normative References](#b.1-normative-references)
-  - [B.2 Informative References](#b.2-informative-references)
-- [Annex C Additional Annex as Needed](#annex-c-additional-annex-as-needed)
-  - [C.1 Subsection Title](#c.1-subsection-title)
-  - [C.1.1 Sub-subsection](#c.1.1-sub-subsection)
-- [Appendix 1 Acknowledgments](#appendix-1-acknowledgments
-  - [Leadership](#leadership)
-  - [Special Thanks](#special-thanks)
-  - [Participants](#participants)
-- [Appendix 2 Changes From Previous Version](#appendix-2-changes-from-previous-version)
-  - [Revision History](#revision-history)
-- [Appendix 3 Additional Appendix as Needed](#appendix-3-additional-appendix-as-needed)
-  - [Subsection Title](#subsection-title)
-- [Sub-subsection](#sub-subsection)
--->
 
 <!-- Generated ToC -->
 - [1 Scope](#1-scope)
@@ -205,7 +177,6 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
     - [PDF generation](#pdf-generation)
 - [Appendix 1 Acknowledgments](#appendix-1-acknowledgments)
   - [Leadership](#leadership)
-  - [Special Thanks](#special-thanks)
   - [Participants](#participants)
 - [Appendix 2 Changes From Previous Version](#appendix-2-changes-from-previous-version)
   - [Revision History](#revision-history)
@@ -216,22 +187,11 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
 
 # 1 Scope
 
-<!-- OASIS Open Specification Template Instructions: 
-
-What is the purpose and scope of this document?   
-Best practices: 
-
-- Expect this text to be reused in multiple other places to explain the specification in summary form.  
-- This is not the TC or OP scope (which is an IPR and rules boundary);  rather, this section is the summary intended purpose of this specification.  
-- Short is better; four paragraphs or less is recommended.  
-- If use of this spec is deliberately created to rely on or complement another standard, consider briefly mentioning that here as context.  
-- To the extent that discussion of the larger context of the spec, or its history, or the circumstances that led to its creation or revision, are necessary, they belong in the Introduction, not here. 
-
--->
 
 This ACAL profile defines an ACAL data-type for XPath expressions, ACAL functions based on XPath, concrete types of `AttributeSelector` and `EntityAttributeSelector` using XPath expressions to extract attributes from ACAL Request's `Content`, as well as a default XPath version for those expressions, i.e. concrete types of `PolicyDefaults` and `RequestDefaults`.
 
-Concrete representations (data formats) are to be provided as separate specifications and therefore out of scope of this document.
+The XML, JSON and YAML representations of ACAL are defined by separate specifications (XACML [[XACML-Core-4.0](#xacml-core-40)], JACAL [[JACAL-Core-1.0](#jacal-core-10)] and YACAL [[YACAL-Core-1.0](#yacal-core-10)]); this profile defines its extensions to those representations and provides the corresponding schemas and short identifier sets.
+
 
 ---
 
@@ -247,7 +207,6 @@ Concrete representations (data formats) are to be provided as separate specifica
 
 This document uses the following terms defined elsewhere:
 
-<!-- The following syntax (: definition) for definition lists requires the 'definition_lists' extension enabled in the pandoc command (-f gfm+definition_lists) to be rendered properly. -->
 See Section 2 of [[ACAL-Core-1.0](#acal-core-10)].
 
 ### 2.1.2 Terms Defined in this Document
@@ -272,12 +231,12 @@ None.
 ## 3.1 Key Words
 
 
-The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**", "**NOT RECOMMENDED**", "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in BCP 14 [[RFC2119](#rfc2119)] [[RFC8174](#rfc8174)] when, and only when, they appear in all capitals, as shown here.
 
 
 ## 3.2 Typographical Conventions
 
-<!-- From OASIS Open Specification Template Instructions: Describe any standards or typographical conventions that were followed when writing this document, such as fonts or highlighting that have special significance. If there are no typographical conventions than one is to put "None". -->
+
 None.
 
 ---
@@ -292,7 +251,7 @@ XML is a common format to represent complex structured documents that may be sup
 
 ## 4.2 Policies Based on Subject and Resource Attributes
 
-Attribute selectors (`AttributeSelectorType` objects) defined by this profile use an XPath expression over the `ContentType` object of the subject (resp. resource) to identify a particular subject (resp. resource) attribute value by its location in the context (see Section 4.11 of [[ACAL-Core-1.0](#acal-core-10)] for an explanation of context).
+Attribute selectors (`AttributeSelectorType` objects) defined by this profile use an XPath expression over the `ContentType` object of the subject (resp. resource) to identify a particular subject (resp. resource) attribute value by its location in the context (see Section 5.2 of [[ACAL-Core-1.0](#acal-core-10)] for an explanation of context).
 
 ## 4.3 Operators
 
@@ -318,15 +277,16 @@ The following example illustrates a request *context*, using XACML representatio
 !include examples/acal-xpath/Request.xml
 ```
 
-Lines 21-34: Resource content. The XML resource instance, access to all or part of which may be requested, is placed here. The xpathExpression value(s) in the Request and in the Rules, as well as XPathAttributeSelectors in the Rules will apply to that content.
+Lines 24-37: Resource content. The XML resource instance, access to all or part of which may be requested, is placed here. The xpathExpression value(s) in the Request and in the Rules, as well as XPathAttributeSelectors in the Rules will apply to that content.
 
-Lines 35-40: The `urn:oasis:names:tc:acal:1.0:content-selector` attribute ([Annex D.3](#d3-attributes)), whose value is an XPath expression into the `<Content>` element selecting the node to be accessed. The rules below name this attribute in the `ContextSelectorId` property of their `<XPathAttributeSelector>` elements.
+Lines 38-43: The `urn:oasis:names:tc:acal:1.0:content-selector` attribute ([Annex D.3](#d3-attributes)), whose value is an XPath expression into the `<Content>` element selecting the node to be accessed. The rules below refer to this attribute with an `<AttributeDesignator>` element that is an argument of the `xpath-node-match` function.
 
 Here is the equivalent example using JACAL representation (JSON representation of ACAL):
 
 ```json {.numberLines}
 !include examples/acal-xpath/Request.json
 ```
+
 
 
 ### 4.4.3 Example plain-language rules
@@ -355,13 +315,14 @@ Line 8: XPath expressions in the policy are to be interpreted according to the 2
 
 Line 17: The `<XPathAttributeSelector>` element selects a bag of values from the resource content using a free-form XPath expression. In this case, it selects the value of the patient-number in the resource.  Note that the namespace prefixes in the XPath expression are resolved with the standard XML namespace declarations.
 
-Lines 41-48: This Apply expression compares the results of two XPath expressions applied to the `<Content>` element of the resource category in the Request earlier. The first XPath expression is the location path to the requested XML element and the second XPath expression is the literal value `md:record`. The `xpath-node-match` function evaluates to `True` if the requested XML element is below the `md:record` element.
+Lines 41-48: This Apply expression compares the results of two XPath expressions applied to the `<Content>` element of the resource category in the Request earlier. The first XPath expression is the location path to the requested XML element and the second XPath expression is the literal value `md:record`. The `xpath-node-match` function evaluates to `true` if the requested XML element is below the `md:record` element.
 
 Here is the equivalent example in JACAL syntax (JSON representation of ACAL):
 
 ```json {.numberLines}
 !include examples/acal-xpath/Rule1.json
 ```
+
 
 #### 4.4.4.2 Rule 2
 
@@ -373,13 +334,14 @@ The following ACAL `<Rule>` instance expresses *Rule* 2:
 
 Line 18: The `<XPathAttributeSelector>` element selects the patient's date of birth by taking the XPath expression over the resource content.
 
-Line 59: The second argument selects the value of the `<md:parentGuardianId>` element from the resource content using the `<XPathAttributeSelector>` element. This element contains a free-form XPath expression, pointing into the `<Content>` element of the resource category. Note that all namespace prefixes in the XPath expression are resolved with standard namespace declarations. The AttributeSelector evaluates to the bag of values of type `urn:oasis:names:tc:acal:1.0:data-type:string`.
+Line 60: The second argument selects the value of the `<md:parentGuardianId>` element from the resource content using the `<XPathAttributeSelector>` element. This element contains a free-form XPath expression, pointing into the `<Content>` element of the resource category. Note that all namespace prefixes in the XPath expression are resolved with standard namespace declarations. The AttributeSelector evaluates to the bag of values of type `urn:oasis:names:tc:acal:1.0:data-type:string`.
 
 Here is the equivalent example in JACAL syntax (JSON representation of ACAL):
 
 ```json {.numberLines}
 !include examples/acal-xpath/Rule2.json
 ```
+
 
 #### 4.4.4.3 Rule 3
 
@@ -391,7 +353,7 @@ The following ACAL `<Rule>` instance expresses *Rule* 3:
 
 Lines 28-35: The `<Apply>` element targets resources that match the XPath expression `md:record/md:medical`.
 
-Lines 59-64: The first parameter of the obligation indicates where the PEP will find the email address in the resource. The PDP will evaluate the `<XPathAttributeSelector>` and return the result to the PEP inside the resulting obligation.
+Lines 59-64: The first attribute assignment of the obligation notice indicates where the PEP will find the email address in the resource. The PDP will evaluate the `<XPathAttributeSelector>` and return the result to the PEP inside the resulting obligation notice.
 
 Here is the equivalent example in JACAL syntax (JSON representation of ACAL):
 
@@ -399,12 +361,11 @@ Here is the equivalent example in JACAL syntax (JSON representation of ACAL):
 !include examples/acal-xpath/Rule3.json
 ```
 
+
 ## 4.5 Changes From the Previous Version
 
 
-<!-- From OASIS Open Specification Template Instructions: This section is **REQUIRED** and **MUST** be the last numbered subsection in this section. -->
-
-None. This is the first version of this profile.
+The list of changes from the previous version and any revision history can be found in [Appendix 2](#appendix-2-changes-from-previous-version).
 
 ---
 
@@ -414,11 +375,11 @@ None. This is the first version of this profile.
 
 This profile applies to a `Content` object (defined in [[ACAL-Core-1.0](#acal-core-10)]) in the Request if and only if:
 - The `MediaType` property is set to `application/xml`.
-- The `Body` property value is a XML document.
+- The `Body` property value is an XML document.
 
 ## 5.2 NamespaceDeclarationsType (optional)
 
-A `NamespaceDeclarationsType` object carries the set of XML namespace declarations [NAMESPACES] — each a binding of a namespace prefix to a namespace name (URI) — needed to resolve the prefixed names in the XPath expression carried by an `XPathAttributeSelectorType` object, an `XPathEntityAttributeSelectorType` object, or an `xpathExpression` value. It maps each namespace prefix to exactly one namespace name; a given prefix appears at most once.
+A `NamespaceDeclarationsType` object carries the set of XML namespace declarations [[NAMESPACES](#namespaces)] — each a binding of a namespace prefix to a namespace name (URI) — needed to resolve the prefixed names in the XPath expression carried by an `XPathAttributeSelectorType` object, an `XPathEntityAttributeSelectorType` object, or an `xpathExpression` value. It maps each namespace prefix to exactly one namespace name; a given prefix appears at most once.
 
 This object is not used in the XML representation of ACAL (XACML), which has native support for XML namespaces: there, the prefixes an XPath expression relies on are resolved from the ordinary XML [in-scope namespaces] [[INFOSET](#infoset)] of the element carrying that expression — which may be established by declarations on ancestor elements — exactly as in [[XACML 3.0](#xacml)]. In any non-XML representation of ACAL that does not support namespaces in a standard native way (e.g. JSON, YAML), a `NamespaceDeclarationsType` object is how those bindings are carried instead.
 
@@ -448,19 +409,19 @@ A `NamespaceDeclarationsType` object maps namespace *prefixes* — identified by
 The `NonReservedNamespacePrefix` primitive type is the value space of a namespace prefix usable in a `NamespaceDeclarationsType` object. A value SHALL be exactly one of:
 
 - the empty string (the default-namespace declaration); or
-- a valid `NCName` as defined by [NAMESPACES] that is neither `xmlns` nor `xml`. [NAMESPACES] never permits `xmlns` as a prefix, and permits `xml` only when it is bound to its own fixed namespace name `http://www.w3.org/XML/1998/namespace` — a binding this profile already treats as implicitly available in every representation (see below) — so neither is a useful entry here and both are excluded.
+- a valid `NCName` as defined by [[NAMESPACES](#namespaces)] that is neither `xmlns` nor `xml`. [[NAMESPACES](#namespaces)] never permits `xmlns` as a prefix, and permits `xml` only when it is bound to its own fixed namespace name `http://www.w3.org/XML/1998/namespace` — a binding this profile already treats as implicitly available in every representation (see below) — so neither is a useful entry here and both are excluded.
 
 The permitted lexical space is the full `NCName` production — any `NCName`, including one using non-ASCII name characters, is a conformant prefix. This is a different lexical space from ACAL's general-purpose `IdentifierType` (which supports `{ShortId}` macro substitution, a concept with no meaning for an XML namespace prefix); a representation-specific schema constraining the prefix — the keys of the non-XML mapping form described below — MUST constrain it toward `NCName` rather than merely reuse `IdentifierType`, but such a schema MAY approximate the production where it cannot express it in full: the JACAL and YACAL `propertyNames` schemas use an ASCII pattern, recorded in their `$comment`, which is a validation floor and does not narrow the permitted lexical space above.
 
-In a non-XML representation, a `NamespaceDeclarationsType` object is represented as a single mapping (a JSON object in JACAL, a YAML mapping in YACAL) from each prefix directly to its namespace name, rather than as an array of `{Prefix, Name}` pair-objects — the empty-string key denotes the default-namespace declaration. This mapping form makes prefix uniqueness structural (a mapping cannot carry the same key twice) rather than only a separately-stated constraint, and reads naturally in both JSON and YAML — unlike a repeated array-of-objects shape would, now that namespace bindings are declared once per expression rather than once per document, the way an earlier draft of this profile declared them (see [Appendix 2](#appendix-2-changes-from-previous-version)). A producer SHALL NOT emit a `Namespaces` mapping containing the same key twice; a consumer SHALL reject a `Namespaces` mapping that does. This requirement cannot be expressed as a JSON Schema constraint, since a JSON Schema validator only ever sees an already-parsed instance, and how a parser resolves a duplicate key before that point is implementation-defined (RFC 8259 recommends but does not require uniqueness); it is stated here as a requirement on the parsing/deserialization step itself.
+In a non-XML representation, a `NamespaceDeclarationsType` object is represented as a single mapping (a JSON object in JACAL, a YAML mapping in YACAL) from each prefix directly to its namespace name, rather than as an array of `{Prefix, Name}` pair-objects — the empty-string key denotes the default-namespace declaration. This mapping form makes prefix uniqueness structural (a mapping cannot carry the same key twice) rather than only a separately-stated constraint, and reads naturally in both JSON and YAML and, unlike an array of `{Prefix, Name}` pair-objects, it fits namespace bindings that are declared once per expression. A producer SHALL NOT emit a `Namespaces` mapping containing the same key twice; a consumer SHALL reject a `Namespaces` mapping that does. This requirement cannot be expressed as a JSON Schema constraint, since a JSON Schema validator only ever sees an already-parsed instance, and how a parser resolves a duplicate key before that point is implementation-defined ([[RFC8259](#rfc8259)] recommends but does not require uniqueness); it is stated here as a requirement on the parsing/deserialization step itself.
 
 The namespace context a `Namespaces` property carries (see [Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype), [Section 5.3.4](#534-entityattributeselectortype-extension---xpathentityattributeselectortype), [Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)) does not include bindings XPath and XML define implicitly, such as the reserved `xml` prefix (always bound to `http://www.w3.org/XML/1998/namespace`); implementations MUST treat that binding as available without it appearing in `Namespaces`, in every representation, and — per the `NonReservedNamespacePrefix` type above — neither `xml` nor `xmlns` may appear as a key of the mapping.
 
 ## 5.3 ACAL extension types
 
-The structures in this section are extensions to [[ACAL-Core-1.0](#acal-core-10)] model and described here in abstract terms. The concrete representations of these structures are defined for a variety of syntaxes each in a separate profile.
+The structures in this section are extensions to [[ACAL-Core-1.0](#acal-core-10)] model and described here in abstract terms. Their concrete representations extend the XACML, JACAL and YACAL representations; the corresponding schemas and short identifier sets are published with this profile (see Additional artifacts).
 
-The types `IdentifierType`, `ValueType`, `SimpleValueType`, `StructuredValueType`, `PolicyDefaultsType`, `RequestDefaultsType`, `AttributeSelectorType` and `EntityAttributeSelectorType` used in the next UML models are defined in [[ACAL-Core-1.0](#acal-core-10)].
+The types `IdentifierType`, `ValueType`, `StructuredValueType`, `PolicyDefaultsType`, `RequestDefaultsType`, `AttributeSelectorType` and `EntityAttributeSelectorType` used in the next UML models are defined in [[ACAL-Core-1.0](#acal-core-10)].
 
 ### 5.3.1 PolicyDefaultsType extension - XPathPolicyDefaultsType
 
@@ -482,9 +443,9 @@ A `XPathPolicyDefaultsType` object contains the following property:
 
 `XPathVersion` [Required]
 
-: An `IdentifierType` value specifying the XPath version (see the Supported XPath versions in the [XPath Definitions] section). It governs, in the enclosing policy and any policy nested within it that carries no `XPathPolicyDefaultsType` of its own: (a) every attribute selector's `Path` expression — a `Path` is policy syntax that never leaves the policy it is written in, so it has no local version property and a single policy-scoped version serves every selector; and (b) every `xpathExpression` value with no local `XPathVersion` of its own. A value that *does* carry a local `XPathVersion` uses that instead, everywhere the value goes ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). The request-side counterpart of this object, for `xpathExpression` values in a `Request` rather than a `Policy`, is `XPathRequestDefaultsType` ([Section 5.3.2](#532-requestdefaultstype-extension---xpathrequestdefaultstype)).
+: An `IdentifierType` value specifying the XPath version (see the supported XPath versions in [Section 6](#6-xpath-definitions)). It governs, in the enclosing policy and any policy nested within it that carries no `XPathPolicyDefaultsType` of its own: (a) every attribute selector's `Path` expression — a `Path` is policy syntax that never leaves the policy it is written in, so it has no local version property and a single policy-scoped version serves every selector; and (b) every `xpathExpression` value with no local `XPathVersion` of its own. A value that *does* carry a local `XPathVersion` uses that instead, everywhere the value goes ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). The request-side counterpart of this object, for `xpathExpression` values in a `Request` rather than a `Policy`, is `XPathRequestDefaultsType` ([Section 5.3.2](#532-requestdefaultstype-extension---xpathrequestdefaultstype)).
 
-: A `PolicyDefaults` object's scope is the enclosing `Policy` and any policy nested within it ([[ACAL-Core-1.0](#acal-core-10)] Section 7.4); a nested policy's own `XPathPolicyDefaultsType` applies within that policy in place of an ancestor's. An `XPathAttributeSelectorType`/`XPathEntityAttributeSelectorType` object's `Path`, or an `xpathExpression` value with no local `XPathVersion`, therefore takes its version from the **nearest enclosing** `Policy` that carries an `XPathPolicyDefaultsType`. If no enclosing policy carries one — and, for a value, there is no local `XPathVersion` either — the expression is invalid: evaluation returns a syntax error, status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. There is no fixed profile-wide default. A policy included by a `PolicyReference` is not nested within the referencing policy for this purpose ([[ACAL-Core-1.0](#acal-core-10)] Section 7.4): a referenced policy that contains such a selector or value takes its version from an `XPathPolicyDefaultsType` carried by itself or by a policy that encloses it where it is defined, never from the policy that references it, and otherwise the expression is invalid as above.
+: A `PolicyDefaults` object's scope is the enclosing `Policy` and any policy nested within it ([[ACAL-Core-1.0](#acal-core-10)] Section 7.4); a nested policy's own `XPathPolicyDefaultsType` applies within that policy in place of an ancestor's. An `XPathAttributeSelectorType`/`XPathEntityAttributeSelectorType` object's `Path`, or an `xpathExpression` value with no local `XPathVersion`, therefore takes its version from the **nearest enclosing** `Policy` that carries an `XPathPolicyDefaultsType`. If no enclosing policy carries one — and, for a value, there is no local `XPathVersion` either — the expression is invalid: its evaluation MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. There is no fixed profile-wide default. A policy included by a `PolicyReference` is not nested within the referencing policy for this purpose ([[ACAL-Core-1.0](#acal-core-10)] Section 7.4): a referenced policy that contains such a selector or value takes its version from an `XPathPolicyDefaultsType` carried by itself or by a policy that encloses it where it is defined, never from the policy that references it, and otherwise the expression is invalid as above.
 
 ### 5.3.2 RequestDefaultsType extension - XPathRequestDefaultsType
 
@@ -510,7 +471,7 @@ A `XPathRequestDefaultsType` object contains the following property:
 
 ### 5.3.3 AttributeSelectorType extension - XPathAttributeSelectorType
 
-An `XPathAttributeSelectorType` object is a concrete type of `AttributeSelectorType` from [[ACAL-Core-1.0](#acal-core-10)] that uses [XPath] for `Path` expressions and expects an XML document in the `Body` property of the `Content` object of the `RequestEntityType` object matching the `Category` property. More precisely, the returned values SHALL be constructed from the items of the sequence obtained by applying the XPath expression given by the attribute selector's `Path` property to the XML document in the `Body` property of the `Content` object of the `RequestEntityType` object matching the attribute selector's `Category` property, as specified in [Section 7](#7-attribute-selector-evaluation). 
+An `XPathAttributeSelectorType` object is a concrete type of `AttributeSelectorType` from [[ACAL-Core-1.0](#acal-core-10)] that uses [[XPath](#xpath)] for `Path` expressions and expects an XML [[XML](#xml)] document in the `Body` property of the `Content` object of the `RequestEntityType` object matching the `Category` property. More precisely, the returned values SHALL be constructed from the items of the sequence obtained by applying the XPath expression given by the attribute selector's `Path` property to the XML document in the `Body` property of the `Content` object of the `RequestEntityType` object matching the attribute selector's `Category` property, as specified in [Section 7](#7-attribute-selector-evaluation). 
 
 See the [section 7](#7-attribute-selector-evaluation) for details of attribute selector evaluation.
 
@@ -531,7 +492,7 @@ The `XPathAttributeSelectorType` object type extends the `AttributeSelectorType`
 
 `ContextSelectorId` [Optional]
 
-: An `IdentifierType` value specifying an ACAL attribute (by its `AttributeId`) in the attribute category (`RequestEntityType` object with `Category` matching this attribute selector's `Category`) containing the XML content. The referenced attribute MUST have a single value of data type `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` (see Annex C) and the XPath expression represented by that value must select a single node in the XML content. The `XPathCategory` property of the referenced ACAL attribute value SHALL be ignored. This profile defines the standard attribute identifier `urn:oasis:names:tc:acal:1.0:content-selector` for this purpose (see [Annex D.3](#d3-attributes)); any other attribute satisfying the conditions above MAY be named instead.
+: An `IdentifierType` value specifying an ACAL attribute (by its `AttributeId`) in the attribute category (`RequestEntityType` object with `Category` matching this attribute selector's `Category`) containing the XML content. The referenced attribute MUST have a single value of data type `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` (see Annex C) and the XPath expression represented by that value must be designed to select a single node in the XML content. The `XPathCategory` property of the referenced ACAL attribute value SHALL be ignored. This profile defines the standard attribute identifier `urn:oasis:names:tc:acal:1.0:content-selector` for this purpose (see [Annex D.3](#d3-attributes)); any other attribute satisfying the conditions above MAY be named instead.
 
 `Namespaces` [Optional]
 
@@ -541,9 +502,9 @@ The `XPathAttributeSelectorType` object type extends the `AttributeSelectorType`
 
 : `Namespaces` MAY be absent (equivalently, empty), which states that the `Path` expression needs no supplied namespace-prefix bindings — for example all its names resolve without one (no namespace-prefixed names, and no reliance on a default-namespace declaration), or it addresses namespaces through `namespace-uri()`, a wildcard such as `*:record`, or a URIQualifiedName such as `Q{urn:example:med}record`. There is no policy-wide or document-wide namespace table for `Namespaces` to be merged with or resolved against; an absent `Namespaces` is not a deferral to a default, because none exists.
 
-More importantly, in the context of this profile, the value of the `Path` property inherited from supertype `AttributeSelectorType` SHALL be an XPath expression [XPath]. In addition, this XPath expression may reference one or more XPath variables, in which case each XPath variable's value is taken from the corresponding so-called *ACAL variable*, i.e. the variable defined by a `<VariableDefinition>` with a `VariableId` matching the XPath variable name, in the scope of this element.
+More importantly, in the context of this profile, the value of the `Path` property inherited from supertype `AttributeSelectorType` SHALL be an XPath expression [[XPath](#xpath)]. In addition, this XPath expression may reference one or more XPath variables, in which case each XPath variable's value is taken from the corresponding so-called *ACAL variable*, i.e. the variable defined by a `<VariableDefinition>` with a `VariableId` matching the XPath variable name, in the scope of this element.
 
-The value of an XPath variable is obtained from the value(s) of the ACAL variable as follows. The value(s) of the ACAL variable MUST be of one of the twelve data types defined by reference to XML Schema in [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7. A single value of data type `urn:oasis:names:tc:acal:1.0:data-type:T` becomes the atomic value of type `xs:T` that is the same member of the value space ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7). A bag becomes the sequence of the atomic values obtained in that way from each value of the bag, in ascending order of the Unicode code points of the canonical representation of each value as defined by the XML Schema datatype ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7; for a value of the `string` or `anyURI` data type, the characters of the value itself); duplicate values are retained, and an empty bag becomes the empty sequence. That order is specified so that an XPath expression that depends on the position of an item in the sequence has the same result in every implementation, although a bag itself is unordered. XPath sequences, not XPath 3.1 arrays, are used, so that the same rule applies to every supported XPath version. If a value is not a member of the value space of the type `xs:T` as supported by the XPath processor in use, then the attribute selector SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
+The value of an XPath variable is obtained from the value(s) of the ACAL variable as follows. The value(s) of the ACAL variable MUST be of one of the twelve data types defined by reference to XML Schema [[XS](#xs)] in [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6. A single value of data type `urn:oasis:names:tc:acal:1.0:data-type:T` becomes the atomic value of type `xs:T` that is the same member of the value space ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6). A bag becomes the sequence of the atomic values obtained in that way from each value of the bag, in ascending order of the Unicode code points of the canonical representation of each value as defined by the XML Schema datatype ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6; for a value of the `string` or `anyURI` data type, the characters of the value itself); duplicate values are retained, and an empty bag becomes the empty sequence. That order is specified so that an XPath expression that depends on the position of an item in the sequence has the same result in every implementation, although a bag itself is unordered. XPath sequences, not XPath 3.1 arrays, are used, so that the same rule applies to every supported XPath version. If a value is not a member of the value space of the type `xs:T` as supported by the XPath processor in use, then the attribute selector SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 For example, in the following `XPathAttributeSelectorType` object in XML representation format:
 
@@ -563,7 +524,7 @@ If no such variable is found (in the current scope) or its value(s) are of a dat
 
 ### 5.3.4 EntityAttributeSelectorType extension - XPathEntityAttributeSelectorType
 
-An `XPathEntityAttributeSelectorType` object is a concrete type of `EntityAttributeSelectorType` [[ACAL-Core-1.0](#acal-core-10)] that uses [XPath] for `Path` expressions and expects XML content in the value returned by the attribute selector's `Expression` property. In other words, the values SHALL be constructed from the items of the sequence obtained by applying the XPath expression given by the entity attribute selector's `Path` property to the XML document in the `Body` property of the `Content` property in either an attribute category in the request context (`RequestEntity`) or the value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type returned by its `Expression` evaluation. 
+An `XPathEntityAttributeSelectorType` object is a concrete type of `EntityAttributeSelectorType` [[ACAL-Core-1.0](#acal-core-10)] that uses [[XPath](#xpath)] for `Path` expressions and expects XML content in the value returned by the attribute selector's `Expression` property. In other words, the values SHALL be constructed from the items of the sequence obtained by applying the XPath expression given by the entity attribute selector's `Path` property to the XML document in the `Body` property of the `Content` property in either an attribute category in the request context (`RequestEntity`) or the value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type returned by its `Expression` evaluation. 
 
 See the [section 7](#7-attribute-selector-evaluation)  for details of entity attribute selector evaluation.
 
@@ -690,7 +651,7 @@ The XPath specification leaves a number of aspects of behavior implementation-de
 
 7. Whether the implementation supports the namespace axis.
 
-    : ACAL leaves this implementation defined. It is RECOMMENDED that users of ACAL do not make use of the namespace axis.
+: ACAL leaves this implementation defined. It is RECOMMENDED that users of ACAL do not make use of the namespace axis.
 
 8. Any static typing extensions supported by the implementation, if the Static Typing Feature is supported.
 
@@ -700,7 +661,7 @@ The XPath specification leaves a number of aspects of behavior implementation-de
 
 1. Support for additional user-defined or implementation-defined types is implementation-defined.
 
-    : It is RECOMMENDED that implementations of ACAL do not define any additional types and it is RECOMMENDED that users of ACAL do not make use of any additional types.
+: It is RECOMMENDED that implementations of ACAL do not define any additional types, and it is RECOMMENDED that users of ACAL do not make use of any additional types.
 
 2. Some typed values in the data model are undefined. Attempting to access an undefined property is always an error. Behavior in these cases is implementation-defined and the host language is responsible for determining the result.
 
@@ -714,9 +675,9 @@ The XPath specification leaves a number of aspects of behavior implementation-de
 
 2. For `xs:integer` operations, XPath Functions permits an implementation that supports only limited-precision integer operations to either raise an error [err:FOAR0002] or provide an implementation-defined mechanism that allows users to choose between raising an error and returning a result that is modulo the largest representable integer value; ACAL overrides this.
 
-    : An implementation SHALL NOT provide a mechanism that returns a result modulo a representable bound. The supported integer interval of [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7 applies to each `xs:integer` operand and result of each operator and function that is evaluated as part of an XPath expression, and an implementation SHALL NOT document a supported integer interval that contains an `xs:integer` value that its XPath evaluator cannot represent and use as an operand or result, once the value is available to the evaluator, for any reason other than exhaustion of an execution resource. This requirement concerns the capacity of the evaluator; an input acceptance limit ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7) that prevents a value, or the text of an XPath expression, from being obtained is not such a reason. An arithmetic operation whose `xs:integer` result is outside the supported integer interval SHALL raise the dynamic error [err:FOAR0002]; a cast to `xs:integer`, including a call of the `xs:integer` constructor function, whose result is outside the supported integer interval SHALL raise the dynamic error [err:FOCA0003]. If every `xs:integer` operand of an operator or function and the result that its definition prescribes are within the supported integer interval, then the implementation SHALL return that result unless an execution resource is exhausted, and the implementation SHALL NOT raise an error solely because of state that it uses internally while evaluating that operator or function; this applies to a function with a sequence argument, such as `fn:sum`, as a whole. A dynamic error [err:FOAR0002] or [err:FOCA0003] required by this item, and any other dynamic error in an `xs:integer` operation, SHALL cause the containing ACAL expression to return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`. If any other operator or function prescribes an `xs:integer` result outside the supported integer interval, then the containing ACAL expression SHALL return `Indeterminate` with that status code. Implementations MAY provide additional details about the error in the response or by some other means.
+    : An implementation SHALL NOT provide a mechanism that returns a result modulo a representable bound. The supported integer interval of [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6 applies to each `xs:integer` operand and result of each operator and function that is evaluated as part of an XPath expression, and an implementation SHALL NOT document a supported integer interval that contains an `xs:integer` value that its XPath evaluator cannot represent and use as an operand or result, once the value is available to the evaluator, for any reason other than exhaustion of an execution resource. This requirement concerns the capacity of the evaluator; an input acceptance limit ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6) that prevents a value, or the text of an XPath expression, from being obtained is not such a reason. An arithmetic operation whose `xs:integer` result is outside the supported integer interval SHALL raise the dynamic error [err:FOAR0002]; a cast to `xs:integer`, including a call of the `xs:integer` constructor function, whose result is outside the supported integer interval SHALL raise the dynamic error [err:FOCA0003]. If every `xs:integer` operand of an operator or function and the result that its definition prescribes are within the supported integer interval, then the implementation SHALL return that result unless an execution resource is exhausted, and the implementation SHALL NOT raise an error solely because of state that it uses internally while evaluating that operator or function; this applies to a function with a sequence argument, such as `fn:sum`, as a whole. A dynamic error [err:FOAR0002] or [err:FOCA0003] required by this item, and any other dynamic error in an `xs:integer` operation, SHALL cause the containing ACAL expression to return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`. If any other operator or function prescribes an `xs:integer` result outside the supported integer interval, then the containing ACAL expression SHALL return `Indeterminate` with that status code. Implementations MAY provide additional details about the error in the response or by some other means.
 
-    : Note: [XPath] permits an implementation to rewrite an expression, provided that the result conforms to the semantics of the original expression other than in the raising or not raising of errors. An implementation may therefore return a value for an expression such as `($max + 1) - 1`, where `$max` is the largest integer in its supported integer interval, where another implementation raises [err:FOAR0002]. The result is either the value that the expression prescribes or an error, never a different value.
+    : Note: [[XPath](#xpath)] permits an implementation to rewrite an expression, provided that the result conforms to the semantics of the original expression other than in the raising or not raising of errors. An implementation may therefore return a value for an expression such as `($max + 1) - 1`, where `$max` is the largest integer in its supported integer interval, where another implementation raises [err:FOAR0002]. The result is either the value that the expression prescribes or an error, never a different value.
 
 3. For `xs:decimal` values the number of digits of precision returned by the numeric operators is implementation-defined.
 
@@ -740,7 +701,7 @@ The XPath specification leaves a number of aspects of behavior implementation-de
 
 8. All minimally conforming processors must support year values with a minimum of 4 digits (i.e., YYYY) and a minimum fractional second precision of 1 millisecond or three digits (i.e., s.sss). However, conforming processors may set larger implementation-defined limits on the maximum number of digits they support in these two situations.
 
-    : ACAL leaves this implementation defined, and it is RECOMMENDED that users of ACAL do not expect greater limits and precision.
+: ACAL leaves this implementation defined, and it is RECOMMENDED that users of ACAL do not expect greater limits and precision.
 
 9. The result of casting a string to `xs:decimal`, when the resulting value is not too large or too small but nevertheless has too many decimal digits to be accurately represented, is implementation-defined.
 
@@ -760,15 +721,15 @@ The XPath specification leaves a number of aspects of behavior implementation-de
 
 1. How XDM instances are created from sources other than an Infoset or PSVI.
 
-   : ACAL implementations should not have to create XDM instances from sources other than an Infoset or PSVI.
+: ACAL implementations should not have to create XDM instances from sources other than an Infoset or PSVI.
 
 1. The signatures of functions provided by the implementation or via an implementation-defined API. 
 
-   : It is RECOMMENDED that implementations of ACAL do not define any additional XPath functions and it is RECOMMENDED that users of ACAL do not make use of any additional XPath functions.
+: It is RECOMMENDED that implementations of ACAL do not define any additional XPath functions, and it is RECOMMENDED that users of ACAL do not make use of any additional XPath functions.
 
 1. Any environment variables provided by the implementation.
 
-   : It is RECOMMENDED that users of ACAL use ACAL-defined VariableDefinitions (based on AttributeDesignator and appropriate PIP to obtain the values) in order to capture environment variables, then use the ACAL-defined Variables as XPath variables in XPath expressions, as specified by ACAL. If this is hardly feasible, as an alternative, ACAL users may use implementation-defined environment variables in their XPath expressions only if they are standard, e.g. POSIX environment variables. 
+: It is RECOMMENDED that users of ACAL use ACAL-defined VariableDefinitions (based on AttributeDesignator and appropriate PIP to obtain the values) in order to capture environment variables, then use the ACAL-defined Variables as XPath variables in XPath expressions, as specified by ACAL. If this is hardly feasible, as an alternative, ACAL users may use implementation-defined environment variables in their XPath expressions only if they are standard, e.g. POSIX environment variables. 
 
 [XQuery and XPath Data Model (XDM) 3.0](https://www.w3.org/TR/xpath-datamodel-30/#implementation-defined) - Appendix F.1 defines the following additional item(s):
 
@@ -801,25 +762,25 @@ For addressing Implementation-Defined Items sections of [XPath 3.1 standard, App
 # 7 Attribute Selector Evaluation
 
 
-An `XPathAttributeSelectorType` or `XPathEntityAttributeSelector` object SHALL be evaluated according to the following processing model.
+An `XPathAttributeSelectorType` or `XPathEntityAttributeSelectorType` object SHALL be evaluated according to the following processing model.
 
 : Note: It is not necessary for an implementation to exactly follow this model. It is only necessary to produce results identical to those that would be produced by following this model.
 
-The first steps are already described in [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7 (Attribute selector evaluation) and provided here as a reminder:
+The first steps are already described in [[ACAL-Core-1.0](#acal-core-10)] Section 8.4.7 (Selector Evaluation) and provided here as a reminder:
 
 - If the attribute category given by the `Category` property is not found or does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
 
-- If the `Expression` property of an `XPathEntityAttributeSelector` object evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type and that value does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
+- If the `Expression` property of an `XPathEntityAttributeSelectorType` object evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type and that value does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
 
-- If the `Expression` property of an `XPathEntityAttributeSelector` object evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:anyURI` data type and an attribute category with that value as its `Category` is not found or does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
+- If the `Expression` property of an `XPathEntityAttributeSelectorType` object evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:anyURI` data type and an attribute category with that value as its `Category` is not found or does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
 
 If the designated attribute category or entity value has a `Content` property, then follow the steps below:
 
-1. Construct an XML data structure suitable for XPath processing from the value of the `Body` property of the `Content` object. The data structure shall be constructed so that the document node of this structure contains a single document element which corresponds to the single child element of the `Body` property. The constructed data structure shall be equivalent to one that would result from parsing a stand-alone XML document consisting of the contents of the `Body` property (including any comment and processing-instruction markup). **In a XML representation, namespace declarations from the `<Body>` element and its ancestor elements for namespace prefixes that are "visibly utilized", as defined by [[exc-c14n](#exc-c14n)], within the contents MUST be present.** Namespace declarations from the single child element or its ancestor elements for namespace prefixes that are not "visibly utilized" MAY be present. The data structure must meet the requirements of the applicable XPath version.
+1. Construct an XML data structure suitable for XPath processing from the value of the `Body` property of the `Content` object. The data structure SHALL be constructed so that the document node of this structure contains a single document element which corresponds to the single child element of the `Body` property. The constructed data structure SHALL be equivalent to one that would result from parsing a stand-alone XML document consisting of the contents of the `Body` property (including any comment and processing-instruction markup). **In an XML representation, namespace declarations from the `<Body>` element and its ancestor elements for namespace prefixes that are "visibly utilized", as defined by [[exc-c14n](#exc-c14n)], within the contents MUST be present.** Namespace declarations from the single child element or its ancestor elements for namespace prefixes that are not "visibly utilized" MAY be present. The data structure MUST meet the requirements of the applicable XPath version.
 
-2. If there is a `ContextSelectorId` property, the context node shall be the node selected by applying the XPath expression given in the attribute value of the designated ACAL attribute, evaluated according to that `XPathExpressionValueType` object's effective `XPathVersion` and its namespace context ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). It shall be an error if this evaluation returns no node or more than one node, in which case the return value MUST be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. If there is no `ContextSelectorId` property, then the document node of the data structure shall be the context node.
+2. If there is a `ContextSelectorId` property, the context node SHALL be the node selected by applying the XPath expression given in the attribute value of the designated ACAL attribute, evaluated according to that `XPathExpressionValueType` object's effective `XPathVersion` and its namespace context ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). It shall be an error if this evaluation returns no node or more than one node, in which case the return value MUST be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. If there is no `ContextSelectorId` property, then the document node of the data structure SHALL be the context node.
 
-3. Evaluate the XPath expression given in the `Path` property against the context node selected in the previous step, according to the [XPath] standard in the version given by the nearest enclosing policy's `XPathPolicyDefaultsType` object ([Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype) — some enclosing policy SHALL carry one), resolving any namespace prefixes in `Path` from the `XPathAttributeSelectorType`/`XPathEntityAttributeSelectorType` object's own `Namespaces` property, if present ([Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype)), in a non-XML representation, or from the object's own in-scope namespaces ([Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype)) in an XML representation. This XPath expression may reference one or more XPath variables, in which case each XPath variable's value is taken from the corresponding *ACAL variable* and converted as specified in [Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype). If no such variable is found (in the current scope) or its value(s) are of a data type that cannot be converted as specified there, the XPath expression and therefore this `Path` attribute SHALL be considered invalid and a syntax error SHALL be returned (status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`).
+3. Evaluate the XPath expression given in the `Path` property against the context node selected in the previous step, according to the [[XPath](#xpath)] standard in the version given by the nearest enclosing policy's `XPathPolicyDefaultsType` object ([Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype) — some enclosing policy SHALL carry one), resolving any namespace prefixes in `Path` from the `XPathAttributeSelectorType`/`XPathEntityAttributeSelectorType` object's own `Namespaces` property, if present ([Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype)), in a non-XML representation, or from the object's own in-scope namespaces ([Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype)) in an XML representation. This XPath expression may reference one or more XPath variables, in which case each XPath variable's value is taken from the corresponding *ACAL variable* and converted as specified in [Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype). If no such variable is found (in the current scope) or its value(s) are of a data type that cannot be converted as specified there, the XPath expression and therefore this `Path` attribute SHALL be considered invalid and a syntax error SHALL be returned (status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`).
 
 4. The result of step 3 is a sequence of items, and is converted to a bag of values of the data type specified by the `DataType` property as follows. The sequence MAY contain any mixture of nodes and atomic values.
 
@@ -827,10 +788,10 @@ If the designated attribute category or entity value has a `Content` property, t
 : If the sequence is empty, then the result of the attribute selector is as specified for an empty result in [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7, and none of the cases below applies.
 
 &nbsp;
-: If the specified data type is one of the twelve data types defined by reference to XML Schema in [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7 — that is, `urn:oasis:names:tc:acal:1.0:data-type:` `string`, `boolean`, `integer`, `double`, `dateTime`, `date`, `time`, `hexBinary`, `base64Binary`, `anyURI`, `yearMonthDuration` or `dayTimeDuration` — then each item of the sequence is converted to one value of that data type, as specified by the next five cases, and the bag contains one converted value for each item: the order of the sequence is discarded and duplicate values are retained. In those cases `xs:T` is the XML Schema built-in datatype of the same name as the specified data type.
+: If the specified data type is one of the twelve data types defined by reference to XML Schema in [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6 — that is, `urn:oasis:names:tc:acal:1.0:data-type:` `string`, `boolean`, `integer`, `double`, `dateTime`, `date`, `time`, `hexBinary`, `base64Binary`, `anyURI`, `yearMonthDuration` or `dayTimeDuration` — then each item of the sequence is converted to one value of that data type, as specified by the next five cases, and the bag contains one converted value for each item: the order of the sequence is discarded and duplicate values are retained. In those cases `xs:T` is the XML Schema built-in datatype of the same name as the specified data type.
 
 &nbsp;
-: An item that is a node is converted by applying the `xs:T()` constructor function from [[XF](#xf)] Section 18.1 to the `xs:string` value equal to the string value of the node (the result of `fn:string` applied to the node). The constructor function SHALL NOT be applied to the node itself, because it would then atomize the node to its typed value.
+: An item that is a node is converted by applying the `xs:T()` constructor function of [[XF](#xf)] (Section 18.1 of Functions and Operators 3.1) to the `xs:string` value equal to the string value of the node (the result of `fn:string` applied to the node). The constructor function SHALL NOT be applied to the node itself, because it would then atomize the node to its typed value.
 
 &nbsp;
 : An item that is an atomic value of type `xs:untypedAtomic` is converted by applying the `xs:T()` constructor function to that value.
@@ -862,16 +823,7 @@ If the designated attribute category or entity value has a `Content` property, t
 # 8 Safety, Security, and Data Protection Considerations
 
 
-<!-- From OASIS Open Specification Template Instructions:
-
-This section is **REQUIRED** and **MUST** be the second to last numbered section in the document, right before Conformance. This section contains information about safety, security, data protection, and privacy considerations. These can be divided up into separate subsections as desired. All documents **SHOULD** have at least a security and data protection considerations section, and otherwise **MUST** have a blank section indicating `None.` Any other considerations **MAY** also be added.
-
-
-Please note that any specification that will need to register something with IANA or has plans to go on to ITU/ISO/IEC **MUST** have this section filled out. For an example please see the following section in the CACAO specification here [https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html#_Toc152256574](https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html#_Toc152256574) 
-
--->
-
-Refer to [[ACAL-Core-1.0](#acal-core-10)] section 11.
+Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 10.
 
 ---
 
@@ -879,19 +831,11 @@ Refer to [[ACAL-Core-1.0](#acal-core-10)] section 11.
 # 9 Conformance
 
 
-<!-- From OASIS Open Specification Template Instructions: 
-
-
-This section is **REQUIRED** and **MUST** be the last numbered section in the document. 
-
-
--->
-
 ## 9.1 Introduction
 
 The specification addresses the following aspect of conformance:
 
-The specification defines a number of functions, etc. that have somewhat special applications, therefore they are not required to be implemented in an implementation that claims to conform with to this specification.
+The specification defines a number of functions, etc. that have somewhat special applications, therefore they are not required to be implemented in an implementation that claims to conform to this specification.
 
 ## 9.2 Conformance Tables
 
@@ -909,6 +853,7 @@ The implementation MUST support the object types that are marked `M`.
 
 | Object Type | M/O |
 | :--- | :--- |
+| NamespaceDeclarationsType | O |
 | XPathAttributeSelectorType | M |
 | XPathEntityAttributeSelectorType | O |
 | XPathExpressionValueType | O |
@@ -933,7 +878,7 @@ The implementation MUST properly process those functions associated with the ide
 | :--- | :--- | :--- |
 | urn:oasis:names:tc:acal:1.0:function:xpath-node-count | O | urn:oasis:names:tc:xacml:3.0:function:xpath-node-count |
 | urn:oasis:names:tc:acal:1.0:function:xpath-node-equal | O | urn:oasis:names:tc:xacml:3.0:function:xpath-node-equal |
-| urn:oasis:names:tc:acal:1.0:function:xpath-node-match | O | urn:oasis:names:tc:xacml:3.0:function:xpath-node-match |
+| urn:oasis:names:tc:acal:1.0:function:xpath-node-match | O | |
 
 ### 9.2.4 Attributes
 
@@ -943,7 +888,7 @@ The implementation MUST use the attributes associated with the following identif
 | :--- | :--- | :--- |
 | urn:oasis:names:tc:acal:1.0:content-selector | O | urn:oasis:names:tc:xacml:3.0:content-selector |
 
-Note: this attribute is OPTIONAL because its value is of the OPTIONAL data type `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` (see [Section 9.2.2](#922-data-types)). An implementation that supports that data type and the `ContextSelectorId` property of `XPathAttributeSelectorType` SHOULD recognize this identifier.
+This attribute is OPTIONAL because its value is of the OPTIONAL data type `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` (see [Section 9.2.2](#922-data-types)). An implementation that supports that data type and the `ContextSelectorId` property of `XPathAttributeSelectorType` SHOULD recognize this identifier.
 
 ---
 
@@ -957,10 +902,10 @@ Note: this attribute is OPTIONAL because its value is of the OPTIONAL data type 
 ## A.1 Document Status
 
 
-This document was last revised or approved by the OASIS eXtensible Access Control Markup Language (XACML) TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
+This document was last revised or approved by the OASIS ACAL \[XACML\] TC on the above date. The level of approval is also listed above. Check the "Latest version" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=67afe552-0921-49b7-9a85-018dc7d3ef1d#technical.
 
 
-TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/xacml/.
+TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/acal/.
 
 
 NOTE: any machine-readable content (Computer Language Definitions) declared Normative for this Work Product is provided in separate plain text files. In the event of a discrepancy between any such plain text file and display content in the Work Product's prose narrative document(s), the content in the separate plain text file prevails.
@@ -981,7 +926,7 @@ This document and translations of it may be copied and furnished to others, and 
 The limited permissions granted above are perpetual and will not be revoked by OASIS or its successors or assigns, as provided in the OASIS IPR Policy.
 
 
-This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited-Mode) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project's web page ([XACML IPR Policy](https://www.oasis-open.org/committees/xacml/ipr.php)).
+This document is provided under the [RF on Limited Terms](https://www.oasis-open.org/policies-guidelines/ipr/#RF-on-Limited-Mode) IPR mode that was chosen when the project was established, as defined in the IPR Policy. For information on whether any patents have been disclosed that may be essential to implementing this document, and any offers of patent licensing terms, please refer to the Intellectual Property Rights section of the project's web page ([OASIS ACAL \[XACML\] TC IPR page](https://www.oasis-open.org/committees/acal/ipr.php)).
 
 
 This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. OASIS AND ITS MEMBERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THIS DOCUMENT OR ANY PART THEREOF.
@@ -1024,93 +969,31 @@ The following documents are referenced in such a way that some or all of their c
 
 ###### [ACAL-Core-1.0]
 
-Attribute-Centric Authorization Language (ACAL) Version 1.0. Edited by Steven Legg and Cyril Dangerville. 18 February 2026. OASIS Committee Specification Draft 01.
+_Attribute-Centric Authorization Language (ACAL) Version 1.0_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/acal/core/v1.0/acal-core-v1.0.html
 
+###### [JACAL-Core-1.0]
 
-###### [CMF]
-
-Martin J. Dürst et al, eds., Character Model for the World Wide Web 1.0: Fundamentals, W3C Recommendation 15 February 2005, https://www.w3.org/TR/2005/REC-charmod-20050215/
-
-###### [DS]
-
-D. Eastlake et al., XML-Signature Syntax and Processing, https://www.w3.org/TR/xmldsig-core/, World Wide Web Consortium.
+_JACAL Version 1.0 (JSON Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/jacal/core/v1.0/acal-core-json-v1.0.html
 
 ###### [exc-c14n]
 
 J. Boyer et al, eds., Exclusive XML Canonicalization, Version 1.0, W3C Recommendation 18 July 2002, https://www.w3.org/TR/2002/REC-xml-exc-c14n-20020718/
 
-###### [Hancock]
-
-Hancock, Polymorphic Type Checking, in Simon L. Peyton Jones, Implementation of Functional Programming Languages, Section 8, Prentice-Hall International, 1987.
-
-###### [Hier]
-
-XACML v3.0 Hierarchical Resource Profile Version 1.0. 18 May 2014. Committee Specification 02. https://docs.oasis-open.org/xacml/3.0/hierarchical/v1.0/xacml-3.0-hierarchical-v1.0.html
-
 ###### [INFOSET]
 
 XML Information Set (Second Edition), W3C Recommendation, 4 February 2004, https://www.w3.org/TR/xml-infoset/
 
-###### [ISO10181-3]
-
-ISO/IEC 10181-3:1996 Information technology – Open Systems Interconnection -- Security frameworks for open systems: Access control framework.
-
-###### [Kudo00]
-
-Kudo M and Hada S, XML document security based on provisional authorization, Proceedings of the Seventh ACM Conference on Computer and Communications Security, Nov 2000, Athens, Greece, pp 87-96.
-
-###### [LDAP-1]
-
-RFC 2256, A summary of the X500(96) User Schema for use with LDAPv3, Section 5, M Wahl, December 1997, https://www.ietf.org/rfc/rfc2256.txt
-
-###### [LDAP-2]
-
-RFC 2798, Definition of the inetOrgPerson, M. Smith, April 2000, https://www.ietf.org/rfc/rfc2798.txt
-
-###### [MathML]
-
-Mathematical Markup Language (MathML), Version 2.0, W3C Recommendation, 21 October 2003, https://www.w3.org/TR/2003/REC-MathML2-20031021/
-
 ###### [NAMESPACES]
 
-Bray, Tim, et.al. eds, Namespaces in XML 1.0 (Third Edition), W3C Recommendation 8 December 2009, available at http://www.w3.org/TR/2009/REC-xml-names-20091208/
-
-
-###### [Perritt93]
-
-Perritt, H. Knowbots, Permissions Headers and Contract Law, Conference on Technological Strategies for Protecting Intellectual Property in the Networked Multimedia Environment, April 1993. Available at: https://www.cni.org/resources/historical-resources/technological-strategies-for-protecting-intellectual-property-in-the-networked-multimedia-environment/permission-headers-and-contract-law
-
-###### [RBAC]
-
-David Ferraiolo and Richard Kuhn, Role-Based Access Controls, 15th National Computer Security Conference, 1992.
+Bray, Tim, et.al. eds, Namespaces in XML 1.0 (Third Edition), W3C Recommendation 8 December 2009, available at https://www.w3.org/TR/2009/REC-xml-names-20091208/
 
 ###### [RFC2119]
 
 RFC 2119, *Key Words for Use in RFCs to Indicate Requirement Levels*, BCP 14, RFC 2119, March 1997. [Online]. Available: https://www.rfc-editor.org/info/rfc2119
 
-###### [RFC2732]
-
-RFC 2732, Hinden R, Carpenter B, Masinter L, Format for Literal IPv6 Addresses in URL's,  https://www.ietf.org/rfc/rfc2732.txt
-
-###### [RFC3198]
-
-IETF RFC 3198: Terminology for Policy-Based Management, November 2001. https://www.ietf.org/rfc/rfc3198.txt
-
 ###### [RFC8174]
 
 RFC 8174, *Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words*, BCP 14, RFC 8174, May 2017. [Online]. Available: https://www.rfc-editor.org/info/rfc8174
-
-###### [UAX15]
-
-Mark Davis, Martin Dürst, Unicode Standard Annex #15: Unicode Normalization Forms, Unicode 5.1, https://unicode.org/reports/tr15/
-
-###### [UTR36]
-
-Davis, Mark, Suignard, Michel, Unicode Technical Report #36: Unicode Security Considerations, https://www.unicode.org/reports/tr36/
-
-###### [XACMLAdmin]
-
-OASIS Committee Draft 03, XACML v3.0 Administration and Delegation Profile Version 1.0. 11 March 2010, https://docs.oasis-open.org/xacml/3.0/xacml-3.0-administration-v1-spec-cd-03-en.doc
 
 ###### [XF]
 
@@ -1120,10 +1003,6 @@ XPath and XQuery Functions and Operators 3.1, 21 March 2017, https://www.w3.org/
 
 Bray, Tim, et.al. eds, Extensible Markup Language (XML) 1.0 (Fifth Edition), W3C Recommendation 26 November 2008, https://www.w3.org/TR/2008/REC-xml-20081126/
 
-###### [XMLid]
-
-Marsh, Jonathan, et.al. eds, xml:id Version 1.0. W3C Recommendation 9 September 2005, https://www.w3.org/TR/2005/REC-xml-id-20050909/
-
 ###### [XS]
 
 XML Schema 1.1, parts 1 and 2. Available at: https://www.w3.org/TR/xmlschema11-1/ and https://www.w3.org/TR/xmlschema11-2/
@@ -1132,47 +1011,30 @@ XML Schema 1.1, parts 1 and 2. Available at: https://www.w3.org/TR/xmlschema11-1
 
 XML Path Language (XPath) 3.1, W3C Recommendation 21 March 2017, https://www.w3.org/TR/xpath-31/
 
-###### [XPathFunc]
+###### [XACML-Core-4.0]
 
-W3C XQuery, XPath, and XSLT Functions and Operators Namespace Document (XPath and XQuery Functions and Operators 3.1) 21 March 2017, https://www.w3.org/2005/xpath-functions/
+_XACML Version 4.0 (eXtensible Access Control Markup Language)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/xacml/core/v4.0/acal-core-xml-v4.0.html
 
-###### [XSLT]
+###### [YACAL-Core-1.0]
 
-XSL Transformations (XSLT) Version 1.0, W3C Recommendation 16 November 1999, https://www.w3.org/TR/xslt/
-
+_YACAL Version 1.0 (YAML Representation of ACAL)_. Edited by Steven Legg, Cyril Dangerville and Bill Parducci. https://docs.oasis-open.org/acal/yacal/core/v1.0/acal-core-yaml-v1.0.html
 
 ## B.2 Informative References
 
 
 The following referenced documents are not required for the application of this document but may assist the reader with regard to a particular subject area.
 
-###### [CM]
+###### [RFC8259]
 
-Character Model for the World Wide Web: String Matching W3C Working Group Note 11 August 2021, https://www.w3.org/TR/charmod-norm/, World Wide Web Consortium.
+Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", STD 90, RFC 8259, DOI 10.17487/RFC8259, December 2017, <https://www.rfc-editor.org/info/rfc8259>.
 
-###### [Hinton94]
+###### [Hier]
 
-Hinton, H, M, Lee, E, S, The Compatibility of Policies, Proceedings 2nd ACM Conference on Computer and Communications Security, Nov 1994, Fairfax, Virginia, USA.
-
-###### [NISTIR8318] 
-
-Black, P. (2020), DADS: The On-Line Dictionary of Algorithms and Data Structures, NIST Interagency/Internal Report (NISTIR), National Institute of Standards and Technology, Gaithersburg, MD, [online](https://doi.org/10.6028/NIST.IR.8318) (Accessed December 16, 2025) 
-
-###### [Sloman94]
-
-Sloman, M. Policy Driven Management for Distributed Systems. Journal of Network and Systems Management, Volume 2, part 4. Plenum Press. 1994.
+XACML v3.0 Hierarchical Resource Profile Version 1.0. 18 May 2014. Committee Specification 02. https://docs.oasis-open.org/xacml/3.0/hierarchical/v1.0/xacml-3.0-hierarchical-v1.0.html
 
 ###### [XACML]
 
 _eXtensible Access Control Markup Language (XACML) Version 3.0 Plus Errata 01_. Edited by Erik Rissanen. OASIS Standard incorporating Approved Errata. https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-en.html.
-
-###### [ENTITIES]
-
-_XACML v3.0 Related and Nested Entities Profile Version 1.0_. Edited by Steven Legg. 16 February 2021. OASIS Committee Specification 02. https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/cs02/xacml-3.0-related-entities-v1.0-cs02.html. Latest stage: https://docs.oasis-open.org/xacml/xacml-3.0-related-entities/v1.0/xacml-3.0-related-entities-v1.0.html.
-
-
----
-
 
 # Annex C Data Types and Functions
 
@@ -1183,8 +1045,8 @@ _XACML v3.0 Related and Nested Entities Profile Version 1.0_. Edited by Steven L
 ## C.1 Introduction
 
 This section specifies the data types and functions used in ACAL to create predicates for conditions and targets.
+The data type and the standard functions are named and their operational semantics are described.
 
-This specification combines the various standards set forth by IEEE and ANSI for string representation of numeric values, as well as the evaluation of arithmetic functions. The standard functions are named and their operational semantics are described.
 
 ## C.2 Data Types
 
@@ -1197,9 +1059,9 @@ Although a syntactic representation of ACAL objects may represent most data type
 
 _**Support for this data-type is OPTIONAL.**_
 
-The `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` data type represents an XPath expression over the XML in a `ContentType` object. The syntax is defined by the XPath W3C recommendation. The content of this data-type also includes the XPath version the expression is evaluated against and the context in which its namespace prefixes are resolved, which distinguishes it from a plain string, plus the ACAL attribute category of the `ContentType` object to which it applies. Once a value is constructed it has one resolved effective XPath version and one resolved namespace context, and neither is re-resolved if the value is later moved or copied. On the wire, in a `Request` or a `Policy`, the version may be abbreviated: a value with no local `XPathVersion` takes it from the applicable `XPathRequestDefaultsType`/`XPathPolicyDefaultsType` object ([Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype), [Section 5.3.2](#532-requestdefaultstype-extension---xpathrequestdefaultstype)); a value in a decision response, or with no applicable Defaults object, carries its `XPathVersion` locally (see [Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype) for the full rule). The namespace context is the value's own `Namespaces` property in a non-XML representation and the value element's ordinary [in-scope namespaces] in XML, with the implementation that materializes a value into a new document responsible for carrying that context across (see [Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). An XML attribute called `XPathCategory` gives the category of the `ContentType` object where the expression applies.
+The `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` data type represents an XPath expression over the XML in a `ContentType` object. The syntax is defined by the XPath W3C recommendation. The content of this data-type also includes the XPath version the expression is evaluated against and the context in which its namespace prefixes are resolved, which distinguishes it from a plain string, plus the ACAL attribute category of the `ContentType` object to which it applies. Once a value is constructed it has one resolved effective XPath version and one resolved namespace context, and neither is re-resolved if the value is later moved or copied. On the wire, in a `Request` or a `Policy`, the version may be abbreviated: a value with no local `XPathVersion` takes it from the applicable `XPathRequestDefaultsType`/`XPathPolicyDefaultsType` object ([Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype), [Section 5.3.2](#532-requestdefaultstype-extension---xpathrequestdefaultstype)); a value in a decision response, or with no applicable Defaults object, carries its `XPathVersion` locally (see [Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype) for the full rule). The namespace context is the value's own `Namespaces` property in a non-XML representation and the value element's ordinary [in-scope namespaces] [[INFOSET](#infoset)] in XML, with the implementation that materializes a value into a new document responsible for carrying that context across (see [Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). The `XPathCategory` property gives the category of the `ContentType` object where the expression applies.
 
-The XPath expression MUST be evaluated in a context which is equivalent of a stand alone XML document with the only child of the `ContentType` object's `Body` property value as the document element. The context node of the XPath expression is the document node of this standalone document. Namespace declarations from the `ContentType` object and its ancestor elements for namespace prefixes that are "visibly utilized", as defined by [[exc-c14n](#exc-c14n)], within the contents MUST be present. **In a XML representation, namespace declarations from the `<Body>` element or its ancestor elements for namespace prefixes that are not "visibly utilized" MAY be present.**
+The XPath expression MUST be evaluated in a context which is equivalent of a stand alone XML document with the only child of the `ContentType` object's `Body` property value as the document element. The context node of the XPath expression is the document node of this standalone document. Namespace declarations from the `ContentType` object and its ancestor elements for namespace prefixes that are "visibly utilized", as defined by [[exc-c14n](#exc-c14n)], within the contents MUST be present. **In an XML representation, namespace declarations from the `<Body>` element or its ancestor elements for namespace prefixes that are not "visibly utilized" MAY be present.**
 
 ## C.3 Functions
 
@@ -1214,7 +1076,7 @@ _**Supporting these functions is optional.**_
 
 This section specifies functions that take XPath expressions for arguments. Each such expression is evaluated using the effective XPath version and the namespace context carried by the `xpathExpression` value ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)); its context node is the document node defined in [Annex C.2.1](#c21-xpath-expression) for the `ContentType` object of the value's `XPathCategory`.
 
-An argument expression is expected to evaluate to a sequence of nodes. Each function below operates on the **set of distinct nodes** in that sequence: two occurrences of the same node — the same node identity, the `is` relationship of [XPath] — count once, and the order of the sequence is immaterial. Nodes and sets of nodes are not part of ACAL's formal data type system; they exist only within the evaluation of these functions, and every comparison or other operation on them is local to the evaluation of the particular function.
+An argument expression is expected to evaluate to a sequence of nodes. Each function below operates on the **set of distinct nodes** in that sequence: two occurrences of the same node — the same node identity, the `is` relationship of [[XPath](#xpath)] — count once, and the order of the sequence is immaterial. Nodes and sets of nodes are not part of ACAL's formal data type system; they exist only within the evaluation of these functions, and every comparison or other operation on them is local to the evaluation of the particular function.
 
 The following apply to every function in this section, in the order given:
 
@@ -1231,11 +1093,11 @@ The following functions are defined:
 
 `urn:oasis:names:tc:acal:1.0:function:xpath-node-equal`
 
-: This function SHALL take two `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` arguments and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. The function SHALL return `true` if some node selected by the first argument is the same node as some node selected by the second argument — that is, if the two nodes have the same identity (the `is` relationship of [XPath]) — and `false` otherwise (including whenever either argument selects no nodes; see step 4 of the preamble).
+: This function SHALL take two `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` arguments and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. The function SHALL return `true` if some node selected by the first argument is the same node as some node selected by the second argument — that is, if the two nodes have the same identity (the `is` relationship of [[XPath](#xpath)]) — and `false` otherwise (including whenever either argument selects no nodes; see step 4 of the preamble).
 
 `urn:oasis:names:tc:acal:1.0:function:xpath-node-match`
 
-: This function SHALL take two `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` arguments and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. The function SHALL return `true` if either of the following holds: (1) some node selected by the first argument is the same node as some node selected by the second argument; (2) some node selected by the **first** argument is a descendant of some node selected by the **second** argument. Node sameness is node identity (the `is` relationship of [XPath]). The function SHALL return `false` if neither condition holds, including whenever either argument selects no nodes (see step 4 of the preamble). Note: condition (1) is equivalent to `xpath-node-equal`, so `xpath-node-equal` is a special case of `xpath-node-match`. The first argument is the candidate node(s) being tested; the second is the node(s) it is tested against — the same candidate-first, pattern-second order [[ACAL-Core-1.0](#acal-core-10)] uses for `x500Name-match` and `rfc822Name-match` (see that document's Appendix 2, "the arguments to each of the following functions have been swapped"), and the reverse of the ancestor-first order [[XACML 3.0](#xacml)]'s `xpath-node-match` used.
+: This function SHALL take two `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` arguments and SHALL return an `urn:oasis:names:tc:acal:1.0:data-type:boolean`. The function SHALL return `true` if either of the following holds: (1) some node selected by the first argument is the same node as some node selected by the second argument; (2) some node selected by the **first** argument is a descendant of some node selected by the **second** argument. Node sameness is node identity (the `is` relationship of [[XPath](#xpath)]). The function SHALL return `false` if neither condition holds, including whenever either argument selects no nodes (see step 4 of the preamble). Note: condition (1) is equivalent to `xpath-node-equal`, so `xpath-node-equal` is a special case of `xpath-node-match`. The first argument is the candidate node(s) being tested; the second is the node(s) it is tested against — the same candidate-first, pattern-second order [[ACAL-Core-1.0](#acal-core-10)] uses for `x500Name-match` and `rfc822Name-match` (see that document's Appendix 2, "the arguments to each of the following functions have been swapped"), and the reverse of the ancestor-first order [[XACML 3.0](#xacml)]'s `xpath-node-match` used.
 
 
 # Annex D ACAL Identifiers
@@ -1265,7 +1127,7 @@ This attribute identifies a node of the XML document in the `Body` property of t
 
 `urn:oasis:names:tc:acal:1.0:content-selector`
 
-: The corresponding ACAL attribute SHALL have a single value of data type `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` (see [Annex C.2.1](#c21-xpath-expression)), and the XPath expression represented by that value SHALL select a single node of that XML document. As with any value of that data type, the `XPathCategory` property of the value gives the `Category` of the `RequestEntityType` object holding the `Content` object to which the expression applies.
+: The corresponding ACAL attribute SHALL have a single value of data type `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` (see [Annex C.2.1](#c21-xpath-expression)), and the XPath expression represented by that value must be designed to select a single node of that XML document. As with any value of that data type, the `XPathCategory` property of the value gives the `Category` of the `RequestEntityType` object holding the `Content` object to which the expression applies.
 
 : This is the standard attribute identifier for use as the value of the `ContextSelectorId` property of an `XPathAttributeSelectorType` or `XPathEntityAttributeSelectorType` object (see [Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype)). Use of this identifier is RECOMMENDED where no more specific attribute applies; `ContextSelectorId` MAY name any other attribute satisfying the conditions stated in [Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype).
 
@@ -1275,29 +1137,24 @@ In [[XACML 3.0](#xacml)] the corresponding identifier `urn:oasis:names:tc:xacml:
 
 # Annex E How to generate HTML and PDF versions
 
+(This annex does not form an integral part of this Specification and is informational.)
+
 ## Online generation
 
-HTML/PDF versions are generated automatically online via Github Actions after each update pushed to the main branch of [OASIS XACML TC Github repository](https://github.com/oasis-tcs/xacml-spec/). Go to  Github Actions on the github repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
+HTML/PDF versions are generated automatically online via GitHub Actions after each update pushed to the main branch of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/). Go to GitHub Actions on the GitHub repository, then go to the latest workflow run, and, if the run succeeded, the summary should display the links to the generated HTML/PDF documents.
 
 ## Offline generation
 
 ### Prerequisites
 
 The following tools are required:
-
 - [Pandoc](https://pandoc.org/) **v3.2.1 or later** ( [latest release](https://github.com/jgm/pandoc/releases/latest) );
-- [Pandoc-include filter](https://github.com/DCsunset/pandoc-include).
-- [PlantUML](https://plantuml.com/starting)
+- [Pandoc-include filter](https://github.com/DCsunset/pandoc-include);
+- [PlantUML](https://plantuml.com/starting) and [Graphviz](https://graphviz.org/), for the UML diagrams.
 
-Either install them on your system or, if you have Docker installed already, simply use the following shell alias:
+Install them on your system.
 
-Install Pandoc, Graphviz and PlantUML on your system; or simply use Docker with the following shell alias:
-```
-$ alias pandoc='docker run --rm --volume "$(pwd):/data" ghcr.io/oasis-tcs/pandoc-plantuml'
-```
-_The Dockerfile (named `Dockerfile`) of the docker image used in the alias above is provided in the [pandoc](pandoc) folder next to this markdown file for your convenience if you wish to build it yourself._  
-
-Git clone or get a local copy of [OASIS XACML TC Github repository](https://github.com/oasis-tcs/xacml-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
+Git clone or get a local copy of [OASIS ACAL \[XACML\] TC GitHub repository](https://github.com/oasis-tcs/acal-spec/), open a terminal and **change your working directory to the root directory of your local copy of the repository**.
 
 ### CSS stylesheet
 
@@ -1329,7 +1186,7 @@ Beware that **the result PDF - the embedded fonts in particular - may differ dep
 **For official TC publications**, add the `--official` argument to avoid this issue and produce a system-independent output:
 
 ```console
-$ pandoc/mkdocs.sh --pdf --official --output /tmp acal-core-v%version%.md
+$ pandoc/mkdocs.sh --number-lines --pdf --official --output /tmp acal-xpath-v%version%.md
 ```
 
 In this case, the generation will use a public Linux container image (`ghcr.io/oasis-tcs/chrome-headless`) with a fixed installed set of fonts to generate the PDF.
@@ -1341,29 +1198,10 @@ In this case, the generation will use a public Linux container image (`ghcr.io/o
 (This appendix does not form an integral part of this Specification and is informational.)
 
 
-<!-- From OASIS Open Specification Template Instructions:
-
-
-All parts in this appendix are optional to the TC. Individuals or companies, past or present, may request that their name and/or affiliation is not included in this list. 
-
-
--->
-
-
 ## Leadership
 
 
 The following individuals have had significant leadership positions during the development of this document, not just this version of the document, and they are gratefully acknowledged:
-
-
-<!-- From OASIS Open Specification Template Instructions:
-
-
-This section **SHOULD** include the leadership (chairs, sub committees chairs, secretaries, editors, etc.) of this document, and not just for this version of the document, even if they are no longer members of the TC.
-
-- Position, First Name Last Name, Company, [optional time frames] 
-
--->
 
 
 - Chairs
@@ -1373,21 +1211,7 @@ This section **SHOULD** include the leadership (chairs, sub committees chairs, s
 - Editors
   - Steven Legg, ViewDS Identity Solutions
   - Cyril Dangerville, THALES
-
-
-## Special Thanks
-
-
-The following individuals have made substantial contributions to this document, not just this version of the document, and their contributions are gratefully acknowledged:
-<!-- From OASIS Open Specification Template Instructions:
-
-
-This section **SHOULD** include individuals that have made significant contributions to this document, and not just this version of the document, even if they are no longer members of the TC or were never members of the TC but sent in a contribution through one of the public comment methods. 
-
--->
-
-- Steven Legg, ViewDS Identity Solutions
-- Cyril Dangerville, THALES
+  - Bill Parducci, Individual
 
 
 ## Participants
@@ -1395,9 +1219,8 @@ This section **SHOULD** include individuals that have made significant contribut
 
 The following individuals were members of this committee during the creation of this document, not just this version of the document, and their contributions are gratefully acknowledged:
 
-**XACML TC Members:**
+**OASIS ACAL \[XACML\] TC Members:**
 
-- Hal Lockhart, Individual
 - Bill Parducci, Individual
 - Steven Legg, ViewDS Identity Solutions
 - Cyril Dangerville, THALES
@@ -1411,11 +1234,24 @@ The following individuals were members of this committee during the creation of 
 
 (This appendix does not form an integral part of this Specification and is informational.)
 
-<!-- From OASIS Open Specification Template Instructions: 
 
-The appendix **SHOULD** contain any explanatory text about the reason for this version including any major changes. The level of detail that is included in this appendix is up to the editors and chairs of the TC to determine. This appendix is **REQUIRED**, if there are no changes then one is to put "None." In addition to any descriptive text, all major changes **SHOULD** be in a bulleted list so that reviewers and implementers can easily understand what they need to know.
+The changes made since the previous version (Committee Specification Draft 01) are the following. Section numbers refer to this version; most of these changes are described further in the list of differences from XACML 3.0 below.
 
--->
+- XPath 1.0 is no longer a supported XPath version, and the `xpath10` short identifier is removed from this profile's short identifier sets (the JSON set also names its entries with the `ShortId` property, as JACAL defines, instead of `ShortIdentifier`); [Section 6](#6-xpath-definitions) now states explicitly that XACML 3.0's XPath 2.0 identifier is not a valid `XPathVersion` value; and the XPath 3.0 and 3.1 identifiers use `https://` ([Section 6](#6-xpath-definitions)).
+- The namespace context of an XPath expression is carried by the `xpathExpression` value or the selector itself (`NamespaceDeclarationsType`, [Section 5.2](#52-namespacedeclarationstype-optional)), represented in JACAL and YACAL as a single mapping from prefix to namespace name; `XPathPolicyDefaultsType` and `XPathRequestDefaultsType` no longer have a `Namespace` property.
+- A conformance table for the attributes this profile defines is added ([Section 9.2.4](#924-attributes)), and `NamespaceDeclarationsType` is listed as an optional object type ([Section 9.2.1](#921-object-types)).
+- `XPathExpressionValueType` is now a subtype of `StructuredValueType` (csd01: `SimpleValueType`), and an `xpathExpression` value may carry its own `XPathVersion` ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). `XPathPolicyDefaultsType` also applies to nested policies ([Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype)); `XPathRequestDefaultsType` applies only to the `xpathExpression` values in the request and is now optional to implement ([Section 5.3.2](#532-requestdefaultstype-extension---xpathrequestdefaultstype), [Section 9.2.1](#921-object-types)). The `XPathDefaultsType` alternative is removed.
+- The conversion of an attribute selector's XPath result to ACAL values moves from [[ACAL-Core-1.0](#acal-core-10)] to this profile ([Section 7](#7-attribute-selector-evaluation)), and the conversion of an ACAL variable's value to an XPath variable is specified ([Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype)).
+- `xs:integer` operations no longer have a modulo mode; an implementation's integer limit is the supported integer interval of [[ACAL-Core-1.0](#acal-core-10)] ([Section 6](#6-xpath-definitions)).
+- The `content-selector` attribute identifier is defined by this profile ([Annex D.3](#d3-attributes)).
+- The Scope no longer says that concrete representations are out of scope of this document: this profile now defines its extensions to the XML, JSON and YAML representations and provides the corresponding schemas and short identifier sets ([Section 1](#1-scope), Additional artifacts).
+- In the worked examples of [Section 4.4](#44-example), Rules 2 and 3 pass the `xpath-node-match` arguments in the order [Annex C.3.1](#c31-xpath-based-functions) defines (candidate node first); they had been missed when the arguments were swapped. In the same examples, Rule 2 uses `date-less-than` in place of the undefined `date-less-or-equal` and tests the subject's `parent-guardian-id` attribute (it tested `physician-id`, which a parent or guardian does not have) against the record's `<md:parentGuardianId>`, as in [[XACML 3.0](#xacml)].
+- The XPath-based functions are restated for the sequence-of-items data model, and the arguments of `xpath-node-match` are swapped ([Annex C.3.1](#c31-xpath-based-functions)), so its XACML 3.0 identifier is no longer listed as an equivalent deprecated identifier ([Section 9.2.3](#923-functions)).
+- Requirement keywords previously written in lowercase are written in uppercase, with the wording otherwise unchanged ([Section 7](#7-attribute-selector-evaluation)); in [Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype) the XPath expression of a `ContextSelectorId` attribute "must select a single node" now reads "must be designed to select a single node", which states the intent without contradicting Section 7, where an evaluation that returns no node or more than one node is an error, and the sentence of Annex D.3 on the same attribute, "SHALL select a single node of that XML document", reads "must be designed to select a single node of that XML document" for the same reason; and [Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype) states the syntax-error outcome for a missing XPath version as a MUST with its status code.
+- [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
+- Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references, citations and cross-references are corrected.
+
+The remainder of this appendix describes how this profile differs from XACML 3.0.
 
 This ACAL Profile is a successor to the set of XPath-based features of [[XACML 3.0](#xacml)]. This profile differs from XACML 3.0's original XPath features in the following ways:
 
@@ -1423,7 +1259,7 @@ This ACAL Profile is a successor to the set of XPath-based features of [[XACML 3
 
 - `AttributeSelector` has become abstract to support other kinds of AttributeSelector (e.g. JSONPath-based) and the former XPath-based AttributeSelectorType becomes the subtype `XPathAttributeSelectorType`
 - Compared to XACML 3.0 AttributeSelectorType, `XPathAttributeSelectorType` supports a new feature:
-  
+
    * `Path` expression (XPath) can use *ACAL* variables from `VariableDefinition`s as XPath variables.
 
 - XPath versions: 
@@ -1431,203 +1267,31 @@ This ACAL Profile is a successor to the set of XPath-based features of [[XACML 3
   - Replaced XACML 3.0's XPath 2.0 identifier `http://www.w3.org/TR/2007/REC-xpath20-20070123` with `https://www.w3.org/TR/xpath20/`; the old identifier is not a valid ACAL value and is not a recognized alias (see [Section 6](#6-xpath-definitions)), so an XACML 3.0 → ACAL translation substitutes it.
   - Added support for XPath 3.0 and 3.1.
 
-- Deprecated prefixes `urn:oasis:names:tc:xacml:` and `https://www.w3.org/2001/XMLSchema#` in favor of `urn:oasis:names:tc:acal:` for all standard identifiers (algorithms, status codes, data-types, functions, attributes and categories)
+- Deprecated prefixes `urn:oasis:names:tc:xacml:` and `http://www.w3.org/2001/XMLSchema#` in favor of `urn:oasis:names:tc:acal:` for all standard identifiers (algorithms, status codes, data-types, functions, attributes and categories)
 
-- Namespace prefix bindings for an `xpathExpression` value, and for an `XPathAttributeSelectorType`/`XPathEntityAttributeSelectorType` object, are no longer resolved from a single Request- or Policy-wide table (see [Section 5.2](#52-namespacedeclarationstype-optional)): in a non-XML representation the expression carries its own `Namespaces` mapping — optional, and absent when the expression needs no prefix bindings — and in XML the prefixes resolve from the ordinary XML in-scope namespaces of its element (ancestor declarations included), as in [[XACML 3.0](#xacml)]. Because XML nested-scope declarations permit the same prefix to be bound to different namespace names in different parts of one document, a single global table cannot always represent that faithfully. This matches the JSON Profile of XACML 3.0, which likewise attached namespace bindings to each `xpathExpression` value rather than to a document-wide table; an earlier draft of *this* profile diverged from that by adding a Request-wide `XPathRequestDefaultsType` namespace table, now removed (issue #134). `XPathRequestDefaultsType` and `XPathPolicyDefaultsType` survive as `XPathVersion`-only ([Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype), [Section 5.3.2](#532-requestdefaultstype-extension---xpathrequestdefaultstype)).
+- Namespace prefix bindings for an `xpathExpression` value, and for an `XPathAttributeSelectorType`/`XPathEntityAttributeSelectorType` object, are no longer resolved from a single Request- or Policy-wide table (see [Section 5.2](#52-namespacedeclarationstype-optional)): in a non-XML representation the expression carries its own `Namespaces` mapping — optional, and absent when the expression needs no prefix bindings — and in XML the prefixes resolve from the ordinary XML in-scope namespaces of its element (ancestor declarations included), as in [[XACML 3.0](#xacml)]. Because XML nested-scope declarations permit the same prefix to be bound to different namespace names in different parts of one document, a single global table cannot always represent that faithfully. This matches the JSON Profile of XACML 3.0, which likewise attached namespace bindings to each `xpathExpression` value rather than to a document-wide table. `XPathRequestDefaultsType` and `XPathPolicyDefaultsType` survive as `XPathVersion`-only ([Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype), [Section 5.3.2](#532-requestdefaultstype-extension---xpathrequestdefaultstype)).
 
-- An `xpathExpression` value MAY now carry its own `XPathVersion` ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). In a `Request` or `Policy` the property is optional and defaults from the applicable `XPathRequestDefaultsType`/`XPathPolicyDefaultsType` object (for a policy, the nearest enclosing one — see the next bullet), as in [[XACML 3.0](#xacml)]; a value in a decision response (`Notice`, `AttributeAssignment`), or one with no applicable Defaults object, carries it locally. The version is resolved once, when the value is constructed, and does not change if the value is later moved or copied. [[XACML 3.0](#xacml)] could already carry an `xpathExpression` in an obligation or advice `AttributeAssignment`, but it had no per-value XPath version and defined no XPath-version default on a response — so a response-side value had no specified version. This closes that gap without forcing every request-side value to restate a version its `Request` already establishes. A response-side value does **not** inherit the version of the request that produced it: a response can be logged, forwarded, or evaluated apart from its request, so the version travels in the value itself.
+- An `xpathExpression` value may now carry its own `XPathVersion` ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). In a `Request` or `Policy` the property is optional and defaults from the applicable `XPathRequestDefaultsType`/`XPathPolicyDefaultsType` object (for a policy, the nearest enclosing one — see the next bullet), as in [[XACML 3.0](#xacml)]; a value in a decision response (`Notice`, `AttributeAssignment`), or one with no applicable Defaults object, carries it locally. The version is resolved once, when the value is constructed, and does not change if the value is later moved or copied. [[XACML 3.0](#xacml)] could already carry an `xpathExpression` in an obligation or advice `AttributeAssignment`, but it had no per-value XPath version and defined no XPath-version default on a response — so a response-side value had no specified version. This closes that gap without forcing every request-side value to restate a version its `Request` already establishes. A response-side value does **not** inherit the version of the request that produced it: a response can be logged, forwarded, or evaluated apart from its request, so the version travels in the value itself.
+- Editorial: the introduction of [Annex C](#annex-c-data-types-and-functions) no longer mentions IEEE and ANSI standards for numeric values, `XPathCategory` is called a property instead of an XML attribute, the content selector sentence of [Section 4.4](#44-example) refers to an attribute designator argument of `xpath-node-match` instead of the `ContextSelectorId` property, the example refers to an obligation notice, and the sentence about the earlier namespace table of [Section 5.2](#52-namespacedeclarationstype-optional) is shortened.
 
-- `XPathPolicyDefaultsType` applies to nested policies: an attribute selector's `Path`, or a version-less `xpathExpression` value, in a policy that carries no `XPathPolicyDefaultsType` of its own takes its version from the nearest enclosing policy that has one ([Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype), [Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). This follows [[ACAL-Core-1.0](#acal-core-10)] Section 7.4, whose `PolicyDefaults` scope was clarified to extend into nested policies (issue #139), matching the `VariableDefinition` scope rule already stated there. XACML 3.0 has no nested `<Policy>` (only nested `<PolicySet>`), so this case did not arise; there remains no fixed profile-wide default — an expression with no `XPathPolicyDefaultsType` anywhere up its chain and no local `XPathVersion` is a syntax error. A policy included by a `PolicyReference` is not nested within the referencing policy, so a referenced policy does not use the referencing policy's `XPathPolicyDefaultsType`.
+- `XPathPolicyDefaultsType` applies to nested policies: an attribute selector's `Path`, or a version-less `xpathExpression` value, in a policy that carries no `XPathPolicyDefaultsType` of its own takes its version from the nearest enclosing policy that has one ([Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype), [Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). This follows [[ACAL-Core-1.0](#acal-core-10)] Section 7.4, whose `PolicyDefaults` scope was clarified to extend into nested policies, matching the `VariableDefinition` scope rule already stated there. XACML 3.0 has no nested `<Policy>` (only nested `<PolicySet>`), so this case did not arise; there remains no fixed profile-wide default — an expression with no `XPathPolicyDefaultsType` anywhere up its chain and no local `XPathVersion` is a syntax error. A policy included by a `PolicyReference` is not nested within the referencing policy, so a referenced policy does not use the referencing policy's `XPathPolicyDefaultsType`.
 
 - The `content-selector` attribute identifier is defined by this profile ([Annex D.3](#d3-attributes)), whereas its XACML 3.0 counterpart `urn:oasis:names:tc:xacml:3.0:content-selector` is defined by the XACML v3.0 Hierarchical Resource Profile [[Hier](#hier)] even though it is consumed by the `ContextSelectorId` mechanism of XACML core. The identifier is not specific to hierarchical resources, so ACAL defines it alongside the mechanism that consumes it.
 
-- The conversion of an attribute selector's XPath result to ACAL values, previously specified in [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7, is now specified by this profile ([Section 7](#7-attribute-selector-evaluation) step 4), for the sequence-of-items result of the supported [XPath] versions. Relative to the former Core table: (1) a sequence of several items now converts, each item to one value, including a mix of nodes and atomic values, and the bag keeps duplicates; (2) a node still converts through its string value, as before; (3) an atomic value converts only if its type is the requested XML Schema type or a type derived from it, or is `xs:untypedAtomic`, or — for `double` — is an `xs:float` or `xs:decimal` (including `xs:integer`), which the former Core table's Boolean-to-`boolean`, string-to-`string` and number-to-`integer`-or-`double` cases correspond to, except that a number that is not already of the requested type (for example a decimal or a double requested as `integer`) no longer converts and returns `syntax-error`, where the former table applied the `xs:integer()` constructor function to it and so truncated it; (4) a map, array or function item returns `processing-error`; (5) an empty sequence is governed by the empty-result rule of [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7 before any conversion case is considered.
+- The conversion of an attribute selector's XPath result to ACAL values, previously specified in [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7, is now specified by this profile ([Section 7](#7-attribute-selector-evaluation) step 4), for the sequence-of-items result of the supported [[XPath](#xpath)] versions. Relative to the former Core table: (1) a sequence of several items now converts, each item to one value, including a mix of nodes and atomic values, and the bag keeps duplicates; (2) a node still converts through its string value, as before; (3) an atomic value converts only if its type is the requested XML Schema type or a type derived from it, or is `xs:untypedAtomic`, or — for `double` — is an `xs:float` or `xs:decimal` (including `xs:integer`), which the former Core table's Boolean-to-`boolean`, string-to-`string` and number-to-`integer`-or-`double` cases correspond to, except that a number that is not already of the requested type (for example a decimal or a double requested as `integer`) no longer converts and returns `syntax-error`, where the former table applied the `xs:integer()` constructor function to it and so truncated it; (4) a map, array or function item returns `processing-error`; (5) an empty sequence is governed by the empty-result rule of [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7 before any conversion case is considered.
 
-- `xs:integer` operations no longer have a modulo mode ([Section 6](#6-xpath-definitions)). An implementation's integer limit is the supported integer interval of [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.7, which includes at least −2<sup>63</sup> to 2<sup>63</sup>−1 and applies to every `xs:integer` operand and result within an XPath expression. An out-of-range arithmetic result raises [err:FOAR0002] and an out-of-range cast raises [err:FOCA0003], and either error returns `processing-error`.
+- `xs:integer` operations no longer have a modulo mode ([Section 6](#6-xpath-definitions)). An implementation's integer limit is the supported integer interval of [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6, which includes at least −2<sup>63</sup> to 2<sup>63</sup>−1 and applies to every `xs:integer` operand and result within an XPath expression. An out-of-range arithmetic result raises [err:FOAR0002] and an out-of-range cast raises [err:FOCA0003], and either error returns `processing-error`.
 
 - The ACAL-to-XPath conversion of the value(s) of an ACAL variable referenced by an XPath expression is now specified ([Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype)): a value of one of the twelve XML-Schema-defined data types becomes the atomic value of the same-named `xs` type, and a bag becomes a sequence in a specified order. The text it replaces pointed to [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7, which contains no such conversion, and described a bag as an XPath array, which XPath 2.0 does not have.
 
-- The XPath-based functions `xpath-node-count`, `xpath-node-equal` and `xpath-node-match` ([Annex C.3.1](#c31-xpath-based-functions)) are restated in terms of the data model of the supported [XPath] versions — an argument expression yields a **sequence of nodes**, which each function treats as a set (repeated occurrences of the same node are ignored, order is immaterial), and node sameness is the `is` relationship — rather than the XPath 1.0 "node-set" vocabulary [[XACML 3.0](#xacml)] inherited, XPath 1.0 no longer being a supported version ([Section 6](#6-xpath-definitions)). Two cases [[XACML 3.0](#xacml)] left unstated are now defined: an argument expression that raises an XPath error, and one that evaluates to a sequence containing a non-node item, each makes the function return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`. The absent-`ContentType` case is generalized to "an argument that selects no nodes" (the previous zero / `false` results still follow when no present argument raises an XPath error or yields a non-node item). The functions' results are otherwise unchanged for any expression that evaluates to nodes.
+- The XPath-based functions `xpath-node-count`, `xpath-node-equal` and `xpath-node-match` ([Annex C.3.1](#c31-xpath-based-functions)) are restated in terms of the data model of the supported [[XPath](#xpath)] versions — an argument expression yields a **sequence of nodes**, which each function treats as a set (repeated occurrences of the same node are ignored, order is immaterial), and node sameness is the `is` relationship — rather than the XPath 1.0 "node-set" vocabulary [[XACML 3.0](#xacml)] inherited, XPath 1.0 no longer being a supported version ([Section 6](#6-xpath-definitions)). Two cases [[XACML 3.0](#xacml)] left unstated are now defined: an argument expression that raises an XPath error, and one that evaluates to a sequence containing a non-node item, each makes the function return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`. The absent-`ContentType` case is generalized to "an argument that selects no nodes" (the previous zero / `false` results still follow when no present argument raises an XPath error or yields a non-node item). The functions' results are otherwise unchanged for any expression that evaluates to nodes.
 
 - `xpath-node-match`'s arguments are swapped relative to [[XACML 3.0](#xacml)]'s `xpath-node-match`: the first argument is now the candidate node(s), the second the node(s) it is tested against (ancestor-or-self), matching the candidate-first, pattern-second order [[ACAL-Core-1.0](#acal-core-10)] already uses for `x500Name-match` and `rfc822Name-match`. `xpath-node-count` and `xpath-node-equal` are unaffected — the latter's "any node equal to any node" test is symmetric in its arguments.
 
 ## Revision History
 
-Latest revision history can be obtained from [OASIS XACML TC's code repository](https://github.com/oasis-tcs/xacml-spec/blob/v%version%-%stage_revision%/acal-xpath-v%version%-%stage_revision%.md).
+Latest revision history can be obtained from [OASIS ACAL \[XACML\] TC's code repository](https://github.com/oasis-tcs/acal-spec/blob/v%version%-%stage_revision%/acal-xpath-v%version%-%stage_revision%.md).
 
-<!--
-- \< Date in yyyy-mm-dd format \>, \< Revision number \>  
-- \< Date in yyyy-mm-dd format \>, \< Revision number \>
--->
-
-<!--
-# Appendix 3 OASIS Open Specification Template Instructions
-
-(This appendix does not form an integral part of this Specification and is informational.)
-
-
-## General Template Instructions
-
-
-**Template Instructions:** All template instructions are included within angle brackets and need to be deleted prior to publication. This includes these five pages.
-
-
-**Square Brackets**: Nearly all text within square brackets needs to be updated or replaced, except for any reference tokens that also use square brackets. For formats that support it, this text will be highlighted in yellow to make it easier to see.
-
-
-**Additional Versions**: The editors of the document **MUST** produce all additional desired or required formats (HTML, PDF, etc) before sending this for publication.
-
-
-**Names, Organizations, and Emails**: Individuals or companies, past or present, may request that their name and/or affiliation and/or email address be not included in any of the acknowledgments and or leadership positions. 
-
-
-## Formatting Instructions
-
-
-**Paragraph Spacing**: There **SHOULD** be a single empty line between paragraphs. In some cases, editors may add additional spacing to improve readability and the cosmetic look of the section, especially around figures, tables, and charts.
-
-
-**Quotes:** Straight "quotes" **SHOULD** be used, not “smart quotes” or curly quotes. This can be set as a persistent preference in most writing tools.
-
-
-**Document Date**: At the top of the document on the first page is a date, this date **MUST** be the date that the document was approved. 
-
-
-**Document Title and Subtitle:** The title of the document **SHOULD** be written in title case, meaning all words that have four or more letters **SHOULD** be capitalized.
-
-
-**Headings**: While various editors and formats support up to 6 levels of nested headers it is generally advised to structure the document to minimize the number of nested sections. A best practice is to try and keep nesting to no greater than 3 levels of headings. All headings **SHOULD** be written in title case, meaning all words that have four or more letters **SHOULD** be capitalized. 
-
-
-**Tables**: Text presented in tables **SHOULD** be no smaller in font size than the body copy text.
-
-
-## Extra Items Instructions
-
-
-All equations, listings, code snippets, figures (Fig. 1), tables (Table I), etc., need to be referenced in the text (preferably before their appearance).
-
-
-**Mathematical Syntax and Equations:** Editors **SHOULD** consider using simple text (with the Markdown Blockquotes feature designated by the following angle bracket \>) or images to create mathematical representations. All equations, listings, code snippets, figures (Fig. 1), tables (Table 1), etc., need to be referenced in the text (preferably before their appearance). 
-
-
-**Equations:** All equations **MUST** use the Markdown Blockquotes feature, **MUST** be numbered, **MAY** use a section number dot equation number (see example below) to track the equations within a particular section, and **SHOULD** be numbered consecutively where the number is in parentheses and appears after the formula. All symbols in the equation **SHOULD** be defined before the equation appears in the text. When referring to an equation or formula, use for example "Eq. 1.1".
-
-
-> y2 \= x3 \+ ax \+ b (Eq. 1.1)
-
-
-**Listings:** All algorithms and pseudo code **MUST** use the Markdown Fenced Code Blocks feature, **MUST** be numbered, **MAY** use a section number dot listing number (see example below) to track the listing within a particular section, **SHOULD** be numbered consecutively, and **SHOULD** include a short title forming a header. There **SHOULD** be a line above and below the header and a line at the bottom of the algorithm. Editors **SHOULD** use the markdown 
-
-
----
-
-
-**Listing 1.1** Sample Title  
----
-
-
-```
-currentMax ← A[0]  
-    for i ← 1 to n \-1 do  
-        if A[i] \> currentMax then  
-            currentMax ← A[i]  
-    { increment counter i }  
-    return currentMax  
-```
-
-
----
-
-
-**Code Snippets**: Actual code samples and snippets **MUST** be numbered, **MAY** use a section number followed by a dot which is then followed by a code sample number (see example below) to track the code samples within a particular section, **SHOULD** be numbered consecutively, and **SHOULD** include a short title forming a header. There **SHOULD** be a line above and below the header. A single header **MAY** be used for multiple code samples in a block, but in this case, each sample **SHOULD** individually be numbered as shown below. The code itself **SHOULD** use the Markdown Fenced Code Blocks feature and programming language designator to style the code snippet. Meaning that the first code line will start with three back tick characters (\`\`\`) followed by the language (e.g., json, yaml, cpp, go, etc) and the last line starts with three back tick characters (\`\`\`).
-
-
----
-
-
-**Code 1.1** Sample Title  
----
-
-
-*Some subheading (e.g., Example 1.1.1 \- Some example code)*  
-```json  
-{  
-  "Some key": "some value"  
-}  
-```
-
-
-*Some subheading (e.g., Example 1.1.2 \- Some other example code)*  
-```xml 
-<your xml> 
-```
-
-
-**Figures and Tables**: All figures **MUST** be numbered and **MAY** use a section number followed by a hyphen which is then followed by a figure number (see example below) to track the figures within a particular section. When referencing a figure or table please use the abbreviation "Fig." for figures and "Table" for tables. Tables **SHOULD** be numbered with Roman numerals.
-
-```md
-Figure 2-1  
-![FIG2-1](figure2-1.png)
-**Fig. 2-1.** This is a sample of a figure caption.
-```
-
-Table I  
-This is a Sample of a Table Title
-
-
-|  Name  | \#1 | \#2 | \#3 | \#4 | \#5 |
-|:------:|:---:|:---:|:---:|:---:|:---:|
-| **AB** |  3  |  3  |  6  | 11  |  9  |
-| **BC** |  7  |  7  |  4  | 12  |  9  |
-| **CD** | 10  |  3  |  3  |  9  |  7  |
-| **DE** |  3  |  7  | 10  |  5  |  6  |
-| **DF** |  7  |  1  | 12  |  1  |  3  |
-| **ZZ** |  5  | 12  | 11  |  9  |  8  |
-
-
-**Table I:** This table contains information about x and y and z.
-
-
-## Other Instructions
-
-
-**References:** OASIS uses the IEEE Reference format for citations. However, unlike the IEEE Reference format the in-line tokens can be either named or a number; in either case they are enclosed in square braces. Editors **SHOULD** be consistent in the body of the document and use either named tokens "[RFC2119]" or numbered "[1]" tokens, but not both. Any named tokens that are used in the template front matter do not impact the decision about named or numbered in the body of the document. All other rules about in-line use and style **MUST** follow the IEEE Reference format found here: [https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE\_Reference\_Guide.pdf](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf)
-
-
-**Definitions and Terms:** It is generally more consistent to refer to an existing official definition in other open standards or readily-available nonproprietary reference documents, rather than to redefine a term. It is a best practice to refer to the specific version or date of the source document for a definition, either explicitly or by a reference link to the specific version (not a *current version* link). Normally, terms defined elsewhere will simply refer to the defining document. In certain cases, it may be desirable to quote the definition to allow for a stand-alone document. Before defining a new term, verify whether it has already been defined in an official document elsewhere such as in another OASIS Standard, the ITU terminology database ([https://www.itu.int/br\_tsb\_terms/\#/](https://www.itu.int/br_tsb_terms/#/)), ISO terms ([https://www.iso.org/obp/ui](https://www.iso.org/obp/ui)), IEEE/IEC electropedia ([https://www.electropedia.org/IEEE](https://www.electropedia.org/IEEE)), IETF, CEN/CENELEC, or NIST ([https://csrc.nist.gov/glossary](https://csrc.nist.gov/glossary)).
-
-
-**Annex vs Appendix:** An annex is considered normative, meaning that it **MUST** be included with the document and its contents form an integral part of the document. Whereas an Appendix is purely informational content and is not required to be included with the document.
-
-
-Under the heading of each Annex the following text **MUST** be present:  
-(This annex forms an integral part of this Specification.)
-
-
-Under the heading of each Appendix the following text **MUST** be present:  
-(This appendix does not form an integral part of this Specification and is informational.)
-
-
-- Annex A **MUST** be the License, Document Status and Notices information.  
-- Annex B **MUST** be the References information.  
-- Annex C+ can be whatever is needed  
-- Appendix 1 **MUST** be the Acknowledgments information  
-- Appendix 2 **MUST** be the Changes From Previous Version information  
-- Appendix 3+ can be whatever is needed
-
-
-# Appendix 4 Additional Appendix as Needed
-
-
-(This appendix does not form an integral part of this Specification and is informational.)
-
-
-## Subsection Title
-
-
-### Sub-subsection
--->
 
 <!-- The following centered line represents the end of the document -->  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_

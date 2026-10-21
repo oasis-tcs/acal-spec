@@ -7,7 +7,7 @@
     <xpath:XPathPolicyDefaults XPathVersion="https://www.w3.org/TR/xpath20/" />
     <VariableDefinition
         VariableId="patient_under_16">
-        <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:date-less-or-equal">
+        <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:date-less-than">
             <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:date-one-and-only">
                 <AttributeDesignator
                     Category="urn:oasis:names:tc:acal:1.0:attribute-category:environment"
@@ -44,17 +44,17 @@
                 </Apply>
                 <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:any-of">
                     <Function Id="urn:oasis:names:tc:acal:1.0:function:xpath-node-match" />
-                    <Value
-                        XPathCategory="urn:oasis:names:tc:acal:1.0:attribute-category:resource" XPath="md:record" />
                     <AttributeDesignator
                         Category="urn:oasis:names:tc:acal:1.0:attribute-category:resource"
                         AttributeId="urn:oasis:names:tc:acal:1.0:content-selector"/>
+                    <Value
+                        XPathCategory="urn:oasis:names:tc:acal:1.0:attribute-category:resource" XPath="md:record" />
                 </Apply>
                 <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:string-equal">
                     <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:string-one-and-only">
                         <AttributeDesignator
                             Category="urn:oasis:names:tc:acal:1.0:subject-category:access-subject"
-                            AttributeId="urn:oasis:names:tc:acal:1.0:example:attribute:physician-id" />
+                            AttributeId="urn:oasis:names:tc:acal:1.0:example:attribute:parent-guardian-id" />
                     </Apply>
                     <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:string-one-and-only">
                         <xpath:XPathAttributeSelector
