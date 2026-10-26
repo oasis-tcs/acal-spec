@@ -772,8 +772,8 @@
     </profileApplication>
   </uml:Model>
   <ACAL_UML_Profile:restrictedString xmi:id="_PxqaIJJrEfG8OtTJUPX4KA" pattern="^[a-z0-9]+(-[a-z0-9]+)*$" base_PrimitiveType="_jGY2kGhPEfGiArG33d46Ow"/>
-  <ACAL_UML_Profile:restrictedString xmi:id="_am-W0JJrEfG8OtTJUPX4KA" pattern="^(0|[1-9]\\d*)(\\.(0|[1-9]\\d*)){0,3}$" minLength="1" base_PrimitiveType="_J50zoInREfGSIv-8KflxPg"/>
-  <ACAL_UML_Profile:restrictedString xmi:id="_jQBQQJJrEfG8OtTJUPX4KA" pattern="^(0|[1-9]\\d*|\\*)(\\.(0|[1-9]\\d*|\\*|\\+)){0,3}$" minLength="1" base_PrimitiveType="_M8eFQInREfGSIv-8KflxPg"/>
+  <ACAL_UML_Profile:restrictedString xmi:id="_am-W0JJrEfG8OtTJUPX4KA" pattern="^(0|[1-9][0-9]*)(\\.(0|[1-9][0-9]*)){0,3}$" minLength="1" base_PrimitiveType="_J50zoInREfGSIv-8KflxPg"/>
+  <ACAL_UML_Profile:restrictedString xmi:id="_jQBQQJJrEfG8OtTJUPX4KA" pattern="^(0|[1-9][0-9]*|\\*)(\\.(0|[1-9][0-9]*|\\*)){0,2}(\\.(0|[1-9][0-9]*|\\*|\\+))?$" minLength="1" base_PrimitiveType="_M8eFQInREfGSIv-8KflxPg"/>
   <ACAL_UML_Profile:restrictedString xmi:id="_xwl9wJJrEfG8OtTJUPX4KA" pattern="^[A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)*$" minLength="1" base_PrimitiveType="_tuwPkInREfGSIv-8KflxPg"/>
   <ACAL_UML_Profile:restrictedString xmi:id="_1ghzMJJrEfG8OtTJUPX4KA" pattern="^[!#-;=?-\\[\\]_a-z~]*(\\{[A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)*\\}[!#-;=?-\\[\\]_a-z~]*)*$" minLength="1" base_PrimitiveType="_tuyEwInREfGSIv-8KflxPg"/>
   <ACAL_UML_Profile:restrictedString xmi:id="_GGoCwJJsEfG8OtTJUPX4KA" pattern="^_*[A-Za-z][A-Za-z_0-9]*([-.]_*[A-Za-z_0-9]*)*$" minLength="1" base_PrimitiveType="_9XPUsHNGEfGb_ZZVap5Rkw"/>
