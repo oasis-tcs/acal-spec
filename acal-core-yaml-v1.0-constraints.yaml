@@ -595,9 +595,9 @@ Rule:
       - Version
     Requirement: >
       The combinations of SharedVariableDefinition Id and Version values
-      within a BundleType MUST be unique. A PAP additionally ensures that
-      no two equivalent versions (for example 1 and 1.0) have the same
-      Id (ACAL Section 7.1.2.3.4).
+      within a BundleType MUST be unique. A PAP SHALL ensure that no two
+      equivalent versions (for example 1 and 1.0) have the same Id (ACAL
+      Section 7.1.2.3.4).
     Provenance:
       YACALSection: "5.7.1"
       ACALSection: "7.46"
@@ -613,9 +613,9 @@ Rule:
       - Version
     Requirement: >
       The combinations of Policy PolicyId and Version values within a
-      BundleType MUST be unique. A PAP additionally ensures that no two
-      equivalent versions (for example 1 and 1.0) have the same PolicyId
-      (ACAL Section 7.1.2.3.4).
+      BundleType MUST be unique. A PAP SHALL ensure that no two equivalent
+      versions (for example 1 and 1.0) have the same PolicyId (ACAL Section
+      7.1.2.3.4).
     Provenance:
       YACALSection: "5.7.1"
       ACALSection: "7.46"

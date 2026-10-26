@@ -608,7 +608,7 @@ This is the first version of this profile; its previous stage was Committee Spec
 - [Annex D](#annex-d-how-to-generate-html-and-pdf-versions): the input file of the generation commands follows the options, and installing the Pandoc filters in order is an instruction, not a requirement.
 - [Annex D](#annex-d-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
 - An empty nodelist from a `Path` expression with `MustBePresent` set to `true` returns `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:missing-attribute`, not `syntax-error` (@sec:attribute-selector-evaluation), as in [[ACAL-Core-1.0](#acal-core-10)] Section 8.4.7.
-- The introduction of the conformance tables (@sec:conformance-tables) says that the tables list the portions relevant to a claim of conformance, that an item marked `M` MUST be implemented and that an item marked `O` is optional, as in [[ACAL-Core-1.0](#acal-core-10)] Section 11.2.
+- The introduction of the conformance tables (@sec:conformance-tables) says that the tables list the portions relevant to a claim of conformance, that an item marked `M` is mandatory to implement and that an item marked `O` is optional, as in [[ACAL-Core-1.0](#acal-core-10)] Section 11.2.
 - Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references are corrected.
 
 ## Revision History {.unnumbered}

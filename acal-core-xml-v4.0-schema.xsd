@@ -923,10 +923,14 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		</xs:complexContent>
 	</xs:complexType>
 
-	<!-- Change to XACML 3.0: more restrictive type for the AttributeSelector Path attribute -->
+	<!-- Change to XACML 3.0: more restrictive type for the AttributeSelector Path attribute.
+	The pattern of ACAL Core Section 7.1.2.3.10 is ^\S(.*\S)?$ in the ECMA-262 dialect. In XSD, \s is only
+	the four XML whitespace characters and . excludes only CR and LF, so \S and . are written below as the
+	character classes that have the ECMA-262 meaning (WhiteSpace and LineTerminator excluded). The control
+	characters U+000B and U+000C, also ECMA-262 whitespace, cannot occur in an XML 1.0 document. -->
 	<xs:simpleType name="AttributeSelectorPathType">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="\S(.*\S)?">
+			<xs:pattern value="[^&#x9;&#xA;&#xD;&#x20;&#xA0;&#x1680;&#x2000;-&#x200A;&#x2028;&#x2029;&#x202F;&#x205F;&#x3000;&#xFEFF;]([^&#xA;&#xD;&#x2028;&#x2029;]*[^&#x9;&#xA;&#xD;&#x20;&#xA0;&#x1680;&#x2000;-&#x200A;&#x2028;&#x2029;&#x202F;&#x205F;&#x3000;&#xFEFF;])?">
 				<xs:annotation>
 					<xs:documentation xml:lang="en">Non-empty string without leading/trailing
 						whitespace</xs:documentation>

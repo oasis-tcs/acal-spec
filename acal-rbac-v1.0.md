@@ -1467,7 +1467,7 @@ An implementation claiming conformance to this profile MUST support the Role Pol
 
 ### 10.2.2 Attributes
 
-A PAP or PEP that uses the attribute listed here for a role SHALL use it as this profile defines it (see [Annex C.3](#c3-attributes)). These semantics are transparent to the PDP.
+A PAP or PEP that supports the attribute listed here SHALL use it as this profile defines it (see [Annex C.3](#c3-attributes)). These semantics are transparent to the PDP.
 
 | Identifier | M/O | Deprecated Identifier |
 | :--- | :--- | :--- |

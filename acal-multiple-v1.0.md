@@ -1027,7 +1027,7 @@ The implementation MUST support the schemes associated with the following identi
 
 ### 11.2.2 Attributes
 
-The implementation MUST use the attributes associated with the following identifiers in the way this profile has defined (see [Annex C.3](#c3-attributes)).
+An implementation that supports an attribute listed here SHALL use it as this profile defines it (see [Annex C.3](#c3-attributes)).
 
 | Identifier | M/O | Deprecated Identifier |
 | :--- | :--- | :--- |
