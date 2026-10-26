@@ -693,7 +693,7 @@ The specification defines three independently optional node-identity schemes and
 
 ## 10.2 Conformance Tables
 
-This section lists those portions of the specification that MUST be included in an implementation of a PDP, PAP or PEP that claims to conform to this profile.
+This section lists the portions of this specification that are relevant to a claim of conformance to this profile. An implementation MUST implement each item marked `M`; support for an item marked `O` is optional.
 
 : Note: "M" means mandatory-to-implement. "O" means optional.
 
@@ -716,7 +716,7 @@ Note: all six are `O` because each names an independently optional scheme, or pa
 
 ### 10.2.2 Attributes
 
-The implementation MUST use the attributes associated with the following identifiers in the way this profile has defined (see [Annex C.3](#c3-attributes)). This requirement pertains primarily to implementations of a PAP or PEP that uses ACAL, since the semantics of the attribute are transparent to the PDP.
+A PAP or PEP that supports an attribute listed here SHALL use it as this profile defines it (see [Annex C.3](#c3-attributes)). These semantics are transparent to the PDP.
 
 | Identifier | M/O | Deprecated Identifier |
 | :--- | :--- | :--- |

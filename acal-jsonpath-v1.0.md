@@ -338,7 +338,7 @@ If the designated attribute category or entity value has a `Content` property, t
 : If an error occurs when converting the values returned by the expression to the specified data type — including a `urn:oasis:names:tc:acal:1.0:function:x500Name-from-string`, `urn:oasis:names:tc:acal:1.0:function:rfc822Name-from-string`, `urn:oasis:names:tc:acal:1.0:function:ipAddress-from-string` or `urn:oasis:names:tc:acal:1.0:function:dnsName-from-string` function evaluating to `Indeterminate` for a node's string value — then the result of the attribute selector MUST be `Indeterminate`, with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 &nbsp;
-: If the result of step 3 is an empty nodelist, then the return value is either `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`, or an empty bag, as determined by the `MustBePresent` property.
+: If the result of step 3 is an empty nodelist, then the attribute selector SHALL return an empty bag if `MustBePresent` is `false`, and otherwise `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:missing-attribute`.
 
 An implementation can be optimized to emit errors without going to the effort of generating the string value of node values. For example, the string value of a JSON number will never have the correct format for a `urn:oasis:names:tc:acal:1.0:data-type:dateTime` ACAL value, so this combination will always produce an error.
 
@@ -357,7 +357,7 @@ Refer to [[ACAL-Core-1.0](#acal-core-10)] section 10, and Section 4 (Security Co
 
 ## Conformance Tables
 
-This section lists those portions of the specification that MUST be included in an implementation of a PDP that claims to conform to this profile.
+This section lists the portions of this specification that are relevant to a claim of conformance to this profile. An implementation MUST implement each item marked `M`; support for an item marked `O` is optional.
 
 : Note: "M" means mandatory-to-implement. "O" means optional.
 
@@ -607,6 +607,8 @@ This is the first version of this profile; its previous stage was Committee Spec
 - Sections are numbered automatically, and the cross-references to sections of this profile and of [[ACAL-Core-1.0](#acal-core-10)] are corrected.
 - [Annex D](#annex-d-how-to-generate-html-and-pdf-versions): the input file of the generation commands follows the options, and installing the Pandoc filters in order is an instruction, not a requirement.
 - [Annex D](#annex-d-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
+- An empty nodelist from a `Path` expression with `MustBePresent` set to `true` returns `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:missing-attribute`, not `syntax-error` (@sec:attribute-selector-evaluation), as in [[ACAL-Core-1.0](#acal-core-10)] Section 8.4.7.
+- The introduction of the conformance tables (@sec:conformance-tables) says that the tables list the portions relevant to a claim of conformance, that an item marked `M` MUST be implemented and that an item marked `O` is optional, as in [[ACAL-Core-1.0](#acal-core-10)] Section 11.2.
 - Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references are corrected.
 
 ## Revision History {.unnumbered}

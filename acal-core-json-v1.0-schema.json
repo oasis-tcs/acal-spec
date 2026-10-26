@@ -98,12 +98,12 @@
 		"VersionType": {
 			"description": "Policy version (backslashes must be escaped in JSON)",
 			"type": "string",
-			"pattern": "^(0|[1-9]\\d*)(\\.(0|[1-9]\\d*)){0,3}$"
+			"pattern": "^(0|[1-9][0-9]*)(\\.(0|[1-9][0-9]*)){0,3}$"
 		},
 		"VersionMatchType": {
 			"description": "Policy version match pattern (backslashes must be escaped in JSON)",
 			"type": "string",
-			"pattern": "^(0|[1-9]\\d*|\\*)(\\.(0|[1-9]\\d*|\\*)){0,2}(\\.(0|[1-9]\\d*|\\*|\\+))?$"
+			"pattern": "^(0|[1-9][0-9]*|\\*)(\\.(0|[1-9][0-9]*|\\*)){0,2}(\\.(0|[1-9][0-9]*|\\*|\\+))?$"
 		},
 		"ShortIdNameType": {
 			"description": "Short Identifier alias",
@@ -1394,7 +1394,7 @@
 					}
 				},
 				"ApplicablePolicyReference": {
-					"$comment": "Uniqueness by '/Id' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
+					"$comment": "Uniqueness by '/Id' and '/Version' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1565,7 +1565,7 @@
 					}
 				},
 				"SharedVariableDefinition": {
-					"$comment": "Uniqueness by '/Id' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
+					"$comment": "Uniqueness by '/Id' and '/Version' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1573,7 +1573,7 @@
 					}
 				},
 				"Policy": {
-					"$comment": "Uniqueness by '/PolicyId' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
+					"$comment": "Uniqueness by '/PolicyId' and '/Version' is not enforced by this schema; the 'uniqueKeys' keyword of the ArrayExt vocabulary (https://docs.json-everything.net/schema/vocabs/array-ext/) can enforce it.",
 					"type": "array",
 					"minItems": 1,
 					"items": {

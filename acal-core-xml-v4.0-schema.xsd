@@ -169,6 +169,7 @@
 		<xs:key name="Result_ApplicablePolicyReference">
 			<xs:selector xpath="xacml:ApplicablePolicyReference" />
 			<xs:field xpath="@Id" />
+			<xs:field xpath="@Version" />
 		</xs:key>
 	</xs:element>
 	<xs:complexType name="ResultType">
@@ -692,7 +693,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 	and to get closer to Semantic Versioning -->
 	<xs:simpleType name="VersionType">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="(0|[1-9]\d*)(\.(0|[1-9]\d*)){0,3}" />
+			<xs:pattern value="(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*)){0,3}" />
 		</xs:restriction>
 	</xs:simpleType>
 
@@ -700,7 +701,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 	change to VersionType pattern. -->
 	<xs:simpleType name="VersionMatchType">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="(0|[1-9]\d*|\*)(\.(0|[1-9]\d*|\*)){0,2}(\.(0|[1-9]\d*|\*|\+))?" />
+			<xs:pattern value="(0|[1-9][0-9]*|\*)(\.(0|[1-9][0-9]*|\*)){0,2}(\.(0|[1-9][0-9]*|\*|\+))?" />
 		</xs:restriction>
 	</xs:simpleType>
 
@@ -1291,10 +1292,12 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		<xs:key name="Bundle_SharedVariableDefinition_Id">
 			<xs:selector xpath="xacml:SharedVariableDefinition" />
 			<xs:field xpath="@Id" />
+			<xs:field xpath="@Version" />
 		</xs:key>
 		<xs:key name="Bundle_Policy_PolicyId">
 			<xs:selector xpath="xacml:Policy" />
 			<xs:field xpath="@PolicyId" />
+			<xs:field xpath="@Version" />
 		</xs:key>
 	</xs:element>
 	<xs:complexType name="BundleType">

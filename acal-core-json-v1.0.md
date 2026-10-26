@@ -455,7 +455,7 @@ For example, ACAL `VersionType` translates to the following subschema definition
 {
   "$defs": {
     ...
-    "VersionType": { "type": "string", "pattern": "^(0|[1-9]\\d*)(\\.(0|[1-9]\\d*)){0,3}$" }
+    "VersionType": { "type": "string", "pattern": "^(0|[1-9][0-9]*)(\\.(0|[1-9][0-9]*)){0,3}$" }
   }
 }
 ```
@@ -1408,6 +1408,7 @@ The following individuals were members of this committee during the creation of 
 This is the first version of JACAL; its previous stage was Committee Specification Draft 01. The changes made since then are the following. Section numbers refer to this version.
 
 - The JSON Schema follows the changes to the ACAL model made since that version, which [[ACAL-Core-1.0](#acal-core-10)] Appendix 2 lists: among them, `Argument` replaces `Expression` in `Apply`, `PolicyReference` and `SharedVariableReference`, with named arguments; `RequestEntityReference` is a sequence of local identifiers instead of `RequestEntityReferenceType` objects; attributes are unique by `(AttributeId, DataType, Issuer)`; notice identifiers need not be unique; and the `Category` of `MissingAttributeDetail` is optional. The schema also corrects `PolicyDefaults` and `RequestDefaults`, which are now arrays (one object per ACAL Profile) as the ACAL model specifies, and spells the `ParameterType` property `IsBag` as the ACAL model does (it was `isBag`).
+- The schema patterns of `VersionType` and `VersionMatchType` write `[0-9]` where `\d` was used. The uniqueness comments of the `Policy`, `SharedVariableDefinition` and `ApplicablePolicyReference` properties name the pair of `/PolicyId` (or `/Id`) and `/Version`, following [[ACAL-Core-1.0](#acal-core-10)] Sections 7.4, 7.13b, 7.37 and 7.46.
 - This specification states that [[ACAL-Core-1.0](#acal-core-10)] remains authoritative for the ACAL model, its evaluation semantics and the mandatory or optional status of each object type, and that JACAL defines only their JSON representation ([Section 4.1](#41-requirements)).
 - The ACAL `NonNegativeInteger` and `URI` types are mapped to reusable schema definitions ([Section 5.1.1](#511-primitive-types-mapped-to-native-json-schema-definitions)), and a basic `pattern` for validating `IdentifierType` values is given, together with the requirement that implementations perform the further validation that the ACAL `IdentifierType` definition needs ([Section 5.1.2.1](#5121-identifiertype-pattern)). The JSON mapping of `AnyType` admits Boolean and numeric JSON values as well as strings and objects ([Section 5.2.1](#521-anytype-mapping-rule)).
 - Primitive value mappings ([Section 5.2.2.1](#5221-primitive-value-mappings)):

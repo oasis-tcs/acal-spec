@@ -1412,7 +1412,7 @@ The `<Bundle>` of [Section 7.1](#71-role-and-permission-policies) uses only the 
 
 ## 8.2 JSON
 
-The `Bundle` object of [Section 7.1](#71-role-and-permission-policies) validates against the *JACAL Core JSON Schema*; `CombinerInput` entries are the standard one-key objects (`Policy`, `PolicyReference` or `Rule`) [[JACAL-Core-1.0](#jacal-core-10)] defines. The uniqueness of `PolicyId` within `Bundle.Policy` is subject to the same `uniqueItems`/keyed-comparison limitation [[JACAL-Core-1.0](#jacal-core-10)] notes for keyed lists generally; an implementation enforcing it does so outside JSON Schema validation.
+The `Bundle` object of [Section 7.1](#71-role-and-permission-policies) validates against the *JACAL Core JSON Schema*; `CombinerInput` entries are the standard one-key objects (`Policy`, `PolicyReference` or `Rule`) [[JACAL-Core-1.0](#jacal-core-10)] defines. The uniqueness of the combination of `PolicyId` and `Version` within `Bundle.Policy` is subject to the same `uniqueItems`/keyed-comparison limitation [[JACAL-Core-1.0](#jacal-core-10)] notes for keyed lists generally; an implementation enforcing it does so outside JSON Schema validation.
 
 ## 8.3 YAML
 
@@ -1449,7 +1449,7 @@ This profile defines one profile identifier, one recommended role attribute iden
 
 ## 10.2 Conformance Tables
 
-This section lists those portions of the specification that MUST be included in an implementation of a PDP, PAP or PEP that claims to conform to this profile.
+This section lists the portions of this specification that are relevant to a claim of conformance to this profile. An implementation MUST implement each item marked `M`; support for an item marked `O` is optional.
 
 : Note: "M" means mandatory-to-implement. "O" means optional.
 
@@ -1467,7 +1467,7 @@ An implementation claiming conformance to this profile MUST support the Role Pol
 
 ### 10.2.2 Attributes
 
-The implementation MUST use the attribute associated with the following identifier in the way this profile has defined (see [Annex C.3](#c3-attributes)) when that identifier is used for a role. This requirement pertains primarily to implementations of a PAP or PEP, since the semantics of the attribute are transparent to the PDP.
+A PAP or PEP that uses the attribute listed here for a role SHALL use it as this profile defines it (see [Annex C.3](#c3-attributes)). These semantics are transparent to the PDP.
 
 | Identifier | M/O | Deprecated Identifier |
 | :--- | :--- | :--- |

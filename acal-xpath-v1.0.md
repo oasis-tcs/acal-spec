@@ -839,13 +839,13 @@ The specification defines a number of functions, etc. that have somewhat special
 
 ## 9.2 Conformance Tables
 
-This section lists those portions of the specification that MUST be included in an implementation of a PDP that claims to conform to this profile.
+This section lists the portions of this specification that are relevant to a claim of conformance to this profile. An implementation MUST implement each item marked `M`; support for an item marked `O` is optional.
 
 : Note: "M" means mandatory-to-implement. "O" means optional.
 
 The implementation MUST follow [Section 5](#5-structures), [Section 6](#6-xpath-definitions), [Section 7](#7-attribute-selector-evaluation), [Annex C](#annex-c-data-types-and-functions), [Annex D](#annex-d-acal-identifiers) where they apply to implemented items in the following tables.
 
-Many of these items are associated with versions of XACML preceding ACAL but have been assigned new identifiers with the `urn:oasis:names:tc:acal:1.0:` prefix. The older XACML identifiers have been listed in the tables as deprecated identifiers. Implementations MUST support a new identifier defined in this specification but MAY recognize the corresponding deprecated identifier as equivalent. It is RECOMMENDED that these deprecated identifiers not be used in new policies and requests; they are planned to be removed in a subsequent version of ACAL. Note that some items appear to be carried over from a preceding version of XACML but do not list the XACML identifier. This is because ACAL has redefined the item in some way that means it is no longer identical to the original definition in XACML, and so the identifiers can no longer be considered equivalent. Items new to ACAL 1.0 will also not list an XACML identifier.
+Many of these items are associated with versions of XACML preceding ACAL but have been assigned new identifiers with the `urn:oasis:names:tc:acal:1.0:` prefix. The older XACML identifiers have been listed in the tables as deprecated identifiers. For a supported item that has a deprecated identifier, the implementation MUST use the identifier defined in this specification and MAY recognize the deprecated identifier as equivalent. It is RECOMMENDED that these deprecated identifiers not be used in new policies and requests; they are planned to be removed in a subsequent version of ACAL. Note that some items appear to be carried over from a preceding version of XACML but do not list the XACML identifier. This is because ACAL has redefined the item in some way that means it is no longer identical to the original definition in XACML, and so the identifiers can no longer be considered equivalent. Items new to ACAL 1.0 will also not list an XACML identifier.
 
 ### 9.2.1 Object Types
 
@@ -882,7 +882,7 @@ The implementation MUST properly process those functions associated with the ide
 
 ### 9.2.4 Attributes
 
-The implementation MUST use the attributes associated with the following identifiers in the way this profile has defined (see [Annex D.3](#d3-attributes)). This requirement pertains primarily to implementations of a PAP or PEP that uses ACAL, since the semantics of the attribute are transparent to the PDP.
+A PAP or PEP that supports an attribute listed here SHALL use it as this profile defines it (see [Annex D.3](#d3-attributes)). These semantics are transparent to the PDP.
 
 | Identifier | M/O | Deprecated Identifier |
 | :--- | :--- | :--- |
@@ -1249,6 +1249,7 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - The XPath-based functions are restated for the sequence-of-items data model, and the arguments of `xpath-node-match` are swapped ([Annex C.3.1](#c31-xpath-based-functions)), so its XACML 3.0 identifier is no longer listed as an equivalent deprecated identifier ([Section 9.2.3](#923-functions)).
 - Requirement keywords previously written in lowercase are written in uppercase, with the wording otherwise unchanged ([Section 7](#7-attribute-selector-evaluation)); in [Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype) the XPath expression of a `ContextSelectorId` attribute "must select a single node" now reads "must be designed to select a single node", which states the intent without contradicting Section 7, where an evaluation that returns no node or more than one node is an error, and the sentence of Annex D.3 on the same attribute, "SHALL select a single node of that XML document", reads "must be designed to select a single node of that XML document" for the same reason; and [Section 5.3.1](#531-policydefaultstype-extension---xpathpolicydefaultstype) states the syntax-error outcome for a missing XPath version as a MUST with its status code.
 - [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
+- The conformance tables ([Section 9.2](#92-conformance-tables), [Section 9.2.4](#924-attributes)) are introduced as in [[ACAL-Core-1.0](#acal-core-10)] Section 11.2 and 11.2.6: the tables list the portions relevant to a claim of conformance, an item marked `M` MUST be implemented and an item marked `O` is optional, and the requirement on the attributes applies to a PAP or PEP that supports one.
 - Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references, citations and cross-references are corrected.
 
 The remainder of this appendix describes how this profile differs from XACML 3.0.

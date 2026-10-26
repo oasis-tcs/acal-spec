@@ -562,9 +562,10 @@ Rule:
       CollectionPath: "$.Response.Result[].ApplicablePolicyReference"
     KeyProperties:
       - Id
+      - Version
     Requirement: >
-      ApplicablePolicyReference Id values within a ResultType MUST be
-      unique.
+      The combinations of ApplicablePolicyReference Id and Version
+      values within a ResultType MUST be unique.
     Provenance:
       YACALSection: "5.8.9"
       ACALSection: "7.37"
@@ -591,9 +592,12 @@ Rule:
       CollectionPath: "$.Bundle.SharedVariableDefinition"
     KeyProperties:
       - Id
+      - Version
     Requirement: >
-      SharedVariableDefinition Id values within a BundleType MUST be
-      unique.
+      The combinations of SharedVariableDefinition Id and Version values
+      within a BundleType MUST be unique. A PAP additionally ensures that
+      no two equivalent versions (for example 1 and 1.0) have the same
+      Id (ACAL Section 7.1.2.3.4).
     Provenance:
       YACALSection: "5.7.1"
       ACALSection: "7.46"
@@ -606,8 +610,12 @@ Rule:
       CollectionPath: "$.Bundle.Policy"
     KeyProperties:
       - PolicyId
+      - Version
     Requirement: >
-      Policy PolicyId values within a BundleType MUST be unique.
+      The combinations of Policy PolicyId and Version values within a
+      BundleType MUST be unique. A PAP additionally ensures that no two
+      equivalent versions (for example 1 and 1.0) have the same PolicyId
+      (ACAL Section 7.1.2.3.4).
     Provenance:
       YACALSection: "5.7.1"
       ACALSection: "7.46"

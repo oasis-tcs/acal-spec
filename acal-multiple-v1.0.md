@@ -1007,7 +1007,7 @@ The specification defines four independently optional request-construction schem
 
 ## 11.2 Conformance Tables
 
-This section lists those portions of the specification that MUST be included in an implementation of a PDP, PAP or PEP that claims to conform to this profile.
+This section lists the portions of this specification that are relevant to a claim of conformance to this profile. An implementation MUST implement each item marked `M`; support for an item marked `O` is optional.
 
 : Note: "M" means mandatory-to-implement. "O" means optional.
 
