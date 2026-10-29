@@ -756,7 +756,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
        "FooType": {
           "$comment": "Used by subtypes of FooType to combine FooType properties (via $ref) with their own properties",
           "allOf": [
-            { "$ref": "#$defs/BarType" },
+            { "$ref": "#/$defs/BarType" },
             {
               "type": "object",
               "properties": {
@@ -851,7 +851,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
        ```json
        "FooType": {
           "allOf": [
-            { "$ref": "#$defs/BarType" },
+            { "$ref": "#/$defs/BarType" },
             {
               "type": "object",
               "properties": {
@@ -892,7 +892,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
               "properties":
               {
                 "Foo": {
-                  "$ref": "#$defs/FooType",
+                  "$ref": "#/$defs/FooType",
                   "additionalProperties": false
                 }
               },
