@@ -80,36 +80,6 @@
 		-->
 	</rule>
  </pattern>
- <pattern id="ACAL_constraint_on_AttributeType_Value_property">
-    <title>ACAL constraint (textual) on AttributeType's Value property (DataType already specified as AttributeType's property)</title>
-	<rule context="xacml:Attribute|xacml:RequestAttribute|xacml:AttributeAssignment">
-	  <assert test="not(xacml:Value/@DataType)"></assert>
-	</rule>
- </pattern>
- <pattern id="ACAL_constraint_on_ParameterType_Expression_property">
-	<title>ACAL constraint (textual) on ParameterType's Expression property (DataType already specified as ParameterType's property)</title>
-	<rule context="xacml:Parameter">
-	  <assert test="not(xacml:Value/@DataType)"></assert>
-	</rule>
- </pattern>
- <pattern id="ACAL_constraint_on_PolicyReferenceType_Expression_property">
-	<title>ACAL constraint (textual) on PolicyReference's Expression property (DataType already specified in the corresponding Parameter of the referenced element SHALL NOT be redefined)</title>
-	<rule context="xacml:PolicyReference">
-	  <assert test="not(xacml:Value/@DataType)"></assert>
-	</rule>
- </pattern>
- <pattern id="ACAL_constraint_on_SharedVariableReferenceType_Expression_property">
-	<title>ACAL constraint (textual) on SharedVariableReference's Expression property (DataType already specified in the corresponding Parameter of the referenced element SHALL NOT be redefined)</title>
-	<rule context="xacml:SharedVariableReference">
-	  <assert test="not(xacml:Value/@DataType)"></assert>
-	</rule>
- </pattern>
- <pattern id="ACAL_constraint_on_MissingAttributeDetailType_Value_property">
-	<title>ACAL constraint (textual) on MissingAttributeDetailType's Value property (DataType already specified as MissingAttributeDetail's property)</title>
-	<rule context="xacml:MissingAttributeDetail">
-	  <assert test="not(xacml:Value/@DataType)"></assert>
-	</rule>
- </pattern>
  <pattern id="ACAL_constraint_on_EntityType">
 	<title>ACAL constraint on EntityType: {OCL} Content &lt;&gt; null or Attribute-&lt;notEmpty()</title>
 	<rule context="xacml:PolicyIssuer">

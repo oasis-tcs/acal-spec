@@ -927,18 +927,29 @@ integer scalar.
 The ACAL `DataType` of a `ValueType` is determined by the following
 precedence:
 
-1. the fixed data type of the concrete literal subtype, if any (for a
+1. an explicit `DataType` in the `ValueType` mapping
+2. the fixed data type of the concrete literal subtype, if any (for a
    decimal YAML integer scalar under an explicit or inherited standard
    ACAL Double, the subtype is `LiteralDoubleType`, per rule 3)
-2. an explicit `DataType` in the `ValueType` mapping
-3. a parent-context inference rule defined by ACAL for the containing
-   object or expression
-4. the ACAL default of string, if no other rule determines the data type
+3. the expected data type that ACAL defines for the property holding the
+   value, if it is a single data type
+   ([[ACAL-Core-1.0](#acal-core-10)] Section 7.14)
+4. the default data type of the object type, which is `string` for a
+   `ValueType`, if no other rule determines the data type
 
-If an enclosing ACAL object already fixes or infers the `DataType` of
-the value, the nested `ValueType` SHOULD omit its own `DataType`.  If
-both the enclosing context and the nested `ValueType` specify a
-`DataType`, the two values MUST agree.
+The nested `ValueType` MAY omit its own `DataType` where the expected
+data type is a single data type, or a set of allowed data types that
+includes the default data type of the object type (`string` for a
+`ValueType`).  If the
+nested `ValueType` specifies a `DataType` and its context has an
+expected data type, the `DataType` MUST be that data type or, where
+the expected data type is a set of allowed data types, one of them
+([[ACAL-Core-1.0](#acal-core-10)] Section 7.14).
+
+In this section, an *inherited* `DataType` is the `DataType` property of
+an enclosing object that applies to the value, or the expected data
+type of the property that holds the value when that expected data type
+is a single data type ([[ACAL-Core-1.0](#acal-core-10)] Section 7.14).
 
 Typical parent contexts that may fix or infer the `DataType` of a
 contained `ValueType` include:
@@ -947,9 +958,9 @@ contained `ValueType` include:
 - `ParameterType` default expressions
 - `ApplyType` arguments whose function signature fixes the expected type
 - `PolicyReferenceType` and `SharedVariableReferenceType` arguments
-- quantified-expression rules defined by ACAL for the `Iterant`
-- other ACAL parent objects whose sections define a `DataType`
-  inference rule
+- the `Iterant` of `ForAny`, `ForAll` and `Select` (not of `Map`)
+- other ACAL parent objects whose sections define an expected data
+  type
 
 Examples of inherited `DataType`:
 
@@ -967,7 +978,7 @@ Parameter:
       Value: 10000
 ```
 
-In both examples above, the nested value SHOULD omit its own `DataType`
+In both examples above, the nested value omits its own `DataType`
 because the surrounding context already fixes it.
 
 ### 5.4.5 StructuredValueType Mapping
@@ -1228,7 +1239,7 @@ The `Value` property is represented as a YAML sequence, each item being
 the direct representation of a `ValueType`.
 
 If the enclosing `AttributeType` mapping specifies `DataType`, each
-nested `Value` SHOULD omit its own `DataType`; if a nested value does
+nested `Value` MAY omit its own `DataType`; if a nested value does
 specify one, it MUST agree with the enclosing `DataType`.
 
 Example:
@@ -1346,7 +1357,7 @@ Properties:
 |---|---|---|---|
 | `FunctionId` | Yes | `IdentifierType` | Function identifier |
 | `Description` | No | String | Free-form description |
-| `Argument` | No | Sequence of `ArgumentType` | Arguments in order, or named arguments (`NamedArgumentType`) in any order if the function has *named parameters* (more info in the `ApplyType` section of [[ACAL-Core-1.0](#acal-core-10)] ); empty if function takes no arguments. When the function signature fixes an argument `DataType`, a statically typed child expression such as `Value` SHOULD omit `DataType`; if present, it MUST agree with the function signature. |
+| `Argument` | No | Sequence of `ArgumentType` | Arguments in order, or named arguments (`NamedArgumentType`) in any order if the function has *named parameters* (more info in the `ApplyType` section of [[ACAL-Core-1.0](#acal-core-10)] ); empty if function takes no arguments. When the function signature fixes an argument `DataType`, a statically typed child expression such as `Value` MAY omit `DataType`; the `DataType` requirements of [[ACAL-Core-1.0](#acal-core-10)] Section 7.15 apply. |
 
 ### 5.5.3 AttributeDesignatorType
 
@@ -1366,7 +1377,7 @@ Properties:
 |---|---|---|---|---|
 | `Category` | Yes | — | `IdentifierType` | Attribute category |
 | `AttributeId` | Yes | — | `IdentifierType` | Attribute identifier |
-| `DataType` | No | string | `IdentifierType` | Data type of returned values; subject to inference rules |
+| `DataType` | No | string or inferred | `IdentifierType` | Data type of returned values; if omitted, see [[ACAL-Core-1.0](#acal-core-10)] Section 7.14 |
 | `Issuer` | No | — | Name | Attribute issuer |
 | `MustBePresent` | No | `false` | Boolean | If `true`, missing attribute returns Indeterminate |
 
@@ -1405,7 +1416,7 @@ SharedVariableReference:
 
 Each item in `Argument` SHALL correspond  to a `Parameter`
 definition in the referenced shared variable definition, either positionally (declared in the same order) or by name using only `NamedArgument` properties. More info in the `SharedVariableReferenceType` section of [[ACAL-Core-1.0](#acal-core-10)].
-A nested `ValueType` SHOULD omit `DataType` as it is already fixed by the `Parameter` in the referenced shared variable; if present, it MUST agree.
+A nested `ValueType` argument, positional or in a `NamedArgument`, MAY omit `DataType`, which the `Parameter` in the referenced shared variable already fixes; if present, it MUST agree.
 
 ### 5.5.7 FunctionType
 
@@ -1443,7 +1454,7 @@ Properties:
 |---|---|---|---|
 | `VariableId` | Yes | `LocalIdentifierType` | Quantified variable identifier |
 | `Domain` | Yes | `NonLiteralExpressionType` | Expression evaluating to a bag |
-| `Iterant` | Yes | `ExpressionType` | Expression evaluated per domain value |
+| `Iterant` | Yes | `ExpressionType` | Expression evaluated per domain value.  For `ForAny`, `ForAll` and `Select` its expected data type is `urn:oasis:names:tc:acal:1.0:data-type:boolean`; if a `Value` iterant specifies `DataType`, it MUST identify that data type.  A `Map` iterant has no expected data type. |
 
 These are concrete subtypes of the abstract
 `QuantifiedExpressionType`.  In polymorphic expression position, the
@@ -1711,9 +1722,9 @@ Parameter:
       Value: 10000
 ```
 
-If the `Expression` is a `ValueType`, it SHOULD omit any nested
-`DataType` because the surrounding `ParameterType` already fixes the
-value's `DataType`.  If both are present, they MUST agree.
+If the `Expression` is a `ValueType`, it MAY omit its own `DataType`,
+which the surrounding `ParameterType` already fixes.  If both are
+present, they MUST agree.
 
 ### 5.6.6 PolicyReferenceType
 
@@ -1728,7 +1739,7 @@ PolicyReference:
 
 Each item in `Argument` SHALL correspond  to a `Parameter`
 definition in the referenced policy, either positionally (declared in the same order) or by name using only `NamedArgument` properties. More info in the `PolicyReferenceType` section of [[ACAL-Core-1.0](#acal-core-10)].
-A nested `ValueType` SHOULD omit `DataType` as it is already fixed by the `Parameter` in the referenced policy; if present, it MUST agree.
+A nested `ValueType` argument, positional or in a `NamedArgument`, MAY omit `DataType`, which the `Parameter` in the referenced policy already fixes; if present, it MUST agree.
 
 ### 5.6.7 PolicyIssuer
 
@@ -2046,8 +2057,8 @@ Properties:
 `RequestAttributeType` extends `AttributeType` with
 `IncludeInResult`.  The inherited `Value` sequence follows
 [Section 5.4.12](#5412-attributetype-mapping); if the enclosing
-attribute defines `DataType`, nested values SHOULD omit their own
-`DataType`.
+attribute defines `DataType`, nested values MAY omit their own
+`DataType`; if present, it MUST agree with the enclosing `DataType`.
 
 ### 5.8.4 MultiRequestsType
 
@@ -2339,7 +2350,7 @@ Properties:
 
 `AttributeAssignmentType` extends `AttributeType` with the optional
 `Category` property.  If the enclosing assignment defines `DataType`,
-nested `Value` items SHOULD omit their own `DataType`; if present, they
+nested `Value` items MAY omit their own `DataType`; if present, they
 MUST agree with the enclosing `DataType`.
 
 ------------------------------------------------------------------------
@@ -2453,9 +2464,9 @@ Properties:
 | `DataType` | Yes | `IdentifierType` | 1 |
 | `Value` | No | `ValueType` | * |
 
-If `Value` items are present, each nested value SHOULD omit its own
-`DataType` because the enclosing `MissingAttributeDetailType` already
-defines it.
+If `Value` items are present, each nested value MAY omit its own
+`DataType`, which the enclosing `MissingAttributeDetailType` already
+defines; if present, it MUST agree with the enclosing `DataType`.
 
 ------------------------------------------------------------------------
 

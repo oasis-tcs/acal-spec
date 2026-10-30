@@ -296,7 +296,6 @@ $defs:
         $ref: "#/$defs/IdentifierType"
       DataType:
         $ref: "#/$defs/IdentifierType"
-        default: "urn:oasis:names:tc:acal:1.0:data-type:string"
       Issuer:
         $ref: "#/$defs/Name"
       MustBePresent:
@@ -350,7 +349,6 @@ $defs:
         $ref: "#/$defs/AttributeSelectorPathType"
       DataType:
         $ref: "#/$defs/IdentifierType"
-        default: "urn:oasis:names:tc:acal:1.0:data-type:string"
       MustBePresent:
         $ref: "#/$defs/BooleanType"
         default: false
@@ -927,7 +925,6 @@ $defs:
         $ref: "#/$defs/Name"
       DataType:
         $ref: "#/$defs/IdentifierType"
-        default: "urn:oasis:names:tc:acal:1.0:data-type:string"
       Value:
         $ref: "#/$defs/ValueArray"
     additionalProperties: false

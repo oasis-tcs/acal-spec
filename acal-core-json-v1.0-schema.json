@@ -240,21 +240,7 @@
 					"type": "string"
 				},
 				"Expression": {
-					"$ref": "#/$defs/ExpressionTypeTree",
-					"dependentSchemas": {
-						"Value": {
-							"$comment": "ACAL constraint (textual) on ParameterType's Expression property (DataType already specified as ParameterType's property)",
-							"properties": {
-								"Value": {
-									"dependentSchemas": {
-										"DataType": {
-											"not": true
-										}
-									}
-								}
-							}
-						}
-					}
+					"$ref": "#/$defs/ExpressionTypeTree"
 				}
 			},
 			"additionalProperties": false
@@ -323,21 +309,7 @@
 							"minItems": 1,
 							"uniqueItems": false,
 							"items": {
-								"$ref": "#/$defs/ArgumentTypeTree",
-								"dependentSchemas": {
-									"Value": {
-										"$comment": "ACAL constraint (textual) on PolicyReference's Argument property (DataType already specified in the corresponding Parameter of the referenced element)",
-										"properties": {
-											"Value": {
-												"dependentSchemas": {
-													"DataType": {
-														"not": true
-													}
-												}
-											}
-										}
-									}
-								}
+								"$ref": "#/$defs/ArgumentTypeTree"
 							}
 						}
 					}
@@ -431,21 +403,7 @@
 					"minItems": 1,
 					"uniqueItems": false,
 					"items": {
-						"$ref": "#/$defs/ArgumentTypeTree",
-						"dependentSchemas": {
-							"Value": {
-								"$comment": "ACAL constraint (textual) on SharedVariableReference's Argument property (DataType already specified in the corresponding Parameter of the referenced element)",
-								"properties": {
-									"Value": {
-										"dependentSchemas": {
-											"DataType": {
-												"not": true
-											}
-										}
-									}
-								}
-							}
-						}
+						"$ref": "#/$defs/ArgumentTypeTree"
 					}
 				}
 			},
@@ -723,7 +681,6 @@
 					"$ref": "#/$defs/IdentifierType"
 				},
 				"DataType": {
-					"default": "urn:oasis:names:tc:acal:1.0:data-type:string",
 					"$ref": "#/$defs/IdentifierType"
 				},
 				"Issuer": {
@@ -813,7 +770,6 @@
 					"$ref": "#/$defs/AttributeSelectorPathType"
 				},
 				"DataType": {
-					"default": "urn:oasis:names:tc:acal:1.0:data-type:string",
 					"$ref": "#/$defs/IdentifierType"
 				},
 				"MustBePresent": {
@@ -1174,13 +1130,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "#/$defs/ValueType",
-						"dependentSchemas": {
-							"DataType": {
-								"$comment": "ACAL constraint (textual) on AttributeType's Value property (DataType already specified as AttributeType's property)",
-								"not": true
-							}
-						}
+						"$ref": "#/$defs/ValueType"
 					}
 				}
 			}
@@ -1510,13 +1460,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "#/$defs/ValueType",
-						"dependentSchemas": {
-							"DataType": {
-								"$comment": "ACAL constraint (textual) on MissingAttributeDetailType's Value property (DataType already specified as MissingAttributeDetail's property)",
-								"not": true
-							}
-						}
+						"$ref": "#/$defs/ValueType"
 					}
 				}
 			},

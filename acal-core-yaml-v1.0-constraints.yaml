@@ -49,6 +49,8 @@ RuleKinds:
     Meaning: "If one property is present, another collection-valued property must be present and non-empty."
   propertyAgreement:
     Meaning: "Two related properties must agree when both are present."
+  propertyFixedValue:
+    Meaning: "A property that is present must identify the stated constant."
   referenceMustResolve:
     Meaning: "A reference value must resolve to an in-scope target object."
   noNestedExpressionKind:
@@ -482,8 +484,7 @@ Rule:
     AppliesTo:
       ObjectType: ParameterType
       ContainerLocations:
-        - "$.Policy.Parameter[]"
-        - "$.Bundle.SharedVariableDefinition[].Parameter[]"
+        - "$..Parameter"
       ParentProperty: DataType
       ChildExpressionPath: Expression.Value
       ChildProperty: DataType
@@ -501,12 +502,14 @@ Rule:
       ContainerLocations:
         - "$..SharedVariableReference"
       ParentModel: "Referenced shared variable parameter list"
-      ChildCollectionPath: Expression
+      ChildExpressionPaths:
+        - "Argument[].Value"
+        - "Argument[].NamedArgument.Expression.Value"
       ChildProperty: DataType
     Requirement: >
       Where the referenced shared variable parameter fixes a DataType, a
-      nested ValueType argument that specifies DataType MUST agree with
-      that parameter type.
+      nested ValueType argument, positional or in a NamedArgument, that
+      specifies DataType MUST agree with that parameter type.
     Resolution:
       RequiresReferencedSharedVariableLookup: true
     Provenance:
@@ -519,20 +522,63 @@ Rule:
     AppliesTo:
       ObjectType: PolicyReferenceType
       ContainerLocations:
-        - "$.Policy.CombinerInput[].PolicyReference"
-        - "$.Bundle.PolicyReference"
+        - "$..PolicyReference"
       ParentModel: "Referenced policy parameter list"
-      ChildCollectionPath: Expression
+      ChildExpressionPaths:
+        - "Argument[].Value"
+        - "Argument[].NamedArgument.Expression.Value"
       ChildProperty: DataType
     Requirement: >
       Where the referenced policy parameter fixes a DataType, a nested
-      ValueType argument that specifies DataType MUST agree with that
-      parameter type.
+      ValueType argument, positional or in a NamedArgument, that
+      specifies DataType MUST agree with that parameter type.
     Resolution:
       RequiresReferencedPolicyLookup: true
     Provenance:
       YACALSection: "5.6.6"
       ACALSection: "7.11"
+
+  - Id: "missingattributedetail-valuetype-datatype-agreement"
+    Kind: propertyAgreement
+    Severity: error
+    AppliesTo:
+      ObjectType: MissingAttributeDetailType
+      ContainerLocations:
+        - "$.Response.Result[].Status.StatusDetail.MissingAttributeDetail[]"
+      ParentProperty: DataType
+      ChildCollectionPath: Value
+      ChildProperty: DataType
+      ChildAppliesWhenWrapperLikeValueMapping: true
+    Requirement: >
+      If a nested Value mapping of a MissingAttributeDetailType specifies
+      DataType, it MUST agree with the DataType of the
+      MissingAttributeDetailType.
+    Provenance:
+      YACALSection: "5.10.4"
+      ACALSection: "7.43"
+
+  - Id: "quantified-iterant-valuetype-datatype-boolean"
+    Kind: propertyFixedValue
+    Severity: error
+    AppliesTo:
+      ObjectType: QuantifiedExpressionType
+      ContainerLocations:
+        - "$..ForAny"
+        - "$..ForAll"
+        - "$..Select"
+      ChildExpressionPath: Iterant.Value
+      ChildProperty: DataType
+      ExpectedValue: "urn:oasis:names:tc:acal:1.0:data-type:boolean"
+    Requirement: >
+      If the Iterant of a ForAny, ForAll or Select expression is a
+      ValueType mapping that specifies DataType, the DataType MUST
+      identify urn:oasis:names:tc:acal:1.0:data-type:boolean (compared
+      by identifier equality after short identifier expansion). The
+      Iterant of a Map expression has no expected data type and is not
+      covered by this rule.
+    Provenance:
+      YACALSection: "5.5.8"
+      ACALSection: "7.25"
 
   # "noticeexpression-attributeassignmentexpression-unique" (ACAL 7.29) and
   # "notice-attributeassignment-unique" (ACAL 7.26) were removed. The (AttributeId, Category)

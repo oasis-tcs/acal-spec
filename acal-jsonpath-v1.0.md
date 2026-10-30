@@ -198,8 +198,10 @@ The list of changes from the previous version and any revision history can be fo
 ## ContentType restrictions
 
 This profile applies to a `Content` object (defined in [[ACAL-Core-1.0](#acal-core-10)]) in the Request if and only if:
-- The `MediaType` property is set to `application/json`.
+- The media type of the `Content` object, i.e. its `MediaType` property or, if that property is absent, the default defined for it by the representation ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34), is `application/json`.
 - The `Body` property value is a JSON object. *Note that it is always possible to encapsulate a JSON array inside a JSON object if a JSON array is really needed.*
+
+An attribute selector that is applied to a `Content` object that does not satisfy these conditions returns `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`, as stated in the attribute selector evaluation (step 1).
 
 ## ACAL extensions
 
@@ -265,11 +267,11 @@ The first steps are already described in [[ACAL-Core-1.0](#acal-core-10)] sectio
 
 If the designated attribute category or entity value has a `Content` property, then follow the steps below:
 
-1. Construct a JSON object ([[RFC8259](#rfc8259)]) from the value of the `Body` property of the `Content` property. If the content is not a valid JSON object, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
+1. If the media type of the `Content`, i.e. its `MediaType` property or, if that property is absent, the default defined for it by the representation ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34), is not `application/json`, the attribute selector SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. Otherwise, construct a JSON object ([[RFC8259](#rfc8259)]) from the value of the `Body` property of the `Content` property. If the content is not a valid JSON object, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
 
 2. The root node of the data structure (JSON object) SHALL be used as context node of evaluation (JSONPath *query argument*).
 
-3. Evaluate the JSONPath expression given in the `Path` property against the context node selected in the previous step, according to the syntax and semantics of the JSONPath standard [[RFC9535](#rfc9535)].
+3. Evaluate the JSONPath expression given in the `Path` property against the context node selected in the previous step, according to the syntax and semantics of the JSONPath standard [[RFC9535](#rfc9535)]. If the `Path` property is not a valid JSONPath expression [[RFC9535](#rfc9535)], the attribute selector SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. If the evaluation of a valid expression fails, it SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 4. The result of the previous step is a nodelist that is converted to a bag of values of the data type specified by the `DataType` property. In most cases the conversion depends on the string value of a node's JSON value, defined as follows:
 
@@ -277,7 +279,7 @@ If the designated attribute category or entity value has a `Content` property, t
 
     * The string value of the special JSON value `true`, `false` or `null` is the equivalent sequence of Unicode characters.
 
-    * The string value of a JSON number is the equivalent sequence of Unicode characters.
+    * The string value of a JSON number is its exact mathematical value in decimal positional notation, using ASCII digits, with no exponent and no leading plus sign. A nonzero negative value begins with `-`. The integer part has at least one digit and no leading zero unless it is `0`. A fractional part is present if and only if the value is not an integer, and consists of a decimal point and one or more digits, the last of which is not zero. The string value of zero, including negative zero, is `0`. For example, `1`, `1.0` and `1e0` all have the string value `1`.
 
     * The string value of a JSON array is the empty string.
 
@@ -285,6 +287,9 @@ If the designated attribute category or entity value has a `Content` property, t
 
 &nbsp;
 : The nodelist is converted to a bag of values of the data type specified by the `DataType` property as follows:
+
+&nbsp;
+: If the result of step 3 is an empty nodelist, then the attribute selector SHALL return an empty bag if `MustBePresent` is `false`, and otherwise `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:missing-attribute`, and none of the conversion cases below applies.
 
 &nbsp;
 : If the specified data type is `urn:oasis:names:tc:acal:1.0:data-type:boolean`, then convert the string value of each node using the `xs:boolean()` constructor function from [[XF](#xf)] Section 18.1.
@@ -336,9 +341,6 @@ If the designated attribute category or entity value has a `Content` property, t
 
 &nbsp;
 : If an error occurs when converting the values returned by the expression to the specified data type — including a `urn:oasis:names:tc:acal:1.0:function:x500Name-from-string`, `urn:oasis:names:tc:acal:1.0:function:rfc822Name-from-string`, `urn:oasis:names:tc:acal:1.0:function:ipAddress-from-string` or `urn:oasis:names:tc:acal:1.0:function:dnsName-from-string` function evaluating to `Indeterminate` for a node's string value — then the result of the attribute selector MUST be `Indeterminate`, with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
-
-&nbsp;
-: If the result of step 3 is an empty nodelist, then the attribute selector SHALL return an empty bag if `MustBePresent` is `false`, and otherwise `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:missing-attribute`.
 
 An implementation can be optimized to emit errors without going to the effort of generating the string value of node values. For example, the string value of a JSON number will never have the correct format for a `urn:oasis:names:tc:acal:1.0:data-type:dateTime` ACAL value, so this combination will always produce an error.
 
@@ -599,6 +601,7 @@ The following individuals were members of this committee during the creation of 
 
 This is the first version of this profile; its previous stage was Committee Specification Draft 01. The changes made since then are the following.
 
+- The attribute selector evaluation (@sec:attribute-selector-evaluation) now has an outcome for a `Content` whose `MediaType` is not `application/json`, and for a `Path` that is not a valid JSONPath expression (`syntax-error`) or whose evaluation fails (`processing-error`); the empty-nodelist case is stated before the conversion cases, which do not apply to it; and the string value of a JSON number is defined (its exact value in decimal positional notation without an exponent, so that `1`, `1.0` and `1e0` agree).
 - The attribute selector evaluation (@sec:attribute-selector-evaluation) now converts a node's string value to a value of data type `urn:oasis:names:tc:acal:1.0:data-type:x500Name`, `rfc822Name`, `ipAddress` or `dnsName` using the corresponding `-from-string` function of [[ACAL-Core-1.0](#acal-core-10)] Annex C.3.9; when that function evaluates to `Indeterminate`, the attribute selector returns `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 - The Scope no longer says that concrete representations are out of scope of this document: this profile now defines its extensions to the XML, JSON and YAML representations and provides the corresponding schemas.
 - The XML, JSON and YAML schemas for this profile's extensions are listed as artifacts of this profile (Additional artifacts); at csd01 only the XML schema was listed, with the XACML representation specification.

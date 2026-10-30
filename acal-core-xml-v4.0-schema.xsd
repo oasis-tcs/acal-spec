@@ -314,9 +314,6 @@
 		<xs:attribute name="DataType" type="xacml:IdentifierType" use="required" />
 		<!-- Change to XACML 3.0: Issuer type changed to xs:Name -->
 		<xs:attribute name="Issuer" type="xs:Name" use="optional" />
-		<!-- Change to XACML 3.0: Value must not have a DataType when it is already
-		defined at the parent level  -->
-		<xs:assert vc:minVersion="1.1" test="not(xacml:Value/@DataType)" />
 	</xs:complexType>
 
 	<!--
@@ -403,9 +400,6 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		AttributeValue and which applies to all Values of this attribute -->
 		<xs:attribute name="DataType" type="xacml:IdentifierType" use="optional"
 			default="urn:oasis:names:tc:acal:1.0:data-type:string" />
-		<!-- Change to XACML 3.0: Value must not have a DataType when it is already
-		defined at the parent level  -->
-		<xs:assert vc:minVersion="1.1" test="not(xacml:Value/@DataType)" />
 	</xs:complexType>
 
 	<!-- Change to XACML 3.0: new RequestAttribute element, similar to Attribute but
@@ -480,9 +474,6 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 			with an extra Category -->
 			<xs:extension base="xacml:AttributeType">
 				<xs:attribute name="Category" type="xacml:IdentifierType" use="optional" />
-				<!-- Change to XACML 3.0: Value must not have a DataType when it is
-				already defined at the parent level  -->
-				<xs:assert vc:minVersion="1.1" test="not(xacml:Value/@DataType)" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -636,12 +627,10 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 						<xs:annotation>
 							<xs:documentation xml:lang="en"> Optional argument(s) to the referenced
 								Policy The arguments SHALL match the Policy's Parameter definitions
-								in the same order of declaration. If one of the argument Expressions
-								is a Value element, it SHALL NOT set the DataType attribute value. </xs:documentation>
+								in the same order of declaration. </xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
-				<xs:assert vc:minVersion="1.1" test="not(xacml:Value/@DataType)" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -726,7 +715,6 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		<xs:attribute name="DataType" type="xacml:IdentifierType" use="optional"
 			default="urn:oasis:names:tc:acal:1.0:data-type:string" />
 		<xs:attribute name="IsBag" type="xs:boolean" use="optional" default="false" />
-		<xs:assert vc:minVersion="1.1" test="not(xacml:Value/@DataType)" />
 	</xs:complexType>
 
 	<xs:element name="Policy" type="xacml:PolicyType">
@@ -742,11 +730,6 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 			<xs:selector xpath="xacml:VariableDefinition" />
 			<xs:field xpath="@VariableId" />
 		</xs:key>
-		<xs:key name="Policy_PolicyId">
-			<xs:selector xpath="xacml:Policy" />
-			<xs:field xpath="@PolicyId" />
-			<xs:field xpath="@Version" />
-		</xs:key>
 		<xs:key name="Policy_Rule_Id">
 			<xs:selector xpath="xacml:Rule" />
 			<xs:field xpath="@Id" />
@@ -760,6 +743,9 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		Policy for two different reasons.
 			- CombinerInput: not always unique: there may be two PolicyReferences to the same parameterized
 		Policy but with different arguments, so the same PolicyId may occur twice.
+			- Policy nested in a Policy (PolicyId, Version): not unique. A policy reference does not select a
+		policy nested in another policy, so the identifier of a nested policy is not used to resolve a reference;
+		ACAL Core 7.4 recommends, but does not require, that it is unique in the Bundle at any depth.
 		-->
 	</xs:element>
 	<xs:complexType name="PolicyType">
@@ -948,8 +934,9 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 				<xs:attribute name="Path" type="xacml:AttributeSelectorPathType" use="required" />
 				<!-- Change to XACML 3.0: DataType attribute type changed to
 				IdentifierType for supporting Short Identifiers -->
-				<xs:attribute name="DataType" type="xacml:IdentifierType" use="optional"
-					default="urn:oasis:names:tc:acal:1.0:data-type:string" />
+				<!-- No schema default: when DataType is omitted, ACAL Core 7.14 determines the data type
+				(expected data type of the context, else the default of the object type, string). -->
+				<xs:attribute name="DataType" type="xacml:IdentifierType" use="optional" />
 				<!-- Change to XACML 3.0: MustBePresent changed to optional with default
 				false -->
 				<xs:attribute name="MustBePresent" type="xs:boolean" use="optional" default="false" />
@@ -1001,8 +988,9 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 				<!-- Change to XACML 3.0: Category / AttributeId / DataType attribute
 				types changed to IdentifierType for supporting Short Identifiers -->
 				<xs:attribute name="AttributeId" type="xacml:IdentifierType" use="required" />
-				<xs:attribute name="DataType" type="xacml:IdentifierType" use="optional"
-					default="urn:oasis:names:tc:acal:1.0:data-type:string" />
+				<!-- No schema default: when DataType is omitted, ACAL Core 7.14 determines the data type
+				(expected data type of the context, else the default of the object type, string). -->
+				<xs:attribute name="DataType" type="xacml:IdentifierType" use="optional" />
 				<!-- Change to XACML 3.0: Issuer type changed to xs:Name -->
 				<xs:attribute name="Issuer" type="xs:Name" use="optional" />
 				<!-- Change to XACML 3.0: MustBePresent changed to optional with default
@@ -1055,9 +1043,10 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 						maxOccurs="unbounded" />
 				</xs:sequence>
 				<!-- Change to XACML 3.0: DataType changed from use=required to
-				optional. Now only required if it cannot be inferred from the context,
-				and explicitly prohibited in elements with a defined DataType at the parent level, e.g. in
-				AttributeType -->
+				optional. Now only required if it cannot be inferred from the context.
+				Where the context fixes the data type, e.g. in AttributeType, the attribute may be
+				omitted and, if present, must agree with it (ACAL Core Section 7.14); the schema
+				does not check the agreement. -->
 				<xs:attribute name="DataType" type="xacml:IdentifierType" use="optional" />
 				<xs:anyAttribute namespace="##any" processContents="lax" />
 			</xs:extension>
@@ -1276,14 +1265,12 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 							<xs:documentation xml:lang="en"> Optional argument(s) to the referenced
 								SharedVariableDefinition. The arguments SHALL match the
 								SharedVariableDefinition's Parameter definitions in the same order
-								of declaration. If one of the argument Expressions is a Value
-								element, it SHALL NOT set the DataType attribute value. </xs:documentation>
+								of declaration. </xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
 				<xs:attribute name="Id" type="xs:anyURI" use="required" />
 				<xs:attribute name="Version" type="xacml:VersionMatchType" use="optional" />
-				<xs:assert vc:minVersion="1.1" test="not(xacml:Value/@DataType)" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
