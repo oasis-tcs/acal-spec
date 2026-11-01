@@ -4601,7 +4601,7 @@ class LiteralRestrictedStringType <<restrictedString>> extends PrimitiveValueTyp
     +Value: String [1]
 }
 
-note bottom of LiteralRestrictedStringType: Other ACAL datatypes with lexical representation \ncan be derived from this type, \ne.g. standard time, date, dateTime, \nanyURI, hexBinary, base64Binary, \ndayTimeDuration, yearMonthDuration, \nx50Name, rfc822Name, ipAddress, dnsName.
+note bottom of LiteralRestrictedStringType: Other ACAL datatypes with lexical representation \ncan be derived from this type, \ne.g. standard time, date, dateTime, \nanyURI, hexBinary, base64Binary, \ndayTimeDuration, yearMonthDuration, \nx500Name, rfc822Name, ipAddress, dnsName.
 
 PrimitiveValueType -[hidden]- LiteralBooleanType
 LiteralBooleanType -[hidden]- LiteralIntegerType
