@@ -845,7 +845,7 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
    - 2.2. Else (`FooType` is concrete and non-final):
      - 2.2.1. If `FooType` inherits from a non-empty type `BarType`, same mapping as rule 1.1.1.
      - 2.2.2. Else (`FooType` is concrete, non-final and does not inherit a non-empty class) same mapping as rule 1.1.2.
-     - 2.2.3. *Iff* there is at least one ACAL type with a property of type `FooType`, then add the following JSON subschema to the *`$defs` object* (similar to rule 1.2 except the subschema of `FooType` itself is included because it is a concrete type that may be used for a JSON object property):
+     - 2.2.3. *Iff* at least one ACAL property has type `FooType` or any supertype of `FooType`, add the following `FooTypeTree` subschema to the *`$defs` object* (similar to rule 1.2 except the subschema of `FooType` itself is included because it is a concrete type that may be used for a JSON object property):
         ```json
         "FooTypeTree": {
           "anyOf": [
@@ -920,10 +920,12 @@ For each of an ACAL Datatype's property *Prop* with value type *PropType*, the c
         "Item2": <Item2TypeSchema>
         ...
       },
+      "minProperties": <min>,
+      "maxProperties": <max>,
       "unevaluatedProperties": false
     }
     ```
-    where *Item1Type*, *Item2Type*, etc. are all possible (and distinct) concrete subtypes of *PropType* ( *ItemXTypeSchema* is the JSON subschema corresponding to the item's type *ItemXType*).
+    where `<min>` and `<max>` are set as `<min>` and `<max>` in rule 2.2 below (`"maxProperties"` is present only if the upper bound is finite), and *Item1Type*, *Item2Type*, etc. are all possible (and distinct) concrete subtypes of *PropType* ( *ItemXTypeSchema* is the JSON subschema corresponding to the item's type *ItemXType*).
 
   - 2.2. Else (no *Value type uniqueness constraint*), map to an array type as follows:
      ```json
@@ -931,11 +933,13 @@ For each of an ACAL Datatype's property *Prop* with value type *PropType*, the c
          "type": "array",
          "items": <PropTypeSchema>,
          "minItems": <min>,
+         "maxItems": <max>,
          "uniqueItems": <is_unique>
      }
      ```
 where:
      - `<min>` is set to the lower bound of *Prop*'s multiplicity unless the lower bound is zero, in which case `<min>` is set to 1 regardless, since the lower bound zero is already achieved by making the JSON property optional;
+     - `<max>` is set to the upper bound of *Prop*'s multiplicity if that bound is finite; if the upper bound is unbounded (`*`), `"maxItems"` is omitted;
      - `<is_unique>` is set to `true` if and only if the `unique` constraint is specified on the ACAL property, else `false`.
 
     **The standard `uniqueItems` keyword does not allow to enforce uniqueness of array items based on a specific key when such items are JSON objects, in the current latest JSON schema draft (version 2020-12).** 
@@ -965,14 +969,13 @@ This specification defines the following `Content` types in order to support ACA
 
 - JSON object *(note that a JSON array can be wrapped in a JSON object if there is a need to support JSON arrays)*:
   - `MediaType` property SHALL be set to `application/json` (default value);
-  - `Encoding` property unused;
-  - `Body` property is set to the JSON object itself.
+  - The `Encoding` property SHALL NOT be present;
+  - The `Body` property SHALL be the JSON object.
 
 - XML document:
   - `MediaType` property SHALL be set to `application/xml`;
-  - `Encoding` property is either unused/undefined or set to `base64`.
-  - `Body` property is set to a JSON string containing the XML document in one of the following forms:
-     1) **Escaped:** if `Encoding` is undefined, the XML is escaped to be a valid JSON string using escaping rules described in Section 7 of [[RFC8259](#rfc8259)], i.e. in particular the double quote (`"`), backslash (`\`) and control characters are escaped with a backslash `\` (the new line escaped as `\n`, the carriage return as `\r`, and the horizontal tab as `\t`). For example:
+  - If `Encoding` is absent, `Body` SHALL be a JSON string whose value is the XML document. If `Encoding` is present, its value SHALL be `base64` and `Body` SHALL be a JSON string of Base64 data that decodes to the XML document. The two forms:
+     1) **Escaped:** if `Encoding` is absent, the XML is escaped to be a valid JSON string using escaping rules described in Section 7 of [[RFC8259](#rfc8259)], i.e. in particular the double quote (`"`), backslash (`\`) and control characters are escaped with a backslash `\` (the new line escaped as `\n`, the carriage return as `\r`, and the horizontal tab as `\t`). For example:
      ```json
      {
       "MediaType": "application/xml",
@@ -988,7 +991,7 @@ This specification defines the following `Content` types in order to support ACA
      }
      ```
 
-The implementation SHALL support a given content type in this list if and only if there is an ACAL Profile that makes it mandatory (refer to the Profile's specification for more information).
+An implementation SHALL support a content type listed in this section if a profile for which the implementation claims conformance makes support for that content type mandatory. An implementation MAY support such a content type otherwise.
 
 ## 5.4 JACAL Extension Mechanism
 
@@ -1430,6 +1433,10 @@ This is the first version of JACAL; its previous stage was Committee Specificati
 - The `Function` and `Apply` expression wrappers of the core schema do not allow additional properties, like the other wrappers; the `version` match pattern allows `+` only as the last component; a processor SHALL NOT accept the `Value` string of a special double unless the string is in the lexical space of `xs:double` (wording only); comments with issue numbers and TODO markers are removed from the schema, and [Section 2](#2-definitions-and-acronyms) no longer says that no terms are defined elsewhere.
 - The description of the core schema's structure in [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments) now shows the single-property wrapper object that the schema requires around a root object. A standalone short-identifier set or shared variable definition is a root object in the same way as a policy: the schema gains `ShortIdSet` and `SharedVariableDefinition` root forms, the core short-identifier set file is wrapped in a `ShortIdSet` property (csd01: a bare `ShortIdSetType` object), and the short-identifier set example of [Section 4.3](#43-example-short-identifier-set) is wrapped accordingly.
 - [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
+- Content types ([Section 5.3](#53-content-types-and-body-representations-optional)): for JSON content, the `Encoding` property SHALL NOT be present and `Body` SHALL be the JSON object; for XML content, `Body` SHALL be a JSON string whose value is the XML document if `Encoding` is absent, and if `Encoding` is present its value SHALL be `base64` and `Body` SHALL be a JSON string of Base64 data that decodes to the XML document. Before, these were stated without a requirement keyword. An implementation SHALL support a listed content type that a profile for which it claims conformance makes mandatory, and MAY support it otherwise; before, it supported a content type "if and only if" a profile made it mandatory, which did not allow optional support.
+- Mapping rules: rule 2.2.3 creates the `FooTypeTree` of a concrete non-final type if a property has that type or any of its supertypes, as the tree of a supertype references it ([Section 5.2.3](#523-default-mapping-rules-for-complex-acal-types-other-than-valuetype)); rule 2.1 sets `minProperties`, and rules 2.1 and 2.2 set `maxProperties` and `maxItems` for a finite upper bound ([Section 5.2.4](#524-property-mapping-rules)).
+- The core schema has a definition `BaseAttributeType` for the abstract type of [[ACAL-Core-1.0](#acal-core-10)] Section 7.27, which `RequestAttributeType` and `AttributeAssignmentType` extend, and `AttributeType` is a closed definition extending it, so the `Attribute` property of `EntityType` and `ResultEntityType` no longer accepts `IncludeInResult`, `Category` or another property.
+- The core schema's `ResultEntityType`, `EntityType` and `BundleType` do not allow properties other than their ACAL properties.
 - Editorial: the title is now "JACAL Version 1.0 (JSON Representation of ACAL)" (csd01: "JSON Representation of ACAL Version 1.0 (JACAL)"), and the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references and citations are corrected, including the reference for Base64 encoding ([[RFC4648](#rfc4648)]). Cross-references are corrected: the safety and security sections cite [[ACAL-Core-1.0](#acal-core-10)] Sections 10.1 and 10.2 (csd01 cited Sections 11.1 and 11.2, which are about conformance), bold-italic terms refer to [[ACAL-Core-1.0](#acal-core-10)] Section 2, and [Section 5.2.5](#525-mapping-acal-object-level-constraints-ocl) cites rule 2.2 of [Section 5.2.4](#524-property-mapping-rules) (csd01 cited a nonexistent rule 2.2.2); [Section 5.3](#53-content-types-and-body-representations-optional) calls `MediaType` and `Encoding` properties.
 
 ## Revision History

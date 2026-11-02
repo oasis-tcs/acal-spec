@@ -129,9 +129,33 @@ $defs:
           $ref: "#/$defs/IdentifierType"
       required:
       - DataType
+    - $comment: >
+        YACAL Section 5.4.4 rule 7: a standard Boolean or String value is not
+        represented as a ValueType mapping, and a ValueType mapping whose
+        DataType is the standard Integer has a string Value. Only the full
+        URIs are checked; a short-identifier spelling of these data types is
+        not rejected by this schema.
+      not:
+        properties:
+          DataType:
+            enum:
+            - "urn:oasis:names:tc:acal:1.0:data-type:boolean"
+            - "urn:oasis:names:tc:acal:1.0:data-type:string"
+        required:
+        - DataType
+    - if:
+        properties:
+          DataType:
+            const: "urn:oasis:names:tc:acal:1.0:data-type:integer"
+        required:
+        - DataType
+      then:
+        properties:
+          Value:
+            type: string
     - anyOf:
       - properties:
-          Value: 
+          Value:
             $comment: >
               Primitive value case: number and string values are structurally permitted here; their ACAL data type is determined by YACAL Section 5.4.4 and the DataType agreement constraints (e.g. an integer scalar such as 3 under the standard ACAL Double denotes the double 3.0). Boolean values are excluded because their DataType is fixed to ACAL Boolean.
             type: ["number", "string"]
@@ -204,8 +228,8 @@ $defs:
         $ref: "#/$defs/AnyType"
     additionalProperties: false
 
-  AttributeType:
-    $comment: "Non-final type (see AttributeAssignmentType and RequestAttributeType subtypes)"
+  BaseAttributeType:
+    $comment: "Abstract type holding the properties of an attribute (ACAL Section 7.27); open, so that AttributeType, AttributeAssignmentType and RequestAttributeType can extend it."
     type: object
     required:
       - AttributeId
@@ -221,9 +245,15 @@ $defs:
       Value:
         $ref: "#/$defs/ValueArray"
 
+  AttributeType:
+    $comment: "Final subtype of BaseAttributeType"
+    allOf:
+    - $ref: "#/$defs/BaseAttributeType"
+    unevaluatedProperties: false
+
   RequestAttributeType:
     allOf:
-    - $ref: "#/$defs/AttributeType"
+    - $ref: "#/$defs/BaseAttributeType"
     - properties:
         IncludeInResult:
           $ref: "#/$defs/BooleanType"
@@ -232,7 +262,7 @@ $defs:
 
   AttributeAssignmentType:
     allOf:
-    - $ref: "#/$defs/AttributeType"
+    - $ref: "#/$defs/BaseAttributeType"
     - properties:
         Category:
           $ref: "#/$defs/IdentifierType"
@@ -612,6 +642,7 @@ $defs:
         $ref: "#/$defs/LocalIdentifierType"
       DataType:
         $ref: "#/$defs/IdentifierType"
+        default: "urn:oasis:names:tc:acal:1.0:data-type:string"
       IsBag:
         $ref: "#/$defs/BooleanType"
         default: false

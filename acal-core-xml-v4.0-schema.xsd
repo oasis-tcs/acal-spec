@@ -377,8 +377,10 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		</xs:assert>
 	</xs:complexType>
 
-	<xs:element name="Attribute" type="xacml:AttributeType" />
-	<xs:complexType name="AttributeType">
+	<!-- BaseAttributeType holds the properties of an attribute (ACAL Core 7.27). AttributeType,
+	RequestAttributeType and AttributeAssignmentType extend it, so an Attribute element (of type
+	AttributeType) cannot be given a RequestAttributeType or AttributeAssignmentType by xsi:type. -->
+	<xs:complexType name="BaseAttributeType" abstract="true">
 		<xs:sequence>
 			<!-- Change to XACML 3.0: AttributeValue renamed to Value (not
 			Attribute-specific anymore) -->
@@ -391,7 +393,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		'Attribute' is already in the name of the element.
 		We keep 'AttributeId' for consistency with 'AttributeAssignmentExpressionType',
 		AttributeAssignmentType (which extends
-		AttributeType), MissingAttributeDetailType.
+		BaseAttributeType), MissingAttributeDetailType.
 		-->
 		<xs:attribute name="AttributeId" type="xacml:IdentifierType" use="required" />
 		<!-- Change to XACML 3.0: Issuer type changed to xs:Name -->
@@ -402,13 +404,20 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 			default="urn:oasis:names:tc:acal:1.0:data-type:string" />
 	</xs:complexType>
 
+	<xs:element name="Attribute" type="xacml:AttributeType" />
+	<xs:complexType name="AttributeType">
+		<xs:complexContent>
+			<xs:extension base="xacml:BaseAttributeType" />
+		</xs:complexContent>
+	</xs:complexType>
+
 	<!-- Change to XACML 3.0: new RequestAttribute element, similar to Attribute but
 	with extra IncludeInResult attribute to indicate whether to include it in the Result, to be used
 	only in the Request. -->
 	<xs:element name="RequestAttribute" type="xacml:RequestAttributeType" />
 	<xs:complexType name="RequestAttributeType">
 		<xs:complexContent mixed="false">
-			<xs:extension base="xacml:AttributeType">
+			<xs:extension base="xacml:BaseAttributeType">
 				<xs:attribute name="IncludeInResult" type="xs:boolean" use="optional"
 					default="false" />
 			</xs:extension>
@@ -470,9 +479,9 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 	<xs:complexType name="AttributeAssignmentType">
 		<xs:complexContent>
 			<!-- Change to XACML 3.0: AttributeAssignment changed from
-			single-valued to multi-valued, therefore becomes de facto an extension of AttributeType
+			single-valued to multi-valued, therefore becomes de facto an extension of BaseAttributeType
 			with an extra Category -->
-			<xs:extension base="xacml:AttributeType">
+			<xs:extension base="xacml:BaseAttributeType">
 				<xs:attribute name="Category" type="xacml:IdentifierType" use="optional" />
 			</xs:extension>
 		</xs:complexContent>
@@ -1121,53 +1130,11 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 	identifiers -->
 	<xs:simpleType name="IdentifierType">
 		<xs:restriction base="xs:string">
-			<!-- The pattern needs some improvement as this allows undesirable identifiers. See the
-			XSD 1.1 assertion as an alternative in the comment down below.  -->
+			<!-- This pattern is an approximation. After short-identifier expansion the value is
+			required to be an absolute URI (ACAL Core 8.3). Lexical short-identifier forms remain valid. -->
 			<xs:pattern value="[^{}]*(\{[A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)*\}[^{}]*)*" />
 			<xs:minLength value="1" />
 			<xs:whiteSpace value="collapse" />
-			<!--								
-			As an alternative, if and only if your XSD 1.1 / XPath processor supports XPath 3.0 or later (for
-			supporting let expressions or fn:environment-variable() function), you may use the XSD
-			1.1 assertion below for stricter validation (if your ACAL implementation is already
-			parsing such values properly while validating them against the same regular expressions,
-			then your implementation-specific validation is probably more optimal, in which case you
-			may consider this XSD assertion for implementation guidance only): 
-								
-				<xs:assert test="let $URI_CHAR_PATTERN := '[!#-;=?-\[\]_a-z~]', 
-					$URI_CHARS_ANCHORED_PATTERN := concat('^', $URI_CHAR_PATTERN, '*$'), 
-					$ABSOLUTE_URI_PATTERN := concat('^[A-Za-z][A-Za-z0-9+\-.]*:', $URI_CHAR_PATTERN, '+$'), 
-					$SHORTNAME_PATTERN := '[A-Za-z][0-9A-Za-z]*(-[0-9A-Za-z]+)*', 
-					$SHORTNAME_ANCHORED_PATTERN := concat('^', $SHORTNAME_PATTERN, '$'), 
-					$SHORTNAME_BRACKETED_PATTERN := concat('\{', $SHORTNAME_PATTERN, '\}') 
-					return matches($value, $SHORTNAME_ANCHORED_PATTERN) or matches($value, $ABSOLUTE_URI_PATTERN) or (
-			let $tokens := tokenize($value, $SHORTNAME_BRACKETED_PATTERN) return count($tokens) > 1
-			and (every $token in $tokens satisfies matches($token, $URI_CHARS_ANCHORED_PATTERN))
-			)"/>
-			
-			Simplified/optimized version: 
-				The variables used in the XPath expression above are constants as you can see, therefore your XSD
-			1.1 / XPath processor may optimize the XPath expression by either pre-evaluating them at
-			compilation or initialization time, or caching their computed values at runtime. If this
-			is not the case, you should set the variables SHORTNAME_ANCHORED_PATTERN,
-			ABSOLUTE_URI_PATTERN, SHORTNAME_BRACKETED_PATTERN and URI_CHARS_ANCHORED_PATTERN as
-			environment variables instead, and use the fn:environment-variable() function in the
-			expression (provided that your XPath processor supports those). In which case, the
-			assertion can be reduced to this:
-			
-				<xs:assert test="matches($value, environment-variable($SHORTNAME_ANCHORED_PATTERN)) or
-			matches($value, environment-variable($ABSOLUTE_URI_PATTERN)) or ( let $tokens :=
-			tokenize($value, environment-variable($SHORTNAME_BRACKETED_PATTERN)) return
-			count($tokens) > 1 and (every $token in $tokens satisfies matches($token,
-			environment-variable($URI_CHARS_ANCHORED_PATTERN))) )"/>
-								
-			As mentioned earlier, the assertions above require support for XPath 3.0 minimum, despite the fact
-			that the XML Schema 1.1 standard requires only support for XPath 2.0. Therefore, the
-			possibility to enable support for XPath 3.0 or later in XSD 1.1 assertion is
-			implementation-dependent (e.g. Saxon EE has a configuration option for that, but Apache
-			Xerces2 Java parser only supports XPath 2.0 as of latest v2.12.2 -
-			https://xerces.apache.org/xerces2-j/faq-xs.html#faq-3).
-			-->
 		</xs:restriction>
 	</xs:simpleType>
 

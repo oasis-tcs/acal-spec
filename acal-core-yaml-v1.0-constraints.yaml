@@ -20,7 +20,7 @@ PathNotation:
     - "$ denotes the document root."
     - ".Property selects a child property."
     - "[] iterates over all items of a sequence-valued property."
-    - "..Property selects every descendant property named Property, at any depth below the current node; the result is the set of the selected property values."
+    - "..Property selects the value of every descendant property named Property, at any depth below the current node; where the value is a sequence its items are selected."
     - "Wrapper keys such as Policy, Rule, or Value are expressed as ordinary property names."
     - "A path ending in a property name denotes that property's value."
     - "Paths are descriptive and implementation-neutral."
@@ -132,7 +132,9 @@ Rule:
     Severity: error
     AppliesTo:
       ObjectType: PolicyType
-      CollectionPath: "$.Policy.Parameter"
+      ObjectLocations:
+        - "$..Policy"
+      CollectionPath: Parameter
     KeyProperties:
       - Name
     Requirement: >
@@ -145,7 +147,10 @@ Rule:
     Severity: error
     AppliesTo:
       ObjectType: SharedVariableDefinitionType
-      CollectionPath: "$.Bundle.SharedVariableDefinition[].Parameter"
+      ObjectLocations:
+        - "$.SharedVariableDefinition"
+        - "$.Bundle.SharedVariableDefinition[]"
+      CollectionPath: Parameter
     KeyProperties:
       - Name
     Requirement: >
@@ -159,7 +164,9 @@ Rule:
     Severity: error
     AppliesTo:
       ObjectType: PolicyType
-      CollectionPath: "$.Policy.VariableDefinition"
+      ObjectLocations:
+        - "$..Policy"
+      CollectionPath: VariableDefinition
     KeyProperties:
       - VariableId
     Requirement: >
@@ -178,7 +185,9 @@ Rule:
     Severity: error
     AppliesTo:
       ObjectType: RuleType
-      CollectionPath: "$.Policy.CombinerInput[].Rule.VariableDefinition"
+      ObjectLocations:
+        - "$..Rule"
+      CollectionPath: VariableDefinition
     KeyProperties:
       - VariableId
     Requirement: >
@@ -199,6 +208,7 @@ Rule:
       ObjectType: SharedVariableDefinitionType
       NodeIdentityProperty: Id
       ObjectLocations:
+        - "$.SharedVariableDefinition"
         - "$.Bundle.SharedVariableDefinition[]"
       ReferenceExpressionPath: Expression
       ReferenceWrapperKey: SharedVariableReference
@@ -216,7 +226,10 @@ Rule:
     Severity: error
     AppliesTo:
       ObjectType: SharedVariableDefinitionType
-      ExpressionPath: "$.Bundle.SharedVariableDefinition[].Expression"
+      ObjectLocations:
+        - "$.SharedVariableDefinition"
+        - "$.Bundle.SharedVariableDefinition[]"
+      ExpressionPath: Expression
     ProhibitedWrapperKey: VariableReference
     ExceptReferenceTargets: "A Parameter of the same SharedVariableDefinitionType"
     Requirement: >
@@ -260,7 +273,9 @@ Rule:
     Severity: error
     AppliesTo:
       ObjectType: PolicyType
-      CollectionPath: "$.Policy.PolicyDefaults"
+      ObjectLocations:
+        - "$..Policy"
+      CollectionPath: PolicyDefaults
     Requirement: >
       No two PolicyDefaults values may denote the same effective
       concrete subtype.
@@ -296,22 +311,10 @@ Rule:
       - Issuer
     Requirement: >
       RequestAttribute values within a RequestEntityType MUST be unique by
-      the combination of AttributeId, DataType and Issuer, compared per
-      ACAL Section 7.33: AttributeId and DataType by identifier equality on
-      their effective (post-default) value, and Issuer such that an absent
-      Issuer is never a duplicate of a present one. This rule is a partial,
-      best-effort check: it does not perform the short-identifier expansion
-      that identifier equality depends on, and depending on how this
-      catalog's tooling treats a missing key property, it may not catch a
-      duplicate pair where Issuer is absent from both values. See
-      ACAL Section 7.33 for the full normative rule. Therefore, tooling
-      implementing this rule SHALL perform the following normalization
-      before comparing KeyProperties values: 1) apply short-identifier
-      expansion (Section 8.3) to the AttributeId and DataType values; and
-      2) set DataType to its default value
-      (urn:oasis:names:tc:acal:1.0:data-type:string) where the property is
-      absent. A raw, unnormalized property comparison will under-detect
-      duplicates in exactly the cases described above.
+      the combination of AttributeId, DataType and Issuer (ACAL Section 7.33). Before comparison, a processor SHALL expand the short identifiers of
+      AttributeId and DataType (ACAL Section 8.3), set an absent DataType to
+      urn:oasis:names:tc:acal:1.0:data-type:string, and treat an absent
+      Issuer as equal to an absent Issuer and not equal to a present Issuer.
     Provenance:
       YACALSection: "5.12.2"
       ACALSection: "7.33"
@@ -677,23 +680,11 @@ Rule:
       - DataType
       - Issuer
     Requirement: >
-      Attribute values within a ResultEntityType MUST be unique by the
-      combination of AttributeId, DataType and Issuer, compared per
-      ACAL Section 7.44: AttributeId and DataType by identifier equality on
-      their effective (post-default) value, and Issuer such that an absent
-      Issuer is never a duplicate of a present one. This rule is a partial,
-      best-effort check: it does not perform the short-identifier expansion
-      that identifier equality depends on, and depending on how this
-      catalog's tooling treats a missing key property, it may not catch a
-      duplicate pair where Issuer is absent from both values. See
-      ACAL Section 7.44 for the full normative rule. Therefore, tooling
-      implementing this rule SHALL perform the following normalization
-      before comparing KeyProperties values: 1) apply short-identifier
-      expansion (Section 8.3) to the AttributeId and DataType values; and
-      2) set DataType to its default value
-      (urn:oasis:names:tc:acal:1.0:data-type:string) where the property is
-      absent. A raw, unnormalized property comparison will under-detect
-      duplicates in exactly the cases described above.
+      Attribute values within a ResultEntityType MUST be unique by
+      the combination of AttributeId, DataType and Issuer (ACAL Section 7.44). Before comparison, a processor SHALL expand the short identifiers of
+      AttributeId and DataType (ACAL Section 8.3), set an absent DataType to
+      urn:oasis:names:tc:acal:1.0:data-type:string, and treat an absent
+      Issuer as equal to an absent Issuer and not equal to a present Issuer.
     Provenance:
       YACALSection: "5.8.8"
       ACALSection: "7.44"
@@ -703,31 +694,19 @@ Rule:
     Severity: error
     AppliesTo:
       ObjectType: EntityType
-      CollectionPath: "$.Policy.PolicyIssuer.Attribute"
+      ObjectLocations:
+        - "$..Policy"
+      CollectionPath: PolicyIssuer.Attribute
     KeyProperties:
       - AttributeId
       - DataType
       - Issuer
     Requirement: >
-      Attribute values within a Policy's PolicyIssuer MUST be unique by the
-      combination of AttributeId, DataType and Issuer, compared per
-      ACAL Section 7.45: AttributeId and DataType by identifier equality on
-      their effective (post-default) value, and Issuer such that an absent
-      Issuer is never a duplicate of a present one. This rule is a partial,
-      best-effort check: it does not perform the short-identifier expansion
-      that identifier equality depends on, and depending on how this
-      catalog's tooling treats a missing key property, it may not catch a
-      duplicate pair where Issuer is absent from both values. See
-      ACAL Section 7.45 for the full normative rule. Therefore, tooling
-      implementing this rule SHALL perform the following normalization
-      before comparing KeyProperties values: 1) apply short-identifier
-      expansion (Section 8.3) to the AttributeId and DataType values; and
-      2) set DataType to its default value
-      (urn:oasis:names:tc:acal:1.0:data-type:string) where the property is
-      absent. A raw, unnormalized property comparison will under-detect
-      duplicates in exactly the cases described above. (Previously,
-      this catalog had no rule at all for PolicyIssuer's Attribute
-      uniqueness.)
+      Attribute values within a Policy's PolicyIssuer MUST be unique by
+      the combination of AttributeId, DataType and Issuer (ACAL Section 7.45). Before comparison, a processor SHALL expand the short identifiers of
+      AttributeId and DataType (ACAL Section 8.3), set an absent DataType to
+      urn:oasis:names:tc:acal:1.0:data-type:string, and treat an absent
+      Issuer as equal to an absent Issuer and not equal to a present Issuer.
     Provenance:
       YACALSection: "5.4.13"
       ACALSection: "7.45"

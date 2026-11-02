@@ -1109,7 +1109,8 @@
 			},
 			"additionalProperties": false
 		},
-		"AttributeType": {
+		"BaseAttributeType": {
+			"$comment": "Abstract type holding the properties of an attribute (ACAL Section 7.27); open, so that AttributeType, AttributeAssignmentType and RequestAttributeType can extend it.",
 			"type": "object",
 			"required": [
 				"AttributeId",
@@ -1135,10 +1136,19 @@
 				}
 			}
 		},
+		"AttributeType": {
+			"$comment": "Final subtype of BaseAttributeType",
+			"allOf": [
+				{
+					"$ref": "#/$defs/BaseAttributeType"
+				}
+			],
+			"unevaluatedProperties": false
+		},
 		"AttributeAssignmentType": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/AttributeType"
+					"$ref": "#/$defs/BaseAttributeType"
 				},
 				{
 					"type": "object",
@@ -1173,7 +1183,8 @@
 						"$ref": "#/$defs/AttributeType"
 					}
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"RequestDefaultsTypeTree": {
 			"$comment": "This is meant to be overridden in a custom schema that combines the enabled extensions (matching the ACAL implementation) in a 'oneOf' schema in order to have one and only one property per type of RequestDefaults (i.e. one per ACAL profile). Add similar properties for other RequestDefaults extensions defined by other JACAL Profiles supported by the implementation (one property per profile), if there is any.",
@@ -1277,7 +1288,7 @@
 		"RequestAttributeType": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/AttributeType"
+					"$ref": "#/$defs/BaseAttributeType"
 				},
 				{
 					"type": "object",
@@ -1494,7 +1505,8 @@
 				"required": [
 					"Attribute"
 				]
-			}
+			},
+			"unevaluatedProperties": false
 		},
 		"BundleType": {
 			"type": "object",
@@ -1532,7 +1544,8 @@
 				"PolicyReference": [
 					"Policy"
 				]
-			}
+			},
+			"additionalProperties": false
 		}
 	}
 }

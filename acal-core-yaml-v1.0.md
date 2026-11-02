@@ -419,7 +419,7 @@ Under the Core Schema, the following scalar resolutions apply (depending on the 
 | `true \| True \| TRUE \| false \| False \| FALSE` | `true`, `false` | Boolean | `urn:oasis:names:tc:acal:1.0:data-type:boolean` (only `true` and `false` are valid YACAL booleans, see [Section 5.3.2](#532-selected-simple-types-mapped-to-native-yaml-scalars)) |
 | `[-+]? [0-9]+` | `42`, `-7`, `0` | Integer (base 10) | `urn:oasis:names:tc:acal:1.0:data-type:integer` |
 | `0o [0-7]+` | `0o7` | Integer (base 8) | *Not a valid ACAL value, see Section 5.1.4* |
-| `0x [0-9a-fA-F]+` | `0x3A` | Integer (base 16) | `urn:oasis:names:tc:acal:1.0:data-type:hexBinary` |
+| `0x [0-9a-fA-F]+` | `0x3A` | Integer (base 16) | *Not a valid ACAL value; see Section 5.1.4* |
 | `[-+]? ( \. [0-9]+ \| [0-9]+ ( \. [0-9]* )? ) ( [eE] [-+]? [0-9]+ )?` | `0.`, `-0.0`, `.5`, `+12e03`, `-2E+05` | Float (number) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
 | `[-+]? ( \.inf \| \.Inf \| \.INF )` | `.inf`, `-.Inf`, `+.INF` | Float (Infinity) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
 | `\.nan \| \.NaN \| \.NAN` | `.nan`, `.NAN` | Float (not-a-number) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
@@ -496,12 +496,14 @@ documents:
 -   **Anchors and aliases** (`&anchor` / `*alias`): these have no
     representation in the ACAL abstract model and would break the
     direct structural correspondence to the ACAL abstract model.
--   **Multiple documents** (`---` / `...` separators): a YACAL
-    document is a single YAML document.  Bundles are expressed using
-    `BundleType`, not YAML multi-document streams.
+-   **Multiple documents**: a YACAL stream SHALL NOT contain more than
+    one document.  The document-start marker `---` and the document-end
+    marker `...` may surround the single document.  Bundles are
+    expressed using `BundleType`, not YAML multi-document streams.
 -   **Merge keys** (`<<`): a YAML 1.1 feature not part of YAML 1.2.
 -   **Null** values (`null`, `Null`, `NULL`, `~`, or a key present with an empty value such as `myProperty:`). Omitting an optional property is not a null value; see [Section 5.4.3](#543-null-and-omission).
--   **Octal notation** for integers (to align with JSON integer type), i.e. any value matching the pattern `0o[0-7]+` is forbidden.
+-   **Octal notation** for integers (to align with JSON integer type): a plain scalar SHALL NOT use YAML octal integer notation matching `0o[0-7]+`.
+-   **Hexadecimal notation** for integers: a plain scalar SHALL NOT use YAML hexadecimal integer notation matching `0x[0-9a-fA-F]+`.  A quoted string such as `"0x003A"` is not affected; a `hexBinary` value is written as a quoted string.
 
 ## 5.2 Document Structure
 
@@ -757,6 +759,8 @@ properties are written in YAML.
    constraints.
 7. A YAML mapping used for a complex ACAL type MUST NOT contain duplicate
    property keys.
+8. A sequence representing a property with a finite upper bound SHALL
+   NOT contain more items than that bound.
 
 Examples:
 
@@ -876,6 +880,10 @@ The following rules apply to primitive `ValueType` forms:
 6. If a YAML string scalar is used with an explicit or inherited
    `DataType`, that string MUST satisfy the lexical constraints of the
    effective ACAL data type.
+7. A standard Boolean or String value SHALL NOT be represented as a
+   `ValueType` mapping with `DataType` and `Value`.  A `ValueType`
+   mapping whose `DataType` is the standard Integer SHALL have a string
+   `Value` in the lexical space of `xs:integer`.
 
 YAML Core Schema resolution determines whether an unquoted scalar is a
 boolean, integer, float, or string before the ACAL typing rules above
@@ -1052,6 +1060,10 @@ The following rules apply:
    independently.
 8. A wrapper key identifies the concrete subtype used in that context,
    not each intermediate abstract supertype in the inheritance chain.
+   The wrapper keys `Value`, `AttributeSelector` and
+   `EntityAttributeSelector` are exceptions: each identifies an abstract
+   type, and the concrete subtype is identified by the inner object
+   ([Section 5.4.8](#548-extensible-abstract-types)).
 
 Examples:
 
@@ -1113,9 +1125,16 @@ The generic rules are:
 1. A profile-defined concrete subtype of an abstract ACAL type SHALL use
    the inherited-property flattening model of
    [Section 5.4.7](#547-inheritance-and-subtype-resolution).
-2. In a polymorphic position, a profile-defined concrete subtype SHALL
-   be identified by the wrapper key assigned by the relevant profile
-   specification.
+2. Where this specification assigns a wrapper key to an abstract type
+   (`Value`, `AttributeSelector` and `EntityAttributeSelector`,
+   [Section 5.5.1](#551-expressiontype)), a profile SHALL NOT assign a
+   different key; the concrete subtype is identified by the inner
+   object.  Where this specification assigns no key (for example
+   `PolicyDefaultsType` and `RequestDefaultsType`,
+   [Section 5.6.9](#569-policydefaultstype) and
+   [Section 5.8.10](#5810-requestdefaultstype)), a profile-defined
+   concrete subtype in a polymorphic position SHALL be identified by the
+   wrapper key assigned by the relevant profile specification.
 3. In a direct position created by a profile-specific property whose
    type is already fixed to that concrete subtype, no extra polymorphic
    wrapper is required unless the profile says otherwise.
@@ -1226,7 +1245,9 @@ profile-specific content forms they do not claim to implement.
 ### 5.4.12 AttributeType Mapping
 
 `AttributeType` is the reusable ACAL form for an identified attribute
-with one or more values.  In YACAL, it is represented as a YAML mapping:
+with one or more values.  Its properties, listed below, are those of
+the abstract `BaseAttributeType`, which `RequestAttributeType` and
+`AttributeAssignmentType` also extend.  In YACAL, it is represented as a YAML mapping:
 
 | Property | Required | Default | Type | Cardinality |
 |---|---|---|---|---|
@@ -1336,6 +1357,11 @@ usable concrete subtype in the expression position.
 | `Select` | `SelectType` (optional) |
 | `Map` | `MapType` (optional) |
 
+The keys `Value`, `AttributeSelector` and `EntityAttributeSelector`
+identify the abstract types `ValueType`, `AttributeSelectorType` and
+`EntityAttributeSelectorType`; the concrete subtype is identified by
+the inner object ([Section 5.4.8](#548-extensible-abstract-types)).
+
 ### 5.5.2 ApplyType
 
 `ApplyType` represents a function application with arguments:
@@ -1357,7 +1383,7 @@ Properties:
 |---|---|---|---|
 | `FunctionId` | Yes | `IdentifierType` | Function identifier |
 | `Description` | No | String | Free-form description |
-| `Argument` | No | Sequence of `ArgumentType` | Arguments in order, or named arguments (`NamedArgumentType`) in any order if the function has *named parameters* (more info in the `ApplyType` section of [[ACAL-Core-1.0](#acal-core-10)] ); empty if function takes no arguments. When the function signature fixes an argument `DataType`, a statically typed child expression such as `Value` MAY omit `DataType`; the `DataType` requirements of [[ACAL-Core-1.0](#acal-core-10)] Section 7.15 apply. |
+| `Argument` | No | Sequence of `ArgumentType` | Arguments in order, or named arguments (`NamedArgumentType`) in any order if the function has *named parameters* (more info in the `ApplyType` section of [[ACAL-Core-1.0](#acal-core-10)] ); absent if the function takes no arguments. When the function signature fixes an argument `DataType`, a statically typed child expression such as `Value` MAY omit `DataType`; the `DataType` requirements of [[ACAL-Core-1.0](#acal-core-10)] Section 7.15 apply. |
 
 ### 5.5.3 AttributeDesignatorType
 
@@ -2054,8 +2080,8 @@ Properties:
 | `Value` | Yes | — | `ValueType` | 1..* |
 | `IncludeInResult` | No | `false` | Boolean | 0..1 |
 
-`RequestAttributeType` extends `AttributeType` with
-`IncludeInResult`.  The inherited `Value` sequence follows
+`RequestAttributeType` extends `BaseAttributeType` (the properties of
+[Section 5.4.12](#5412-attributetype-mapping)) with `IncludeInResult`.  The inherited `Value` sequence follows
 [Section 5.4.12](#5412-attributetype-mapping); if the enclosing
 attribute defines `DataType`, nested values MAY omit their own
 `DataType`; if present, it MUST agree with the enclosing `DataType`.
@@ -2348,7 +2374,8 @@ Properties:
 | `DataType` | No | string | `IdentifierType` | 0..1 |
 | `Value` | Yes | — | `ValueType` | 1..* |
 
-`AttributeAssignmentType` extends `AttributeType` with the optional
+`AttributeAssignmentType` extends `BaseAttributeType` (the properties
+of [Section 5.4.12](#5412-attributetype-mapping)) with the optional
 `Category` property.  If the enclosing assignment defines `DataType`,
 nested `Value` items MAY omit their own `DataType`; if present, they
 MUST agree with the enclosing `DataType`.
@@ -2816,9 +2843,9 @@ A conformant YACAL document:
     [Section 5.12](#512-constraint-handling).
 6.  MUST NOT use YAML tags (e.g., `!!str`, `!custom`).
 7.  MUST NOT use YAML anchors (`&name`) or aliases (`*name`).
-8.  MUST NOT use YAML merge keys or multi-document streams.
+8.  MUST NOT use YAML merge keys, and MUST NOT contain more than one YAML document (the markers `---` and `...` may surround the single document).
 9.  MUST NOT use YAML null values (`null`, `Null`, `NULL`, `~`, or a key present with an empty value); omitting an optional property is not a null value ([Section 5.1.4](#514-prohibited-yaml-features)).
-10. MUST NOT use the YAML octal notation for integers (any value matching the regular expression `0o[0-7]+`).
+10. MUST NOT use a plain scalar in YAML octal or hexadecimal integer notation (matching `0o[0-7]+` or `0x[0-9a-fA-F]+`).
 11. SHOULD use YAML block style for mappings and sequences.  Flow style
     MAY be used where it improves readability (e.g., for short inline
     values).
