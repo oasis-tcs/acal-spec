@@ -586,6 +586,44 @@
 					]
 				},
 				{
+					"$comment": "JACAL Section 5.2.2.1 items 1, 2 and 4: a standard Boolean or String value is not represented as a ValueType object, and a ValueType object whose DataType is the standard Integer has a string Value. Only the full URIs are checked; a short-identifier spelling of these data types is not rejected by this schema.",
+					"not": {
+						"properties": {
+							"DataType": {
+								"enum": [
+									"urn:oasis:names:tc:acal:1.0:data-type:boolean",
+									"urn:oasis:names:tc:acal:1.0:data-type:string"
+								]
+							}
+						},
+						"required": [
+							"DataType"
+						]
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"DataType": {
+								"const": "urn:oasis:names:tc:acal:1.0:data-type:integer"
+							}
+						},
+						"required": [
+							"DataType"
+						]
+					},
+					"then": {
+						"properties": {
+							"Value": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"Value"
+						]
+					}
+				},
+				{
 					"anyOf": [
 						{
 							"properties": {
@@ -860,6 +898,42 @@
 				}
 			}
 		},
+		"ForAnyType": {
+			"$comment": "Final subtype of QuantifiedExpressionType",
+			"allOf": [
+				{
+					"$ref": "#/$defs/QuantifiedExpressionType"
+				}
+			],
+			"unevaluatedProperties": false
+		},
+		"ForAllType": {
+			"$comment": "Final subtype of QuantifiedExpressionType",
+			"allOf": [
+				{
+					"$ref": "#/$defs/QuantifiedExpressionType"
+				}
+			],
+			"unevaluatedProperties": false
+		},
+		"MapType": {
+			"$comment": "Final subtype of QuantifiedExpressionType",
+			"allOf": [
+				{
+					"$ref": "#/$defs/QuantifiedExpressionType"
+				}
+			],
+			"unevaluatedProperties": false
+		},
+		"SelectType": {
+			"$comment": "Final subtype of QuantifiedExpressionType",
+			"allOf": [
+				{
+					"$ref": "#/$defs/QuantifiedExpressionType"
+				}
+			],
+			"unevaluatedProperties": false
+		},
 		"QuantifiedExpressionTypeTree": {
 			"$comment": "QuantifiedExpressionType's direct subtypes",
 			"anyOf": [
@@ -870,7 +944,7 @@
 					],
 					"properties": {
 						"ForAny": {
-							"$ref": "#/$defs/QuantifiedExpressionType"
+							"$ref": "#/$defs/ForAnyType"
 						}
 					},
 					"additionalProperties": false
@@ -882,7 +956,7 @@
 					],
 					"properties": {
 						"ForAll": {
-							"$ref": "#/$defs/QuantifiedExpressionType"
+							"$ref": "#/$defs/ForAllType"
 						}
 					},
 					"additionalProperties": false
@@ -894,7 +968,7 @@
 					],
 					"properties": {
 						"Map": {
-							"$ref": "#/$defs/QuantifiedExpressionType"
+							"$ref": "#/$defs/MapType"
 						}
 					},
 					"additionalProperties": false
@@ -906,7 +980,7 @@
 					],
 					"properties": {
 						"Select": {
-							"$ref": "#/$defs/QuantifiedExpressionType"
+							"$ref": "#/$defs/SelectType"
 						}
 					},
 					"additionalProperties": false

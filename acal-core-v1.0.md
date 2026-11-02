@@ -6824,6 +6824,10 @@ Freed, N., Klensin, J., and T. Hansen, "Media Type Specifications and Registrati
 
 *Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words*, BCP 14, RFC 8174, May 2017. [Online]. Available: https://www.rfc-editor.org/info/rfc8174
 
+###### [RFC9512]
+
+Polli, R., Wilde, E., and E. Aro, "YAML Media Type", RFC 9512, DOI 10.17487/RFC9512, February 2024, <https://www.rfc-editor.org/info/rfc9512>.
+
 ###### [UAX15]
 
 Mark Davis, Martin Dürst, Unicode Standard Annex #15: Unicode Normalization Forms, Unicode 5.1, https://unicode.org/reports/tr15/
@@ -8412,7 +8416,8 @@ The permit-unless-deny combining algorithm has the following value for the `Comb
 These standard *Media Type* identifiers ([[RFC2046](#rfc2046)]) - registered at IANA ( [[RFC6838](#rfc6838)] ) - SHALL be used as values for the `MediaType` property of `ContentType` objects, whenever applicable to the Content type: 
 
 - For XML content: `application/xml`;
-- For JSON content: `application/json`.
+- For JSON content: `application/json`;
+- For YAML content: `application/yaml` ([[RFC9512](#rfc9512)]), the default media type of a `ContentType` object in the YAML representation of ACAL.
 
 ## D.11 Content Encodings
 
@@ -8911,6 +8916,7 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - The `processing-error` status code is described as an error while the PDP processes the decision request or evaluates policy, including the refusal of a request as specified in [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) (csd01: an error during policy evaluation) ([Annex D.8](#d8-status-codes)). The target value "No Match" is written `No-match`, as in the policy truth table ([Section 8.7](#87-target-evaluation)). In the glossary, "Context handler" refers to the ACAL context instead of the XACML canonical form, and the Condition definition writes its values `true` and `false` (csd01: `True`, `False`) ([Section 2.1.2](#212-terms-defined-in-this-document)).
 - The base-PEP decision value "Not Applicable" is written `NotApplicable` ([Section 8.2.1](#821-base-pep)); [Section 8.10](#810-extended-indeterminate) defines the top-level policy, at which an extended `Indeterminate` is returned as a plain `Indeterminate`, as the policy referenced by the `PolicyReference` property of the `BundleType` object that defines the PDP; and the local-identifier examples of [Section 7.1.2.3.9](#71239-localidentifiertype) use `Name` for a parameter and `Id` for a rule (csd01: `ParameterName` and `RuleId`) and describe `RequestEntityReference` as a `LocalIdentifierType` value.
 - The `entity` data type is listed among the data type identifiers ([Annex D.3](#d3-data-types)).
+- `application/yaml` ([[RFC9512](#rfc9512)]) is listed among the standard media types of a `ContentType` object, for YAML content ([Annex D.10](#d10-content-types)).
 - On a `Deny` decision, the base PEP and the Permit-biased PEP no longer deny access "only if" they understand and can discharge the accompanying obligations; they deny access in every case and MUST discharge any obligation they understand to the best of their ability ([Section 8.2.1](#821-base-pep), [Section 8.2.3](#823-permit-biased-pep)).
 - The PEP's handling of obligation notices is specified in [Section 8.2](#82-policy-enforcement-point), and the other sections refer to it or agree with it. [Section 7.4](#74-policytype), [Section 7.37](#737-resulttype) and the `Notice` property of `ResultType` no longer say that a PEP that does not understand or cannot fulfill an obligation notice acts according to its bias, because the PEP bias applies only to a `NotApplicable` or `Indeterminate` decision, and an obligation notice accompanies only a `Permit` or a `Deny` decision. [Section 4.12](#412-actions-performed-in-conjunction-with-enforcement) no longer says that a PEP denies access unless it understands and can discharge all obligation notices, which is wrong for a `Deny` decision, where access is denied in every case. [Section 8.2.2](#822-deny-biased-pep) and [Section 8.2.3](#823-permit-biased-pep) now state both the `Permit` and the `Deny` handling, as [Section 8.2.1](#821-base-pep) does. As a result a Permit-biased PEP, like the other two, permits access on a `Permit` decision only if it understands and can and will discharge the accompanying obligations; XACML 3.0 Section 7.2.3 did not state this for the Permit-biased PEP.
 - The DataType inference rule of [Section 7.15](#715-applytype) takes the expected data type of an argument of a higher-order bag function from the function named by the first argument, and requires the data type of a statically-typed argument expression, including one that defaults to `string`, to be an allowed data type for its parameter. Before, the rule looked only at the signature of the function identified by `FunctionId`, which defines no fixed data type for the arguments of `any-of`, `all-of` and the other higher-order functions, so the rule gave nothing for them; and it required a present data type to be "the same as" the parameter's even where a parameter allows several types.

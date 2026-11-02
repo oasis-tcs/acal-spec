@@ -714,7 +714,7 @@ Five top-level policies: one that is both the PDP entry point and the policy com
                                                 { "Apply": {
                                                     "FunctionId": "urn:oasis:names:tc:acal:1.0:function:string-is-in",
                                                     "Argument": [
-                                                        { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:string", "Value": "urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role" } },
+                                                        { "Value": "urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role" },
                                                         { "AttributeDesignator": {
                                                             "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:action",
                                                             "AttributeId": "urn:oasis:names:tc:acal:1.0:action:action-id",
@@ -748,7 +748,7 @@ Five top-level policies: one that is both the PDP entry point and the policy com
                                         { "Apply": {
                                             "FunctionId": "urn:oasis:names:tc:acal:1.0:function:string-is-in",
                                             "Argument": [
-                                                { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:string", "Value": "urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role" } },
+                                                { "Value": "urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role" },
                                                 { "AttributeDesignator": {
                                                     "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:action",
                                                     "AttributeId": "urn:oasis:names:tc:acal:1.0:action:action-id",
@@ -779,7 +779,7 @@ Five top-level policies: one that is both the PDP entry point and the policy com
                                                     { "Apply": {
                                                         "FunctionId": "urn:oasis:names:tc:acal:1.0:function:string-is-in",
                                                         "Argument": [
-                                                            { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:string", "Value": "read" } },
+                                                            { "Value": "read" },
                                                             { "AttributeDesignator": {
                                                                 "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:action",
                                                                 "AttributeId": "urn:oasis:names:tc:acal:1.0:action:action-id",
@@ -848,7 +848,7 @@ Five top-level policies: one that is both the PDP entry point and the policy com
                                                 { "Apply": {
                                                     "FunctionId": "urn:oasis:names:tc:acal:1.0:function:string-is-in",
                                                     "Argument": [
-                                                        { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:string", "Value": "urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role" } },
+                                                        { "Value": "urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role" },
                                                         { "AttributeDesignator": {
                                                             "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:action",
                                                             "AttributeId": "urn:oasis:names:tc:acal:1.0:action:action-id",
@@ -882,7 +882,7 @@ Five top-level policies: one that is both the PDP entry point and the policy com
                                         { "Apply": {
                                             "FunctionId": "urn:oasis:names:tc:acal:1.0:function:string-is-in",
                                             "Argument": [
-                                                { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:string", "Value": "urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role" } },
+                                                { "Value": "urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role" },
                                                 { "AttributeDesignator": {
                                                     "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:action",
                                                     "AttributeId": "urn:oasis:names:tc:acal:1.0:action:action-id",
@@ -916,8 +916,8 @@ Five top-level policies: one that is both the PDP entry point and the policy com
                                                             { "Apply": {
                                                                 "FunctionId": "urn:oasis:names:tc:acal:1.0:function:string-bag",
                                                                 "Argument": [
-                                                                    { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:string", "Value": "read" } },
-                                                                    { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:string", "Value": "approve" } }
+                                                                    { "Value": "read" },
+                                                                    { "Value": "approve" }
                                                                 ] } },
                                                             { "AttributeDesignator": {
                                                                 "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:action",

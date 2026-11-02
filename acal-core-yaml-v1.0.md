@@ -2822,6 +2822,8 @@ The following machine-readable artifacts accompany this specification:
 | `acal-core-yaml-v1.0-constraints.yaml` | M | Core constraint catalog |
 | `acal-core-yaml-v1.0-identifiers.yaml` | M | Core short identifier set represented in YAML |
 
+The constraint catalog is a machine-readable encoding of the constraints of [Section 5.12](#512-constraint-handling) and of ACAL. A processor MAY use it to check those constraints ([Section 5.12.4](#5124-enforcement-expectations) item 3).
+
 The structural validation artifacts and short identifier sets for XPath Profile and JSONPath Profile support are artifacts of those Profiles' own Work Products, not of this Core specification.
 
 The composition schemas listed in [Annex C](#annex-c-yacal-identifiers-and-machine-readable-artifacts)
