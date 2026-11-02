@@ -623,7 +623,7 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
      <xs:element name="Prop" type="PropType" abstract="true"/>
      ``` 
 
-     If a supertype of `PropType` has a global element (Section 5.2.4, rules 1.1.1 and 1.2.1.4), add *Prop* element to the substitution group of the element `Bar` of the nearest such supertype:
+     If a supertype of `PropType` has a global element (Section 5.2.4, rules 1.1.1, 1.2.1.1 and 1.2.1.4), add *Prop* element to the substitution group of the element `Bar` of the nearest such supertype:
 
      ```xml
      <xs:element name="Prop" type="PropType" substitutionGroup="Bar"/>

@@ -1274,9 +1274,9 @@ Attribute:
       - restricted
 ```
 
-Subtypes of `AttributeType`, such as `RequestAttributeType` and
-`AttributeAssignmentType`, inherit this mapping and add their own
-properties in the same YAML mapping.
+The other subtypes of `BaseAttributeType`, `RequestAttributeType` and
+`AttributeAssignmentType`, use this mapping and add their own properties
+in the same YAML mapping.
 
 ### 5.4.13 EntityType Mapping
 

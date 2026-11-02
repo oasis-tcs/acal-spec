@@ -253,8 +253,6 @@ This profile addresses three kinds of hierarchy:
 
 ## 4.3 Changes From the Previous Version
 
-This is the first ACAL version of this profile, ported from _XACML v3.0 Hierarchical Resource Profile Version 1.0_, **Committee Specification 02, 18 May 2014** [[Hier](#hier)]. ACAL Core's bibliography previously cited the superseded 2010 Committee Draft 03 of this profile; that citation is corrected by [[Hier](#hier)] in this document's own Annex B, and by the corresponding update to `acal-core-v1.0.md` and the other ACAL documents that carry the same citation.
-
 The following substantive changes and decisions apply relative to the XACML 3.0 source:
 
 - **No narrowing of the ancestor-attribute scheme.** A node's ancestors, and a node itself, may be identified using attributes of any ACAL data type, and there is no requirement that different nodes, or nodes in the same hierarchy, use the same data type, as [XACML 3.0 HRP](#hier) §2.3 permits. Attributes of one entity are unique on `AttributeId`, `DataType` and `Issuer` together ([[ACAL-Core-1.0](#acal-core-10)] Section 7.33), so two attributes with the same identifier and different data types can coexist. See [Section 5.3](#53-nodes-identified-by-ancestor-attributes).

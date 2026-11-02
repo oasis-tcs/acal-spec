@@ -150,6 +150,8 @@ $defs:
         required:
         - DataType
       then:
+        required:
+        - Value
         properties:
           Value:
             type: string

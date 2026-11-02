@@ -237,8 +237,6 @@ Four schemes construct multiple decision requests, each addressing a different w
 
 ## 4.2 Changes From the Previous Version
 
-This is the first ACAL version of this profile, ported from _XACML v3.0 Multiple Decision Profile Version 1.0_, **Committee Specification 02, 18 May 2014** [[Multi](#multi)]. ACAL Core's bibliography previously cited the superseded 2010 Committee Draft 03 of this profile; corrected in this document's own Annex B and in the other ACAL documents that carry the same citation. CS02 renumbers every section relative to CD-03 (the four request schemes moved from §2.x to §3.x, combined decision §3→§4, conceptual model §4→§5) but is substantively identical to CD-03 on every point this port depends on.
-
 Porting this profile involves more than renaming its XML vocabulary; every scheme needs rework, for the following reasons:
 
 - **`Attributes` → `RequestEntityType`; `xml:id` → unqualified `Id`.** These are the names ACAL Core uses (`RequestEntity`, `RequestEntityReference`).
