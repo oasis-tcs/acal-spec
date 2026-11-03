@@ -62,15 +62,15 @@
 		https://saxonica.plan.io/issues/4911 ) confirms this behavior is compliant with XSD 1.1 Part
 		1 §3.13.6.2 rule 2.2.5 ("types defined in the schema itself are not available for use in
 		assertions" (to prevent circularity")).
-			2) Match the elements of type DefaultsType with this XPath expression: 'element(*,
-		xacml:DefaultsType)'
+			2) Match the elements of type RequestDefaultsType with this XPath expression: 'element(*,
+		xacml:RequestDefaultsType)'
 				This succeeds with Apache Xerces despite the rule mentioned in the previous option. 
 		-->
 		<xs:assert vc:minVersion="1.1"
-			test="every $elt in element(*, xacml:DefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:DefaultsType) satisfies $elt/name() != $following/name())" />
+			test="every $elt in element(*, xacml:RequestDefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:RequestDefaultsType) satisfies $elt/name() != $following/name())" />
 		<!-- 
 		As an alternative, you may collect all the QNames of the elements in RequestDefaults substitution
-		group (of type xacml:DefaultsType) from the ACAL Profiles supported by your implementation
+		group (of type xacml:RequestDefaultsType) from the ACAL Profiles supported by your implementation
 		(e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion
 		as follows:
 
@@ -90,7 +90,7 @@
 
 	<!-- Change to XACML 3.0: RequestDefaults changed to be abstract. Concrete
 	definition left to ACAL profiles, such as XPath Profile (e.g. default XPathVersion). -->
-	<xs:element name="RequestDefaults" type="xacml:DefaultsType" abstract="true" />
+	<xs:element name="RequestDefaults" type="xacml:RequestDefaultsType" abstract="true" />
 
 	<xs:element name="Response" type="xacml:ResponseType">
 		<xs:key name="Response_ShortIdSetReference">
@@ -644,39 +644,25 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		</xs:complexContent>
 	</xs:complexType>
 
-	<!-- Change to XACML 3.0: DefaultsType changed to be abstract. Concrete definition
-	left to ACAL profiles, such as XPath Profile (e.g. default XPathVersion). -->
-	<xs:complexType name="DefaultsType" abstract="true">
-		<xs:annotation>
-			<xs:documentation xml:lang="en"> ACAL Profiles may extend DefaultsType to support both
-				PolicyDefaults and RequestDefaults with one single complexType and
-				substitutionGroup(s) as follows (see XPath Profile's XSD for another example):
-						
-				<xs:complexType name="MyProfileDefaultsType">
-					<xs:complexContent> 
-						<xs:extension base="xacml:DefaultsType">
-							<!-- ...My common Defaults... -->
-						</xs:extension> 
-					</xs:complexContent>
-				</xs:complexType> 
-						
-				In XSD 1.0: 
-				<xs:element
-				name="MyProfilePolicyDefaults" type="MyProfileDefaultsType"
-				substitutionGroup="xacml:PolicyDefaults"/> 
-				<xs:element
-				name="MyProfileRequestDefaults" type="MyProfileDefaultsType"
-				substitutionGroup="xacml:RequestDefaults"/> 
-						
-				In XSD 1.1, substitutionGroup on multiple elements is allowed, therefore we can simplify:
-				<xs:element name="MyProfileDefaults"
-				type="MyProfileDefaultsType" substitutionGroup="xacml:PolicyDefaults
-				xacml:RequestDefaults" />
-			</xs:documentation>
-		</xs:annotation>
-	</xs:complexType>
+	<!-- Change to XACML 3.0: DefaultsType replaced by the abstract PolicyDefaultsType and
+	RequestDefaultsType of the ACAL Core model. Concrete definitions are left to ACAL profiles,
+	such as the XPath Profile (e.g. default XPathVersion), which extend each type and put the
+	element in the substitution group of PolicyDefaults or RequestDefaults:
 
-	<xs:element name="PolicyDefaults" type="xacml:DefaultsType" abstract="true" />
+		<xs:complexType name="MyProfilePolicyDefaultsType">
+			<xs:complexContent>
+				<xs:extension base="xacml:PolicyDefaultsType">
+					...My Defaults...
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+		<xs:element name="MyProfilePolicyDefaults" type="MyProfilePolicyDefaultsType"
+			substitutionGroup="xacml:PolicyDefaults"/>
+	-->
+	<xs:complexType name="PolicyDefaultsType" abstract="true" />
+	<xs:complexType name="RequestDefaultsType" abstract="true" />
+
+	<xs:element name="PolicyDefaults" type="xacml:PolicyDefaultsType" abstract="true" />
 
 	<!-- IdReferenceType URI changed to an XML attribute to allow extensions with
 	optional attributes and arguments
@@ -792,7 +778,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		<xs:attribute name="MaxDelegationDepth" type="xs:nonNegativeInteger" use="optional" />
 
 		<xs:assert vc:minVersion="1.1"
-			test="every $elt in element(*, xacml:DefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:DefaultsType) satisfies $elt/name() != $following/name())">
+			test="every $elt in element(*, xacml:PolicyDefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:PolicyDefaultsType) satisfies $elt/name() != $following/name())">
 			<xs:annotation>
 				<xs:documentation xml:lang="en"> The ACAL constraint on PolicyDefaults property is
 					similar to the RequestDefaults Property. </xs:documentation>
@@ -800,7 +786,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		</xs:assert>
 		<!-- 
 		As an alternative, you may collect all the QNames of the elements in PolicyDefaults substitution
-		group (of type xacml:DefaultsType) from the ACAL Profiles supported by your implementation
+		group (of type xacml:PolicyDefaultsType) from the ACAL Profiles supported by your implementation
 		(e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion
 		as follows:
 
@@ -814,7 +800,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 			<xs:assert vc:minVersion="1.1" test="count(xpath:XPathPolicyDefaults) le 1">
 		
 		Then add the namespace declarations to the xs:schema root element as necessary for each
-		RequestDefaults element, e.g. xmlns:xpath="urn:oasis:names:tc:xacml:4.0:xpath:schema"
+		PolicyDefaults element, e.g. xmlns:xpath="urn:oasis:names:tc:xacml:4.0:xpath:schema"
 		-->
 	</xs:complexType>
 

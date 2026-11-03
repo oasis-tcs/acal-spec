@@ -130,7 +130,7 @@ $defs:
       required:
       - DataType
     - $comment: >
-        YACAL Section 5.4.4 rule 7: a standard Boolean or String value is not
+        YACAL Sections 5.4.4.1, 5.4.4.2 and 5.4.4.4: a standard Boolean or String value is not
         represented as a ValueType mapping, and a ValueType mapping whose
         DataType is the standard Integer has a string Value. Only the full
         URIs are checked; a short-identifier spelling of these data types is

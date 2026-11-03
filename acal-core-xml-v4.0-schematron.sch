@@ -36,7 +36,7 @@
  	<title>ACAL constraint on RequestDefaults property: {OCL} self-gt;isUnique(oclType())</title>	
 	<rule context="xacml:Request">
 		<!-- 
-		WARNING: collect al the QNames of the elements in RequestDefaults substitution group (of type xacml:DefaultsType) from the ACAL Profiles supported by your implementation (e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion as follows:
+		WARNING: collect all the QNames of the elements in RequestDefaults substitution group (of type xacml:RequestDefaultsType) from the ACAL Profiles supported by your implementation (e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion as follows:
 
 		<assert test="count(ns1:SomeDefaults1) le 1 and count(ns2:SomeDefaults2) le 1 and...">Duplicate RequestDefaults element</assert>
 		
@@ -46,10 +46,10 @@
 		-->
 		<assert test="count(xpath:XPathRequestDefaults) le 1">Duplicate RequestDefaults element</assert>
 		<!--
-		If your implementations supports schema-aware Schematron/XSLT processing (e.g. SAXON and likely Xalan XSLT 3.0 branch), then you may use the more generic XPath expression below:
+		If your implementation supports schema-aware Schematron/XSLT processing (e.g. SAXON and likely Xalan XSLT 3.0 branch), then you may use the more generic XPath expression below:
 		-->
 		<!-- 
-		<assert test="every $elt in element(*, xacml:DefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:DefaultsType) satisfies $elt/name() != $following/name())">Duplicate RequestDefaults element</assert>
+		<assert test="every $elt in element(*, xacml:RequestDefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:RequestDefaultsType) satisfies $elt/name() != $following/name())">Duplicate RequestDefaults element</assert>
 		-->
 		<!--
 		AND uncomment the  <xsl:import-schema schema-location="acal-core-xml-v4.0-schema.xsd" .../> at the beginning of this schema.
@@ -60,7 +60,7 @@
 	<title>ACAL constraint on PolicyDefaults property: {OCL} self-gt;isUnique(oclType())</title>
 	<rule context="xacml:Policy">
 		<!-- 
-		WARNING: collect al the QNames of the elements in PolicyDefaults substitution group (of type xacml:DefaultsType) from the ACAL Profiles supported by your implementation (e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion as follows:
+		WARNING: collect all the QNames of the elements in PolicyDefaults substitution group (of type xacml:PolicyDefaultsType) from the ACAL Profiles supported by your implementation (e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion as follows:
 
 		<assert test="count(ns1:SomeDefaults1) le 1 and count(ns2:SomeDefaults2) le 1 and...">Duplicate PolicyDefaults element</assert>
 		
@@ -70,10 +70,10 @@
 		-->
 		<assert test="count(xpath:XPathPolicyDefaults) le 1">Duplicate PolicyDefaults element</assert>
 		<!--
-		If your implementations supports schema-aware Schematron/XSLT processing (e.g. SAXON and likely Xalan XSLT 3.0 branch), then you may use the more generic XPath expression below:
+		If your implementation supports schema-aware Schematron/XSLT processing (e.g. SAXON and likely Xalan XSLT 3.0 branch), then you may use the more generic XPath expression below:
 		-->
 		<!-- 
-		<assert test="every $elt in element(*, xacml:DefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:DefaultsType) satisfies $elt/name() != $following/name())">Duplicate PolicyDefaults element</assert>
+		<assert test="every $elt in element(*, xacml:PolicyDefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:PolicyDefaultsType) satisfies $elt/name() != $following/name())">Duplicate PolicyDefaults element</assert>
 		-->
 		<!--
 		AND uncomment the  <xsl:import-schema schema-location="acal-core-xml-v4.0-schema.xsd" .../> at the beginning of this schema.

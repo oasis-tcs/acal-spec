@@ -134,6 +134,11 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
     - [5.4.2 Property Mapping Rules](#542-property-mapping-rules)
     - [5.4.3 Null and Omission](#543-null-and-omission)
     - [5.4.4 ValueType Mapping Rules](#544-valuetype-mapping-rules)
+      - [5.4.4.1 Boolean](#5441-boolean)
+      - [5.4.4.2 Integer](#5442-integer)
+      - [5.4.4.3 Double](#5443-double)
+      - [5.4.4.4 String and Other Lexical Data Types](#5444-string-and-other-lexical-data-types)
+      - [5.4.4.5 Scalar Resolution and DataType Precedence](#5445-scalar-resolution-and-datatype-precedence)
     - [5.4.5 StructuredValueType Mapping](#545-structuredvaluetype-mapping)
     - [5.4.6 Polymorphism and Wrapper-Key Discrimination](#546-polymorphism-and-wrapper-key-discrimination)
     - [5.4.7 Inheritance and Subtype Resolution](#547-inheritance-and-subtype-resolution)
@@ -603,7 +608,7 @@ Description: This rule permits read access to public content.
 A value of ACAL type `Double` MUST use a lexical form that YAML resolves
 as a float rather than an integer, unless an explicit or inherited
 `DataType` that is the standard ACAL Double applies to it
-([Section 5.4.4](#544-valuetype-mapping-rules), rule 3).  For example, `3.0` and `-0.5`
+([Section 5.4.4.3](#5443-double)).  For example, `3.0` and `-0.5`
 represent doubles, whereas `3` represents an integer unless the
 standard ACAL Double is declared for it.
 
@@ -809,18 +814,28 @@ represented in one of the following forms:
    structured-value properties, as defined in
    [Section 5.4.5](#545-structuredvaluetype-mapping)
 
-The following rules apply to primitive `ValueType` forms:
+The following rules apply to primitive `ValueType` forms, organized by data type.  Item 1 of
+[Section 5.4.4.2](#5442-integer) and item 1 of [Section 5.4.4.3](#5443-double) are applied before
+fixed-datatype agreement is checked.  If a fixed-datatype primitive value is accompanied by an explicit `DataType`,
+that `DataType` MUST match the fixed data type of the resulting concrete literal subtype.
+
+#### 5.4.4.1 Boolean
 
 1. A YAML boolean scalar represents `LiteralBooleanType`.  Its ACAL
    `DataType` is fixed to
    `urn:oasis:names:tc:acal:1.0:data-type:boolean`.
-2. A YAML integer scalar represents `LiteralIntegerType`, and its ACAL
+2. A standard Boolean value SHALL NOT be represented as a `ValueType`
+   mapping with `DataType` and `Value`.
+
+#### 5.4.4.2 Integer
+
+1. A YAML integer scalar represents `LiteralIntegerType`, and its ACAL
    `DataType` is fixed to
    `urn:oasis:names:tc:acal:1.0:data-type:integer`, unless an explicit
    or inherited `DataType` that is the standard ACAL Double applies to
    the scalar and the scalar's text is a decimal integer as specified
-   in rule 3, in which case the scalar represents `LiteralDoubleType`
-   (rule 3).  The remaining requirements of this rule apply only to a
+   in [Section 5.4.4.3](#5443-double), in which case the scalar represents `LiteralDoubleType`
+   ([Section 5.4.4.3](#5443-double)).  The remaining requirements of this item apply only to a
    YAML integer scalar or `Value` string that represents
    `LiteralIntegerType`.  An ACAL integer
    MAY also be represented as a mapping with a `DataType` of
@@ -851,7 +866,15 @@ The following rules apply to primitive `ValueType` forms:
    integer scalar that this specification permits and whose exact
    value it has determined, or a `Value` string in the lexical space
    of `xs:integer`, SHALL accept it as denoting the exact integer.
-3. A YAML float scalar represents `LiteralDoubleType`.  Its ACAL
+2. A `ValueType` mapping whose `DataType` is the standard Integer SHALL
+   have a string `Value` in the lexical space of `xs:integer`.
+3. An explicit `DataType` that accompanies a fixed-datatype primitive
+   value of this type SHOULD be omitted when the data type is otherwise
+   implicit.
+
+#### 5.4.4.3 Double
+
+1. A YAML float scalar represents `LiteralDoubleType`.  Its ACAL
    `DataType` is fixed to
    `urn:oasis:names:tc:acal:1.0:data-type:double`.  A YAML integer
    scalar that this specification permits also represents
@@ -864,26 +887,27 @@ The following rules apply to primitive `ValueType` forms:
    `DataType: "urn:oasis:names:tc:acal:1.0:data-type:double"` with
    `Value: 3` represents the double 3.0.  A YAML scalar in hexadecimal
    notation SHALL NOT be used for this form.
-4. A YAML string scalar represents either:
+2. An explicit `DataType` that accompanies a fixed-datatype primitive
+   value of this type SHOULD be omitted when the data type is otherwise
+   implicit.  An explicit standard ACAL Double `DataType` that is needed
+   to select the `LiteralDoubleType` representation of item 1 SHALL NOT
+   be omitted.
+
+#### 5.4.4.4 String and Other Lexical Data Types
+
+1. A YAML string scalar represents either:
    1. `LiteralStringType`, if no inherited or explicit non-string
       `DataType` applies
    2. `LiteralRestrictedStringType`, if an inherited or explicit ACAL
       lexical `DataType` such as `anyURI`, `date`, or `rfc822Name`
       applies
-5. Rules 2 and 3 are applied before fixed-datatype agreement is
-   checked.  If a fixed-datatype primitive value is accompanied by an
-   explicit `DataType`, that `DataType` MUST match the fixed data type
-   of the resulting concrete literal subtype, and SHOULD be omitted when
-   the data type is otherwise implicit.  An explicit standard ACAL
-   Double `DataType` that is needed to select rule 3's
-   `LiteralDoubleType` representation SHALL NOT be omitted.
-6. If a YAML string scalar is used with an explicit or inherited
+2. If a YAML string scalar is used with an explicit or inherited
    `DataType`, that string MUST satisfy the lexical constraints of the
    effective ACAL data type.
-7. A standard Boolean or String value SHALL NOT be represented as a
-   `ValueType` mapping with `DataType` and `Value`.  A `ValueType`
-   mapping whose `DataType` is the standard Integer SHALL have a string
-   `Value` in the lexical space of `xs:integer`.
+3. A standard String value SHALL NOT be represented as a `ValueType`
+   mapping with `DataType` and `Value`.
+
+#### 5.4.4.5 Scalar Resolution and DataType Precedence
 
 YAML Core Schema resolution determines whether an unquoted scalar is a
 boolean, integer, float, or string before the ACAL typing rules above
@@ -892,7 +916,7 @@ resolution.  A YACAL processor SHALL NOT treat a `DataType` as changing
 the YAML-resolved scalar category.  A YACAL processor SHALL NOT select a
 different fixed-datatype literal subtype on the basis of a `DataType`,
 except
-that rule 3 makes a decimal YAML integer scalar under the standard ACAL
+that [Section 5.4.4.3](#5443-double) makes a decimal YAML integer scalar under the standard ACAL
 Double represent `LiteralDoubleType`.  A YAML float scalar SHALL NOT
 represent `LiteralIntegerType`.
 
@@ -927,7 +951,7 @@ DataType: "urn:oasis:names:tc:acal:1.0:data-type:anyURI"
 Value: "https://example.com/policies/permit-read"
 ```
 
-Explicit `DataType` complements YAML Core Schema resolution.  Rule 3
+Explicit `DataType` complements YAML Core Schema resolution.  [Section 5.4.4.3](#5443-double)
 changes only the ACAL literal subtype assigned to a decimal integer
 scalar under the standard ACAL Double; the scalar remains a YAML
 integer scalar.
@@ -938,7 +962,7 @@ precedence:
 1. an explicit `DataType` in the `ValueType` mapping
 2. the fixed data type of the concrete literal subtype, if any (for a
    decimal YAML integer scalar under an explicit or inherited standard
-   ACAL Double, the subtype is `LiteralDoubleType`, per rule 3)
+   ACAL Double, the subtype is `LiteralDoubleType`, per [Section 5.4.4.3](#5443-double))
 3. the expected data type that ACAL defines for the property holding the
    value, if it is a single data type
    ([[ACAL-Core-1.0](#acal-core-10)] Section 7.14)
@@ -954,7 +978,7 @@ expected data type, the `DataType` MUST be that data type or, where
 the expected data type is a set of allowed data types, one of them
 ([[ACAL-Core-1.0](#acal-core-10)] Section 7.14).
 
-In this section, an *inherited* `DataType` is the `DataType` property of
+In [Section 5.4.4](#544-valuetype-mapping-rules), an *inherited* `DataType` is the `DataType` property of
 an enclosing object that applies to the value, or the expected data
 type of the property that holds the value when that expected data type
 is a single data type ([[ACAL-Core-1.0](#acal-core-10)] Section 7.14).

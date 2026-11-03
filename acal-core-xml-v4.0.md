@@ -461,16 +461,16 @@ Unlike the primitive JSON and YAML forms, this XACML surface form does not by it
 
 ### 5.2.4 Default mapping rules for complex ACAL types (other than ValueType)
 
-If a complex ACAL type `FooType` is not in the previous cases (Section 5.2.1, 5.2.2 and 5.2.3), then:
+If a complex ACAL type `FooType` is not in the previous cases (Section 5.2.1, 5.2.2 and 5.2.3), then the following rules apply. The *ACAL model* in these rules is the model of the specification being mapped; for this document, the ACAL Core model.
 
 1. If `FooType` is abstract (italicized title in the UML diagram), then:
    * 1.1. If `FooType` is empty (no class inheritance, no property), then:
-     - 1.1.1. If and only if `FooType` is used by more than one property in ACAL model (e.g. `ArgumentType`), then map it to the following XSD definition:
+     - 1.1.1. If and only if `FooType` is used by more than one property in the ACAL model (e.g. `ArgumentType`), or `FooType` has no subtype in the ACAL model (e.g. `PolicyDefaultsType`), then map it to the following XSD definition:
        ```xml 
        <xs:element name="Foo" type="FooType" abstract="true" />
        <xs:complexType name="FooType" abstract="true"/>
        ```
-     - 1.1.2. Else (it is single-used) skip it as instructed in Section 5.2.2.
+     - 1.1.2. Else (it is used by at most one property and has a subtype) skip it as instructed in Section 5.2.2.
 
    * 1.2. Else (`FooType` is not empty, i.e. inherits a type and/or has at least one property):
      - 1.2.1. If  `FooType` inherits from a Datatype `BarType` (Generalization relationship), then:
@@ -505,7 +505,7 @@ If a complex ACAL type `FooType` is not in the previous cases (Section 5.2.1, 5.
             </xs:complexType>
             ```
 
-       + 1.2.1.4. Element of `FooType` under rules 1.2.1.2 and 1.2.1.3. If `FooType` is abstract, define the following global element if `FooType` is used by at least one property in the ACAL model, or if `FooType` is `AttributeSelectorType` or `EntityAttributeSelectorType`, which ACAL Profiles extend (e.g. the XPath and JSONPath Profiles). If `FooType` is concrete, define it if a supertype of `FooType` has a global element:
+       + 1.2.1.4. Element of `FooType` under rules 1.2.1.2 and 1.2.1.3. If `FooType` is abstract, define the following global element if `FooType` is used by at least one property in the ACAL model, or if `FooType` has no subtype in the ACAL model (e.g. `AttributeSelectorType`, which ACAL Profiles extend). If `FooType` is concrete, define it if a supertype of `FooType` has a global element:
 
             ```xml
             <xs:element name="Foo" type="FooType" substitutionGroup="Bar" abstract="true"/>
@@ -520,7 +520,14 @@ If a complex ACAL type `FooType` is not in the previous cases (Section 5.2.1, 5.
          ...property mapping rules (5.2.5) apply...
        </xs:complexType>
        ```
-2. Else (`FooType` is not abstract) apply the same mapping rules as in the first case, except remove `abstract="true"` from the `xs:complexType` and `xs:element` definitions.
+2. Else (`FooType` is not abstract):
+   * 2.1. If `FooType` extends an abstract type `BarType` without adding a property, `FooType` is not the type of any property in the ACAL model, and `FooType` has no subtype in the ACAL model, then map it to an `xs:element` named `Foo` of type `BarType`, in the substitution group of the global element of the nearest supertype that has one, if any (e.g. `ForAnyType`). The complex type of `BarType` is then defined without `abstract="true"`, so that the element can be used:
+
+     ```xml
+     <xs:element name="ForAny" type="QuantifiedExpressionType" substitutionGroup="NonLiteralExpression"/>
+     ```
+
+   * 2.2. Else apply the same mapping rules as in the first case, except remove `abstract="true"` from the `xs:complexType` and `xs:element` definitions.
 
 3. If `FooType` has a UML *link* (kind of *Association*) via its property *keyRefProp* to another type `BarType`'s property *keyProp* (e.g. a reference to a BarType instance via its identifier), then add a `<xs:keyref>` element as defined in Section 3.11.2 of [[XS11](#xs11)] (Identity-constraint Definitions), into the XML element declaration of the root object type (*RootObjectType*) enclosing the property(ies) of type *FooType* and *BarType* (created previously), as follows:
    ```xml
@@ -612,7 +619,7 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
 
 4. Else (*PropType* is not a single-use empty type), apply the mapping rules in the previous section and this section to *PropType*, then:
 
-   - 4.1. Define a global element named `Prop` of type `PropType` in XACML namespace if it does not already exist:
+   - 4.1. If `PropType` already has a global element defined by the rules of Section 5.2.4 with the same name as the type without the `Type` suffix (e.g. `NonLiteralExpression` for `NonLiteralExpressionType`), then set `$elementName` to that name. Else set `$elementName` to *Prop*, and define a global element named `Prop` of type `PropType` in XACML namespace if it does not already exist:
 
      ```xml
      <xs:element name="Prop" type="PropType"/>
@@ -623,18 +630,18 @@ Inside the `xs:complexType` or `xs:extension` element created by the previous ma
      <xs:element name="Prop" type="PropType" abstract="true"/>
      ``` 
 
-     If a supertype of `PropType` has a global element (Section 5.2.4, rules 1.1.1, 1.2.1.1 and 1.2.1.4), add *Prop* element to the substitution group of the element `Bar` of the nearest such supertype:
+     If a supertype of `PropType` has a global element (Section 5.2.4, rules 1.1.1, 1.2.1.1, 1.2.1.4 and 2.1), add *Prop* element to the substitution group of the element `Bar` of the nearest such supertype:
 
      ```xml
      <xs:element name="Prop" type="PropType" substitutionGroup="Bar"/>
      ```
 
-   - 4.2. Map *Prop* to the following XSD definition (replace `$min` with the lower bound of *Prop*'s multiplicity in the ACAL (UML) model, and `$max` with the upper bound, using `unbounded` as equivalent for `*`):
+   - 4.2. Map *Prop* to the following XSD definition (replace `$elementName` with the value set by rule 4.1, `$min` with the lower bound of *Prop*'s multiplicity in the ACAL (UML) model, and `$max` with the upper bound, using `unbounded` as equivalent for `*`):
 
      ```xml
      <xs:sequence>
        ...other properties mapped to elements...
-       <xs:element ref="Prop" minOccurs="$min" maxOccurs="$max"/>
+       <xs:element ref="$elementName" minOccurs="$min" maxOccurs="$max"/>
        ...other properties mapped to elements...
      </xs:sequence>
      ```
@@ -733,7 +740,7 @@ Due to the current general lack of adoption of XSD 1.1 (and limited availability
 
 Neither Option 1 nor Option 2 can achieve full enforcement of a constraint whose key properties (whether from Section 5.2.5 rules 4.3 through 4.5, or from this section) include a value of the `IdentifierType` simple type (see [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.2.3.8). Determining identifier equality for such properties requires first resolving any short identifier name to its full URI per [[ACAL-Core-1.0](#acal-core-10)] Section 8.3, a processing step that XML Schema validation and Schematron validation do not, and cannot, perform. Two elements whose `IdentifierType`-typed key properties differ only in short-identifier-name-vs-URI spelling will not be recognized as duplicates by either option. Implementers requiring full enforcement of such a constraint MUST perform this expansion themselves — for example with a preliminary XSLT canonicalization pass — before schema and/or Schematron validation.
 
-Where this limitation applies to a specific constraint in the *Core XML Schema* or Schematron rules accompanying this document, it is noted in an XML comment adjacent to the corresponding `<xs:assert>` or Schematron `<pattern>` element; those comments illustrate this general limitation rather than being exceptions to it. Implementers deriving an XSD 1.0 schema via the filtering procedure described in Section 5.2.6.2 should note that XML comments, including these, are not preserved by that procedure (the [XSLT] stylesheet `xsd1.1-to-1.0.xsl` provided with this repository does not copy comment nodes, and a filtering stylesheet must say so explicitly if it is to copy them); this section is the durable statement of the limitation for implementers relying on that derivation path.
+Where this limitation applies to a specific constraint in the *Core XML Schema* or Schematron rules accompanying this document, it is noted in an XML comment adjacent to the corresponding `<xs:assert>` or Schematron `<pattern>` element; those comments illustrate this general limitation rather than being exceptions to it. For implementers deriving an XSD 1.0 schema via the filtering procedure described in Section 5.2.6.2, XML comments, including these, are not preserved by that procedure (the [XSLT] stylesheet `xsd1.1-to-1.0.xsl` provided with this repository does not copy comment nodes, and a filtering stylesheet copies them only if it explicitly says that it does); this section is the durable statement of the limitation for implementers relying on that derivation path.
 
 ## 5.3 Content Types and Body representations (optional)
 
@@ -1124,7 +1131,8 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - This specification states that [[ACAL-Core-1.0](#acal-core-10)] remains authoritative for the ACAL model, its evaluation semantics and the mandatory or optional status of each object type, and that XACML defines only their XML representation ([Section 4.1](#41-requirements)).
 - An `xs:integer` value outside an implementation's supported integer interval is a valid `xs:integer` value and is not to be treated as schema-invalid solely because of its magnitude ([Section 5.1.1](#511-primitive-types-mapped-to-standard-xsd-data-types)).
 - The `ValueType` mapping states how the concrete `ValueType` subtype is determined from the effective `DataType` and the XML content form ([Section 5.2.3](#523-valuetype-mapping-rules)).
-- Under the default mapping rules ([Section 5.2.4](#524-default-mapping-rules-for-complex-acal-types-other-than-valuetype)), an abstract XSD element is now defined for an empty abstract type used by more than one property (rule 1.1.1). For a type that inherits from another type and is not covered by rule 1.2.1.1, the element is defined separately from the type (rule 1.2.1.4): an abstract type has an element only if a property uses it, or if it is `AttributeSelectorType` or `EntityAttributeSelectorType`; a concrete type has one only if a supertype has one; and the element is in the substitution group of the element of the nearest supertype that has one, not necessarily the direct supertype. A property element is in the substitution group by the same rule ([Section 5.2.5](#525-property-mapping-rules), rule 4.1). These rules describe the XML Schema as it is; and a subtype with no property now has its own abstract complex type extending its supertype (rule 1.2.1.2).
+- Under the default mapping rules ([Section 5.2.4](#524-default-mapping-rules-for-complex-acal-types-other-than-valuetype)), an abstract XSD element is now defined for an empty abstract type used by more than one property, or with no subtype in the ACAL model (rule 1.1.1). For a type that inherits from another type and is not covered by rule 1.2.1.1 or 2.1, the element is defined separately from the type (rule 1.2.1.4): an abstract type has an element only if a property uses it, or if it has no subtype in the ACAL model (e.g. `AttributeSelectorType`, which profiles extend); a concrete type has one only if a supertype has one; and the element is in the substitution group of the element of the nearest supertype that has one, not necessarily the direct supertype. A property element is in the substitution group by the same rule, and a property whose type has its own global element refers to that element (e.g. `Domain` refers to `NonLiteralExpression`) ([Section 5.2.5](#525-property-mapping-rules), rules 4.1 and 4.2). A concrete type that extends an abstract type without adding a property, is not the type of a property and has no subtype, maps to an element of the abstract type, whose complex type is then not abstract in the XML Schema (e.g. `ForAny` of type `QuantifiedExpressionType`, rule 2.1). These rules describe the XML Schema as it is; and an abstract subtype with no property now has its own abstract complex type extending its supertype (rule 1.2.1.2).
+- The XML Schema replaces `DefaultsType` with `PolicyDefaultsType` and `RequestDefaultsType`, the types of the `PolicyDefaults` and `RequestDefaults` elements, so that a profile extends each separately.
 - The limits of XML Schema and Schematron enforcement are stated for a multi-property uniqueness constraint whose key properties are optional ([Section 5.2.5](#525-property-mapping-rules), rule 4.5) and for any key that contains an `IdentifierType` value ([Section 5.2.6.3](#5263-limitations-common-to-both-options-identifier-typed-keys-normative)).
 - The Conformance section is restructured: XACML inherits ACAL object-type conformance from [[ACAL-Core-1.0](#acal-core-10)] instead of repeating a schema-element table, and lists the machine-readable artifacts that accompany this specification ([Section 7](#7-conformance)). The XML Schemas of the XPath and JSONPath Profiles are now artifacts of those Profiles. An implementation follows Section 5 and Annex C where they apply to the ACAL object types and machine-readable artifacts that the implementation supports ([Section 7.2](#72-conformance-categories)).
 - The core short identifier set artifact and its reserved `ShortIdSet` identifier are described in [Annex C.2](#c2-core-short-identifier-set).
@@ -1134,7 +1142,7 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - The example short-identifier set in [Section 4.3](#43-example-short-identifier-set-non-normative) is well-formed (its `ShortIdSet` element had been closed before its children), and the example `IdentifierType` values are written without quotation marks.
 - The XML Schema has an abstract complex type `BaseAttributeType` for the abstract type of [[ACAL-Core-1.0](#acal-core-10)] Section 7.27, which `AttributeType`, `RequestAttributeType` and `AttributeAssignmentType` extend, so an `Attribute` element can no longer be given the type `RequestAttributeType` or `AttributeAssignmentType` by `xsi:type`.
 - Content types ([Section 5.3](#53-content-types-and-body-representations-optional)): for XML content, the `Encoding` attribute SHALL NOT be present and the `Body` element SHALL contain exactly one child element, the document element of the XML document; for JSON content, the `Encoding` attribute SHALL NOT be present and the `Body` element SHALL contain only character content that forms a JSON text whose top-level value is an object. Before, these were stated without a requirement keyword. An implementation SHALL support a listed content type that a profile for which it claims conformance makes mandatory, and MAY support it otherwise; before, it supported a content type "if and only if" a profile made it mandatory, which did not allow optional support.
-- Sections 5.2.6 to 5.2.6.2 are stated to be non-normative, and their recommendations are written without requirement keywords; Section 5.2.6.3 is normative ([Section 5.2.6](#526-mapping-complex-acal-constraints-ocl)). Before, the whole of 5.2.6 was marked non-normative although 5.2.6.3 contains a MUST.
+- Sections 5.2.6 to 5.2.6.2 are stated to be non-normative, and their recommendations are written without requirement keywords; Section 5.2.6.3 is normative, and its last paragraph is a statement of fact with no keyword-like words ([Section 5.2.6](#526-mapping-complex-acal-constraints-ocl)). Before, the whole of 5.2.6 was marked non-normative although 5.2.6.3 contains a MUST.
 - The XML Schema comment on the `IdentifierType` pattern states that the pattern is an approximation and that the expanded value is an absolute URI; the commented-out XPath 3.0 assertion is removed.
 - Editorial: the title is now "XACML Version 4.0 (eXtensible Access Control Markup Language)" (csd01: "eXtensible Access Control Markup Language (XACML) Version 4.0 (XML Representation of ACAL Version 1.0)"), and the Technical Committee is renamed, and document and repository URLs are updated accordingly; the references and citations are corrected; and the example short identifier set is marked non-normative ([Section 4.3](#43-example-short-identifier-set-non-normative)) and repaired so that its `ShortIdSet` element is well-formed (csd01 closed it before its children).
 
