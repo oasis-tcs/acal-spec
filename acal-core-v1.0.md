@@ -5574,11 +5574,11 @@ A `BundleType` object contains the following properties:
 
 `SharedVariableDefinition` [Any Number]
 
-: A sequence of `SharedVariableDefinitionType` objects, each defining an expression that can be referenced from anywhere in the `BundleType` object where an expression can appear. The combination of each object's `Id` and `Version` properties MUST be unique within the sequence.
+: A sequence of `SharedVariableDefinitionType` objects, each defining an expression that can be referenced from anywhere in the `BundleType` object where an expression can appear. The combination of each object's `Id` and `Version` properties MUST be unique within the sequence. In addition, [Section 7.13b](#713b-sharedvariabledefinitiontype) requires that no two shared variables visible to the PDP have the same `Id` and equivalent versions (for example `1` and `1.0`, [Section 7.1.2.3.4](#71234-versiontype)).
 
 `Policy` [Any Number]
 
-: A sequence of `PolicyType` objects. The combination of each object's `PolicyId` and `Version` properties MUST be unique within the sequence.
+: A sequence of `PolicyType` objects. The combination of each object's `PolicyId` and `Version` properties MUST be unique within the sequence. In addition, [Section 7.4](#74-policytype) requires that no two policies visible to the PDP, other than policies nested in another policy, have the same `PolicyId` and equivalent versions (for example `1` and `1.0`, [Section 7.1.2.3.4](#71234-versiontype)).
 
 `PolicyReference` [Optional]
 
@@ -5614,7 +5614,7 @@ A `NamedArgumentType` object contains the following properties:
 
 `Expression` [Required]
 
-: The argument value expression. Its expected data type is that of the argument that the `NamedArgumentType` object provides ([Section 7.14](#714-expressiontype)).
+: The argument value expression. Its expected data type is that of the parameter that the `Name` property identifies ([Section 7.14](#714-expressiontype)).
 
 ---
 

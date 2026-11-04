@@ -752,14 +752,14 @@ This specification defines the following `Content` types in order to support ACA
   - The `Encoding` attribute SHALL NOT be present;
   - The `Body` element SHALL contain exactly one child element, and that child SHALL be the document element of the XML document.
 
-- JSON object *(note that a JSON array can be wrapped in a JSON object if there is a need to support JSON arrays)*:
+- JSON object or array:
   - `MediaType` attribute SHALL be `application/json`;
   - The `Encoding` attribute SHALL NOT be present;
-  - The `Body` element SHALL contain only character content that forms a JSON text whose top-level value is an object; the content is escaped to fit in a simple XML string, or unescaped in an XML CDATA section as follows:
+  - The `Body` element SHALL contain only character content that forms a JSON text whose top-level value is an object or an array; the content is escaped to fit in a simple XML string, or unescaped in an XML CDATA section as follows:
     ```xml
     <Body>
       <![CDATA[
-        ... JSON object ...
+        ... JSON object or array ...
       ]]>
     </Body>
     ```
@@ -1141,7 +1141,7 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
 - The example short-identifier set in [Section 4.3](#43-example-short-identifier-set-non-normative) is well-formed (its `ShortIdSet` element had been closed before its children), and the example `IdentifierType` values are written without quotation marks.
 - The XML Schema has an abstract complex type `BaseAttributeType` for the abstract type of [[ACAL-Core-1.0](#acal-core-10)] Section 7.27, which `AttributeType`, `RequestAttributeType` and `AttributeAssignmentType` extend, so an `Attribute` element can no longer be given the type `RequestAttributeType` or `AttributeAssignmentType` by `xsi:type`.
-- Content types ([Section 5.3](#53-content-types-and-body-representations-optional)): for XML content, the `Encoding` attribute SHALL NOT be present and the `Body` element SHALL contain exactly one child element, the document element of the XML document; for JSON content, the `Encoding` attribute SHALL NOT be present and the `Body` element SHALL contain only character content that forms a JSON text whose top-level value is an object. Before, these were stated without a requirement keyword. An implementation SHALL support a listed content type that a profile for which it claims conformance makes mandatory, and MAY support it otherwise; before, it supported a content type "if and only if" a profile made it mandatory, which did not allow optional support.
+- Content types ([Section 5.3](#53-content-types-and-body-representations-optional)): for XML content, the `Encoding` attribute SHALL NOT be present and the `Body` element SHALL contain exactly one child element, the document element of the XML document; for JSON content, the `Encoding` attribute SHALL NOT be present and the `Body` element SHALL contain only character content that forms a JSON text whose top-level value is an object or an array. Before, these were stated without a requirement keyword. JSON content may now be a JSON array; before, an array had to be wrapped in a JSON object. An implementation SHALL support a listed content type that a profile for which it claims conformance makes mandatory, and MAY support it otherwise; before, it supported a content type "if and only if" a profile made it mandatory, which did not allow optional support.
 - Sections 5.2.6 to 5.2.6.2 are stated to be non-normative, and their recommendations are written without requirement keywords; Section 5.2.6.3 is normative, and its last paragraph is a statement of fact with no keyword-like words ([Section 5.2.6](#526-mapping-complex-acal-constraints-ocl)). Before, the whole of 5.2.6 was marked non-normative although 5.2.6.3 contains a MUST.
 - The XML Schema comment on the `IdentifierType` pattern states that the pattern is an approximation and that the expanded value is an absolute URI; the commented-out XPath 3.0 assertion is removed.
 - Editorial: the title is now "XACML Version 4.0 (eXtensible Access Control Markup Language)" (csd01: "eXtensible Access Control Markup Language (XACML) Version 4.0 (XML Representation of ACAL Version 1.0)"), and the Technical Committee is renamed, and document and repository URLs are updated accordingly; the references and citations are corrected; and the example short identifier set is marked non-normative ([Section 4.3](#43-example-short-identifier-set-non-normative)) and repaired so that its `ShortIdSet` element is well-formed (csd01 closed it before its children).

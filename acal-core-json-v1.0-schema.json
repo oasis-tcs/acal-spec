@@ -148,7 +148,7 @@
 			]
 		},
 		"MediaType": {
-			"description": "Content media type (RFC 6838). The standard MediaType values defined in JACAL core specification should be used whenever applicable: 'application/xml' for XML document, and 'application/json' for JSON object (default). Or else use a name registered at IANA (RFC 6838 - https://www.iana.org/assignments/media-types/media-types.xhtml).",
+			"description": "Content media type (RFC 6838). The standard MediaType values defined in JACAL core specification should be used whenever applicable: 'application/xml' for XML document, and 'application/json' for JSON object or array (default). Or else use a name registered at IANA (RFC 6838 - https://www.iana.org/assignments/media-types/media-types.xhtml).",
 			"$comment": "The pattern is based on the ABNF syntax from section 4.2 of RFC 6838 (with the recommendation that <type-name> and <subtype-name> SHOULD be limited to 64 characters).",
 			"type": "string",
 			"pattern": "^[A-Za-z0-9][A-Za-z0-9!#$&\\-\\^_.+]{0,63}/[A-Za-z0-9][A-Za-z0-9!#$&\\-\\^_.+]{0,63}$"
@@ -163,7 +163,8 @@
 				"object",
 				"string",
 				"number",
-				"boolean"
+				"boolean",
+				"array"
 			]
 		},
 		"ShortIdType": {
@@ -1339,7 +1340,7 @@
 			"additionalProperties": false
 		},
 		"ContentType": {
-			"$comment": "Supporting this is optional. This subschema can be removed if the implementation does not support 'ContentType' objects. Otherwise, for safety/security reasons, in production, ACAL system users and/or implementers should add further restrictions to the schema of the Body property and/or enforce security measures in the JSON processor to mitigate possible security issues that may occur when allowing any JSON object like this as Body input.",
+			"$comment": "Supporting this is optional. This subschema can be removed if the implementation does not support 'ContentType' objects. Otherwise, for safety/security reasons, in production, ACAL system users and/or implementers should add further restrictions to the schema of the Body property and/or enforce security measures in the JSON processor to mitigate possible security issues that may occur when allowing any JSON object or array like this as Body input.",
 			"type": "object",
 			"properties": {
 				"MediaType": {
@@ -1350,7 +1351,7 @@
 					"$ref": "#/$defs/ContentEncodingType"
 				},
 				"Body": {
-					"$comment": "'object' type is used for JSON object, 'string' for others - e.g. XML - possibly escaped or encoded depending on the Encoding property",
+					"$comment": "'object' and 'array' types are used for JSON content (a JSON object or array), 'string' for others - e.g. XML - possibly escaped or encoded depending on the Encoding property",
 					"$ref": "#/$defs/AnyType"
 				}
 			},

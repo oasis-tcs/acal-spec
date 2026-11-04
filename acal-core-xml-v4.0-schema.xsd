@@ -117,7 +117,7 @@
 						&lt;subtype-name&gt; SHOULD be limited to 64 characters). The standard
 						MediaType values defined in XACML core specification should be used whenever
 						applicable: - 'application/xml' for XML document (default); -
-						'application/json' for JSON object. For other cases, a media type registered at IANA may be used. </xs:documentation>
+						'application/json' for JSON object or array. For other cases, a media type registered at IANA may be used. </xs:documentation>
 				</xs:annotation>
 			</xs:pattern>
 		</xs:restriction>

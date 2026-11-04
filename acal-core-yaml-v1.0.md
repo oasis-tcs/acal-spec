@@ -1085,7 +1085,9 @@ The following rules apply:
 8. A wrapper key identifies the concrete subtype used in that context,
    not each intermediate abstract supertype in the inheritance chain.
    The wrapper keys `Value`, `AttributeSelector` and
-   `EntityAttributeSelector` are exceptions: each identifies an abstract
+   `EntityAttributeSelector` are exceptions to this rule and to the
+   statement above that the wrapper key identifies the concrete subtype:
+   each identifies an abstract
    type, and the concrete subtype is identified by the inner object
    ([Section 5.4.8](#548-extensible-abstract-types)).
 
@@ -1213,7 +1215,7 @@ properties:
 
 | Property | Required | Type | Notes |
 |---|---|---|---|
-| `MediaType` | No | String | Media type of the content body. If omitted, the default value `application/yaml` applies, and the `Body` SHALL be a YAML 1.2 document. The values `application/json` and `application/xml` SHALL be used for JSON objects and XML documents respectively.  |
+| `MediaType` | No | String | Media type of the content body. If omitted, the default value `application/yaml` applies, and the `Body` SHALL be a YAML 1.2 document. The values `application/json` and `application/xml` SHALL be used for JSON content (a JSON object or array) and XML documents respectively.  |
 | `Encoding` | No | String | Content encoding, used only when the `Body` string is encoded rather than directly represented. The Encoding value `base64` indicates that the Body is Base64-encoded as per [[RFC4648](#rfc4648)]. Other Encoding values may be defined by other YACAL Profiles. |
 | `Body` | Yes | `AnyType` | Direct representation of the content payload |
 
