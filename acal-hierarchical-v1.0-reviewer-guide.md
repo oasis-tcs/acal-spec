@@ -67,7 +67,7 @@ XACML 3.0 HRP §4.3's non-normative policy-authoring example uses `regexp-uri-ma
 | Scheme | Identifies a node by | Ancestor attributes allowed? | Depends on |
 |---|---|---|---|
 | Nodes in XML Documents ([5.1](acal-hierarchical-v1.0.md#51-nodes-in-xml-documents)) | An XPath expression into `Content` | Not addressed by this scheme | ACAL XPath Profile |
-| Nodes Identified by URI ([5.2](acal-hierarchical-v1.0.md#52-nodes-identified-by-uri)) | A fully-resolved hierarchical URI | **No** — explicitly forbidden, the URI already encodes position | ACAL Core only |
+| Nodes Identified by URI ([5.2](acal-hierarchical-v1.0.md#52-nodes-identified-by-uri)) | A fully-resolved hierarchical URI of a path to the node (required); URIs of the node's other paths (optional) | **No** — explicitly forbidden, the URIs already encode position | ACAL Core only |
 | Nodes Identified by Ancestor Attributes ([5.3](acal-hierarchical-v1.0.md#53-nodes-identified-by-ancestor-attributes)) | `resource-parent`/`resource-ancestor`/`resource-ancestor-or-self` attributes | Yes — this **is** the scheme | ACAL Core only |
 
 All three are independently optional; an implementation can support any combination, including none, one, or all three. They are not layered on each other — a single request uses exactly one scheme for a given resource, per the "parent and ancestor attributes SHALL NOT be provided" rule in the URI scheme and the general shape of the XACML 3.0 source.

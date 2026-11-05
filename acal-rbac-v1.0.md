@@ -197,7 +197,7 @@ See Section 2 of [[ACAL-Core-1.0](#acal-core-10)].
 
 `Role`
 
-: A named collection of permissions. In this profile a role is carried in a request by a subject attribute — by its value, or, in an identifier-per-role deployment, by its presence; see [Section 5.1](#51-roles-and-role-attributes).
+: A named collection of permissions. In this profile a role is carried in a request as a value of a subject attribute, or, in a HasPrivilegesOfRole request, of a resource attribute; see [Section 5.1](#51-roles-and-role-attributes).
 
 `Role Policy`
 
@@ -256,7 +256,7 @@ None.
 
 Role based access control lets a policy be written in terms of the roles a subject holds rather than the identity of the subject. A hospital policy can say "an attending physician may read a patient record" once, and every subject who holds the `physician` role gets that access, without the policy naming any of them. When a subject changes jobs, the set of roles enabled for that subject changes, and the permissions follow automatically — the policies do not need to be rewritten. This is the property that makes RBAC scale.
 
-ACAL is attribute-centric, and a role is just an attribute: this profile carries a role by a subject attribute in the request context — by the attribute's value or, in an identifier-per-role deployment, by its presence. What the profile adds is a disciplined way to *organize* policies around roles so that the RBAC properties hold — in particular, so that adding, removing, or re-parenting a role changes `PolicyReference` objects rather than rule content, and touches only the policies of that role and of its immediate seniors ([Section 5.3.3](#533-role-hierarchy)).
+ACAL is attribute-centric, and a role is just an attribute: this profile carries a role as a value of a subject attribute in the request context. What the profile adds is a disciplined way to *organize* policies around roles so that the RBAC properties hold — in particular, so that adding, removing, or re-parenting a role changes `PolicyReference` objects rather than rule content, and touches only the policies of that role and of its immediate seniors ([Section 5.3.3](#533-role-hierarchy)).
 
 The two questions an RBAC policy written to this profile answers are:
 
@@ -272,7 +272,7 @@ The ANSI/INCITS RBAC model [[ANSI-RBAC](#ansi-rbac)] names five data elements. T
 | RBAC element | ACAL |
 |---|---|
 | User | A subject — a `RequestEntityType` object in a subject category. |
-| Role | A subject attribute: its value, or, in an identifier-per-role deployment, its presence ([Section 5.1](#51-roles-and-role-attributes)). |
+| Role | A value of a subject attribute, or, in a HasPrivilegesOfRole request, of a resource attribute ([Section 5.1](#51-roles-and-role-attributes)). |
 | Object | A resource — a `RequestEntityType` object in the resource category. |
 | Operation | An action — carried by the `urn:oasis:names:tc:acal:1.0:action:action-id` attribute. |
 | Permission | An (object, operation) pair a role's holders may exercise, expressed as a `RuleType` or nested `PolicyType` object within that role's Permission Policy ([Section 5.3.2](#532-permission-policy)). |
@@ -288,7 +288,7 @@ This is the first ACAL version of this profile, ported from _XACML v3.0 Core and
 The following substantive changes and decisions apply relative to the XACML 3.0 source:
 
 - **`<PolicySet>` is gone.** ACAL Core merged XACML's `<Policy>` and `<PolicySet>` into a single `PolicyType` object that may contain rules, nested policies, and policy references. Both of [[RBAC](#rbac)]'s policy kinds are `PolicyType` objects in ACAL: a **Role Policy** in place of a Role `<PolicySet>`, a **Permission Policy** in place of a Permission `<PolicySet>`. Every `<PolicySetIdReference>` becomes a `PolicyReference` — ACAL has one reference construct, not a `<PolicyIdReference>`/`<PolicySetIdReference>` pair, and the RBAC constructs never depended on the distinction.
-- **Constraint 2 of the HasPrivilegesOfRole Rule is a requirement on the request.** It said that the Rule "SHALL be answered by a request that carries" a role attribute in the resource category, which put a requirement on the Rule that only a request can meet; it now says that a request that is to be answered as a HasPrivilegesOfRole query for the role SHALL carry that attribute ([Section 5.3.4](#534-hasprivilegesofrole-rule)). The rest of the constraint is unchanged.
+- **Constraint 2 of the HasPrivilegesOfRole Rule is a requirement on the request.** It said that the Rule "SHALL be answered by a request that carries" a role attribute in the resource category, which put a requirement on the Rule that only a request can meet; it now says that a request that is to be answered as a HasPrivilegesOfRole query for the role SHALL carry that attribute ([Section 5.3.4](#534-hasprivilegesofrole-rule)). The attribute's values are, as a set, exactly the queried role or a composite role's constituent roles (next bullet).
 - **No Role Assignment PolicySet, no `enableRole`.** [[RBAC](#rbac)] CS02 already dropped the XACML 2.0 RBAC profile's Role Assignment `<PolicySet>` and `enableRole` action; [Section 5.2](#52-role-assignment-and-enablement) is out of scope here for the same reason it is there. This profile therefore has no dependency on the ACAL administration and delegation profile.
 - **Identifier namespace.** All identifiers this profile uses in place of an XACML 3.0 RBAC identifier use the `urn:oasis:names:tc:acal:1.0:` prefix, with the XACML identifier recorded as a deprecated equivalent, per the standard ACAL convention ([Section 10.2](#102-conformance-tables)): the profile identifier `urn:oasis:names:tc:xacml:3.0:profiles:rbac:core-hierarchical` → `urn:oasis:names:tc:acal:1.0:profile:rbac`; the role attribute `urn:oasis:names:tc:xacml:2.0:subject:role` → `urn:oasis:names:tc:acal:1.0:subject:role`. The HasPrivilegesOfRole action value is not an identifier: `urn:oasis:names:tc:xacml:2.0:actions:hasPrivilegesOfRole` is recorded as the deprecated form of the value `urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role`, not as an equivalent identifier ([Section 10.2.3](#1023-action-attribute-values)).
 - **The role attribute's use stays RECOMMENDED, not required** — a deployment MAY use one or more other attribute identifiers for roles, exactly as [[RBAC](#rbac)] §5.1 allows. See [Section 5.1](#51-roles-and-role-attributes).
@@ -298,7 +298,8 @@ The following substantive changes and decisions apply relative to the XACML 3.0 
 - **HasPrivilegesOfRole is a `Rule`, not a wrapped `<Policy>`.** [[RBAC](#rbac)] §5.3 defines the feature as a HasPrivilegesOfRole `<Policy>` — a `<Policy>` wrapping one Permit `<Rule>` — inside the Permission `<PolicySet>`, and [[RBAC](#rbac)] §2.5's example carries the whole test (action *and* queried role) in that `<Rule>`'s `<Condition>`. XACML needs the wrapper only because a `<PolicySet>` cannot contain a `<Rule>` directly. An ACAL `PolicyType` object's `CombinerInput` holds `Rule` objects freely, so this profile drops the wrapper: the HasPrivilegesOfRole Rule sits directly in the Permission Policy ([Section 5.3.4](#534-hasprivilegesofrole-rule)). A `Rule` has no `Target` and no `CombiningAlgId`, so the action test is necessarily in its `Condition` and there is no combining algorithm to constrain.
 - **A composite-role Permission Policy is inheritable, matching [[RBAC](#rbac)].** [[RBAC](#rbac)] §1.10 expressly permits a senior role to inherit a multi-role `<PolicySet>`'s permissions; [Section 5.4](#54-multi-role-permissions) preserves that. The judgment involved — is the senior role a suitable guarantor of the permission set a composite role's required roles, held together, represent — is the same kind of judgment already relied on for every other inheritance edge in the hierarchy, not a distinct risk this profile singles out; see [Section 6.3](#63-structuring-a-role-hierarchy).
 - **HasPrivilegesOfRole is isolated from ordinary permission rules, where supported.** [[RBAC](#rbac)] does not address whether an ordinary permission rule may itself answer a HasPrivilegesOfRole query; nothing in a naive port of CS02's structure prevents one from doing so by accident, which makes a HasPrivilegesOfRole `Permit` indistinguishable from an ordinary `Permit` that merely happened to match. [Section 5.3.2](#532-permission-policy) constraint 4 requires that, where a PDP supports HasPrivilegesOfRole, every ordinary `Rule` and nested `Policy` in a Permission Policy sit inside one nested `Policy` whose `Target` excludes the reserved action, leaving the HasPrivilegesOfRole Rule and the junior-role hierarchy as the only children able to answer such a query. This is new relative to [[RBAC](#rbac)]. A PDP that does not support HasPrivilegesOfRole is not subject to this constraint.
-- **HasPrivilegesOfRole action and resource-role cardinality are now constrained, and its role test now covers both role-attribute schemes.** [[RBAC](#rbac)] does not say whether the reserved action or the queried role may be multi-valued. [Section 5.3.4](#534-hasprivilegesofrole-rule) constraint 1 now requires the `action-id` attribute to carry exactly the reserved value and no other, and treats a resource carrying evidence of more than one role existentially — `Permit` if the subject has the privileges of any one of them. Constraint 1(b) is also corrected to test an identifier-per-role deployment's resource attribute the same way [Section 5.3.1](#531-role-policy) constraint 1 already tests one on the subject side (presence, not value) — the shared-role-attribute scheme's phrasing is not the only scheme [Section 5.1](#51-roles-and-role-attributes) allows. This is new relative to [[RBAC](#rbac)].
+- **HasPrivilegesOfRole action and resource-role cardinality are now constrained, and a query names one role.** [[RBAC](#rbac)] does not say whether the reserved action or the queried role may be multi-valued. [Section 5.3.4](#534-hasprivilegesofrole-rule) constraint 1 now requires the `action-id` attribute to carry exactly the reserved value and no other, and requires the values of the resource role attribute to be, as a set, exactly the Permission Policy's role or, for a composite role ([Section 5.4](#54-multi-role-permissions)), its constituent roles: several values name one composite role, and a question about several roles is asked in several requests. This is new relative to [[RBAC](#rbac)].
+- **Roles are carried as attribute values only.** [[RBAC](#rbac)] §1.8 (non-normative) also describes environments with "a number of different attribute identifiers, each indicating a different role", in which "the value of the attribute may be empty". This profile does not define that form: every role attribute carries roles as its values ([Section 5.1](#51-roles-and-role-attributes)). Section 5.1 still allows one or more role attribute identifiers, as [[RBAC](#rbac)] §5.1 (normative) does.
 - **The subject-restriction ban applies only to the Permission Policy's own `Target`.** [[RBAC](#rbac)] §5.3 forbids a subject restriction in the `<Target>` of the Permission `<PolicySet>` *and* of every `<PolicySet>`, `<Policy>` and `<Rule>` it includes or references. [Section 5.3.2](#532-permission-policy) constraint 2 keeps the ban only on the Permission Policy's own `Target` — the construct that alone gates the whole policy's applicability, and therefore inheritance. The XACML-wide `<Target>` ban was in any case porous: an ACAL `RuleType` object has no `Target`, and an ordinary `Rule`'s `Condition` may reference subject attributes. A subject predicate deeper in the policy — a nested `PolicyType` object's `Target`, or an ordinary `Rule`'s `Condition` — is permitted but still narrows the access beneath it ([Section 9](#9-safety-security-and-data-protection-considerations)). (A HasPrivilegesOfRole Rule is the exception: [Section 5.3.4](#534-hasprivilegesofrole-rule) constraint 3 forbids a subject test in *its* `Condition`.)
 - **Two clarifications to ACAL Core** accompany this profile, because RBAC is the first ACAL profile to lean on the PDP's policy-set and reference-resolution model directly:
   - [[ACAL-Core-1.0](#acal-core-10)] Section 8.13 now specifies how a policy reference is resolved against the policies that define the PDP — by `PolicyId` and version, for any reference in a policy's `CombinerInput`; the entry-point reference must resolve within that set ([[ACAL-Core-1.0](#acal-core-10)] Sections 7.46 and 8.13). [[ACAL-Core-1.0](#acal-core-10)] Section 7.8's "outside the scope" sentence is narrowed to cover only locating a policy that is *not* among those that define the PDP by a mechanism other than the optional retrieval from a URL that [[ACAL-Core-1.0](#acal-core-10)] Section 8.13 specifies (for example an external repository). This is a resolution-model clarification, not a change of any evaluation outcome for a policy set whose `CombinerInput` references all resolve within the PDP's policy set; reviewers should read it against [[ACAL-Core-1.0](#acal-core-10)] Sections 7.8, 7.46 and 8.15.
@@ -316,13 +317,13 @@ This section is normative. It defines the role attribute, and the Role Policy / 
 
 ## 5.1 Roles and Role Attributes
 
-A role that a subject holds SHALL be carried in a request by a subject attribute — a `RequestAttributeType` object within a `RequestEntityType` object whose `Category` is a subject category (for example `urn:oasis:names:tc:acal:1.0:subject-category:access-subject`) — either as the attribute's value or, in an identifier-per-role deployment (below), by the attribute's presence. A subject MAY hold more than one role at once, carried as multiple values of one shared role attribute or, in an identifier-per-role deployment, by the presence of several role attributes. A role attribute MAY appear in any subject category involved in the request.
+A role that a subject holds SHALL be carried in a request by a subject attribute — a `RequestAttributeType` object within a `RequestEntityType` object whose `Category` is a subject category (for example `urn:oasis:names:tc:acal:1.0:subject-category:access-subject`) — as a value of that attribute. A subject MAY hold more than one role at once, carried as multiple values of one role attribute or as values of several role attributes. A role attribute MAY appear in any subject category involved in the request.
 
 Each deployment using this profile SHALL define, or agree upon, the attribute identifier or identifiers it uses for roles. Use of the identifier
 
 `urn:oasis:names:tc:acal:1.0:subject:role`
 
-for every role attribute is RECOMMENDED; where it is used, the corresponding attribute values SHOULD be of data type `urn:oasis:names:tc:acal:1.0:data-type:anyURI`. A deployment MAY instead use distinct attribute identifiers for distinct roles (for example `urn:example:attributes:officer-role`), in which case the presence of the attribute, rather than its value, indicates the role.
+for every role attribute is RECOMMENDED; where it is used, the corresponding attribute values SHOULD be of data type `urn:oasis:names:tc:acal:1.0:data-type:anyURI`.
 
 There is one place where a role is carried other than as a subject attribute: in a request answered by a HasPrivilegesOfRole Rule, the role being asked about is carried as a **resource** attribute — see [Section 5.3.4](#534-hasprivilegesofrole-rule).
 
@@ -354,7 +355,7 @@ They also keep an RBAC policy set composable. When every policy reachable from a
 
 A Role Policy for a role is a `PolicyType` object that:
 
-1. SHALL have a `Target`. The `Target` expression SHALL NOT evaluate to `true` for a request unless the request context contains, in a subject category, the role attribute and value (or, for an identifier-per-role deployment, the role attribute) for this role, or, for a composite role ([Section 5.4](#54-multi-role-permissions)), each of its constituent roles. The `Target` expression SHALL reference only subject-category attributes — every `AttributeDesignator` or `AttributeSelector` in the expression, including those reached through a `VariableReference`, SHALL name a subject category; it SHALL NOT reference a resource, action or environment attribute. (This is the ACAL form of [[RBAC](#rbac)] §5.3's rule that a Role `<PolicySet>`'s `<Target>` makes it applicable only to the subject and SHALL NOT restrict the Resource, Action, or Environment.)
+1. SHALL have a `Target`. The `Target` expression SHALL NOT evaluate to `true` for a request unless the request context contains, in a subject category, the role attribute and value for this role, or, for a composite role ([Section 5.4](#54-multi-role-permissions)), each of its constituent roles. The `Target` expression SHALL reference only subject-category attributes — every `AttributeDesignator` or `AttributeSelector` in the expression, including those reached through a `VariableReference`, SHALL name a subject category; it SHALL NOT reference a resource, action or environment attribute. (This is the ACAL form of [[RBAC](#rbac)] §5.3's rule that a Role `<PolicySet>`'s `<Target>` makes it applicable only to the subject and SHALL NOT restrict the Resource, Action, or Environment.)
 2. SHALL contain, in its `CombinerInput`, exactly one `PolicyReference` — to the Permission Policy for this role ([Section 5.3.2](#532-permission-policy)) — and SHALL NOT contain any other `PolicyReference`, any nested `Policy`, or any `Rule`.
 
 Because a Role Policy's `Target` is the only thing that gates a subject's access to a role's permissions, a `Target` that is stricter than "the role is present" withholds permissions silently when the additional predicate evaluates to `false`, and can turn evaluation into an error when it evaluates to `Indeterminate`. See [Section 6.2](#62-matching-role-attributes-in-a-target).
@@ -389,11 +390,11 @@ A HasPrivilegesOfRole Rule is a `Rule` with `Effect` `Permit`, directly in the P
 
 A HasPrivilegesOfRole Rule (constraint 2 is a requirement on a request, not on the Rule):
 
-1. SHALL have a `Condition` that evaluates to `true` where both (a) the request's `urn:oasis:names:tc:acal:1.0:action:action-id` attribute contains exactly one value, `urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role`, and (b) the resource carries evidence of this Permission Policy's role among its resource-category attributes: for the shared role attribute ([Section 5.1](#51-roles-and-role-attributes)), that attribute contains this Permission Policy's role among however many role values it carries; for an identifier-per-role deployment, this Permission Policy's own role attribute is present, whatever value or values it carries — its presence, not its value, is what a HasPrivilegesOfRole query tests, exactly as it is what a Role Policy `Target` tests ([Section 5.3.1](#531-role-policy) constraint 1). The `Condition` SHALL evaluate to `false` for every other request and SHALL NOT evaluate to `Indeterminate` for such a request. (A cardinality test written with `urn:oasis:names:tc:acal:1.0:function:string-one-and-only` would not satisfy this: that function is `Indeterminate`, not `false`, where the attribute does not carry exactly one value. A `string-bag-size` comparison is determinate and does.) Test (a) makes the rule `NotApplicable` — and so without effect — for every request that is not a HasPrivilegesOfRole query, including a request whose `action-id` attribute carries the reserved value alongside any other action value: mixing the reserved action with an ordinary one does not yield a defined HasPrivilegesOfRole answer, and this profile does not give it one. A resource carrying evidence of more than one role — several values of the shared role attribute, or several distinct per-role attributes present at once — is answered existentially: this Permission Policy's own role need only be one of them, so a query naming several roles at once asks whether the subject has the privileges of at least one.
-2. A request that is to be answered as a HasPrivilegesOfRole query for this role SHALL carry a `RequestAttributeType` object, in the resource category, whose `AttributeId` is the identifier this Permission Policy's role uses per [Section 5.1](#51-roles-and-role-attributes) — the shared role attribute's identifier, or, for an identifier-per-role deployment, this role's own attribute identifier. That object SHALL be in the resource `RequestEntityType`; an occurrence of the same `AttributeId` in a subject `RequestEntityType` SHALL NOT by itself satisfy this constraint. (The two occurrences are independently legal in one request — ACAL's attribute-uniqueness constraint is scoped per `RequestEntityType` — [[ACAL-Core-1.0](#acal-core-10)] Section 7.33 — but only the resource one is what a HasPrivilegesOfRole Rule's `Condition` tests.)
+1. SHALL have a `Condition` that evaluates to `true` where both (a) the request's `urn:oasis:names:tc:acal:1.0:action:action-id` attribute contains exactly one value, `urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role`, and (b) the values of the resource-category role attribute of constraint 2 are, as a set, exactly this Permission Policy's role — for a composite role ([Section 5.4](#54-multi-role-permissions)), exactly its constituent roles — with no other role among them. The `Condition` SHALL evaluate to `false` for every other request and SHALL NOT evaluate to `Indeterminate` for such a request. (A cardinality test written with `urn:oasis:names:tc:acal:1.0:function:string-one-and-only` would not satisfy this: that function is `Indeterminate`, not `false`, where the attribute does not carry exactly one value. A `string-bag-size` comparison is determinate and does.) Test (a) makes the rule `NotApplicable` — and so without effect — for every request that is not a HasPrivilegesOfRole query, including a request whose `action-id` attribute carries the reserved value alongside any other action value: mixing the reserved action with an ordinary one does not yield a defined HasPrivilegesOfRole answer, and this profile does not give it one. Several values of the resource role attribute name one composite role, not several roles: a query that carries this Permission Policy's role together with another role does not match this Rule, and a question about several roles is asked in several requests (for example using `MultiRequests` where the PDP supports it, [[ACAL-Core-1.0](#acal-core-10)] Section 7.38).
+2. A request that is to be answered as a HasPrivilegesOfRole query for this role SHALL carry a `RequestAttributeType` object, in the resource category, whose `AttributeId` is the identifier this Permission Policy's role uses per [Section 5.1](#51-roles-and-role-attributes), whose values are, as a set, exactly the role or, for a composite role, exactly its constituent roles. That object SHALL be in the resource `RequestEntityType`; an occurrence of the same `AttributeId` in a subject `RequestEntityType` SHALL NOT by itself satisfy this constraint. (The two occurrences are independently legal in one request — ACAL's attribute-uniqueness constraint is scoped per `RequestEntityType` — [[ACAL-Core-1.0](#acal-core-10)] Section 7.33 — but only the resource one is what a HasPrivilegesOfRole Rule's `Condition` tests.)
 3. SHALL NOT test any subject attribute in its `Condition`, including through a `VariableReference` — [[RBAC](#rbac)] §5.3 requires the rule to "permit any Subject" to make the query. With constraint 1, the rule then returns `Permit` for every matching query, whichever subject makes it, once evaluation reaches this Permission Policy — through this role's Role Policy, or through a senior role's Permission Policy in the hierarchy. (That `Permit` is the Permission Policy's overall result: [Section 5.3](#53-access-control) constraint 2 requires `permit-overrides` or `ordered-permit-overrides`, under which any `Permit` among the combined children decides the policy.)
 
-A request MAY carry resource attributes other than the role attribute or attributes being asked about; a HasPrivilegesOfRole Rule's `Condition` does not reference them, and this profile places no requirement on them. A PEP constructing a HasPrivilegesOfRole request SHOULD NOT include a resource attribute other than the role attribute or attributes carrying the role or roles being queried, so that the request cannot be read as also asking an ordinary access question.
+A request MAY carry resource attributes other than the role attribute being asked about; a HasPrivilegesOfRole Rule's `Condition` does not reference them, and this profile places no requirement on them. A PEP constructing a HasPrivilegesOfRole request SHOULD NOT include a resource attribute other than the role attribute carrying the role being queried, so that the request cannot be read as also asking an ordinary access question.
 
 Because the HasPrivilegesOfRole Rule sits inside a Permission Policy, a senior role's holders correctly test as having the privileges of any junior role, through the same inheritance references as ordinary permissions.
 
@@ -426,7 +427,7 @@ This constraint is on the notice expression, not on the decision: a notice that 
 
 ## 5.4 Multi-Role Permissions
 
-A permission set that a subject may exercise only while holding several roles *simultaneously* is treated as a single *composite role* with its own Role Policy and Permission Policy ([Section 5.3](#53-access-control)). The composite role's Role Policy has a `Target` that evaluates to `true` only when the request context contains every required role — every required value of the shared role attribute or, in an identifier-per-role deployment, every required role attribute — for example a boolean `and` of one role test per required role, still referencing only subject-category attributes ([Section 5.3.1](#531-role-policy)).
+A permission set that a subject may exercise only while holding several roles *simultaneously* is treated as a single *composite role* with its own Role Policy and Permission Policy ([Section 5.3](#53-access-control)). The composite role's Role Policy has a `Target` that evaluates to `true` only when the request context contains every required role — every required role value — for example a boolean `and` of one role test per required role, still referencing only subject-category attributes ([Section 5.3.1](#531-role-policy)).
 
 The composite role's Permission Policy MAY reference the Permission Policies of junior roles for inheritance, exactly as in [Section 5.3.3](#533-role-hierarchy), and MAY itself be the target of a `PolicyReference` from another role's Permission Policy, exactly as any other Permission Policy ([Section 5.3.3](#533-role-hierarchy)). A senior role that inherits a composite role's permissions this way extends its own holders the same guarantee the composite role's own definition already rests on: that its required roles, held together, are a suitable basis for the permission set. Whether a given senior role is itself a suitable guarantor of that same permission set — for example, whether every holder of the senior role can be trusted with what would otherwise require holding every one of the composite's roles at once — is a judgment for whoever designs the hierarchy, the same judgment already relied on for every other inheritance edge in it; see [Section 6.3](#63-structuring-a-role-hierarchy).
 
@@ -447,17 +448,17 @@ Above the Role Policies this profile constrains nothing ([Section 5.3.5](#535-th
 
 Where HasPrivilegesOfRole is supported, a deployment relying on it should extend the reserved-action exclusion that [Section 5.3.2](#532-permission-policy) constraint 4 requires inside a Permission Policy to every policy that combines Role Policies with anything else, up to the PDP's entry point. The exclusion goes on the *other* inputs, not on the combining policy itself: group the non-RBAC children under a policy whose `Target` is `false` whenever `action-id` contains the reserved value, and leave the `PolicyReference`s to the Role Policies outside that group, exactly as constraint 4 leaves the HasPrivilegesOfRole Rule and the junior-role references outside the Permission Policy's wrapper. Putting the exclusion on the combining policy itself would make the Role Policies `NotApplicable` too, and the feature would never answer at all.
 
-The reason to do this above the Role Policies is narrower than it may look. Within the RBAC policy set constraint 4 is sufficient: a Role Policy can return `Permit` for a reserved-action request only because a HasPrivilegesOfRole Rule reachable from it matched, so a subject holding several roles gets a correct existential answer, not a spurious one. The residual risk is a non-RBAC policy combined alongside the Role Policies, which this profile does not constrain and which may return `Permit` for the reserved action for reasons of its own. That matters because `deny-unless-permit`, like `permit-overrides`, returns on the first `Permit` among its children ([[ACAL-Core-1.0](#acal-core-10)] Annexes E.4 and E.6) and its children may be processed in any order, so such a policy can decide the request without the Role Policy that would have answered it ever being evaluated. This is guidance, not a constraint this profile enforces — everything above the Role Policies is a deployment decision, per [Section 5.3.5](#535-the-pdp-entry-point).
+The reason to do this above the Role Policies is narrower than it may look. Within the RBAC policy set constraint 4 is sufficient: a Role Policy can return `Permit` for a reserved-action request only because a HasPrivilegesOfRole Rule reachable from it matched, so a subject holding several roles gets a correct answer, not a spurious one. The residual risk is a non-RBAC policy combined alongside the Role Policies, which this profile does not constrain and which may return `Permit` for the reserved action for reasons of its own. That matters because `deny-unless-permit`, like `permit-overrides`, returns on the first `Permit` among its children ([[ACAL-Core-1.0](#acal-core-10)] Annexes E.4 and E.6) and its children may be processed in any order, so such a policy can decide the request without the Role Policy that would have answered it ever being evaluated. This is guidance, not a constraint this profile enforces — everything above the Role Policies is a deployment decision, per [Section 5.3.5](#535-the-pdp-entry-point).
 
 **Prohibitions.** A prohibition cannot be expressed inside the RBAC policy set: [Section 5.3](#53-access-control) requires every `Rule` beneath a Permission Policy to have an `Effect` of `Permit`, so a `Deny` rule there is not conformant. A deployment that needs a `Deny` to override a `Permit` from any role — for example a prohibition that is to hold regardless of which roles a subject holds — expresses it in a policy outside the RBAC policy set, and combines that policy with the Role Policies under a deny-biased algorithm (`deny-overrides`, or `ordered-deny-overrides` where order matters). Such an algorithm is consistent with `permit-overrides` as far as the Role Policies themselves are concerned — none of them can return `Deny` — while still letting the prohibition override every role's grant. The prohibition policy references no Permission Policy, so [Section 5.3.5](#535-the-pdp-entry-point) constraints 2, 3 and 4 still hold.
 
 ## 6.2 Matching Role Attributes in a Target
 
-A Role Policy's `Target` ([Section 5.3.1](#531-role-policy)) typically tests a role carried as an `anyURI` value with `urn:oasis:names:tc:acal:1.0:function:anyURI-is-in`: the role value as the first argument, an `AttributeDesignator` for the role attribute as the second. For an identifier-per-role deployment, a bag-non-empty test on the role attribute's designator is used instead.
+A Role Policy's `Target` ([Section 5.3.1](#531-role-policy)) typically tests a role carried as an `anyURI` value with `urn:oasis:names:tc:acal:1.0:function:anyURI-is-in`: the role value as the first argument, an `AttributeDesignator` for the role attribute as the second.
 
 Keep the `Target` expression to exactly the role test. Anything more — a resource check, an action check, a time-of-day check — belongs in the Permission Policy's rules, not the Role Policy's `Target`: a `Target` that fails to match withholds *all* of the role's permissions silently, whereas a rule that fails to match simply does not grant that one permission.
 
-The same two forms test the queried role in a HasPrivilegesOfRole Rule's `Condition` ([Section 5.3.4](#534-hasprivilegesofrole-rule) constraint 1(b)), against the resource-category role attribute rather than the subject-category one: `anyURI-is-in` for the shared role attribute, a bag-non-empty test on this Permission Policy's own role attribute's designator for an identifier-per-role deployment. An identifier-per-role attribute's values are semantically irrelevant ([Section 5.1](#51-roles-and-role-attributes)) and carry no required data type, so the test should not presume one: `urn:oasis:names:tc:acal:1.0:function:is-not-empty`, where an implementation supports it (optional), applies to a bag of any type and states the test directly. Where it is not supported, use the `*-bag-size` function matching the attribute's own declared data type — not necessarily `anyURI-bag-size` — with an `integer-greater-than` (or `not(integer-equal(..., 0))`) comparison; both functions are mandatory.
+A HasPrivilegesOfRole Rule's `Condition` ([Section 5.3.4](#534-hasprivilegesofrole-rule) constraint 1(b)) tests the resource-category role attribute differently: with a set-equality function, `urn:oasis:names:tc:acal:1.0:function:anyURI-set-equals` for `anyURI` values, against a bag of this Permission Policy's role value — for a composite role, of its constituent role values — built with `urn:oasis:names:tc:acal:1.0:function:anyURI-bag`. `anyURI-is-in` would not do: it is also `true` for a query that names this role together with another.
 
 ## 6.3 Structuring a Role Hierarchy
 
@@ -507,12 +508,14 @@ Five top-level policies: one that is both the PDP entry point and the policy com
                                 DataType="urn:oasis:names:tc:acal:1.0:data-type:string"/>
                         </Apply>
                     </Apply>
-                    <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:anyURI-is-in">
-                        <Value DataType="urn:oasis:names:tc:acal:1.0:data-type:anyURI">urn:example:roles:employee</Value>
+                    <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:anyURI-set-equals">
                         <AttributeDesignator
                             Category="urn:oasis:names:tc:acal:1.0:attribute-category:resource"
                             AttributeId="urn:oasis:names:tc:acal:1.0:subject:role"
                             DataType="urn:oasis:names:tc:acal:1.0:data-type:anyURI"/>
+                        <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:anyURI-bag">
+                            <Value DataType="urn:oasis:names:tc:acal:1.0:data-type:anyURI">urn:example:roles:employee</Value>
+                        </Apply>
                     </Apply>
                 </Apply>
             </Condition>
@@ -595,12 +598,14 @@ Five top-level policies: one that is both the PDP entry point and the policy com
                                 DataType="urn:oasis:names:tc:acal:1.0:data-type:string"/>
                         </Apply>
                     </Apply>
-                    <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:anyURI-is-in">
-                        <Value DataType="urn:oasis:names:tc:acal:1.0:data-type:anyURI">urn:example:roles:manager</Value>
+                    <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:anyURI-set-equals">
                         <AttributeDesignator
                             Category="urn:oasis:names:tc:acal:1.0:attribute-category:resource"
                             AttributeId="urn:oasis:names:tc:acal:1.0:subject:role"
                             DataType="urn:oasis:names:tc:acal:1.0:data-type:anyURI"/>
+                        <Apply FunctionId="urn:oasis:names:tc:acal:1.0:function:anyURI-bag">
+                            <Value DataType="urn:oasis:names:tc:acal:1.0:data-type:anyURI">urn:example:roles:manager</Value>
+                        </Apply>
                     </Apply>
                 </Apply>
             </Condition>
@@ -722,13 +727,15 @@ Five top-level policies: one that is both the PDP entry point and the policy com
                                                     ] } }
                                             ] } },
                                         { "Apply": {
-                                            "FunctionId": "urn:oasis:names:tc:acal:1.0:function:anyURI-is-in",
+                                            "FunctionId": "urn:oasis:names:tc:acal:1.0:function:anyURI-set-equals",
                                             "Argument": [
-                                                { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:anyURI", "Value": "urn:example:roles:employee" } },
                                                 { "AttributeDesignator": {
                                                     "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:resource",
                                                     "AttributeId": "urn:oasis:names:tc:acal:1.0:subject:role",
-                                                    "DataType": "urn:oasis:names:tc:acal:1.0:data-type:anyURI" } }
+                                                    "DataType": "urn:oasis:names:tc:acal:1.0:data-type:anyURI" } },
+                                                { "Apply": {
+                                                    "FunctionId": "urn:oasis:names:tc:acal:1.0:function:anyURI-bag",
+                                                    "Argument": [ { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:anyURI", "Value": "urn:example:roles:employee" } } ] } }
                                             ] } }
                                     ]
                                 }
@@ -856,13 +863,15 @@ Five top-level policies: one that is both the PDP entry point and the policy com
                                                     ] } }
                                             ] } },
                                         { "Apply": {
-                                            "FunctionId": "urn:oasis:names:tc:acal:1.0:function:anyURI-is-in",
+                                            "FunctionId": "urn:oasis:names:tc:acal:1.0:function:anyURI-set-equals",
                                             "Argument": [
-                                                { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:anyURI", "Value": "urn:example:roles:manager" } },
                                                 { "AttributeDesignator": {
                                                     "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:resource",
                                                     "AttributeId": "urn:oasis:names:tc:acal:1.0:subject:role",
-                                                    "DataType": "urn:oasis:names:tc:acal:1.0:data-type:anyURI" } }
+                                                    "DataType": "urn:oasis:names:tc:acal:1.0:data-type:anyURI" } },
+                                                { "Apply": {
+                                                    "FunctionId": "urn:oasis:names:tc:acal:1.0:function:anyURI-bag",
+                                                    "Argument": [ { "Value": { "DataType": "urn:oasis:names:tc:acal:1.0:data-type:anyURI", "Value": "urn:example:roles:manager" } } ] } }
                                             ] } }
                                     ]
                                 }
@@ -1012,13 +1021,16 @@ Bundle:
                                   AttributeId: "urn:oasis:names:tc:acal:1.0:action:action-id"
                                   DataType: "urn:oasis:names:tc:acal:1.0:data-type:string"
                   - Apply:
-                      FunctionId: "urn:oasis:names:tc:acal:1.0:function:anyURI-is-in"
+                      FunctionId: "urn:oasis:names:tc:acal:1.0:function:anyURI-set-equals"
                       Argument:
-                        - Value: { DataType: "urn:oasis:names:tc:acal:1.0:data-type:anyURI", Value: "urn:example:roles:employee" }
                         - AttributeDesignator:
                             Category: "urn:oasis:names:tc:acal:1.0:attribute-category:resource"
                             AttributeId: "urn:oasis:names:tc:acal:1.0:subject:role"
                             DataType: "urn:oasis:names:tc:acal:1.0:data-type:anyURI"
+                        - Apply:
+                            FunctionId: "urn:oasis:names:tc:acal:1.0:function:anyURI-bag"
+                            Argument:
+                              - Value: { DataType: "urn:oasis:names:tc:acal:1.0:data-type:anyURI", Value: "urn:example:roles:employee" }
         - Policy:
             PolicyId: "urn:example:rbac:pp:employee-ordinary"
             Version: "1.0"
@@ -1114,13 +1126,16 @@ Bundle:
                                   AttributeId: "urn:oasis:names:tc:acal:1.0:action:action-id"
                                   DataType: "urn:oasis:names:tc:acal:1.0:data-type:string"
                   - Apply:
-                      FunctionId: "urn:oasis:names:tc:acal:1.0:function:anyURI-is-in"
+                      FunctionId: "urn:oasis:names:tc:acal:1.0:function:anyURI-set-equals"
                       Argument:
-                        - Value: { DataType: "urn:oasis:names:tc:acal:1.0:data-type:anyURI", Value: "urn:example:roles:manager" }
                         - AttributeDesignator:
                             Category: "urn:oasis:names:tc:acal:1.0:attribute-category:resource"
                             AttributeId: "urn:oasis:names:tc:acal:1.0:subject:role"
                             DataType: "urn:oasis:names:tc:acal:1.0:data-type:anyURI"
+                        - Apply:
+                            FunctionId: "urn:oasis:names:tc:acal:1.0:function:anyURI-bag"
+                            Argument:
+                              - Value: { DataType: "urn:oasis:names:tc:acal:1.0:data-type:anyURI", Value: "urn:example:roles:manager" }
         - Policy:
             PolicyId: "urn:example:rbac:pp:manager-ordinary"
             Version: "1.0"
@@ -1387,7 +1402,7 @@ Request:
           Value: [ "urn:oasis:names:tc:acal:1.0:action:has-privileges-of-role" ]
 ```
 
-**Evaluation.** The `manager` Role Policy's `Target` matches. In the `manager` Permission Policy the nested `pp:manager-ordinary` policy is `NotApplicable` — its `Target` is `false` because `action-id` carries the reserved value — and the `manager-has-privileges` Rule does not match the queried role, so neither answers. The `PolicyReference` to the `employee` Permission Policy, which sits outside that wrapper, is what carries the query onward: there `pp:employee-ordinary` is likewise `NotApplicable`, and the `employee-has-privileges` Rule has a `Condition` — `action-id` carries exactly the one value `has-privileges-of-role`, and the resource role attribute contains `urn:example:roles:employee` — that is `true`. Decision: **`Permit`**. Note that the same `urn:oasis:names:tc:acal:1.0:subject:role` `AttributeId` appears in both the subject entity and the resource entity of this one request, which is well-formed because ACAL scopes attribute uniqueness per `RequestEntityType` ([[ACAL-Core-1.0](#acal-core-10)] Section 7.33). Had the same subject asked about `urn:example:roles:manager` instead, the `manager` Permission Policy's own HasPrivilegesOfRole Rule would answer `Permit` directly, without the inheritance reference being involved.
+**Evaluation.** The `manager` Role Policy's `Target` matches. In the `manager` Permission Policy the nested `pp:manager-ordinary` policy is `NotApplicable` — its `Target` is `false` because `action-id` carries the reserved value — and the `manager-has-privileges` Rule does not match the queried role, so neither answers. The `PolicyReference` to the `employee` Permission Policy, which sits outside that wrapper, is what carries the query onward: there `pp:employee-ordinary` is likewise `NotApplicable`, and the `employee-has-privileges` Rule has a `Condition` — `action-id` carries exactly the one value `has-privileges-of-role`, and the values of the resource role attribute are exactly `urn:example:roles:employee` — that is `true`. Decision: **`Permit`**. Note that the same `urn:oasis:names:tc:acal:1.0:subject:role` `AttributeId` appears in both the subject entity and the resource entity of this one request, which is well-formed because ACAL scopes attribute uniqueness per `RequestEntityType` ([[ACAL-Core-1.0](#acal-core-10)] Section 7.33). Had the same subject asked about `urn:example:roles:manager` instead, the `manager` Permission Policy's own HasPrivilegesOfRole Rule would answer `Permit` directly, without the inheritance reference being involved.
 
 ---
 

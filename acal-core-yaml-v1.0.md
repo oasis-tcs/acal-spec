@@ -1215,7 +1215,7 @@ properties:
 
 | Property | Required | Type | Notes |
 |---|---|---|---|
-| `MediaType` | No | String | Media type of the content body. If omitted, the default value `application/yaml` applies, and the `Body` SHALL be a YAML 1.2 document. The values `application/json` and `application/xml` SHALL be used for JSON content (a JSON object or array) and XML documents respectively.  |
+| `MediaType` | No | String | Media type of the content body. If omitted, the default value `application/yaml` applies, and the `Body` SHALL be a YAML 1.2 document. The values `application/json` and `application/xml` SHALL be used for JSON text (a JSON object or array, in a YAML string) and XML documents respectively; JSON content represented as native YAML uses `application/yaml` (see below). |
 | `Encoding` | No | String | Content encoding, used only when the `Body` string is encoded rather than directly represented. The Encoding value `base64` indicates that the Body is Base64-encoded as per [[RFC4648](#rfc4648)]. Other Encoding values may be defined by other YACAL Profiles. |
 | `Body` | Yes | `AnyType` | Direct representation of the content payload |
 
@@ -1237,7 +1237,14 @@ Content:
 
 For XML, JSON or other textual structured content, the `Body` SHOULD normally
 be represented as a YAML string.  If encoded binary or escaped textual
-content is required, the `Encoding` property identifies that encoding:
+content is required, the `Encoding` property identifies that encoding.
+
+For JSON content, the following replaces the two recommendations above.
+JSON content (a JSON object or array) takes one of two forms: with
+`MediaType` `application/json`, the `Body` is a YAML string holding the
+JSON text (first example below); with `MediaType` `application/yaml`,
+or no `MediaType`, the `Body` is the native YAML mapping or sequence
+that represents the JSON object or array.
 
 
 ```yaml

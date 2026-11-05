@@ -199,7 +199,7 @@ The list of changes from the previous version and any revision history can be fo
 
 This profile applies to a `Content` object (defined in [[ACAL-Core-1.0](#acal-core-10)]) in the Request if and only if:
 - The media type of the `Content` object, i.e. its `MediaType` property or, if that property is absent, the default defined for it by the representation ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34), is `application/json`.
-- The `Body` property value is a JSON object. *Note that it is always possible to encapsulate a JSON array inside a JSON object if a JSON array is really needed.*
+- The `Body` property value is a JSON object or a JSON array.
 
 An attribute selector that is applied to a `Content` object that does not satisfy these conditions returns `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`, as stated in the attribute selector evaluation (step 1).
 
@@ -211,7 +211,7 @@ The types `AttributeSelectorType` and `EntityAttributeSelectorType` used in the 
 
 ### AttributeSelectorType extension - JSONPathAttributeSelectorType
 
-A `JSONPathAttributeSelectorType` object is a concrete type of `AttributeSelectorType` from [[ACAL-Core-1.0](#acal-core-10)] that uses JSONPath [[RFC9535](#rfc9535)] for `Path` expressions and expects a JSON object as value of the `Body` property of a `RequestEntityType` object's `Content` object. More precisely, the returned values SHALL be constructed from the node(s) selected by applying the JSONPath expression given by the attribute selector's `Path` property to the JSON object in the `Body` property of the `Content` object in the `RequestEntityType` object matching the attribute selector's `Category` property. 
+A `JSONPathAttributeSelectorType` object is a concrete type of `AttributeSelectorType` from [[ACAL-Core-1.0](#acal-core-10)] that uses JSONPath [[RFC9535](#rfc9535)] for `Path` expressions and expects a JSON object or a JSON array as value of the `Body` property of a `RequestEntityType` object's `Content` object. More precisely, the returned values SHALL be constructed from the node(s) selected by applying the JSONPath expression given by the attribute selector's `Path` property to the JSON object or JSON array in the `Body` property of the `Content` object in the `RequestEntityType` object matching the attribute selector's `Category` property. 
 
 See @sec:attribute-selector-evaluation for details of attribute selector evaluation.
 
@@ -230,7 +230,7 @@ In the context of this profile, the required `Path` property inherited from the 
 
 ### EntityAttributeSelectorType extension - JSONPathEntityAttributeSelectorType
 
-A `JSONPathEntityAttributeSelectorType` object is a concrete type of `EntityAttributeSelectorType` [[ACAL-Core-1.0](#acal-core-10)] that uses JSONPath [[RFC9535](#rfc9535)] for `Path` expressions and expects a JSON object in the value returned by the attribute selector's `Expression` property. In other words, the values SHALL be constructed from the node(s) selected by applying the JSONPath expression given by the entity attribute selector's `Path` property to the JSON object of the `Body` property of the `Content` object in either an attribute category in the request context (`RequestEntity`) or the value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type returned by its `Expression` evaluation.
+A `JSONPathEntityAttributeSelectorType` object is a concrete type of `EntityAttributeSelectorType` [[ACAL-Core-1.0](#acal-core-10)] that uses JSONPath [[RFC9535](#rfc9535)] for `Path` expressions and expects a JSON object or a JSON array in the value returned by the attribute selector's `Expression` property. In other words, the values SHALL be constructed from the node(s) selected by applying the JSONPath expression given by the entity attribute selector's `Path` property to the JSON object or JSON array of the `Body` property of the `Content` object in either an attribute category in the request context (`RequestEntity`) or the value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type returned by its `Expression` evaluation.
 
 See @sec:attribute-selector-evaluation for details of entity attribute selector evaluation.
 
@@ -267,9 +267,9 @@ The first steps are already described in [[ACAL-Core-1.0](#acal-core-10)] sectio
 
 If the designated attribute category or entity value has a `Content` property, then follow the steps below:
 
-1. If the media type of the `Content`, i.e. its `MediaType` property or, if that property is absent, the default defined for it by the representation ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34), is not `application/json`, the attribute selector SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. Otherwise, construct a JSON object ([[RFC8259](#rfc8259)]) from the value of the `Body` property of the `Content` property. If the content is not a valid JSON object, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
+1. If the media type of the `Content`, i.e. its `MediaType` property or, if that property is absent, the default defined for it by the representation ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34), is not `application/json`, the attribute selector SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. Otherwise, construct a JSON value ([[RFC8259](#rfc8259)]) from the value of the `Body` property of the `Content` property. If the content is not a valid JSON object or JSON array, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
 
-2. The root node of the data structure (JSON object) SHALL be used as context node of evaluation (JSONPath *query argument*).
+2. The root node of the data structure (JSON object or JSON array) SHALL be used as context node of evaluation (JSONPath *query argument*).
 
 3. Evaluate the JSONPath expression given in the `Path` property against the context node selected in the previous step, according to the syntax and semantics of the JSONPath standard [[RFC9535](#rfc9535)]. If the `Path` property is not a valid JSONPath expression [[RFC9535](#rfc9535)], the attribute selector SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. If the evaluation of a valid expression fails, it SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
@@ -612,6 +612,7 @@ This is the first version of this profile; its previous stage was Committee Spec
 - [Annex D](#annex-d-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
 - An empty nodelist from a `Path` expression with `MustBePresent` set to `true` returns `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:missing-attribute`, not `syntax-error` (@sec:attribute-selector-evaluation), as in [[ACAL-Core-1.0](#acal-core-10)] Section 8.4.7.
 - The introduction of the conformance tables (@sec:conformance-tables) says that the tables list the portions relevant to a claim of conformance, that an item marked `M` is mandatory to implement and that an item marked `O` is optional, as in [[ACAL-Core-1.0](#acal-core-10)] Section 11.2.
+- The `Body` of a `Content` object to which this profile applies may be a JSON array as well as a JSON object (@sec:structures, @sec:attribute-selector-evaluation), as in [[JACAL-Core-1.0](#jacal-core-10)]; before, an array had to be wrapped in an object. A selected node whose value is an array still does not convert to an `entity` value.
 - Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; and the references are corrected.
 
 ## Revision History {.unnumbered}

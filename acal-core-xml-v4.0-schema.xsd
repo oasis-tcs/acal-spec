@@ -115,7 +115,7 @@
 					<xs:documentation xml:lang="en">Pattern based on the ABNF syntax from section
 						4.2 of RFC 6838 (with the recommendation that &lt;type-name&gt; and
 						&lt;subtype-name&gt; SHOULD be limited to 64 characters). The standard
-						MediaType values defined in XACML core specification should be used whenever
+						MediaType values defined in XACML core specification SHALL be used whenever
 						applicable: - 'application/xml' for XML document (default); -
 						'application/json' for JSON object or array. For other cases, a media type registered at IANA may be used. </xs:documentation>
 				</xs:annotation>
@@ -131,7 +131,7 @@
 					<xs:documentation xml:lang="en"> No special encoding is needed for XML/JSON
 						data. However, if other (custom) content types are used and require specific
 						encoding, the standard identifiers specified in [Annex
-						D.11](#d11-content-encodings) SHOULD be used whenever applicable, e.g.
+						D.11](#d11-content-encodings) SHALL be used whenever applicable, e.g.
 						'base64' or else one of the standard [*Transfer Encodings* names registered
 						at
 						IANA](https://www.iana.org/assignments/transfer-encodings/transfer-encodings.xhtml).
@@ -635,8 +635,9 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 					<xs:element ref="xacml:Argument" minOccurs="0" maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation xml:lang="en"> Optional argument(s) to the referenced
-								Policy The arguments SHALL match the Policy's Parameter definitions
-								in the same order of declaration. </xs:documentation>
+								Policy. Positional arguments SHALL match the Policy's `Parameter`
+								definitions in the same order of declaration; a named argument SHALL
+								match the definition of the `Parameter` it names (Core 7.11). </xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -1216,9 +1217,10 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 					<xs:element ref="xacml:Argument" minOccurs="0" maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation xml:lang="en"> Optional argument(s) to the referenced
-								SharedVariableDefinition. The arguments SHALL match the
-								SharedVariableDefinition's Parameter definitions in the same order
-								of declaration. </xs:documentation>
+								SharedVariableDefinition. Positional arguments SHALL match the
+								SharedVariableDefinition's `Parameter` definitions in the same order
+								of declaration; a named argument SHALL match the definition of the
+								`Parameter` it names (Core 7.24b). </xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>

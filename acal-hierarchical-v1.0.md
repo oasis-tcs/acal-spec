@@ -181,7 +181,7 @@ See Section 2 of [[ACAL-Core-1.0](#acal-core-10)].
 
 `Hierarchy`
 
-: A directed graph of nodes representing a resource, in which every arc represents an immediate-parent relationship between two nodes. See [Section 4.2](#42-hierarchy-glossary) for the three kinds of hierarchy this profile addresses.
+: A directed graph of nodes representing a resource, in which every arc represents an immediate-parent relationship between two nodes. The graph may contain cycles. See [Section 4.2](#42-hierarchy-glossary) for two special cases.
 
 `Node`
 
@@ -189,7 +189,7 @@ See Section 2 of [[ACAL-Core-1.0](#acal-core-10)].
 
 `Ancestor`
 
-: With respect to a given node, any node reachable by following one or more immediate-parent arcs from the given node. A node is not its own ancestor.
+: With respect to a given node, any node other than the given node that is reachable by following one or more immediate-parent arcs from the given node. A node is not its own ancestor, including where a cycle of immediate-parent arcs reaches it.
 
 ### 2.1.3 Related terms
 
@@ -237,19 +237,17 @@ The governing principle of this profile, carried forward from [[Hier](#hier)]: a
 
 ## 4.2 Hierarchy Glossary
 
-This profile addresses three kinds of hierarchy:
+A hierarchy ([Section 2.1.2](#212-terms-defined-in-this-document)) is a directed graph and may contain cycles. Two special cases of a hierarchy are common:
 
-`Single-rooted hierarchy`
+`Tree`
 
-: Every node has at most one parent, and there is exactly one node with no parent (the root). Equivalent to a tree.
+: Every node has at most one parent, and there is exactly one node with no parent (the root).
 
 `DAG (Directed Acyclic Graph)`
 
-: A node may have more than one parent, but no node is its own ancestor.
+: A node may have more than one parent, and the graph has no cycle of immediate-parent arcs.
 
-`Polyarchy`
-
-: Multiple disjoint hierarchies that may be related to one another, including via cycles introduced by switching from one hierarchy to another. The most general case; this profile's ancestor-attribute scheme ([Section 5.3](#53-nodes-identified-by-ancestor-attributes)) makes no assumption about which of the three shapes is in use.
+This profile's ancestor-attribute scheme ([Section 5.3](#53-nodes-identified-by-ancestor-attributes)) makes no assumption about the shape of the hierarchy.
 
 ## 4.3 Changes From the Previous Version
 
@@ -261,6 +259,7 @@ The following substantive changes and decisions apply relative to the XACML 3.0 
 - **Erratum 3 (malformed URNs).** CS02 §5 gives five attribute identifiers with a doubled colon after `oasis` (`urn:oasis::names:tc:xacml:…`). This document's identifiers ([Annex C.3](#c3-attributes)) correct this.
 - **Erratum 4 (non-existent datatype).** CS02 §2.2/§5.2 specify the `resource-id`/`document-id` DataType as `http://urn:oasis:names:tc:xacml:1.0:data-type:anyURI` (§2.2) or the same URN without the `http://` prefix (§5.2) — neither identifies an actual XACML or ACAL data type. This document uses ACAL's own `urn:oasis:names:tc:acal:1.0:data-type:anyURI`.
 - **Erratum 5 (XACML 2.0 leftover).** CS02 §3.1 refers to XACML 2.0's `<Resource>` element, which does not exist in XACML 3.0 or ACAL. This document uses `RequestEntityType`.
+- **Several paths to a node.** [XACML 3.0 HRP](#hier) §2.2 requires a separate `resource-id` attribute for each fully resolved, absolute path to the node ("SHALL be present in the Request Context for each such path"). [Section 5.2](#52-nodes-identified-by-uri) requires the URI of one path, as one value of the single `resource-id` attribute, and permits the URIs of any of the other paths as further values of that attribute.
 - **Normal form of the URI.** [XACML 3.0 HRP](#hier) §2.2 requires the path components in "the canonical form for such path components at the `<authority>`". [Section 5.2](#52-nodes-identified-by-uri) instead requires the form that results from the syntax-based normalization of [[RFC3986](#rfc3986)] Section 6.2.2.
 - **§2.2.1 (the `xpointer(…)` URI-reference representation for XML documents) is dropped from ACAL 1.0.** It is referenced by neither CS02 §6 nor §7 (no conformance clause exists for it in the published profile), and its percent-encoded XPath-in-a-fragment syntax duplicates the function of [Section 5.1](#51-nodes-in-xml-documents)'s `content-selector`-based scheme without adding capability. It may be reconsidered for a future version if an implementer needs it.
 - **JSON content is out of scope for this version.** [Section 5.1](#51-nodes-in-xml-documents) (nodes in XML documents) applies only to XML `Content`; a JSONPath counterpart, paired with the ACAL JSONPath Profile, is a known and deliberate gap rather than an oversight — the JSONPath Profile does not yet define the identifier and conformance apparatus such a counterpart would depend on. This version does not define such a counterpart, and the XPath-expression scheme of the ACAL Multiple Decision Profile makes the same choice for the same reason.
@@ -296,9 +295,9 @@ A node is identified as the single node of an XML document selected by an XPath 
 
 ## 5.2 Nodes Identified by URI
 
-A node is identified by a single, fully-resolved hierarchical URI, such as a file-system path.
+A node is identified by a fully-resolved hierarchical URI, such as a file-system path, for a path from a root to the node; where there is more than one such path, each path has its own URI.
 
-**Node identity.** The URI:
+**Node identity.** Each URI:
 
 - SHALL conform to [[RFC3986](#rfc3986)].
 - SHALL use the `file:` scheme unless a more specific standard scheme applies to the resource (for example `http:`/`https:` for a web-addressable resource).
@@ -307,9 +306,9 @@ A node is identified by a single, fully-resolved hierarchical URI, such as a fil
 - SHALL NOT end with a trailing `/`; and
 - SHALL have each run of repeated `/` characters within its path component collapsed to a single `/`.
 
-**Request construction.** The `RequestEntityType` object holding the resource's attributes SHALL include exactly one `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:resource:resource-id` (defined by [[ACAL-Core-1.0](#acal-core-10)] Annex D.5) and `DataType` `urn:oasis:names:tc:acal:1.0:data-type:anyURI`. Its `Value` property SHALL contain exactly one value, the fully-resolved URI.
+**Request construction.** The `RequestEntityType` object holding the resource's attributes SHALL include exactly one `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:resource:resource-id` (defined by [[ACAL-Core-1.0](#acal-core-10)] Annex D.5) and `DataType` `urn:oasis:names:tc:acal:1.0:data-type:anyURI`. Its `Value` property SHALL contain the fully-resolved URI of one path from a root to the node, and MAY also contain the fully-resolved URI of any other such path.
 
-A `RequestEntityType` object identifying a resource using this scheme SHALL NOT contain a parent or ancestor attribute ([Section 5.3](#53-nodes-identified-by-ancestor-attributes)) — the URI already encodes the node's position in the hierarchy, so separate ancestor attributes would be redundant and could contradict it.
+A `RequestEntityType` object identifying a resource using this scheme SHALL NOT contain a parent or ancestor attribute ([Section 5.3](#53-nodes-identified-by-ancestor-attributes)) — the URIs already encode the node's position in the hierarchy, so separate ancestor attributes would be redundant and could contradict them.
 
 **Profile identifier.** `urn:oasis:names:tc:acal:1.0:profile:hierarchical:URI-node-id` (deprecated identifiers: `urn:oasis:names:tc:xacml:3.0:profile:hierarchical:URI-node-id` and `urn:oasis:names:tc:xacml:3.0:profile:hierarchical:non-xml-node-id`; see Erratum 1 in [Section 4.3](#43-changes-from-the-previous-version)).
 
@@ -317,7 +316,7 @@ A `RequestEntityType` object identifying a resource using this scheme SHALL NOT 
 
 A node's ancestors, and optionally the node itself, are identified using dedicated attributes rather than embedding the hierarchy in a single value.
 
-**Node identity.** An ancestor node MAY be identified using an attribute value of any ACAL data type. There is no requirement that different ancestor nodes, or nodes within the same hierarchy, use the same data type — see [Section 4.3](#43-changes-from-the-previous-version).
+**Node identity.** An ancestor node may be identified using an attribute value of any ACAL data type. There is no requirement that different ancestor nodes, or nodes within the same hierarchy, use the same data type — see [Section 4.3](#43-changes-from-the-previous-version).
 
 **Request construction.** The `RequestEntityType` object holding the resource's attributes SHALL include a `RequestAttributeType` object using the appropriate `AttributeId` below ([Annex C.3](#c3-attributes)) for each combination of `DataType` and `Issuer` in which the requested node's ancestors are represented:
 
