@@ -261,6 +261,7 @@ The following substantive changes and decisions apply relative to the XACML 3.0 
 - **Erratum 3 (malformed URNs).** CS02 §5 gives five attribute identifiers with a doubled colon after `oasis` (`urn:oasis::names:tc:xacml:…`). This document's identifiers ([Annex C.3](#c3-attributes)) correct this.
 - **Erratum 4 (non-existent datatype).** CS02 §2.2/§5.2 specify the `resource-id`/`document-id` DataType as `http://urn:oasis:names:tc:xacml:1.0:data-type:anyURI` (§2.2) or the same URN without the `http://` prefix (§5.2) — neither identifies an actual XACML or ACAL data type. This document uses ACAL's own `urn:oasis:names:tc:acal:1.0:data-type:anyURI`.
 - **Erratum 5 (XACML 2.0 leftover).** CS02 §3.1 refers to XACML 2.0's `<Resource>` element, which does not exist in XACML 3.0 or ACAL. This document uses `RequestEntityType`.
+- **Normal form of the URI.** [XACML 3.0 HRP](#hier) §2.2 requires the path components in "the canonical form for such path components at the `<authority>`". [Section 5.2](#52-nodes-identified-by-uri) instead requires the form that results from the syntax-based normalization of [[RFC3986](#rfc3986)] Section 6.2.2.
 - **§2.2.1 (the `xpointer(…)` URI-reference representation for XML documents) is dropped from ACAL 1.0.** It is referenced by neither CS02 §6 nor §7 (no conformance clause exists for it in the published profile), and its percent-encoded XPath-in-a-fragment syntax duplicates the function of [Section 5.1](#51-nodes-in-xml-documents)'s `content-selector`-based scheme without adding capability. It may be reconsidered for a future version if an implementer needs it.
 - **JSON content is out of scope for this version.** [Section 5.1](#51-nodes-in-xml-documents) (nodes in XML documents) applies only to XML `Content`; a JSONPath counterpart, paired with the ACAL JSONPath Profile, is a known and deliberate gap rather than an oversight — the JSONPath Profile does not yet define the identifier and conformance apparatus such a counterpart would depend on. This version does not define such a counterpart, and the XPath-expression scheme of the ACAL Multiple Decision Profile makes the same choice for the same reason.
 - **Renames**, consistent with ACAL Core: `<Attributes>` → `RequestEntityType`; `<Attribute>` → `RequestAttributeType`; `<AttributeValue>` → `Value`; `<Resource>` → gone (erratum 5, above).
@@ -288,8 +289,8 @@ A node is identified as the single node of an XML document selected by an XPath 
 **Request construction.** The `RequestEntityType` object holding the resource's attributes:
 
 1. SHALL include a `Content` property whose `Body` is the XML document.
-2. SHALL include a `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:content-selector` (defined by [[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3) whose value is the XPath expression locating the node.
-3. MAY include a `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:resource:document-id` ([Annex C.3](#c3-attributes)) when it is necessary to indicate which document instance the node belongs to — for example when a single request's resource category could otherwise be read as referring to more than one document.
+2. SHALL include exactly one `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:content-selector` (defined by [[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3). Its `Value` property SHALL contain exactly one value, the XPath expression locating the node.
+3. MAY include a `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:resource:document-id` ([Annex C.3](#c3-attributes)) when it is necessary to indicate which document instance the node belongs to — for example when a single request's resource category could otherwise be read as referring to more than one document. It SHALL NOT include more than one such object; if it includes one, the `Value` property of that object SHALL contain exactly one value.
 
 **Profile identifier.** `urn:oasis:names:tc:acal:1.0:profile:hierarchical:xml-node-id` (deprecated identifier: `urn:oasis:names:tc:xacml:3.0:profile:hierarchical:xml-node-id`).
 
@@ -302,11 +303,11 @@ A node is identified by a single, fully-resolved hierarchical URI, such as a fil
 - SHALL conform to [[RFC3986](#rfc3986)].
 - SHALL use the `file:` scheme unless a more specific standard scheme applies to the resource (for example `http:`/`https:` for a web-addressable resource).
 - SHALL be hierarchical, with path segments separated by `/`.
-- SHALL be absolute, with all components in canonical form;
+- SHALL be absolute and in the form that results from the syntax-based normalization of [[RFC3986](#rfc3986)] Section 6.2.2;
 - SHALL NOT end with a trailing `/`; and
 - SHALL have each run of repeated `/` characters within its path component collapsed to a single `/`.
 
-**Request construction.** The `RequestEntityType` object holding the resource's attributes SHALL include exactly one `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:resource:resource-id` (defined by [[ACAL-Core-1.0](#acal-core-10)] Annex D.5) and `DataType` `urn:oasis:names:tc:acal:1.0:data-type:anyURI`, whose value is the fully-resolved URI.
+**Request construction.** The `RequestEntityType` object holding the resource's attributes SHALL include exactly one `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:resource:resource-id` (defined by [[ACAL-Core-1.0](#acal-core-10)] Annex D.5) and `DataType` `urn:oasis:names:tc:acal:1.0:data-type:anyURI`. Its `Value` property SHALL contain exactly one value, the fully-resolved URI.
 
 A `RequestEntityType` object identifying a resource using this scheme SHALL NOT contain a parent or ancestor attribute ([Section 5.3](#53-nodes-identified-by-ancestor-attributes)) — the URI already encodes the node's position in the hierarchy, so separate ancestor attributes would be redundant and could contradict it.
 
