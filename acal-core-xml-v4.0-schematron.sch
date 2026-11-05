@@ -36,7 +36,7 @@
  	<title>ACAL constraint on RequestDefaults property: {OCL} self-gt;isUnique(oclType())</title>	
 	<rule context="xacml:Request">
 		<!-- 
-		WARNING: collect al the QNames of the elements in RequestDefaults substitution group (of type xacml:DefaultsType) from the ACAL Profiles supported by your implementation (e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion as follows:
+		WARNING: collect all the QNames of the elements in RequestDefaults substitution group (of type xacml:RequestDefaultsType) from the ACAL Profiles supported by your implementation (e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion as follows:
 
 		<assert test="count(ns1:SomeDefaults1) le 1 and count(ns2:SomeDefaults2) le 1 and...">Duplicate RequestDefaults element</assert>
 		
@@ -46,10 +46,10 @@
 		-->
 		<assert test="count(xpath:XPathRequestDefaults) le 1">Duplicate RequestDefaults element</assert>
 		<!--
-		If your implementations supports schema-aware Schematron/XSLT processing (e.g. SAXON and likely Xalan XSLT 3.0 branch), then you may use the more generic XPath expression below:
+		If your implementation supports schema-aware Schematron/XSLT processing (e.g. SAXON and likely Xalan XSLT 3.0 branch), then you may use the more generic XPath expression below:
 		-->
 		<!-- 
-		<assert test="every $elt in element(*, xacml:DefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:DefaultsType) satisfies $elt/name() != $following/name())">Duplicate RequestDefaults element</assert>
+		<assert test="every $elt in element(*, xacml:RequestDefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:RequestDefaultsType) satisfies $elt/name() != $following/name())">Duplicate RequestDefaults element</assert>
 		-->
 		<!--
 		AND uncomment the  <xsl:import-schema schema-location="acal-core-xml-v4.0-schema.xsd" .../> at the beginning of this schema.
@@ -60,7 +60,7 @@
 	<title>ACAL constraint on PolicyDefaults property: {OCL} self-gt;isUnique(oclType())</title>
 	<rule context="xacml:Policy">
 		<!-- 
-		WARNING: collect al the QNames of the elements in PolicyDefaults substitution group (of type xacml:DefaultsType) from the ACAL Profiles supported by your implementation (e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion as follows:
+		WARNING: collect all the QNames of the elements in PolicyDefaults substitution group (of type xacml:PolicyDefaultsType) from the ACAL Profiles supported by your implementation (e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion as follows:
 
 		<assert test="count(ns1:SomeDefaults1) le 1 and count(ns2:SomeDefaults2) le 1 and...">Duplicate PolicyDefaults element</assert>
 		
@@ -70,44 +70,14 @@
 		-->
 		<assert test="count(xpath:XPathPolicyDefaults) le 1">Duplicate PolicyDefaults element</assert>
 		<!--
-		If your implementations supports schema-aware Schematron/XSLT processing (e.g. SAXON and likely Xalan XSLT 3.0 branch), then you may use the more generic XPath expression below:
+		If your implementation supports schema-aware Schematron/XSLT processing (e.g. SAXON and likely Xalan XSLT 3.0 branch), then you may use the more generic XPath expression below:
 		-->
 		<!-- 
-		<assert test="every $elt in element(*, xacml:DefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:DefaultsType) satisfies $elt/name() != $following/name())">Duplicate PolicyDefaults element</assert>
+		<assert test="every $elt in element(*, xacml:PolicyDefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:PolicyDefaultsType) satisfies $elt/name() != $following/name())">Duplicate PolicyDefaults element</assert>
 		-->
 		<!--
 		AND uncomment the  <xsl:import-schema schema-location="acal-core-xml-v4.0-schema.xsd" .../> at the beginning of this schema.
 		-->
-	</rule>
- </pattern>
- <pattern id="ACAL_constraint_on_AttributeType_Value_property">
-    <title>ACAL constraint (textual) on AttributeType's Value property (DataType already specified as AttributeType's property)</title>
-	<rule context="xacml:Attribute|xacml:RequestAttribute|xacml:AttributeAssignment">
-	  <assert test="not(xacml:Value/@DataType)"></assert>
-	</rule>
- </pattern>
- <pattern id="ACAL_constraint_on_ParameterType_Expression_property">
-	<title>ACAL constraint (textual) on ParameterType's Expression property (DataType already specified as ParameterType's property)</title>
-	<rule context="xacml:Parameter">
-	  <assert test="not(xacml:Value/@DataType)"></assert>
-	</rule>
- </pattern>
- <pattern id="ACAL_constraint_on_PolicyReferenceType_Expression_property">
-	<title>ACAL constraint (textual) on PolicyReference's Expression property (DataType already specified in the corresponding Parameter of the referenced element SHALL not be redefined)</title>
-	<rule context="xacml:PolicyReference">
-	  <assert test="not(xacml:Value/@DataType)"></assert>
-	</rule>
- </pattern>
- <pattern id="ACAL_constraint_on_SharedVariableReferenceType_Expression_property">
-	<title>ACAL constraint (textual) on SharedVariableReference's Expression property (DataType already specified in the corresponding Parameter of the referenced element SHALL not be redefined)</title>
-	<rule context="xacml:SharedVariableReference">
-	  <assert test="not(xacml:Value/@DataType)"></assert>
-	</rule>
- </pattern>
- <pattern id="ACAL_constraint_on_MissingAttributeDetailType_Value_property">
-	<title>ACAL constraint (textual) on MissingAttributeDetailType's Value property (DataType already specified as MissingAttributeDetail's property)</title>
-	<rule context="xacml:MissingAttributeDetail">
-	  <assert test="not(xacml:Value/@DataType)"></assert>
 	</rule>
  </pattern>
  <pattern id="ACAL_constraint_on_EntityType">
@@ -118,8 +88,7 @@
 	  <assert test="xacml:Content or xacml:Attribute"></assert>
 	</rule>
  </pattern>
- <!--
- Issue #120: the three patterns below complement the corresponding xs:unique constraints in
+ <!-- The three patterns below complement the corresponding xs:unique constraints in
  acal-core-xml-v4.0-schema.xsd (which cannot catch a duplicate AttributeId/DataType pair when
  Issuer is absent from both compared Attribute/RequestAttribute elements), for XSD 1.0-only
  consumers. Neither these patterns nor xs:unique can perform the Section 8.3 short-identifier
@@ -174,8 +143,7 @@
 	  <assert test="every $elt in xacml:RequestReference satisfies (every $following in $elt/following-sibling::xacml:RequestReference satisfies count($elt/xacml:RequestEntityReference) != count($following/xacml:RequestEntityReference) or (some $id in $elt/xacml:RequestEntityReference satisfies not($id = $following/xacml:RequestEntityReference)))"></assert>
 	</rule>
  </pattern>
- <!--
- Issue #99: the patterns that enforced (AttributeId, Category) uniqueness on
+ <!-- The patterns that enforced (AttributeId, Category) uniqueness on
  NoticeExpression/AttributeAssignmentExpression and Notice/AttributeAssignment have been removed.
  Those pairs are no longer required to be unique; whether a notice accepts repeated attribute
  assignments, and how they combine, is left to the definition of the individual obligation or

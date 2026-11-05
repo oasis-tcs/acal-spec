@@ -63,18 +63,18 @@
                                                 }
                                             },
                                             {
+                                                "AttributeDesignator": {
+                                                    "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:resource",
+                                                    "AttributeId": "urn:oasis:names:tc:acal:1.0:content-selector"
+                                                }
+                                            },
+                                            {
                                                 "Value": {
                                                     "Namespaces": {
                                                         "md": "urn:example:med:schemas:record"
                                                     },
                                                     "XPathCategory": "urn:oasis:names:tc:acal:1.0:attribute-category:resource",
                                                     "XPath": "md:record/md:medical"
-                                                }
-                                            },
-                                            {
-                                                "AttributeDesignator": {
-                                                    "Category": "urn:oasis:names:tc:acal:1.0:attribute-category:resource",
-                                                    "AttributeId": "urn:oasis:names:tc:acal:1.0:content-selector"
                                                 }
                                             }
                                         ]
