@@ -60,10 +60,10 @@ XACML 3.0 MDP says a dangling `RequestEntityReference` produces `Indeterminate` 
 | Repeated Categories ([5.3](acal-multiple-v1.0.md#53-repeated-categories)) | Cross product of repeated same-`Category` entities | ACAL Core only |
 | Reference ([5.4](acal-multiple-v1.0.md#54-reference)) | One request per `RequestReference` | ACAL Core only |
 | Scope ([5.1](acal-multiple-v1.0.md#51-nodes-identified-by-scope)) | One request per child/descendant node | ACAL Hierarchical Resource Profile (vocabulary only) |
-| XPath Expression ([5.2](acal-multiple-v1.0.md#52-nodes-identified-by-xpath-expression)) | One request per XPath-selected node | ACAL XPath Profile (`content-selector`) |
+| XPath Expression ([5.2](acal-multiple-v1.0.md#52-nodes-identified-by-xpath-expression)) | One request per XPath-selected node; an invalid expression, or one that does not return a sequence of one or more nodes, gives one `Indeterminate` result | ACAL XPath Profile (`content-selector`) |
 | Combined Decision ([6](acal-multiple-v1.0.md#6-combined-decision)) | *Merges* several decisions back into one | None of the above — orthogonal, can combine with any of them |
 
-All four request-construction schemes plus combined decision are independently optional. [Section 7](acal-multiple-v1.0.md#7-conceptual-model-for-creating-individual-decision-requests) (conceptual model) is the one mandatory section, but its *mandatoriness* is conditional — it binds an implementation only once it claims support for at least one of the other five.
+All four request-construction schemes plus combined decision are independently optional. [Section 7](acal-multiple-v1.0.md#7-conceptual-model-for-resolving-multiple-decision-requests) (conceptual model) is the one mandatory section, but its *mandatoriness* is conditional — it binds an implementation only once it claims support for at least one of the other five.
 
 ---
 

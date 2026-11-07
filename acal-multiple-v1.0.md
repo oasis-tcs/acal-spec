@@ -113,7 +113,7 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
   - [5.3 Repeated Categories](#53-repeated-categories)
   - [5.4 Reference](#54-reference)
 - [6 Combined Decision](#6-combined-decision)
-- [7 Conceptual Model for Creating Individual Decision Requests](#7-conceptual-model-for-creating-individual-decision-requests)
+- [7 Conceptual Model for Resolving Multiple Decision Requests](#7-conceptual-model-for-resolving-multiple-decision-requests)
 - [8 Examples (non-normative)](#8-examples-non-normative)
   - [8.1 Nodes Identified by Scope](#81-nodes-identified-by-scope)
   - [8.2 Nodes Identified by XPath Expression](#82-nodes-identified-by-xpath-expression)
@@ -188,10 +188,6 @@ See Section 2 of [[ACAL-Core-1.0](#acal-core-10)]. `Node`, `Hierarchy` and `Ance
 
 : With respect to a given node, any node from which the given node is reachable by following one or more immediate-parent arcs — equivalently, a node of which the given node is an `Ancestor` ([[ACAL-Hierarchical-1.0](#acal-hierarchical-10)] Section 2.1.2). A node is not its own descendant.
 
-`Individual Decision Request`
-
-: A single, complete ACAL `RequestType` object, containing exactly one `RequestEntityType` object per attribute category (per [[ACAL-Core-1.0](#acal-core-10)] Section 7.31's ordinary, non-multiple-decision rule), produced by resolving one or more of the schemes in [Section 5](#5-request-construction-schemes) against an original request that used them.
-
 ### 2.1.3 Related terms
 
 None.
@@ -233,7 +229,7 @@ None.
 
 A single ACAL request ordinarily concerns one resource and produces one decision. This profile defines how a Policy Enforcement Point (PEP) may instead submit one request that concerns several resources, or that must be evaluated as several logically separate requests, and how the corresponding several decisions relate to each other in the response — including, optionally, how they combine into a single overall decision.
 
-Four schemes construct multiple decision requests, each addressing a different way multiplicity arises in practice: several resource representations already present in one request ([Section 5.3](#53-repeated-categories)), a request that itself names several other requests by reference ([Section 5.4](#54-reference)), a single resource expanded to include its children or descendants in a hierarchy ([Section 5.1](#51-nodes-identified-by-scope)), and a single resource's XML content expanded to one request per matching node ([Section 5.2](#52-nodes-identified-by-xpath-expression)). [Section 7](#7-conceptual-model-for-creating-individual-decision-requests) describes, as a non-binding conceptual model, how a PDP resolves any combination of these into the set of `Individual Decision Request`s it must actually evaluate.
+Four schemes construct multiple decision requests, each addressing a different way multiplicity arises in practice: several resource representations already present in one request ([Section 5.3](#53-repeated-categories)), a request that itself names several other requests by reference ([Section 5.4](#54-reference)), a single resource expanded to include its children or descendants in a hierarchy ([Section 5.1](#51-nodes-identified-by-scope)), and a single resource's XML content expanded to one request per matching node ([Section 5.2](#52-nodes-identified-by-xpath-expression)). [Section 7](#7-conceptual-model-for-resolving-multiple-decision-requests) describes, as a non-binding conceptual model, how a PDP resolves any combination of these into the requests it must actually evaluate.
 
 ## 4.2 Changes From the Previous Version
 
@@ -244,7 +240,8 @@ Porting this profile involves more than renaming its XML vocabulary; every schem
 - **The `Notice` merge rewrites the combined-decision rules.** XACML 3.0 MDP's combined-decision rule about "obligations or advice" is restated over ACAL's merged `NoticeType`/`IsObligation` model — see [Section 6](#6-combined-decision).
 - **Two schemes depend on the ACAL Hierarchical Resource Profile.** The scope scheme's `Children`/`Descendants` values need a definition of hierarchy membership; the XPath-expression scheme rewrites its `multiple:content-selector` attribute into the plain `content-selector` HRP takes a normative dependency on. This is why this profile includes all four schemes.
 - **The XPath-expression scheme** ([Section 5.2](#52-nodes-identified-by-xpath-expression)) **applies only when the resource's `Content` is itself an XML document**, for the same reason and by the same decision as the ACAL Hierarchical Resource Profile's XML-document scheme: the ACAL JSONPath Profile does not yet define the identifier and conformance apparatus a JSON-*content* counterpart would depend on. This restricts the resource's `Content`, not the serialization carrying the request — see [Section 8.2](#82-nodes-identified-by-xpath-expression) for a worked example of this scheme in all three ACAL representations. A JSON-content counterpart is outside the scope of this version.
-- **Invalid references have an outcome.** A request with sibling `RequestReferenceType` objects that denote the same set, or with a duplicate `RequestEntityReference` value, is rejected at validation time when the schema tooling enforces the rule and otherwise produces one `Indeterminate` result with `syntax-error` ([Section 5.4](#54-reference)); an XPath expression of the XPath-expression scheme that is invalid or does not return a sequence of nodes produces one `Indeterminate` result with `syntax-error` ([Section 5.2](#52-nodes-identified-by-xpath-expression)). XACML 3.0 MDP specified neither.
+- **The term `Individual Decision Request` is dropped.** XACML 3.0 MDP §3 defines it as the request context that corresponds to each `Result` element, but an invalid XPath expression gives a `Result` with no such request, and so does an invalid reference that schema tooling does not reject at validation time. [Section 5.2](#52-nodes-identified-by-xpath-expression) and [Section 5.4](#54-reference) give a result instead of requests in those cases, the other schemes give requests, and [Section 7](#7-conceptual-model-for-resolving-multiple-decision-requests) evaluates the requests that remain and carries the results through.
+- **Invalid references have an outcome.** A request with sibling `RequestReferenceType` objects that denote the same set, or with a duplicate `RequestEntityReference` value, is rejected at validation time when the schema tooling enforces the rule and otherwise produces one `Indeterminate` result with `syntax-error` ([Section 5.4](#54-reference)); an XPath expression of the XPath-expression scheme that is invalid or does not return a sequence of one or more nodes produces one `Indeterminate` result with `syntax-error` ([Section 5.2](#52-nodes-identified-by-xpath-expression)). XACML 3.0 MDP specified neither.
 - **Identifier namespace.** All identifiers introduced by this profile use the `urn:oasis:names:tc:acal:1.0:` prefix, with the XACML 3.0 identifiers recorded as deprecated equivalents. The XACML identifier `…:multiple:repeated-attribute-categories` is respelled `…:multiple:repeated-categories`, since ACAL's `RequestEntity` rename already dropped "Attributes" from the underlying object type's name.
 - **Target restructure.** Example policies in this document use the boolean `Apply` form rather than XACML 3.0's `AnyOf`/`AllOf`/`Match` structure, consistent with ACAL Core.
 - **No new schema artifacts.** Like the ACAL Hierarchical Resource Profile, this profile defines attribute identifiers and request-construction/evaluation rules, not new object types; `MultiRequestsType`, `RequestReferenceType` and `RequestEntityReference` already exist in ACAL Core's XSD, JSON Schema and YAML structural schema.
@@ -258,7 +255,7 @@ The types `RequestEntityType`, `RequestAttributeType`, `MultiRequestsType`, `Req
 
 ## 5.1 Nodes Identified by Scope
 
-A single resource `RequestAttribute` is expanded, at evaluation time, into one `Individual Decision Request` per node the `scope` value selects.
+A single resource `RequestAttribute` is expanded, at evaluation time, into one request per node the `scope` value selects.
 
 **Attribute.** The resource `RequestEntityType` object carries a `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:resource:scope` ([Annex C.3](#c3-attributes)), `DataType` `urn:oasis:names:tc:acal:1.0:data-type:string`, whose value is one of:
 
@@ -276,20 +273,20 @@ A single resource `RequestAttribute` is expanded, at evaluation time, into one `
 
 This scheme does not itself define how an implementation determines which nodes are children or descendants of a given resource — that is a property of the hierarchy the resource belongs to, external to the request, exactly as in [XACML 3.0 Multiple Decision Profile](#multi) §3.1.
 
-**Request resolution.** For each node selected, an `Individual Decision Request` is produced naming that single resource; the `scope` attribute is dropped from each. The resource `RequestEntityType` object of each generated request carries a `resource-id` attribute with the same `DataType`, `Issuer` and `IncludeInResult` properties as the original `resource-id` attribute and with value(s) identifying that single resource; every other `RequestAttribute` of the original resource entity, except the dropped `scope` attribute, is preserved unchanged.
+**Request resolution.** For each node selected, a request is produced naming that single resource; the `scope` attribute is dropped from each. The resource `RequestEntityType` object of each generated request carries a `resource-id` attribute with the same `DataType`, `Issuer` and `IncludeInResult` properties as the original `resource-id` attribute and with value(s) identifying that single resource; every other `RequestAttribute` of the original resource entity, except the dropped `scope` attribute, is preserved unchanged.
 
 
 **Profile identifier.** `urn:oasis:names:tc:acal:1.0:profile:multiple:scope` (deprecated identifier: `urn:oasis:names:tc:xacml:3.0:profile:multiple:scope`).
 
 ## 5.2 Nodes Identified by XPath Expression
 
-A single resource `RequestAttribute` naming an XPath expression is expanded, at evaluation time, into one `Individual Decision Request` per node the expression selects within the resource's XML `Content`.
+A single resource `RequestAttribute` naming an XPath expression is expanded, at evaluation time, into one request per node the expression selects within the resource's XML `Content`.
 
-**Applicability.** This scheme applies only to XML `Content` — see [Section 4.2](#42-changes-from-the-previous-version). If the expression is not a valid XPath expression or does not return a sequence of nodes, the working request produces one `Indeterminate` result with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. An empty sequence of nodes is a sequence of nodes: it produces no `Individual Decision Request`.
+**Applicability.** This scheme applies only to XML `Content` — see [Section 4.2](#42-changes-from-the-previous-version). If the expression is not a valid XPath expression, or does not return a sequence of one or more nodes (an empty sequence included), the working request produces one `Indeterminate` result with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
 
 **Attribute.** The resource `RequestEntityType` object carries a `Content` property (the XML document) and a `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:profile:multiple:content-selector` ([Annex C.3](#c3-attributes)), `DataType` `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` ([[ACAL-XPath-1.0](#acal-xpath-10)] Annex C.2.1), whose value is an XPath expression evaluating to a set of nodes in that `Content`.
 
-**Request resolution.** For each node selected, an `Individual Decision Request` is produced whose resource `RequestEntityType` object carries the same `Content`, with the `…:multiple:content-selector` attribute removed and replaced by a `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:content-selector` ([[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3) whose value is an XPath expression selecting that single node. `Issuer` and `IncludeInResult` properties are preserved. Where several resource categories each carry a `…:multiple:content-selector` attribute, the `Individual Decision Request`s are the cross product of the selected node sets — one request per combination, one node substituted per category.
+**Request resolution.** For each node selected, a request is produced whose resource `RequestEntityType` object carries the same `Content`, with the `…:multiple:content-selector` attribute removed and replaced by a `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:content-selector` ([[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3) whose value is an XPath expression selecting that single node. `Issuer` and `IncludeInResult` properties are preserved. Where several resource categories each carry a `…:multiple:content-selector` attribute, the requests are the cross product of the selected node sets — one request per combination, one node substituted per category.
 
 **Profile identifier.** `urn:oasis:names:tc:acal:1.0:profile:multiple:xpath-expression` (deprecated identifier: `urn:oasis:names:tc:xacml:3.0:profile:multiple:xpath-expression`).
 
@@ -299,7 +296,7 @@ Several `RequestEntityType` objects sharing the same `Category` are expanded int
 
 **Request structure.** The request contains more than one `RequestEntityType` object with the same `Category` value — ordinarily a syntax error ([[ACAL-Core-1.0](#acal-core-10)] Section 7.31), permitted here because this scheme is implemented ([[ACAL-Core-1.0](#acal-core-10)] Section 7.31's `RequestEntity` property already states this carve-out).
 
-**Request resolution.** One request is produced per combination of repeated categories, each containing exactly one `RequestEntityType` object per repeated `Category`, together with every non-repeated category unchanged. If any of the `RequestEntityType` objects in a combination carries a `scope` attribute other than `Immediate` ([Section 5.1](#51-nodes-identified-by-scope)) or a `…:multiple:content-selector` attribute ([Section 5.2](#52-nodes-identified-by-xpath-expression)), that expansion is applied per [Section 7](#7-conceptual-model-for-creating-individual-decision-requests); otherwise the request is an `Individual Decision Request`. The results are combined per [Section 6](#6-combined-decision) if the original request's `CombinedDecision` property is `true`, and otherwise become the `Result` objects of a single `ResponseType` object.
+**Request resolution.** One request is produced per combination of repeated categories, each containing exactly one `RequestEntityType` object per repeated `Category`, together with every non-repeated category unchanged. If any of the `RequestEntityType` objects in a combination carries a `scope` attribute other than `Immediate` ([Section 5.1](#51-nodes-identified-by-scope)) or a `…:multiple:content-selector` attribute ([Section 5.2](#52-nodes-identified-by-xpath-expression)), that expansion is applied per [Section 7](#7-conceptual-model-for-resolving-multiple-decision-requests); otherwise the request is evaluated as it stands ([Section 7](#7-conceptual-model-for-resolving-multiple-decision-requests) step 4). The results are combined per [Section 6](#6-combined-decision) if the original request's `CombinedDecision` property is `true`, and otherwise become the `Result` objects of a single `ResponseType` object.
 
 **Profile identifier.** `urn:oasis:names:tc:acal:1.0:profile:multiple:repeated-categories` (deprecated identifier: `urn:oasis:names:tc:xacml:3.0:profile:multiple:repeated-attribute-categories`; respelled, see [Section 4.2](#42-changes-from-the-previous-version)).
 
@@ -312,7 +309,7 @@ A request names several other requests by reference to `RequestEntityType` objec
 **Dangling references.** A `RequestEntityReference` value that does not match the `Id` of any `RequestEntityType` object in the request is invalid. Two enforcement layers apply and are both normative:
 
 1. A schema-validating implementation using the XML representation SHALL reject a dangling reference at validation time, before evaluation begins, via [[XACML-Core-4.0](#xacml-core-40)]'s XSD keyref. Neither JSON Schema nor a structural YAML check provides an equivalent validation-time mechanism for this rule — see [Section 9](#9-representation-considerations) for what each representation's own schema tooling actually enforces.
-2. A non-schema-validating implementation MUST still detect a dangling reference at evaluation time and produce `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error` for the corresponding `Individual Decision Request`.
+2. A non-schema-validating implementation MUST still detect a dangling reference at evaluation time and produce `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error` for the `RequestReferenceType` object that contains the dangling reference.
 
 Both layers exist so the same guarantee holds whether or not an implementation validates against the schema before evaluating.
 
@@ -320,7 +317,7 @@ Both layers exist so the same guarantee holds whether or not an implementation v
 
 **RequestEntityReference uniqueness**: a `RequestReferenceType` object SHALL NOT contain duplicate `RequestEntityReference` values, as per the `RequestEntityReference` property definition in [[ACAL-Core-1.0](#acal-core-10)] Section 7.39 (`unique` modifier). A request that breaks this rule is invalid and is handled as stated for sibling uniqueness.
 
-**Request resolution.** One request is produced per `RequestReferenceType` object, containing exactly the `RequestEntityType` objects its `RequestEntityReference` values name (by reference, resolved to the actual objects), and no others; if that request still contains repeated categories, a `scope` attribute other than `Immediate` ([Section 5.1](#51-nodes-identified-by-scope)), or a `…:multiple:content-selector` attribute ([Section 5.2](#52-nodes-identified-by-xpath-expression)), it is expanded further per [Section 7](#7-conceptual-model-for-creating-individual-decision-requests); otherwise it is an `Individual Decision Request`. The results are combined per [Section 6](#6-combined-decision) if the original request's `CombinedDecision` property is `true`, and otherwise become the `Result` objects of a single `ResponseType` object.
+**Request resolution.** One request is produced per `RequestReferenceType` object, containing exactly the `RequestEntityType` objects its `RequestEntityReference` values name (by reference, resolved to the actual objects), and no others; if that request still contains repeated categories, a `scope` attribute other than `Immediate` ([Section 5.1](#51-nodes-identified-by-scope)), or a `…:multiple:content-selector` attribute ([Section 5.2](#52-nodes-identified-by-xpath-expression)), it is expanded further per [Section 7](#7-conceptual-model-for-resolving-multiple-decision-requests); otherwise it is evaluated as it stands ([Section 7](#7-conceptual-model-for-resolving-multiple-decision-requests) step 4). The results are combined per [Section 6](#6-combined-decision) if the original request's `CombinedDecision` property is `true`, and otherwise become the `Result` objects of a single `ResponseType` object.
 
 **Profile identifier.** `urn:oasis:names:tc:acal:1.0:profile:multiple:reference` (deprecated identifier: `urn:oasis:names:tc:xacml:3.0:profile:multiple:reference`).
 
@@ -342,16 +339,16 @@ A *Combined Decision* is triggered by the `RequestType` object's `CombinedDecisi
 ---
 
 
-# 7 Conceptual Model for Creating Individual Decision Requests
+# 7 Conceptual Model for Resolving Multiple Decision Requests
 
 Support for this section, in the sense that its externally observable results MUST hold, is **MANDATORY** for any implementation claiming support for one or more of the four schemes in [Section 5](#5-request-construction-schemes) or for [Section 6](#6-combined-decision); it has no effect, and imposes no requirement, on an implementation that supports none of them.
 
-This profile does **NOT** require that an implementation's actual evaluation of a request follow the steps below, or that `Individual Decision Request` objects literally be constructed. It requires only that the `ResultType` objects produced be the same as if the steps below were followed.
+This profile does **NOT** require that an implementation's actual evaluation of a request follow the steps below, or that the requests of step 4 literally be constructed. It requires only that the `ResultType` objects produced be the same as if the steps below were followed.
 
 1. Resolve [Section 5.4](#54-reference) (reference): if the request is invalid because sibling `RequestReferenceType` objects denote the same set or a `RequestReferenceType` object contains a duplicate `RequestEntityReference` value, the outcome is the one stated in Section 5.4 and steps 2–5 do not apply. Otherwise, if the request's `MultiRequests` property is present, produce one working request per `RequestReferenceType` object, each containing exactly its referenced `RequestEntityType` objects. If `MultiRequests` is absent, there is exactly one working request, the original request itself.
 2. Resolve [Section 5.3](#53-repeated-categories) (repeated categories): for each working request from step 1, if it contains more than one `RequestEntityType` object sharing a `Category`, expand it into the cross product of one working request per combination.
-3. Resolve [Section 5.1](#51-nodes-identified-by-scope) (scope) and [Section 5.2](#52-nodes-identified-by-xpath-expression) (XPath expression): for each working request from step 2, if any `RequestEntityType` object carries a `scope` attribute other than `Immediate`, or a `…:multiple:content-selector` attribute, expand it per that scheme's request-resolution rule; if the XPath expression of a `…:multiple:content-selector` attribute is invalid or does not return a sequence of nodes, the outcome is the one stated in [Section 5.2](#52-nodes-identified-by-xpath-expression) and is carried forward as stated in step 4. Otherwise, where more than one such attribute is present across categories, the expansion is the cross product across all of them.
-4. Evaluate each resulting `Individual Decision Request` per [[ACAL-Core-1.0](#acal-core-10)], producing one `ResultType` object per request. Any `Indeterminate` result produced during steps 1–3 (a dangling reference, an invalid expression, etc.) is carried forward as a `ResultType` object at this step rather than resolved further.
+3. Resolve [Section 5.1](#51-nodes-identified-by-scope) (scope) and [Section 5.2](#52-nodes-identified-by-xpath-expression) (XPath expression): for each working request from step 2, if any `RequestEntityType` object carries a `scope` attribute other than `Immediate`, or a `…:multiple:content-selector` attribute, expand it per that scheme's request-resolution rule; if the XPath expression of a `…:multiple:content-selector` attribute is invalid or does not return a sequence of one or more nodes, the outcome is the one stated in [Section 5.2](#52-nodes-identified-by-xpath-expression) and is carried forward as stated in step 4. Otherwise, where more than one such attribute is present across categories, the expansion is the cross product across all of them.
+4. Evaluate each request left after step 3 per [[ACAL-Core-1.0](#acal-core-10)], producing one `ResultType` object per request. Any `Indeterminate` result produced during steps 1–3 (a dangling reference, an invalid XPath expression, a selection of no node, etc.) is carried forward as a `ResultType` object at this step rather than resolved further.
 5. If the original request's `CombinedDecision` property is `true`, apply [Section 6](#6-combined-decision) to the collected `ResultType` objects, producing the single `ResultType` object of the final `ResponseType` object. Otherwise, the final `ResponseType` object's `Result` property is the collected `ResultType` objects from step 4, in any order.
 
 ---
@@ -430,7 +427,7 @@ RequestEntity:
 
 **What this shows**
 
-- Resolves, per [Section 5.1](#51-nodes-identified-by-scope), into one `Individual Decision Request` for the folder itself and one per `Child` ([Section 2.1.2](#212-terms-defined-in-this-document)) — which nodes those are is determined externally to this request, by the hierarchy the resource belongs to (e.g. via [[ACAL-Hierarchical-1.0](#acal-hierarchical-10)]), not by anything the request itself states.
+- Resolves, per [Section 5.1](#51-nodes-identified-by-scope), into one request for the folder itself and one per `Child` ([Section 2.1.2](#212-terms-defined-in-this-document)) — which nodes those are is determined externally to this request, by the hierarchy the resource belongs to (e.g. via [[ACAL-Hierarchical-1.0](#acal-hierarchical-10)]), not by anything the request itself states.
 - Each generated request drops the `scope` attribute and carries `resource-id` value(s) identifying its individual node (the original value for the folder itself, an identifier of the child for each child), in all three representations.
 
 ---
@@ -518,7 +515,7 @@ RequestEntity:
 
 **What this shows**
 
-- Resolves, per [Section 5.2](#52-nodes-identified-by-xpath-expression), into one `Individual Decision Request` per matched `<md:patient>` node, each carrying the same `Content` with `…:multiple:content-selector` replaced by a plain `content-selector` attribute ([[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3) selecting that single node.
+- Resolves, per [Section 5.2](#52-nodes-identified-by-xpath-expression), into one request per matched `<md:patient>` node, each carrying the same `Content` with `…:multiple:content-selector` replaced by a plain `content-selector` attribute ([[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3) selecting that single node.
 - The `md` prefix inside the `XPath` expression needs its own namespace binding, separate from `Content.Body`'s embedded `xmlns:md`, for the same reason as [[ACAL-Hierarchical-1.0](#acal-hierarchical-10)] Section 7.1's equivalent example: in XML it comes from ordinary in-scope namespaces (here, `xmlns:md` on `RequestEntity`, an ancestor of the `Value` element), unchanged from XACML 3.0; in JACAL/YACAL, which have no ancestor inheritance, it is carried on the value's own `Namespaces` property (a mapping from prefix to namespace name). The value also carries its own `XPathVersion` in all three representations, because this is a bare `RequestEntity` fragment with no enclosing `Request` and hence no `XPathRequestDefaults` for the value to take its version from ([[ACAL-XPath-1.0](#acal-xpath-10)] Section 5.3.5) — in a complete `Request` with an `XPathRequestDefaults` it could be omitted. `Content.Body`'s own encoding (literal elements in XML, an escaped string in JACAL, a block scalar in YACAL) is what stays representation-specific beyond that; the XPath expression itself is identical in all three.
 
 ---
@@ -654,7 +651,7 @@ Request:
 
 **What this shows**
 
-- Resolves to two `Individual Decision Request`s, one per resource, each pairing the shared subject and action with one of the two `resource` entities.
+- Resolves to two requests, one per resource, each pairing the shared subject and action with one of the two `resource` entities.
 - No `Id` properties are needed on any `RequestEntity` object — repetition, not reference, is what identifies the combinations, unlike [Section 8.4](#84-reference) below.
 - This example reappears, unchanged, in [Section 8.5](#85-combined-decision) with `CombinedDecision` added.
 
@@ -825,7 +822,7 @@ Request:
 
 **What this shows**
 
-- Each `RequestReference` names exactly the three entities its `Individual Decision Request` should contain; a `RequestEntityReference` value of, say, `res3` (no matching `Id`) would be a dangling reference per [Section 5.4](#54-reference).
+- Each `RequestReference` names exactly the three entities its request should contain; a `RequestEntityReference` value of, say, `res3` (no matching `Id`) would be a dangling reference per [Section 5.4](#54-reference).
 - `Id` is an ordinary attribute/property in every representation (an XML attribute, a JSON/YAML property); `RequestEntityReference` values are plain strings matching it, not a cross-format construct.
 
 ---
@@ -991,7 +988,7 @@ The `acal-core-yaml-v1.0-constraints.yaml` catalog [[YACAL-Core-1.0](#yacal-core
 
 Refer to [[ACAL-Core-1.0](#acal-core-10)] Section 10.
 
-An implementation supporting [Section 5.1](#51-nodes-identified-by-scope) (scope) SHOULD be aware that `Children`/`Descendants` expansion can enumerate a number of resources not evident from the original request's size — a request naming one resource with `scope="Descendants"` against a large hierarchy may expand into a correspondingly large number of `Individual Decision Request`s. Implementations SHOULD apply appropriate resource limits.
+An implementation supporting [Section 5.1](#51-nodes-identified-by-scope) (scope) SHOULD be aware that `Children`/`Descendants` expansion can enumerate a number of resources not evident from the original request's size — a request naming one resource with `scope="Descendants"` against a large hierarchy may expand into a correspondingly large number of requests. Implementations SHOULD apply appropriate resource limits.
 
 ---
 
@@ -1008,11 +1005,11 @@ This section lists the portions of this specification that are relevant to a cla
 
 : Note: "M" means mandatory-to-implement. "O" means optional.
 
-The implementation MUST follow [Section 5](#5-request-construction-schemes), [Section 6](#6-combined-decision), [Section 7](#7-conceptual-model-for-creating-individual-decision-requests) and [Annex C](#annex-c-acal-identifiers) where they apply to implemented items in the following tables. `urn:oasis:names:tc:acal:1.0:content-selector` is defined, and its conformance status given, by [[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3/Section 9.2.4; this profile references it without restating its conformance status.
+The implementation MUST follow [Section 5](#5-request-construction-schemes), [Section 6](#6-combined-decision), [Section 7](#7-conceptual-model-for-resolving-multiple-decision-requests) and [Annex C](#annex-c-acal-identifiers) where they apply to implemented items in the following tables. `urn:oasis:names:tc:acal:1.0:content-selector` is defined, and its conformance status given, by [[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3/Section 9.2.4; this profile references it without restating its conformance status.
 
 ### 11.2.1 Profile Identifiers
 
-The implementation MUST support the schemes associated with the following identifiers marked `M`. An implementation supporting any one of them MUST also support [Section 7](#7-conceptual-model-for-creating-individual-decision-requests)'s observable results.
+The implementation MUST support the schemes associated with the following identifiers marked `M`. An implementation supporting any one of them MUST also support [Section 7](#7-conceptual-model-for-resolving-multiple-decision-requests)'s observable results.
 
 | Identifier | M/O | Deprecated Identifier |
 | :--- | :--- | :--- |
@@ -1179,7 +1176,7 @@ This attribute, used within a `RequestEntityType` object with `Category` evaluat
 
 `urn:oasis:names:tc:acal:1.0:profile:multiple:content-selector`
 
-: The corresponding attribute SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` ([[ACAL-XPath-1.0](#acal-xpath-10)] Annex C.2.1). Distinct from, and not to be confused with, the plain `urn:oasis:names:tc:acal:1.0:content-selector` attribute ([[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3) that replaces it in each generated `Individual Decision Request`.
+: The corresponding attribute SHALL be of data type `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` ([[ACAL-XPath-1.0](#acal-xpath-10)] Annex C.2.1). Distinct from, and not to be confused with, the plain `urn:oasis:names:tc:acal:1.0:content-selector` attribute ([[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3) that replaces it in each generated request.
 
 ---
 

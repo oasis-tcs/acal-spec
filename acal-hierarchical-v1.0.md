@@ -241,7 +241,7 @@ A hierarchy ([Section 2.1.2](#212-terms-defined-in-this-document)) is a directed
 
 `Tree`
 
-: Every node has at most one parent, and there is exactly one node with no parent (the root).
+: Every node has at most one parent, there is exactly one node with no parent (the root), and every other node reaches the root by following immediate-parent arcs.
 
 `DAG (Directed Acyclic Graph)`
 
@@ -260,6 +260,7 @@ The following substantive changes and decisions apply relative to the XACML 3.0 
 - **Erratum 4 (non-existent datatype).** CS02 §2.2/§5.2 specify the `resource-id`/`document-id` DataType as `http://urn:oasis:names:tc:xacml:1.0:data-type:anyURI` (§2.2) or the same URN without the `http://` prefix (§5.2) — neither identifies an actual XACML or ACAL data type. This document uses ACAL's own `urn:oasis:names:tc:acal:1.0:data-type:anyURI`.
 - **Erratum 5 (XACML 2.0 leftover).** CS02 §3.1 refers to XACML 2.0's `<Resource>` element, which does not exist in XACML 3.0 or ACAL. This document uses `RequestEntityType`.
 - **Several paths to a node.** [XACML 3.0 HRP](#hier) §2.2 requires a separate `resource-id` attribute for each fully resolved, absolute path to the node ("SHALL be present in the Request Context for each such path"). [Section 5.2](#52-nodes-identified-by-uri) requires the URI of one path, as one value of the single `resource-id` attribute, and permits the URIs of any of the other paths as further values of that attribute.
+- **No parent or ancestor attributes with a node of an XML document.** [XACML 3.0 HRP](#hier) §3.1 allows additional attributes in the request for a node of an XML document, and does not exclude the parent and ancestor attributes, although its revision history (WD 10) says "Remove ancestor attributes from XML scheme." [Section 5.1](#51-nodes-in-xml-documents) forbids them, as [Section 5.2](#52-nodes-identified-by-uri) does for a node identified by URI, because the XML document already encodes the node's position in the hierarchy.
 - **Normal form of the URI.** [XACML 3.0 HRP](#hier) §2.2 requires the path components in "the canonical form for such path components at the `<authority>`". [Section 5.2](#52-nodes-identified-by-uri) instead requires the form that results from the syntax-based normalization of [[RFC3986](#rfc3986)] Section 6.2.2.
 - **§2.2.1 (the `xpointer(…)` URI-reference representation for XML documents) is dropped from ACAL 1.0.** It is referenced by neither CS02 §6 nor §7 (no conformance clause exists for it in the published profile), and its percent-encoded XPath-in-a-fragment syntax duplicates the function of [Section 5.1](#51-nodes-in-xml-documents)'s `content-selector`-based scheme without adding capability. It may be reconsidered for a future version if an implementer needs it.
 - **JSON content is out of scope for this version.** [Section 5.1](#51-nodes-in-xml-documents) (nodes in XML documents) applies only to XML `Content`; a JSONPath counterpart, paired with the ACAL JSONPath Profile, is a known and deliberate gap rather than an oversight — the JSONPath Profile does not yet define the identifier and conformance apparatus such a counterpart would depend on. This version does not define such a counterpart, and the XPath-expression scheme of the ACAL Multiple Decision Profile makes the same choice for the same reason.
@@ -290,6 +291,8 @@ A node is identified as the single node of an XML document selected by an XPath 
 1. SHALL include a `Content` property whose `Body` is the XML document.
 2. SHALL include exactly one `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:content-selector` (defined by [[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3). Its `Value` property SHALL contain exactly one value, the XPath expression locating the node.
 3. MAY include a `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:resource:document-id` ([Annex C.3](#c3-attributes)) when it is necessary to indicate which document instance the node belongs to — for example when a single request's resource category could otherwise be read as referring to more than one document. It SHALL NOT include more than one such object; if it includes one, the `Value` property of that object SHALL contain exactly one value.
+
+A `RequestEntityType` object identifying a resource using this scheme SHALL NOT contain a parent or ancestor attribute ([Section 5.3](#53-nodes-identified-by-ancestor-attributes)) — the XML document already encodes the node's position in the hierarchy, so separate ancestor attributes would be redundant and could contradict it.
 
 **Profile identifier.** `urn:oasis:names:tc:acal:1.0:profile:hierarchical:xml-node-id` (deprecated identifier: `urn:oasis:names:tc:xacml:3.0:profile:hierarchical:xml-node-id`).
 
@@ -330,7 +333,7 @@ A node's ancestors, and optionally the node itself, are identified using dedicat
 
 `urn:oasis:names:tc:acal:1.0:resource:resource-ancestor-or-self`
 
-: An ancestor of the requested node, including the node itself.
+: The requested node or an ancestor of it.
 
 A `RequestAttributeType` object's `Value` property is a bag of one or more values ([[ACAL-Core-1.0](#acal-core-10)] Section 7.27); duplicate values within that bag are permitted. Because `RequestAttributeType` objects are unique within a `RequestEntityType` object by the combination of their `AttributeId`, `DataType` and `Issuer` properties ([[ACAL-Core-1.0](#acal-core-10)] Section 7.33), **several ancestors sharing the same `AttributeId`, `DataType` and `Issuer` are represented as several values in the `Value` bag of a single `RequestAttributeType` object, not as several `RequestAttributeType` objects** — two objects with the same `AttributeId`, `DataType` and `Issuer` would be duplicates and are not permitted. A request needs more than one `RequestAttributeType` object for a given `AttributeId` above only when the ancestors are represented using more than one combination of `DataType` and `Issuer`. This is the mechanism by which [XACML 3.0 HRP](#hier) §2.3's mixed-data-type ancestor representations remain fully representable in ACAL: each distinct combination of data type and issuer gets its own `RequestAttributeType` object, and every ancestor sharing that combination is a value within it.
 
@@ -889,7 +892,7 @@ These attributes identify a node's ancestors, per [Section 5.3](#53-nodes-identi
 
 `urn:oasis:names:tc:acal:1.0:resource:resource-ancestor-or-self`
 
-: An ancestor of the requested node, including the node itself. No fixed data type is specified — the value MAY be of any ACAL data type.
+: The requested node or an ancestor of it. No fixed data type is specified — the value MAY be of any ACAL data type.
 
 ---
 
