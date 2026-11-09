@@ -407,7 +407,7 @@ order:
 
 ### 5.1.1 YAML Version
 
-YACAL documents MUST conform to YAML 1.2 [[YAML1.2](#yaml12)].
+YACAL documents MUST conform to YAML 1.2, as specified by its revision 1.2.2 [[YAML1.2](#yaml12)].
 YAML 1.1 features that are absent from or incompatible with YAML 1.2
 (such as sexagesimal number notation, implicit date parsing, and
 locale-dependent boolean values like `yes`, `no`, `on`, `off`) MUST NOT
@@ -1084,12 +1084,12 @@ The following rules apply:
    independently.
 8. A wrapper key identifies the concrete subtype used in that context,
    not each intermediate abstract supertype in the inheritance chain.
-   The wrapper keys `Value`, `AttributeSelector` and
-   `EntityAttributeSelector` are exceptions to this rule and to the
+   The wrapper key `Value` is an exception to this rule and to the
    statement above that the wrapper key identifies the concrete subtype:
-   each identifies an abstract
-   type, and the concrete subtype is identified by the inner object
-   ([Section 5.4.8](#548-extensible-abstract-types)).
+   it identifies the abstract type `ValueType`, and the concrete subtype
+   is determined by the mapping rules of
+   [Section 5.4.4](#544-valuetype-mapping-rules) and
+   [Section 5.4.5](#545-structuredvaluetype-mapping).
 
 Examples:
 
@@ -1119,7 +1119,9 @@ Subtype resolution follows these rules:
 1. In a direct position, the surrounding property or document context
    determines the expected ACAL type.
 2. In a polymorphic position, the wrapper key determines the concrete
-   subtype.
+   subtype, except `Value` for which the concrete subtype is determined
+   by the mapping rules of [Section 5.4.4](#544-valuetype-mapping-rules)
+   and [Section 5.4.5](#545-structuredvaluetype-mapping).
 3. If a concrete non-final type is itself permitted in a polymorphic
    position, that direct use is identified by the wrapper key assigned
    to that concrete type in the relevant context.
@@ -1152,13 +1154,17 @@ The generic rules are:
    the inherited-property flattening model of
    [Section 5.4.7](#547-inheritance-and-subtype-resolution).
 2. Where this specification assigns a wrapper key to an abstract type
-   (`Value`, `AttributeSelector` and `EntityAttributeSelector`,
-   [Section 5.5.1](#551-expressiontype)), a profile SHALL NOT assign a
-   different key; the concrete subtype is identified by the inner
-   object.  Where this specification assigns no key (for example
-   `PolicyDefaultsType` and `RequestDefaultsType`,
-   [Section 5.6.9](#569-policydefaultstype) and
-   [Section 5.8.10](#5810-requestdefaultstype)), a profile-defined
+   (`Value`, [Section 5.5.1](#551-expressiontype)), a profile SHALL NOT
+   assign a different key; the concrete subtype is determined by the
+   mapping rules of [Section 5.4.4](#544-valuetype-mapping-rules) and
+   [Section 5.4.5](#545-structuredvaluetype-mapping).  Where this
+   specification assigns no key (for example `PolicyDefaultsType`,
+   `RequestDefaultsType`, `AttributeSelectorType` and
+   `EntityAttributeSelectorType`,
+   [Section 5.6.9](#569-policydefaultstype),
+   [Section 5.8.10](#5810-requestdefaultstype),
+   [Section 5.5.10](#5510-attributeselectortype) and
+   [Section 5.5.11](#5511-entityattributeselectortype)), a profile-defined
    concrete subtype in a polymorphic position SHALL be identified by the
    wrapper key assigned by the relevant profile specification.
 3. In a direct position created by a profile-specific property whose
@@ -1379,8 +1385,6 @@ usable concrete subtype in the expression position.
 | `Apply` | `ApplyType` |
 | `AttributeDesignator` | `AttributeDesignatorType` |
 | `EntityAttributeDesignator` | `EntityAttributeDesignatorType` |
-| `AttributeSelector` | `AttributeSelectorType` (optional) |
-| `EntityAttributeSelector` | `EntityAttributeSelectorType` (optional) |
 | `VariableReference` | `VariableReferenceType` |
 | `SharedVariableReference` | `SharedVariableReferenceType` |
 | `Function` | `FunctionType` |
@@ -1390,10 +1394,20 @@ usable concrete subtype in the expression position.
 | `Select` | `SelectType` (optional) |
 | `Map` | `MapType` (optional) |
 
-The keys `Value`, `AttributeSelector` and `EntityAttributeSelector`
-identify the abstract types `ValueType`, `AttributeSelectorType` and
-`EntityAttributeSelectorType`; the concrete subtype is identified by
-the inner object ([Section 5.4.8](#548-extensible-abstract-types)).
+The key `Value` identifies the abstract type `ValueType`; the concrete
+subtype is determined by the mapping rules of
+[Section 5.4.4](#544-valuetype-mapping-rules) and
+[Section 5.4.5](#545-structuredvaluetype-mapping).
+
+A concrete subtype of `AttributeSelectorType` or
+`EntityAttributeSelectorType` defined by an ACAL profile is also an
+expression form in this position.  It is identified by the wrapper key
+that the profile's YACAL structural schema assigns to it, for example
+`XPathAttributeSelector` and `XPathEntityAttributeSelector` for the
+ACAL XPath Profile, and `JSONPathAttributeSelector` and
+`JSONPathEntityAttributeSelector` for the ACAL JSONPath Profile
+([Section 5.5.10](#5510-attributeselectortype) and
+[Section 5.5.11](#5511-entityattributeselectortype)).
 
 ### 5.5.2 ApplyType
 
@@ -1541,8 +1555,9 @@ Condition:
 ### 5.5.10 AttributeSelectorType
 
 `AttributeSelectorType` is an optional, profile-defined expression form.
-In YACAL it uses the `AttributeSelector` wrapper key from
-[Section 5.5.1](#551-expressiontype).
+In YACAL a concrete subtype is identified by the wrapper key assigned by
+the profile that defines it ([Section 5.5.1](#551-expressiontype)); the
+core assigns none.
 
 The direct mapping of a concrete attribute-selector subtype includes the
 base-selector properties plus the `Category` property:
@@ -1554,24 +1569,26 @@ base-selector properties plus the `Category` property:
 | `MustBePresent` | No | `false` | Boolean | Missing or empty selection handling |
 | `Category` | Yes | — | `IdentifierType` | Request entity category whose `Content` is queried |
 
-Illustrative form:
+Illustrative form, for the ACAL JSONPath Profile:
 
 ```yaml
-AttributeSelector:
+JSONPathAttributeSelector:
   Category: "urn:oasis:names:tc:acal:1.0:attribute-category:resource"
   Path: "PATH-EXPR"
   DataType: "urn:oasis:names:tc:acal:1.0:data-type:string"
   MustBePresent: true
 ```
 
-The concrete syntax and semantics of `Path`, and any additional
-selector-specific properties, are defined by the relevant ACAL profile.
+The concrete syntax and semantics of `Path`, the wrapper key, and any
+additional selector-specific properties, are defined by the relevant
+ACAL profile.
 
 ### 5.5.11 EntityAttributeSelectorType
 
 `EntityAttributeSelectorType` is an optional, profile-defined expression
-form.  In YACAL it uses the `EntityAttributeSelector` wrapper key from
-[Section 5.5.1](#551-expressiontype).
+form.  In YACAL a concrete subtype is identified by the wrapper key
+assigned by the profile that defines it
+([Section 5.5.1](#551-expressiontype)); the core assigns none.
 
 Its direct mapping includes the base-selector properties plus the
 required `Expression` property:
@@ -1583,10 +1600,10 @@ required `Expression` property:
 | `MustBePresent` | No | `false` | Boolean | Missing or empty selection handling |
 | `Expression` | Yes | — | `ExpressionType` | Evaluates to an entity value or category URI |
 
-Illustrative form:
+Illustrative form, for the ACAL JSONPath Profile:
 
 ```yaml
-EntityAttributeSelector:
+JSONPathEntityAttributeSelector:
   Path: "PATH-EXPR"
   MustBePresent: true
   Expression:
@@ -2867,7 +2884,7 @@ combined in a particular deployment.
 
 A conformant YACAL document:
 
-1.  MUST be a valid YAML 1.2 document [[YAML1.2](#yaml12)].
+1.  MUST be a valid YAML 1.2 document, as specified by revision 1.2.2 [[YAML1.2](#yaml12)].
 2.  MUST use the YAML 1.2 Core Schema for scalar type resolution.
 3.  MUST conform to all structural requirements defined in this
     specification for representing the applicable ACAL Section 7

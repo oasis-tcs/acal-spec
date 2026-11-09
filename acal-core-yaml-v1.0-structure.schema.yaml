@@ -399,13 +399,7 @@ $defs:
             $ref: "#/$defs/IdentifierType"
 
   AttributeSelectorTypeTree:
-    type: object
-    required:
-      - AttributeSelector
-    properties:
-      AttributeSelector:
-        $dynamicRef: "#AttributeSelectorTypeExtensions"
-    additionalProperties: false
+    $dynamicRef: "#AttributeSelectorTypeExtensions"
 
   AttributeSelectorTypeExtensionsDisabled:
     $dynamicAnchor: "AttributeSelectorTypeExtensions"
@@ -426,13 +420,7 @@ $defs:
             $ref: "#/$defs/ExpressionTypeTree"
 
   EntityAttributeSelectorTypeTree:
-    type: object
-    required:
-      - EntityAttributeSelector
-    properties:
-      EntityAttributeSelector:
-        $dynamicRef: "#EntityAttributeSelectorTypeExtensions"
-    additionalProperties: false
+    $dynamicRef: "#EntityAttributeSelectorTypeExtensions"
 
   EntityAttributeSelectorTypeExtensionsDisabled:
     $dynamicAnchor: "EntityAttributeSelectorTypeExtensions"

@@ -168,8 +168,26 @@ $defs:
   XPathRequestDefaultsTypeExtension:
     $ref: "#/$defs/XPathRequestDefaultsTypeTree"
 
+  XPathAttributeSelectorTypeTree:
+    type: object
+    required:
+      - XPathAttributeSelector
+    properties:
+      XPathAttributeSelector:
+        $ref: "#/$defs/XPathAttributeSelectorType"
+    additionalProperties: false
+
+  XPathEntityAttributeSelectorTypeTree:
+    type: object
+    required:
+      - XPathEntityAttributeSelector
+    properties:
+      XPathEntityAttributeSelector:
+        $ref: "#/$defs/XPathEntityAttributeSelectorType"
+    additionalProperties: false
+
   XPathAttributeSelectorTypeExtension:
-    $ref: "#/$defs/XPathAttributeSelectorType"
+    $ref: "#/$defs/XPathAttributeSelectorTypeTree"
 
   XPathEntityAttributeSelectorTypeExtension:
-    $ref: "#/$defs/XPathEntityAttributeSelectorType"
+    $ref: "#/$defs/XPathEntityAttributeSelectorTypeTree"
