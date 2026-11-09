@@ -2031,7 +2031,7 @@ to grant office system access.
                             } }
                         ] } }
                     ] } },
-                    { "Value": { "DataType": "{integer}", "Value": 9 } }
+                    { "Value": 9 }
                   ]
                 }
               },
@@ -2048,7 +2048,7 @@ to grant office system access.
                             } }
                         ] } }
                     ] } },
-                    { "Value": { "DataType": "{integer}", "Value": 17 } }
+                    { "Value": 17 }
                   ]
                 }
               }
