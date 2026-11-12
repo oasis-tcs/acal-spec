@@ -289,7 +289,7 @@ A node is identified as the single node of an XML document selected by an XPath 
 
 **Request construction.** The `RequestEntityType` object holding the resource's attributes:
 
-1. SHALL include a `Content` property whose `Body` is the XML document.
+1. SHALL include a `Content` property whose `Body` is the XML document and whose `MediaType` is `application/xml`.
 2. SHALL include exactly one `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:content-selector` (defined by [[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3). Its `Value` property SHALL contain exactly one value, the XPath expression locating the node.
 3. MAY include a `RequestAttributeType` object with `AttributeId` `urn:oasis:names:tc:acal:1.0:resource:document-id` ([Annex C.3](#c3-attributes)) when it is necessary to indicate which document instance the node belongs to — for example when a single request's resource category could otherwise be read as referring to more than one document. It SHALL NOT include more than one such object; if it includes one, the `Value` property of that object SHALL contain exactly one value.
 
@@ -392,7 +392,7 @@ A request for read access to the `<md:patientDoB>` node inside a medical-record 
 
 ```xml
 <RequestEntity Category="urn:oasis:names:tc:acal:1.0:attribute-category:resource" xmlns:md="urn:example:med:schemas:record">
-    <Content>
+    <Content MediaType="application/xml">
         <Body>
             <md:record xmlns:md="urn:example:med:schemas:record">
                 <md:patient>
