@@ -120,7 +120,7 @@ applied IEEE 754 evaluation "enhanced with double precision" to integer
 functions as well as double ones, without saying what an integer
 result too large to represent becomes. ACAL Core now defines `integer` as the unbounded value space
 of `xs:integer`
-([Annex C.2.7](acal-core-v1.0.md#c27-data-types-defined-by-reference-to-xml-schema))
+([Annex C.2.6](acal-core-v1.0.md#c26-data-types-defined-by-reference-to-xml-schema))
 and lets an implementation support only part of it:
 
 - An implementation should not impose a predetermined bound on the
@@ -365,6 +365,8 @@ explicit about where each validation responsibility lives.
 | JSONPath Profile | Present | Present | Present |
 | Profile extension composition | Via XSD imports | `$dynamicRef`/`$dynamicAnchor` | Same mechanism as JACAL, with explicit composition schema examples |
 | Normative artifact declaration in spec | Present | Present | Present |
+
+**Number typing is not identical across JACAL and YACAL.** Each representation follows the number syntax of its own format. JSON has one number syntax, and JACAL reads a number with a zero fractional part (such as `3.0`) as an `Integer` unless a `Double` is explicit or inherited. YAML separates integer scalars from float scalars, and YACAL reads the float scalar `3.0` as a `Double`. With no explicit or inherited `DataType`, the same text can therefore have a different ACAL type in the two representations. Where both must read the same type, declare the `DataType` explicitly, using the typed object (mapping) forms of JACAL 5.2.2.1 items 2 and 3 and of YACAL 5.4.4.2 and 5.4.4.3.
 
 ---
 

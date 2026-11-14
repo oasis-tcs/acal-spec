@@ -29,8 +29,26 @@ $defs:
       The local JSONPath profile model adds no extra properties beyond the core
       entity-selector shape.
 
+  JSONPathAttributeSelectorTypeTree:
+    type: object
+    required:
+      - JSONPathAttributeSelector
+    properties:
+      JSONPathAttributeSelector:
+        $ref: "#/$defs/JSONPathAttributeSelectorType"
+    additionalProperties: false
+
+  JSONPathEntityAttributeSelectorTypeTree:
+    type: object
+    required:
+      - JSONPathEntityAttributeSelector
+    properties:
+      JSONPathEntityAttributeSelector:
+        $ref: "#/$defs/JSONPathEntityAttributeSelectorType"
+    additionalProperties: false
+
   JSONPathAttributeSelectorTypeExtension:
-    $ref: "#/$defs/JSONPathAttributeSelectorType"
+    $ref: "#/$defs/JSONPathAttributeSelectorTypeTree"
 
   JSONPathEntityAttributeSelectorTypeExtension:
-    $ref: "#/$defs/JSONPathEntityAttributeSelectorType"
+    $ref: "#/$defs/JSONPathEntityAttributeSelectorTypeTree"
