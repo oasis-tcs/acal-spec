@@ -1236,7 +1236,7 @@ properties:
 
 | Property | Required | Type | Notes |
 |---|---|---|---|
-| `MediaType` | No | String | Media type of the content body. If omitted, the default value `application/yaml` applies, and the `Body` SHALL be a YAML 1.2 document. The values `application/json` and `application/xml` SHALL be used for JSON text (a JSON object or array, in a YAML string) and XML documents respectively; JSON content represented as native YAML uses `application/yaml` (see below). |
+| `MediaType` | No | String | Media type of the content body. If omitted, the default value `application/yaml` applies, and the `Body` SHALL be a YAML mapping or sequence. The values `application/json` and `application/xml` SHALL be used for JSON text (a JSON object or array, in a YAML string) and XML documents respectively; JSON content represented as native YAML uses `application/yaml` (see below). |
 | `Encoding` | No | String | Content encoding, used only when the `Body` string is encoded rather than directly represented. The Encoding value `base64` indicates that the Body is Base64-encoded as per [[RFC4648](#rfc4648)]. Other Encoding values may be defined by other YACAL Profiles. |
 | `Body` | Yes | `AnyType` | Direct representation of the content payload |
 
@@ -1245,7 +1245,7 @@ content and follows the rules in
 [Section 5.4.10](#5410-anytype-mapping).
 
 For structured content that is naturally represented using YAML
-mappings, sequences, or scalars, the `Body` SHOULD normally use those
+mappings or sequences, the `Body` SHOULD normally use those
 native YAML forms:
 
 ```yaml
