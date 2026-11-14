@@ -270,6 +270,7 @@ The following substantive changes and decisions apply relative to the XACML 3.0 
 - **`content-selector` is defined in the ACAL XPath Profile, not here.** In XACML 3.0, `urn:oasis:names:tc:xacml:3.0:content-selector` is defined by this profile (§5.1) but consumed by XACML core's `ContextSelectorId` mechanism. ACAL inverts that arrangement: `urn:oasis:names:tc:acal:1.0:content-selector` is defined alongside the mechanism that consumes it, in [[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3, because the identifier is not specific to hierarchical resources. This document references that definition (see [Section 5.1](#51-nodes-in-xml-documents)) rather than restating it.
 - **Function argument order.** [XACML 3.0 HRP](#hier) §4.3's `regexp-uri-match` takes the URI argument first and the regular expression second. ACAL's equivalent, `urn:oasis:names:tc:acal:1.0:function:anyURI-regexp-match`, takes the regular expression first, matching the argument order of ACAL's other `*-regexp-match` functions. Any policy text carried over from an [XACML 3.0 HRP](#hier) example has to have its arguments swapped — see [Section 6.3](#63-matching-uris).
 - **Target restructure.** Example policies in this document use the boolean `Apply` form rather than XACML 3.0's `AnyOf`/`AllOf`/`Match` structure, consistent with ACAL Core.
+- **Profile identifier use.** [Section 10.2.1](#1021-profile-identifiers) says that an implementation that supports the functionality identified by a profile identifier SHALL use that identifier to indicate that support.
 - **No new schema artifacts.** Like the ACAL Multiple Decision Profile, this profile defines attribute identifiers and node-identity/request-construction rules, not new object types; it needs no new XSD, JSON Schema or YAML structure/constraint artifacts.
 
 ---
@@ -704,6 +705,8 @@ This section lists the portions of this specification that are relevant to a cla
 The implementation MUST follow [Section 5](#5-node-identity-schemes), [Section 8](#8-representation-considerations) and [Annex C](#annex-c-acal-identifiers) where they apply to implemented items in the following tables. `urn:oasis:names:tc:acal:1.0:content-selector` and `urn:oasis:names:tc:acal:1.0:resource:resource-id` are defined, and their conformance status given, by [[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3/Section 9.2.4 and [[ACAL-Core-1.0](#acal-core-10)] Annex D.5/Section 11.2.6 respectively; this profile references them without restating their conformance status.
 
 ### 10.2.1 Profile Identifiers
+
+An implementation that supports the functionality identified by a profile identifier SHALL use that identifier to indicate that support.
 
 The implementation MUST support the node-identity schemes associated with the following identifiers marked `M`.
 

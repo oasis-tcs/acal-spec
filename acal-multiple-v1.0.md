@@ -247,6 +247,7 @@ Porting this profile involves more than renaming its XML vocabulary; every schem
 - **Invalid references have an outcome.** A request with sibling `RequestReferenceType` objects that denote the same set, or with a duplicate `RequestEntityReference` value, is rejected at validation time when the schema tooling enforces the rule and otherwise produces one `Indeterminate` result with `syntax-error` ([Section 5.4](#54-reference)); an XPath expression of the XPath-expression scheme that is invalid or does not return a sequence of one or more nodes produces one `Indeterminate` result with `syntax-error` ([Section 5.2](#52-nodes-identified-by-xpath-expression)). XACML 3.0 MDP specified neither.
 - **Identifier namespace.** All identifiers introduced by this profile use the `urn:oasis:names:tc:acal:1.0:` prefix, with the XACML 3.0 identifiers recorded as deprecated equivalents. The XACML identifier `…:multiple:repeated-attribute-categories` is respelled `…:multiple:repeated-categories`, since ACAL's `RequestEntity` rename already dropped "Attributes" from the underlying object type's name.
 - **Target restructure.** Example policies in this document use the boolean `Apply` form rather than XACML 3.0's `AnyOf`/`AllOf`/`Match` structure, consistent with ACAL Core.
+- **Profile identifier use.** [Section 11.2.1](#1121-profile-identifiers) says that an implementation that supports the functionality identified by a profile identifier SHALL use that identifier to indicate that support.
 - **No new schema artifacts.** Like the ACAL Hierarchical Resource Profile, this profile defines attribute identifiers and request-construction/evaluation rules, not new object types; `MultiRequestsType`, `RequestReferenceType` and `RequestEntityReference` already exist in ACAL Core's XSD, JSON Schema and YAML structural schema.
 
 ---
@@ -1015,6 +1016,8 @@ This section lists the portions of this specification that are relevant to a cla
 The implementation MUST follow [Section 5](#5-request-construction-schemes), [Section 6](#6-combined-decision), [Section 7](#7-conceptual-model-for-resolving-multiple-decision-requests) and [Annex C](#annex-c-acal-identifiers) where they apply to implemented items in the following tables. `urn:oasis:names:tc:acal:1.0:content-selector` is defined, and its conformance status given, by [[ACAL-XPath-1.0](#acal-xpath-10)] Annex D.3/Section 9.2.4; this profile references it without restating its conformance status.
 
 ### 11.2.1 Profile Identifiers
+
+An implementation that supports the functionality identified by a profile identifier SHALL use that identifier to indicate that support.
 
 The implementation MUST support the schemes associated with the following identifiers marked `M`. An implementation supporting any one of them MUST also support [Section 7](#7-conceptual-model-for-resolving-multiple-decision-requests)'s observable results.
 
