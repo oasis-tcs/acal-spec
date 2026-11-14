@@ -835,7 +835,10 @@ that `DataType` MUST match the fixed data type of the resulting concrete literal
    or inherited `DataType` that is the standard ACAL Double applies to
    the scalar and the scalar's text is a decimal integer as specified
    in [Section 5.4.4.3](#5443-double), in which case the scalar represents `LiteralDoubleType`
-   ([Section 5.4.4.3](#5443-double)).  The remaining requirements of this item apply only to a
+   ([Section 5.4.4.3](#5443-double)), or unless the inherited data type
+   is a numeric data type recognized by an ACAL extension whose value
+   space includes the scalar's value, in which case its ACAL `DataType`
+   is that data type.  The remaining requirements of this item apply only to a
    YAML integer scalar or `Value` string that represents
    `LiteralIntegerType`.  An ACAL integer
    MAY also be represented as a mapping with a `DataType` of
@@ -917,7 +920,10 @@ the YAML-resolved scalar category.  A YACAL processor SHALL NOT select a
 different fixed-datatype literal subtype on the basis of a `DataType`,
 except
 that [Section 5.4.4.3](#5443-double) makes a decimal YAML integer scalar under the standard ACAL
-Double represent `LiteralDoubleType`.  A YAML float scalar SHALL NOT
+Double represent `LiteralDoubleType`, and that
+[Section 5.4.4.2](#5442-integer) gives a YAML integer scalar the
+inherited data type of an ACAL extension numeric type that includes
+its value.  A YAML float scalar SHALL NOT
 represent `LiteralIntegerType`.
 
 Primitive implicit examples:
