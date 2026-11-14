@@ -591,7 +591,7 @@ definitions remain those of [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.
 | `String` | YAML string scalar | Quote when required by [Section 5.1.3](#513-string-quoting) |
 | `Boolean` | YAML boolean scalar | MUST use `true` or `false` |
 | `Integer` | YAML integer scalar | MUST resolve as integer under the Core Schema |
-| `Double` | YAML float scalar | MUST resolve as float under the Core Schema, except for an integer scalar under an explicit or inherited standard ACAL Double `DataType` ([Section 5.4.4](#544-valuetype-mapping-rules), rule 3) |
+| `Double` | YAML float scalar | MUST resolve as float under the Core Schema, except for an integer scalar under an explicit or inherited standard ACAL Double `DataType` ([Section 5.4.4](#544-valuetype-mapping-rules), rule 3) and for the `Value` string of a mapping with that `DataType` ([Section 5.4.4.3](#5443-double)) |
 | `NonNegativeInteger` | YAML integer scalar without the `-` sign, i.e. matching the regex `[0-9]+` under the Core Schema|
 | `URI`| YAML string scalar matching the same syntax as JSON schema's `format` assertion set to `uri-reference`|
 
@@ -889,7 +889,15 @@ that `DataType` MUST match the fixed data type of the resulting concrete literal
    assigns to the scalar's text.  For example,
    `DataType: "urn:oasis:names:tc:acal:1.0:data-type:double"` with
    `Value: 3` represents the double 3.0.  A YAML scalar in hexadecimal
-   notation SHALL NOT be used for this form.
+   notation SHALL NOT be used for this form.  An ACAL double MAY also
+   be represented as a mapping with a `DataType` of
+   `urn:oasis:names:tc:acal:1.0:data-type:double` and a `Value` string
+   in the lexical space of `xs:double`
+   ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6; `INF`, `-INF` and
+   `NaN` included); it denotes the `xs:double` value that the lexical
+   mapping assigns to the string.  A YACAL processor SHALL NOT accept
+   the `Value` string of the mapping form if the string is not in the
+   lexical space of `xs:double`.
 2. An explicit `DataType` that accompanies a fixed-datatype primitive
    value of this type SHOULD be omitted when the data type is otherwise
    implicit.  An explicit standard ACAL Double `DataType` that is needed
@@ -920,7 +928,8 @@ the YAML-resolved scalar category.  A YACAL processor SHALL NOT select a
 different fixed-datatype literal subtype on the basis of a `DataType`,
 except
 that [Section 5.4.4.3](#5443-double) makes a decimal YAML integer scalar under the standard ACAL
-Double represent `LiteralDoubleType`, and that
+Double, and the `Value` string of a mapping whose `DataType` is the
+standard ACAL Double, represent `LiteralDoubleType`, and that
 [Section 5.4.4.2](#5442-integer) gives a YAML integer scalar the
 inherited data type of an ACAL extension numeric type that includes
 its value.  A YAML float scalar SHALL NOT
