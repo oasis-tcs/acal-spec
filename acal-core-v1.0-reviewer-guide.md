@@ -366,6 +366,8 @@ explicit about where each validation responsibility lives.
 | Profile extension composition | Via XSD imports | `$dynamicRef`/`$dynamicAnchor` | Same mechanism as JACAL, with explicit composition schema examples |
 | Normative artifact declaration in spec | Present | Present | Present |
 
+**Number typing is not identical across JACAL and YACAL.** Each representation follows the number syntax of its own format. JSON has one number syntax, and JACAL reads a number with a zero fractional part (such as `3.0`) as an `Integer` unless a `Double` is explicit or inherited. YAML separates integer scalars from float scalars, and YACAL reads the float scalar `3.0` as a `Double`. With no explicit or inherited `DataType`, the same text can therefore have a different ACAL type in the two representations. Where both must read the same type, declare the `DataType` explicitly, using the typed object (mapping) forms of JACAL 5.2.2.1 items 2 and 3 and of YACAL 5.4.4.2 and 5.4.4.3.
+
 ---
 
 ## Choosing Your Expression Language
