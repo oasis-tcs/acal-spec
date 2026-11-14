@@ -6,17 +6,12 @@
     <RequestEntity Category="urn:oasis:names:tc:acal:1.0:subject-category:access-subject">
         <RequestAttribute
             AttributeId="urn:oasis:names:tc:acal:1.0:subject:subject-id" Issuer="med.example.com">
-            <Value >CN=Julius Hibbert</Value>
+            <Value>CN=Bartholomew Simpson</Value>
         </RequestAttribute>
         <RequestAttribute
-            AttributeId="urn:oasis:names:tc:acal:1.0:example:attribute:role"
+            AttributeId="urn:oasis:names:tc:acal:1.0:example:attribute:patient-number"
             Issuer="med.example.com">
-            <Value>physician</Value>
-        </RequestAttribute>
-        <RequestAttribute
-            AttributeId="urn:oasis:names:tc:acal:1.0:example:attribute:physician-id"
-            Issuer="med.example.com">
-            <Value>jh1234</Value>
+            <Value>555555</Value>
         </RequestAttribute>
     </RequestEntity>
     <RequestEntity Category="urn:oasis:names:tc:acal:1.0:attribute-category:resource"

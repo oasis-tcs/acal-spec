@@ -15,21 +15,14 @@
                         "AttributeId": "urn:oasis:names:tc:acal:1.0:subject:subject-id",
                         "Issuer": "med.example.com",
                         "Value": [
-                            "CN=Julius Hibbert"
+                            "CN=Bartholomew Simpson"
                         ]
                     },
                     {
-                        "AttributeId": "urn:oasis:names:tc:acal:1.0:example:attribute:role",
+                        "AttributeId": "urn:oasis:names:tc:acal:1.0:example:attribute:patient-number",
                         "Issuer": "med.example.com",
                         "Value": [
-                            "physician"
-                        ]
-                    },
-                    {
-                        "AttributeId": "urn:oasis:names:tc:acal:1.0:example:attribute:physician-id",
-                        "Issuer": "med.example.com",
-                        "Value": [
-                            "jh1234"
+                            "555555"
                         ]
                     }
                 ]
