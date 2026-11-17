@@ -513,7 +513,7 @@ For example, ACAL `DecisionType` translates to the following subschema:
 
 ## 5.2 Mapping complex ACAL types (UML stereotype `<<dataType>>`)
 
-For each complex type (stereotyped `<<dataType>>`) in [[ACAL-Core-1.0](#acal-core-10)] model, apply the mapping rules in the next subsections.
+For each complex type (stereotyped `<<dataType>>`) in [[ACAL-Core-1.0](#acal-core-10)] model, apply the mapping rules in the next subsections. A JSON processor SHALL reject a JSON object that represents an ACAL object and repeats a name ([[ACAL-Core-1.0](#acal-core-10)] Section 7.1.1).
 
 ### 5.2.1 AnyType mapping rule
 
@@ -521,7 +521,7 @@ The ACAL `AnyType` used in `ContentType` objects is mapped to the following subs
 ```json
 {"type": ["boolean", "number", "string", "object", "array"]}
 ```
-The `object` and `array` types are used for JSON content (a JSON object or a JSON array), and the `string` type for non-JSON structured data, e.g. XML, possibly escaped or encoded to fit in a JSON string. See the [Content Types section](#53-content-types-and-body-representations-optional) for examples.
+The `object` and `array` types are used for JSON content (a JSON object or a JSON array), and the `string` type for a document in another format (XML, YAML) or in base64. See the [Content Types section](#53-content-types-and-body-representations-optional) for examples.
 
 **WARNING:** for safety/security reasons, in production, ACAL implementers SHOULD add further restrictions to this JSON schema and/or enforce security measures in the JSON processor to mitigate possible security issues that may occur when allowing any JSON object or array as input.
 
@@ -996,12 +996,11 @@ This specification defines the following `Content` types in order to support ACA
 
 - JSON object or array:
   - `MediaType` property SHALL be set to `application/json` (default value);
-  - The `Encoding` property SHALL NOT be present;
-  - The `Body` property SHALL be the JSON object or array.
+  - If the `Encoding` property is absent, the `Body` property SHALL be the JSON object or array. If it is present, its value SHALL be `base64` and `Body` SHALL be a JSON string of Base64 data that decodes to the UTF-8 encoding of the JSON text.
 
 - XML document:
   - `MediaType` property SHALL be set to `application/xml`;
-  - If `Encoding` is absent, `Body` SHALL be a JSON string whose value is the XML document. If `Encoding` is present, its value SHALL be `base64` and `Body` SHALL be a JSON string of Base64 data that decodes to the XML document. The two forms:
+  - If `Encoding` is absent, `Body` SHALL be a JSON string whose value is the XML document. If `Encoding` is present, its value SHALL be `base64` and `Body` SHALL be a JSON string of Base64 data that decodes to the UTF-8 encoding of the XML document. The two forms:
      1) **Escaped:** if `Encoding` is absent, the XML is escaped to be a valid JSON string using escaping rules described in Section 7 of [[RFC8259](#rfc8259)], i.e. in particular the double quote (`"`), backslash (`\`) and control characters are escaped with a backslash `\` (the new line escaped as `\n`, the carriage return as `\r`, and the horizontal tab as `\t`). For example:
      ```json
      {
@@ -1017,6 +1016,12 @@ This specification defines the following `Content` types in order to support ACA
       "Body": "PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8Y2F0YWxvZz48Ym9vayBpZD0iYmsxMDEiPjxhdXRob3I+R2FtYmFyZGVsbGEsIE1hdHRoZXc8L2F1dGhvcj48dGl0bGU+WE1MIERldmVsb3BlcidzIEd1aWRlPC90aXRsZT48Z2VucmU+Q29tcHV0ZXI8L2dlbnJlPjxwcmljZT40NC45NTwvcHJpY2U+PHB1Ymxpc2hfZGF0ZT4yMDAwLTEwLTAxPC9wdWJsaXNoX2RhdGU+PGRlc2NyaXB0aW9uPkFuIGluLWRlcHRoIGxvb2sgYXQgY3JlYXRpbmcgYXBwbGljYXRpb25zIHdpdGggWE1MLjwvZGVzY3JpcHRpb24+PC9ib29rPjwvY2F0YWxvZz4="
      }
      ```
+
+- YAML document (a mapping or sequence):
+  - `MediaType` property SHALL be set to `application/yaml`;
+  - If `Encoding` is absent, `Body` SHALL be a JSON string whose value is the YAML text. If `Encoding` is present, its value SHALL be `base64` and `Body` SHALL be a JSON string of Base64 data that decodes to the UTF-8 encoding of the YAML text.
+
+The string, base64 and UTF-8 rules, the document of a `Content` object that a profile evaluates, the rejection of duplicate names in JSON content and the rules for a converter are those of [[ACAL-Core-1.0](#acal-core-10)] Section 7.34.
 
 An implementation SHALL support a content type listed in this section if a profile for which the implementation claims conformance makes support for that content type mandatory. An implementation MAY support such a content type otherwise.
 
@@ -1463,7 +1468,9 @@ This is the first version of JACAL; its previous stage was Committee Specificati
 - The `Function` and `Apply` expression wrappers of the core schema do not allow additional properties, like the other wrappers; the `version` match pattern allows `+` only as the last component; a processor SHALL NOT accept the `Value` string of a special double unless the string is in the lexical space of `xs:double` (wording only); comments with issue numbers and TODO markers are removed from the schema, and [Section 2](#2-definitions-and-acronyms) no longer says that no terms are defined elsewhere.
 - The description of the core schema's structure in [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments) now shows the single-property wrapper object that the schema requires around a root object. A standalone short-identifier set or shared variable definition is a root object in the same way as a policy: the schema gains `ShortIdSet` and `SharedVariableDefinition` root forms, the core short-identifier set file is wrapped in a `ShortIdSet` property (csd01: a bare `ShortIdSetType` object), and the short-identifier set example of [Section 4.3](#43-example-short-identifier-set) is wrapped accordingly.
 - [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.
-- Content types ([Section 5.3](#53-content-types-and-body-representations-optional)): for JSON content, the `Encoding` property SHALL NOT be present and `Body` SHALL be the JSON object or array; for XML content, `Body` SHALL be a JSON string whose value is the XML document if `Encoding` is absent, and if `Encoding` is present its value SHALL be `base64` and `Body` SHALL be a JSON string of Base64 data that decodes to the XML document. Before, these were stated without a requirement keyword. JSON content may now be a JSON array; before, an array had to be wrapped in a JSON object. An implementation SHALL support a listed content type that a profile for which it claims conformance makes mandatory, and MAY support it otherwise; before, it supported a content type "if and only if" a profile made it mandatory, which did not allow optional support.
+- Content types ([Section 5.3](#53-content-types-and-body-representations-optional)): for JSON content, `Body` SHALL be the JSON object or array, or, with `Encoding` `base64`, a string of Base64 data; for XML content, `Body` SHALL be a JSON string whose value is the XML document if `Encoding` is absent, and if `Encoding` is present its value SHALL be `base64` and `Body` SHALL be a JSON string of Base64 data that decodes to the XML document. Before, these were stated without a requirement keyword. JSON content may now be a JSON array; before, an array had to be wrapped in a JSON object. An implementation SHALL support a listed content type that a profile for which it claims conformance makes mandatory, and MAY support it otherwise; before, it supported a content type "if and only if" a profile made it mandatory, which did not allow optional support. YAML content (`application/yaml`) is a JSON string holding the YAML text, or base64; Base64 data decodes to the UTF-8 encoding of the document text ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34).
+- A JSON processor SHALL reject a JSON object that represents an ACAL object and repeats a name ([Section 5.2](#52-mapping-complex-acal-types-uml-stereotype-datatype)).
+- `StatusDetailType` has a `MissingAttributeDetail` property and a `Content` property ([[ACAL-Core-1.0](#acal-core-10)] Section 7.42); the schema no longer admits any other member.
 - Mapping rules: rule 2.2.3 creates the `FooTypeTree` of a concrete non-final type if a property has that type or any of its supertypes, as the tree of a supertype references it ([Section 5.2.3](#523-default-mapping-rules-for-complex-acal-types-other-than-valuetype)); rule 2.1 sets `minProperties`, and rules 2.1 and 2.2 set `maxProperties` and `maxItems` for a finite upper bound ([Section 5.2.4](#524-property-mapping-rules)).
 - The core schema has a definition `BaseAttributeType` for the abstract type of [[ACAL-Core-1.0](#acal-core-10)] Section 7.27, which `RequestAttributeType` and `AttributeAssignmentType` extend, and `AttributeType` is a closed definition extending it, so the `Attribute` property of `EntityType` and `ResultEntityType` no longer accepts `IncludeInResult`, `Category` or another property.
 - The core schema's `ResultEntityType`, `EntityType` and `BundleType` do not allow properties other than their ACAL properties. The same holds for `ForAny`, `ForAll`, `Map` and `Select`: the core schema has a closed definition for each of `ForAnyType`, `ForAllType`, `MapType` and `SelectType`, extending `QuantifiedExpressionType` as the mapping rules of [Section 5.2.3](#523-default-mapping-rules-for-complex-acal-types-other-than-valuetype) require.

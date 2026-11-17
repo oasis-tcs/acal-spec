@@ -420,7 +420,7 @@ Under the Core Schema, the following scalar resolutions apply (depending on the 
 
 | YAML Scalar regex | Examples | Resolved YAML Type | ACAL DataType |
 |---|---|---|---|
-| `null \| Null \| NULL \| ~` | `null` | null | *Not a valid ACAL value; see Section 5.4.3* |
+| `null \| Null \| NULL \| ~` | `null` | null | *Not a valid ACAL value; see Section 5.4.3* (allowed below the root of a native `application/yaml` `Body`, [Section 5.4.11](#5411-contenttype-mapping)) |
 | `true \| True \| TRUE \| false \| False \| FALSE` | `true`, `false` | Boolean | `urn:oasis:names:tc:acal:1.0:data-type:boolean` (only `true` and `false` are valid YACAL booleans, see [Section 5.3.2](#532-selected-simple-types-mapped-to-native-yaml-scalars)) |
 | `[-+]? [0-9]+` | `42`, `-7`, `0` | Integer (base 10) | `urn:oasis:names:tc:acal:1.0:data-type:integer` |
 | `0o [0-7]+` | `0o7` | Integer (base 8) | *Not a valid ACAL value, see Section 5.1.4* |
@@ -429,6 +429,8 @@ Under the Core Schema, the following scalar resolutions apply (depending on the 
 | `[-+]? ( \.inf \| \.Inf \| \.INF )` | `.inf`, `-.Inf`, `+.INF` | Float (Infinity) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
 | `\.nan \| \.NaN \| \.NAN` | `.nan`, `.NAN` | Float (not-a-number) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
 | `*` (default) | `hello`, `view`, `Permit` | String | `urn:oasis:names:tc:acal:1.0:data-type:string` |
+
+The ACAL DataType column applies at simple-type and `ValueType` positions; a scalar in `ContentType` `Body` content has no ACAL data type.
 
 The Core Schema guarantees that unquoted scalars like `2026-03-23` are
 resolved as strings (not dates), and `010` is resolved as the integer 10
@@ -505,8 +507,8 @@ documents:
     one document.  The document-start marker `---` and the document-end
     marker `...` may surround the single document.  Bundles are
     expressed using `BundleType`, not YAML multi-document streams.
--   **Merge keys** (`<<`): a YAML 1.1 feature not part of YAML 1.2.
--   **Null** values (`null`, `Null`, `NULL`, `~`, or a key present with an empty value such as `myProperty:`). Omitting an optional property is not a null value; see [Section 5.4.3](#543-null-and-omission).
+-   **Merge keys** (`<<`): a YAML 1.1 feature not part of YAML 1.2. In native `application/yaml` `Body` content ([Section 5.4.11](#5411-contenttype-mapping)), a key spelled `<<` is an ordinary string key, as YAML 1.2.2 defines it.
+-   **Null** values (`null`, `Null`, `NULL`, `~`, or a key present with an empty value such as `myProperty:`), except below the root of a native `application/yaml` `Body` ([Section 5.4.11](#5411-contenttype-mapping)). Omitting an optional property is not a null value; see [Section 5.4.3](#543-null-and-omission).
 -   **Octal notation** for integers (to align with JSON integer type): a plain scalar SHALL NOT use YAML octal integer notation matching `0o[0-7]+`.
 -   **Hexadecimal notation** for integers: a plain scalar SHALL NOT use YAML hexadecimal integer notation matching `0x[0-9a-fA-F]+`.  A quoted string such as `"0x003A"` is not affected; a `hexBinary` value is written as a quoted string.
 
@@ -558,7 +560,7 @@ in the ACAL abstract model definition.
 ### 5.2.4 Omitted Properties
 
 An optional property that is absent from a YACAL document takes the default value defined by the ACAL abstract model, if one is defined. A property MUST NOT be present with a null value (`null`, `Null`, `NULL`, `~` or undefined value in YAML) as a substitute for omission
-(see [Section 5.4.3](#543-null-and-omission)).
+(see [Section 5.4.3](#543-null-and-omission)). This applies to ACAL properties, not to `Body` content ([Section 5.4.11](#5411-contenttype-mapping)).
 
 ------------------------------------------------------------------------
 
@@ -782,7 +784,7 @@ Argument:
 ### 5.4.3 Null and Omission
 
 The YAML scalars `null`, `Null`, `NULL` and `~` are not valid YACAL values and MUST NOT be used as a generic
-stand-in for absence. Similarly, a property with undefined value (e.g. `myProperty: # Empty`) is forbidden in YACAL.
+stand-in for absence. Similarly, a property with undefined value (e.g. `myProperty: # Empty`) is forbidden in YACAL. Below the root of a native `application/yaml` `Body`, a null in any of these spellings is content, not an ACAL value, and a YACAL processor SHALL accept it ([Section 5.4.11](#5411-contenttype-mapping)).
 
 To omit an optional property, the property MUST simply be absent from
 the mapping.  An omitted property is not equivalent to a present
@@ -1209,25 +1211,20 @@ need not treat the order as semantically relevant.
 ### 5.4.10 AnyType Mapping
 
 `AnyType` is used where ACAL permits representation-defined or
-profile-defined arbitrary content, notably in `ContentType` and
-`StatusDetailType`.
+profile-defined content, in `ContentType` ([Section 5.4.11](#5411-contenttype-mapping)).
 
 In YACAL, an `AnyType` value is represented directly as a YAML node
-without any extra wrapper:
+without any extra wrapper: a YAML mapping or sequence for native
+`application/yaml` content, and a YAML string for a document in
+another format or for Base64 data.
 
-1. a YAML mapping for structured object content
-2. a YAML sequence for structured list content
-3. a YAML scalar for textual or scalar payloads
-
-The chosen YAML form MUST be consistent with the enclosing ACAL object,
-its `MediaType`, any `Encoding`, and any applicable ACAL profile.
-
-If the content is XML or another non-YAML-native textual format, the
-`AnyType` value SHOULD be represented as a YAML string, typically quoted
-or block-scalar style.
-
-YAML tags, anchors, aliases, merge keys, and multi-document streams are
-prohibited in `AnyType` content just as they are elsewhere in YACAL.
+In native `application/yaml` content, YAML tags, anchors, aliases,
+merge keys, and multi-document streams are prohibited just as they are
+elsewhere in YACAL: a native `application/yaml` `Body` SHALL NOT contain
+an explicit YAML tag, an anchor or an alias. In a string or Base64 data
+they are document text. A key spelled `<<` in that content is a string
+key, and null and non-string keys are allowed below its root
+([Section 5.4.11](#5411-contenttype-mapping)).
 
 ### 5.4.11 ContentType Mapping
 
@@ -1236,17 +1233,40 @@ properties:
 
 | Property | Required | Type | Notes |
 |---|---|---|---|
-| `MediaType` | No | String | Media type of the content body. If omitted, the default value `application/yaml` applies, and the `Body` SHALL be a YAML mapping or sequence. The values `application/json` and `application/xml` SHALL be used for JSON text (a JSON object or array, in a YAML string) and XML documents respectively; JSON content represented as native YAML uses `application/yaml` (see below). |
-| `Encoding` | No | String | Content encoding, used only when the `Body` string is encoded rather than directly represented. The Encoding value `base64` indicates that the Body is Base64-encoded as per [[RFC4648](#rfc4648)]. Other Encoding values may be defined by other YACAL Profiles. |
-| `Body` | Yes | `AnyType` | Direct representation of the content payload |
+| `MediaType` | No | String | Media type of the content body. If omitted, the default value `application/yaml` applies. |
+| `Encoding` | No | String | `base64` indicates that the `Body` is a string of Base64 data as per [[RFC4648](#rfc4648)], which decodes to the UTF-8 encoding of the document text. For `application/json`, `application/yaml` and `application/xml` it is the only value. |
+| `Body` | Yes | `AnyType` | The content payload, in a form given below |
 
-The `Body` value is the direct YACAL representation of the underlying
-content and follows the rules in
-[Section 5.4.10](#5410-anytype-mapping).
+The `Body` takes one of the following forms ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34):
 
-For structured content that is naturally represented using YAML
-mappings or sequences, the `Body` SHOULD normally use those
-native YAML forms:
+- `application/yaml`: a YAML mapping or sequence (native content);
+- `application/json`: a YAML string holding the JSON text of an object or array;
+- `application/xml`: a YAML string holding the XML text;
+- for any of these media types, with `Encoding` `base64`, a YAML string of Base64 data.
+
+If `Encoding` is absent and the `Body` is a string, its value, as a
+YAML processor reads it, SHALL be the document text (a literal block
+scalar, or a double-quoted scalar with escapes; a folded line break
+changes the text). The base64, UTF-8 and document rules, the rejection
+of duplicate names in JSON content and the rules for a converter are
+those of [[ACAL-Core-1.0](#acal-core-10)] Section 7.34.
+
+A native `application/yaml` `Body` is one YAML node of the YACAL
+document, a mapping or sequence. It SHALL NOT contain an explicit YAML
+tag, an anchor or an alias; a YAML document that contains one is
+carried in base64. Below the root, a YACAL processor SHALL accept a
+null in any Core Schema spelling (`null`, `Null`, `NULL`, `~`, an empty
+value) and a non-string key, and a key spelled `<<` is a string key. A
+scalar in `Body` content has no ACAL data type
+([Section 5.1.2](#512-core-schema)). Tags, anchors and aliases inside a
+string or Base64 data are document text, not YACAL syntax. ACAL defines
+no evaluation of `application/yaml` content. A processor that parses a
+carried YAML document SHALL NOT invoke a language-specific or
+application-specific constructor because of an explicit YAML tag, and a
+processor that builds its node graph SHALL apply its input acceptance
+limits ([[ACAL-Core-1.0](#acal-core-10)] Section 2.1.2) to that graph.
+
+Native YAML content (default media type):
 
 ```yaml
 Content:
@@ -1256,17 +1276,7 @@ Content:
       ward: cardiology
 ```
 
-For XML, JSON or other textual structured content, the `Body` SHOULD normally
-be represented as a YAML string.  If encoded binary or escaped textual
-content is required, the `Encoding` property identifies that encoding.
-
-For JSON content, the following replaces the two recommendations above.
-JSON content (a JSON object or array) takes one of two forms: with
-`MediaType` `application/json`, the `Body` is a YAML string holding the
-JSON text (first example below); with `MediaType` `application/yaml`,
-or no `MediaType`, the `Body` is the native YAML mapping or sequence
-that represents the JSON object or array.
-
+JSON content, as its text:
 
 ```yaml
 Content:
@@ -1278,6 +1288,8 @@ Content:
       }
     }
 ```
+
+XML content, as its text, and in base64:
 
 ```yaml
 Content:
@@ -2495,11 +2507,12 @@ represented recursively using the same mapping rules.
 ### 5.10.3 StatusDetailType
 
 `StatusDetailType` is optional and carries additional status
-information.  In YACAL, it is represented as a YAML mapping whose keys
-identify the supported detail objects.
-
-The core YACAL detail key defined by this specification is
-`MissingAttributeDetail`.
+information.  In YACAL, it is represented as a YAML mapping with the
+keys `MissingAttributeDetail` (a sequence of `MissingAttributeDetailType`
+mappings) and `Content` (a sequence of `ContentType` mappings,
+[Section 5.4.11](#5411-contenttype-mapping)), at least one of them;
+any detail other than a missing-attribute detail is carried in
+`Content` ([[ACAL-Core-1.0](#acal-core-10)] Section 7.42).
 
 Example:
 
@@ -2522,12 +2535,12 @@ If `StatusCode.Value` is:
 - `urn:oasis:names:tc:acal:1.0:status:processing-error`,
   `StatusDetail` MUST NOT be present
 - `urn:oasis:names:tc:acal:1.0:status:missing-attribute`,
-  `StatusDetail` MAY contain one or more `MissingAttributeDetail`
+  `StatusDetail` MAY be absent; if present, it SHALL contain one or
+  more `MissingAttributeDetail` values and MAY contain `Content`
   values
 
-Profiles or implementation agreements MAY define additional
-representation-specific `StatusDetail` entries, but processors MUST
-reject unsupported entries they do not claim to implement.
+A `StatusDetail` mapping SHALL NOT have a key other than
+`MissingAttributeDetail` and `Content`.
 
 ### 5.10.4 MissingAttributeDetailType
 
@@ -2910,8 +2923,8 @@ A conformant YACAL document:
     [Section 5.12](#512-constraint-handling).
 6.  MUST NOT use YAML tags (e.g., `!!str`, `!custom`).
 7.  MUST NOT use YAML anchors (`&name`) or aliases (`*name`).
-8.  MUST NOT use YAML merge keys, and MUST NOT contain more than one YAML document (the markers `---` and `...` may surround the single document).
-9.  MUST NOT use YAML null values (`null`, `Null`, `NULL`, `~`, or a key present with an empty value); omitting an optional property is not a null value ([Section 5.1.4](#514-prohibited-yaml-features)).
+8.  MUST NOT use YAML merge keys, and MUST NOT contain more than one YAML document (the markers `---` and `...` may surround the single document); a key spelled `<<` in native `application/yaml` `Body` content is a string key ([Section 5.4.11](#5411-contenttype-mapping)).
+9.  MUST NOT use YAML null values (`null`, `Null`, `NULL`, `~`, or a key present with an empty value), except below the root of a native `application/yaml` `Body` ([Section 5.4.11](#5411-contenttype-mapping)); omitting an optional property is not a null value ([Section 5.1.4](#514-prohibited-yaml-features)).
 10. MUST NOT use a plain scalar in YAML octal or hexadecimal integer notation (matching `0o[0-7]+` or `0x[0-9a-fA-F]+`).
 11. SHOULD use YAML block style for mappings and sequences.  Flow style
     MAY be used where it improves readability (e.g., for short inline

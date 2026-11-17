@@ -296,9 +296,12 @@
 
 	<xs:element name="StatusDetail" type="xacml:StatusDetailType" />
 	<xs:complexType name="StatusDetailType">
+		<!-- ACAL Core 7.42: missing-attribute details and, for any other detail, Content elements; at least one. -->
 		<xs:sequence>
-			<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element ref="xacml:MissingAttributeDetail" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element ref="xacml:Content" minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
+		<xs:assert vc:minVersion="1.1" test="count(*) ge 1" />
 	</xs:complexType>
 
 	<xs:element name="MissingAttributeDetail" type="xacml:MissingAttributeDetailType" />

@@ -148,13 +148,13 @@
 			]
 		},
 		"MediaType": {
-			"description": "Content media type (RFC 6838). The standard MediaType values defined in JACAL core specification SHALL be used whenever applicable: 'application/xml' for XML document, and 'application/json' for JSON object or array (default). Or else use a name registered at IANA (RFC 6838 - https://www.iana.org/assignments/media-types/media-types.xhtml).",
+			"description": "Content media type (RFC 6838). The standard MediaType values defined in JACAL core specification SHALL be used whenever applicable: 'application/xml' for XML document, 'application/yaml' for YAML document, and 'application/json' for JSON object or array (default). Or else use a name registered at IANA (RFC 6838 - https://www.iana.org/assignments/media-types/media-types.xhtml).",
 			"$comment": "The pattern is based on the ABNF syntax from section 4.2 of RFC 6838 (with the recommendation that <type-name> and <subtype-name> SHOULD be limited to 64 characters).",
 			"type": "string",
 			"pattern": "^[A-Za-z0-9][A-Za-z0-9!#$&\\-\\^_.+]{0,63}/[A-Za-z0-9][A-Za-z0-9!#$&\\-\\^_.+]{0,63}$"
 		},
 		"ContentEncodingType": {
-			"description": "Content encoding name (RFC 2045). The standard ContentEncodingType value(s) defined in JACAL core specification SHALL be used whenever applicable: 'base64' for complex XML content. For other cases, either use one of the standard Transfer Encodings registered at IANA (RFC 4289 - https://www.iana.org/assignments/transfer-encodings/transfer-encodings.xhtml), or else, if a custom content encoding is really needed, as suggested by RFC 2045 Section 6.3, define a new one prefixed with 'x-'.",
+			"description": "Content encoding name (RFC 2045). The standard ContentEncodingType value(s) defined in JACAL core specification SHALL be used whenever applicable: 'base64', the only value for 'application/json', 'application/yaml' and 'application/xml' content (ACAL Core Section 7.34). For other media types, either use one of the standard Transfer Encodings registered at IANA (RFC 4289 - https://www.iana.org/assignments/transfer-encodings/transfer-encodings.xhtml), or else, if a custom content encoding is really needed, as suggested by RFC 2045 Section 6.3, define a new one prefixed with 'x-'.",
 			"type": "string",
 			"pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
 		},
@@ -1351,7 +1351,7 @@
 					"$ref": "#/$defs/ContentEncodingType"
 				},
 				"Body": {
-					"$comment": "'object' and 'array' types are used for JSON content (a JSON object or array), 'string' for others - e.g. XML - possibly escaped or encoded depending on the Encoding property",
+					"$comment": "'object' and 'array' types are used for JSON content (a JSON object or array); 'string' for a document in another format (XML text, YAML text) and for Base64 data when Encoding is 'base64' (ACAL Core Section 7.34)",
 					"$ref": "#/$defs/AnyType"
 				}
 			},
@@ -1510,7 +1510,7 @@
 			"additionalProperties": false
 		},
 		"StatusDetailType": {
-			"$comment": "Supporting this is optional. This subschema can be removed if the implementation does not support 'StatusDetailType' objects. Otherwise, for safety/security reasons, in production, ACAL system users and/or implementers SHOULD add further restrictions to this schema and/or enforce security measures in the JSON processor to mitigate possible security issues that may occur when allowing any JSON object like this as input",
+			"$comment": "Supporting this is optional. This subschema can be removed if the implementation does not support 'StatusDetailType' objects. A detail other than a missing-attribute detail is a ContentType object in 'Content' (ACAL Core Section 7.42).",
 			"type": "object",
 			"properties": {
 				"MissingAttributeDetail": {
@@ -1519,9 +1519,17 @@
 					"items": {
 						"$ref": "#/$defs/MissingAttributeDetailType"
 					}
+				},
+				"Content": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "#/$defs/ContentType"
+					}
 				}
 			},
-			"minProperties": 1
+			"minProperties": 1,
+			"additionalProperties": false
 		},
 		"MissingAttributeDetailType": {
 			"type": "object",

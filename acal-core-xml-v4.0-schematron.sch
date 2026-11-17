@@ -80,6 +80,12 @@
 		-->
 	</rule>
  </pattern>
+ <pattern id="ACAL_constraint_on_StatusDetailType">
+	<title>ACAL constraint on StatusDetailType: {OCL} MissingAttributeDetail-&gt;notEmpty() or Content-&gt;notEmpty()</title>
+	<rule context="xacml:StatusDetail">
+	  <assert test="xacml:MissingAttributeDetail or xacml:Content"></assert>
+	</rule>
+ </pattern>
  <pattern id="ACAL_constraint_on_EntityType">
 	<title>ACAL constraint on EntityType: {OCL} Content &lt;&gt; null or Attribute-&lt;notEmpty()</title>
 	<rule context="xacml:PolicyIssuer">

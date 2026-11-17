@@ -10,7 +10,7 @@ description: >
 $comment: >
   This core schema covers the core YACAL document forms plus the
   standalone ShortIdSet artifact form used by the YACAL work product. Profile
-  extension points such as PolicyDefaults, RequestDefaults, StatusDetail, and
+  extension points such as PolicyDefaults, RequestDefaults, and
   selector extensions are exposed through explicit dynamic extension hooks for
   composition with profile schemas. Higher-order invariants are complemented by the companion
   core constraint catalog in acal-core-yaml-v1.0-constraints.yaml.
@@ -229,6 +229,10 @@ $defs:
       Body:
         $ref: "#/$defs/AnyType"
     additionalProperties: false
+    $comment: >
+      The Body forms (ACAL Core 7.34, YACAL 5.4.11) are stated in prose. This
+      schema does not validate the content of a native application/yaml Body,
+      which may hold null and non-string keys below its root.
 
   BaseAttributeType:
     $comment: "Abstract type holding the properties of an attribute (ACAL Section 7.27); open, so that AttributeType, AttributeAssignmentType and RequestAttributeType can extend it."
@@ -951,15 +955,6 @@ $defs:
     additionalProperties: false
 
   StatusDetailType:
-    anyOf:
-      - $ref: "#/$defs/StatusDetailTypeCore"
-      - $dynamicRef: "#StatusDetailTypeExtensions"
-    unevaluatedProperties: false
-    $comment: >
-      Conditional StatusDetail presence and status-code-specific detail rules
-      are handled by the companion constraint catalog.
-
-  StatusDetailTypeCore:
     type: object
     properties:
       MissingAttributeDetail:
@@ -967,15 +962,18 @@ $defs:
         items:
           $ref: "#/$defs/MissingAttributeDetailType"
         minItems: 1
-    minProperties: 1    
-
-  StatusDetailTypeExtensionsDisabled:
-    $dynamicAnchor: "StatusDetailTypeExtensions"
+      Content:
+        type: array
+        items:
+          $ref: "#/$defs/ContentType"
+        minItems: 1
+    minProperties: 1
+    additionalProperties: false
     $comment: >
-      No profile-specific StatusDetail entries are enabled by default in the
-      core schema. Profile or implementation composition schemas may override
-      this dynamic anchor to add supported detail keys.
-    not: true
+      ACAL Core 7.42: missing-attribute details and, for any other detail,
+      ContentType mappings. Conditional StatusDetail presence and
+      status-code-specific detail rules are handled by the companion
+      constraint catalog.
 
   StatusType:
     type: object

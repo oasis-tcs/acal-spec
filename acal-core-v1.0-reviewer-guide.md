@@ -1281,11 +1281,15 @@ JACAL, because YAML offers syntax features that ACAL does not use.
 
 Notably:
 
-1. YAML null values are forbidden entirely. YACAL does not permit
-   `null`, `Null`, `NULL`, `~`, or an undefined value as a substitute
-   for omission.
+1. YAML null values are forbidden at ACAL properties and values. YACAL
+   does not permit `null`, `Null`, `NULL`, `~`, or an undefined value as
+   a substitute for omission. Below the root of a native
+   `application/yaml` `Body`, a null is content and is allowed.
 2. YAML tags, anchors, aliases, merge keys, and multi-document streams
-   are forbidden.
+   are forbidden, in native `application/yaml` `Body` content too (where
+   a key spelled `<<` is a string key); a YAML document that uses a tag,
+   an anchor or an alias is carried in base64, and in a string or Base64
+   data such syntax is document text.
 3. YAML octal integer notation is forbidden.
 
 These restrictions keep the YAML surface aligned with the ACAL abstract

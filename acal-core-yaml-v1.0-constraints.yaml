@@ -422,10 +422,13 @@ Rule:
       Value: "urn:oasis:names:tc:acal:1.0:status:missing-attribute"
     AllowedStatusDetailKeys:
       - MissingAttributeDetail
+      - Content
+    RequiredStatusDetailKeys:
+      - MissingAttributeDetail
     Requirement: >
       When StatusCode.Value is status:missing-attribute, StatusDetail MAY
-      be present and, in core YACAL, may contain one or more
-      MissingAttributeDetail values.
+      be absent; if present, it SHALL contain one or more
+      MissingAttributeDetail values and MAY contain Content values.
     Provenance:
       YACALSection: "5.10.3"
 

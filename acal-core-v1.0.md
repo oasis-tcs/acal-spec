@@ -3175,7 +3175,7 @@ The full consolidated UML diagram is provided in [Annex G](#annex-g-uml-model).
 
 The ACAL structures are objects that each conform to a specific object type. Objects of the same kind conform to a specific, named object type, which describes a set of properties that an object of the type is permitted to have and for each property whether it is required or optional.
 
-A property has a unique name (unique among the object's properties) and a value, where the value conforms to a specific type, either a simple type, an object type, or a sequence of such values.
+A property has a unique name (unique among the object's properties) and a value, where the value conforms to a specific type, either a simple type, an object type, or a sequence of such values. An ACAL object SHALL NOT have two properties with the same name. A property whose multiplicity allows several values is one property, whose value is the sequence of those values (in each representation, for example, a JSON or YAML array or repeated XML elements).
 
 #### 7.1.1.1 Object constraints
 
@@ -5103,7 +5103,7 @@ A `RequestEntityType` object contains the following properties:
 
 `Content` [Optional]
 
-: A `ContentType` object specifying additional sources of attributes in JSON or XML document format which can be referenced using attribute selectors and entity attribute selectors.
+: A `ContentType` object specifying additional sources of attributes in JSON, YAML or XML document format which can be referenced using attribute selectors and entity attribute selectors.
 
 `RequestAttribute` [Any Number]
 
@@ -5135,12 +5135,28 @@ This fifth object has the same `AttributeId` and the same effective `DataType` a
 
 _**Support for this object type is optional. It is required only if the implementation supports extensions of AttributeSelectors and/or DataTypes depending on this object type.**_ Such extensions are typically defined in ACAL Profiles (e.g. XPath and JSONPath Profiles).
 
-A `ContentType` object is a notional placeholder for additional attributes, typically the content of the resource.
-A `ContentType` object has a `Body` property of arbitrary type.
+A `ContentType` object carries a document in one of the forms that this section defines. As the `Content` of a request entity or an entity, it is a source of additional attributes, typically the content of the resource.
+A `ContentType` object has a `Body` property, in one of the forms below.
 
-`ContentType` objects SHALL be used only for structured attributes (see [Section 8.4.1](#841-structured-attributes)) that are not compatible with `RequestAttribute` objects (named attributes). A structured attribute is not compatible with `RequestAttribute` objects if it cannot be encoded in the `Value` of a `RequestAttribute` object, that is, if no data type URI is defined for it or no concrete subtype of `StructuredValueType` is defined for that data type.
+As the `Content` of a request entity or an entity, `ContentType` objects SHALL be used only for structured attributes (see [Section 8.4.1](#841-structured-attributes)) that are not compatible with `RequestAttribute` objects (named attributes). A structured attribute is not compatible with `RequestAttribute` objects if it cannot be encoded in the `Value` of a `RequestAttribute` object, that is, if no data type URI is defined for it or no concrete subtype of `StructuredValueType` is defined for that data type.
 
 The `Body` of a `ContentType` object denotes structured content in the format identified by its effective media type: a JSON object or array with `application/json`, a YAML mapping or sequence with `application/yaml`, an XML document with `application/xml`. An ACAL Profile MAY define another structured media type.
+
+For the media types `application/json`, `application/yaml` and `application/xml`, a `Body` takes the form that the following table gives for its representation, or, in every representation, the form of a string of Base64 data with `Encoding` `base64`. Each representation states these forms; an ACAL Profile that defines another media type defines its forms.
+
+| Media type | JSON representation | YAML representation | XML representation |
+| --- | --- | --- | --- |
+| `application/json` | the JSON object or array | a string holding the JSON text of an object or array | character content holding the JSON text of an object or array |
+| `application/yaml` | a string holding the YAML text of a mapping or sequence | a YAML mapping or sequence | character content holding the YAML text of a mapping or sequence |
+| `application/xml` | a string holding the XML text | a string holding the XML text | the child element of the `Body` |
+
+If `Encoding` is absent and the `Body` is a string or XML character content, its value, as the representation's parser reads it, SHALL be the document text. A character that the carrier would alter is written with the carrier's escape (for example `&#13;` for a carriage return in XML character content); a document whose text the carrier cannot hold, such as a JSON or YAML text that contains U+FFFE or U+FFFF in the XML representation, is carried in base64.
+
+With `Encoding` `base64`, the `Body` is a string of Base64 data. For these three media types it decodes to the UTF-8 encoding of the document text, and a processor SHALL reject Base64 data that does not decode to UTF-8; an ACAL Profile that defines another media type defines the octets of its base64 form. An XML document carried as a string or in base64 SHALL NOT declare an encoding other than UTF-8. For these three media types `Encoding` SHALL NOT have a value other than `base64`. A processor that supports a media type SHALL support its base64 form, subject to the rules of this section and to its input acceptance limits.
+
+The *document* of a `ContentType` object is, for these three media types: with `Encoding` `base64`, the text that the decoded UTF-8 octets encode; otherwise the native `Body`, or, for a textual form, the `Body` string or character content. An ACAL Profile that evaluates `Content` (for example an attribute selector) applies to its document, and a processor's input acceptance limits apply to the decoded document. A JSON document, in any form, SHALL NOT have an object with duplicate names, and a processor SHALL reject one.
+
+A converter that moves a `Body` to another representation SHALL keep base64 as base64, and otherwise SHALL write the target's form from the table above, or base64 where that form cannot hold the document (U+FFFE or U+FFFF in XML; an explicit tag, an anchor or an alias in a native YAML `Body`); XML text that it writes SHALL declare the namespaces that the source took from outside the child element. When both forms are text, the converter keeps the text. When one form is native, the other holds the same data: for JSON, objects with the same names and the same values in any order, arrays with the same items in order, strings with the same code points, numbers with the same exact value; for YAML, the same node graph; for XML, the same infoset.
 
 The following UML definition (class diagram) is provided for information purposes only:
 ```plantuml
@@ -5166,11 +5182,11 @@ A `ContentType` object contains the following properties:
 
 `Body` [Required]
 
-: The content body which may be any data-type representable in the ACAL representation format in use (XML, JSON, etc.). In other words, each ACAL representation format SHALL define the correct representation for `AnyType` in their own format (e.g. `xs:anyType` [[XS](#xs)] in XML), or simply state that *the `ContentType` is not supported at all* in that representation.
+: The content body, in one of the forms that this section gives for the media types `application/json`, `application/yaml` and `application/xml`, or that an ACAL Profile defines for another media type. In other words, each ACAL representation format SHALL define the correct representation for `AnyType` in their own format (e.g. `xs:anyType` [[XS](#xs)] in XML), or simply state that *the `ContentType` is not supported at all* in that representation.
 
 `Encoding` [Optional]
 
-: This property (similar to [JSON schema's `contentEncoding`](https://json-schema.org/draft/2020-12/json-schema-validation#name-contentencoding) property) applies when the `Body` value is a string that SHALL be interpreted as encoded binary data and decoded using the encoding named by this property. The exact possible value(s) SHALL be defined by each ACAL representation format supporting this object type (e.g. `base64` encoding for the JSON representation of complex XML content). In any case, the value(s) SHALL be among the standard identifiers specified in [Annex D.11](#d11-content-encodings) whenever applicable (more information in the [ContentEncodingType section](#712315-contentencodingtype-optional) ). If this property is undefined, this indicates that no encoding was needed in order to represent the content in a UTF-8 string.
+: This property (similar to [JSON schema's `contentEncoding`](https://json-schema.org/draft/2020-12/json-schema-validation#name-contentencoding) property) applies when the `Body` value is a string of encoded data that SHALL be decoded using the encoding named by this property; for the media types `application/json`, `application/yaml` and `application/xml` the decoded octets are the UTF-8 encoding of the document text (see above). The exact possible value(s) SHALL be defined by each ACAL representation format supporting this object type; for the media types `application/json`, `application/yaml` and `application/xml` the only value is `base64` (see above). In any case, the value(s) SHALL be among the standard identifiers specified in [Annex D.11](#d11-content-encodings) whenever applicable (more information in the [ContentEncodingType section](#712315-contentencodingtype-optional) ). If this property is absent, the `Body` is in the form that the table above gives for its representation.
 
 
 ## 7.35 RequestAttributeType
@@ -5380,32 +5396,31 @@ A `StatusCodeType` object contains the following properties:
 
 _**Support for this object type is optional.**_
 
-A `StatusDetailType` object qualifies its parent `StatusType` object with additional information. A `StatusDetailType` object allows arbitrary content.
+A `StatusDetailType` object qualifies its parent `StatusType` object with additional information: `MissingAttributeDetailType` objects, whose structure this specification defines, and any other detail as `ContentType` objects ([Section 7.34](#734-contenttype-optional)), so that no detail has to be translated between representations.
 
-The following UML definition (class diagram) is provided for information purposes only:
+UML definition (class diagram):
 ```plantuml
 @startuml
 hide empty members 
 hide circle
 class StatusDetailType <<dataType>> {
-   + <any>: AnyType [*] {unordered, nonunique}
+   + MissingAttributeDetail: MissingAttributeDetailType [*] {unordered, nonunique}
+   + Content: ContentType [*] {unordered, nonunique}
 }
+note "{{OCL} MissingAttributeDetail->notEmpty() or Content->notEmpty()}" as constraint
+StatusDetailType .. constraint
 @enduml
 ```
 
-The `AnyType` data-type above represents *any type* (e.g. `anyType` [[XS](#xs)] in XML), and the `<any>` name is only a placeholder for any property name. 
-This UML definition is for information only, and it is the responsibility of each ACAL representation format (ACAL Profile) to either define the correct representation for arbitrary content in their own format, or simply state that *`StatusDetailType` objects are not supported at all* in that representation format.
+A `StatusDetailType` object contains the following properties, and at least one value of one of them:
 
-For example, this can be represented in XML as follows:
+`MissingAttributeDetail` [Any Number]
 
-```xml
-<xs:element name="StatusDetail" type="xacml:StatusDetailType"/>
-<xs:complexType name="StatusDetailType">
-   <xs:sequence>
-      <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-   </xs:sequence>
-</xs:complexType>
-```
+: A sequence of `MissingAttributeDetailType` objects ([Section 7.43](#743-missingattributedetailtype)).
+
+`Content` [Any Number]
+
+: A sequence of `ContentType` objects, each carrying a detail that this specification does not define. Any detail other than a missing-attribute detail SHALL be carried in this property.
 
 Inclusion of a `StatusDetailType` object is optional. However, if a PDP returns one of the following ACAL-defined status code values, then the following rules apply.
 
@@ -5419,7 +5434,7 @@ A PDP MUST NOT return a `StatusDetail` property in conjunction with the `ok` sta
 urn:oasis:names:tc:acal:1.0:status:missing-attribute
 ```
 
-A PDP MAY choose not to return any `StatusDetailType` object or MAY choose to return a `StatusDetailType` object containing one or more `MissingAttributeDetailType` objects.
+A PDP MAY choose not to return any `StatusDetailType` object. A `StatusDetailType` object that it returns SHALL contain one or more `MissingAttributeDetailType` objects and MAY contain `ContentType` objects.
 
 ```text
 urn:oasis:names:tc:acal:1.0:status:syntax-error
@@ -5518,7 +5533,7 @@ A `ResultEntityType` object contains the following properties:
 
 ## 7.45 EntityType
 
-The `EntityType` object class defines the structure of values of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type. An `EntityType` object contains a sequence of `AttributeType` objects and/or syntax-specific content (i.e., XML or JSON). The `EntityType` object type is similar to the `RequestEntityType` object type but omits the `Category` property; values of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type don't self-identify with any particular attribute category.
+The `EntityType` object class defines the structure of values of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type. An `EntityType` object contains a sequence of `AttributeType` objects and/or syntax-specific content (i.e., XML, JSON or YAML). The `EntityType` object type is similar to the `RequestEntityType` object type but omits the `Category` property; values of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type don't self-identify with any particular attribute category.
 
 UML definition (class diagram):
 ```plantuml
@@ -5539,7 +5554,7 @@ An `EntityType` object contains the following properties:
 
 `Content` [Optional]
 
-: A `ContentType` object specifying additional sources of attributes in JSON or XML document format which can be referenced using entity attribute selectors.
+: A `ContentType` object specifying additional sources of attributes in JSON, YAML or XML document format which can be referenced using entity attribute selectors.
 
 `Attribute` [Any Number]
 
@@ -8963,7 +8978,9 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - The properties of an attribute are defined by a new abstract object type `BaseAttributeType`, which `AttributeType`, `RequestAttributeType` and `AttributeAssignmentType` extend ([Section 7.27](#727-attributetype), [Section 7.28](#728-attributeassignmenttype), [Section 7.35](#735-requestattributetype)). Before, `RequestAttributeType` and `AttributeAssignmentType` extended `AttributeType`, so the `Attribute` property of `EntityType` and of `ResultEntityType` also admitted them; it now admits only an `AttributeType` object. The rules of [Section 7.14](#714-expressiontype) and [Section 8.18](#818-identifier-equality) that applied to every attribute now name `BaseAttributeType`. The example in [Section 9.2](#92-structured-attributes) names `RequestAttributeType` objects in a `RequestEntityType` object and `AttributeType` objects in an `EntityType` object.
 - The `DataType` of each `AttributeAssignmentType` object that the evaluation of a notice expression produces is the data type of the value from which it is constructed, and the object has a `Category` or an `Issuer` property only if the `AttributeAssignmentExpression` object has it ([Section 7.29](#729-noticeexpressiontype), [Section 7.30](#730-attributeassignmentexpressiontype)). The sentence "The values of the notice arguments SHALL be interpreted by the PEP" is deleted from [Section 7.29](#729-noticeexpressiontype): what a PEP does with a notice is specified in [Section 8.2](#82-policy-enforcement-point) for an obligation notice and in [Section 7.37](#737-resulttype) for an advice notice, and the `Notice` property of Section 7.37 now describes each notice as "to be considered by the PEP", not "to be interpreted by the PEP". The spurious "with" at the end of the description of the `Name` property of a named argument is removed ([Section 7.47](#747-argumenttype-and-namedargumenttype)).
 - The standard media type and encoding identifiers of [Annex D.10](#d10-content-types) and [Annex D.11](#d11-content-encodings) SHALL be used whenever applicable, in [Section 7.1.2.3.14](#712314-mediatype-optional), [Section 7.1.2.3.15](#712315-contentencodingtype-optional) and [Section 7.34](#734-contenttype-optional) and in the descriptions of the XML and JSON schemas, as in the two annexes; before, those sections said SHOULD.
-- `ContentType` objects SHALL be used only for structured attributes that are not compatible with `RequestAttribute` objects ([Section 7.34](#734-contenttype-optional)); csd01 said they SHOULD be used only for structured data that cannot be handled by named attributes, and that the body type SHOULD be a structured data-type. A structured attribute is not compatible with `RequestAttribute` objects if it cannot be encoded in the `Value` of a `RequestAttribute` object: no data type URI is defined for it, or no concrete subtype of `StructuredValueType` is defined for that data type. The `Body` of a `ContentType` object denotes structured content in the format identified by its effective media type (a JSON object or array, a YAML mapping or sequence, an XML document).
+- `ContentType` objects SHALL be used only for structured attributes that are not compatible with `RequestAttribute` objects ([Section 7.34](#734-contenttype-optional)); csd01 said they SHOULD be used only for structured data that cannot be handled by named attributes, and that the body type SHOULD be a structured data-type. A structured attribute is not compatible with `RequestAttribute` objects if it cannot be encoded in the `Value` of a `RequestAttribute` object: no data type URI is defined for it, or no concrete subtype of `StructuredValueType` is defined for that data type. The `Body` of a `ContentType` object denotes structured content in the format identified by its effective media type (a JSON object or array, a YAML mapping or sequence, an XML document). A document in another representation's format is carried as its text or in base64, not converted: [Section 7.34](#734-contenttype-optional) gives the form of a `Body` for each media type and representation, the exact-text, base64 and UTF-8 rules, the document that a profile evaluates, the rejection of duplicate names in JSON content and the rules for a converter.
+- An ACAL object SHALL NOT have two properties with the same name ([Section 7.1.1](#711-object-type)).
+- A `StatusDetailType` object has a `MissingAttributeDetail` property and a `Content` property, and any detail other than a missing-attribute detail is a `ContentType` object ([Section 7.42](#742-statusdetailtype-optional)); before, it allowed arbitrary content, whose form each representation defined.
 - `RequestType` has an object-level OCL constraint that every `RequestEntityReference` value of its `MultiRequests` property equals the `Id` of one of its `RequestEntity` objects ([Section 7.31](#731-requesttype)), and [Section 7.1.1.1.2](#71112-object-level-constraints) defines the form of expression that the constraint uses.
 - The commentary [04] and [05] of the first example ([Section 6.1.1](#611-example-policy)) refers to [Section 7.4](#74-policytype), [Section 7.11](#711-policyreferencetype) and [Section 7.1.2.3.4](#71234-versiontype) instead of restating the rules on policy identifiers and versions.
 - Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; references to the multiple decision and hierarchical resource profiles now cite the ACAL profiles; section and table numbering, cross-references and the table of contents are corrected (in Annex C, "Entity" moves from C.2.6 to C.2.5 and "Extension Functions and Data Types" from C.3.18 to C.3.17, closing numbering gaps); citations of XML Schema datatype sections use the XML Schema 1.1 numbering of [[XS](#xs)] (e.g. Section 3.3.7 for `dateTime`, formerly the XML Schema 1.0 number 3.2.7); references to RFC 2396, RFC 2253 and RFC 2821 are replaced by [[RFC3986](#rfc3986)], [[RFC4514](#rfc4514)] and [[RFC5321](#rfc5321)]; the property descriptions of `ResultType`, `StatusCodeType` and `ResultEntityType` now state the same multiplicities as their UML definitions; and the `isBag` property of `ParameterType` is spelled `IsBag`, as in the XML Schema.
