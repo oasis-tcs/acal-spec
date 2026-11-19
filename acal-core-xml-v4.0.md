@@ -230,7 +230,7 @@ Conventional XML namespace prefixes are used throughout the listings in this spe
 
 * The prefix `xf:` stands for the XPath and XQuery Functions and Operators 3.1 specification namespace [[XF](#xf)].
 
-* The prefix `xml:` stands for the XML namespace https://www.w3.org/XML/1998/namespace.
+* The prefix `xml:` stands for the XML namespace http://www.w3.org/XML/1998/namespace.
 
 This specification uses the following typographical conventions in text: `<XACMLElement>`, `<ns:ForeignElement>`, `Attribute`, `Datatype`, `OtherCode`. Terms in **_bold-face italic_** are intended to have the meaning defined in [[ACAL-Core-1.0](#acal-core-10)] Section 2.
 

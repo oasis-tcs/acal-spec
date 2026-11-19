@@ -482,7 +482,7 @@ Regardless, we provide the more complete JSON-schema-compatible regex below for 
 
 This is a union of three regular expressions (either one must match) representing each matching rule in the ACAL definition:
 1. The regex for ShortIdNameType, referred to as `<SHORTNAME>`;
-2. The regex for absolute URIs (ASCII-restricted): `^[A-Za-z][A-Za-z0-9+\-.]*:<URI_CHAR>+$`, where `<URI_CHAR>` is the regex for ASCII-only URI characters ( `[!#-;=?-\[\]_a-z~]` );
+2. The regex approximating absolute URIs (ASCII-restricted; it does not implement the full RFC 3986 grammar): `^[A-Za-z][A-Za-z0-9+\-.]*:<URI_CHAR>+$`, where `<URI_CHAR>` is the regex for ASCII-only URI characters ( `[!#-;=?-\[\]_a-z~]` );
 3. The regex for {shortname}s possibly preceded or followed by URI characters: `^<URI_CHAR>*(\{<SHORTNAME>\}<URI_CHAR>*)+$` .
 
 ### 5.1.3 Enum types (UML stereotype `<<enumeration>>`)
@@ -546,7 +546,7 @@ In these rules, a value has an *inherited data type* if its context determines i
      ```json
      {"DataType": "urn:oasis:names:tc:acal:1.0:data-type:double", "Value": "1.0" }
      ```
-   - A JSON object, for an `xs:double` value that is positive infinity, negative infinity, or not-a-number; JSON number syntax cannot directly carry the corresponding `xs:double` special lexical representations (`INF`, `-INF` and `NaN`). Such a value SHALL NOT be represented as a JSON number; it SHALL be represented as a JSON object with a `DataType` property set to the standard ACAL Double and a `Value` property holding the value as a JSON string in the lexical space of `xs:double` given in [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6 (`INF`, `-INF` or `NaN`). For example:
+   - A JSON object, for an `xs:double` value that is positive infinity, negative infinity, or not-a-number; JSON number syntax cannot directly carry the corresponding `xs:double` special lexical representations (`INF`, `+INF`, `-INF` and `NaN`). A JACAL generator SHALL NOT represent such a value as a JSON number; it SHALL represent it as a JSON object with a `DataType` property set to the standard ACAL Double and a `Value` property holding the value as a JSON string in the lexical space of `xs:double` given in [[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6 (`INF`, `+INF`, `-INF` or `NaN`). For example:
      ```json
      {"DataType": "urn:oasis:names:tc:acal:1.0:data-type:double", "Value": "INF" }
      ```
@@ -689,6 +689,44 @@ Therefore, the `ValueType`'s JSON schema SHALL be enhanced as follows in order t
       "required": [
         "DataType"
       ]
+    },
+    {
+      "$comment": "JACAL Section 5.2.2.1 items 1, 2 and 4: a standard Boolean or String value is not represented as a ValueType object, and a ValueType object whose DataType is the standard Integer has a string Value. Only the full URIs are checked; a short-identifier spelling of these data types is not rejected by this schema.",
+      "not": {
+        "properties": {
+          "DataType": {
+            "enum": [
+              "urn:oasis:names:tc:acal:1.0:data-type:boolean",
+              "urn:oasis:names:tc:acal:1.0:data-type:string"
+            ]
+          }
+        },
+        "required": [
+          "DataType"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "DataType": {
+            "const": "urn:oasis:names:tc:acal:1.0:data-type:integer"
+          }
+        },
+        "required": [
+          "DataType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "Value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Value"
+        ]
+      }
     },
     {
       "anyOf": [
@@ -927,6 +965,8 @@ For each complex ACAL type `FooType` that does not fall under any of the previou
         ```
 
 
+Exception: `BooleanExpressionType` ([[ACAL-Core-1.0](#acal-core-10)] Section 7.7) is mapped to `{"$ref": "#/$defs/NonLiteralExpressionTypeTree"}`. Its `Expression` property is not a JSON member: the value of a property of type `BooleanExpressionType` (`Target`, `Condition`) is the wrapper of the expression itself.
+
 ### 5.2.4 Property mapping rules
 
 For each of an ACAL Datatype's property *Prop* with value type *PropType*, the corresponding JSON subschema is obtained as follows:
@@ -937,7 +977,7 @@ For each of an ACAL Datatype's property *Prop* with value type *PropType*, the c
   { <PropTypeSchema_without_opening_and_closing_braces>, "default": <DEFAULT> }
   ```
 - 2. Else (*Prop* is multivalued):
-  - 2.1. If the property has a **Value type uniqueness constraint** as defined in [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.1.1.1.2 (`self->isUnique(oclType())`), then map to the following subschema:
+  - 2.1. If the property has a **Value type uniqueness constraint** as defined in [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.1.1.1.2 (`self->isUnique(oclType())`), then map to the following subschema (exception: the `PolicyDefaults` and `RequestDefaults` properties are mapped by rule 2.2 to an array of `PolicyDefaultsTypeTree` or `RequestDefaultsTypeTree` items, and the core schema does not express their `oclType()` uniqueness constraint):
     ```json
     {
       "type": "object",
@@ -1456,7 +1496,7 @@ This is the first version of JACAL; its previous stage was Committee Specificati
   - A standard ACAL Boolean or String value is not written as a typed object with `DataType` and `Value`, and a typed object whose `DataType` is the standard ACAL Integer has a string `Value`; the schema checks both for the full data type identifiers.
   - Items 1 to 5 say "SHALL be represented" where csd01 said "is represented"; item 2 adds "or in the object form that this item permits", and the permission in item 5 is written "MAY", and its second form also applies when the object repeats the inherited data type (see the structured value bullet).
   - An ACAL integer may also be written as a JSON string in a typed object. This specification does not restrict the magnitude of a JSON number that represents an integer, and a generator is recommended to use the typed string form for an integer outside −(2<sup>53</sup>−1) to 2<sup>53</sup>−1 unless every JSON processor on the path preserves the exact value of a JSON number.
-  - A value whose declared data type is the standard ACAL Double may be written as a JSON number with or without a fractional part, or as a JSON string in a typed object; positive and negative infinity and not-a-number are written as typed objects with the `xs:double` lexical forms `INF`, `-INF` and `NaN`.
+  - A value whose declared data type is the standard ACAL Double may be written as a JSON number with or without a fractional part, or as a JSON string in a typed object; positive and negative infinity and not-a-number are written as typed objects with the `xs:double` lexical forms `INF`, `+INF`, `-INF` and `NaN`.
   - The obligations of a JACAL processor are stated: it accepts a JSON number or typed string as an integer only once it has determined the exact integer, does not continue with an altered integer value, documents the limits it applies when accepting JSON numbers as integers, does not reject a representation within an admitted request because an integer is outside its supported integer interval, and accepts the typed `Value` string of an infinity or not-a-number only if the string is in the lexical space of `xs:double` and the exact value is preserved; a JACAL generator does not use a JSON number for an infinity or not-a-number.
 - Structured value mappings ([Section 5.2.2.2](#5222-structured-value-mappings)): the same change as in items 1 to 5 above: "SHALL be represented" for a `StructuredValueType` object and for a `FooStructValueType` object, and "MAY" for the form without a `DataType` property. In item 5 and in Section 5.2.2.2, the form with a `DataType` property also applies when the object repeats the inherited data type there, as [[ACAL-Core-1.0](#acal-core-10)] Section 7.14 and the JSON Schema already allow; "may be used" in [Section 5.1.2.1](#5121-identifiertype-pattern) is written "MAY".
 - The schema definitions for `ValueType` are restructured into separate definitions for untyped primitive values, typed primitive values and typed values, and the `$defs` entries holding the disabled extension anchors are renamed from `…TreeEmpty` to `…ExtensionsDisabled` (the `$dynamicAnchor` values are unchanged) ([Section 5.2.2](#522-valuetype-mapping-rules), [Section 5.2.3](#523-default-mapping-rules-for-complex-acal-types-other-than-valuetype)).
@@ -1464,7 +1504,7 @@ This is the first version of JACAL; its previous stage was Committee Specificati
 - The Conformance section is restructured: JACAL inherits ACAL object-type conformance from [[ACAL-Core-1.0](#acal-core-10)] instead of repeating a schema-object table, and lists the machine-readable artifacts that accompany this specification ([Section 7](#7-conformance)). The JSON Schemas of the XPath and JSONPath Profiles are now artifacts of those Profiles, and the extension examples of [Section 5.4](#54-jacal-extension-mechanism) refer to them there. An implementation follows Section 5 and Annex C where they apply to the ACAL object types and machine-readable artifacts that the implementation supports ([Section 7.2](#72-conformance-categories)).
 - The core short identifier set artifact and its reserved `ShortIdSet` identifier are described in [Annex C.2](#c2-core-short-identifier-set).
 - The schema templates of the mapping rules ([Section 5.2.3](#523-default-mapping-rules-for-complex-acal-types-other-than-valuetype)) are corrected: references use the JSON Pointer form `#/$defs/...`; `$comment` is placed as a schema keyword rather than inside `properties`, where it named a property; and `additionalProperties: false` is no longer placed beside a `$ref`, where in JSON Schema 2020-12 it rejected every property.
-- Requirement keywords previously written in lowercase are written in uppercase, with the wording otherwise unchanged ([Section 5.1.2.1](#5121-identifiertype-pattern), [Section 5.2.1](#521-anytype-mapping-rule), [Section 5.4.2](#542-example-using-extensions-from-multiple-acal-profiles), [Section 5.4.3](#543-example-combining-a-custom-extension-with-a-standard-profile-defined-extension)), and in the `$comment` of `ContentType` and of `StatusDetailType` in the core schema ("SHOULD add further restrictions"). The descriptions of `MediaType` and `ContentEncodingType` in the core schema say that the standard values SHALL be used whenever applicable, following [[ACAL-Core-1.0](#acal-core-10)] Sections 7.1.2.3.14 and 7.1.2.3.15. A lowercase "should" or "must" that states a condition or a consequence rather than a requirement stays lowercase, and in [Section 5.4](#54-jacal-extension-mechanism) "depending on which extensions the ACAL implementation shall support" reads "depending on which extensions the ACAL implementation supports".
+- Requirement keywords previously written in lowercase are written in uppercase, with the wording otherwise unchanged ([Section 5.1.2.1](#5121-identifiertype-pattern), [Section 5.2.1](#521-anytype-mapping-rule), [Section 5.4.2](#542-example-using-extensions-from-multiple-acal-profiles), [Section 5.4.3](#543-example-combining-a-custom-extension-with-a-standard-profile-defined-extension)), and in the `$comment` of `ContentType` in the core schema ("SHOULD add further restrictions"). The descriptions of `MediaType` and `ContentEncodingType` in the core schema say that the standard values SHALL be used whenever applicable, following [[ACAL-Core-1.0](#acal-core-10)] Sections 7.1.2.3.14 and 7.1.2.3.15. A lowercase "should" or "must" that states a condition or a consequence rather than a requirement stays lowercase, and in [Section 5.4](#54-jacal-extension-mechanism) "depending on which extensions the ACAL implementation shall support" reads "depending on which extensions the ACAL implementation supports".
 - The `Function` and `Apply` expression wrappers of the core schema do not allow additional properties, like the other wrappers; the `version` match pattern allows `+` only as the last component; a processor SHALL NOT accept the `Value` string of a special double unless the string is in the lexical space of `xs:double` (wording only); comments with issue numbers and TODO markers are removed from the schema, and [Section 2](#2-definitions-and-acronyms) no longer says that no terms are defined elsewhere.
 - The description of the core schema's structure in [Section 5](#5-syntax-normative-with-the-exception-of-the-schema-fragments) now shows the single-property wrapper object that the schema requires around a root object. A standalone short-identifier set or shared variable definition is a root object in the same way as a policy: the schema gains `ShortIdSet` and `SharedVariableDefinition` root forms, the core short-identifier set file is wrapped in a `ShortIdSet` property (csd01: a bare `ShortIdSetType` object), and the short-identifier set example of [Section 4.3](#43-example-short-identifier-set) is wrapped accordingly.
 - [Annex E](#annex-e-how-to-generate-html-and-pdf-versions) describes online generation by the repository's GitHub Actions workflow and offline generation with `pandoc/mkdocs.sh`, lists the tools that script requires, and no longer describes a Docker alternative.

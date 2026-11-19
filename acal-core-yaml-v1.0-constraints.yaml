@@ -140,7 +140,7 @@ Rule:
     Requirement: >
       Parameter names within a PolicyType MUST be unique.
     Provenance:
-      ACALSection: "7.6"
+      ACALSection: "7.4"
 
   - Id: "shared-variable-parameter-name-unique"
     Kind: uniqueByProperty
@@ -231,11 +231,9 @@ Rule:
         - "$.Bundle.SharedVariableDefinition[]"
       ExpressionPath: Expression
     ProhibitedWrapperKey: VariableReference
-    ExceptReferenceTargets: "A Parameter of the same SharedVariableDefinitionType"
+    ExceptReferenceTargets: "A Parameter of the same SharedVariableDefinitionType, or the quantified variable of an enclosing quantified expression within that expression"
     Requirement: >
-      A SharedVariableDefinitionType expression SHALL NOT contain
-      VariableReferenceType objects, except references to a Parameter of
-      the same SharedVariableDefinitionType.
+      A SharedVariableDefinitionType expression SHALL NOT contain VariableReferenceType objects, except references to a Parameter of the same SharedVariableDefinitionType and to the quantified variable of an enclosing quantified expression within that expression (ACAL Sections 7.24, 7.25).
     Provenance:
       YACALSection: "5.7.2"
       ACALSection: "7.13b"
@@ -266,7 +264,7 @@ Rule:
       concrete subtype.
     Provenance:
       YACALSection: "5.12.2"
-      ACALSection: "7.32"
+      ACALSection: "7.31"
 
   - Id: "policy-defaults-unique-concrete-subtype"
     Kind: uniqueByConcreteSubtype
@@ -281,7 +279,7 @@ Rule:
       concrete subtype.
     Provenance:
       YACALSection: "5.12.2"
-      ACALSection: "7.5"
+      ACALSection: "7.4"
 
   - Id: "request-entity-id-unique"
     Kind: uniqueByProperty
@@ -376,6 +374,8 @@ Rule:
     ForbiddenProperty: StatusDetail
     Requirement: >
       StatusDetail MUST NOT be present when StatusCode.Value is status:ok.
+      StatusCode.Value is compared by identifier equality after short
+      identifier expansion (ACAL Core Sections 8.3 and 8.18).
     Provenance:
       YACALSection: "5.10.3"
 
@@ -392,6 +392,8 @@ Rule:
     Requirement: >
       StatusDetail MUST NOT be present when StatusCode.Value is
       status:syntax-error.
+      StatusCode.Value is compared by identifier equality after short
+      identifier expansion (ACAL Core Sections 8.3 and 8.18).
     Provenance:
       YACALSection: "5.10.3"
 
@@ -408,6 +410,8 @@ Rule:
     Requirement: >
       StatusDetail MUST NOT be present when StatusCode.Value is
       status:processing-error.
+      StatusCode.Value is compared by identifier equality after short
+      identifier expansion (ACAL Core Sections 8.3 and 8.18).
     Provenance:
       YACALSection: "5.10.3"
 
@@ -429,6 +433,8 @@ Rule:
       When StatusCode.Value is status:missing-attribute, StatusDetail MAY
       be absent; if present, it SHALL contain one or more
       MissingAttributeDetail values and MAY contain Content values.
+      StatusCode.Value is compared by identifier equality after short
+      identifier expansion (ACAL Core Sections 8.3 and 8.18).
     Provenance:
       YACALSection: "5.10.3"
 
@@ -438,7 +444,7 @@ Rule:
     AppliesTo:
       ObjectType: AttributeType
       ContainerLocations:
-        - "$.Policy.PolicyIssuer.Attribute[]"
+        - "$..Policy.PolicyIssuer.Attribute[]"
         - "$.Response.Result[].ResultEntity[].Attribute[]"
       ParentProperty: DataType
       ChildCollectionPath: Value

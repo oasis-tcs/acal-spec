@@ -117,7 +117,7 @@
 						&lt;subtype-name&gt; SHOULD be limited to 64 characters). The standard
 						MediaType values defined in XACML core specification SHALL be used whenever
 						applicable: - 'application/xml' for XML document (default); -
-						'application/json' for JSON object or array. For other cases, a media type registered at IANA may be used. </xs:documentation>
+						'application/json' for JSON object or array; - 'application/yaml' for YAML mapping or sequence. For other cases, a media type registered at IANA may be used. </xs:documentation>
 				</xs:annotation>
 			</xs:pattern>
 		</xs:restriction>
@@ -130,8 +130,7 @@
 				<xs:annotation>
 					<xs:documentation xml:lang="en"> No special encoding is needed for XML/JSON
 						data. However, if other (custom) content types are used and require specific
-						encoding, the standard identifiers specified in [Annex
-						D.11](#d11-content-encodings) SHALL be used whenever applicable, e.g.
+						encoding, the standard identifiers specified in ACAL Core Annex D.11 SHALL be used whenever applicable, e.g.
 						'base64' or else one of the standard [*Transfer Encodings* names registered
 						at
 						IANA](https://www.iana.org/assignments/transfer-encodings/transfer-encodings.xhtml).
@@ -162,10 +161,14 @@
 	</xs:complexType>
 
 	<xs:element name="Result" type="xacml:ResultType">
+		<!-- Category is an IdentifierType: this key compares the lexical values and does not perform the
+		ACAL Core Section 8.3 short-identifier expansion that identifier equality depends on (XACML 5.2.6.3). -->
 		<xs:key name="Result_ResultEntity_Category">
 			<xs:selector xpath="xacml:ResultEntity" />
 			<xs:field xpath="@Category" />
 		</xs:key>
+		<!-- Version is compared lexically by this key, so equivalent versions such as 1 and 1.0 (ACAL Core
+		Section 7.1.2.3.4) are not detected as duplicates. The same applies to the Bundle keys on Version. -->
 		<xs:key name="Result_ApplicablePolicyReference">
 			<xs:selector xpath="xacml:ApplicablePolicyReference" />
 			<xs:field xpath="@Id" />
@@ -600,9 +603,10 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 					<xs:documentation xml:lang="en"> Pattern agreed with ALFA working group, except
 						the hyphen is allowed as separator in addition to the dot:
 						&lt;name&gt;.&lt;name&gt;.&lt;name&gt;... or
-						&lt;name&gt;-&lt;name&gt;-&lt;name&gt;... where &lt;name&gt; is at least a
+						&lt;name&gt;-&lt;name&gt;-&lt;name&gt;... where the first &lt;name&gt; is at least a
 						letter possibly preceded by underscore(s) and/or followed by
-						letter(s)/digit(s)/underscore(s) 
+						letter(s)/digit(s)/underscore(s), and each following &lt;name&gt; is any (possibly empty)
+						sequence of underscore(s) followed by letter(s)/digit(s)/underscore(s) 
 					</xs:documentation>
 				</xs:annotation>
 			</xs:pattern>
@@ -1258,7 +1262,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		</xs:sequence>
 		<xs:assert vc:minVersion="1.1" test="not(xacml:PolicyReference) or xacml:Policy">
 			<xs:annotation>
-				<xs:documentation xml:lang="en"> If there is a PolicyRef, there must be at least one
+				<xs:documentation xml:lang="en"> If there is a PolicyReference, there must be at least one
 					Policy element . </xs:documentation>
 			</xs:annotation>
 		</xs:assert>

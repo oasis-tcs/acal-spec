@@ -33,7 +33,7 @@
  -->
 
  <pattern id="ACAL_constraint_on_RequestDefaults_property">
- 	<title>ACAL constraint on RequestDefaults property: {OCL} self-gt;isUnique(oclType())</title>	
+ 	<title>ACAL constraint on RequestDefaults property: {OCL} self-&gt;isUnique(oclType())</title>	
 	<rule context="xacml:Request">
 		<!-- 
 		WARNING: collect all the QNames of the elements in RequestDefaults substitution group (of type xacml:RequestDefaultsType) from the ACAL Profiles supported by your implementation (e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion as follows:
@@ -57,7 +57,7 @@
 	</rule>
  </pattern>
  <pattern id="ACAL_constraint_on_PolicyDefaults_property">
-	<title>ACAL constraint on PolicyDefaults property: {OCL} self-gt;isUnique(oclType())</title>
+	<title>ACAL constraint on PolicyDefaults property: {OCL} self-&gt;isUnique(oclType())</title>
 	<rule context="xacml:Policy">
 		<!-- 
 		WARNING: collect all the QNames of the elements in PolicyDefaults substitution group (of type xacml:PolicyDefaultsType) from the ACAL Profiles supported by your implementation (e.g. XPath Profile), i.e. ns1:SomeDefaults1, ns2:SomeDefaults2, etc. and use an assertion as follows:
@@ -87,7 +87,7 @@
 	</rule>
  </pattern>
  <pattern id="ACAL_constraint_on_EntityType">
-	<title>ACAL constraint on EntityType: {OCL} Content &lt;&gt; null or Attribute-&lt;notEmpty()</title>
+	<title>ACAL constraint on EntityType: {OCL} Content &lt;&gt; null or Attribute-&gt;notEmpty()</title>
 	<rule context="xacml:PolicyIssuer">
 	<!-- If your implementation uses a XSD-aware Schematron/XSLT processor, you should use the following more generic context instead of the previous one: -->
 	<!-- <rule context="element(*, xacml:EntityType)"> -->

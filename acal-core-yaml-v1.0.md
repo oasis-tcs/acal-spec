@@ -591,7 +591,7 @@ definitions remain those of [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.
 | `String` | YAML string scalar | Quote when required by [Section 5.1.3](#513-string-quoting) |
 | `Boolean` | YAML boolean scalar | Any Core Schema spelling ([Section 5.1.2](#512-core-schema)) |
 | `Integer` | YAML integer scalar | MUST resolve as integer under the Core Schema |
-| `Double` | YAML float scalar | MUST resolve as float under the Core Schema, except for an integer scalar under an explicit or inherited standard ACAL Double `DataType` ([Section 5.4.4](#544-valuetype-mapping-rules), rule 3) and for the `Value` string of a mapping with that `DataType` ([Section 5.4.4.3](#5443-double)) |
+| `Double` | YAML float scalar | MUST resolve as float under the Core Schema, except for an integer scalar under an explicit or inherited standard ACAL Double `DataType` ([Section 5.4.4.3](#5443-double)) and for the `Value` string of a mapping with that `DataType` ([Section 5.4.4.3](#5443-double)) |
 | `NonNegativeInteger` | YAML integer scalar whose value is zero or more |
 | `URI`| YAML string scalar matching the same syntax as JSON schema's `format` assertion set to `uri-reference`|
 
@@ -957,7 +957,9 @@ except
 that [Section 5.4.4.3](#5443-double) makes a decimal YAML integer scalar under the standard ACAL
 Double, and the `Value` string of a mapping whose `DataType` is the
 standard ACAL Double and whose lexical mapping is a finite value,
-represent `LiteralDoubleType`, and that
+represent `LiteralDoubleType`, that [Section 5.4.4.2](#5442-integer) makes the
+`Value` string of a mapping whose `DataType` is the standard ACAL Integer
+represent `LiteralIntegerType`, and that
 [Section 5.4.4.2](#5442-integer) gives a YAML integer scalar the
 inherited data type of an ACAL extension numeric type that includes
 its value.  A YAML float scalar SHALL NOT
@@ -1259,8 +1261,8 @@ properties:
 
 | Property | Required | Type | Notes |
 |---|---|---|---|
-| `MediaType` | No | String | Media type of the content body. If omitted, the default value `application/yaml` applies. |
-| `Encoding` | No | String | `base64` indicates that the `Body` is a string of Base64 data as per [[RFC4648](#rfc4648)], which decodes to the UTF-8 encoding of the document text. For `application/json`, `application/yaml` and `application/xml` it is the only value. |
+| `MediaType` | No | `MediaType` | Media type of the content body. If omitted, the default value `application/yaml` applies. |
+| `Encoding` | No | `ContentEncodingType` | `base64` indicates that the `Body` is a string of Base64 data as per [[RFC4648](#rfc4648)], which decodes to the UTF-8 encoding of the document text. For `application/json`, `application/yaml` and `application/xml` it is the only value. |
 | `Body` | Yes | `AnyType` | The content payload, in a form given below |
 
 The `Body` takes one of the following forms ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34):
@@ -1617,7 +1619,7 @@ base-selector properties plus the `Category` property:
 
 | Property | Required | Default | Type | Notes |
 |---|---|---|---|---|
-| `Path` | Yes | — | String | Profile-defined path expression syntax |
+| `Path` | Yes | — | `AttributeSelectorPathType` | Profile-defined path expression syntax |
 | `DataType` | No | string or inferred | `IdentifierType` | Expected data type of selected values |
 | `MustBePresent` | No | `false` | Boolean | Missing or empty selection handling |
 | `Category` | Yes | — | `IdentifierType` | Request entity category whose `Content` is queried |
@@ -1648,7 +1650,7 @@ required `Expression` property:
 
 | Property | Required | Default | Type | Notes |
 |---|---|---|---|---|
-| `Path` | Yes | — | String | Profile-defined path expression syntax |
+| `Path` | Yes | — | `AttributeSelectorPathType` | Profile-defined path expression syntax |
 | `DataType` | No | string or inferred | `IdentifierType` | Expected data type of selected values |
 | `MustBePresent` | No | `false` | Boolean | Missing or empty selection handling |
 | `Expression` | Yes | — | `ExpressionType` | Evaluates to an entity value or category URI |
@@ -1914,8 +1916,9 @@ defines no concrete `PolicyDefaultsType` subtype, so YACAL core defines
 no fixed child properties for it.
 
 In YACAL, the `PolicyDefaults` property of a `PolicyType` value is a
-sequence of concrete profile-defined default objects.  Each item uses
-the direct mapping of the relevant concrete subtype, following the
+sequence of concrete profile-defined default objects.  Each item is a
+mapping with the wrapper key that the profile assigns to the concrete
+subtype, whose value is the mapping of that subtype, following the
 generic extension rules in
 [Section 5.4.8](#548-extensible-abstract-types).
 
@@ -1923,7 +1926,7 @@ A profile that defines a concrete `PolicyDefaultsType` subtype MUST
 define:
 
 1. the subtype's YACAL property set
-2. whether any profile-specific wrapper key is used
+2. the wrapper key that identifies the subtype ([Section 5.4.8](#548-extensible-abstract-types))
 3. any profile-specific constraints and defaults
 
 YACAL core itself does not assign a core wrapper key or core property
@@ -2072,7 +2075,9 @@ variable dependencies.
 Because the `SharedVariableDefinitionType` object is not within the
 scope of any `VariableDefinitionType`, its expression SHALL NOT contain
 `VariableReferenceType` objects, except references to a `Parameter` of the
-same `SharedVariableDefinitionType` object.
+same `SharedVariableDefinitionType` object and references to the quantified
+variable of an enclosing quantified expression within that expression
+([[ACAL-Core-1.0](#acal-core-10)] Sections 7.24 and 7.25).
 
 ------------------------------------------------------------------------
 
@@ -2157,9 +2162,7 @@ Properties:
 Each `RequestAttribute` item uses the mapping in
 [Section 5.8.3](#583-requestattributetype).
 
-Unless the optional multi-request feature is in use, processors SHOULD
-reject multiple `RequestEntity` objects in the same request with the
-same `Category` value.
+Unless the PDP implements the ACAL Multiple Decision Profile, it is a syntax error if multiple `RequestEntity` objects in the same request have the same `Category` value ([[ACAL-Core-1.0](#acal-core-10)] Section 7.31).
 
 ### 5.8.3 RequestAttributeType
 
@@ -2281,10 +2284,7 @@ Properties:
 | `ResultEntity` | No | `ResultEntityType` | * |
 | `ApplicablePolicyReference` | No | `ExactMatchIdReferenceType` | * |
 
-If the originating `Request.ReturnPolicyIdList` value is `true`, a
-processor that supports this feature SHOULD populate
-`ApplicablePolicyReference` with the identifiers of policies found to be
-applicable to the request.
+If the originating `Request.ReturnPolicyIdList` value is `true`, a processor that supports this feature MUST populate `ApplicablePolicyReference` with the identifiers of all policies found to be fully applicable to the request ([[ACAL-Core-1.0](#acal-core-10)] Section 7.37).
 
 ### 5.8.8 ResultEntityType
 
@@ -2342,8 +2342,9 @@ core defines no concrete `RequestDefaultsType` subtype, so YACAL core
 defines no fixed child properties for it.
 
 In YACAL, the `RequestDefaults` property of a `RequestType` value is a
-sequence of concrete profile-defined default objects.  Each item uses
-the direct mapping of the relevant concrete subtype, following the
+sequence of concrete profile-defined default objects.  Each item is a
+mapping with the wrapper key that the profile assigns to the concrete
+subtype, whose value is the mapping of that subtype, following the
 generic extension rules in
 [Section 5.4.8](#548-extensible-abstract-types).
 
@@ -2351,7 +2352,7 @@ A profile that defines a concrete `RequestDefaultsType` subtype MUST
 define:
 
 1. the subtype's YACAL property set
-2. whether any profile-specific wrapper key is used
+2. the wrapper key that identifies the subtype ([Section 5.4.8](#548-extensible-abstract-types))
 3. any profile-specific constraints and defaults
 
 ------------------------------------------------------------------------
@@ -2905,7 +2906,7 @@ representation of those same ACAL object types, while
 [[ACAL-Core-1.0](#acal-core-10)] remains authoritative for their
 mandatory/optional classification.
 
-Some ACAL object types, such as `DecisionType`,
+Some ACAL types, such as `DecisionType`,
 `ParameterType`, `NamedAttributeDesignatorType`,
 `BaseAttributeSelectorType`, and `QuantifiedExpressionType`, do not
 correspond to standalone YACAL root keys.  Their conformance status
