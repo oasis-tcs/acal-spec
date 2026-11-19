@@ -85,7 +85,7 @@
 	"$defs": {
 		"URI": {
 			"type": "string",
-			"format": "uri-reference"
+			"format": "uri"
 		},
 		"NonNegativeInteger": {
 			"type": "integer",

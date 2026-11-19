@@ -24,7 +24,7 @@ oneOf:
 $defs:
   URIType:
     type: string
-    format: uri-reference
+    format: uri
     minLength: 1
 
   StringType:

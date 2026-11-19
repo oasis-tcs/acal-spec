@@ -39,7 +39,7 @@ $defs:
         separate, valid default-namespace declaration.
     additionalProperties:
       type: string
-      format: uri-reference
+      format: uri
     $comment: >
       Maps each namespace Prefix (the empty string denotes the default
       namespace) directly to its Name (URI), rather than an array of

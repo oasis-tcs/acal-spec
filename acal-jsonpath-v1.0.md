@@ -220,7 +220,7 @@ UML definition (class diagram):
 @startuml
 hide empty members 
 hide circle
-abstract class AttributeSelectorType <<datatype>>
+abstract class AttributeSelectorType <<dataType>>
 class JSONPathAttributeSelectorType <<dataType>> extends AttributeSelectorType
 @enduml
 ```
@@ -230,7 +230,7 @@ In the context of this profile, the required `Path` property inherited from the 
 
 ### EntityAttributeSelectorType extension - JSONPathEntityAttributeSelectorType
 
-A `JSONPathEntityAttributeSelectorType` object is a concrete type of `EntityAttributeSelectorType` [[ACAL-Core-1.0](#acal-core-10)] that uses JSONPath [[RFC9535](#rfc9535)] for `Path` expressions and expects a JSON object or a JSON array in the value returned by the attribute selector's `Expression` property. In other words, the values SHALL be constructed from the node(s) selected by applying the JSONPath expression given by the entity attribute selector's `Path` property to the JSON object or JSON array of the document of the `Content` object in either an attribute category in the request context (`RequestEntity`) or the value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type returned by its `Expression` evaluation.
+A `JSONPathEntityAttributeSelectorType` object is a concrete type of `EntityAttributeSelectorType` [[ACAL-Core-1.0](#acal-core-10)] that uses JSONPath [[RFC9535](#rfc9535)] for `Path` expressions and expects a JSON object or a JSON array as the document of the `Content` object of the entity value returned by its `Expression` property, or of the attribute category that property identifies. The values SHALL be constructed from the node(s) selected by applying the JSONPath expression given by the entity attribute selector's `Path` property to the JSON object or JSON array of the document of the `Content` object in either an attribute category in the request context (`RequestEntity`) or the value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type returned by its `Expression` evaluation.
 
 See @sec:attribute-selector-evaluation for details of entity attribute selector evaluation.
 
@@ -239,7 +239,7 @@ UML definition (class diagram):
 @startuml
 hide empty members 
 hide circle
-abstract class EntityAttributeSelectorType <<datatype>>
+abstract class EntityAttributeSelectorType <<dataType>>
 class JSONPathEntityAttributeSelectorType <<dataType>> extends EntityAttributeSelectorType
 @enduml
 ```
@@ -259,7 +259,7 @@ A `JSONPathAttributeSelectorType` or `JSONPathEntityAttributeSelectorType` objec
 The first steps are already described in [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7 and provided here as a reminder:
 
 
-- If the attribute category given by the `Category` property is not found or does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
+- If the attribute category given by the `Category` property of a `JSONPathAttributeSelectorType` object is not found or does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
 
 - If the `Expression` property of a `JSONPathEntityAttributeSelectorType` object evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type and that value does not have a `Content` property, then the return value is either `Indeterminate` or an empty bag as determined by the `MustBePresent` property.
 
@@ -269,9 +269,9 @@ If the designated attribute category or entity value has a `Content` property, t
 
 1. If the media type of the `Content`, i.e. its `MediaType` property or, if that property is absent, the default defined for it by the representation ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34), is not `application/json`, the attribute selector SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. Otherwise, construct a JSON value ([[RFC8259](#rfc8259)]) from the document of the `Content` property ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34): a native JSON `Body` as it is, otherwise by parsing the document text. If the content is not a valid JSON object or JSON array, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
 
-2. The root node of the data structure (JSON object or JSON array) SHALL be used as context node of evaluation (JSONPath *query argument*).
+2. The JSON value (JSON object or JSON array) SHALL be the query argument ([[RFC9535](#rfc9535)] Section 2.1.2).
 
-3. Evaluate the JSONPath expression given in the `Path` property against the context node selected in the previous step, according to the syntax and semantics of the JSONPath standard [[RFC9535](#rfc9535)]. If the `Path` property is not a valid JSONPath expression [[RFC9535](#rfc9535)], the attribute selector SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. If the evaluation of a valid expression fails, it SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
+3. Evaluate the JSONPath expression given in the `Path` property against that query argument, according to the syntax and semantics of the JSONPath standard [[RFC9535](#rfc9535)]. If the `Path` property is not a valid JSONPath expression [[RFC9535](#rfc9535)], the attribute selector SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`. If the evaluation of a valid expression fails, it SHALL return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 4. The result of the previous step is a nodelist that is converted to a bag of values of the data type specified by the `DataType` property. In most cases the conversion depends on the string value of a node's JSON value, defined as follows:
 
@@ -331,7 +331,7 @@ If the designated attribute category or entity value has a `Content` property, t
 : If the specified data type is one of `urn:oasis:names:tc:acal:1.0:data-type:x500Name`, `urn:oasis:names:tc:acal:1.0:data-type:rfc822Name`, `urn:oasis:names:tc:acal:1.0:data-type:ipAddress` or `urn:oasis:names:tc:acal:1.0:data-type:dnsName`, then convert the string value of each node using `urn:oasis:names:tc:acal:1.0:function:x500Name-from-string`, `urn:oasis:names:tc:acal:1.0:function:rfc822Name-from-string`, `urn:oasis:names:tc:acal:1.0:function:ipAddress-from-string` or `urn:oasis:names:tc:acal:1.0:function:dnsName-from-string` respectively ([[ACAL-Core-1.0](#acal-core-10)] Annex C.3.9), using the same rule those functions use elsewhere in a policy for which strings are valid lexical representations of the target data type. If the applicable function evaluates to `Indeterminate`, that is an error in converting the node (see below), not the `syntax-error` result the function itself would give elsewhere in a policy.
 
 &nbsp;
-: If the specified data type is `urn:oasis:names:tc:acal:1.0:data-type:entity` and the value of every node in the nodelist is a JSON object, then convert each node to an ACAL `EntityType` object. Each `EntityType` object SHALL have a `Content` property and SHALL NOT have an `Attribute` property. The `Content` property SHALL have a `MediaType` property set to `application/json` and the value of the `Body` property SHALL be a copy of the JSON object.
+: If the specified data type is `urn:oasis:names:tc:acal:1.0:data-type:entity` and the value of every node in the nodelist is a JSON object, then convert each node to an ACAL `EntityType` object. Each `EntityType` object SHALL have a `Content` property and SHALL NOT have an `Attribute` property. The `Content` property SHALL have a `MediaType` property set to `application/json` and the document carried by the `Content` property SHALL be a copy of the JSON object.
 
 &nbsp;
 : If the data type is one of the types referred to above and the result of step 3 does not satisfy any of the cases, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.

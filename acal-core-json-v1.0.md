@@ -418,7 +418,7 @@ Contrary to the above subschemas which are not added as first-class reusable sch
   "$defs": {
     ...
     "NonNegativeInteger": {"type": "integer", "minimum": 0},
-    "URI": {"type": "string", "format": "uri-reference"},
+    "URI": {"type": "string", "format": "uri"},
     "Name": {"type": "string", "pattern": "<the full-Unicode pattern of [ACAL-Core-1.0] Section 7.1.2.3.11 for the XSD Name datatype>"}
     ...
   }

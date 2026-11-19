@@ -593,7 +593,7 @@ definitions remain those of [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.
 | `Integer` | YAML integer scalar | MUST resolve as integer under the Core Schema |
 | `Double` | YAML float scalar | MUST resolve as float under the Core Schema, except for an integer scalar under an explicit or inherited standard ACAL Double `DataType` ([Section 5.4.4.3](#5443-double)) and for the `Value` string of a mapping with that `DataType` ([Section 5.4.4.3](#5443-double)) |
 | `NonNegativeInteger` | YAML integer scalar whose value is zero or more |
-| `URI`| YAML string scalar matching the same syntax as JSON schema's `format` assertion set to `uri-reference`|
+| `URI`| YAML string scalar matching the same syntax as JSON schema's `format` assertion set to `uri`|
 
 Examples:
 

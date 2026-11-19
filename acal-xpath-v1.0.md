@@ -434,7 +434,7 @@ The types `IdentifierType`, `ValueType`, `StructuredValueType`, `PolicyDefaultsT
 
 ### 5.3.1 PolicyDefaultsType extension - XPathPolicyDefaultsType
 
-A `XPathPolicyDefaultsType` object extends `PolicyDefaultsType` from [[ACAL-Core-1.0](#acal-core-10)] to specify the default XPath version for XPath expressions occurring in the enclosing `PolicyType` object, or in a policy nested within it that carries no `XPathPolicyDefaultsType` of its own: the `Path` expression of every `XPathAttributeSelectorType`/`XPathEntityAttributeSelectorType` object, and any `xpathExpression` value in scope — including those passed as XPath-based function arguments ([Annex C.3.1](#c31-xpath-based-functions)) — that does not carry its own `XPathVersion` ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). It does not carry namespace bindings (see [Section 5.2](#52-namespacedeclarationstype-optional)).
+A `XPathPolicyDefaultsType` object extends `PolicyDefaultsType` from [[ACAL-Core-1.0](#acal-core-10)] to specify the default XPath version for XPath expressions occurring in the enclosing `PolicyType` object, or in a policy nested within it that carries no `XPathPolicyDefaultsType` of its own: the `Path` expression of every `XPathAttributeSelectorType`/`XPathEntityAttributeSelectorType` object, and any `xpathExpression` value in that policy — including those passed as XPath-based function arguments ([Annex C.3.1](#c31-xpath-based-functions)) — that does not carry its own `XPathVersion` ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)); a value constructed in a request keeps the version resolved there ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype)). It does not carry namespace bindings (see [Section 5.2](#52-namespacedeclarationstype-optional)).
 
 UML definition (class diagram):
 ```plantuml
@@ -628,7 +628,7 @@ To specify XPath 3.0, the `IdentifierType` value MUST evaluate to `https://www.w
 
 To specify XPath 3.1, the `IdentifierType` value MUST evaluate to `https://www.w3.org/TR/xpath-31/`.
 
-XPath 1.0 is not a supported XPath version for ACAL. The implementation-defined-behavior rules in the sections below, and the XPath-based functions ([Annex C.3.1](#c31-xpath-based-functions)), are defined only for the supported versions listed above, whose result data model — a sequence of items — is not the one XPath 1.0 uses (a node-set, a boolean, a number, or a string). The XPath 1.0 identifier `https://www.w3.org/TR/1999/REC-xpath-19991116/` is correspondingly not a valid ACAL `XPathVersion` value.
+XPath 1.0 is not a supported XPath version for ACAL. The implementation-defined-behavior rules in the sections below, and the XPath-based functions ([Annex C.3.1](#c31-xpath-based-functions)), are defined only for the supported versions listed above, whose result data model — a sequence of items — is not the one XPath 1.0 uses (a node-set, a boolean, a number, or a string). The XPath 1.0 identifier `http://www.w3.org/TR/1999/REC-xpath-19991116` is correspondingly not a valid ACAL `XPathVersion` value.
 
 The XPath specification leaves a number of aspects of behavior implementation-defined. The following sections define how the supported XPath versions SHALL behave in an ACAL implementation.
 
@@ -678,7 +678,7 @@ The XPath specification leaves a number of aspects of behavior implementation-de
 
     : An XPath error in the evaluation of an attribute selector causes the result to be `Indeterminate`. The status code SHALL be `urn:oasis:names:tc:acal:1.0:status:processing-error`. Implementations MAY provide additional details about the error in the response or by some other means.
 
-[XPath Functions](https://www.w3.org/TR/xpath-functions/#impl-def) defines the following items:
+[XPath Functions](https://www.w3.org/TR/2007/REC-xpath-functions-20070123/#impl-def) defines the following items:
 
 1. The destination of the trace output is implementation-defined.
 
@@ -823,7 +823,7 @@ If the designated attribute category or entity value has a `Content` property, t
 : If an item is neither a node nor an atomic value (for example a map, an array or a function), or if a constructor function raises an error for an item, or if one of the `*-from-string` functions named above evaluates to `Indeterminate` for an item, then an error has occurred when converting the values returned by the expression, and the result of the attribute selector MUST be `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`, as specified in [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7. That result takes precedence over the result specified for an item that satisfies none of the cases of this step.
 
 &nbsp;
-: If the specified data type is `urn:oasis:names:tc:acal:1.0:data-type:entity`, and every item of the sequence is an element node, then convert each node to an `EntityType` object. Each object SHALL have a `Content` property and SHALL NOT have an `Attribute` property. The `Content` property SHALL have a `MediaType` property set to `application/xml`. The child element of the `Content`'s `Body` property SHALL be a copy of the element corresponding to the node, along with its entire content, plus whatever namespace declarations from ancestor elements as are required to define namespace prefixes used in the content. Namespace declarations from ancestor elements that are not visibly used in the content MAY be added. If some item of the sequence is not an element node, the result satisfies none of the cases of this step.
+: If the specified data type is `urn:oasis:names:tc:acal:1.0:data-type:entity`, and every item of the sequence is an element node, then convert each node to an `EntityType` object. Each object SHALL have a `Content` property and SHALL NOT have an `Attribute` property. The `Content` property SHALL have a `MediaType` property set to `application/xml`. The `Content` SHALL carry, in the form that [[ACAL-Core-1.0](#acal-core-10)] Section 7.34 gives for `application/xml` in the representation in use, an XML document whose document element (in the XML representation without `Encoding`, the child element of the `Body`) is a copy of the element corresponding to the node, along with its entire content, plus whatever namespace declarations from ancestor elements as are required to define namespace prefixes used in the content. Namespace declarations from ancestor elements that are not visibly used in the content MAY be added. If some item of the sequence is not an element node, the result satisfies none of the cases of this step.
 
 &nbsp;
 : For any other data type, the rules of [[ACAL-Core-1.0](#acal-core-10)] section 8.4.7 for a data type for which the profile defines no conversion apply. The same section also specifies the result of the attribute selector when the result satisfies none of the cases of this step.
@@ -1094,7 +1094,7 @@ Two `urn:oasis:names:tc:acal:1.0:data-type:xpathExpression` arguments with the s
 The following apply to every function in this section, in the order given:
 
 1. An argument expression whose category's `ContentType` object is not present in the request contributes no nodes; steps 2 to 4 consider only the remaining ("present") argument expressions.
-2. If the media type of the `ContentType` object of a present argument expression is not `application/xml` ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype), `XPathCategory`), or its `Body` property value cannot be parsed as a stand-alone XML document with a single document element, the function SHALL evaluate to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`; this is not an XPath evaluation error (step 3).
+2. If the media type of the `ContentType` object of a present argument expression is not `application/xml` ([Section 5.3.5](#535-datatype-extension---xpathexpressionvaluetype), `XPathCategory`), or, in an XML representation without `Encoding`, its `Body` element does not contain exactly one child element, or, for any other form, its document text ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34) cannot be parsed as a stand-alone XML document with a single document element, the function SHALL evaluate to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`; this is not an XPath evaluation error (step 3).
 3. If evaluating a present argument expression raises an XPath error, the function SHALL evaluate to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error` — the same rule [Section 6](#6-xpath-definitions) states for an XPath error in an attribute selector.
 4. If a present argument expression evaluates to a sequence that contains an item which is not a node, the function SHALL evaluate to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 5. Otherwise the function is computed over the set of nodes each argument selects. An argument that selects no nodes — whether by step 1, or because its expression matched nothing — contributes the empty set: `xpath-node-count` then returns zero, and `xpath-node-equal` and `xpath-node-match` return `false` whenever *either* argument's set is empty. (For the cases that reach this step, this generalizes [[XACML 3.0](#xacml)]'s rule that an absent `ContentType` makes `xpath-node-count` return zero and the comparison functions return `false`.)
@@ -1280,12 +1280,13 @@ This ACAL Profile is a successor to the set of XPath-based features of [[XACML 3
 - Like [[ACAL-Core-1.0](#acal-core-10)] core model, this profile's constructs can be represented in JSON, YAML or XML at the implementor's discretion.
 
 - `AttributeSelector` has become abstract to support other kinds of AttributeSelector (e.g. JSONPath-based) and the former XPath-based AttributeSelectorType becomes the subtype `XPathAttributeSelectorType`
+- `ContextSelectorId` is an `IdentifierType` (in [[XACML 3.0](#xacml)], `xs:anyURI`), so it may be a short identifier ([Section 5.3.3](#533-attributeselectortype-extension---xpathattributeselectortype)).
 - Compared to XACML 3.0 AttributeSelectorType, `XPathAttributeSelectorType` supports a new feature:
 
    * `Path` expression (XPath) can use *ACAL* variables from `VariableDefinition`s as XPath variables.
 
 - XPath versions: 
-  - Dropped XPath 1.0: it is not a supported XPath version for ACAL (it was an option in [[XACML 3.0](#xacml)]), and its identifier `https://www.w3.org/TR/1999/REC-xpath-19991116/` is not a valid ACAL `XPathVersion` value. XPath 1.0's result data model is incompatible with the sequence-of-items model the rest of this profile assumes (see [Section 6](#6-xpath-definitions)).
+  - Dropped XPath 1.0: it is not a supported XPath version for ACAL (it was an option in [[XACML 3.0](#xacml)]), and its identifier `http://www.w3.org/TR/1999/REC-xpath-19991116` is not a valid ACAL `XPathVersion` value. XPath 1.0's result data model is incompatible with the sequence-of-items model the rest of this profile assumes (see [Section 6](#6-xpath-definitions)).
   - Replaced XACML 3.0's XPath 2.0 identifier `http://www.w3.org/TR/2007/REC-xpath20-20070123` with `https://www.w3.org/TR/xpath20/`; the old identifier is not a valid ACAL value and is not a recognized alias (see [Section 6](#6-xpath-definitions)), so an XACML 3.0 → ACAL translation substitutes it.
   - Added support for XPath 3.0 and 3.1.
 
