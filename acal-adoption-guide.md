@@ -1072,7 +1072,7 @@ Rule:
   prefer building it into one assignment with `string-concatenate` rather than emitting
   several assignments that the PEP must reassemble. Neither the order of attribute
   assignments nor the order of values within a bag is guaranteed to be preserved, so the
-  single-value form is unambiguous. See the Rule 3 example in [[ACAL-Core](#acal-core)].
+  single-value form is unambiguous. See the Rule 3 example in [ACAL Core Section 6.2.4.3](acal-core-v1.0.md#6243-rule-3).
 - `NoticeExpression` Ids are likewise **not** required to be unique within a `Policy` or `Rule`.
   The `Id` identifies what the notice *means* to the PEP — what it must do, or is being
   informed of — exactly as `ObligationId` did in XACML 3.0. It is a *concept* identifier,
@@ -1740,10 +1740,10 @@ values. The policy references it via an `AttributeDesignator` with a matching ty
 <!-- ACAL 1.0: DataType on Attribute — all values share one type -->
 <RequestEntity xmlns="urn:oasis:names:tc:xacml:4.0:core:schema"
                Category="{access-subject}">
-  <Attribute AttributeId="{role}" DataType="{string}">
+  <RequestAttribute AttributeId="{role}" DataType="{string}">
     <Value>physician</Value>
     <Value>researcher</Value>
-  </Attribute>
+  </RequestAttribute>
 </RequestEntity>
 ```
 
@@ -1753,7 +1753,7 @@ values. The policy references it via an `AttributeDesignator` with a matching ty
 {
   "RequestEntity": {
     "Category": "{access-subject}",
-    "Attribute": [
+    "RequestAttribute": [
       {
         "AttributeId": "{role}",
         "DataType": "{string}",
@@ -1769,7 +1769,7 @@ values. The policy references it via an `AttributeDesignator` with a matching ty
 ```yaml
 RequestEntity:
   Category: "{access-subject}"
-  Attribute:
+  RequestAttribute:
     - AttributeId: "{role}"
       DataType: "{string}"
       Value:
@@ -1828,20 +1828,15 @@ dynamic and the predicate is structural.
     Permit if the subject holds any role prefixed with data-custodian.
   </Description>
   <Condition>
-    <ForAny>
-      <VariableId>currentRole</VariableId>
-      <Domain>
-        <AttributeDesignator
-          Category="{access-subject}"
-          AttributeId="{role}"
-          MustBePresent="true"/>
-      </Domain>
-      <Iterant>
-        <Apply FunctionId="{string-starts-with}">
-          <Value>data-custodian</Value>
-          <VariableReference VariableId="currentRole"/>
-        </Apply>
-      </Iterant>
+    <ForAny VariableId="currentRole">
+      <AttributeDesignator
+        Category="{access-subject}"
+        AttributeId="{role}"
+        MustBePresent="true"/>
+      <Apply FunctionId="{string-starts-with}">
+        <Value>data-custodian</Value>
+        <VariableReference VariableId="currentRole"/>
+      </Apply>
     </ForAny>
   </Condition>
 </Rule>
@@ -1955,32 +1950,17 @@ to grant office system access.
       Id="urn:example:shared:is-business-hours"
       Version="1.0">
     <Description>True when current time is between 09:00 and 17:00.</Description>
-    <Expression>
-      <Apply FunctionId="{and}">
-        <Apply FunctionId="{integer-greater-than-or-equal}">
-          <Apply FunctionId="{time-hour-from-time}">
-            <Apply FunctionId="{time-one-and-only}">
-              <AttributeDesignator
-                Category="{environment}"
-                AttributeId="{current-time}"
-                MustBePresent="true"/>
-            </Apply>
-          </Apply>
-          <Value DataType="{integer}">9</Value>
-        </Apply>
-        <Apply FunctionId="{integer-less-than}">
-          <Apply FunctionId="{time-hour-from-time}">
-            <Apply FunctionId="{time-one-and-only}">
-              <AttributeDesignator
-                Category="{environment}"
-                AttributeId="{current-time}"
-                MustBePresent="true"/>
-            </Apply>
-          </Apply>
-          <Value DataType="{integer}">17</Value>
-        </Apply>
+    <ShortIdSetReference>urn:example:ids:common</ShortIdSetReference>
+    <Apply FunctionId="{time-in-range}">
+      <Apply FunctionId="{time-one-and-only}">
+        <AttributeDesignator
+            Category="{environment}"
+            AttributeId="{current-time}"
+            MustBePresent="true"/>
       </Apply>
-    </Expression>
+      <Value DataType="{time}">09:00:00</Value>
+      <Value DataType="{time}">17:00:00</Value>
+    </Apply>
   </SharedVariableDefinition>
 
   <Policy PolicyId="urn:example:policy:office-access"
@@ -2014,44 +1994,20 @@ to grant office system access.
         "Id": "urn:example:shared:is-business-hours",
         "Version": "1.0",
         "Description": "True when current time is between 09:00 and 17:00.",
+        "ShortIdSetReference": ["urn:example:ids:common"],
         "Expression": {
           "Apply": {
-            "FunctionId": "{and}",
+            "FunctionId": "{time-in-range}",
             "Argument": [
-              {
-                "Apply": {
-                  "FunctionId": "{integer-greater-than-or-equal}",
-                  "Argument": [
-                    { "Apply": { "FunctionId": "{time-hour-from-time}", "Argument": [
-                        { "Apply": { "FunctionId": "{time-one-and-only}", "Argument": [
-                            { "AttributeDesignator": {
-                                "Category": "{environment}",
-                                "AttributeId": "{current-time}",
-                                "MustBePresent": true
-                            } }
-                        ] } }
-                    ] } },
-                    { "Value": 9 }
-                  ]
-                }
-              },
-              {
-                "Apply": {
-                  "FunctionId": "{integer-less-than}",
-                  "Argument": [
-                    { "Apply": { "FunctionId": "{time-hour-from-time}", "Argument": [
-                        { "Apply": { "FunctionId": "{time-one-and-only}", "Argument": [
-                            { "AttributeDesignator": {
-                                "Category": "{environment}",
-                                "AttributeId": "{current-time}",
-                                "MustBePresent": true
-                            } }
-                        ] } }
-                    ] } },
-                    { "Value": 17 }
-                  ]
-                }
-              }
+              { "Apply": { "FunctionId": "{time-one-and-only}", "Argument": [
+                  { "AttributeDesignator": {
+                      "Category": "{environment}",
+                      "AttributeId": "{current-time}",
+                      "MustBePresent": true
+                  } }
+              ] } },
+              { "DataType": "{time}", "Value": "09:00:00" },
+              { "DataType": "{time}", "Value": "17:00:00" }
             ]
           }
         }
@@ -2099,38 +2055,23 @@ Bundle:
     - Id: "urn:example:shared:is-business-hours"
       Version: "1.0"
       Description: True when current time is between 09:00 and 17:00.
+      ShortIdSetReference:
+        - "urn:example:ids:common"
       Expression:
         Apply:
-          FunctionId: "{and}"
+          FunctionId: "{time-in-range}"
           Argument:
             - Apply:
-                FunctionId: "{integer-greater-than-or-equal}"
+                FunctionId: "{time-one-and-only}"
                 Argument:
-                  - Apply:
-                      FunctionId: "{time-hour-from-time}"
-                      Argument:
-                        - Apply:
-                            FunctionId: "{time-one-and-only}"
-                            Argument:
-                              - AttributeDesignator:
-                                  Category: "{environment}"
-                                  AttributeId: "{current-time}"
-                                  MustBePresent: true
-                  - Value: 9
-            - Apply:
-                FunctionId: "{integer-less-than}"
-                Argument:
-                  - Apply:
-                      FunctionId: "{time-hour-from-time}"
-                      Argument:
-                        - Apply:
-                            FunctionId: "{time-one-and-only}"
-                            Argument:
-                              - AttributeDesignator:
-                                  Category: "{environment}"
-                                  AttributeId: "{current-time}"
-                                  MustBePresent: true
-                  - Value: 17
+                  - AttributeDesignator:
+                      Category: "{environment}"
+                      AttributeId: "{current-time}"
+                      MustBePresent: true
+            - DataType: "{time}"
+              Value: "09:00:00"
+            - DataType: "{time}"
+              Value: "17:00:00"
 
   Policy:
     - PolicyId: "urn:example:policy:office-access"

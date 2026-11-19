@@ -42,7 +42,7 @@ As stated in this repository's <a href="https://github.com/oasis-tcs/acal-spec/b
 ### Open-source Community Contributions
 A separate [GitHub public organization](https://github.com/acal-community/) (ACAL Open Source Community) was created at the initiative of the OASIS ACAL \[XACML\] TC to support development of open source resources related to the TC work and the ACAL/XACML standard in general.
 
-While this Github organization remains associated with the sponsor TC, its development priorities, leadership, intellectual property terms, participation rules, and other matters of governance are [separate and distinct](https://github.com/oasis-open/acal-community/blob/master/CONTRIBUTING.md#governance-distinct-from-oasis-tc-process) from the OASIS TC Process and related policies.
+While this Github organization remains associated with the sponsor TC, its development priorities, leadership, intellectual property terms, participation rules, and other matters of governance are [separate and distinct](https://github.com/acal-community/tools/blob/main/CONTRIBUTING.md#governance-distinct-from-oasis-tc-process) from the OASIS TC Process and related policies.
 
 
 ## Licensing

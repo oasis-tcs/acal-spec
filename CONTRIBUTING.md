@@ -2,7 +2,7 @@
 
 **Who may Contribute?** Contributors to <a href="https://github.com/oasis-tcs/acal-spec/">this repository</a> are expected to be <a href="https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2017-05-26#dMember">Members</a> of the
 <a href="https://www.oasis-open.org/committees/acal/">OASIS ACAL \[XACML\] TC</a>, for any
-substantive contributions.  Anyone wishing to <a href="https://www.oasis-open.org/org/faq#committee-participation">participate</a>
+substantive contributions.  Anyone wishing to <a href="https://www.oasis-open.org/faq-2/">participate</a>
 in the TC's technical activity is invited to <a href="https://www.oasis-open.org/committees/join">join</a> as a TC Member.
 _Member_ in this context means any TC role other than OASIS TC Observer, per
 <a href="https://www.oasis-open.org/policies-guidelines/tc-process#membership">TC Process</a>.
