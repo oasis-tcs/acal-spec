@@ -421,10 +421,10 @@ Under the Core Schema, the following scalar resolutions apply (depending on the 
 | YAML Scalar regex | Examples | Resolved YAML Type | ACAL DataType |
 |---|---|---|---|
 | `null \| Null \| NULL \| ~` | `null` | null | *Not a valid ACAL value; see Section 5.4.3* (allowed below the root of a native `application/yaml` `Body`, [Section 5.4.11](#5411-contenttype-mapping)) |
-| `true \| True \| TRUE \| false \| False \| FALSE` | `true`, `false` | Boolean | `urn:oasis:names:tc:acal:1.0:data-type:boolean` (only `true` and `false` are valid YACAL booleans, see [Section 5.3.2](#532-selected-simple-types-mapped-to-native-yaml-scalars)) |
+| `true \| True \| TRUE \| false \| False \| FALSE` | `true`, `false` | Boolean | `urn:oasis:names:tc:acal:1.0:data-type:boolean` |
 | `[-+]? [0-9]+` | `42`, `-7`, `0` | Integer (base 10) | `urn:oasis:names:tc:acal:1.0:data-type:integer` |
-| `0o [0-7]+` | `0o7` | Integer (base 8) | *Not a valid ACAL value, see Section 5.1.4* |
-| `0x [0-9a-fA-F]+` | `0x3A` | Integer (base 16) | *Not a valid ACAL value; see Section 5.1.4* |
+| `0o [0-7]+` | `0o7` | Integer (base 8) | `urn:oasis:names:tc:acal:1.0:data-type:integer` |
+| `0x [0-9a-fA-F]+` | `0x3A` | Integer (base 16) | `urn:oasis:names:tc:acal:1.0:data-type:integer` |
 | `[-+]? ( \. [0-9]+ \| [0-9]+ ( \. [0-9]* )? ) ( [eE] [-+]? [0-9]+ )?` | `0.`, `-0.0`, `.5`, `+12e03`, `-2E+05` | Float (number) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
 | `[-+]? ( \.inf \| \.Inf \| \.INF )` | `.inf`, `-.Inf`, `+.INF` | Float (Infinity) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
 | `\.nan \| \.NaN \| \.NAN` | `.nan`, `.NAN` | Float (not-a-number) | `urn:oasis:names:tc:acal:1.0:data-type:double` |
@@ -509,8 +509,6 @@ documents:
     expressed using `BundleType`, not YAML multi-document streams.
 -   **Merge keys** (`<<`): a YAML 1.1 feature not part of YAML 1.2. In native `application/yaml` `Body` content ([Section 5.4.11](#5411-contenttype-mapping)), a key spelled `<<` is an ordinary string key, as YAML 1.2.2 defines it.
 -   **Null** values (`null`, `Null`, `NULL`, `~`, or a key present with an empty value such as `myProperty:`), except below the root of a native `application/yaml` `Body` ([Section 5.4.11](#5411-contenttype-mapping)). Omitting an optional property is not a null value; see [Section 5.4.3](#543-null-and-omission).
--   **Octal notation** for integers (to align with JSON integer type): a plain scalar SHALL NOT use YAML octal integer notation matching `0o[0-7]+`.
--   **Hexadecimal notation** for integers: a plain scalar SHALL NOT use YAML hexadecimal integer notation matching `0x[0-9a-fA-F]+`.  A quoted string such as `"0x003A"` is not affected; a `hexBinary` value is written as a quoted string.
 
 ## 5.2 Document Structure
 
@@ -591,10 +589,10 @@ definitions remain those of [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.
 | ACAL Type | YAML Form | Notes |
 |---|---|---|
 | `String` | YAML string scalar | Quote when required by [Section 5.1.3](#513-string-quoting) |
-| `Boolean` | YAML boolean scalar | MUST use `true` or `false` |
+| `Boolean` | YAML boolean scalar | Any Core Schema spelling ([Section 5.1.2](#512-core-schema)) |
 | `Integer` | YAML integer scalar | MUST resolve as integer under the Core Schema |
 | `Double` | YAML float scalar | MUST resolve as float under the Core Schema, except for an integer scalar under an explicit or inherited standard ACAL Double `DataType` ([Section 5.4.4](#544-valuetype-mapping-rules), rule 3) and for the `Value` string of a mapping with that `DataType` ([Section 5.4.4.3](#5443-double)) |
-| `NonNegativeInteger` | YAML integer scalar without the `-` sign, i.e. matching the regex `[0-9]+` under the Core Schema|
+| `NonNegativeInteger` | YAML integer scalar whose value is zero or more |
 | `URI`| YAML string scalar matching the same syntax as JSON schema's `format` assertion set to `uri-reference`|
 
 Examples:
@@ -606,6 +604,16 @@ MaxDelegationDepth: 3
 Value: 3.14159
 Description: This rule permits read access to public content.
 ```
+
+A YAML boolean scalar in any Core Schema spelling (`true`, `True`,
+`TRUE`, `false`, `False`, `FALSE`) denotes the corresponding ACAL
+boolean, and an octal (`0o17`) or hexadecimal (`0x3A`) YAML integer
+scalar denotes the ACAL integer of its value.  A YACAL generator SHOULD
+write `true`, `false` and decimal integers (`0` or `-?[1-9][0-9]*`),
+the spellings that JSON shares.  `yes`, `no`, `on` and `off` are
+strings under the Core Schema, and `1` and `0` are integers.  A quoted
+string such as `"0x003A"` is a string; a `hexBinary` value is written as
+a quoted string.
 
 A value of ACAL type `Double` MUST use a lexical form that YAML resolves
 as a float rather than an integer, unless an explicit or inherited
@@ -850,8 +858,8 @@ that `DataType` MUST match the fixed data type of the resulting concrete literal
    precision MAY be represented that way.  A YACAL processor SHALL
    NOT alter the value denoted by a YAML integer scalar.  A YACAL
    processor SHALL NOT accept a YAML integer scalar as an ACAL integer
-   unless it has determined the exact integer value from the decimal
-   digits of the scalar (it cannot, for example, when a YAML parser
+   unless it has determined the exact integer value that the Core
+   Schema assigns to the scalar (it cannot, for example, when a YAML parser
    has replaced the scalar with a fixed-width or floating-point
    approximation).  A YACAL processor SHALL NOT accept the `Value`
    string of the mapping form if the string is not in the lexical
@@ -886,20 +894,37 @@ that `DataType` MUST match the fixed data type of the resulting concrete literal
    `LiteralDoubleType` when an explicit or inherited `DataType` that is
    the standard ACAL Double applies to it and its text is a decimal
    integer (matching `[-+]?[0-9]+`, which is in the lexical space of
-   `xs:double`); it then denotes the `xs:double` value that the lexical
-   mapping of `xs:double` ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6)
-   assigns to the scalar's text.  For example,
+   `xs:double`).  For example,
    `DataType: "urn:oasis:names:tc:acal:1.0:data-type:double"` with
-   `Value: 3` represents the double 3.0.  A YAML scalar in hexadecimal
-   notation SHALL NOT be used for this form.  An ACAL double MAY also
-   be represented as a mapping with a `DataType` of
+   `Value: 3` represents the double 3.0.  An octal or hexadecimal YAML
+   integer scalar SHALL NOT be used where the explicit or inherited
+   data type is the standard ACAL Double.  A spelling of the infinity
+   row of [Section 5.1.2](#512-core-schema) denotes negative infinity
+   if it begins with `-` and positive infinity otherwise; a spelling of
+   the NaN row denotes not-a-number.  Any other YAML float scalar that
+   represents a `Double`, and any decimal YAML integer scalar under an
+   explicit or inherited standard ACAL Double, denotes the value that
+   the lexical mapping of `xs:double`
+   ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6) assigns to its text;
+   if that mapping yields positive or negative infinity (for example
+   for `1e400`), that infinity is the denoted value.  A YACAL generator
+   SHALL write positive infinity, negative infinity and not-a-number
+   each with a spelling that this item assigns to that value.  A YACAL
+   generator SHALL NOT use a finite numeral for any of them.  A YACAL
+   processor SHALL NOT accept a YAML scalar as a `Double` if it has not
+   determined the value that this item assigns to its original
+   spelling.  A YACAL processor SHALL NOT continue with an altered
+   value in its place.  A YACAL processor that has determined that
+   value, and does not reject the scalar under an input acceptance
+   limit ([[ACAL-Core-1.0](#acal-core-10)] Section 2.1.2 and Annex
+   C.2.6), SHALL accept it.  An ACAL double MAY also be represented as
+   a mapping with a `DataType` of
    `urn:oasis:names:tc:acal:1.0:data-type:double` and a `Value` string
-   in the lexical space of `xs:double`
-   ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6; `INF`, `-INF` and
-   `NaN` included); it denotes the `xs:double` value that the lexical
-   mapping assigns to the string.  A YACAL processor SHALL NOT accept
-   the `Value` string of the mapping form if the string is not in the
-   lexical space of `xs:double`.
+   in the lexical space of `xs:double` whose lexical mapping is a
+   finite value; it denotes that value.  A YACAL processor SHALL NOT
+   accept a `Value` string that is not in that lexical space.  A YACAL
+   processor SHALL NOT accept a `Value` string whose lexical mapping is
+   positive infinity, negative infinity or not-a-number.
 2. An explicit `DataType` that accompanies a fixed-datatype primitive
    value of this type SHOULD be omitted when the data type is otherwise
    implicit.  An explicit standard ACAL Double `DataType` that is needed
@@ -931,7 +956,8 @@ different fixed-datatype literal subtype on the basis of a `DataType`,
 except
 that [Section 5.4.4.3](#5443-double) makes a decimal YAML integer scalar under the standard ACAL
 Double, and the `Value` string of a mapping whose `DataType` is the
-standard ACAL Double, represent `LiteralDoubleType`, and that
+standard ACAL Double and whose lexical mapping is a finite value,
+represent `LiteralDoubleType`, and that
 [Section 5.4.4.2](#5442-integer) gives a YAML integer scalar the
 inherited data type of an ACAL extension numeric type that includes
 its value.  A YAML float scalar SHALL NOT
@@ -2925,13 +2951,12 @@ A conformant YACAL document:
 7.  MUST NOT use YAML anchors (`&name`) or aliases (`*name`).
 8.  MUST NOT use YAML merge keys, and MUST NOT contain more than one YAML document (the markers `---` and `...` may surround the single document); a key spelled `<<` in native `application/yaml` `Body` content is a string key ([Section 5.4.11](#5411-contenttype-mapping)).
 9.  MUST NOT use YAML null values (`null`, `Null`, `NULL`, `~`, or a key present with an empty value), except below the root of a native `application/yaml` `Body` ([Section 5.4.11](#5411-contenttype-mapping)); omitting an optional property is not a null value ([Section 5.1.4](#514-prohibited-yaml-features)).
-10. MUST NOT use a plain scalar in YAML octal or hexadecimal integer notation (matching `0o[0-7]+` or `0x[0-9a-fA-F]+`).
-11. SHOULD use YAML block style for mappings and sequences.  Flow style
+10. SHOULD use YAML block style for mappings and sequences.  Flow style
     MAY be used where it improves readability (e.g., for short inline
     values).
-12. If it uses only core YACAL features, it MUST be structurally
+11. If it uses only core YACAL features, it MUST be structurally
     compatible with `acal-core-yaml-v1.0-structure.schema.yaml`.
-13. If it uses XPath or JSONPath profile features, it MUST be
+12. If it uses XPath or JSONPath profile features, it MUST be
     structurally compatible with a composition schema that enables the
     corresponding profile artifacts.
 

@@ -2273,7 +2273,6 @@ YACAL imposes restrictions on YAML features that have no ACAL counterpart:
   omission to represent absence.
 - YAML tags, anchors, aliases, merge keys (`<<`), and multi-document streams are
   forbidden.
-- YAML octal integer notation is forbidden.
 
 These restrictions keep the YAML surface aligned with the ACAL abstract model and
 prevent format-specific ambiguities before structural validation.

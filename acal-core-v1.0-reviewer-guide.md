@@ -1290,7 +1290,6 @@ Notably:
    a key spelled `<<` is a string key); a YAML document that uses a tag,
    an anchor or an alias is carried in base64, and in a string or Base64
    data such syntax is document text.
-3. YAML octal integer notation is forbidden.
 
 These restrictions keep the YAML surface aligned with the ACAL abstract
 model and avoid format-specific ambiguities before structural
