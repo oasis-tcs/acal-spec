@@ -371,7 +371,7 @@ Each ACAL restricted-string simple type `FooType` with stereotype `<<restrictedS
 </xs:simpleType>
 ```
 
-In XSD, the ^$ anchors are implicit as the pattern is always matched against the whole string, therefore they MUST be omitted from the pattern. Among the strings that an XML 1.0 document can contain, the XSD pattern SHALL accept exactly the language of the ECMA-262 pattern of [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.2.2; in particular, `\d` is written `[0-9]` in the pattern, because it matches any decimal digit in XSD, and `\S` and `.` are written as explicit character classes with the ECMA-262 meaning, because their meaning in XSD differs (see the pattern of `AttributeSelectorPathType`).
+In XSD, the ^$ anchors are implicit as the pattern is always matched against the whole string, therefore they MUST be omitted from the pattern. Among the strings that an XML 1.0 document can contain, the XSD pattern SHALL accept exactly the language of the ECMA-262 pattern of [[ACAL-Core-1.0](#acal-core-10)] Section 7.1.2.2 (the XSD `IdentifierType` also has the facet `whiteSpace` `collapse`, which XSD applies before the pattern, so a value written with leading or trailing whitespace is accepted when its collapsed form matches the pattern, and its value is that collapsed form); in particular, `\d` is written `[0-9]` in the pattern, because it matches any decimal digit in XSD, and `\S` and `.` are written as explicit character classes with the ECMA-262 meaning, because their meaning in XSD differs (see the pattern of `AttributeSelectorPathType`).
 
 
 `FooType` may also have a (optional) `minLength` property set to a (strictly) positive integer `N`, in which case the XSD definition becomes:

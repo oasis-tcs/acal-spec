@@ -67,7 +67,7 @@
 				This succeeds with Apache Xerces despite the rule mentioned in the previous option. 
 		-->
 		<xs:assert vc:minVersion="1.1"
-			test="every $elt in element(*, xacml:RequestDefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:RequestDefaultsType) satisfies $elt/name() != $following/name())" />
+			test="every $elt in element(*, xacml:RequestDefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:RequestDefaultsType) satisfies not(namespace-uri($elt) = namespace-uri($following) and local-name($elt) = local-name($following)))" />
 		<!-- 
 		As an alternative, you may collect all the QNames of the elements in RequestDefaults substitution
 		group (of type xacml:RequestDefaultsType) from the ACAL Profiles supported by your implementation
@@ -786,7 +786,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		<xs:attribute name="MaxDelegationDepth" type="xs:nonNegativeInteger" use="optional" />
 
 		<xs:assert vc:minVersion="1.1"
-			test="every $elt in element(*, xacml:PolicyDefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:PolicyDefaultsType) satisfies $elt/name() != $following/name())">
+			test="every $elt in element(*, xacml:PolicyDefaultsType) satisfies (every $following in $elt/following-sibling::element(*, xacml:PolicyDefaultsType) satisfies not(namespace-uri($elt) = namespace-uri($following) and local-name($elt) = local-name($following)))">
 			<xs:annotation>
 				<xs:documentation xml:lang="en"> The ACAL constraint on PolicyDefaults property is
 					similar to the RequestDefaults Property. </xs:documentation>

@@ -3014,33 +3014,34 @@ The following policy illustrates the combined policies. Rule 1, Rule 2 and Rule 
 [12]     PolicyId="urn:oasis:names:tc:acal:1.0:example:policyid:6"
 [13]     Version="1.0"
 [14]     CombiningAlgId="deny-overrides">
-[15]     <Target>
-[16]       <Apply FunctionId="anyURI-is-in">
-[19]         <Value DataType="anyURI">http://www.med.example.com/springfield-hospital</Value>
-[24]         <AttributeDesignator
-[25]           Category="resource"
-[26]           AttributeId="collection"
-[27]           DataType="anyURI"/>
-[30]       </Apply>
-[31]     </Target>
-[33]     <Rule
-[34]       Id="Rule1"
-[35]       Effect="Permit">
-[36]       ...
-[37]     </Rule>
-[39]     <Rule
-[40]       Id="Rule2"
-[41]       Effect="Permit">
-[42]       ...
-[43]     </Rule>
-[45]     <Rule
-[46]       Id="Rule3"
-[47]       Effect="Permit">
-[48]       ...
-[49]     </Rule>
-[51]   </Policy>
-[53]   <PolicyReference Id="urn:oasis:names:tc:acal:1.0:example:policyid:4"/>
-[57] </Policy>
+[15]     <ShortIdSetReference>urn:oasis:names:tc:acal:1.0:example:identifiers</ShortIdSetReference>
+[16]     <Target>
+[17]       <Apply FunctionId="anyURI-is-in">
+[20]         <Value DataType="anyURI">http://www.med.example.com/springfield-hospital</Value>
+[25]         <AttributeDesignator
+[26]           Category="resource"
+[27]           AttributeId="collection"
+[28]           DataType="anyURI"/>
+[31]       </Apply>
+[32]     </Target>
+[34]     <Rule
+[35]       Id="Rule1"
+[36]       Effect="Permit">
+[37]       ...
+[38]     </Rule>
+[40]     <Rule
+[41]       Id="Rule2"
+[42]       Effect="Permit">
+[43]       ...
+[44]     </Rule>
+[46]     <Rule
+[47]       Id="Rule3"
+[48]       Effect="Permit">
+[49]       ...
+[50]     </Rule>
+[52]   </Policy>
+[54]   <PolicyReference Id="urn:oasis:names:tc:acal:1.0:example:policyid:4"/>
+[58] </Policy>
 ```
 
 ```
@@ -3056,32 +3057,33 @@ The following policy illustrates the combined policies. Rule 1, Rule 2 and Rule 
 [12]         PolicyId: "urn:oasis:names:tc:acal:1.0:example:policyid:6"
 [13]         Version: "1.0"
 [14]         CombiningAlgId: deny-overrides
-[15]         Target:
-[16]           Apply:
-[17]             FunctionId: anyURI-is-in
-[18]             Argument:
-[19]               - Value:
-[20]                   DataType: anyURI
-[21]                   Value: "http://www.med.example.com/springfield-hospital"
-[24]               - AttributeDesignator:
-[25]                   Category: resource
-[26]                   AttributeId: collection
-[27]                   DataType: anyURI
-[32]         CombinerInput:
-[33]           - Rule:
-[34]               Id: Rule1
-[35]               Effect: Permit
-[36]               ...
-[39]           - Rule:
-[40]               Id: Rule2
-[41]               Effect: Permit
-[42]               ...
-[45]           - Rule:
-[46]               Id: Rule3
-[47]               Effect: Permit
-[48]               ...
-[53]     - PolicyReference:
-[54]         Id: "urn:oasis:names:tc:acal:1.0:example:policyid:4"
+[15]         ShortIdSetReference: ["urn:oasis:names:tc:acal:1.0:example:identifiers"]
+[16]         Target:
+[17]           Apply:
+[18]             FunctionId: anyURI-is-in
+[19]             Argument:
+[20]               - Value:
+[21]                   DataType: anyURI
+[22]                   Value: "http://www.med.example.com/springfield-hospital"
+[25]               - AttributeDesignator:
+[26]                   Category: resource
+[27]                   AttributeId: collection
+[28]                   DataType: anyURI
+[33]         CombinerInput:
+[34]           - Rule:
+[35]               Id: Rule1
+[36]               Effect: Permit
+[37]               ...
+[40]           - Rule:
+[41]               Id: Rule2
+[42]               Effect: Permit
+[43]               ...
+[46]           - Rule:
+[47]               Id: Rule3
+[48]               Effect: Permit
+[49]               ...
+[54]     - PolicyReference:
+[55]         Id: "urn:oasis:names:tc:acal:1.0:example:policyid:4"
 ```
 
 ```
@@ -3096,68 +3098,71 @@ The following policy illustrates the combined policies. Rule 1, Rule 2 and Rule 
 [12]       "PolicyId":"urn:oasis:names:tc:acal:1.0:example:policyid:6",
 [13]       "Version":"1.0",
 [14]       "CombiningAlgId":"deny-overrides",
-[15]       "Target":{
-[16]         "Apply":{
-[17]           "FunctionId":"anyURI-is-in",
-[18]           "Argument":[{
-[19]             "Value":{
-[20]               "DataType":"anyURI",
-[21]               "Value":"http://www.med.example.com/springfield-hospital"
-[22]             }
-[23]           },{
-[24]             "AttributeDesignator":{
-[25]               "Category":"resource",
-[26]               "AttributeId":"collection",
-[27]               "DataType":"anyURI"
-[28]             }
-[29]           }]
-[30]         }
-[31]       },
-[32]       "CombinerInput":[{
-[33]         "Rule":{
-[34]           "Id":"Rule1",
-[35]           "Effect":"Permit",
-[36]           ...
-[37]         }
-[38]       },{
-[39]         "Rule":{
-[40]           "Id":"Rule2",
-[41]           "Effect":"Permit",
-[42]           ...
-[43]         }
-[44]       },{
-[45]         "Rule":{
-[46]           "Id":"Rule3",
-[47]           "Effect":"Permit",
-[48]           ...
-[49]         }
-[50]       }]
-[51]     }
-[52]   },{
-[53]     "PolicyReference":{
-[54]       "Id":"urn:oasis:names:tc:acal:1.0:example:policyid:4"
-[55]     }
-[56]   }]
-[57] }}
+[15]       "ShortIdSetReference":["urn:oasis:names:tc:acal:1.0:example:identifiers"],
+[16]       "Target":{
+[17]         "Apply":{
+[18]           "FunctionId":"anyURI-is-in",
+[19]           "Argument":[{
+[20]             "Value":{
+[21]               "DataType":"anyURI",
+[22]               "Value":"http://www.med.example.com/springfield-hospital"
+[23]             }
+[24]           },{
+[25]             "AttributeDesignator":{
+[26]               "Category":"resource",
+[27]               "AttributeId":"collection",
+[28]               "DataType":"anyURI"
+[29]             }
+[30]           }]
+[31]         }
+[32]       },
+[33]       "CombinerInput":[{
+[34]         "Rule":{
+[35]           "Id":"Rule1",
+[36]           "Effect":"Permit",
+[37]           ...
+[38]         }
+[39]       },{
+[40]         "Rule":{
+[41]           "Id":"Rule2",
+[42]           "Effect":"Permit",
+[43]           ...
+[44]         }
+[45]       },{
+[46]         "Rule":{
+[47]           "Id":"Rule3",
+[48]           "Effect":"Permit",
+[49]           ...
+[50]         }
+[51]       }]
+[52]     }
+[53]   },{
+[54]     "PolicyReference":{
+[55]       "Id":"urn:oasis:names:tc:acal:1.0:example:policyid:4"
+[56]     }
+[57]   }]
+[58] }}
 ```
 
 [06] The nested policies are combined according to the `urn:oasis:names:tc:acal:1.0:combining-algorithm:deny-overrides` combining algorithm. This combining algorithm specifies that, if any nested policy evaluates to `Deny`, then the outer policy must return `Deny`; otherwise, if no error occurs and any policy evaluates to `Permit`, then the outer policy must return `Permit`. The combining algorithm, which is fully described in [Annex E.2](#e2-deny-overrides), also says what to do if an error were to occur when evaluating any nested policy.
 
-[11] - [51] A nested policy that combines Rule 1, Rule 2 and Rule 3. Most of the content of the rules, and the variable definitions and the notice expression that they use, are omitted for clarity.
+[11] - [52] A nested policy that combines Rule 1, Rule 2 and Rule 3. Most of the content of the rules, and the variable definitions and the notice expression that they use, are omitted for clarity.
 
 [14] The rules in the nested policy are also combined according to the `urn:oasis:names:tc:acal:1.0:combining-algorithm:deny-overrides` combining algorithm.
 
-[15] - [31] The target restricts the applicability of the nested policy to decision requests for access to medical records belonging to Springfield Hospital.
+[15] The nested policy references the same short identifier set as the outer policy ([07]).
 
-[33] - [37] A copy of Rule 1.
+[16] - [32] The target restricts the applicability of the nested policy to decision requests for access to medical records belonging to Springfield Hospital.
 
-[39] - [43] A copy of Rule 2.
+[34] - [38] A copy of Rule 1.
 
-[45] - [49] A copy of Rule 3.
+[40] - [44] A copy of Rule 2.
 
-[51] The end of the nested policy.
+[46] - [50] A copy of Rule 3.
 
-[53] - [55] The policy containing Rule 4 is included by reference.
+[52] The end of the nested policy.
+
+[54] - [56] The policy containing Rule 4 is included by reference.
 
 
 ---
@@ -3505,7 +3510,7 @@ class LocalIdentifierType <<primitive>> <<restrictedString>> {
 
 ##### 7.1.2.3.10 AttributeSelectorPathType
 
-The `AttributeSelectorPathType` defines valid values for the `Path` property of `BaseAttributeSelectorType` objects (non-empty strings without leading/trailing whitespace).
+The `AttributeSelectorPathType` defines valid values for the `Path` property of `BaseAttributeSelectorType` objects (non-empty strings without leading or trailing whitespace and without line terminators).
 
 UML definition (class diagram):
 ```plantuml
@@ -4898,7 +4903,7 @@ A `BaseAttributeType` object, and therefore an object of each of its subtypes, c
 
 An `AttributeAssignmentType` object is used to include an attribute in a notice. The `AttributeAssignmentType` object type extends the `BaseAttributeType` definition ([Section 7.27](#727-attributetype)) by adding a `Category` property.
 
-The attribute specified SHALL be understood by the PEP, but it is not further specified by ACAL. See [Section 8.16](#816-notices). [Section 6.2.4.3](#6243-rule-3) provides a number of examples of attribute assignment expressions included in notice expressions.
+The attribute specified in an obligation notice SHALL be understood by the PEP ([Section 7.37](#737-resulttype)), but it is not further specified by ACAL. See [Section 8.16](#816-notices). [Section 6.2.4.3](#6243-rule-3) provides a number of examples of attribute assignment expressions included in notice expressions.
 
 UML definition (class diagram):
 ```plantuml
@@ -4967,7 +4972,7 @@ A `NoticeExpressionType` object contains the following properties:
 
 ## 7.30 AttributeAssignmentExpressionType
 
-An `AttributeAssignmentExpressionType` object is used to include an argument in a notice. It SHALL contain an `AttributeId` property and an expression which SHALL be evaluated into the corresponding attribute value. The value specified SHALL be understood by the PEP, but it is not further specified by ACAL. See [Section 8.16](#816-notices). [Section 6.2.4.3](#6243-rule-3) provides a number of examples of attribute assignment expressions included in notice expressions.
+An `AttributeAssignmentExpressionType` object is used to include an argument in a notice. It SHALL contain an `AttributeId` property and an expression which SHALL be evaluated into the corresponding attribute value. The value specified in an obligation notice SHALL be understood by the PEP ([Section 7.37](#737-resulttype)), but it is not further specified by ACAL. See [Section 8.16](#816-notices). [Section 6.2.4.3](#6243-rule-3) provides a number of examples of attribute assignment expressions included in notice expressions.
 
 UML definition (class diagram):
 ```plantuml
@@ -7083,7 +7088,7 @@ For an IPv6 address, the address and mask SHALL each conform to the `IP-literal`
 
 The mask, where present, uses the same syntactic rule as the address component (i.e., `IPv4address` for IPv4, `IP-literal` for IPv6) and represents a network address mask (e.g., `255.255.255.0` for IPv4 or `[ffff:ffff::]` for IPv6). The mask format is defined by this specification and is not derived from any external RFC.
 
-The value space of `ipAddress` is the set of triples of an IPv4 or IPv6 address, an optional network address mask of the same address family, and an optional port or port range (the port-range syntax, common to `ipAddress` and `dnsName`, is given below). The lexical space is the set of character strings conforming to the syntax above and below, and the lexical mapping from such a string to the triple it denotes is given by that syntax. This specification defines no equality or matching relation on `ipAddress` values other than identity of the parsed triple (for example, it does not define whether two address strings that denote overlapping or numerically equal address ranges are related by any standard ACAL function). No standard ACAL function currently depends on such a relation.
+The value space of `ipAddress` is the set of triples of an IPv4 or IPv6 address, an optional network address mask of the same address family, and an optional port or port range (the port-range syntax, common to `ipAddress` and `dnsName`, is given below), together with the lexical string from which each value was constructed. The lexical space is the set of character strings conforming to the syntax above and below, and the lexical mapping from such a string to the value it denotes is given by that syntax. This specification defines no equality or matching relation on `ipAddress` values other than identity of the parsed triple (for example, it does not define whether two address strings that denote overlapping or numerically equal address ranges are related by any standard ACAL function). No standard ACAL function currently depends on such a relation.
 
 ### C.2.4 DNS Name
 

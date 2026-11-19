@@ -419,7 +419,7 @@ Contrary to the above subschemas which are not added as first-class reusable sch
     ...
     "NonNegativeInteger": {"type": "integer", "minimum": 0},
     "URI": {"type": "string", "format": "uri-reference"},
-    "Name": {"type": "string", "pattern": "^[_:A-Za-z][-._:A-Za-z0-9]*$"}
+    "Name": {"type": "string", "pattern": "<the full-Unicode pattern of [ACAL-Core-1.0] Section 7.1.2.3.11 for the XSD Name datatype>"}
     ...
   }
 }
