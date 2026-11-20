@@ -1,5 +1,5 @@
 # Simple workflow for Pandoc generation and deployment of static content to GitHub Pages
-name: Pandoc generate and deploy HTML/PDF docs (acal-core-v1.0, acal-xpath-v1.0) to OASIS Github Pages site
+name: Pandoc generate and deploy HTML/PDF docs (all ACAL specifications) to OASIS Github Pages site
 
 on:
   # Runs on pushes targeting the main branch
@@ -43,29 +43,36 @@ jobs:
         uses: r-lib/actions/setup-pandoc@v2
         with:
           pandoc-version: "3.2.1"
-      - name: Install pandoc-include and diagram tools (for acal-xpath-v1.0 mkdocs.sh build)
+      - name: Install pandoc filters and diagram tools (for mkdocs.sh builds)
         run: |
           pipx install "pandoc-include==1.4.*"
+          python3 -m venv "$HOME/xnos"
+          "$HOME/xnos/bin/pip" install "git+https://github.com/TimothyElder/pandoc-xnos@20f1b322b1b98799cddf652b9b266a1b3abb4de0"
+          "$HOME/xnos/bin/pip" install --no-deps "pandoc-secnos==2.2.2"
+          echo "$HOME/xnos/bin" >> "$GITHUB_PATH"
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y graphviz default-jre-headless plantuml
 
-      - name: Pandoc HTML generation - acal-core-v1.0-draft.html
+      - name: Pandoc HTML generation (all specifications)
         run: |
-          pandoc/mkdocs.sh --output output acal-core-v1.0.md
-          mv output/acal-core-v1.0.html output/acal-core-v1.0-draft.html
-      - name: Pandoc HTML generation - acal-xpath-v1.0-draft.html
-        run: |
+          set -e
+          for doc in acal-core-v1.0 acal-core-xml-v4.0 acal-core-json-v1.0 acal-core-yaml-v1.0 acal-hierarchical-v1.0 acal-multiple-v1.0 acal-rbac-v1.0; do
+            pandoc/mkdocs.sh --output output "$doc.md"
+            mv "output/$doc.html" "output/$doc-draft.html"
+          done
           pandoc/mkdocs.sh --number-lines --output output acal-xpath-v1.0.md
           mv output/acal-xpath-v1.0.html output/acal-xpath-v1.0-draft.html
+          pandoc/mkdocs.sh --number-lines --output output acal-jsonpath-v1.0.md --number-sections=true --filter pandoc-secnos --lua-filter=pandoc/abstract-section.lua --toc=true --variable toc-title="Table of Contents" --toc-depth=5
+          mv output/acal-jsonpath-v1.0.html output/acal-jsonpath-v1.0-draft.html
 
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v2
-      - name: Pandoc PDF generation (acal-core-v1.0)
+      - name: Pandoc PDF generation (all specifications)
         run: |
-          chrome --headless=new --no-sandbox --no-pdf-header-footer --print-to-pdf="output/acal-core-v1.0-draft.pdf" output/acal-core-v1.0-draft.html
-      - name: Pandoc PDF generation (acal-xpath-v1.0)
-        run: |
-          chrome --headless=new --no-sandbox --no-pdf-header-footer --print-to-pdf="output/acal-xpath-v1.0-draft.pdf" output/acal-xpath-v1.0-draft.html
+          set -e
+          for doc in acal-core-v1.0 acal-core-xml-v4.0 acal-core-json-v1.0 acal-core-yaml-v1.0 acal-xpath-v1.0 acal-jsonpath-v1.0 acal-hierarchical-v1.0 acal-multiple-v1.0 acal-rbac-v1.0; do
+            chrome --headless=new --no-sandbox --no-pdf-header-footer --print-to-pdf="output/$doc-draft.pdf" "output/$doc-draft.html"
+          done
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -77,5 +84,6 @@ jobs:
       - name: summary
         run: |
           echo "### Check the results:" >> $GITHUB_STEP_SUMMARY
-          echo "- acal-core-v1.0: https://oasis-tcs.github.io/xacml-spec/acal-core-v1.0-draft.html | https://oasis-tcs.github.io/xacml-spec/acal-core-v1.0-draft.pdf" >> $GITHUB_STEP_SUMMARY
-          echo "- acal-xpath-v1.0: https://oasis-tcs.github.io/xacml-spec/acal-xpath-v1.0-draft.html | https://oasis-tcs.github.io/xacml-spec/acal-xpath-v1.0-draft.pdf" >> $GITHUB_STEP_SUMMARY
+          for doc in acal-core-v1.0 acal-core-xml-v4.0 acal-core-json-v1.0 acal-core-yaml-v1.0 acal-xpath-v1.0 acal-jsonpath-v1.0 acal-hierarchical-v1.0 acal-multiple-v1.0 acal-rbac-v1.0; do
+            echo "- $doc: https://oasis-tcs.github.io/acal-spec/$doc-draft.html | https://oasis-tcs.github.io/acal-spec/$doc-draft.pdf" >> $GITHUB_STEP_SUMMARY
+          done
