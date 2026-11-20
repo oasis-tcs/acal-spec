@@ -24,8 +24,7 @@ normative specification.
 ## What is ACAL: The Abstract Successor to XACML
 
 ACAL (Attribute-Centric Authorization Language) Version 1.0 is a
-successor to XACML 3.0, produced by the OASIS XACML Technical
-Committee.
+successor to XACML 3.0, produced by the OASIS ACAL [XACML] Technical Committee.
 
 The central architectural decision in ACAL is the separation of policy
 semantics from serialization syntax. XACML 3.0, while semantically
@@ -51,8 +50,7 @@ The result is a specification family:
 | ACAL Core – JSON Representation Profile v1.0 | JSON serialization of ACAL | JACAL v1.0 |
 | ACAL Core – YAML Representation Profile v1.0 | YAML serialization of ACAL | YACAL v1.0 |
 
-ACAL is the authoritative source for all policy semantics, evaluation
-behavior, conformance requirements, and standard identifier definitions.
+ACAL Core is the authoritative source for the abstract model, its evaluation behavior, its conformance requirements and its identifiers; each representation and profile is authoritative for its own mapping, processing, conformance and identifier requirements.
 Each representation specification maps that abstract model to its format
 and defines any format-specific processing rules.
 
@@ -76,7 +74,7 @@ and the abstract model separation itself.
 |---|---|---|
 | Policy hierarchy | `Policy` and `PolicySet` are distinct constructs | `Policy` absorbs `PolicySet`; a policy may directly contain nested policies |
 | Target syntax | `AnyOf / AllOf / Match` nested structure | A single Boolean expression — the same structure as a Rule `Condition` |
-| Rule target | Rules have their own `Target` | Rules have no target; targeting is done at the policy level |
+| Rule target | Rules have their own `Target` | Rules have no `Target`; a rule applies where its `Condition` holds (an omitted condition is `true`), within the enclosing policy's target |
 | Obligations and Advice | `ObligationExpression` and `AdviceExpression` are separate, under separate wrapper elements | `NoticeExpression` is a single unified type; the `IsObligation` flag distinguishes obligation from advice |
 | Combiner parameters | `CombinerParameter` supported | Removed |
 | Combining algorithms | Rule combining and policy combining are separate sets, including `only-one-applicable` | A single unified set; legacy algorithms removed |
@@ -85,9 +83,9 @@ and the abstract model separation itself.
 
 | Capability | Notes |
 |---|---|
-| Short identifiers (`ShortIdSet`) | User-defined aliases for long URIs, reducing verbosity throughout policies; a standard ACAL short-identifier set is provided for all built-in identifiers |
+| Short identifiers (`ShortIdSet`) | User-defined aliases for long URIs, reducing verbosity throughout policies; a standard ACAL short-identifier set is provided for ACAL Core's identifiers |
 | `QuantifiedExpression` | `ForAny`, `ForAll`, `Map`, and `Select` expressions, incorporating concepts from the XACML 3.0 Entities Profile |
-| `Entity` data type | Abstract entity references, also from the Entities Profile |
+| `Entity` data type | Structured entity values (attributes and/or content), from the XACML 3.0 Entities Profile |
 | `SharedVariableDefinition` | Reusable parameterized variable definitions, shareable across policies in a `Bundle` |
 | `Bundle` | A portable container for policies, shared variable definitions, and short identifier sets; facilitates cross-PDP policy exchange |
 | New functions | Ternary conditional (`ternary-if`); sum, average, min, and max aggregate functions |
@@ -95,8 +93,7 @@ and the abstract model separation itself.
 
 ### Identifier Namespace
 
-All standard identifiers have moved from the `urn:oasis:names:tc:xacml:`
-prefix to `urn:oasis:names:tc:acal:`. The old prefix is deprecated.
+ACAL's own URN identifiers use the `urn:oasis:names:tc:acal:1.0:` prefix. Where a conformance table lists a deprecated XACML identifier for an item (under `urn:oasis:names:tc:xacml:1.0`/`2.0`/`3.0`, or `http://www.w3.org/2001/XMLSchema#` for the XML Schema data types), an implementation may recognize it as equivalent; an item ACAL redefined, and an item new in ACAL, has none (ACAL Core Section 11.2). `urn:oasis:names:tc:xacml:4.0` remains a reserved prefix (Section 11.2.2), and the XML namespace is `urn:oasis:names:tc:xacml:4.0:core:schema`.
 
 ### XPath Moved to a Profile
 
@@ -108,8 +105,7 @@ allows the core specifications to be leaner and XPath support to be
 declared explicitly as a claimed profile.
 
 Similarly, the JSONPath Profile defines JSONPath-based
-`AttributeSelector` extensions and is independent of both the core and
-the XPath Profile.
+`AttributeSelector` extensions and is independent of the XPath Profile, while extending ACAL Core.
 
 ### Integer Limits: Exact or Error, Within a Documented Interval
 
@@ -249,9 +245,7 @@ throughout this document. Where XML uses element name to identify
 expression type, JACAL uses a wrapper key around the value, and each
 polymorphic array property holds a mix of such wrapped values. `Apply`'s
 own `Argument` array is the most common example (not an `Expression`
-property — see the worked examples below), but `Policy`'s
-`CombinerInput` and `Rule`'s `NoticeExpression` follow the same
-wrapper-key convention.
+property — see the worked examples below), and `Policy`'s `CombinerInput` follows the same wrapper-key convention; `Rule`'s `NoticeExpression` is a homogeneous array whose entries are not wrapped (Example 4).
 
 ### YACAL v1.0 (YAML)
 
@@ -343,7 +337,7 @@ are either embedded or handled differently in the peer representations.
 | Layer | XACML v4.0 | JACAL v1.0 | YACAL v1.0 |
 |---|---|---|---|
 | Structural validation | XSD 1.1 | JSON Schema | `acal-core-yaml-v1.0-structure.schema.yaml` |
-| Higher-order constraints | Schematron + XSD 1.1 assertions | Partly in JSON Schema; implementation guidance | `acal-core-yaml-v1.0-constraints.yaml` |
+| Higher-order constraints | Schematron or XSD 1.1 assertions | Partly in JSON Schema; implementation guidance | `acal-core-yaml-v1.0-constraints.yaml` |
 | Profile composition | Implicit via XSD imports | `$dynamicRef`/`$dynamicAnchor` in JSON Schema | Explicit composition examples |
 
 The extra files reflect packaging clarity, not extra YACAL semantics.
@@ -358,7 +352,7 @@ explicit about where each validation responsibility lives.
 |---|---|---|---|
 | Prose specification | Present | Present | Present |
 | Core structural schema | XSD 1.1 | JSON Schema Draft 2020-12 | JSON Schema Draft 2020-12, serialized as YAML |
-| Higher-order constraint layer | Schematron + XSD 1.1 assertions | Partly in JSON Schema; partly implementation guidance | Separate YAML constraint catalog |
+| Higher-order constraint layer | Schematron or XSD 1.1 assertions | Partly in JSON Schema; partly implementation guidance | Separate YAML constraint catalog |
 | Short-identifier reference set | XML `ShortIdSet` | JSON `ShortIdSet` | YAML `ShortIdSet` |
 | Primitive literal typing | Effective `DataType` determines the concrete `ValueType` subtype behind the uniform `<Value>` surface | Native JSON primitive forms imply the fixed ACAL primitive literal types | Native YAML Core Schema scalar forms imply the fixed ACAL primitive literal types |
 | XPath Profile | Present | Present | Present |
@@ -576,12 +570,18 @@ ShortIdSet:
   ShortId:
     - Name: "role"
       Value: "urn:example:attribute:role"
+    - Name: "content-tier"
+      Value: "urn:example:attribute:content-tier"
+    - Name: "account-type"
+      Value: "urn:example:attribute:account-type"
+    - Name: "patient-email"
+      Value: "urn:example:attribute:patient-email"
 ```
 
 The `ShortIdSetReference` imports the ACAL standard identifier set,
-which defines `access-subject`, `action`, `action-id`, `and`,
-`string-is-in`, and all other built-in identifiers. The local `ShortId`
-entry adds a deployment-specific alias for the `role` attribute.
+which defines the identifiers of ACAL Core, such as `access-subject`, `action`, `action-id`, `and` and
+`string-is-in` (a profile may provide its own set for the identifiers it introduces, as the XPath Profile does). The local `ShortId`
+entries add deployment-specific aliases for the attributes the examples use. The rule examples that follow are shown as they appear inside a policy whose `ShortIdSetReference` references `urn:example:guide:identifiers` (a `Rule` has no `ShortIdSetReference` of its own; ACAL Core Sections 7.4 and 7.1.2.3.8); the complete policies reference it directly.
 
 **XACML v4.0 with short identifiers**
 
@@ -695,8 +695,7 @@ Rule:
 - The standard ACAL identifier set (`urn:oasis:names:tc:acal:1.0:core:identifiers`)
   is provided as a reference artifact in all three formats
   (`acal-core-yaml-v1.0-identifiers.yaml`, `acal-core-json-v1.0-identifiers.json`,
-  `acal-core-xml-v4.0-identifiers.xml`). Any deployment using standard
-  identifiers only needs to add its own local attributes and categories.
+  `acal-core-xml-v4.0-identifiers.xml`). Beyond that set, a deployment adds aliases for its own identifiers, and references any set a profile or extension provides for the short identifiers it uses from there (ACAL Core Section 8.3.2).
 
 ---
 
@@ -720,6 +719,7 @@ registered or premium users; premium pages to premium users only.
         PolicyId="urn:example:policy:website-content-access"
         Version="1.0"
         CombiningAlgId="urn:oasis:names:tc:acal:1.0:combining-algorithm:deny-unless-permit">
+  <ShortIdSetReference>urn:example:guide:identifiers</ShortIdSetReference>
   <Description>
     Permit view access to website pages by content tier and account type.
   </Description>
@@ -801,6 +801,7 @@ registered or premium users; premium pages to premium users only.
   "Policy": {
     "PolicyId": "urn:example:policy:website-content-access",
     "Version": "1.0",
+    "ShortIdSetReference": ["urn:example:guide:identifiers"],
     "Description": "Permit view access to website pages by content tier and account type.",
     "CombiningAlgId": "{deny-unless-permit}",
     "CombinerInput": [
@@ -895,6 +896,8 @@ registered or premium users; premium pages to premium users only.
 Policy:
   PolicyId: "urn:example:policy:website-content-access"
   Version: "1.0"
+  ShortIdSetReference:
+    - "urn:example:guide:identifiers"
   Description: >-
     Permit view access to website pages by content tier and account type.
   CombiningAlgId: "{deny-unless-permit}"
@@ -1013,9 +1016,7 @@ Policy:
 - The identifiers `{deny-unless-permit}`, `{and}`, `{or}`,
   `{string-is-in}`, `{action}`, `{action-id}`, `{resource}`, and
   `{access-subject}` are all in the standard ACAL short-identifier set
-  and require no local definition. The deployment-specific identifiers
-  `{content-tier}` and `{account-type}` would be added to a local
-  `ShortIdSet`.
+  and require no local definition. The deployment-specific identifiers `{content-tier}` and `{account-type}` are defined in the local set of Example 2, which the policy references.
 - In XACML 3.0 a Policy target used `<AnyOf><AllOf><Match>`. In ACAL
   1.0 a Policy target is a plain Boolean expression (the same `Apply`
   construct used in Rule conditions), eliminating a separate syntax tier.
@@ -1188,8 +1189,7 @@ Rule:
 - XML puts `NoticeExpression` elements as direct children of `<Rule>`;
   JACAL and YACAL put them in a `NoticeExpression` array on the rule
   mapping.
-- Each `AttributeAssignmentExpression` carries one value assignment to
-  be passed to the enforcing system. The `Expression` holds the value
+- Each `AttributeAssignmentExpression` carries one expression; it yields one assignment for a single value, one per value of a bag, and none for an empty bag (ACAL Core 7.29). The `Expression` holds the value
   source — a literal, an attribute designator, or an apply expression.
 - In JACAL/YACAL the `Expression` on an `AttributeAssignmentExpression`
   is a single mapping (not an array) because exactly one expression

@@ -21,13 +21,13 @@ The OASIS ACAL \[XACML\] TC is developing ACAL (Attribute-Centric Authorization 
 
 - **New data representation formats (JSON, YAML)** sharing a common (XML-agnostic) abstract model (ACAL), which facilitates **extensibility to other formats** via ACAL Profiles.
 - **Model / Structure simplifications** including:
-  - **Target simplification**: the `AnyOf / AllOf / Match` structure is replaced by a plain boolean `Apply` expression — the same language as `Condition`
+  - **Target simplification**: the `AnyOf / AllOf / Match` structure is replaced by a boolean expression — the same `BooleanExpressionType` as `Condition`
   - **Policy absorbs PolicySet**: nested policies use a single `Policy` type with a `CombinerInput` sequence; `PolicySet` is eliminated
   - **NoticeExpression**: `ObligationExpression` and `AdviceExpression` are unified into a single `NoticeExpression` type with an `IsObligation` flag
   - **XPath moved to a profile**: XPath-based `AttributeSelector` and functions are in the separate ACAL XPath Profile; a new JSONPath Profile is also defined
 
 - **Attribute DataType**: `DataType` is declared once per `Attribute`, not per value, preventing mixed-type bags
-- **Short identifiers (ShortIdSet)**: user-defined URI aliases reduce verbosity; a standard ACAL identifier set covers all built-ins
+- **Short identifiers (ShortIdSet)**: user-defined URI aliases reduce verbosity; a standard ACAL identifier set covers ACAL Core's identifiers (profile identifiers are in the profiles' sets)
 - **QuantifiedExpression**: `ForAny`, `ForAll`, `Map`, and `Select` enable iteration over attribute value bags
 - **Bundle**: portable container for policies, shared variable definitions, and identifier sets
 - **Identifier namespace**: standard identifiers move from `urn:oasis:names:tc:xacml:` to `urn:oasis:names:tc:acal:`
@@ -248,6 +248,8 @@ In the meantime, you may apply the following mapping rules:
    1. If *V<sub>n</sub>* is primitive, the only child node is a text node whose content is *V<sub>n</sub>* possibly modified after applying XML character escaping rules. No XML attribute. 
    1. Else if *V<sub>n</sub>* is a JSON object, the attributes and child elements are the results of re-applying the full mapping rules to each property *P<sub>n</sub>* of this object. The order of child elements must match the order defined in the XACML schema for the corresponding `<P>` element.
    1. Else (*V<sub>n</sub>* is a JSON array) reject as invalid (JSON arrays of arrays are not allowed).
+
+*Exception:* the properties `Argument`, `CombinerInput`, `Expression`, `Domain` and `Iterant` are not mapped to an element `<P>` (`Target` and `Condition` are: their element contains the expression element): each value maps to the XML element its wrapper key names (for example `{"Rule": {...}}` in `CombinerInput` maps to `<Rule>`, and `{"Apply": {...}}` in `Argument` to `<Apply>`), whose content is mapped from the wrapped object by the same rules.
   
 ### If I just need to implement a PEP (Policy Enforcement Point) or whatever to make access requests to a PDP, do I have to support the full XACML/JACAL schema(s)?
 
