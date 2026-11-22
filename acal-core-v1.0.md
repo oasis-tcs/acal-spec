@@ -4603,18 +4603,17 @@ class LiteralStringType <<fixedDatatype>> extends PrimitiveValueType {
     __
     +Value: String [1]
 }
-class LiteralRestrictedStringType <<restrictedString>> extends PrimitiveValueType {
-    +DataType: IdentifierType [0..1]
-    +Value: String [1]
+class LiteralXxxType extends PrimitiveValueType {
+    +Value: //Type to be defined by each ACAL representation profile// [1]
 }
 
-note bottom of LiteralRestrictedStringType: Other ACAL datatypes with lexical representation \ncan be derived from this type, \ne.g. standard time, date, dateTime, \nanyURI, hexBinary, base64Binary, \ndayTimeDuration, yearMonthDuration, \nx500Name, rfc822Name, ipAddress, dnsName.
+note bottom of LiteralXxxType: Template of an UML class representing any other ACAL primitive datatype from section C.2\n (time, date, dateTime, anyURI, hexBinary, base64Binary, dayTimeDuration, yearMonthDuration, \nx500Name, rfc822Name, ipAddress, dnsName), \nwhere //Xxx// shall be the short name of the datatype in Pascal case, \ne.g. `LiteralHexBinaryType` is the class name for the `hexBinary` datatype. \nThis is for brevity only, to avoid representing each and every one of them on this diagram.\n
 
 PrimitiveValueType -[hidden]- LiteralBooleanType
 LiteralBooleanType -[hidden]- LiteralIntegerType
 LiteralIntegerType -[hidden]- LiteralDoubleType
 LiteralDoubleType -[hidden]- LiteralStringType
-LiteralStringType -[hidden]- LiteralRestrictedStringType
+LiteralStringType -[hidden]- LiteralXxxType
 
 class DataType <<Metaclass>>
 class FixedDatatype <<Stereotype>> extends DataType {
@@ -4633,7 +4632,7 @@ A `ValueType` object has the following properties:
 
 A ValueType is abstract and subtypes may be either primitive types - i.e. subtypes of `PrimitiveValueType` in the above diagram (LiteralStringType, LiteralIntegerType, etc.) - or structured types (see [Section 8.4.1](#841-structured-attributes)) -  i.e. subtypes of `StructuredValueType` in the above diagram.
 
-The abstract model distinguishes `LiteralBooleanType`, `LiteralIntegerType`, `LiteralDoubleType`, and `LiteralStringType` from `LiteralRestrictedStringType` by their effective ACAL `DataType` and value space, not by any required concrete syntactic wrapper. A concrete representation MAY make that distinction directly through native scalar syntax, or it MAY use a uniform literal surface form in which the concrete `ValueType` subtype is determined from the effective `DataType` obtained from the subtype's `<<fixedDatatype>>` definition, an explicit `DataType` property, or the rules for the effective data type in [Section 7.14](#714-expressiontype). A concrete subtype of `StructuredValueType` is identified by its effective `DataType`, exactly as for the primitive subtypes above; the concrete syntax of its structured content is then defined by the ACAL Profile or user definition that introduces that subtype. Because the rules above resolve any otherwise-undetermined literal to the `string` data type, a structured value is never identified by inspecting its content.
+The abstract model distinguishes `LiteralBooleanType`, `LiteralIntegerType`, `LiteralDoubleType`, and `LiteralStringType` from other `LiteralXxxValueType`s by their effective ACAL `DataType` and value space, not by any required concrete syntactic wrapper. A concrete representation MAY make that distinction directly through native scalar syntax, or it MAY use a uniform literal surface form in which the concrete `ValueType` subtype is determined from the effective `DataType` obtained from the subtype's `<<fixedDatatype>>` definition, an explicit `DataType` property, or the rules for the effective data type in [Section 7.14](#714-expressiontype). A concrete subtype of `StructuredValueType` is identified by its effective `DataType`, exactly as for the primitive subtypes above; the concrete syntax of its structured content is then defined by the ACAL Profile or user definition that introduces that subtype. Because the rules above resolve any otherwise-undetermined literal to the `string` data type, a structured value is never identified by inspecting its content.
 
 ## 7.24 VariableReferenceType
 
