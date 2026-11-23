@@ -801,7 +801,7 @@ property whose value is YAML `null`.
 ### 5.4.4 ValueType Mapping Rules
 
 The ACAL `ValueType` model is defined in
-[[ACAL-Core-1.0](#acal-core-10)] Section 7.23.  The ACAL `ValueType` and its
+[[ACAL-Core-1.0](#acal-core-10)] Section 7.24.  The ACAL `ValueType` and its
 literal subtypes are mapped specially because YAML provides native
 scalar forms.
 
@@ -936,7 +936,7 @@ that `DataType` MUST match the fixed data type of the resulting concrete literal
 1. A YAML string scalar represents either:
    1. `LiteralStringType`, if no inherited or explicit non-string
       `DataType` applies
-   2. a `LiteralXxxType` object ([[ACAL-Core-1.0](#acal-core-10)] Section 7.23), if an inherited or explicit ACAL
+   2. a `LiteralXxxType` object ([[ACAL-Core-1.0](#acal-core-10)] Section 7.24), if an inherited or explicit ACAL
       lexical `DataType` such as `anyURI`, `date`, or `rfc822Name`
       applies
 2. If a YAML string scalar is used with an explicit or inherited
@@ -1010,7 +1010,7 @@ precedence:
    ACAL Double, the subtype is `LiteralDoubleType`, per [Section 5.4.4.3](#5443-double))
 3. the expected data type that ACAL defines for the property holding the
    value, if it is a single data type
-   ([[ACAL-Core-1.0](#acal-core-10)] Section 7.14)
+   ([[ACAL-Core-1.0](#acal-core-10)] Section 7.15)
 4. the default data type of the object type, which is `string` for a
    `ValueType`, if no other rule determines the data type
 
@@ -1021,12 +1021,12 @@ includes the default data type of the object type (`string` for a
 nested `ValueType` specifies a `DataType` and its context has an
 expected data type, the `DataType` MUST be that data type or, where
 the expected data type is a set of allowed data types, one of them
-([[ACAL-Core-1.0](#acal-core-10)] Section 7.14).
+([[ACAL-Core-1.0](#acal-core-10)] Section 7.15).
 
 In [Section 5.4.4](#544-valuetype-mapping-rules), an *inherited* `DataType` is the `DataType` property of
 an enclosing object that applies to the value, or the expected data
 type of the property that holds the value when that expected data type
-is a single data type ([[ACAL-Core-1.0](#acal-core-10)] Section 7.14).
+is a single data type ([[ACAL-Core-1.0](#acal-core-10)] Section 7.15).
 
 Typical parent contexts that may fix or infer the `DataType` of a
 contained `ValueType` include:
@@ -1061,7 +1061,7 @@ because the surrounding context already fixes it.
 ### 5.4.5 StructuredValueType Mapping
 
 `StructuredValueType` is the abstract structured-value branch of
-`ValueType` defined by [[ACAL-Core-1.0](#acal-core-10)] Section 7.23.  A
+`ValueType` defined by [[ACAL-Core-1.0](#acal-core-10)] Section 7.24.  A
 concrete `StructuredValueType` subtype is represented as a YAML mapping
 containing the profile-defined properties of that subtype.
 
@@ -1265,7 +1265,7 @@ properties:
 | `Encoding` | No | `ContentEncodingType` | `base64` indicates that the `Body` is a string of Base64 data as per [[RFC4648](#rfc4648)], which decodes to the UTF-8 encoding of the document text. For `application/json`, `application/yaml` and `application/xml` it is the only value. |
 | `Body` | Yes | `AnyType` | The content payload, in a form given below |
 
-The `Body` takes one of the following forms ([[ACAL-Core-1.0](#acal-core-10)] Section 7.34):
+The `Body` takes one of the following forms ([[ACAL-Core-1.0](#acal-core-10)] Section 7.36):
 
 - `application/yaml`: a YAML mapping or sequence (native content);
 - `application/json`: a YAML string holding the JSON text of an object or array;
@@ -1277,7 +1277,7 @@ YAML processor reads it, SHALL be the document text (a literal block
 scalar, or a double-quoted scalar with escapes; a folded line break
 changes the text). The base64, UTF-8 and document rules, the rejection
 of duplicate names in JSON content and the rules for a converter are
-those of [[ACAL-Core-1.0](#acal-core-10)] Section 7.34.
+those of [[ACAL-Core-1.0](#acal-core-10)] Section 7.36.
 
 A native `application/yaml` `Body` is one YAML node of the YACAL
 document, a mapping or sequence. It SHALL NOT contain an explicit YAML
@@ -1485,7 +1485,7 @@ Properties:
 |---|---|---|---|
 | `FunctionId` | Yes | `IdentifierType` | Function identifier |
 | `Description` | No | String | Free-form description |
-| `Argument` | No | Sequence of `ArgumentType` | Arguments in order, or named arguments (`NamedArgumentType`) in any order if the function has *named parameters* (more info in the `ApplyType` section of [[ACAL-Core-1.0](#acal-core-10)] ); absent if the function takes no arguments. When the function signature fixes an argument `DataType`, a statically typed child expression such as `Value` MAY omit `DataType`; the `DataType` requirements of [[ACAL-Core-1.0](#acal-core-10)] Section 7.15 apply. |
+| `Argument` | No | Sequence of `ArgumentType` | Arguments in order, or named arguments (`NamedArgumentType`) in any order if the function has *named parameters* (more info in the `ApplyType` section of [[ACAL-Core-1.0](#acal-core-10)] ); absent if the function takes no arguments. When the function signature fixes an argument `DataType`, a statically typed child expression such as `Value` MAY omit `DataType`; the `DataType` requirements of [[ACAL-Core-1.0](#acal-core-10)] Section 7.16 apply. |
 
 ### 5.5.3 AttributeDesignatorType
 
@@ -1505,7 +1505,7 @@ Properties:
 |---|---|---|---|---|
 | `Category` | Yes | — | `IdentifierType` | Attribute category |
 | `AttributeId` | Yes | — | `IdentifierType` | Attribute identifier |
-| `DataType` | No | string or inferred | `IdentifierType` | Data type of returned values; if omitted, see [[ACAL-Core-1.0](#acal-core-10)] Section 7.14 |
+| `DataType` | No | string or inferred | `IdentifierType` | Data type of returned values; if omitted, see [[ACAL-Core-1.0](#acal-core-10)] Section 7.15 |
 | `Issuer` | No | — | Name | Attribute issuer |
 | `MustBePresent` | No | `false` | Boolean | If `true`, missing attribute returns Indeterminate |
 
@@ -2077,7 +2077,7 @@ scope of any `VariableDefinitionType`, its expression SHALL NOT contain
 `VariableReferenceType` objects, except references to a `Parameter` of the
 same `SharedVariableDefinitionType` object and references to the quantified
 variable of an enclosing quantified expression within that expression
-([[ACAL-Core-1.0](#acal-core-10)] Sections 7.24 and 7.25).
+([[ACAL-Core-1.0](#acal-core-10)] Sections 7.25 and 7.27).
 
 ------------------------------------------------------------------------
 
@@ -2162,7 +2162,7 @@ Properties:
 Each `RequestAttribute` item uses the mapping in
 [Section 5.8.3](#583-requestattributetype).
 
-Unless the PDP implements the ACAL Multiple Decision Profile, it is a syntax error if multiple `RequestEntity` objects in the same request have the same `Category` value ([[ACAL-Core-1.0](#acal-core-10)] Section 7.31).
+Unless the PDP implements the ACAL Multiple Decision Profile, it is a syntax error if multiple `RequestEntity` objects in the same request have the same `Category` value ([[ACAL-Core-1.0](#acal-core-10)] Section 7.33).
 
 ### 5.8.3 RequestAttributeType
 
@@ -2284,7 +2284,7 @@ Properties:
 | `ResultEntity` | No | `ResultEntityType` | * |
 | `ApplicablePolicyReference` | No | `ExactMatchIdReferenceType` | * |
 
-If the originating `Request.ReturnPolicyIdList` value is `true`, a processor that supports this feature MUST populate `ApplicablePolicyReference` with the identifiers of all policies found to be fully applicable to the request ([[ACAL-Core-1.0](#acal-core-10)] Section 7.37).
+If the originating `Request.ReturnPolicyIdList` value is `true`, a processor that supports this feature MUST populate `ApplicablePolicyReference` with the identifiers of all policies found to be fully applicable to the request ([[ACAL-Core-1.0](#acal-core-10)] Section 7.39).
 
 ### 5.8.8 ResultEntityType
 
@@ -2539,7 +2539,7 @@ keys `MissingAttributeDetail` (a sequence of `MissingAttributeDetailType`
 mappings) and `Content` (a sequence of `ContentType` mappings,
 [Section 5.4.11](#5411-contenttype-mapping)), at least one of them;
 any detail other than a missing-attribute detail is carried in
-`Content` ([[ACAL-Core-1.0](#acal-core-10)] Section 7.42).
+`Content` ([[ACAL-Core-1.0](#acal-core-10)] Section 7.44).
 
 Example:
 
@@ -2755,7 +2755,7 @@ MUST enforce where those properties are supported include:
 - `ShortId` uniqueness by `Name`
 - `RequestAttribute` uniqueness by the combination of `AttributeId`,
   `DataType` and `Issuer` within a `RequestEntityType`, compared per ACAL
-  Core Section 7.33's identifier-equality/effective-`DataType`/absent-`Issuer`
+  Core Section 7.35's identifier-equality/effective-`DataType`/absent-`Issuer`
   rules
 - `PolicyDefaults` and `RequestDefaults` uniqueness by concrete subtype
 
@@ -2769,7 +2769,7 @@ processor implementing "MUST enforce" above needs to apply that resolution
 itself; two values differing only in short-identifier-name-vs-URI spelling
 are not distinguishable as non-duplicates by structural inspection. Likewise,
 where a key property has an ACAL-defined default (as `DataType` does, per
-ACAL Core Section 7.27), the comparison is over the property's *effective*
+ACAL Core Section 7.29), the comparison is over the property's *effective*
 value after applying that default, not its literal YAML presence or absence;
 YAML itself has no defaulting mechanism, so a processor MUST apply the
 default explicitly before comparing. The

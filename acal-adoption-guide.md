@@ -1823,7 +1823,7 @@ AttributeDesignator:
 - The `DataType` on an `AttributeDesignator` in a policy must match the `DataType`
   declared on the corresponding `Attribute` in the request. If they do not match, the
   attribute will not be found.
-- `DataType` is optional on `Attribute`, where it defaults to `urn:oasis:names:tc:acal:1.0:data-type:string`, and on `AttributeDesignator`, where an omitted `DataType` is determined by ACAL Core Section 7.14 (for example from the data type the designator's context expects) and is `string` only when nothing else determines it.
+- `DataType` is optional on `Attribute`, where it defaults to `urn:oasis:names:tc:acal:1.0:data-type:string`, and on `AttributeDesignator`, where an omitted `DataType` is determined by ACAL Core Section 7.15 (for example from the data type the designator's context expects) and is `string` only when nothing else determines it.
 
 ---
 

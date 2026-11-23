@@ -231,12 +231,12 @@ $defs:
         $ref: "#/$defs/AnyType"
     additionalProperties: false
     $comment: >
-      The Body forms (ACAL Core 7.34, YACAL 5.4.11) are stated in prose. This
+      The Body forms (ACAL Core 7.36, YACAL 5.4.11) are stated in prose. This
       schema does not validate the content of a native application/yaml Body,
       which may hold null and non-string keys below its root.
 
   BaseAttributeType:
-    $comment: "Abstract type holding the properties of an attribute (ACAL Section 7.27); open, so that AttributeType, AttributeAssignmentType and RequestAttributeType can extend it."
+    $comment: "Abstract type holding the properties of an attribute (ACAL Section 7.29); open, so that AttributeType, AttributeAssignmentType and RequestAttributeType can extend it."
     type: object
     required:
       - AttributeId
@@ -971,7 +971,7 @@ $defs:
     minProperties: 1
     additionalProperties: false
     $comment: >
-      ACAL Core 7.42: missing-attribute details and, for any other detail,
+      ACAL Core 7.44: missing-attribute details and, for any other detail,
       ContentType mappings. Conditional StatusDetail presence and
       status-code-specific detail rules are handled by the companion
       constraint catalog.

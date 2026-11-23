@@ -1189,7 +1189,7 @@ Rule:
 - XML puts `NoticeExpression` elements as direct children of `<Rule>`;
   JACAL and YACAL put them in a `NoticeExpression` array on the rule
   mapping.
-- Each `AttributeAssignmentExpression` carries one expression; it yields one assignment for a single value, one per value of a bag, and none for an empty bag (ACAL Core 7.29). The `Expression` holds the value
+- Each `AttributeAssignmentExpression` carries one expression; it yields one assignment for a single value, one per value of a bag, and none for an empty bag (ACAL Core 7.31). The `Expression` holds the value
   source — a literal, an attribute designator, or an apply expression.
 - In JACAL/YACAL the `Expression` on an `AttributeAssignmentExpression`
   is a single mapping (not an array) because exactly one expression

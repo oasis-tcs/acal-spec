@@ -187,47 +187,47 @@ Copyright © OASIS Open 2026. All Rights Reserved.  For license and copyright in
   - [7.11 PolicyReferenceType](#711-policyreferencetype)
   - [7.12 RuleType](#712-ruletype)
   - [7.13 VariableDefinitionType](#713-variabledefinitiontype)
-  - [7.13b SharedVariableDefinitionType](#713b-sharedvariabledefinitiontype)
-  - [7.14 ExpressionType](#714-expressiontype)
-  - [7.15 ApplyType](#715-applytype)
-  - [7.16 FunctionType](#716-functiontype)
-  - [7.17 NamedAttributeDesignatorType](#717-namedattributedesignatortype)
-  - [7.18 AttributeDesignatorType](#718-attributedesignatortype)
-  - [7.19 EntityAttributeDesignatorType](#719-entityattributedesignatortype)
-  - [7.20 BaseAttributeSelectorType (optional)](#720-baseattributeselectortype-optional)
-  - [7.21 AttributeSelectorType (optional)](#721-attributeselectortype-optional)
-  - [7.22 EntityAttributeSelectorType (optional)](#722-entityattributeselectortype-optional)
-  - [7.23 ValueType](#723-valuetype)
-  - [7.24 VariableReferenceType](#724-variablereferencetype)
-  - [7.24b SharedVariableReferenceType](#724b-sharedvariablereferencetype)
-  - [7.25 QuantifiedExpressionType (optional)](#725-quantifiedexpressiontype-optional)
-    - [7.25.1 ForAny Expression](#7251-forany-expression)
-    - [7.25.2 ForAll Expression](#7252-forall-expression)
-    - [7.25.3 Map Expression](#7253-map-expression)
-    - [7.25.4 Select Expression](#7254-select-expression)
-  - [7.26 NoticeType](#726-noticetype)
-  - [7.27 AttributeType](#727-attributetype)
-  - [7.28 AttributeAssignmentType](#728-attributeassignmenttype)
-  - [7.29 NoticeExpressionType](#729-noticeexpressiontype)
-  - [7.30 AttributeAssignmentExpressionType](#730-attributeassignmentexpressiontype)
-  - [7.31 RequestType](#731-requesttype)
-  - [7.32 RequestDefaultsType (optional)](#732-requestdefaultstype-optional)
-  - [7.33 RequestEntityType](#733-requestentitytype)
-    - [7.33.1 Uniqueness Example (non-normative)](#7331-uniqueness-example-non-normative)
-  - [7.34 ContentType (optional)](#734-contenttype-optional)
-  - [7.35 RequestAttributeType](#735-requestattributetype)
-  - [7.36 ResponseType](#736-responsetype)
-  - [7.37 ResultType](#737-resulttype)
-  - [7.38 MultiRequestsType (optional)](#738-multirequeststype-optional)
-  - [7.39 RequestReferenceType (optional)](#739-requestreferencetype-optional)
-  - [7.40 StatusType](#740-statustype)
-  - [7.41 StatusCodeType](#741-statuscodetype)
-  - [7.42 StatusDetailType (optional)](#742-statusdetailtype-optional)
-  - [7.43 MissingAttributeDetailType](#743-missingattributedetailtype)
-  - [7.44 ResultEntityType](#744-resultentitytype)
-  - [7.45 EntityType](#745-entitytype)
-  - [7.46 BundleType](#746-bundletype)
-  - [7.47 ArgumentType and NamedArgumentType](#747-argumenttype-and-namedargumenttype)
+  - [7.14 SharedVariableDefinitionType](#714-sharedvariabledefinitiontype)
+  - [7.15 ExpressionType](#715-expressiontype)
+  - [7.16 ApplyType](#716-applytype)
+  - [7.17 FunctionType](#717-functiontype)
+  - [7.18 NamedAttributeDesignatorType](#718-namedattributedesignatortype)
+  - [7.19 AttributeDesignatorType](#719-attributedesignatortype)
+  - [7.20 EntityAttributeDesignatorType](#720-entityattributedesignatortype)
+  - [7.21 BaseAttributeSelectorType (optional)](#721-baseattributeselectortype-optional)
+  - [7.22 AttributeSelectorType (optional)](#722-attributeselectortype-optional)
+  - [7.23 EntityAttributeSelectorType (optional)](#723-entityattributeselectortype-optional)
+  - [7.24 ValueType](#724-valuetype)
+  - [7.25 VariableReferenceType](#725-variablereferencetype)
+  - [7.26 SharedVariableReferenceType](#726-sharedvariablereferencetype)
+  - [7.27 QuantifiedExpressionType (optional)](#727-quantifiedexpressiontype-optional)
+    - [7.27.1 ForAny Expression](#7271-forany-expression)
+    - [7.27.2 ForAll Expression](#7272-forall-expression)
+    - [7.27.3 Map Expression](#7273-map-expression)
+    - [7.27.4 Select Expression](#7274-select-expression)
+  - [7.28 NoticeType](#728-noticetype)
+  - [7.29 AttributeType](#729-attributetype)
+  - [7.30 AttributeAssignmentType](#730-attributeassignmenttype)
+  - [7.31 NoticeExpressionType](#731-noticeexpressiontype)
+  - [7.32 AttributeAssignmentExpressionType](#732-attributeassignmentexpressiontype)
+  - [7.33 RequestType](#733-requesttype)
+  - [7.34 RequestDefaultsType (optional)](#734-requestdefaultstype-optional)
+  - [7.35 RequestEntityType](#735-requestentitytype)
+    - [7.35.1 Uniqueness Example (non-normative)](#7351-uniqueness-example-non-normative)
+  - [7.36 ContentType (optional)](#736-contenttype-optional)
+  - [7.37 RequestAttributeType](#737-requestattributetype)
+  - [7.38 ResponseType](#738-responsetype)
+  - [7.39 ResultType](#739-resulttype)
+  - [7.40 MultiRequestsType (optional)](#740-multirequeststype-optional)
+  - [7.41 RequestReferenceType (optional)](#741-requestreferencetype-optional)
+  - [7.42 StatusType](#742-statustype)
+  - [7.43 StatusCodeType](#743-statuscodetype)
+  - [7.44 StatusDetailType (optional)](#744-statusdetailtype-optional)
+  - [7.45 MissingAttributeDetailType](#745-missingattributedetailtype)
+  - [7.46 ResultEntityType](#746-resultentitytype)
+  - [7.47 EntityType](#747-entitytype)
+  - [7.48 BundleType](#748-bundletype)
+  - [7.49 ArgumentType and NamedArgumentType](#749-argumenttype-and-namedargumenttype)
 - [8 Functional Requirements](#8-functional-requirements)
   - [8.1 Unicode Issues](#81-unicode-issues)
     - [8.1.1 Normalization](#811-normalization)
@@ -2094,7 +2094,7 @@ Rule 1 illustrates a policy with a simple rule containing a condition. It also i
 
 [69] - [71] The first argument: the matching function. The `Id` property specifies that the matching function is `urn:oasis:names:tc:acal:1.0:function:string-equal` using the short identifier name `string-equal`.
 
-[73] - [76] The second argument: an attribute value. It is a literal string to be matched, specifically `read`. Its data type is `urn:oasis:names:tc:acal:1.0:data-type:string` (short identifier name `string`). The XML representation does not state the data type: it is inferred from the signature of the `string-equal` function ([Section 7.15](#715-applytype)). The YAML and JSON representations state it with the `DataType` property.
+[73] - [76] The second argument: an attribute value. It is a literal string to be matched, specifically `read`. Its data type is `urn:oasis:names:tc:acal:1.0:data-type:string` (short identifier name `string`). The XML representation does not state the data type: it is inferred from the signature of the `string-equal` function ([Section 7.16](#716-applytype)). The YAML and JSON representations state it with the `DataType` property.
 
 [78] - [82] The third argument: the bag of values. It is an attribute designator that selects a bag of `urn:oasis:names:tc:acal:1.0:data-type:string` values from the `urn:oasis:names:tc:acal:1.0:action:action-id` attribute (short identifier name `action-id`) in the `urn:oasis:names:tc:acal:1.0:attribute-category:action` category.
 
@@ -3211,7 +3211,7 @@ Property-level constraints are defined at the level of a specific property as an
 More advanced constraints are expressed in [[OCL](#ocl)] in the form `{{OCL} expression}` as specified by Section 8.3.4.2 (and 8.3.5.2 for the example) of [[UML](#uml)].
 Let refer to *prop* as the property to which the constraint is applied. In each OCL expression below, *prop* is used as the OCL context. Therefore, the `self` keyword in particular refers to *prop* itself.
 
-The OCL constraint applies to the *effective* values of the properties. The effective value is the declared or inferred value, including the value that this specification treats an omitted property as having (for example the `DataType` of an attribute, [Section 7.27](#727-attributetype)), or `null` if the property is undefined or absent and has no such value. Values of `IdentifierType` are compared by identifier equality ([Section 8.18](#818-identifier-equality)) after expansion ([Section 8.3](#83-identifier-evaluation)), and values of `VersionType` as specified in [Section 7.1.2.3.4](#71234-versiontype).
+The OCL constraint applies to the *effective* values of the properties. The effective value is the declared or inferred value, including the value that this specification treats an omitted property as having (for example the `DataType` of an attribute, [Section 7.29](#729-attributetype)), or `null` if the property is undefined or absent and has no such value. Values of `IdentifierType` are compared by identifier equality ([Section 8.18](#818-identifier-equality)) after expansion ([Section 8.3](#83-identifier-evaluation)), and values of `VersionType` as specified in [Section 7.1.2.3.4](#71234-versiontype).
 
 **Mandatory-property-based uniqueness constraint:**
 
@@ -3594,7 +3594,7 @@ The values of `DecisionType` have the following meanings:
 
 _**Support for this type is optional, unless `ContentType` objects are supported.**_
 
-`MediaType` is the primitive type for `ContentType` objects' `MediaType` property (see [Section 7.34](#734-contenttype-optional) ).
+`MediaType` is the primitive type for `ContentType` objects' `MediaType` property (see [Section 7.36](#736-contenttype-optional) ).
 
 The regular expression below follows the ABNF syntax from Section 4.2 of [[RFC6838](#rfc6838)] (with the recommendation that `<type-name>` and `<subtype-name>` SHOULD be limited to 64 characters).
 
@@ -3618,7 +3618,7 @@ This is the generic type definition. However, the exact possible values SHALL be
 
 _**Support for this type is optional, unless `ContentType` objects are supported.**_
 
-`ContentEncodingType` is the primitive type for `ContentType` objects' `Encoding` property (see [Section 7.34](#734-contenttype-optional) ).
+`ContentEncodingType` is the primitive type for `ContentType` objects' `Encoding` property (see [Section 7.36](#736-contenttype-optional) ).
 
 UML definition:
 ```plantuml
@@ -3790,7 +3790,7 @@ A `PolicyType` object contains the following properties:
 
 `PolicyId` [Required]
 
-: A `URI` value specifying an identifier for the policy. A PAP SHALL ensure that no two policies visible to the PDP, other than policies nested in another policy, have the same `PolicyId` and equivalent versions (see [Section 7.1.2.3.4](#71234-versiontype)). A policy reference selects only among the policies that are not nested in another policy ([Section 8.13](#813-policyreference-evaluation)). A PAP SHOULD NOT include in the same `BundleType` object, at any depth of nesting, two policies that have the same `PolicyId` and equivalent versions, so that an `ApplicablePolicyReference` ([Section 7.37](#737-resulttype)) does not name more than one policy of the bundle. This MAY be achieved by following a predefined URN or URI scheme. If the policy identifier is in the form of a URL, then it MAY be resolvable.
+: A `URI` value specifying an identifier for the policy. A PAP SHALL ensure that no two policies visible to the PDP, other than policies nested in another policy, have the same `PolicyId` and equivalent versions (see [Section 7.1.2.3.4](#71234-versiontype)). A policy reference selects only among the policies that are not nested in another policy ([Section 8.13](#813-policyreference-evaluation)). A PAP SHOULD NOT include in the same `BundleType` object, at any depth of nesting, two policies that have the same `PolicyId` and equivalent versions, so that an `ApplicablePolicyReference` ([Section 7.39](#739-resulttype)) does not name more than one policy of the bundle. This MAY be achieved by following a predefined URN or URI scheme. If the policy identifier is in the form of a URL, then it MAY be resolvable.
 `PolicyId` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Version` [Required]
@@ -3840,7 +3840,7 @@ URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are
 
 `NoticeExpression` [Any Number]
 
-: A sequence of `NoticeExpressionType` objects to be evaluated into notices by the PDP. Objects' `Id` values are not required to be unique in this sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignmentExpression`s. See [Section 7.29](#729-noticeexpressiontype). See [Section 8.16](#816-notices) for a description of how the notices to be returned by the PDP are determined.
+: A sequence of `NoticeExpressionType` objects to be evaluated into notices by the PDP. Objects' `Id` values are not required to be unique in this sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignmentExpression`s. See [Section 7.31](#731-noticeexpressiontype). See [Section 8.16](#816-notices) for a description of how the notices to be returned by the PDP are determined.
 
 `CombinerInput` [Any Number]
 
@@ -3916,7 +3916,7 @@ A `ParameterType` object contains the following properties:
 
 `Expression` [Optional]
 
-: An expression that evaluates to a default value (if `IsBag` is `false`) or bag of values (if `IsBag` is true) for the parameter. This default value is used only if no argument is provided as input for this parameter (from a `PolicyReference` or `SharedVariableReference`). The expected data type of the expression is the data type of the parameter ([Section 7.14](#714-expressiontype)).
+: An expression that evaluates to a default value (if `IsBag` is `false`) or bag of values (if `IsBag` is true) for the parameter. This default value is used only if no argument is provided as input for this parameter (from a `PolicyReference` or `SharedVariableReference`). The expected data type of the expression is the data type of the parameter ([Section 7.15](#715-expressiontype)).
 
 ## 7.7 BooleanExpressionType
 
@@ -3986,7 +3986,7 @@ The `ExactMatchIdReferenceType` object type extends the [`IdReferenceType` objec
 
 `Version` [Required]
 
-: A `VersionType` value indicating the version of a policy that was applicable to the request. See [ResultType (Section 7.37)](#737-resulttype).
+: A `VersionType` value indicating the version of a policy that was applicable to the request. See [ResultType (Section 7.39)](#739-resulttype).
 
 ## 7.10 PatternMatchIdReferenceType
 
@@ -4038,7 +4038,7 @@ The `PolicyReferenceType` object type extends the `PatternMatchIdReferenceType` 
 
 The sequence of arguments MUST provide a corresponding argument for each declared `Parameter` that has no defined default value. The default value of each declared `Parameter` for which the sequence of arguments provides no corresponding argument SHALL be used as its argument.
 
-The expected data type of an argument is the effective data type of the corresponding `Parameter` of the referenced `PolicyType` object ([Section 7.14](#714-expressiontype)).
+The expected data type of an argument is the effective data type of the corresponding `Parameter` of the referenced `PolicyType` object ([Section 7.15](#715-expressiontype)).
 
 ## 7.12 RuleType
 
@@ -4090,7 +4090,7 @@ A `RuleType` object contains the following properties:
 
 `NoticeExpression` [Any Number]
 
-: A sequence of `NoticeExpressionType` objects, each defining a notice expression potentially evaluated into a notice by the PDP. See [NoticeExpressionType](#729-noticeexpressiontype). Objects' `Id` values are not required to be unique in this sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignmentExpression`s. See [Section 8.16](#816-notices) for a description of how the notices to be returned by the PDP shall be determined. See [Section 8.2](#82-policy-enforcement-point) about enforcement of obligation notices.
+: A sequence of `NoticeExpressionType` objects, each defining a notice expression potentially evaluated into a notice by the PDP. See [NoticeExpressionType](#731-noticeexpressiontype). Objects' `Id` values are not required to be unique in this sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignmentExpression`s. See [Section 8.16](#816-notices) for a description of how the notices to be returned by the PDP shall be determined. See [Section 8.2](#82-policy-enforcement-point) about enforcement of obligation notices.
 
 ## 7.13 VariableDefinitionType
 
@@ -4119,9 +4119,9 @@ A `VariableDefinitionType` object has the following properties:
 
 : An `ExpressionType` object. The value of the variable definition is the result of evaluating the `ExpressionType` object. The expression MAY contain `VariableReferenceType` objects referring to other `VariableDefinitionType` objects provided those objects are in the same `VariableDefinition` property or in the `VariableDefinition` property (list) of a `PolicyType` object enclosing the parent object. The expression SHALL NOT contain `VariableReferenceType` objects that refer to this `VariableDefinitionType` object or that refer to `VariableDefinitionType` objects that directly or indirectly refer to this `VariableDefinitionType` object. 
 
-: The data type of the `Expression` is determined as specified in [Section 7.14](#714-expressiontype); the `Expression` has no expected data type.
+: The data type of the `Expression` is determined as specified in [Section 7.15](#715-expressiontype); the `Expression` has no expected data type.
 
-## 7.13b SharedVariableDefinitionType
+## 7.14 SharedVariableDefinitionType
 
 A `SharedVariableDefinitionType` object is used to define a value or a bag of values that can be referenced by zero or more `SharedVariableReferenceType` objects. `SharedVariableDefinitionType` objects appear in the `SharedVariableDefinition` property of a `BundleType` object, i.e., they exist independently of any policy. The scope within which the shared variable definition can be referenced is any expression nested within the `BundleType` object. This includes policies, any other `SharedVariableDefinitionType` objects and the arguments of the `BundleType` object's `PolicyReference` property.
 
@@ -4169,11 +4169,11 @@ URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are
 
 : Note that the expression cannot contain `VariableReferenceType` objects that refer to a `VariableDefinitionType` object, since the `SharedVariableDefinitionType` object is not in the scope of any `VariableDefinitionType` object. It can contain `VariableReferenceType` objects that refer to the parameters of the shared variable.
 
-: The data type of the `Expression` is determined as specified in [Section 7.14](#714-expressiontype); the `Expression` has no expected data type.
+: The data type of the `Expression` is determined as specified in [Section 7.15](#715-expressiontype); the `Expression` has no expected data type.
 
 <a name="expressiontype"></a>
 
-## 7.14 ExpressionType
+## 7.15 ExpressionType
 
 An `ExpressionType` object defines an ACAL expression. Expression evaluation is defined in [Section 8.5](#85-expression-evaluation).
 
@@ -4273,23 +4273,23 @@ A `NonLiteralExpressionType` object contains exactly one of the following proper
 
    | Object | Property | Expected data type |
    | :-- | :-- | :-- |
-   | `ApplyType` ([Section 7.15](#715-applytype)) | `Argument`: each positional argument, and the `Expression` of each named argument ([Section 7.47](#747-argumenttype-and-namedargumenttype)) | As specified in [Section 7.15](#715-applytype): the data type of the corresponding parameter in the signature of the function identified by the `FunctionId` property or, for each argument after the first of a higher-order bag function, of the corresponding parameter of the function identified by the first argument. |
-   | `PolicyReferenceType` ([Section 7.11](#711-policyreferencetype)) and `SharedVariableReferenceType` ([Section 7.24b](#724b-sharedvariablereferencetype)) | `Argument`: each positional argument, and the `Expression` of each named argument | The `DataType` property of the corresponding `Parameter` of the referenced policy or shared variable definition, or `urn:oasis:names:tc:acal:1.0:data-type:string` if that property is omitted. |
+   | `ApplyType` ([Section 7.16](#716-applytype)) | `Argument`: each positional argument, and the `Expression` of each named argument ([Section 7.49](#749-argumenttype-and-namedargumenttype)) | As specified in [Section 7.16](#716-applytype): the data type of the corresponding parameter in the signature of the function identified by the `FunctionId` property or, for each argument after the first of a higher-order bag function, of the corresponding parameter of the function identified by the first argument. |
+   | `PolicyReferenceType` ([Section 7.11](#711-policyreferencetype)) and `SharedVariableReferenceType` ([Section 7.26](#726-sharedvariablereferencetype)) | `Argument`: each positional argument, and the `Expression` of each named argument | The `DataType` property of the corresponding `Parameter` of the referenced policy or shared variable definition, or `urn:oasis:names:tc:acal:1.0:data-type:string` if that property is omitted. |
    | `ParameterType` ([Section 7.6](#76-parametertype)) | `Expression` | The effective data type of the `Parameter` (its `DataType` property, or `urn:oasis:names:tc:acal:1.0:data-type:string` if that property is omitted). |
-   | `BaseAttributeType` ([Section 7.27](#727-attributetype)) and its subtypes `AttributeType`, `RequestAttributeType` ([Section 7.35](#735-requestattributetype)) and `AttributeAssignmentType` ([Section 7.28](#728-attributeassignmenttype)) | `Value` | The data type of the attribute (its `DataType` property, or `urn:oasis:names:tc:acal:1.0:data-type:string` if that property is omitted). |
-   | `MissingAttributeDetailType` ([Section 7.43](#743-missingattributedetailtype)) | `Value` | The value of the `DataType` property of the object. |
-   | `EntityAttributeDesignatorType` ([Section 7.19](#719-entityattributedesignatortype)) and `EntityAttributeSelectorType` ([Section 7.22](#722-entityattributeselectortype-optional)) | `Expression` | One of `urn:oasis:names:tc:acal:1.0:data-type:entity` and `urn:oasis:names:tc:acal:1.0:data-type:anyURI`. |
-   | `QuantifiedExpressionType` ([Section 7.25](#725-quantifiedexpressiontype-optional)) in the `ForAny`, `ForAll` or `Select` property | `Iterant` | `urn:oasis:names:tc:acal:1.0:data-type:boolean` ([Section 7.25.1](#7251-forany-expression), [Section 7.25.2](#7252-forall-expression), [Section 7.25.4](#7254-select-expression)). |
+   | `BaseAttributeType` ([Section 7.29](#729-attributetype)) and its subtypes `AttributeType`, `RequestAttributeType` ([Section 7.37](#737-requestattributetype)) and `AttributeAssignmentType` ([Section 7.30](#730-attributeassignmenttype)) | `Value` | The data type of the attribute (its `DataType` property, or `urn:oasis:names:tc:acal:1.0:data-type:string` if that property is omitted). |
+   | `MissingAttributeDetailType` ([Section 7.45](#745-missingattributedetailtype)) | `Value` | The value of the `DataType` property of the object. |
+   | `EntityAttributeDesignatorType` ([Section 7.20](#720-entityattributedesignatortype)) and `EntityAttributeSelectorType` ([Section 7.23](#723-entityattributeselectortype-optional)) | `Expression` | One of `urn:oasis:names:tc:acal:1.0:data-type:entity` and `urn:oasis:names:tc:acal:1.0:data-type:anyURI`. |
+   | `QuantifiedExpressionType` ([Section 7.27](#727-quantifiedexpressiontype-optional)) in the `ForAny`, `ForAll` or `Select` property | `Iterant` | `urn:oasis:names:tc:acal:1.0:data-type:boolean` ([Section 7.27.1](#7271-forany-expression), [Section 7.27.2](#7272-forall-expression), [Section 7.27.4](#7274-select-expression)). |
 
-   The `Iterant` of a `Map` expression has no expected data type ([Section 7.25.3](#7253-map-expression)). The `Domain` of a `QuantifiedExpressionType` object ([Section 7.25](#725-quantifiedexpressiontype-optional)) and the `Expression` of a `VariableDefinitionType` ([Section 7.13](#713-variabledefinitiontype)), `SharedVariableDefinitionType` ([Section 7.13b](#713b-sharedvariabledefinitiontype)) or `AttributeAssignmentExpressionType` ([Section 7.30](#730-attributeassignmentexpressiontype)) object are not in the table because they have no expected data type.
+   The `Iterant` of a `Map` expression has no expected data type ([Section 7.27.3](#7273-map-expression)). The `Domain` of a `QuantifiedExpressionType` object ([Section 7.27](#727-quantifiedexpressiontype-optional)) and the `Expression` of a `VariableDefinitionType` ([Section 7.13](#713-variabledefinitiontype)), `SharedVariableDefinitionType` ([Section 7.14](#714-sharedvariabledefinitiontype)) or `AttributeAssignmentExpressionType` ([Section 7.32](#732-attributeassignmentexpressiontype)) object are not in the table because they have no expected data type.
 
-2. **Effective data type.** The *effective data type* of a statically-typed expression is, in this order of precedence: (a) the value of its `DataType` property, if the property is present; (b) for a `ValueType` object of a concrete subtype stereotyped `<<fixedDatatype>>`, the fixed data type of that subtype; (c) the expected data type, if it is a single data type; (d) the default data type of the object type, which is `urn:oasis:names:tc:acal:1.0:data-type:string` for `ValueType` ([Section 7.23](#723-valuetype)), `NamedAttributeDesignatorType` ([Section 7.17](#717-namedattributedesignatortype)) and `BaseAttributeSelectorType` ([Section 7.20](#720-baseattributeselectortype-optional)). How a representation recognizes the concrete subtype of a literal, and the rules for a `DataType` property on such a literal, are those of [Section 7.23](#723-valuetype) and of the concrete representation, which this rule does not change. A default value shown for the `DataType` property in the UML definition of one of these object types is the default data type of (d); it applies only when (a), (b) and (c) determine no data type.
+2. **Effective data type.** The *effective data type* of a statically-typed expression is, in this order of precedence: (a) the value of its `DataType` property, if the property is present; (b) for a `ValueType` object of a concrete subtype stereotyped `<<fixedDatatype>>`, the fixed data type of that subtype; (c) the expected data type, if it is a single data type; (d) the default data type of the object type, which is `urn:oasis:names:tc:acal:1.0:data-type:string` for `ValueType` ([Section 7.24](#724-valuetype)), `NamedAttributeDesignatorType` ([Section 7.18](#718-namedattributedesignatortype)) and `BaseAttributeSelectorType` ([Section 7.21](#721-baseattributeselectortype-optional)). How a representation recognizes the concrete subtype of a literal, and the rules for a `DataType` property on such a literal, are those of [Section 7.24](#724-valuetype) and of the concrete representation, which this rule does not change. A default value shown for the `DataType` property in the UML definition of one of these object types is the default data type of (d); it applies only when (a), (b) and (c) determine no data type.
 
 3. **Agreement.** If the `DataType` property of an expression or value is present and the expression or value has an expected data type, the property MUST identify that data type or, where the expected data type is a set of allowed data types, one of the allowed data types. Data types are compared by identifier equality ([Section 8.18](#818-identifier-equality)) after the expansion of short identifiers ([Section 8.3](#83-identifier-evaluation)).
 
 4. **Omission.** For a statically-typed expression other than a `ValueType` object of a concrete subtype stereotyped `<<fixedDatatype>>`, the `DataType` property MAY be omitted wherever the expected data type is a single data type or is a set of allowed data types that includes the default data type of the object type (rule 2(d)). It MAY also be omitted if there is no expected data type; the effective data type is then the default data type of the object type (rule 2(d)). For such a fixed-datatype `ValueType` object, the property MAY be omitted if there is no expected data type, or if the fixed data type of the subtype is the expected data type or one of the allowed data types. Subject to rule 3, a `DataType` property that is present is allowed. Note: omitting a `DataType` property that the expected data type already determines keeps a document short.
 
-## 7.15 ApplyType
+## 7.16 ApplyType
 
 An `ApplyType` object is a kind of expression that denotes application of a function to its arguments, which are also expressions, thus encoding a function call.
 
@@ -4329,11 +4329,11 @@ An `ApplyType` object contains the following properties:
 
 The *expected data type* of a parameter is given by the parameter's definition in the function signature of the function identified by the `FunctionId` property. In the case of a higher-order bag function ([Annex C.3.12](#c312-higher-order-bag-functions)), the expected data type of each parameter after the first is instead given by the definition of the corresponding parameter in the function signature of the function identified by the `FunctionType` object that is the first argument: the *i*th argument after the first corresponds to the *i*th parameter of that function, and an argument that is a bag corresponds to a parameter of the same data type as the values in the bag. Note that some functions allow more than one data type for some of their parameters.
 
-If an Argument's Expression has an (optional) `DataType` property (statically-typed Expression), i.e. its type is `ValueType`, `NamedAttributeDesignatorType`, `BaseAttributeSelectorType` or any subtype thereof, and the expected data type of the corresponding parameter is fixed, then the Expression's `DataType` property MAY be omitted, as it is already defined by a function signature, except for a fixed-datatype literal (a `ValueType` object of a concrete subtype stereotyped `<<fixedDatatype>>`), which has its fixed data type (see [Section 7.14](#714-expressiontype)). If present, the `DataType` property MUST specify an allowed data type for that parameter. If the property is omitted and the expected data type is not fixed, the Expression has its effective data type ([Section 7.14](#714-expressiontype)), and that data type MUST be an allowed data type for that parameter.
+If an Argument's Expression has an (optional) `DataType` property (statically-typed Expression), i.e. its type is `ValueType`, `NamedAttributeDesignatorType`, `BaseAttributeSelectorType` or any subtype thereof, and the expected data type of the corresponding parameter is fixed, then the Expression's `DataType` property MAY be omitted, as it is already defined by a function signature, except for a fixed-datatype literal (a `ValueType` object of a concrete subtype stereotyped `<<fixedDatatype>>`), which has its fixed data type (see [Section 7.15](#715-expressiontype)). If present, the `DataType` property MUST specify an allowed data type for that parameter. If the property is omitted and the expected data type is not fixed, the Expression has its effective data type ([Section 7.15](#715-expressiontype)), and that data type MUST be an allowed data type for that parameter.
 
-For example, if the Argument's Expression is a `ValueType` object and the function's signature defines the data-type of the corresponding argument explicitly to be *T*, then the object does not need any `DataType` identifier, it is already defined implicitly to be *T*, except for a fixed-datatype literal (see [Section 7.14](#714-expressiontype)). Likewise, in an `Apply` of `all-of` whose first argument is the function `integer-greater-than`, a `Value` argument without a `DataType` identifier has the data type `integer` (see the `all-of` example in [Annex C.3.12](#c312-higher-order-bag-functions)).
+For example, if the Argument's Expression is a `ValueType` object and the function's signature defines the data-type of the corresponding argument explicitly to be *T*, then the object does not need any `DataType` identifier, it is already defined implicitly to be *T*, except for a fixed-datatype literal (see [Section 7.15](#715-expressiontype)). Likewise, in an `Apply` of `all-of` whose first argument is the function `integer-greater-than`, a `Value` argument without a `DataType` identifier has the data type `integer` (see the `all-of` example in [Annex C.3.12](#c312-higher-order-bag-functions)).
 
-## 7.16 FunctionType
+## 7.17 FunctionType
 
 A `FunctionType` object is a kind of expression used to identify a function as an argument to a higher-order function defined by the argument's parent `ApplyType` object.
 
@@ -4358,7 +4358,7 @@ A `FunctionType` object contains the following property:
 
 <a name="namedattributedesignatortype"></a>
 
-## 7.17 NamedAttributeDesignatorType
+## 7.18 NamedAttributeDesignatorType
 
 The `NamedAttributeDesignatorType` object type is an abstract object type that specifies a named attribute for the retrieval of a bag of attribute values from a source of attributes. The object types derived from `NamedAttributeDesignatorType` determine the source of attributes: an `AttributeDesignatorType` object (an attribute designator) specifies a named attribute in the request context and an `EntityAttributeDesignatorType` object (an entity attribute designator) specifies a named attribute in either the request context or a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type.
 
@@ -4388,7 +4388,7 @@ A `NamedAttributeDesignatorType` object contains the following properties:
 
 `DataType` [Optional]
 
-: An `IdentifierType` value specifying the `DataType` of the named attribute. The bag returned by the designator SHALL contain values of this data type. If this property is omitted, the data type is the effective data type determined as specified in [Section 7.14](#714-expressiontype). The default data type of a `NamedAttributeDesignatorType` object is `urn:oasis:names:tc:acal:1.0:data-type:string`.
+: An `IdentifierType` value specifying the `DataType` of the named attribute. The bag returned by the designator SHALL contain values of this data type. If this property is omitted, the data type is the effective data type determined as specified in [Section 7.15](#715-expressiontype). The default data type of a `NamedAttributeDesignatorType` object is `urn:oasis:names:tc:acal:1.0:data-type:string`.
 `DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `Issuer` [Optional]
@@ -4401,11 +4401,11 @@ A `NamedAttributeDesignatorType` object contains the following properties:
 
 A named attribute SHALL be considered present if there is at least one attribute in the source of attributes that matches the criteria set out below.
 
-A named attribute matches an attribute in the source of attributes if the values of their respective `AttributeId`, effective data type and `Issuer` match. The attribute designator's `AttributeId` property MUST match, by identifier equality, the `AttributeId` property of the attribute. The attribute designator's effective data type ([Section 7.14](#714-expressiontype)) MUST match, by identifier equality, the effective data type of the same attribute, which is the value of its `DataType` property or, if that property is omitted, `urn:oasis:names:tc:acal:1.0:data-type:string` ([Section 7.27](#727-attributetype)).
+A named attribute matches an attribute in the source of attributes if the values of their respective `AttributeId`, effective data type and `Issuer` match. The attribute designator's `AttributeId` property MUST match, by identifier equality, the `AttributeId` property of the attribute. The attribute designator's effective data type ([Section 7.15](#715-expressiontype)) MUST match, by identifier equality, the effective data type of the same attribute, which is the value of its `DataType` property or, if that property is omitted, `urn:oasis:names:tc:acal:1.0:data-type:string` ([Section 7.29](#729-attributetype)).
 
 If the `Issuer` property is present in the attribute designator, then it MUST match, using the `urn:oasis:names:tc:acal:1.0:function:string-equal` function, the `Issuer` property of the same attribute. If the `Issuer` property is not present in the attribute designator, then the matching of the attribute to the named attribute SHALL be governed by `AttributeId` and effective data type alone.
 
-## 7.18 AttributeDesignatorType
+## 7.19 AttributeDesignatorType
 
 An `AttributeDesignatorType` object is a kind of expression that defines an attribute designator. An attribute designator retrieves a bag of values for a named attribute from the request context.
 
@@ -4430,7 +4430,7 @@ The `AttributeDesignatorType` object type extends the `NamedAttributeDesignatorT
 
 The properties inherited from `NamedAttributeDesignatorType` specify the named attribute. The attribute designator retrieves values from attributes matching the named attribute that are present in the `RequestEntityType` object having a `Category` property that matches, by identifier equality, the `Category` property of the attribute designator.
 
-## 7.19 EntityAttributeDesignatorType
+## 7.20 EntityAttributeDesignatorType
 
 An `EntityAttributeDesignatorType` object is a kind of expression that defines an entity attribute designator. An entity attribute designator retrieves a bag of values for a named attribute from either the request context or a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type.
 
@@ -4450,7 +4450,7 @@ The `EntityAttributeDesignatorType` object type extends the `NamedAttributeDesig
 
 `Expression` [Required]
 
-: An `ExpressionType` object defining an expression that MUST evaluate to either a single value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type or a single value of the `urn:oasis:names:tc:acal:1.0:data-type:anyURI` data type. The expected data type of the expression is one of these two data types ([Section 7.14](#714-expressiontype)).
+: An `ExpressionType` object defining an expression that MUST evaluate to either a single value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type or a single value of the `urn:oasis:names:tc:acal:1.0:data-type:anyURI` data type. The expected data type of the expression is one of these two data types ([Section 7.15](#715-expressiontype)).
 
 The properties inherited from `NamedAttributeDesignatorType` specify the named attribute.
 
@@ -4460,7 +4460,7 @@ If the expression evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-
 
 <a name="baseattributeselectortype"></a>
 
-## 7.20 BaseAttributeSelectorType (optional)
+## 7.21 BaseAttributeSelectorType (optional)
 
 _**Support for this part (attribute selectors and entity attribute selectors) is OPTIONAL.**_
 
@@ -4494,14 +4494,14 @@ A `BaseAttributeSelectorType` object has the following properties:
 
 `DataType` [Optional]
 
-: An `IdentifierType` value specifying the data type of the values returned from the evaluation of the attribute selector or entity attribute selector. If this property is omitted, the data type is the effective data type determined as specified in [Section 7.14](#714-expressiontype). The default data type of a `BaseAttributeSelectorType` object is `urn:oasis:names:tc:acal:1.0:data-type:string`.
+: An `IdentifierType` value specifying the data type of the values returned from the evaluation of the attribute selector or entity attribute selector. If this property is omitted, the data type is the effective data type determined as specified in [Section 7.15](#715-expressiontype). The default data type of a `BaseAttributeSelectorType` object is `urn:oasis:names:tc:acal:1.0:data-type:string`.
 `DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 `MustBePresent` [Optional, Default `false`]
 
 : A `Boolean` value that governs whether the attribute selector or entity attribute selector returns `Indeterminate` or an empty bag in the event that the specified content does not exist, or the content does exist but the Path expression selects no node. See [Section 8.4.5](#845-attribute-retrieval). Also see [Section 8.17.2](#8172-syntax-and-type-errors) and [Section 8.17.3](#8173-missing-attributes). If this property is omitted, then it is treated as being set to `false`.
 
-## 7.21 AttributeSelectorType (optional)
+## 7.22 AttributeSelectorType (optional)
 
 _**Support for this part (attribute selectors) is OPTIONAL.**_
 
@@ -4528,7 +4528,7 @@ The `AttributeSelectorType` object type extends the `BaseAttributeSelectorType` 
 : An `IdentifierType` value specifying an attribute category in the request context. The `Content` property of that attribute category contains the structured content from which nodes will be selected.
 `Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
-## 7.22 EntityAttributeSelectorType (optional)
+## 7.23 EntityAttributeSelectorType (optional)
 
 _**Support for this part (entity attribute selectors) is OPTIONAL.**_
 
@@ -4552,13 +4552,13 @@ The `EntityAttributeSelectorType` object type extends the `BaseAttributeSelector
 
 `Expression` [Required]
 
-: An `ExpressionType` object defining an expression that MUST evaluate to either a single value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type or a single value of the `urn:oasis:names:tc:acal:1.0:data-type:anyURI` data type. The expected data type of the expression is one of these two data types ([Section 7.14](#714-expressiontype)).
+: An `ExpressionType` object defining an expression that MUST evaluate to either a single value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type or a single value of the `urn:oasis:names:tc:acal:1.0:data-type:anyURI` data type. The expected data type of the expression is one of these two data types ([Section 7.15](#715-expressiontype)).
 
 If the expression evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type, then the entity attribute selector applies the Path expression given by the entity attribute selector's `Path` property to the structured content in the `Content` property of that value. 
 
 If the expression evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:anyURI` data type, then the entity attribute selector applies the Path expression given by the entity attribute selector's `Path` property to the structured content in the `Content` property of the `RequestEntityType` object having a `Category` property that matches, by identifier equality, the value of the expression. In this case the entity attribute selector emulates an attribute selector.
 
-## 7.23 ValueType
+## 7.24 ValueType
 
 A `ValueType` object is a kind of expression that contains a literal ACAL value.
 
@@ -4627,14 +4627,14 @@ A `ValueType` object has the following properties:
 
 `DataType` [Optional]
 
-: An `IdentifierType` value specifying the data type of the attribute value. If this property is omitted, the data type is the effective data type determined as specified in [Section 7.14](#714-expressiontype). The default data type of a `ValueType` object is `urn:oasis:names:tc:acal:1.0:data-type:string`.
+: An `IdentifierType` value specifying the data type of the attribute value. If this property is omitted, the data type is the effective data type determined as specified in [Section 7.15](#715-expressiontype). The default data type of a `ValueType` object is `urn:oasis:names:tc:acal:1.0:data-type:string`.
 `DataType` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
 A ValueType is abstract and subtypes may be either primitive types - i.e. subtypes of `PrimitiveValueType` in the above diagram (LiteralStringType, LiteralIntegerType, etc.) - or structured types (see [Section 8.4.1](#841-structured-attributes)) -  i.e. subtypes of `StructuredValueType` in the above diagram.
 
-The abstract model distinguishes `LiteralBooleanType`, `LiteralIntegerType`, `LiteralDoubleType`, and `LiteralStringType` from the other primitive subtypes (`LiteralXxxType` in the diagram above) by their effective ACAL `DataType` and value space, not by any required concrete syntactic wrapper. A concrete representation MAY make that distinction directly through native scalar syntax, or it MAY use a uniform literal surface form in which the concrete `ValueType` subtype is determined from the effective `DataType` obtained from the subtype's `<<fixedDatatype>>` definition, an explicit `DataType` property, or the rules for the effective data type in [Section 7.14](#714-expressiontype). A concrete subtype of `StructuredValueType` is identified by its effective `DataType`, exactly as for the primitive subtypes above; the concrete syntax of its structured content is then defined by the ACAL Profile or user definition that introduces that subtype. Because the rules above resolve any otherwise-undetermined literal to the `string` data type, a structured value is never identified by inspecting its content.
+The abstract model distinguishes `LiteralBooleanType`, `LiteralIntegerType`, `LiteralDoubleType`, and `LiteralStringType` from the other primitive subtypes (`LiteralXxxType` in the diagram above) by their effective ACAL `DataType` and value space, not by any required concrete syntactic wrapper. A concrete representation MAY make that distinction directly through native scalar syntax, or it MAY use a uniform literal surface form in which the concrete `ValueType` subtype is determined from the effective `DataType` obtained from the subtype's `<<fixedDatatype>>` definition, an explicit `DataType` property, or the rules for the effective data type in [Section 7.15](#715-expressiontype). A concrete subtype of `StructuredValueType` is identified by its effective `DataType`, exactly as for the primitive subtypes above; the concrete syntax of its structured content is then defined by the ACAL Profile or user definition that introduces that subtype. Because the rules above resolve any otherwise-undetermined literal to the `string` data type, a structured value is never identified by inspecting its content.
 
-## 7.24 VariableReferenceType
+## 7.25 VariableReferenceType
 
 A `VariableReferenceType` object is a kind of expression used to reference a variable definition.
 
@@ -4654,9 +4654,9 @@ A `VariableReferenceType` object contains the following property:
 
 `VariableId` [Required]
 
-: A `LocalIdentifierType` value used to refer to the ACAL value or bag of values defined in a `VariableDefinitionType` object. The property value MUST match, by identifier equality, the `VariableId` property of exactly one `VariableDefinitionType` object that is in the `VariableDefinition` property of an enclosing `RuleType` or `PolicyType` object, unless the `VariableReferenceType` object refers to a parameter of an enclosing parameterized policy or shared variable definition (by the parameter's `Name`, [Section 7.6](#76-parametertype)) or to the quantified variable of an enclosing quantified expression (by its `VariableId`, [Section 7.25](#725-quantifiedexpressiontype-optional)).
+: A `LocalIdentifierType` value used to refer to the ACAL value or bag of values defined in a `VariableDefinitionType` object. The property value MUST match, by identifier equality, the `VariableId` property of exactly one `VariableDefinitionType` object that is in the `VariableDefinition` property of an enclosing `RuleType` or `PolicyType` object, unless the `VariableReferenceType` object refers to a parameter of an enclosing parameterized policy or shared variable definition (by the parameter's `Name`, [Section 7.6](#76-parametertype)) or to the quantified variable of an enclosing quantified expression (by its `VariableId`, [Section 7.27](#727-quantifiedexpressiontype-optional)).
 
-## 7.24b SharedVariableReferenceType
+## 7.26 SharedVariableReferenceType
 
 A `SharedVariableReferenceType` object is used to reference a shared variable by identifier and optional version.
 
@@ -4693,10 +4693,10 @@ The `SharedVariableReferenceType` object type contains the following properties:
 
 The sequence of arguments MUST provide a corresponding argument for each declared `Parameter` that has no defined default value. The default value of each declared `Parameter` for which the sequence of arguments provides no corresponding argument SHALL be used as its argument.
 
-The expected data type of an argument is the effective data type of the corresponding `Parameter` of the referenced `SharedVariableDefinitionType` object ([Section 7.14](#714-expressiontype)).
+The expected data type of an argument is the effective data type of the corresponding `Parameter` of the referenced `SharedVariableDefinitionType` object ([Section 7.15](#715-expressiontype)).
 
 
-## 7.25 QuantifiedExpressionType (optional)
+## 7.27 QuantifiedExpressionType (optional)
 
 A `QuantifiedExpressionType` object is a kind of expression that represents one of four kinds of quantified expression. The kind of quantified expression is determined by the name of the property that holds the object, either `ForAny`, `ForAll`, `Select` or `Map`. There are some common requirements for all four kinds of quantified expressions.
 
@@ -4734,7 +4734,7 @@ The evaluation of a quantified expression begins with the evaluation of the doma
 
 The value of the quantified variable, i.e., the particular value from the domain, MAY be referenced one or more times from within the iterant expression using a `VariableReferenceType` object. It is not an error if the quantified variable is not referenced at all. The quantified variable SHALL NOT be referenced from within the domain of the quantified expression to which it belongs. A quantified variable MAY be referenced from within the domain of another quantified expression nested within the iterant expression.
 
-### 7.25.1 ForAny Expression
+### 7.27.1 ForAny Expression
 
 The ForAny quantified expression tests whether any value of a bag satisfies the iterant expression. It is represented by a `ForAny` property, which is of the `QuantifiedExpressionType` object type.
 
@@ -4750,13 +4750,13 @@ class ForAnyType <<dataType>> extends QuantifiedExpressionType
 
 The iterant expression of a ForAny expression SHALL be an expression that evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:boolean` data type. 
 
-The expected data type of the `Iterant` is `urn:oasis:names:tc:acal:1.0:data-type:boolean` ([Section 7.14](#714-expressiontype)).
+The expected data type of the `Iterant` is `urn:oasis:names:tc:acal:1.0:data-type:boolean` ([Section 7.15](#715-expressiontype)).
 
 The result of a ForAny expression SHALL be a value of the `urn:oasis:names:tc:acal:1.0:data-type:boolean` data type or `Indeterminate`.
 
 The ForAny expression evaluates to `true` if the iterant expression evaluates to `true` for any value from the domain; otherwise, the expression evaluates to `Indeterminate` if the iterant expression evaluates to `Indeterminate` for any value from the domain; otherwise, the expression evaluates to `false`. Note that the ForAny expression evaluates to `false` if the domain is an empty bag. Evaluation of the expression MAY terminate whenever the iterant expression evaluates to `true`.
 
-### 7.25.2 ForAll Expression
+### 7.27.2 ForAll Expression
 
 The ForAll quantified expression tests whether all values of a bag satisfy the iterant expression. It is represented by the `ForAll` property, which is of the `QuantifiedExpressionType` object type.
 
@@ -4772,15 +4772,15 @@ class ForAllType <<dataType>> extends QuantifiedExpressionType
 
 The iterant expression of a ForAll expression SHALL be an expression that evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:boolean` data type. 
 
-The expected data type of the `Iterant` is `urn:oasis:names:tc:acal:1.0:data-type:boolean` ([Section 7.14](#714-expressiontype)).
+The expected data type of the `Iterant` is `urn:oasis:names:tc:acal:1.0:data-type:boolean` ([Section 7.15](#715-expressiontype)).
 
 The result of a ForAll expression SHALL be a value of the `urn:oasis:names:tc:acal:1.0:data-type:boolean` data type or `Indeterminate`.
 
 The ForAll expression evaluates to `false` if the iterant expression evaluates to `false` for any value from the domain; otherwise, the expression evaluates to `Indeterminate` if the iterant expression evaluates to `Indeterminate` for any value from the domain; otherwise, the expression evaluates to `true`. Note that the ForAll expression evaluates to `true` if the domain is an empty bag. Evaluation of the expression MAY terminate whenever the iterant expression evaluates to `false`.
 
-### 7.25.3 Map Expression
+### 7.27.3 Map Expression
 
-The Map quantified expression converts a bag of values to another bag of values. It is represented by the `Map` property, which is of the `QuantifiedExpressionType` object type. If the `Iterant` expression is a literal value - `ValueType` object - without a defined DataType, its data type is determined as specified in [Section 7.14](#714-expressiontype).
+The Map quantified expression converts a bag of values to another bag of values. It is represented by the `Map` property, which is of the `QuantifiedExpressionType` object type. If the `Iterant` expression is a literal value - `ValueType` object - without a defined DataType, its data type is determined as specified in [Section 7.15](#715-expressiontype).
 
 UML definition (class diagram):
 ```plantuml
@@ -4791,13 +4791,13 @@ abstract class QuantifiedExpressionType <<dataType>> extends NonLiteralExpressio
 class MapType <<dataType>> extends QuantifiedExpressionType
 @enduml
 ```
-The iterant expression of a Map expression SHALL be an expression that evaluates to a single value (not necessarily of the same data type as the values in the domain). The `Iterant` of a Map expression has no expected data type ([Section 7.14](#714-expressiontype)).
+The iterant expression of a Map expression SHALL be an expression that evaluates to a single value (not necessarily of the same data type as the values in the domain). The `Iterant` of a Map expression has no expected data type ([Section 7.15](#715-expressiontype)).
 
 The result of the Map expression SHALL be a bag of values of the same data type as the iterant expression or `Indeterminate`.
 
 If the iterant expression evaluates to `Indeterminate` for any value from the domain, then the result of the Map expression is `Indeterminate`; otherwise, the result bag contains the values resulting from the evaluation of the iterant expression for each value from the domain. The Map expression evaluates to an empty bag if the domain is an empty bag. Evaluation of the Map expression MAY terminate whenever the iterant expression evaluates to `Indeterminate`.
 
-### 7.25.4 Select Expression
+### 7.27.4 Select Expression
 
 The Select quantified expression returns a bag containing the values from the domain that satisfy the iterant expression. That is, the result is a subset of, or equal to, the domain. The Select expression is represented by the `Select` property, which is of the `QuantifiedExpressionType` object type.
 
@@ -4813,7 +4813,7 @@ class SelectType <<dataType>> extends QuantifiedExpressionType
 
 The iterant expression of a Select expression SHALL be an expression that evaluates to a value of the `urn:oasis:names:tc:acal:1.0:data-type:boolean` data type. 
 
-The expected data type of the `Iterant` is `urn:oasis:names:tc:acal:1.0:data-type:boolean` ([Section 7.14](#714-expressiontype)).
+The expected data type of the `Iterant` is `urn:oasis:names:tc:acal:1.0:data-type:boolean` ([Section 7.15](#715-expressiontype)).
 
 The result of a Select expression SHALL be a bag of values of the same data type as the values from the domain or `Indeterminate`.
 
@@ -4821,7 +4821,7 @@ If the iterant expression evaluates to `Indeterminate` for any value from the do
 
 <a name="noticetype"></a>
 
-## 7.26 NoticeType
+## 7.28 NoticeType
 
 A `NoticeType` object contains an identifier for a notice and a list of attribute assignments that form arguments of the notice.
 
@@ -4857,11 +4857,11 @@ A `NoticeType` object contains the following properties:
 
 <a name="attributetype"></a>
 
-## 7.27 AttributeType
+## 7.29 AttributeType
 
 An `AttributeType` object contains attribute meta-data and one or more attribute values. The attribute meta-data comprises the attribute identifier, the data type and the attribute issuer. Attribute designators in a policy MAY refer to attributes by means of this meta-data.
 
-The properties of an attribute are defined by the abstract object type `BaseAttributeType`. `AttributeType` extends `BaseAttributeType` without adding a property and has no subtype. `RequestAttributeType` ([Section 7.35](#735-requestattributetype)) and `AttributeAssignmentType` ([Section 7.28](#728-attributeassignmenttype)) also extend `BaseAttributeType`, so a property of type `AttributeType` holds neither of them.
+The properties of an attribute are defined by the abstract object type `BaseAttributeType`. `AttributeType` extends `BaseAttributeType` without adding a property and has no subtype. `RequestAttributeType` ([Section 7.37](#737-requestattributetype)) and `AttributeAssignmentType` ([Section 7.30](#730-attributeassignmenttype)) also extend `BaseAttributeType`, so a property of type `AttributeType` holds neither of them.
 
 UML definition (class diagram):
 ```plantuml
@@ -4896,13 +4896,13 @@ A `BaseAttributeType` object, and therefore an object of each of its subtypes, c
 
 `Value` [One to Many]
 
-: A sequence of `ValueType` objects, each denoting an ACAL attribute value. Duplicated attribute values are permitted. The expected data type of each `ValueType` object in this sequence is the data type of the attribute, i.e. the `DataType` property above ([Section 7.14](#714-expressiontype)).
+: A sequence of `ValueType` objects, each denoting an ACAL attribute value. Duplicated attribute values are permitted. The expected data type of each `ValueType` object in this sequence is the data type of the attribute, i.e. the `DataType` property above ([Section 7.15](#715-expressiontype)).
 
-## 7.28 AttributeAssignmentType
+## 7.30 AttributeAssignmentType
 
-An `AttributeAssignmentType` object is used to include an attribute in a notice. The `AttributeAssignmentType` object type extends the `BaseAttributeType` definition ([Section 7.27](#727-attributetype)) by adding a `Category` property.
+An `AttributeAssignmentType` object is used to include an attribute in a notice. The `AttributeAssignmentType` object type extends the `BaseAttributeType` definition ([Section 7.29](#729-attributetype)) by adding a `Category` property.
 
-The attribute specified in an obligation notice SHALL be understood by the PEP ([Section 7.37](#737-resulttype)), but it is not further specified by ACAL. See [Section 8.16](#816-notices). [Section 6.2.4.3](#6243-rule-3) provides a number of examples of attribute assignment expressions included in notice expressions.
+The attribute specified in an obligation notice SHALL be understood by the PEP ([Section 7.39](#739-resulttype)), but it is not further specified by ACAL. See [Section 8.16](#816-notices). [Section 6.2.4.3](#6243-rule-3) provides a number of examples of attribute assignment expressions included in notice expressions.
 
 UML definition (class diagram):
 ```plantuml
@@ -4923,11 +4923,11 @@ The `AttributeAssignmentType` object type extends the `BaseAttributeType` object
 : An `IdentifierType` value specifying the category of the attribute. If this property is absent, the attribute has no category. The PEP SHALL interpret the significance and meaning of any `Category` property. Non-normative note: an expected use of the category is to disambiguate attributes that are relayed from the request.
 `Category` values starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved by the OASIS ACAL \[XACML\] TC for their exclusive use.
 
-As for any attribute, the expected data type of each `Value` in this sequence is the data type of the attribute, i.e. the `DataType` property inherited from `BaseAttributeType` ([Section 7.27](#727-attributetype), [Section 7.14](#714-expressiontype)).
+As for any attribute, the expected data type of each `Value` in this sequence is the data type of the attribute, i.e. the `DataType` property inherited from `BaseAttributeType` ([Section 7.29](#729-attributetype), [Section 7.15](#715-expressiontype)).
 
 <a name="noticeexpressiontype"></a>
 
-## 7.29 NoticeExpressionType
+## 7.31 NoticeExpressionType
 
 A `NoticeExpressionType` object defines a notice expression that is potentially evaluated into a notice. A notice expression contains an identifier for the notice and a set of expressions that form arguments of the notice. The `AppliesTo` property indicates the effect for which this notice is eligible to be provided to the PEP. If the `AppliesTo` property is absent, then this notice is eligible to be provided to the PEP if the effect is either `Permit` or `Deny`. See [Section 8.16](#816-notices) for a description of how the list of notices to be returned by the PDP is determined.
 
@@ -4969,9 +4969,9 @@ A `NoticeExpressionType` object contains the following properties:
 
 : A sequence of `AttributeAssignmentExpressionType` objects, each specifying a notice argument in the form of an expression. The expressions SHALL be evaluated by the PDP to constant `ValueType` objects or bags, from which the attribute assignments in the notice returned to the PEP SHALL be constructed. If an `AttributeAssignmentExpressionType` object evaluates to an atomic attribute value, then there MUST be one resulting `AttributeAssignmentType` object which MUST contain this single attribute value. If the `AttributeAssignmentExpressionType` object evaluates to a bag, then there MUST be a resulting `AttributeAssignmentType` object for each of the values in the bag. If the bag is empty, the `AttributeAssignmentExpressionType` object SHALL NOT produce an `AttributeAssignmentType` object. The `DataType` property of each resulting `AttributeAssignmentType` object SHALL be the data type of the value from which it is constructed.
 
-## 7.30 AttributeAssignmentExpressionType
+## 7.32 AttributeAssignmentExpressionType
 
-An `AttributeAssignmentExpressionType` object is used to include an argument in a notice. It SHALL contain an `AttributeId` property and an expression which SHALL be evaluated into the corresponding attribute value. The value specified in an obligation notice SHALL be understood by the PEP ([Section 7.37](#737-resulttype)), but it is not further specified by ACAL. See [Section 8.16](#816-notices). [Section 6.2.4.3](#6243-rule-3) provides a number of examples of attribute assignment expressions included in notice expressions.
+An `AttributeAssignmentExpressionType` object is used to include an argument in a notice. It SHALL contain an `AttributeId` property and an expression which SHALL be evaluated into the corresponding attribute value. The value specified in an obligation notice SHALL be understood by the PEP ([Section 7.39](#739-resulttype)), but it is not further specified by ACAL. See [Section 8.16](#816-notices). [Section 6.2.4.3](#6243-rule-3) provides a number of examples of attribute assignment expressions included in notice expressions.
 
 UML definition (class diagram):
 ```plantuml
@@ -4992,7 +4992,7 @@ An `AttributeAssignmentExpressionType` object contains the following properties:
 
 `Expression` [Required]
 
-: An `ExpressionType` object defining an expression which evaluates to a constant attribute value or a bag of zero or more attribute values. See [Section 7.14](#714-expressiontype). The data type of the `Expression` is determined as specified in [Section 7.14](#714-expressiontype); the `Expression` has no expected data type.
+: An `ExpressionType` object defining an expression which evaluates to a constant attribute value or a bag of zero or more attribute values. See [Section 7.15](#715-expressiontype). The data type of the `Expression` is determined as specified in [Section 7.15](#715-expressiontype); the `Expression` has no expected data type.
 
 `AttributeId` [Required]
 
@@ -5010,7 +5010,7 @@ An `AttributeAssignmentExpressionType` object contains the following properties:
 
 <a name="requesttype"></a>
 
-## 7.31 RequestType
+## 7.33 RequestType
 
 The `RequestType` object type is an abstraction layer used by the policy language. For simplicity of expression, this document describes policy evaluation in terms of operations on the context. However a conforming PDP is not required to actually instantiate the context in any particular syntactic form. But, any system conforming to the ACAL specification MUST produce exactly the same authorization decisions as if all the inputs had been transformed into the form of a `RequestType` object.
 
@@ -5049,7 +5049,7 @@ URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are
 
 `RequestDefaults` [Any Number]
 
-: sequence of `RequestDefaultsType` objects; each contains default values specific to an ACAL Profile, for processing the request (e.g. ACAL XPath Profile defines the default XPath version). In particular, each object SHALL have a different concrete type (per ACAL profile). See [Section 7.32](#732-requestdefaultstype-optional).
+: sequence of `RequestDefaultsType` objects; each contains default values specific to an ACAL Profile, for processing the request (e.g. ACAL XPath Profile defines the default XPath version). In particular, each object SHALL have a different concrete type (per ACAL profile). See [Section 7.34](#734-requestdefaultstype-optional).
 
 
 `RequestEntity` [One to Many]
@@ -5058,11 +5058,11 @@ URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are
 
 `MultiRequests` [Optional]
 
-: A `MultiRequestsType` object listing multiple request contexts using references to the `RequestEntityType` objects. Implementation of this property is optional. The semantics of this property are defined in [[ACAL-Multiple-1.0](#acal-multiple-10)]. If the implementation does not implement this property, it MUST return an `Indeterminate` result if it encounters this property. See [Section 7.38](#738-multirequeststype-optional).
+: A `MultiRequestsType` object listing multiple request contexts using references to the `RequestEntityType` objects. Implementation of this property is optional. The semantics of this property are defined in [[ACAL-Multiple-1.0](#acal-multiple-10)]. If the implementation does not implement this property, it MUST return an `Indeterminate` result if it encounters this property. See [Section 7.40](#740-multirequeststype-optional).
 
 <a name="requestdefaultstype"></a>
 
-## 7.32 RequestDefaultsType (optional)
+## 7.34 RequestDefaultsType (optional)
 
 _**Supporting this part is optional.**_ _It is required only for supporting the ACAL Profiles that define extensions (subtypes) of `RequestDefaultsType` (e.g. XPath Profile)._
 
@@ -5078,7 +5078,7 @@ abstract class RequestDefaultsType <<dataType>>
 ```
 
 
-## 7.33 RequestEntityType
+## 7.35 RequestEntityType
 
 A `RequestEntityType` object specifies ACAL attributes of a subject, resource, action, environment or another category using a sequence of `RequestAttributeType` objects.
 
@@ -5113,13 +5113,13 @@ A `RequestEntityType` object contains the following properties:
 
 `RequestAttribute` [Any Number]
 
-: A sequence of `RequestAttributeType` objects associated with the attribute category of the request. `RequestAttribute` objects MUST be unique within a `RequestEntityType` object by the combination of their `AttributeId`, `DataType` and `Issuer` properties. The `AttributeId` and `DataType` properties are compared using identifier equality (see [Section 8.18](#818-identifier-equality)), with `DataType` compared on its effective value after applying its default (see [Section 7.27](#727-attributetype)) if the property is omitted. If the `AttributeId` and `DataType` properties are equal by such comparison in two `RequestAttribute` objects, then the objects are considered equal if and only if either one of the following is true:
+: A sequence of `RequestAttributeType` objects associated with the attribute category of the request. `RequestAttribute` objects MUST be unique within a `RequestEntityType` object by the combination of their `AttributeId`, `DataType` and `Issuer` properties. The `AttributeId` and `DataType` properties are compared using identifier equality (see [Section 8.18](#818-identifier-equality)), with `DataType` compared on its effective value after applying its default (see [Section 7.29](#729-attributetype)) if the property is omitted. If the `AttributeId` and `DataType` properties are equal by such comparison in two `RequestAttribute` objects, then the objects are considered equal if and only if either one of the following is true:
   1. The `Issuer` property is absent from both objects;
   2. The `Issuer` property is present in both objects and both values of the property are equal by comparing them with the `urn:oasis:names:tc:acal:1.0:function:string-equal` function. 
 
-: See [Section 7.33.1](#7331-uniqueness-example-non-normative) for a worked example.
+: See [Section 7.35.1](#7351-uniqueness-example-non-normative) for a worked example.
 
-### 7.33.1 Uniqueness Example (non-normative)
+### 7.35.1 Uniqueness Example (non-normative)
 
 Given the following `RequestAttribute` objects in a single `RequestEntityType` object:
 ```xml
@@ -5129,15 +5129,15 @@ Given the following `RequestAttribute` objects in a single `RequestEntityType` o
 <RequestAttribute AttributeId="urn:example:role" Issuer="urn:example:issuer-b"><Value>physician</Value></RequestAttribute>
 ```
 
-None of these four objects is a duplicate of any other: the first two differ in their effective `DataType` (the first defaults to `urn:oasis:names:tc:acal:1.0:data-type:string`, per [Section 7.27](#727-attributetype)); the third and fourth differ in `Issuer`; and the first differs from the third and fourth because an absent `Issuer` is never considered a duplicate of a present one, regardless of its value.
+None of these four objects is a duplicate of any other: the first two differ in their effective `DataType` (the first defaults to `urn:oasis:names:tc:acal:1.0:data-type:string`, per [Section 7.29](#729-attributetype)); the third and fourth differ in `Issuer`; and the first differs from the third and fourth because an absent `Issuer` is never considered a duplicate of a present one, regardless of its value.
 
 Adding a fifth object with the same `AttributeId`, effective `DataType` and (absent) `Issuer` as the first would violate the constraint:
 ```xml
 <RequestAttribute AttributeId="urn:example:role"><Value>nurse</Value></RequestAttribute>
 ```
-This fifth object has the same `AttributeId` and the same effective `DataType` and `Issuer` (both absent, as in the first object) — together they are a duplicate pair, and only one of the two may appear. The same reasoning applies unchanged to the `Attribute` uniqueness constraint on `ResultEntityType` ([Section 7.44](#744-resultentitytype)) and `EntityType` ([Section 7.45](#745-entitytype)).
+This fifth object has the same `AttributeId` and the same effective `DataType` and `Issuer` (both absent, as in the first object) — together they are a duplicate pair, and only one of the two may appear. The same reasoning applies unchanged to the `Attribute` uniqueness constraint on `ResultEntityType` ([Section 7.46](#746-resultentitytype)) and `EntityType` ([Section 7.47](#747-entitytype)).
 
-## 7.34 ContentType (optional)
+## 7.36 ContentType (optional)
 
 _**Support for this object type is optional. It is required only if the implementation supports extensions of AttributeSelectors and/or DataTypes depending on this object type.**_ Such extensions are typically defined in ACAL Profiles (e.g. XPath and JSONPath Profiles).
 
@@ -5195,7 +5195,7 @@ A `ContentType` object contains the following properties:
 : This property (similar to [JSON schema's `contentEncoding`](https://json-schema.org/draft/2020-12/json-schema-validation#name-contentencoding) property) applies when the `Body` value is a string of encoded data that SHALL be decoded using the encoding named by this property; for the media types `application/json`, `application/yaml` and `application/xml` the decoded octets are the UTF-8 encoding of the document text (see above). The exact possible value(s) SHALL be defined by each ACAL representation format supporting this object type; for the media types `application/json`, `application/yaml` and `application/xml` the only value is `base64` (see above). In any case, the value(s) SHALL be among the standard identifiers specified in [Annex D.11](#d11-content-encodings) whenever applicable (more information in the [ContentEncodingType section](#712315-contentencodingtype-optional) ). If this property is absent, the `Body` is in the form that the table above gives for its representation.
 
 
-## 7.35 RequestAttributeType
+## 7.37 RequestAttributeType
 
 A `RequestAttributeType` object describes an ACAL attribute in the request context.
 
@@ -5212,13 +5212,13 @@ abstract class BaseAttributeType <<dataType>>
 @enduml
 ```
 
-The `RequestAttributeType` object type extends the `BaseAttributeType` object type ([Section 7.27](#727-attributetype)) with the following property:
+The `RequestAttributeType` object type extends the `BaseAttributeType` object type ([Section 7.29](#729-attributetype)) with the following property:
 
 `IncludeInResult` [Optional, Default `false`]
 
 : A `Boolean` value that governs whether this ACAL attribute is included in the result. This is useful to correlate requests with their responses in the case of multiple requests. If this property is omitted, then it is treated as being set to `false`. Note that ACAL attributes appear in the result as `AttributeType` objects.
 
-## 7.36 ResponseType
+## 7.38 ResponseType
 
 The `ResponseType` object type is an abstraction layer used by the policy language. Any proprietary system using the ACAL specification MUST transform an ACAL context `ResponseType` object into the form of its authorization decision.
 
@@ -5245,11 +5245,11 @@ URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are
 
 `Result` [One to Many]
 
-: A sequence of `ResultType` objects, each an authorization decision result. See [Section 7.37](#737-resulttype).
+: A sequence of `ResultType` objects, each an authorization decision result. See [Section 7.39](#739-resulttype).
 
 <a name="resulttype"></a>
 
-## 7.37 ResultType
+## 7.39 ResultType
 
 A `ResultType` object represents an authorization decision result. It MAY include a list of notices. The PEP handles an obligation notice that accompanies the decision as specified in [Section 8.2](#82-policy-enforcement-point). Any advice notices MAY be safely ignored by the PEP.
 
@@ -5280,19 +5280,19 @@ A `ResultType` object contains the following properties:
 
 `Notice` [Any Number]
 
-: A sequence of `NoticeType` objects, each a notice to be considered by the PEP. Objects' `Id` values are not required to be unique in the sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignment`s, for instance when it is drawn from more than one rule or policy. See [Section 7.26](#726-noticetype). The PEP handles an obligation notice that accompanies the decision as specified in [Section 8.2](#82-policy-enforcement-point). If the PEP does not understand an advice notice, the PEP may safely ignore the notice. See [Section 8.16](#816-notices) for a description of how the list of notices to be returned by the PDP is determined.
+: A sequence of `NoticeType` objects, each a notice to be considered by the PEP. Objects' `Id` values are not required to be unique in the sequence; the same `Id` MAY occur more than once, typically with different `AttributeAssignment`s, for instance when it is drawn from more than one rule or policy. See [Section 7.28](#728-noticetype). The PEP handles an obligation notice that accompanies the decision as specified in [Section 8.2](#82-policy-enforcement-point). If the PEP does not understand an advice notice, the PEP may safely ignore the notice. See [Section 8.16](#816-notices) for a description of how the list of notices to be returned by the PDP is determined.
 
 `ResultEntity` [Any Number]
 
-: A sequence of `ResultEntityType` objects, each an attribute category containing attributes that were part of the request. The choice of which attributes are included here is made with the `IncludeInResult` property of the `RequestAttributeType` objects of the request. See [Section 7.35](#735-requestattributetype).
+: A sequence of `ResultEntityType` objects, each an attribute category containing attributes that were part of the request. The choice of which attributes are included here is made with the `IncludeInResult` property of the `RequestAttributeType` objects of the request. See [Section 7.37](#737-requestattributetype).
 
 `ApplicablePolicyReference` [Any Number]
 
-: A sequence of `ExactMatchIdReferenceType` objects. If the `ReturnPolicyIdList` property in the `RequestType` object is `true` (see [Section 7.31](#731-requesttype)), a PDP that implements this optional feature MUST return a sequence that includes the identifiers of all policies which were found to be fully applicable, whether or not the effect (after rule combining) was the same or different from the decision. The sequence is unordered. The sequence MAY include the identifiers of other policies that are currently in force, as long as no policies required for the decision are omitted. A PDP MAY satisfy this requirement by including all policies currently in force, or by including all policies which were evaluated in making the decision, or by including all policies which did not evaluate to `NotApplicable`, or by any other algorithm which does not omit any policies which contributed to the decision. However, a decision which returns `NotApplicable` MUST return an empty list.
+: A sequence of `ExactMatchIdReferenceType` objects. If the `ReturnPolicyIdList` property in the `RequestType` object is `true` (see [Section 7.33](#733-requesttype)), a PDP that implements this optional feature MUST return a sequence that includes the identifiers of all policies which were found to be fully applicable, whether or not the effect (after rule combining) was the same or different from the decision. The sequence is unordered. The sequence MAY include the identifiers of other policies that are currently in force, as long as no policies required for the decision are omitted. A PDP MAY satisfy this requirement by including all policies currently in force, or by including all policies which were evaluated in making the decision, or by including all policies which did not evaluate to `NotApplicable`, or by any other algorithm which does not omit any policies which contributed to the decision. However, a decision which returns `NotApplicable` MUST return an empty list.
 
 <a name="multirequeststype"></a>
 
-## 7.38 MultiRequestsType (optional)
+## 7.40 MultiRequestsType (optional)
 
 _**Support for this object type and associated property (`MultiRequests`) is optional.**_
 
@@ -5313,11 +5313,11 @@ A `MultiRequestsType` object contains the following properties.
 
 `RequestReference` [One to Many]
 
-: A sequence of `RequestReferenceType` objects, each defining a request instance by reference to `RequestEntityType` objects in the enclosing `RequestType` object. See [Section 7.39](#739-requestreferencetype-optional).
+: A sequence of `RequestReferenceType` objects, each defining a request instance by reference to `RequestEntityType` objects in the enclosing `RequestType` object. See [Section 7.41](#741-requestreferencetype-optional).
 
 <a name="requestreferencetype"></a>
 
-## 7.39 RequestReferenceType (optional)
+## 7.41 RequestReferenceType (optional)
 
 _**Support for this object type is optional.**_
 
@@ -5340,7 +5340,7 @@ A `RequestReferenceType` object contains the following properties:
 
 : A sequence of `LocalIdentifierType` values, each referencing a `RequestEntityType` object in the enclosing `RequestType` object by the value of its `Id` property.
 
-## 7.40 StatusType
+## 7.42 StatusType
 
 A `StatusType` object represents the status of the authorization decision result.
 
@@ -5371,7 +5371,7 @@ A `StatusType` object contains the following properties:
 
 : A `StatusDetailType` object containing additional status information.
 
-## 7.41 StatusCodeType
+## 7.43 StatusCodeType
 
 A `StatusCodeType` object contains a major status code value and an optional recursive series of minor status codes.
 
@@ -5398,11 +5398,11 @@ A `StatusCodeType` object contains the following properties:
 
 : A `StatusCodeType` object describing a minor status code, which qualifies its parent status code. Minor status codes may be nested recursively this way.
 
-## 7.42 StatusDetailType (optional)
+## 7.44 StatusDetailType (optional)
 
 _**Support for this object type is optional.**_
 
-A `StatusDetailType` object qualifies its parent `StatusType` object with additional information: `MissingAttributeDetailType` objects, whose structure this specification defines, and any other detail as `ContentType` objects ([Section 7.34](#734-contenttype-optional)), so that no detail has to be translated between representations.
+A `StatusDetailType` object qualifies its parent `StatusType` object with additional information: `MissingAttributeDetailType` objects, whose structure this specification defines, and any other detail as `ContentType` objects ([Section 7.36](#736-contenttype-optional)), so that no detail has to be translated between representations.
 
 UML definition (class diagram):
 ```plantuml
@@ -5422,7 +5422,7 @@ A `StatusDetailType` object contains the following properties, and at least one 
 
 `MissingAttributeDetail` [Any Number]
 
-: A sequence of `MissingAttributeDetailType` objects ([Section 7.43](#743-missingattributedetailtype)).
+: A sequence of `MissingAttributeDetailType` objects ([Section 7.45](#745-missingattributedetailtype)).
 
 `Content` [Any Number]
 
@@ -5456,7 +5456,7 @@ A PDP MUST NOT return a `StatusDetailType` object in conjunction with the `proce
 
 <a name="missingattributedetailtype"></a>
 
-## 7.43 MissingAttributeDetailType
+## 7.45 MissingAttributeDetailType
 
 A `MissingAttributeDetailType` object conveys information about attributes required for policy evaluation that were missing from the request context.
 
@@ -5480,7 +5480,7 @@ A `MissingAttributeDetailType` object contains the following properties:
 
 `Value` [Any Number]
 
-: A sequence of `ValueType` objects specifying the required value(s) of the missing attribute. The expected data type of each of these objects is the `DataType` property below ([Section 7.14](#714-expressiontype)).
+: A sequence of `ValueType` objects specifying the required value(s) of the missing attribute. The expected data type of each of these objects is the `DataType` property below ([Section 7.15](#715-expressiontype)).
 
 `Category` [Optional]
 
@@ -5503,7 +5503,7 @@ A `MissingAttributeDetailType` object contains the following properties:
 
 If the PDP includes `ValueType` objects in the `MissingAttributeDetailType` object, then this indicates the acceptable values for that attribute. If no `ValueType` objects are included, then the `MissingAttributeDetailType` object indicates the names of attributes that the PDP failed to resolve during its evaluation. The list of attributes may be partial or complete. There is no guarantee by the PDP that supplying the missing values or attributes will be sufficient to satisfy the policy.
 
-## 7.44 ResultEntityType
+## 7.46 ResultEntityType
 
 A `ResultEntityType` object contains a sequence of `AttributeType` objects reflecting `RequestAttributeType` objects in a given attribute category from the request that had their `IncludeInResult` properties set to `true`. The `ResultEntityType` objects only appear in a result.
 
@@ -5533,11 +5533,11 @@ A `ResultEntityType` object contains the following properties:
 
 `Attribute` [One to Many]
 
-: A sequence of `AttributeType` objects representing `RequestAttributeType` objects from the same attribute category in the request. `Attribute` objects MUST be unique within a `ResultEntityType` object by the combination of their `AttributeId`, `DataType` and `Issuer` properties, using the same identifier-equality, effective-`DataType`, and absent-`Issuer` semantics described for `RequestAttribute` in [Section 7.33](#733-requestentitytype).
+: A sequence of `AttributeType` objects representing `RequestAttributeType` objects from the same attribute category in the request. `Attribute` objects MUST be unique within a `ResultEntityType` object by the combination of their `AttributeId`, `DataType` and `Issuer` properties, using the same identifier-equality, effective-`DataType`, and absent-`Issuer` semantics described for `RequestAttribute` in [Section 7.35](#735-requestentitytype).
 
 <a name="entitytype"></a>
 
-## 7.45 EntityType
+## 7.47 EntityType
 
 The `EntityType` object class defines the structure of values of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type. An `EntityType` object contains a sequence of `AttributeType` objects and/or syntax-specific content (i.e., XML, JSON or YAML). The `EntityType` object type is similar to the `RequestEntityType` object type but omits the `Category` property; values of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type don't self-identify with any particular attribute category.
 
@@ -5564,9 +5564,9 @@ An `EntityType` object contains the following properties:
 
 `Attribute` [Any Number]
 
-: A sequence of `AttributeType` objects. `Attribute` objects MUST be unique within an `EntityType` object by the combination of their `AttributeId`, `DataType` and `Issuer` properties, using the same identifier-equality, effective-`DataType`, and absent-`Issuer` semantics described for `RequestAttribute` in [Section 7.33](#733-requestentitytype). This applies to every use of `EntityType`, including the `PolicyIssuer` property of a `PolicyType` object (see [Section 7.4](#74-policytype)).
+: A sequence of `AttributeType` objects. `Attribute` objects MUST be unique within an `EntityType` object by the combination of their `AttributeId`, `DataType` and `Issuer` properties, using the same identifier-equality, effective-`DataType`, and absent-`Issuer` semantics described for `RequestAttribute` in [Section 7.35](#735-requestentitytype). This applies to every use of `EntityType`, including the `PolicyIssuer` property of a `PolicyType` object (see [Section 7.4](#74-policytype)).
 
-## 7.46 BundleType
+## 7.48 BundleType
 
 A `BundleType` object type collects together the policies, short identifier sets and shared variables that a PDP uses to evaluate an authorization request along with the starting point for that evaluation. A PDP is said to be defined by a `BundleType` object, although an implementation is not required to physically represent such an object.
 
@@ -5600,7 +5600,7 @@ A `BundleType` object contains the following properties:
 
 `SharedVariableDefinition` [Any Number]
 
-: A sequence of `SharedVariableDefinitionType` objects, each defining an expression that can be referenced from anywhere in the `BundleType` object where an expression can appear. The combination of each object's `Id` and `Version` properties MUST be unique within the sequence. In addition, [Section 7.13b](#713b-sharedvariabledefinitiontype) requires that no two shared variables visible to the PDP have the same `Id` and equivalent versions (for example `1` and `1.0`, [Section 7.1.2.3.4](#71234-versiontype)).
+: A sequence of `SharedVariableDefinitionType` objects, each defining an expression that can be referenced from anywhere in the `BundleType` object where an expression can appear. The combination of each object's `Id` and `Version` properties MUST be unique within the sequence. In addition, [Section 7.14](#714-sharedvariabledefinitiontype) requires that no two shared variables visible to the PDP have the same `Id` and equivalent versions (for example `1` and `1.0`, [Section 7.1.2.3.4](#71234-versiontype)).
 
 `Policy` [Any Number]
 
@@ -5611,7 +5611,7 @@ A `BundleType` object contains the following properties:
 : If present, a `PolicyReferenceType` object that MUST reference a policy in the `Policy` property. A PDP defined by this `BundleType` object SHALL evaluate every authorization request by evaluating this policy reference (the referenced policy is the entry point of evaluation). See [Section 8.13](#813-policyreference-evaluation). If this property is absent, then the PDP returns `NotApplicable` for every authorization request. The policy reference MUST specify an argument for each parameter of the referenced policy that has no defined default value ([Section 7.11](#711-policyreferencetype)).
 
 
-## 7.47 ArgumentType and NamedArgumentType
+## 7.49 ArgumentType and NamedArgumentType
 
 The `ArgumentType` object class is the generic type for all kinds of argument expressions passed to function calls (`ApplyType` objects), parameterized policies (`PolicyType` objects) and shared variables (`SharedVariableDefinitionType` objects). It may be either a simple expression (`ExpressionType` object) or a *named argument* (`NamedArgumentType` object).
 
@@ -5640,7 +5640,7 @@ A `NamedArgumentType` object contains the following properties:
 
 `Expression` [Required]
 
-: The argument value expression. Its expected data type is that of the parameter that the `Name` property identifies ([Section 7.14](#714-expressiontype)).
+: The argument value expression. Its expected data type is that of the parameter that the `Name` property identifies ([Section 7.15](#715-expressiontype)).
 
 ---
 
@@ -5779,7 +5779,7 @@ If a single attribute in a request context contains multiple attribute values, t
 
 ### 8.4.4 Attribute Matching
 
-A named attribute includes specific criteria with which to match attributes in the context. An attribute specifies a `DataType` and is in an object that specifies a `Category`, and a named attribute also specifies an `AttributeId` and optional `Issuer`. A named attribute SHALL match an attribute if their `Category` (for the attribute, that of the object that contains it), `AttributeId`, effective data type and optional `Issuer` match as follows. The `Category` property of the named attribute MUST match, by identifier equality, the `Category` property of the object that contains the corresponding context attribute ([Section 7.18](#718-attributedesignatortype)). The `AttributeId` property of the named attribute MUST match, by identifier equality, the `AttributeId` property of the corresponding context attribute. The effective data type of the named attribute MUST match, by identifier equality, the effective data type of the corresponding context attribute ([Section 7.17](#717-namedattributedesignatortype)). If the `Issuer` property is supplied in the named attribute, then it MUST match, using the `urn:oasis:names:tc:acal:1.0:function:string-equal` function, the `Issuer` property of the corresponding context attribute. If the `Issuer` property is not supplied in the named attribute, then the matching of the context attribute to the named attribute SHALL be governed by the `Category`, the `AttributeId` and the effective data type alone, regardless of the presence, absence, or actual value of `Issuer` property in the corresponding context attribute. In the case of an attribute selector, the matching of the attribute to the named attribute SHALL be governed by the `Category`, `Path` expression and `DataType` property and other properties as defined by the respective ACAL Profile being used to provide the concrete `AttributeSelectorType` object.
+A named attribute includes specific criteria with which to match attributes in the context. An attribute specifies a `DataType` and is in an object that specifies a `Category`, and a named attribute also specifies an `AttributeId` and optional `Issuer`. A named attribute SHALL match an attribute if their `Category` (for the attribute, that of the object that contains it), `AttributeId`, effective data type and optional `Issuer` match as follows. The `Category` property of the named attribute MUST match, by identifier equality, the `Category` property of the object that contains the corresponding context attribute ([Section 7.19](#719-attributedesignatortype)). The `AttributeId` property of the named attribute MUST match, by identifier equality, the `AttributeId` property of the corresponding context attribute. The effective data type of the named attribute MUST match, by identifier equality, the effective data type of the corresponding context attribute ([Section 7.18](#718-namedattributedesignatortype)). If the `Issuer` property is supplied in the named attribute, then it MUST match, using the `urn:oasis:names:tc:acal:1.0:function:string-equal` function, the `Issuer` property of the corresponding context attribute. If the `Issuer` property is not supplied in the named attribute, then the matching of the context attribute to the named attribute SHALL be governed by the `Category`, the `AttributeId` and the effective data type alone, regardless of the presence, absence, or actual value of `Issuer` property in the corresponding context attribute. In the case of an attribute selector, the matching of the attribute to the named attribute SHALL be governed by the `Category`, `Path` expression and `DataType` property and other properties as defined by the respective ACAL Profile being used to provide the concrete `AttributeSelectorType` object.
 
 ### 8.4.5 Attribute Retrieval
 
@@ -5805,7 +5805,7 @@ If the `Expression` property of an `EntityAttributeSelectorType` object evaluate
 
 If the designated attribute category or entity value has a `Content` property, then follow the steps below:
 
-1. Parse the document that the `Content` carries ([Section 7.34](#734-contenttype-optional)) into the data structure suitable for processing by the concrete type of AttributeSelector/EntityAttributeSelector defined by the ACAL Profile in use (e.g. XML content for the XPath Profile). If it is not a valid data structure according to the ACAL Profile, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
+1. Parse the document that the `Content` carries ([Section 7.36](#736-contenttype-optional)) into the data structure suitable for processing by the concrete type of AttributeSelector/EntityAttributeSelector defined by the ACAL Profile in use (e.g. XML content for the XPath Profile). If it is not a valid data structure according to the ACAL Profile, then the attribute selector MUST return `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:syntax-error`.
 
 2. Evaluate the expression given in the `Path` property against the data structure obtained in the previous step, according to the syntax and semantics of the respective ACAL Profile in use (as indicated by the concrete subtype of `AttributeSelectorType` being used).
 
@@ -5864,7 +5864,7 @@ The target value SHALL be `Match` if the `Target` property is absent or the expr
 
 ## 8.8 VariableReference Evaluation
 
-A `VariableReferenceType` object references a single `VariableDefinitionType` object that has a matching `VariableId` property value and is in the `VariableDefinition` property of an enclosing `RuleType` or `PolicyType` object. If no such `VariableDefinitionType` object exists, and the `VariableReferenceType` object does not refer to a parameter or a quantified variable ([Section 7.24](#724-variablereferencetype)), then the reference is invalid. The PDP MUST detect invalid references either at policy loading time or during runtime evaluation. If the PDP detects an invalid reference during runtime the variable reference evaluates to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
+A `VariableReferenceType` object references a single `VariableDefinitionType` object that has a matching `VariableId` property value and is in the `VariableDefinition` property of an enclosing `RuleType` or `PolicyType` object. If no such `VariableDefinitionType` object exists, and the `VariableReferenceType` object does not refer to a parameter or a quantified variable ([Section 7.25](#725-variablereferencetype)), then the reference is invalid. The PDP MUST detect invalid references either at policy loading time or during runtime evaluation. If the PDP detects an invalid reference during runtime the variable reference evaluates to `Indeterminate` with status code `urn:oasis:names:tc:acal:1.0:status:processing-error`.
 
 Where a `VariableReferenceType` object references a `VariableDefinitionType` object, it has the effect as if the `ExpressionType` object defined in the `VariableDefinitionType` object replaces the `VariableReferenceType` object. Any evaluation scheme that preserves this semantic is acceptable. For instance, the expression in the `VariableDefinitionType` object may be evaluated to a particular value and cached for multiple references without consequence (i.e., the value of an `ExpressionType` object remains the same for the entire policy evaluation). This characteristic is one of the benefits of ACAL being a declarative language.
 
@@ -5932,7 +5932,7 @@ The policy truth table is shown in Table 3.
 
 A policy reference is evaluated by resolving the reference and evaluating the referenced policy.
 
-Resolving a reference means selecting, from the set of policies that the PDP evaluates requests against — represented conceptually by the `Policy` property of the `BundleType` object that defines the PDP ([Section 7.46](#746-bundletype), [Section 8.15](#815-authorization-decision)) — the policy whose `PolicyId` equals the reference's `Id` property (compared as specified in [Section 8.18](#818-identifier-equality)) and whose `Version` satisfies the reference's version-matching expression if one is present ([Section 7.10](#710-patternmatchidreferencetype)). This applies to every policy reference that appears within the `CombinerInput` of another policy. The entry-point reference — a `BundleType` object's own `PolicyReference` property — MUST resolve to a policy in that set ([Section 7.46](#746-bundletype)). For any other reference, if no policy in that set matches and the `Id` property is a URL, then the reference MAY instead be resolved by retrieving the policy from that URL; the retrieved policy's `PolicyId` and `Version` MUST satisfy the same matching requirements. If more than one version of the policy is acceptable to the reference, the version is chosen as specified in [Section 7.10](#710-patternmatchidreferencetype).
+Resolving a reference means selecting, from the set of policies that the PDP evaluates requests against — represented conceptually by the `Policy` property of the `BundleType` object that defines the PDP ([Section 7.48](#748-bundletype), [Section 8.15](#815-authorization-decision)) — the policy whose `PolicyId` equals the reference's `Id` property (compared as specified in [Section 8.18](#818-identifier-equality)) and whose `Version` satisfies the reference's version-matching expression if one is present ([Section 7.10](#710-patternmatchidreferencetype)). This applies to every policy reference that appears within the `CombinerInput` of another policy. The entry-point reference — a `BundleType` object's own `PolicyReference` property — MUST resolve to a policy in that set ([Section 7.48](#748-bundletype)). For any other reference, if no policy in that set matches and the `Id` property is a URL, then the reference MAY instead be resolved by retrieving the policy from that URL; the retrieved policy's `PolicyId` and `Version` MUST satisfy the same matching requirements. If more than one version of the policy is acceptable to the reference, the version is chosen as specified in [Section 7.10](#710-patternmatchidreferencetype).
 
 If resolving the reference fails, the reference evaluates to `Indeterminate` with status code: <!--Newline to fit on PDF page -->
 `urn:oasis:names:tc:acal:1.0:status:processing-error`.
@@ -5979,11 +5979,11 @@ If a policy that contains invalid static data types is evaluated by the ACAL PDP
 
 ### 8.17.3 Missing Attributes
 
-The absence of matching attributes in the request context for any of the attribute designators, entity attribute designators, attribute selectors or entity attribute selectors that are found in the policy potentially results in the policy evaluating to `Indeterminate`, if the designator or selector has the `MustBePresent` property set to `true`, as described in [Section 7.17](#717-namedattributedesignatortype) and [Section 7.20](#720-baseattributeselectortype-optional) and potentially results in a `Decision` property containing the `Indeterminate` value. In this case, if a status code is supplied, then the value
+The absence of matching attributes in the request context for any of the attribute designators, entity attribute designators, attribute selectors or entity attribute selectors that are found in the policy potentially results in the policy evaluating to `Indeterminate`, if the designator or selector has the `MustBePresent` property set to `true`, as described in [Section 7.18](#718-namedattributedesignatortype) and [Section 7.21](#721-baseattributeselectortype-optional) and potentially results in a `Decision` property containing the `Indeterminate` value. In this case, if a status code is supplied, then the value
 
 `urn:oasis:names:tc:acal:1.0:status:missing-attribute`
 
-SHALL be used, to indicate that more information is needed in order for a definitive decision to be rendered. In this case, the `StatusType` object MAY list the names and data types of any attributes that are needed by the PDP to refine its decision (see [Section 7.43](#743-missingattributedetailtype)). A PEP MAY resubmit a refined request context in response to a `Decision` property value of `Indeterminate` with a status code of
+SHALL be used, to indicate that more information is needed in order for a definitive decision to be rendered. In this case, the `StatusType` object MAY list the names and data types of any attributes that are needed by the PDP to refine its decision (see [Section 7.45](#745-missingattributedetailtype)). A PEP MAY resubmit a refined request context in response to a `Decision` property value of `Indeterminate` with a status code of
 
 `urn:oasis:names:tc:acal:1.0:status:missing-attribute`
 
@@ -6064,7 +6064,7 @@ See [Section 7](#7-structures) for definitions of these properties.
 
 A `ValueType` object may contain an instance of a structured data type, for example an XML element or a value of the `urn:oasis:names:tc:acal:1.0:data-type:entity` data type ([Annex C.2.5](#c25-entity)). [Section 8.4.1](#841-structured-attributes) describes a number of standard techniques to identify data items within such a structured attribute. Listed here are some additional techniques that require ACAL extensions.
 
-1. For a given structured data type, a community of ACAL users may define new attribute identifiers for each leaf data item of the structured data type that has a type conformant with one of the ACAL-defined data types. Using these new attribute identifiers, the PEPs or context handlers used by that community of users can flatten instances of the structured data type into a sequence of individual attributes, for example `RequestAttributeType` objects in a `RequestEntityType` object or `AttributeType` objects in an `EntityType` object ([Section 7.33](#733-requestentitytype), [Section 7.45](#745-entitytype)). Each such attribute can be compared using the ACAL-defined functions. Using this method, the structured data type itself never appears in a `ValueType` object.
+1. For a given structured data type, a community of ACAL users may define new attribute identifiers for each leaf data item of the structured data type that has a type conformant with one of the ACAL-defined data types. Using these new attribute identifiers, the PEPs or context handlers used by that community of users can flatten instances of the structured data type into a sequence of individual attributes, for example `RequestAttributeType` objects in a `RequestEntityType` object or `AttributeType` objects in an `EntityType` object ([Section 7.35](#735-requestentitytype), [Section 7.47](#747-entitytype)). Each such attribute can be compared using the ACAL-defined functions. Using this method, the structured data type itself never appears in a `ValueType` object.
 
 2. A community of ACAL users may define a new function that can be used to compare a value of the structured data type against some other value. This method may only be used by PDPs that support the new function.
 
@@ -7112,7 +7112,7 @@ The value space of `dnsName` is the set of pairs of a hostname (optionally begin
 
 ### C.2.5 Entity
 
-The `urn:oasis:names:tc:acal:1.0:data-type:entity` data type is used to represent an entity nested within another entity. Values of this data type are objects of the `EntityType` object type [Section 7.45](#745-entitytype).
+The `urn:oasis:names:tc:acal:1.0:data-type:entity` data type is used to represent an entity nested within another entity. Values of this data type are objects of the `EntityType` object type [Section 7.47](#747-entitytype).
 
 ### C.2.6 Data Types Defined by Reference to XML Schema
 
@@ -8402,7 +8402,7 @@ This identifier indicates success:
 
 `urn:oasis:names:tc:acal:1.0:status:ok`
 
-This identifier indicates that all the attributes necessary to make a policy decision were not available (see [Section 7.43](#743-missingattributedetailtype)):
+This identifier indicates that all the attributes necessary to make a policy decision were not available (see [Section 7.45](#745-missingattributedetailtype)):
 
 `urn:oasis:names:tc:acal:1.0:status:missing-attribute`
 
@@ -8924,13 +8924,13 @@ The following individuals were members of this committee during the creation of 
 
 The changes made since the previous version (Committee Specification Draft 01) are the following. Section numbers refer to this version.
 
-- The `Expression` property of `ApplyType`, `PolicyReferenceType` and `SharedVariableReferenceType` is renamed `Argument`, and a function, parameterized policy or shared variable may now be given *named* arguments as an alternative to positional ones, using the new `ArgumentType` and `NamedArgumentType` object types ([Section 7.11](#711-policyreferencetype), [Section 7.15](#715-applytype), [Section 7.24b](#724b-sharedvariablereferencetype), [Section 7.47](#747-argumenttype-and-namedargumenttype)).
-- `RequestEntityReferenceType` is removed. The `RequestEntityReference` property of `RequestReferenceType` is now a sequence of `LocalIdentifierType` values ([Section 7.39](#739-requestreferencetype-optional)); the subsequent sections of Section 7 are renumbered accordingly.
-- Attributes within a `RequestEntityType`, `ResultEntityType` or `EntityType` object are unique by the combination `(AttributeId, DataType, Issuer)` instead of by `AttributeId` alone ([Section 7.33](#733-requestentitytype), with a worked example in [Section 7.33.1](#7331-uniqueness-example-non-normative); [Section 7.44](#744-resultentitytype); [Section 7.45](#745-entitytype)).
-- The `Id` of a notice or notice expression identifies the semantics of the notice, and the same `Id` may now occur more than once in a sequence of notices or notice expressions; the `(AttributeId, Category)` uniqueness constraint on the `AttributeAssignment` and `AttributeAssignmentExpression` properties is removed ([Section 7.26](#726-noticetype), [Section 7.29](#729-noticeexpressiontype)). The `IsObligation` property of `NoticeExpressionType` now has the default value `false`.
-- The `Category` property of `MissingAttributeDetailType` is now optional ([Section 7.43](#743-missingattributedetailtype)).
+- The `Expression` property of `ApplyType`, `PolicyReferenceType` and `SharedVariableReferenceType` is renamed `Argument`, and a function, parameterized policy or shared variable may now be given *named* arguments as an alternative to positional ones, using the new `ArgumentType` and `NamedArgumentType` object types ([Section 7.11](#711-policyreferencetype), [Section 7.16](#716-applytype), [Section 7.26](#726-sharedvariablereferencetype), [Section 7.49](#749-argumenttype-and-namedargumenttype)).
+- `RequestEntityReferenceType` is removed. The `RequestEntityReference` property of `RequestReferenceType` is now a sequence of `LocalIdentifierType` values ([Section 7.41](#741-requestreferencetype-optional)); the subsequent sections of Section 7 are renumbered accordingly.
+- Attributes within a `RequestEntityType`, `ResultEntityType` or `EntityType` object are unique by the combination `(AttributeId, DataType, Issuer)` instead of by `AttributeId` alone ([Section 7.35](#735-requestentitytype), with a worked example in [Section 7.35.1](#7351-uniqueness-example-non-normative); [Section 7.46](#746-resultentitytype); [Section 7.47](#747-entitytype)).
+- The `Id` of a notice or notice expression identifies the semantics of the notice, and the same `Id` may now occur more than once in a sequence of notices or notice expressions; the `(AttributeId, Category)` uniqueness constraint on the `AttributeAssignment` and `AttributeAssignmentExpression` properties is removed ([Section 7.28](#728-noticetype), [Section 7.31](#731-noticeexpressiontype)). The `IsObligation` property of `NoticeExpressionType` now has the default value `false`.
+- The `Category` property of `MissingAttributeDetailType` is now optional ([Section 7.45](#745-missingattributedetailtype)).
 - `IdentifierType` values have a minimum length of one character, so the empty string is not a valid identifier ([Section 7.1.2.3.8](#71238-identifiertype)).
-- The rules for identifying the concrete `ValueType` subtype of a value in a concrete representation are stated: a representation may distinguish the literal subtypes by native scalar syntax or use a uniform literal form, and the subtype is determined from the effective `DataType`, not by inspecting a structured value's content ([Section 7.23](#723-valuetype)).
+- The rules for identifying the concrete `ValueType` subtype of a value in a concrete representation are stated: a representation may distinguish the literal subtypes by native scalar syntax or use a uniform literal form, and the subtype is determined from the effective `DataType`, not by inspecting a structured value's content ([Section 7.24](#724-valuetype)).
 - Attribute retrieval and the handling of missing attributes explicitly cover entity attribute designators and entity attribute selectors as well as attribute designators and attribute selectors ([Section 8.4.5](#845-attribute-retrieval), [Section 8.17.3](#8173-missing-attributes)).
 - Identifier values and URIs starting with `urn:oasis:names:tc:xacml:` or `urn:oasis:names:tc:acal:` are reserved for the exclusive use of the OASIS ACAL \[XACML\] TC ([Section 7.1.2.3.1](#71231-uri), [Section 7.1.2.3.8](#71238-identifiertype) and the identifier-valued properties of Section 7). The predefined short identifier set gains four entries (`resource-location`, `simple-file-name`, `is-empty` and `is-not-empty`) and is also provided in YAML, and the JSON artifact is `acal-core-json-v1.0-identifiers.json` (csd01 cited `acal-core-xml-v4.0-identifiers.json`) ([Section 7.2](#72-shortidsettype)).
 - A `PolicyDefaults` object now also applies within the policies nested in its policy; a nested policy's own object of the same concrete type applies inside that nested policy in place of the enclosing object; a policy included by a `PolicyReference` is not nested ([Section 7.4](#74-policytype), [Section 7.5](#75-policydefaultstype-optional)).
@@ -8943,30 +8943,30 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - `x500Name-equal` compares Relative Distinguished Names using the rules of [[RFC5280](#rfc5280)] Section 7.1 (LDAP StringPrep with case-insensitive matching) instead of those of the obsoleted RFC 3280 Section 4.1.2.4, and its first step now parses each argument according to [[RFC4514](#rfc4514)] Section 3 instead of "normalizing" it ([Annex C.3.1](#c31-equality-predicates)); because its result can now differ from that of XACML's `x500Name-equal`, the XACML identifiers of `x500Name-equal` and of the `x500Name` bag and set functions defined through it (`x500Name-is-in`, `-intersection`, `-at-least-one-member-of`, `-union`, `-subset`, `-set-equals`) are no longer listed as equivalent ([Section 11.2.8](#1128-functions)).
 - In the equality, comparison and ordering functions of [Annex C.3.1](#c31-equality-predicates) and [Annex C.3.8](#c38-non-numeric-comparison-functions), a `dateTime` or `date` value without a time zone is resolved using the implicit timezone of the PDP's dynamic evaluation context, as defined by [[XF](#xf)]; the resulting dependence of a decision on the PDP's configuration is stated, and an explicit time zone on every `dateTime`, `time` and `date` value is recommended ([Annex C.2](#c2-data-types), [Annex C.3.8](#c38-non-numeric-comparison-functions)).
 - New security considerations for integer processing ([Section 10.1.8](#1018-denial-of-service), [Section 10.1.9](#1019-implementation-defined-integer-limits)).
-- The `IsObligation` property of a `NoticeExpressionType` object states its default value, `false` ([Section 7.29](#729-noticeexpressiontype)), as the `NoticeType` object already did.
-- Property descriptions are aligned with the UML, which is unchanged: `MaxDelegationDepth` is a `NonNegativeInteger` ([Section 7.4](#74-policytype)), `Issuer` is a `Name` ([Section 7.17](#717-namedattributedesignatortype)), the quantified-expression domain is a `NonLiteralExpressionType` ([Section 7.25](#725-quantifiedexpressiontype-optional)), and the `Id` of a `RequestEntityType` or `ResultEntityType` object is a `LocalIdentifierType` ([Section 7.33](#733-requestentitytype), [Section 7.44](#744-resultentitytype)). The conditions under which the `MediaType` and `ContentEncodingType` types and the `ContentType` object are required are stated in terms of what the implementation supports ([Section 7.1.2.3.14](#712314-mediatype-optional), [Section 7.1.2.3.15](#712315-contentencodingtype-optional), [Section 7.34](#734-contenttype-optional)).
+- The `IsObligation` property of a `NoticeExpressionType` object states its default value, `false` ([Section 7.31](#731-noticeexpressiontype)), as the `NoticeType` object already did.
+- Property descriptions are aligned with the UML, which is unchanged: `MaxDelegationDepth` is a `NonNegativeInteger` ([Section 7.4](#74-policytype)), `Issuer` is a `Name` ([Section 7.18](#718-namedattributedesignatortype)), the quantified-expression domain is a `NonLiteralExpressionType` ([Section 7.27](#727-quantifiedexpressiontype-optional)), and the `Id` of a `RequestEntityType` or `ResultEntityType` object is a `LocalIdentifierType` ([Section 7.35](#735-requestentitytype), [Section 7.46](#746-resultentitytype)). The conditions under which the `MediaType` and `ContentEncodingType` types and the `ContentType` object are required are stated in terms of what the implementation supports ([Section 7.1.2.3.14](#712314-mediatype-optional), [Section 7.1.2.3.15](#712315-contentencodingtype-optional), [Section 7.36](#736-contenttype-optional)).
 - The non-normative description of a policy target ([Section 5.3.2.1](#5321-policy-target)) no longer offers a target calculated from the components' targets and conditions, or rules inheriting the policy target; a component policy or rule applies only when both the outer policy's target and its own target or condition are satisfied.
 - The normative [[XF](#xf)] reference is the XPath and XQuery Functions and Operators 3.1 Recommendation (csd01 cited its namespace document), and the `op:dateTime-equal`, `op:date-equal` and `op:time-equal` citations are corrected to its Sections 9.4.1, 9.4.4 and 9.4.7 ([Annex C.3.1](#c31-equality-predicates)); `string-regexp-match` cites `fn:matches` ([Annex C.3.13](#c313-regular-expression-based-functions)).
 - The `processing-error` status code is described as an error while the PDP processes the decision request or evaluates policy, including the refusal of a request as specified in [Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema) (csd01: an error during policy evaluation) ([Annex D.8](#d8-status-codes)). The target value "No Match" is written `No-match`, as in the policy truth table ([Section 8.7](#87-target-evaluation)). In the glossary, "Context handler" refers to the ACAL context instead of the XACML canonical form, and the Condition definition writes its values `true` and `false` (csd01: `True`, `False`) ([Section 2.1.2](#212-terms-defined-in-this-document)).
 - The base-PEP decision value "Not Applicable" is written `NotApplicable` ([Section 8.2.1](#821-base-pep)); [Section 8.10](#810-extended-indeterminate) defines the top-level policy, at which an extended `Indeterminate` is returned as a plain `Indeterminate`, as the policy referenced by the `PolicyReference` property of the `BundleType` object that defines the PDP; and the local-identifier examples of [Section 7.1.2.3.9](#71239-localidentifiertype) use `Name` for a parameter and `Id` for a rule (csd01: `ParameterName` and `RuleId`) and describe `RequestEntityReference` as a `LocalIdentifierType` value.
 - The `entity` data type is listed among the data type identifiers ([Annex D.3](#d3-data-types)).
-- `application/yaml` ([[RFC9512](#rfc9512)]) is listed among the standard media types of a `ContentType` object, for YAML content ([Annex D.10](#d10-content-types)); the default media type that a representation defines is also a possible value of `MediaType` ([Section 7.34](#734-contenttype-optional)).
+- `application/yaml` ([[RFC9512](#rfc9512)]) is listed among the standard media types of a `ContentType` object, for YAML content ([Annex D.10](#d10-content-types)); the default media type that a representation defines is also a possible value of `MediaType` ([Section 7.36](#736-contenttype-optional)).
 - On a `Deny` decision, the base PEP and the Permit-biased PEP no longer deny access "only if" they understand and can discharge the accompanying obligations; they deny access in every case and MUST discharge any obligation they understand to the best of their ability ([Section 8.2.1](#821-base-pep), [Section 8.2.3](#823-permit-biased-pep)).
-- The PEP's handling of obligation notices is specified in [Section 8.2](#82-policy-enforcement-point), and the other sections refer to it or agree with it. [Section 7.4](#74-policytype), [Section 7.37](#737-resulttype) and the `Notice` property of `ResultType` no longer say that a PEP that does not understand or cannot fulfill an obligation notice acts according to its bias, because the PEP bias applies only to a `NotApplicable` or `Indeterminate` decision, and an obligation notice accompanies only a `Permit` or a `Deny` decision. [Section 4.12](#412-actions-performed-in-conjunction-with-enforcement) no longer says that a PEP denies access unless it understands and can discharge all obligation notices, which is wrong for a `Deny` decision, where access is denied in every case. [Section 8.2.2](#822-deny-biased-pep) and [Section 8.2.3](#823-permit-biased-pep) now state both the `Permit` and the `Deny` handling, as [Section 8.2.1](#821-base-pep) does. As a result a Permit-biased PEP, like the other two, permits access on a `Permit` decision only if it understands and can and will discharge the accompanying obligations; XACML 3.0 Section 7.2.3 did not state this for the Permit-biased PEP.
-- The DataType inference rule of [Section 7.15](#715-applytype) takes the expected data type of an argument of a higher-order bag function from the function named by the first argument, and requires the data type of a statically-typed argument expression, including one that defaults to `string`, to be an allowed data type for its parameter. Before, the rule looked only at the signature of the function identified by `FunctionId`, which defines no fixed data type for the arguments of `any-of`, `all-of` and the other higher-order functions, so the rule gave nothing for them; and it required a present data type to be "the same as" the parameter's even where a parameter allows several types.
-- Default arguments: the rule of [Section 7.11](#711-policyreferencetype) and [Section 7.24b](#724b-sharedvariablereferencetype) now applies to the parameters for which no argument is provided, whether the arguments are positional or named; an argument has to be provided for each parameter that has no default value, and the default value of a parameter for which no argument is provided is used as its argument. Before, the rule counted the arguments and so gave wrong results for named arguments.
+- The PEP's handling of obligation notices is specified in [Section 8.2](#82-policy-enforcement-point), and the other sections refer to it or agree with it. [Section 7.4](#74-policytype), [Section 7.39](#739-resulttype) and the `Notice` property of `ResultType` no longer say that a PEP that does not understand or cannot fulfill an obligation notice acts according to its bias, because the PEP bias applies only to a `NotApplicable` or `Indeterminate` decision, and an obligation notice accompanies only a `Permit` or a `Deny` decision. [Section 4.12](#412-actions-performed-in-conjunction-with-enforcement) no longer says that a PEP denies access unless it understands and can discharge all obligation notices, which is wrong for a `Deny` decision, where access is denied in every case. [Section 8.2.2](#822-deny-biased-pep) and [Section 8.2.3](#823-permit-biased-pep) now state both the `Permit` and the `Deny` handling, as [Section 8.2.1](#821-base-pep) does. As a result a Permit-biased PEP, like the other two, permits access on a `Permit` decision only if it understands and can and will discharge the accompanying obligations; XACML 3.0 Section 7.2.3 did not state this for the Permit-biased PEP.
+- The DataType inference rule of [Section 7.16](#716-applytype) takes the expected data type of an argument of a higher-order bag function from the function named by the first argument, and requires the data type of a statically-typed argument expression, including one that defaults to `string`, to be an allowed data type for its parameter. Before, the rule looked only at the signature of the function identified by `FunctionId`, which defines no fixed data type for the arguments of `any-of`, `all-of` and the other higher-order functions, so the rule gave nothing for them; and it required a present data type to be "the same as" the parameter's even where a parameter allows several types.
+- Default arguments: the rule of [Section 7.11](#711-policyreferencetype) and [Section 7.26](#726-sharedvariablereferencetype) now applies to the parameters for which no argument is provided, whether the arguments are positional or named; an argument has to be provided for each parameter that has no default value, and the default value of a parameter for which no argument is provided is used as its argument. Before, the rule counted the arguments and so gave wrong results for named arguments.
 - The `+` in a version match ([Section 7.1.2.3.5](#71235-versionmatchtype)) can only be the last component, as its description says; the pattern in this specification and in the XML, JSON and YAML schemas did not enforce it. The description of the pattern applies to the reference that holds it, whether it references a policy or a shared variable definition; before, it spoke of "versions of a referenced policy that are acceptable for inclusion in the referencing policy".
-- Prohibitions in "no X SHALL", "SHALL ... only if" and plural-subject form are written `<singular subject> SHALL NOT ...` without change of meaning ([Section 7.29](#729-noticeexpressiontype), [Section 8.2](#82-policy-enforcement-point), [Section 8.4.2](#842-attribute-bags), [Section 8.16](#816-notices), [Annex C.3.11](#c311-set-functions), [Annex C.3.17](#c317-extension-functions-and-data-types)), the PAP's responsibility for unique identifiers is written "A PAP SHALL ensure ..." ([Section 7.2](#72-shortidsettype), [Section 7.4](#74-policytype), [Section 7.12](#712-ruletype), [Section 7.13b](#713b-sharedvariabledefinitiontype)), and uppercase keywords in the non-normative [Section 4.12](#412-actions-performed-in-conjunction-with-enforcement) and [Section 9.2](#92-structured-attributes) are written in lowercase.
+- Prohibitions in "no X SHALL", "SHALL ... only if" and plural-subject form are written `<singular subject> SHALL NOT ...` without change of meaning ([Section 7.31](#731-noticeexpressiontype), [Section 8.2](#82-policy-enforcement-point), [Section 8.4.2](#842-attribute-bags), [Section 8.16](#816-notices), [Annex C.3.11](#c311-set-functions), [Annex C.3.17](#c317-extension-functions-and-data-types)), the PAP's responsibility for unique identifiers is written "A PAP SHALL ensure ..." ([Section 7.2](#72-shortidsettype), [Section 7.4](#74-policytype), [Section 7.12](#712-ruletype), [Section 7.14](#714-sharedvariabledefinitiontype)), and uppercase keywords in the non-normative [Section 4.12](#412-actions-performed-in-conjunction-with-enforcement) and [Section 9.2](#92-structured-attributes) are written in lowercase.
 - Matching of a named attribute without an `Issuer` includes the `Category` ([Section 8.4.4](#844-attribute-matching)); a notice that does not match the `AppliesTo` property SHALL NOT be passed up ([Section 8.16](#816-notices)); identifier equality is "if and only if" ([Section 8.18](#818-identifier-equality)); the equality of identifiers is subject to the normalization of [Section 8.1.1](#811-normalization) ([Section 10.4](#104-identifier-equality)).
 - The pseudo-code of the `deny-overrides` and `permit-overrides` combining algorithms treats an `Indeterminate` decision of a child as `Indeterminate{DP}`, and that of `first-applicable` treats every extended `Indeterminate` decision as `Indeterminate`, as [Annex E.1](#e1-extended-indeterminate-values) requires of an algorithm that does not track the extended set; the pseudo-code of `first-applicable` is named `firstApplicableCombiningAlgorithm`.
 - The deprecated identifiers of the XML Schema data types begin with `http://www.w3.org/2001/XMLSchema#`, as in XACML 3.0 (csd01: `https://`) ([Section 11.2.7](#1127-data-types), [Annex C.3.8](#c38-non-numeric-comparison-functions)); support for the `StatusType` and `StatusCodeType` objects is mandatory, as the conformance table already stated ([Section 11.2.4](#1124-status-codes)); the first column of the object-type table is headed "Used as property" ([Section 11.2.1](#1121-object-types)).
-- The numeric comparison functions have a definition ([Annex C.3.6](#c36-numeric-comparison-functions)); the same value is used for every occurrence of `current-date` and `current-dateTime`, as for `current-time` ([Annex D.7](#d7-environment-attributes)); the syntax of `ipAddress`, `dnsName` and port ranges is written in ABNF and bounds a port number to 0 to 65535 ([Annex C.2.3](#c23-ip-address), [Annex C.2.4](#c24-dns-name)); a value of the XML Schema data types is not a character string except for `string` and `anyURI` ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)); a `VariableReference` may refer to a parameter or a quantified variable ([Section 7.24](#724-variablereferencetype), [Section 7.13b](#713b-sharedvariabledefinitiontype)); the subject category of [Annex D.2](#d2-attribute-categories) corresponds to, and is not identical to, the XACML 2.0 category.
+- The numeric comparison functions have a definition ([Annex C.3.6](#c36-numeric-comparison-functions)); the same value is used for every occurrence of `current-date` and `current-dateTime`, as for `current-time` ([Annex D.7](#d7-environment-attributes)); the syntax of `ipAddress`, `dnsName` and port ranges is written in ABNF and bounds a port number to 0 to 65535 ([Annex C.2.3](#c23-ip-address), [Annex C.2.4](#c24-dns-name)); a value of the XML Schema data types is not a character string except for `string` and `anyURI` ([Annex C.2.6](#c26-data-types-defined-by-reference-to-xml-schema)); a `VariableReference` may refer to a parameter or a quantified variable ([Section 7.25](#725-variablereferencetype), [Section 7.14](#714-sharedvariabledefinitiontype)); the subject category of [Annex D.2](#d2-attribute-categories) corresponds to, and is not identical to, the XACML 2.0 category.
 - Editorial: typos, articles, the name of GitHub, outdated XACML wording in the definition of **_target_** and in the names of the XML encryption and signature profiles, the Figure 5-3 multiplicities, the line references of the examples, and the example of the uniqueness constraint.
-- Model and description corrections without a change of the intended behavior: a policy has `CombinerInput` objects that are nested policies, policy references or rules, and `RuleType` extends `CombinerInputType` ([Section 7.4](#74-policytype), [Section 7.12](#712-ruletype)); a policy may lack a target and a rule may lack a condition ([Section 5.3.2.1](#5321-policy-target) and Figure 5-3); the default `string` of a literal in a `Map` is that of its `Iterant` ([Section 7.25.3](#7253-map-expression)); the `ShortIdSetReference` property of a request is unordered ([Section 7.31](#731-requesttype)); the property of `ContentType` is `Body` ([Section 7.34](#734-contenttype-optional)); the identifier-valued property of a status code is `Value` ([Section 9.1](#91-extensible-properties)); a deny-biased PEP is the one that denies access unless it receives an explicit `Permit` ([Section 10.1.6](#1016-notapplicable-results)); [Annex G](#annex-g-uml-model) states that it is informational; [Section 9.2](#92-structured-attributes) no longer carries an editor's note and includes the `entity` data type.
-- Requirement keywords previously written in lowercase or mixed case ("must", "shall", "should", "SHALL not") are written in uppercase, with the wording otherwise unchanged (Sections 7.1.2.3, 7.3, 7.4, 7.6, 7.11, 7.15, 7.21, 7.22, 7.24b, 7.29, 7.31, 7.34, 7.43, 8.3, 8.4.5, 8.16 and 11.2.4, and Annexes C.3.1, C.3.3, C.3.8, C.3.15 and C.3.16). A lowercase "must" or "shall" that states a condition or a consequence rather than a requirement stays lowercase. The uppercase "MUST be satisfied" of the `Condition` property in [Section 7.12](#712-ruletype) is written "must be satisfied" for the same reason, and the sentence on named arguments in [Section 7.11](#711-policyreferencetype), [Section 7.15](#715-applytype) and [Section 7.24b](#724b-sharedvariablereferencetype) is split after "named *x*", so that "Its Expression MUST match" states the requirement on its own. In [Section 7.34](#734-contenttype-optional) "required only if the implementation must support extensions" reads "required only if the implementation supports extensions".
+- Model and description corrections without a change of the intended behavior: a policy has `CombinerInput` objects that are nested policies, policy references or rules, and `RuleType` extends `CombinerInputType` ([Section 7.4](#74-policytype), [Section 7.12](#712-ruletype)); a policy may lack a target and a rule may lack a condition ([Section 5.3.2.1](#5321-policy-target) and Figure 5-3); the default `string` of a literal in a `Map` is that of its `Iterant` ([Section 7.27.3](#7273-map-expression)); the `ShortIdSetReference` property of a request is unordered ([Section 7.33](#733-requesttype)); the property of `ContentType` is `Body` ([Section 7.36](#736-contenttype-optional)); the identifier-valued property of a status code is `Value` ([Section 9.1](#91-extensible-properties)); a deny-biased PEP is the one that denies access unless it receives an explicit `Permit` ([Section 10.1.6](#1016-notapplicable-results)); [Annex G](#annex-g-uml-model) states that it is informational; [Section 9.2](#92-structured-attributes) no longer carries an editor's note and includes the `entity` data type.
+- Requirement keywords previously written in lowercase or mixed case ("must", "shall", "should", "SHALL not") are written in uppercase, with the wording otherwise unchanged (Sections 7.1.2.3, 7.3, 7.4, 7.6, 7.11, 7.16, 7.22, 7.23, 7.26, 7.31, 7.33, 7.36, 7.45, 8.3, 8.4.5, 8.16 and 11.2.4, and Annexes C.3.1, C.3.3, C.3.8, C.3.15 and C.3.16). A lowercase "must" or "shall" that states a condition or a consequence rather than a requirement stays lowercase. The uppercase "MUST be satisfied" of the `Condition` property in [Section 7.12](#712-ruletype) is written "must be satisfied" for the same reason, and the sentence on named arguments in [Section 7.11](#711-policyreferencetype), [Section 7.16](#716-applytype) and [Section 7.26](#726-sharedvariablereferencetype) is split after "named *x*", so that "Its Expression MUST match" states the requirement on its own. In [Section 7.36](#736-contenttype-optional) "required only if the implementation must support extensions" reads "required only if the implementation supports extensions".
 - The requirement keyword is removed from the sentence of [Section 7.1.1.1.1.2](#711112-ocl-constraints) that says the simple `unique` constraint is not enough to define what is unique about each value object; the requirement that the property *itemProp* of each item is unique is stated, unchanged, in the next sentence.
 - In the object-type conformance table, `NamedArgumentType` (optional) and `PatternMatchIdReferenceType` are added, `SharedVariableReferenceType` is now optional, and `DecisionType` (a simple type), `DescriptionType` (not defined by the model) and `PolicyIssuerType` (the policy issuer is an `EntityType`) are no longer listed, `PatternMatchIdReferenceType` is mandatory, and the deprecated identifier of `base64Binary-at-least-one-member-of` is corrected to its XACML 1.0 identifier ([Section 11.2.8](#1128-functions)); the other changes are in the object-type table ([Section 11.2.1](#1121-object-types)). The reference to conformance test cases is removed from [Section 11.2](#112-conformance-tables).
-- A response holds a sequence of one or more results, not one per requested resource; multiple results are left to the ACAL Multiple Decision Profile [[ACAL-Multiple-1.0](#acal-multiple-10)] ([Section 7.36](#736-responsetype)).
+- A response holds a sequence of one or more results, not one per requested resource; multiple results are left to the ACAL Multiple Decision Profile [[ACAL-Multiple-1.0](#acal-multiple-10)] ([Section 7.38](#738-responsetype)).
 - Requirements formerly stated in non-normative sections are moved into normative ones: the conversion of attribute representations ([Section 8.4](#84-attribute-evaluation)), the advice of [[UTR36](#utr36)] ([Section 8.1.2](#812-version-of-unicode)) and distinct namespaces for policy identifiers from distinct sources ([Section 8.13](#813-policyreference-evaluation)). [Section 5.2](#52-acal-context), [Section 10.2.5](#1025-policy-identifiers) and [Section 10.3](#103-unicode-security-issues) now refer to those sections, [Section 10.4](#104-identifier-equality) refers to [Section 8.18](#818-identifier-equality), which already stated its recommendation, and [Section 5.3.1.1](#5311-condition) no longer states a requirement of its own but refers to [[ACAL-Hierarchical-1.0](#acal-hierarchical-10)].
 - The examples are corrected so that each validates against its representation's schema and evaluates as its text describes: in [Section 6](#6-examples-non-normative) the JSON examples carry their JACAL root key, the example short-identifier set defines every short identifier the rules use, Rule 1's YAML variable definition uses `Expression`, Rule 2 tests "under 16" with `date-less-than`, Rule 2's JSON is well-formed, and Rule 3's notice reads the physician's `physician-id`.
 - New glossary terms: lexical mapping, lexical space and value space ([Section 2.1.1](#211-terms-defined-elsewhere)); input acceptance limit and supported integer interval ([Section 2.1.2](#212-terms-defined-in-this-document)). The examples of [Section 6](#6-examples-non-normative) are also given in YAML; in them, `RuleId` is replaced by `Id`, and the example request's `patient-number` attribute is a `string`, as Rule 1 reads it. The complete UML class diagram is added as [Annex G](#annex-g-uml-model).
@@ -8981,23 +8981,23 @@ The changes made since the previous version (Committee Specification Draft 01) a
 - `integer-average` returns the mathematically exact quotient of the sum and the number of values, converted to `double` by round-to-nearest, ties-to-even, and the sum need not be within the supported integer interval; before, the text did not say how the `double` is obtained ([Annex C.3.14](#c314-aggregate-functions)).
 - `access-permitted` returns `false` for a nested `Decision` of `Deny` or `NotApplicable` and `Indeterminate` (with the status code of the nested evaluation, if one is returned) for an `Indeterminate` nested `Decision`; before, only `Permit` was defined. A PDP that supports it documents a positive bound on the number of invocations during one initial invocation, and exceeding the bound terminates the initial invocation with `processing-error`, not the inner one, so that a combining algorithm such as `permit-unless-deny` cannot turn the failure into `Permit` ([Annex C.3.16](#c316-other-functions)).
 - The notes of `dayTimeDuration-equal` and `yearMonthDuration-equal` that said the lexical representation of each argument had to be converted to fractional seconds or to months are deleted ([Annex C.3.1](#c31-equality-predicates)), because `op:duration-equal` ([[XF](#xf)] Section 8.2.5) already compares the months and the seconds components. In the comparison functions on `dateTime` and `date` ([Annex C.3.8](#c38-non-numeric-comparison-functions)), the label "Note:" is removed from the sentence on a missing time zone, which carries a requirement keyword.
-- The sentence "At most one of each of these attributes is associated with each subject" is deleted from [Annex D.4](#d4-subject-attributes): it had no requirement keyword, and a requirement would have contradicted [Section 7.33](#733-requestentitytype), which allows the same `AttributeId` with a different `DataType` or `Issuer`.
+- The sentence "At most one of each of these attributes is associated with each subject" is deleted from [Annex D.4](#d4-subject-attributes): it had no requirement keyword, and a requirement would have contradicted [Section 7.35](#735-requestentitytype), which allows the same `AttributeId` with a different `DataType` or `Issuer`.
 - [Annex E](#annex-e-combining-algorithms) states that, unless expressly identified as non-normative, the text of the annex, English and pseudo code, is normative; before, descriptions in English were all non-normative, which made the sentences on evaluation order of [Annex E.3](#e3-ordered-deny-overrides) and [Annex E.5](#e5-ordered-permit-overrides), which have no pseudo code, non-normative. The non-normative description of `first-applicable` ([Annex E.8](#e8-first-applicable)) no longer contains requirement keywords, and says that an extended `Indeterminate` value of a child counts as `Indeterminate`.
 - The dialect of the `pattern` of a `RestrictedString` is defined: an ECMA-262 regular expression with the Unicode (`u`) flag and no other flag, matching the entire value, and a concrete representation that uses another dialect accepts exactly the language of the pattern. A Note lists the other dialects in ACAL: `fn:matches` for the regular-expression based functions and I-Regexp for the JSONPath filter functions. The `\d` of the `VersionType` and `VersionMatchType` patterns is written `[0-9]` there and in the XML, JSON and YAML schemas, because in XSD `\d` matches any decimal digit. The XSD pattern of `AttributeSelectorPathType` writes `\S` and `.` as explicit character classes with the ECMA-262 meaning, because their meaning in XSD differs, and the `VersionMatchType` pattern of the UML model ([Annex G](#annex-g-uml-model)) is brought to the pattern of [Section 7.1.2.3.5](#71235-versionmatchtype), which allows `+` only as the last component. [[ECMA-262](#ecma-262)], [[RFC9485](#rfc9485)] and [[RFC9535](#rfc9535)] are added to the references ([Section 7.1.2.2](#7122-acal-defined-uml-stereotypes-used-in-new-primitive-types), [Section 7.1.2.3.4](#71234-versiontype), [Section 7.1.2.3.5](#71235-versionmatchtype)).
-- `VersionType` no longer claims compatibility with Semantic Versioning, which does not hold (one to four numeric components, no pre-release part); it states the syntax: a dot-separated sequence of one to four non-negative decimal integers, without leading zeros except for `0`. Versions are compared component by component as integers, a missing component being 0, and the most recent version is the greatest; [Section 7.10](#710-patternmatchidreferencetype), [Section 7.24b](#724b-sharedvariablereferencetype) and [Section 8.13](#813-policyreference-evaluation) refer to this order. `VersionMatchType` is described as a pattern, not as a restricted regular expression ([Section 7.1.2.3.4](#71234-versiontype), [Section 7.1.2.3.5](#71235-versionmatchtype)). A version match is applied component by component with a missing component being 0 on both sides, so that a match selects all the equivalent versions or none (for example the match `1` selects `1`, `1.0` and `1.0.0.0`, and `1.*` selects `1`); XACML 3.0 did not say what happens when the match and the version have a different number of components ([Section 7.1.2.3.5](#71235-versionmatchtype)).
+- `VersionType` no longer claims compatibility with Semantic Versioning, which does not hold (one to four numeric components, no pre-release part); it states the syntax: a dot-separated sequence of one to four non-negative decimal integers, without leading zeros except for `0`. Versions are compared component by component as integers, a missing component being 0, and the most recent version is the greatest; [Section 7.10](#710-patternmatchidreferencetype), [Section 7.26](#726-sharedvariablereferencetype) and [Section 8.13](#813-policyreference-evaluation) refer to this order. `VersionMatchType` is described as a pattern, not as a restricted regular expression ([Section 7.1.2.3.4](#71234-versiontype), [Section 7.1.2.3.5](#71235-versionmatchtype)). A version match is applied component by component with a missing component being 0 on both sides, so that a match selects all the equivalent versions or none (for example the match `1` selects `1`, `1.0` and `1.0.0.0`, and `1.*` selects `1`); XACML 3.0 did not say what happens when the match and the version have a different number of components ([Section 7.1.2.3.5](#71235-versionmatchtype)).
 - [Section 7.4](#74-policytype) no longer says that a nested policy, a policy reference or a rule whose target or condition does not match is "ignored", or that one that matches "MUST be evaluated" or "considered"; those sentences contradicted [Section 8.11](#811-rule-evaluation) and [Section 8.12](#812-policy-evaluation), where a child that does not match evaluates to `NotApplicable` and is combined, and the early return of the combining algorithms ([Annex E](#annex-e-combining-algorithms)). They are replaced by "When a nested policy [a policy reference, a rule] is evaluated, the evaluation procedure defined in Section 8.12 [8.13, 8.11] SHALL be used", the same pattern as the existing "A `PolicyType` object may be evaluated, in which case the evaluation procedure defined in Section 8.12 SHALL be used" of Section 7.4 and the corresponding sentence of Section 7.12. [Section 8.19](#819-short-identifiers-in-responses) states as a requirement of the PDP (SHALL) what it described as the PDP's responsibility. [Section 8.15](#815-authorization-decision) says that each `ResultType` object of the response context has one `Decision`, instead of the response context having one `Decision` property.
 - The OCL constraints of Core apply to the effective values of the properties they compare; identifiers are compared by identifier equality after expansion and versions as in Section 7.1.2.3.4 ([Section 7.1.1.1.1.2](#711112-ocl-constraints)). `dateTime-minimum`, `dateTime-maximum`, `date-minimum` and `date-maximum` resolve a value without a time zone as `dateTime-less-than-or-equal`, `dateTime-greater-than-or-equal`, `date-less-than-or-equal` and `date-greater-than-or-equal` do, with the implicit timezone of the PDP, instead of assuming +14:00 or -14:00; the order they use is that of those functions, so the minimum or maximum of a bag and a comparison agree ([Annex C.3.14](#c314-aggregate-functions)). `double-sum` and `double-average` return the exactly rounded sum or average, so that the result does not depend on the order of the values of the bag, and `double-minimum` and `double-maximum` have a result for a bag with a NaN (NaN) and for equal `+0` and `-0` (`-0` for the minimum, `+0` for the maximum) ([Annex C.3.14](#c314-aggregate-functions)). `round` and `floor` are defined as `fn:round` and `fn:floor` of [[XF](#xf)] ([Annex C.3.2](#c32-arithmetic-functions)); before, no rule defined their result. `string-substring` and `anyURI-substring` define when their arguments are in bounds: the second argument from 0 to the length of the string, the third -1 or from the second argument to the length, so that the empty string is a possible result ([Annex C.3.9](#c39-string-functions)); before, "out of bounds" was not defined.
-- A policy is identified by its `PolicyId` and `Version` together, and so is a shared variable by its `Id` and `Version`: a PAP ensures that no two policies (shared variables) visible to the PDP have the same identifier and equivalent versions, two versions that compare equal being equivalent, and the key of the `BundleType` and `ResultType` constraints becomes the pair. Before, the identifier alone had to be unique, so two versions of one policy could not be in a bundle, although a version pattern can match several. The requirement applies to the policies that a policy reference can select, those not nested in another policy; XACML 3.0 did not say whether a nested policy was visible to the PDP for this purpose. For a nested policy, a unique identifier and version pair across the bundle at any depth is RECOMMENDED, so that an `ApplicablePolicyReference` does not name more than one policy of the bundle ([Section 7.1.2.3.4](#71234-versiontype), [Section 7.4](#74-policytype), [Section 7.13b](#713b-sharedvariabledefinitiontype), [Section 7.37](#737-resulttype), [Section 7.46](#746-bundletype), [Section 10.2.5](#1025-policy-identifiers)). Short identifier sets stay unique by `Id`.
-- One rule governs the `DataType` property of a literal value, a designator and a selector ([Section 7.14](#714-expressiontype)): the expected data type of the property that holds the object (a table, which also lists the `Expression` of an entity attribute designator and of an entity attribute selector), the effective data type (the `DataType` property, then the fixed data type of a `<<fixedDatatype>>` literal, then a single expected data type, then the default data type of the object type), agreement of a `DataType` property that is present, and omission. The rule of [Section 7.15](#715-applytype) for the arguments of a function is unchanged, except that a statically-typed argument without a `DataType` property whose expected data type is not fixed has its effective data type instead of the default data type of its object type, so that a fixed-datatype literal keeps its fixed data type. The literal `Iterant` of a `Map` expression without a `DataType` property also has its effective data type instead of always `string` ([Section 7.25.3](#7253-map-expression)), and the `DataType` match of an attribute designator ([Section 7.17](#717-namedattributedesignatortype)) compares its effective data type with the effective data type of the attribute (its `DataType` property, or `string` if that property is omitted), in the match rule and in its `Issuer`-absent sentence. The `DataType` property may also be omitted where there is no expected data type. The sentences of [Section 7.13](#713-variabledefinitiontype), [Section 7.13b](#713b-sharedvariabledefinitiontype) and [Section 7.30](#730-attributeassignmentexpressiontype) that set an omitted `DataType` to `string` are replaced by a reference to the rule; their expressions, the `Domain` of a quantified expression and the `Iterant` of a `Map` expression have no expected data type. It replaces the sentences of [Section 7.6](#76-parametertype), [Section 7.11](#711-policyreferencetype), [Section 7.17](#717-namedattributedesignatortype), [Section 7.20](#720-baseattributeselectortype-optional), [Section 7.23](#723-valuetype), [Section 7.24b](#724b-sharedvariablereferencetype), [Section 7.25](#725-quantifiedexpressiontype-optional), [Section 7.27](#727-attributetype), [Section 7.28](#728-attributeassignmenttype) and [Section 7.43](#743-missingattributedetailtype) on omitting, redefining or overriding a `DataType`, and gives an expression in a named argument ([Section 7.47](#747-argumenttype-and-namedargumenttype)) its expected data type. Before, a `Value` of an attribute assignment SHALL NOT have a `DataType` of its own ([Section 7.28](#728-attributeassignmenttype)); a `Value` of an attribute, of a parameter or of a missing attribute detail SHALL NOT redefine or override the `DataType` of its parent and SHOULD NOT set one of its own ([Section 7.27](#727-attributetype), [Section 7.6](#76-parametertype), [Section 7.43](#743-missingattributedetailtype)); a `Value` argument of a policy reference or of a shared variable reference SHOULD omit it and, if present, SHALL match ([Section 7.11](#711-policyreferencetype), [Section 7.24b](#724b-sharedvariablereferencetype)); and the `Iterant` of a `ForAny`, `ForAll` or `Select` expression SHALL omit it ([Section 7.25](#725-quantifiedexpressiontype-optional)). The XML and JSON schemas rejected a `DataType` on a `Value` of an attribute, of an attribute assignment, of a parameter or of a missing attribute detail, and on a positional `Value` argument of a policy reference or of a shared variable reference; they did not check the `Iterant`. A `DataType` that agrees with the expected data type is now allowed in every one of these places, and one that disagrees is invalid in every one of them. The XML Schema, the Schematron rules and the JSON Schema do not check that the `DataType` of a reference argument agrees with the `Parameter` it provides; the YACAL constraint catalog checks it for a literal `Value` argument, positional or named, and also checks a present `DataType` on a literal `Value` of a missing attribute detail and on a literal `Value` iterant of `ForAny`, `ForAll` and `Select` (not `Map`).
-- The properties of an attribute are defined by a new abstract object type `BaseAttributeType`, which `AttributeType`, `RequestAttributeType` and `AttributeAssignmentType` extend ([Section 7.27](#727-attributetype), [Section 7.28](#728-attributeassignmenttype), [Section 7.35](#735-requestattributetype)). Before, `RequestAttributeType` and `AttributeAssignmentType` extended `AttributeType`, so the `Attribute` property of `EntityType` and of `ResultEntityType` also admitted them; it now admits only an `AttributeType` object. The rules of [Section 7.14](#714-expressiontype) and [Section 8.18](#818-identifier-equality) that applied to every attribute now name `BaseAttributeType`. The example in [Section 9.2](#92-structured-attributes) names `RequestAttributeType` objects in a `RequestEntityType` object and `AttributeType` objects in an `EntityType` object.
-- The `DataType` of each `AttributeAssignmentType` object that the evaluation of a notice expression produces is the data type of the value from which it is constructed, and the object has a `Category` or an `Issuer` property only if the `AttributeAssignmentExpression` object has it ([Section 7.29](#729-noticeexpressiontype), [Section 7.30](#730-attributeassignmentexpressiontype)). The sentence "The values of the notice arguments SHALL be interpreted by the PEP" is deleted from [Section 7.29](#729-noticeexpressiontype): what a PEP does with a notice is specified in [Section 8.2](#82-policy-enforcement-point) for an obligation notice and in [Section 7.37](#737-resulttype) for an advice notice, and the `Notice` property of Section 7.37 now describes each notice as "to be considered by the PEP", not "to be interpreted by the PEP". The spurious "with" at the end of the description of the `Name` property of a named argument is removed ([Section 7.47](#747-argumenttype-and-namedargumenttype)).
-- The standard media type and encoding identifiers of [Annex D.10](#d10-content-types) and [Annex D.11](#d11-content-encodings) SHALL be used whenever applicable, in [Section 7.1.2.3.14](#712314-mediatype-optional), [Section 7.1.2.3.15](#712315-contentencodingtype-optional) and [Section 7.34](#734-contenttype-optional) and in the descriptions of the XML and JSON schemas, as in the two annexes; before, those sections said SHOULD.
-- As the `Content` of a request entity or an entity, `ContentType` objects SHALL be used only for structured attributes that are not compatible with `RequestAttribute` objects ([Section 7.34](#734-contenttype-optional)); csd01 said they SHOULD be used only for structured data that cannot be handled by named attributes, and that the body type SHOULD be a structured data-type. A structured attribute is not compatible with `RequestAttribute` objects if it cannot be encoded in the `Value` of a `RequestAttribute` object: no data type URI is defined for it, or no concrete subtype of `StructuredValueType` is defined for that data type. The `Body` of a `ContentType` object denotes structured content in the format identified by its effective media type (a JSON object or array, a YAML mapping or sequence, an XML document). A document in another representation's format is carried as its text or in base64, not converted: [Section 7.34](#734-contenttype-optional) gives the form of a `Body` for each media type and representation, the exact-text, base64 and UTF-8 rules, the document that a profile evaluates, the rejection of duplicate names in JSON content and the rules for a converter.
+- A policy is identified by its `PolicyId` and `Version` together, and so is a shared variable by its `Id` and `Version`: a PAP ensures that no two policies (shared variables) visible to the PDP have the same identifier and equivalent versions, two versions that compare equal being equivalent, and the key of the `BundleType` and `ResultType` constraints becomes the pair. Before, the identifier alone had to be unique, so two versions of one policy could not be in a bundle, although a version pattern can match several. The requirement applies to the policies that a policy reference can select, those not nested in another policy; XACML 3.0 did not say whether a nested policy was visible to the PDP for this purpose. For a nested policy, a unique identifier and version pair across the bundle at any depth is RECOMMENDED, so that an `ApplicablePolicyReference` does not name more than one policy of the bundle ([Section 7.1.2.3.4](#71234-versiontype), [Section 7.4](#74-policytype), [Section 7.14](#714-sharedvariabledefinitiontype), [Section 7.39](#739-resulttype), [Section 7.48](#748-bundletype), [Section 10.2.5](#1025-policy-identifiers)). Short identifier sets stay unique by `Id`.
+- One rule governs the `DataType` property of a literal value, a designator and a selector ([Section 7.15](#715-expressiontype)): the expected data type of the property that holds the object (a table, which also lists the `Expression` of an entity attribute designator and of an entity attribute selector), the effective data type (the `DataType` property, then the fixed data type of a `<<fixedDatatype>>` literal, then a single expected data type, then the default data type of the object type), agreement of a `DataType` property that is present, and omission. The rule of [Section 7.16](#716-applytype) for the arguments of a function is unchanged, except that a statically-typed argument without a `DataType` property whose expected data type is not fixed has its effective data type instead of the default data type of its object type, so that a fixed-datatype literal keeps its fixed data type. The literal `Iterant` of a `Map` expression without a `DataType` property also has its effective data type instead of always `string` ([Section 7.27.3](#7273-map-expression)), and the `DataType` match of an attribute designator ([Section 7.18](#718-namedattributedesignatortype)) compares its effective data type with the effective data type of the attribute (its `DataType` property, or `string` if that property is omitted), in the match rule and in its `Issuer`-absent sentence. The `DataType` property may also be omitted where there is no expected data type. The sentences of [Section 7.13](#713-variabledefinitiontype), [Section 7.14](#714-sharedvariabledefinitiontype) and [Section 7.32](#732-attributeassignmentexpressiontype) that set an omitted `DataType` to `string` are replaced by a reference to the rule; their expressions, the `Domain` of a quantified expression and the `Iterant` of a `Map` expression have no expected data type. It replaces the sentences of [Section 7.6](#76-parametertype), [Section 7.11](#711-policyreferencetype), [Section 7.18](#718-namedattributedesignatortype), [Section 7.21](#721-baseattributeselectortype-optional), [Section 7.24](#724-valuetype), [Section 7.26](#726-sharedvariablereferencetype), [Section 7.27](#727-quantifiedexpressiontype-optional), [Section 7.29](#729-attributetype), [Section 7.30](#730-attributeassignmenttype) and [Section 7.45](#745-missingattributedetailtype) on omitting, redefining or overriding a `DataType`, and gives an expression in a named argument ([Section 7.49](#749-argumenttype-and-namedargumenttype)) its expected data type. Before, a `Value` of an attribute assignment SHALL NOT have a `DataType` of its own ([Section 7.30](#730-attributeassignmenttype)); a `Value` of an attribute, of a parameter or of a missing attribute detail SHALL NOT redefine or override the `DataType` of its parent and SHOULD NOT set one of its own ([Section 7.29](#729-attributetype), [Section 7.6](#76-parametertype), [Section 7.45](#745-missingattributedetailtype)); a `Value` argument of a policy reference or of a shared variable reference SHOULD omit it and, if present, SHALL match ([Section 7.11](#711-policyreferencetype), [Section 7.26](#726-sharedvariablereferencetype)); and the `Iterant` of a `ForAny`, `ForAll` or `Select` expression SHALL omit it ([Section 7.27](#727-quantifiedexpressiontype-optional)). The XML and JSON schemas rejected a `DataType` on a `Value` of an attribute, of an attribute assignment, of a parameter or of a missing attribute detail, and on a positional `Value` argument of a policy reference or of a shared variable reference; they did not check the `Iterant`. A `DataType` that agrees with the expected data type is now allowed in every one of these places, and one that disagrees is invalid in every one of them. The XML Schema, the Schematron rules and the JSON Schema do not check that the `DataType` of a reference argument agrees with the `Parameter` it provides; the YACAL constraint catalog checks it for a literal `Value` argument, positional or named, and also checks a present `DataType` on a literal `Value` of a missing attribute detail and on a literal `Value` iterant of `ForAny`, `ForAll` and `Select` (not `Map`).
+- The properties of an attribute are defined by a new abstract object type `BaseAttributeType`, which `AttributeType`, `RequestAttributeType` and `AttributeAssignmentType` extend ([Section 7.29](#729-attributetype), [Section 7.30](#730-attributeassignmenttype), [Section 7.37](#737-requestattributetype)). Before, `RequestAttributeType` and `AttributeAssignmentType` extended `AttributeType`, so the `Attribute` property of `EntityType` and of `ResultEntityType` also admitted them; it now admits only an `AttributeType` object. The rules of [Section 7.15](#715-expressiontype) and [Section 8.18](#818-identifier-equality) that applied to every attribute now name `BaseAttributeType`. The example in [Section 9.2](#92-structured-attributes) names `RequestAttributeType` objects in a `RequestEntityType` object and `AttributeType` objects in an `EntityType` object.
+- The `DataType` of each `AttributeAssignmentType` object that the evaluation of a notice expression produces is the data type of the value from which it is constructed, and the object has a `Category` or an `Issuer` property only if the `AttributeAssignmentExpression` object has it ([Section 7.31](#731-noticeexpressiontype), [Section 7.32](#732-attributeassignmentexpressiontype)). The sentence "The values of the notice arguments SHALL be interpreted by the PEP" is deleted from [Section 7.31](#731-noticeexpressiontype): what a PEP does with a notice is specified in [Section 8.2](#82-policy-enforcement-point) for an obligation notice and in [Section 7.39](#739-resulttype) for an advice notice, and the `Notice` property of Section 7.39 now describes each notice as "to be considered by the PEP", not "to be interpreted by the PEP". The spurious "with" at the end of the description of the `Name` property of a named argument is removed ([Section 7.49](#749-argumenttype-and-namedargumenttype)).
+- The standard media type and encoding identifiers of [Annex D.10](#d10-content-types) and [Annex D.11](#d11-content-encodings) SHALL be used whenever applicable, in [Section 7.1.2.3.14](#712314-mediatype-optional), [Section 7.1.2.3.15](#712315-contentencodingtype-optional) and [Section 7.36](#736-contenttype-optional) and in the descriptions of the XML and JSON schemas, as in the two annexes; before, those sections said SHOULD.
+- As the `Content` of a request entity or an entity, `ContentType` objects SHALL be used only for structured attributes that are not compatible with `RequestAttribute` objects ([Section 7.36](#736-contenttype-optional)); csd01 said they SHOULD be used only for structured data that cannot be handled by named attributes, and that the body type SHOULD be a structured data-type. A structured attribute is not compatible with `RequestAttribute` objects if it cannot be encoded in the `Value` of a `RequestAttribute` object: no data type URI is defined for it, or no concrete subtype of `StructuredValueType` is defined for that data type. The `Body` of a `ContentType` object denotes structured content in the format identified by its effective media type (a JSON object or array, a YAML mapping or sequence, an XML document). A document in another representation's format is carried as its text or in base64, not converted: [Section 7.36](#736-contenttype-optional) gives the form of a `Body` for each media type and representation, the exact-text, base64 and UTF-8 rules, the document that a profile evaluates, the rejection of duplicate names in JSON content and the rules for a converter.
 - An ACAL object SHALL NOT have two properties with the same name ([Section 7.1.1](#711-object-type)).
-- A `StatusDetailType` object has a `MissingAttributeDetail` property and a `Content` property, and any detail other than a missing-attribute detail is a `ContentType` object ([Section 7.42](#742-statusdetailtype-optional)); before, it allowed arbitrary content, whose form each representation defined.
-- `RequestType` has an object-level OCL constraint that every `RequestEntityReference` value of its `MultiRequests` property equals the `Id` of one of its `RequestEntity` objects ([Section 7.31](#731-requesttype)), and [Section 7.1.1.1.2](#71112-object-level-constraints) defines the form of expression that the constraint uses.
+- A `StatusDetailType` object has a `MissingAttributeDetail` property and a `Content` property, and any detail other than a missing-attribute detail is a `ContentType` object ([Section 7.44](#744-statusdetailtype-optional)); before, it allowed arbitrary content, whose form each representation defined.
+- `RequestType` has an object-level OCL constraint that every `RequestEntityReference` value of its `MultiRequests` property equals the `Id` of one of its `RequestEntity` objects ([Section 7.33](#733-requesttype)), and [Section 7.1.1.1.2](#71112-object-level-constraints) defines the form of expression that the constraint uses.
 - The commentary [04] and [05] of the first example ([Section 6.1.1](#611-example-policy)) refers to [Section 7.4](#74-policytype), [Section 7.11](#711-policyreferencetype) and [Section 7.1.2.3.4](#71234-versiontype) instead of restating the rules on policy identifiers and versions.
-- Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; references to the multiple decision and hierarchical resource profiles now cite the ACAL profiles; section and table numbering, cross-references and the table of contents are corrected (in Annex C, "Entity" moves from C.2.6 to C.2.5 and "Extension Functions and Data Types" from C.3.18 to C.3.17, closing numbering gaps); citations of XML Schema datatype sections use the XML Schema 1.1 numbering of [[XS](#xs)] (e.g. Section 3.3.7 for `dateTime`, formerly the XML Schema 1.0 number 3.2.7); references to RFC 2396, RFC 2253 and RFC 2821 are replaced by [[RFC3986](#rfc3986)], [[RFC4514](#rfc4514)] and [[RFC5321](#rfc5321)]; the property descriptions of `ResultType`, `StatusCodeType` and `ResultEntityType` now state the same multiplicities as their UML definitions; and the `isBag` property of `ParameterType` is spelled `IsBag`, as in the XML Schema.
+- Editorial: the Technical Committee is renamed, and document and repository URLs are updated accordingly; references to the multiple decision and hierarchical resource profiles now cite the ACAL profiles; section and table numbering, cross-references and the table of contents are corrected (in Annex C, "Entity" moves from C.2.6 to C.2.5 and "Extension Functions and Data Types" from C.3.18 to C.3.17, closing numbering gaps); in Section 7, csd01's Sections 7.13b and 7.24b are numbered [7.14](#714-sharedvariabledefinitiontype) and [7.26](#726-sharedvariablereferencetype), and the sections after each move up accordingly (csd01 7.14 to 7.24 are 7.15 to 7.25, and csd01 7.25 to 7.47 are 7.27 to 7.49); citations of XML Schema datatype sections use the XML Schema 1.1 numbering of [[XS](#xs)] (e.g. Section 3.3.7 for `dateTime`, formerly the XML Schema 1.0 number 3.2.7); references to RFC 2396, RFC 2253 and RFC 2821 are replaced by [[RFC3986](#rfc3986)], [[RFC4514](#rfc4514)] and [[RFC5321](#rfc5321)]; the property descriptions of `ResultType`, `StatusCodeType` and `ResultEntityType` now state the same multiplicities as their UML definitions; and the `isBag` property of `ParameterType` is spelled `IsBag`, as in the XML Schema.
 
 The remainder of this appendix describes how ACAL 1.0 differs from XACML 3.0.
 
@@ -9044,7 +9044,7 @@ ACAL 1.0 is a successor to XACML 3.0. ACAL 1.0 differs from XACML 3.0 in the fol
 
 - The uniqueness rule for attributes within a `RequestEntity`, `ResultEntity` or `entity` data type value keys on the combination `(AttributeId, DataType, Issuer)` — where `DataType` is compared on its effective value after applying its default, and an absent `Issuer` is never a duplicate of a present one. (This replaces the csd01 rule that keyed on `AttributeId` alone, which contradicted the attribute-designator matching rule and could not represent, for example, a node's ancestors given in more than one data type as the Hierarchical Resource Profile allows.)
 
-- `AttributeValue` is replaced with more generic `Value` whose `DataType` is now optional, i.e. it may be omitted when it is already defined at the parent or ancestor level, which simplifies expressions with literal values. In particular, as a result of the previous change, in an `Attribute`, the `Value`'s `DataType` can now be omitted since defined at the `Attribute` level already ([Section 7.14](#714-expressiontype)).
+- `AttributeValue` is replaced with more generic `Value` whose `DataType` is now optional, i.e. it may be omitted when it is already defined at the parent or ancestor level, which simplifies expressions with literal values. In particular, as a result of the previous change, in an `Attribute`, the `Value`'s `DataType` can now be omitted since defined at the `Attribute` level already ([Section 7.15](#715-expressiontype)).
 
 - A `Content` may now contain XML, JSON and possibly other content types in the future, and therefore has a new data model - more generic - that consists of three properties: `Body` (content body which is similar to former Content value), `MediaType` (Content media type which indicates whether it is XML, JSON or some other content type) and `Encoding` which indicates whether the body is encoded with a particular mechanism, e.g. Base64-encoded data.
 

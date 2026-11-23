@@ -154,7 +154,7 @@
 			"pattern": "^[A-Za-z0-9][A-Za-z0-9!#$&\\-\\^_.+]{0,63}/[A-Za-z0-9][A-Za-z0-9!#$&\\-\\^_.+]{0,63}$"
 		},
 		"ContentEncodingType": {
-			"description": "Content encoding name (RFC 2045). The standard ContentEncodingType value(s) defined in JACAL core specification SHALL be used whenever applicable: 'base64', the only value for 'application/json', 'application/yaml' and 'application/xml' content (ACAL Core Section 7.34). For other media types, either use one of the standard Transfer Encodings registered at IANA (RFC 4289 - https://www.iana.org/assignments/transfer-encodings/transfer-encodings.xhtml), or else, if a custom content encoding is really needed, as suggested by RFC 2045 Section 6.3, define a new one prefixed with 'x-'.",
+			"description": "Content encoding name (RFC 2045). The standard ContentEncodingType value(s) defined in JACAL core specification SHALL be used whenever applicable: 'base64', the only value for 'application/json', 'application/yaml' and 'application/xml' content (ACAL Core Section 7.36). For other media types, either use one of the standard Transfer Encodings registered at IANA (RFC 4289 - https://www.iana.org/assignments/transfer-encodings/transfer-encodings.xhtml), or else, if a custom content encoding is really needed, as suggested by RFC 2045 Section 6.3, define a new one prefixed with 'x-'.",
 			"type": "string",
 			"pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
 		},
@@ -1185,7 +1185,7 @@
 			"additionalProperties": false
 		},
 		"BaseAttributeType": {
-			"$comment": "Abstract type holding the properties of an attribute (ACAL Section 7.27); open, so that AttributeType, AttributeAssignmentType and RequestAttributeType can extend it.",
+			"$comment": "Abstract type holding the properties of an attribute (ACAL Section 7.29); open, so that AttributeType, AttributeAssignmentType and RequestAttributeType can extend it.",
 			"type": "object",
 			"required": [
 				"AttributeId",
@@ -1251,7 +1251,7 @@
 					"$ref": "#/$defs/LocalIdentifierType"
 				},
 				"Attribute": {
-					"$comment": "Attribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.44). Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's resultentity-attribute-attributeid-unique rule for the equivalent YACAL-side statement.",
+					"$comment": "Attribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.46). Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's resultentity-attribute-attributeid-unique rule for the equivalent YACAL-side statement.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1329,7 +1329,7 @@
 					"$ref": "#/$defs/ContentType"
 				},
 				"RequestAttribute": {
-					"$comment": "RequestAttribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.33). Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's request-attribute-id-unique-within-entity rule for the equivalent YACAL-side statement.",
+					"$comment": "RequestAttribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.35). Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's request-attribute-id-unique-within-entity rule for the equivalent YACAL-side statement.",
 					"type": "array",
 					"minItems": 1,
 					"items": {
@@ -1351,7 +1351,7 @@
 					"$ref": "#/$defs/ContentEncodingType"
 				},
 				"Body": {
-					"$comment": "'object' and 'array' types are used for JSON content (a JSON object or array); 'string' for a document in another format (XML text, YAML text) and for Base64 data when Encoding is 'base64' (ACAL Core Section 7.34)",
+					"$comment": "'object' and 'array' types are used for JSON content (a JSON object or array); 'string' for a document in another format (XML text, YAML text) and for Base64 data when Encoding is 'base64' (ACAL Core Section 7.36)",
 					"$ref": "#/$defs/AnyType"
 				}
 			},
@@ -1510,7 +1510,7 @@
 			"additionalProperties": false
 		},
 		"StatusDetailType": {
-			"$comment": "Supporting this is optional. This subschema can be removed if the implementation does not support 'StatusDetailType' objects. A detail other than a missing-attribute detail is a ContentType object in 'Content' (ACAL Core Section 7.42).",
+			"$comment": "Supporting this is optional. This subschema can be removed if the implementation does not support 'StatusDetailType' objects. A detail other than a missing-attribute detail is a ContentType object in 'Content' (ACAL Core Section 7.44).",
 			"type": "object",
 			"properties": {
 				"MissingAttributeDetail": {
@@ -1569,7 +1569,7 @@
 					"$ref": "#/$defs/ContentType"
 				},
 				"Attribute": {
-					"$comment": "Attribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.45). Applies to every use of EntityType, including PolicyIssuer. Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's policyissuer-attribute-attributeid-unique rule for the equivalent YACAL-side statement.",
+					"$comment": "Attribute values MUST be unique by the combination of AttributeId, DataType and Issuer (ACAL Section 7.47). Applies to every use of EntityType, including PolicyIssuer. Not enforced at the JSON Schema level. See acal-core-json-v1.0.md Section 5.2.4 ('Attribute uniqueness') for the full implementer directive, and acal-core-yaml-v1.0-constraints.yaml's policyissuer-attribute-attributeid-unique rule for the equivalent YACAL-side statement.",
 					"type": "array",
 					"minItems": 1,
 					"items": {

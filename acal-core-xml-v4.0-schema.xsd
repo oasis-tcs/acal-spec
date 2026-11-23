@@ -203,7 +203,7 @@
 	 -->
 	<xs:element name="ResultEntity" type="xacml:ResultEntityType">
 		<!-- Relaxed from AttributeId-only to the (AttributeId, DataType, Issuer)
-		triple used for attribute-designator matching (Section 7.17). Issuer is optional, so
+		triple used for attribute-designator matching (Section 7.18). Issuer is optional, so
 		xs:key (which requires every field present) cannot be used here; xs:unique is used
 		instead. xs:unique still cannot catch a duplicate when Issuer is absent from both
 		compared Attribute elements; see the xs:assert on ResultEntityType below. -->
@@ -231,7 +231,7 @@
 		must rely on the Schematron rule instead. Neither this assert nor xs:unique can perform
 		the Section 8.3 short-identifier expansion that identifier equality depends on, so
 		AttributeId/DataType duplicates that differ only by short-id-vs-URI spelling are not
-		caught by any schema-level check; see Section 7.44.  The implementation may choose to implement a mechanism (e.g. preliminary XSLT processing) to perform the short-identifier expansion prior to the Xml Schema validation step, making the rule enforcement fully effective. -->
+		caught by any schema-level check; see Section 7.46.  The implementation may choose to implement a mechanism (e.g. preliminary XSLT processing) to perform the short-identifier expansion prior to the Xml Schema validation step, making the rule enforcement fully effective. -->
 		<xs:assert vc:minVersion="1.1"
 			test="every $elt in xacml:Attribute satisfies (every $following in $elt/following-sibling::xacml:Attribute satisfies not(
 				$elt/@AttributeId = $following/@AttributeId
@@ -299,7 +299,7 @@
 
 	<xs:element name="StatusDetail" type="xacml:StatusDetailType" />
 	<xs:complexType name="StatusDetailType">
-		<!-- ACAL Core 7.42: missing-attribute details and, for any other detail, Content elements; at least one. -->
+		<!-- ACAL Core 7.44: missing-attribute details and, for any other detail, Content elements; at least one. -->
 		<xs:sequence>
 			<xs:element ref="xacml:MissingAttributeDetail" minOccurs="0" maxOccurs="unbounded" />
 			<xs:element ref="xacml:Content" minOccurs="0" maxOccurs="unbounded" />
@@ -331,7 +331,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 -->
 	<xs:element name="RequestEntity" type="xacml:RequestEntityType">
 		<!-- Relaxed from AttributeId-only to the (AttributeId, DataType, Issuer)
-		triple used for attribute-designator matching (Section 7.17). Issuer is optional, so
+		triple used for attribute-designator matching (Section 7.18). Issuer is optional, so
 		xs:key (which requires every field present) cannot be used here; xs:unique is used
 		instead. xs:unique still cannot catch a duplicate when Issuer is absent from both
 		compared RequestAttribute elements; see the xs:assert on RequestEntityType below. -->
@@ -368,7 +368,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		processors must rely on the Schematron rule instead. Neither this assert nor xs:unique
 		can perform the Section 8.3 short-identifier expansion that identifier equality depends
 		on, so AttributeId/DataType duplicates that differ only by short-id-vs-URI spelling are
-		not caught by any schema-level check; see Section 7.33. The implementation may choose to implement a mechanism (e.g. preliminary XSLT processing) to perform the short-identifier expansion prior to the XML Schema validation step, making the rule enforcement fully effective.-->
+		not caught by any schema-level check; see Section 7.35. The implementation may choose to implement a mechanism (e.g. preliminary XSLT processing) to perform the short-identifier expansion prior to the XML Schema validation step, making the rule enforcement fully effective.-->
 		<xs:assert vc:minVersion="1.1"
 			test="every $elt in xacml:RequestAttribute satisfies (every $following in $elt/following-sibling::xacml:RequestAttribute satisfies not(
 				$elt/@AttributeId = $following/@AttributeId
@@ -383,7 +383,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		</xs:assert>
 	</xs:complexType>
 
-	<!-- BaseAttributeType holds the properties of an attribute (ACAL Core 7.27). AttributeType,
+	<!-- BaseAttributeType holds the properties of an attribute (ACAL Core 7.29). AttributeType,
 	RequestAttributeType and AttributeAssignmentType extend it, so an Attribute element (of type
 	AttributeType) cannot be given a RequestAttributeType or AttributeAssignmentType by xsi:type. -->
 	<xs:complexType name="BaseAttributeType" abstract="true">
@@ -547,9 +547,9 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 
 	<xs:element name="PolicyIssuer" type="xacml:EntityType">
 		<!-- Fixes a bug where this constraint (AttributeId, Issuer) contradicted
-		Section 7.45's own prose (isUnique(AttributeId) alone) and, independently of that, was
+		Section 7.47's own prose (isUnique(AttributeId) alone) and, independently of that, was
 		missing DataType. Now relaxed/aligned to the (AttributeId, DataType, Issuer) triple used
-		for attribute-designator matching (Section 7.17). Issuer is optional, so xs:unique still
+		for attribute-designator matching (Section 7.18). Issuer is optional, so xs:unique still
 		cannot catch a duplicate when Issuer is absent from both compared Attribute elements; see
 		the xs:assert on EntityType below. -->
 		<xs:unique name="PolicyIssuer_Attribute_AttributeId-DataType-Issuer">
@@ -572,7 +572,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 		must rely on the Schematron rule instead. Neither this assert nor xs:unique can perform
 		the Section 8.3 short-identifier expansion that identifier equality depends on, so
 		AttributeId/DataType duplicates that differ only by short-id-vs-URI spelling are not
-		caught by any schema-level check; see Section 7.45. This applies to every use of
+		caught by any schema-level check; see Section 7.47. This applies to every use of
 		EntityType, including PolicyIssuer above. Note that the implementation may choose to implement a mechanism (e.g. preliminary XSLT processing) to perform the short-identifier expansion prior to the XML Schema validation step, making the rule enforcement fully effective.-->
 		<xs:assert vc:minVersion="1.1"
 			test="every $elt in xacml:Attribute satisfies (every $following in $elt/following-sibling::xacml:Attribute satisfies not(
@@ -937,7 +937,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 				<xs:attribute name="Path" type="xacml:AttributeSelectorPathType" use="required" />
 				<!-- Change to XACML 3.0: DataType attribute type changed to
 				IdentifierType for supporting Short Identifiers -->
-				<!-- No schema default: when DataType is omitted, ACAL Core 7.14 determines the data type
+				<!-- No schema default: when DataType is omitted, ACAL Core 7.15 determines the data type
 				(expected data type of the context, else the default of the object type, string). -->
 				<xs:attribute name="DataType" type="xacml:IdentifierType" use="optional" />
 				<!-- Change to XACML 3.0: MustBePresent changed to optional with default
@@ -991,7 +991,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 				<!-- Change to XACML 3.0: Category / AttributeId / DataType attribute
 				types changed to IdentifierType for supporting Short Identifiers -->
 				<xs:attribute name="AttributeId" type="xacml:IdentifierType" use="required" />
-				<!-- No schema default: when DataType is omitted, ACAL Core 7.14 determines the data type
+				<!-- No schema default: when DataType is omitted, ACAL Core 7.15 determines the data type
 				(expected data type of the context, else the default of the object type, string). -->
 				<xs:attribute name="DataType" type="xacml:IdentifierType" use="optional" />
 				<!-- Change to XACML 3.0: Issuer type changed to xs:Name -->
@@ -1048,7 +1048,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 				<!-- Change to XACML 3.0: DataType changed from use=required to
 				optional. Now only required if it cannot be inferred from the context.
 				Where the context fixes the data type, e.g. in AttributeType, the attribute may be
-				omitted and, if present, must agree with it (ACAL Core Section 7.14); the schema
+				omitted and, if present, must agree with it (ACAL Core Section 7.15); the schema
 				does not check the agreement. -->
 				<xs:attribute name="DataType" type="xacml:IdentifierType" use="optional" />
 				<xs:anyAttribute namespace="##any" processContents="lax" />
@@ -1227,7 +1227,7 @@ which is to be used in Results (no Content or IncludeInResult attributes).
 								SharedVariableDefinition. Positional arguments SHALL match the
 								SharedVariableDefinition's `Parameter` definitions in the same order
 								of declaration; a named argument SHALL match the definition of the
-								`Parameter` it names (Core 7.24b). </xs:documentation>
+								`Parameter` it names (Core 7.26). </xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
