@@ -30,11 +30,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: main
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
@@ -62,7 +62,7 @@ jobs:
           done
           pandoc/mkdocs.sh --number-lines --output output acal-xpath-v1.0.md
           mv output/acal-xpath-v1.0.html output/acal-xpath-v1.0-draft.html
-          pandoc/mkdocs.sh --number-lines --output output acal-jsonpath-v1.0.md --number-sections=true --filter pandoc-secnos --lua-filter=pandoc/abstract-section.lua --toc=true --variable toc-title="Table of Contents" --toc-depth=5
+          pandoc/mkdocs.sh --number-lines --output output acal-jsonpath-v1.0.md --number-sections --filter pandoc-secnos --lua-filter=pandoc/abstract-section.lua --toc=true --variable toc-title="Table of Contents" --toc-depth=5
           mv output/acal-jsonpath-v1.0.html output/acal-jsonpath-v1.0-draft.html
 
       - name: Setup Chrome
