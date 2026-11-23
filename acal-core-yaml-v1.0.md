@@ -936,7 +936,7 @@ that `DataType` MUST match the fixed data type of the resulting concrete literal
 1. A YAML string scalar represents either:
    1. `LiteralStringType`, if no inherited or explicit non-string
       `DataType` applies
-   2. `LiteralRestrictedStringType`, if an inherited or explicit ACAL
+   2. a `LiteralXxxType` object ([[ACAL-Core-1.0](#acal-core-10)] Section 7.23), if an inherited or explicit ACAL
       lexical `DataType` such as `anyURI`, `date`, or `rfc822Name`
       applies
 2. If a YAML string scalar is used with an explicit or inherited

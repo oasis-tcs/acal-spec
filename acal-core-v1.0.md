@@ -4632,7 +4632,7 @@ A `ValueType` object has the following properties:
 
 A ValueType is abstract and subtypes may be either primitive types - i.e. subtypes of `PrimitiveValueType` in the above diagram (LiteralStringType, LiteralIntegerType, etc.) - or structured types (see [Section 8.4.1](#841-structured-attributes)) -  i.e. subtypes of `StructuredValueType` in the above diagram.
 
-The abstract model distinguishes `LiteralBooleanType`, `LiteralIntegerType`, `LiteralDoubleType`, and `LiteralStringType` from other `LiteralXxxValueType`s by their effective ACAL `DataType` and value space, not by any required concrete syntactic wrapper. A concrete representation MAY make that distinction directly through native scalar syntax, or it MAY use a uniform literal surface form in which the concrete `ValueType` subtype is determined from the effective `DataType` obtained from the subtype's `<<fixedDatatype>>` definition, an explicit `DataType` property, or the rules for the effective data type in [Section 7.14](#714-expressiontype). A concrete subtype of `StructuredValueType` is identified by its effective `DataType`, exactly as for the primitive subtypes above; the concrete syntax of its structured content is then defined by the ACAL Profile or user definition that introduces that subtype. Because the rules above resolve any otherwise-undetermined literal to the `string` data type, a structured value is never identified by inspecting its content.
+The abstract model distinguishes `LiteralBooleanType`, `LiteralIntegerType`, `LiteralDoubleType`, and `LiteralStringType` from the other primitive subtypes (`LiteralXxxType` in the diagram above) by their effective ACAL `DataType` and value space, not by any required concrete syntactic wrapper. A concrete representation MAY make that distinction directly through native scalar syntax, or it MAY use a uniform literal surface form in which the concrete `ValueType` subtype is determined from the effective `DataType` obtained from the subtype's `<<fixedDatatype>>` definition, an explicit `DataType` property, or the rules for the effective data type in [Section 7.14](#714-expressiontype). A concrete subtype of `StructuredValueType` is identified by its effective `DataType`, exactly as for the primitive subtypes above; the concrete syntax of its structured content is then defined by the ACAL Profile or user definition that introduces that subtype. Because the rules above resolve any otherwise-undetermined literal to the `string` data type, a structured value is never identified by inspecting its content.
 
 ## 7.24 VariableReferenceType
 
@@ -6914,7 +6914,7 @@ _XACML v3.0 Related and Nested Entities Profile Version 1.0_. Edited by Steven L
 
 ###### [ISO10181-3]
 
-ISO/IEC 10181-3:1996 Information technology – Open Systems Interconnection -- Security frameworks for open systems: Access control framework.
+ISO/IEC 10181-3:1996 Information technology – Open Systems Interconnection -- Security frameworks for open systems: Access control framework. The identical text is published as ITU-T Recommendation X.812 (11/1995), *Information technology - Open Systems Interconnection - Security frameworks for open systems: Access control framework*, https://www.itu.int/rec/T-REC-X.812-199511-I
 
 ###### [Kudo00]
 

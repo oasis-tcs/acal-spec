@@ -554,11 +554,11 @@ In these rules, a value has an *inherited data type* if its context determines i
 
    A JSON number that represents a `LiteralDoubleType` object denotes the `xs:double` value that the lexical mapping of `xs:double` ([[ACAL-Core-1.0](#acal-core-10)] Annex C.2.6) assigns to the number's text; every JSON number is in the lexical space of `xs:double`. If that mapping yields positive or negative infinity (for example for `1e400`), that infinity is the denoted value. A JACAL generator SHALL NOT use a JSON number to represent positive infinity, negative infinity, or not-a-number; the object form above is required for those values. A JSON number with a zero fractional part represents a `LiteralDoubleType` object only when the inherited data type is the standard ACAL Double as specified above; otherwise item 2 determines what it represents (the standard ACAL Integer, or a numeric data type recognized by an ACAL extension).
 4. A `LiteralStringType` object SHALL be represented as a JSON string without any JSON property named `DataType`. If there is an inherited data type, it MUST be `urn:oasis:names:tc:acal:1.0:data-type:string`. Else the ACAL data-type is implicitly set to `urn:oasis:names:tc:acal:1.0:data-type:string`. A standard ACAL String value SHALL NOT be represented as a `ValueType` object with `DataType` and `Value`.
-5. A `LiteralRestrictedStringType` object, which may be used for any primitive type with a lexical representation other than the standard ACAL Boolean and String, SHALL be represented in either of two forms:
+5. A `LiteralXxxType` object ([[ACAL-Core-1.0](#acal-core-10)] Section 7.23), which may be used for any primitive type with a lexical representation other than the standard ACAL Boolean and String, SHALL be represented in either of two forms:
    - If there is an inherited data type, then this object MAY be represented simply as a JSON string. The ACAL data-type is the inherited data type.
    - Else, or if the object repeats the inherited data type in a `DataType` property, it is wrapped in a JSON object made of two string properties `DataType` and `Value` holding the actual value:
       ```json
-      {"DataType": "<LiteralRestrictedStringType object's DataType>", "Value": "<LiteralRestrictedStringType object's Value>" }
+      {"DataType": "<LiteralXxxType object's DataType>", "Value": "<LiteralXxxType object's Value>" }
       ```
 
 If no support for structured data-types is needed, the following JSON subschema MAY be used for `ValueType` objects in general and added to the *`$defs` object* of the JACAL schema:
