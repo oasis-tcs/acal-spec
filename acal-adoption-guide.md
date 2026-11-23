@@ -80,13 +80,13 @@ separation itself.
 
 | Capability | Notes |
 |---|---|
-| Short identifiers (`ShortIdSet`) | User-defined aliases for long URIs, reducing verbosity throughout policies; a standard ACAL short-identifier set is provided for all built-in identifiers |
+| Short identifiers (`ShortIdSet`) | User-defined aliases for long URIs, reducing verbosity throughout policies; a standard ACAL short-identifier set is provided for ACAL Core's identifiers |
 | `QuantifiedExpression` | `ForAny`, `ForAll`, `Map`, and `Select` expressions, incorporating concepts from the XACML 3.0 Entities Profile |
 | `Entity` data type | Abstract entity references, also from the Entities Profile |
 | `SharedVariableDefinition` | Reusable parameterized variable definitions, shareable across policies in a `Bundle` |
 | `Bundle` | A portable container for policies, shared variable definitions, and short identifier sets; facilitates cross-PDP policy exchange |
 | New functions | Ternary conditional (`ternary-if`); sum, average, min, and max aggregate functions |
-| Named arguments | Function arguments may be passed by name (`NamedArgument`) in addition to positional order |
+| Named arguments | Arguments of a parameterized policy or shared variable may be passed by name (`NamedArgument`) as well as by position; so may a function's, if it defines parameter names (no ACAL Core function does) |
 
 ### Identifier Namespace
 
@@ -130,7 +130,7 @@ XACML v4.0 is the continuation of the XACML line. It is the XML representation o
 
 | Aspect | Details |
 |---|---|
-| Schema mechanism | W3C XML Schema 1.1 (structural) + Schematron or XSD 1.1 assertions (higher-order constraints) |
+| Schema mechanism | W3C XML Schema 1.1 with XSD 1.1 assertions, or a derived XSD 1.0 schema with Schematron (higher-order constraints) |
 | Type discrimination | Element names identify types (`<Rule>`, `<Policy>`, `<Apply>`, etc.) |
 | Function arguments | Child elements of `<Apply>` serve as positional arguments via XML substitution groups; `<NamedArgument>` is available for named arguments |
 | Namespace handling | XML namespace prefixes (`xmlns:xacml="urn:oasis:names:tc:xacml:4.0:core:schema"`) |
@@ -189,10 +189,10 @@ easier to read as plain text.
 |---|---|---|
 | `acal-core-xml-v4.0.md` | XML representation specification | Normative prose |
 | `acal-core-xml-v4.0-schema.xsd` | Structural XML schema (XSD 1.1) | Normative |
-| `acal-core-xml-v4.0-schematron.sch` | Higher-order constraint schema (Schematron) | Normative |
-| `acal-core-xml-v4.0-identifiers.xml` | Reference short-identifier set in XML format | Informative |
+| `acal-core-xml-v4.0-schematron.sch` | Higher-order constraint schema (Schematron), used with the XSD 1.0 version | Optional |
+| `acal-core-xml-v4.0-identifiers.xml` | Core short-identifier set in XML format | Normative |
 | `acal-xpath-xml-v4.0-schema.xsd` | XPath Profile structural extension | Normative when XPath support is claimed |
-| `acal-xpath-xml-v4.0-identifiers.xml` | XPath Profile identifier set | Informative |
+| `acal-xpath-xml-v4.0-identifiers.xml` | XPath Profile identifier set | Normative when XPath support is claimed |
 | `acal-jsonpath-xml-v4.0-schema.xsd` | JSONPath Profile structural extension | Normative when JSONPath support is claimed |
 
 ### JACAL v1.0 (JSON) Artifacts
@@ -201,9 +201,9 @@ easier to read as plain text.
 |---|---|---|
 | `acal-core-json-v1.0.md` | JSON representation specification | Normative prose |
 | `acal-core-json-v1.0-schema.json` | Core JSON Schema | Normative |
-| `acal-core-json-v1.0-identifiers.json` | Reference short-identifier set in JSON format | Informative |
+| `acal-core-json-v1.0-identifiers.json` | Core short-identifier set in JSON format | Normative |
 | `acal-xpath-json-v1.0-schema.json` | XPath Profile structural extension | Normative when XPath support is claimed |
-| `acal-xpath-json-v1.0-identifiers.json` | XPath Profile identifier set | Informative |
+| `acal-xpath-json-v1.0-identifiers.json` | XPath Profile identifier set | Normative when XPath support is claimed |
 | `acal-jsonpath-json-v1.0-schema.json` | JSONPath Profile structural extension | Normative when JSONPath support is claimed |
 
 ### YACAL v1.0 (YAML) Artifacts
@@ -238,7 +238,7 @@ embedded or handled differently in the peer representations.
 | Layer | XACML v4.0 | JACAL v1.0 | YACAL v1.0 |
 |---|---|---|---|
 | Structural validation | XSD 1.1 | JSON Schema | `acal-core-yaml-v1.0-structure.schema.yaml` |
-| Higher-order constraints | Schematron + XSD 1.1 assertions | Partly in JSON Schema; implementation guidance | `acal-core-yaml-v1.0-constraints.yaml` |
+| Higher-order constraints | XSD 1.1 assertions, or Schematron with XSD 1.0 | Partly in JSON Schema; implementation guidance | `acal-core-yaml-v1.0-constraints.yaml` |
 | Profile composition | Via XSD imports | `$dynamicRef`/`$dynamicAnchor` in JSON Schema | Explicit composition examples |
 
 The extra files reflect packaging clarity, not extra YACAL semantics. YACAL is not
@@ -253,7 +253,7 @@ validation responsibility lives.
 |---|---|---|---|
 | Prose specification | Present | Present | Present |
 | Core structural schema | XSD 1.1 | JSON Schema Draft 2020-12 | JSON Schema Draft 2020-12, serialized as YAML |
-| Higher-order constraint layer | Schematron + XSD 1.1 assertions | Partly in JSON Schema; partly implementation guidance | Separate YAML constraint catalog |
+| Higher-order constraint layer | XSD 1.1 assertions, or Schematron with XSD 1.0 | Partly in JSON Schema; partly implementation guidance | Separate YAML constraint catalog |
 | Short-identifier reference set | XML `ShortIdSet` | JSON `ShortIdSet` | YAML `ShortIdSet` |
 | XPath Profile | Present | Present | Present |
 | JSONPath Profile | Present | Present | Present |
@@ -468,12 +468,22 @@ ShortIdSet:
   ShortId:
     - Name: "role"
       Value: "urn:example:attribute:role"
+    - Name: "content-tier"
+      Value: "urn:example:attribute:content-tier"
+    - Name: "account-type"
+      Value: "urn:example:attribute:account-type"
+    - Name: "patient-email"
+      Value: "urn:example:attribute:patient-email"
+    - Name: "classification"
+      Value: "urn:example:attribute:classification"
+    - Name: "next-of-kin-email"
+      Value: "urn:example:attribute:next-of-kin-email"
 ```
 
 The `ShortIdSetReference` imports the ACAL standard identifier set, which defines
-`access-subject`, `action`, `action-id`, `and`, `string-is-in`, and all other
-built-in identifiers. The local `ShortId` entry adds a deployment-specific alias for
-the `role` attribute.
+the identifiers of ACAL Core, such as `access-subject`, `action`, `action-id`, `and` and
+`string-is-in` (a profile may provide its own set for the identifiers it introduces, as the XPath Profile does). The local `ShortId`
+entries add deployment-specific aliases for the attributes Examples 2 to 8 use. The rule, target and request-attribute examples that follow are shown as they appear inside a policy or request whose `ShortIdSetReference` references `urn:example:guide:identifiers` (a `Rule` has no `ShortIdSetReference` of its own; ACAL Core Sections 7.4 and 7.1.2.3.8); the complete policies reference it directly.
 
 **XACML v4.0 with short identifiers**
 
@@ -582,8 +592,7 @@ Rule:
   changes policy meaning. A document using short identifiers and one using full URIs
   for the same values are semantically identical.
 - The standard ACAL identifier set (`urn:oasis:names:tc:acal:1.0:core:identifiers`) is
-  provided as a reference artifact in all three formats. Any deployment using only
-  standard identifiers needs only to add its own local attributes and categories.
+  provided as a reference artifact in all three formats. Beyond that set, a deployment adds aliases for its own identifiers, and references any set a profile or extension provides for the short identifiers it uses from there (ACAL Core Section 8.3.2).
 
 ---
 
@@ -606,6 +615,7 @@ to premium users only.
         PolicyId="urn:example:policy:website-content-access"
         Version="1.0"
         CombiningAlgId="{deny-unless-permit}">
+  <ShortIdSetReference>urn:example:guide:identifiers</ShortIdSetReference>
   <Description>
     Permit view access to website pages by content tier and account type.
   </Description>
@@ -687,6 +697,7 @@ to premium users only.
   "Policy": {
     "PolicyId": "urn:example:policy:website-content-access",
     "Version": "1.0",
+    "ShortIdSetReference": ["urn:example:guide:identifiers"],
     "Description": "Permit view access to website pages by content tier and account type.",
     "CombiningAlgId": "{deny-unless-permit}",
     "CombinerInput": [
@@ -781,6 +792,8 @@ to premium users only.
 Policy:
   PolicyId: "urn:example:policy:website-content-access"
   Version: "1.0"
+  ShortIdSetReference:
+    - "urn:example:guide:identifiers"
   Description: >-
     Permit view access to website pages by content tier and account type.
   CombiningAlgId: "{deny-unless-permit}"
@@ -1070,9 +1083,7 @@ Rule:
   `AttributeAssignment` per bag value, all sharing the same pair.
 - Even so, where a notice argument is logically a single value assembled from several parts,
   prefer building it into one assignment with `string-concatenate` rather than emitting
-  several assignments that the PEP must reassemble. Neither the order of attribute
-  assignments nor the order of values within a bag is guaranteed to be preserved, so the
-  single-value form is unambiguous. See the Rule 3 example in [[ACAL-Core](#acal-core)].
+  several assignments that the PEP must reassemble. Attribute assignments keep their order, but the values within a bag have none, so the single-value form is unambiguous. See the Rule 3 example in [ACAL Core Section 6.2.4.3](acal-core-v1.0.md#6243-rule-3).
 - `NoticeExpression` Ids are likewise **not** required to be unique within a `Policy` or `Rule`.
   The `Id` identifies what the notice *means* to the PEP — what it must do, or is being
   informed of — exactly as `ObligationId` did in XACML 3.0. It is a *concept* identifier,
@@ -1304,8 +1315,7 @@ a three-tier nesting where `AnyOf` expressed OR, `AllOf` expressed AND, and each
 attribute designator. This syntax was entirely separate from the `Apply` expression
 language used in Rule `Condition` elements.
 
-In ACAL 1.0 the `Target` is simply a `BooleanExpression` — the same `Apply`
-structure used everywhere else. Any function available in conditions is equally
+In ACAL 1.0 the `Target` is simply a `BooleanExpression` — the same type as a `Condition`: any non-literal expression whose result is boolean, often an `Apply`. Any function available in conditions is equally
 available in targets.
 
 **Plain language**: A policy applies only to `view` or `download` actions on resources
@@ -1454,11 +1464,12 @@ Target:
 **What this shows**
 
 - The XACML 3.0 `AnyOf / AllOf / Match` structure is gone. There is only one
-  expression language — the same `Apply` tree used in `Condition` — and it serves
+  expression language — the same boolean expression used in `Condition` — and it serves
   both `Target` and `Condition` uniformly.
 - The XACML 3.0 `Match` element compared one literal to one attribute designator
-  using a fixed function. The ACAL `Apply` expression has no such restriction: any
-  function, any arity, any combination is valid.
+  using a fixed function. An ACAL `Target` has no such restriction: any expression
+  valid as a `Condition`, that is, any non-literal expression whose return data type
+  is boolean, is valid.
 - The XACML 3.0 `AnyOf/AllOf` nesting encoded OR-of-ANDs structurally. In ACAL,
   logical structure is expressed using `{or}` and `{and}` functions explicitly —
   the same functions used elsewhere, no special syntax.
@@ -1506,11 +1517,13 @@ algorithm.
         PolicyId="urn:example:policy:document-access"
         Version="1.0"
         CombiningAlgId="{deny-unless-permit}">
+  <ShortIdSetReference>urn:example:guide:identifiers</ShortIdSetReference>
   <Description>Document access: combines read and write sub-policies.</Description>
 
   <Policy PolicyId="urn:example:policy:read-access"
           Version="1.0"
           CombiningAlgId="{deny-unless-permit}">
+    <ShortIdSetReference>urn:example:guide:identifiers</ShortIdSetReference>
     <Target>
       <Apply FunctionId="{string-is-in}">
         <Value>read</Value>
@@ -1530,6 +1543,7 @@ algorithm.
   <Policy PolicyId="urn:example:policy:write-access"
           Version="1.0"
           CombiningAlgId="{deny-unless-permit}">
+    <ShortIdSetReference>urn:example:guide:identifiers</ShortIdSetReference>
     <Target>
       <Apply FunctionId="{string-is-in}">
         <Value>write</Value>
@@ -1555,6 +1569,7 @@ algorithm.
   "Policy": {
     "PolicyId": "urn:example:policy:document-access",
     "Version": "1.0",
+    "ShortIdSetReference": ["urn:example:guide:identifiers"],
     "Description": "Document access: combines read and write sub-policies.",
     "CombiningAlgId": "{deny-unless-permit}",
     "CombinerInput": [
@@ -1562,6 +1577,7 @@ algorithm.
         "Policy": {
           "PolicyId": "urn:example:policy:read-access",
           "Version": "1.0",
+          "ShortIdSetReference": ["urn:example:guide:identifiers"],
           "CombiningAlgId": "{deny-unless-permit}",
           "Target": {
             "Apply": {
@@ -1595,6 +1611,7 @@ algorithm.
         "Policy": {
           "PolicyId": "urn:example:policy:write-access",
           "Version": "1.0",
+          "ShortIdSetReference": ["urn:example:guide:identifiers"],
           "CombiningAlgId": "{deny-unless-permit}",
           "Target": {
             "Apply": {
@@ -1635,12 +1652,16 @@ algorithm.
 Policy:
   PolicyId: "urn:example:policy:document-access"
   Version: "1.0"
+  ShortIdSetReference:
+    - "urn:example:guide:identifiers"
   Description: "Document access: combines read and write sub-policies."
   CombiningAlgId: "{deny-unless-permit}"
   CombinerInput:
     - Policy:
         PolicyId: "urn:example:policy:read-access"
         Version: "1.0"
+        ShortIdSetReference:
+          - "urn:example:guide:identifiers"
         CombiningAlgId: "{deny-unless-permit}"
         Target:
           Apply:
@@ -1665,6 +1686,8 @@ Policy:
     - Policy:
         PolicyId: "urn:example:policy:write-access"
         Version: "1.0"
+        ShortIdSetReference:
+          - "urn:example:guide:identifiers"
         CombiningAlgId: "{deny-unless-permit}"
         Target:
           Apply:
@@ -1713,7 +1736,7 @@ errors.
 
 In ACAL 1.0, `DataType` is declared once on the `Attribute` itself (in a request
 context) and once on the `AttributeDesignator` in a policy. All values in the attribute
-share the declared type. Schema enforcement prevents mixed-type bags.
+share the declared type. The ACAL model therefore has no mixed-type bags; a schema does not check every data type agreement, so an implementation may need to check it beyond schema validation.
 
 **Plain language**: A request sets a subject's `role` attribute to multiple string
 values. The policy references it via an `AttributeDesignator` with a matching type.
@@ -1740,10 +1763,10 @@ values. The policy references it via an `AttributeDesignator` with a matching ty
 <!-- ACAL 1.0: DataType on Attribute — all values share one type -->
 <RequestEntity xmlns="urn:oasis:names:tc:xacml:4.0:core:schema"
                Category="{access-subject}">
-  <Attribute AttributeId="{role}" DataType="{string}">
+  <RequestAttribute AttributeId="{role}" DataType="{string}">
     <Value>physician</Value>
     <Value>researcher</Value>
-  </Attribute>
+  </RequestAttribute>
 </RequestEntity>
 ```
 
@@ -1753,7 +1776,7 @@ values. The policy references it via an `AttributeDesignator` with a matching ty
 {
   "RequestEntity": {
     "Category": "{access-subject}",
-    "Attribute": [
+    "RequestAttribute": [
       {
         "AttributeId": "{role}",
         "DataType": "{string}",
@@ -1769,7 +1792,7 @@ values. The policy references it via an `AttributeDesignator` with a matching ty
 ```yaml
 RequestEntity:
   Category: "{access-subject}"
-  Attribute:
+  RequestAttribute:
     - AttributeId: "{role}"
       DataType: "{string}"
       Value:
@@ -1800,8 +1823,7 @@ AttributeDesignator:
 - The `DataType` on an `AttributeDesignator` in a policy must match the `DataType`
   declared on the corresponding `Attribute` in the request. If they do not match, the
   attribute will not be found.
-- `DataType` is optional on `AttributeDesignator` (and on `Attribute`); when omitted,
-  it defaults to `urn:oasis:names:tc:acal:1.0:data-type:string`.
+- `DataType` is optional on `Attribute`, where it defaults to `urn:oasis:names:tc:acal:1.0:data-type:string`, and on `AttributeDesignator`, where an omitted `DataType` is determined by ACAL Core Section 7.15 (for example from the data type the designator's context expects) and is `string` only when nothing else determines it.
 
 ---
 
@@ -1828,20 +1850,15 @@ dynamic and the predicate is structural.
     Permit if the subject holds any role prefixed with data-custodian.
   </Description>
   <Condition>
-    <ForAny>
-      <VariableId>currentRole</VariableId>
-      <Domain>
-        <AttributeDesignator
-          Category="{access-subject}"
-          AttributeId="{role}"
-          MustBePresent="true"/>
-      </Domain>
-      <Iterant>
-        <Apply FunctionId="{string-starts-with}">
-          <Value>data-custodian</Value>
-          <VariableReference VariableId="currentRole"/>
-        </Apply>
-      </Iterant>
+    <ForAny VariableId="currentRole">
+      <AttributeDesignator
+        Category="{access-subject}"
+        AttributeId="{role}"
+        MustBePresent="true"/>
+      <Apply FunctionId="{string-starts-with}">
+        <Value>data-custodian</Value>
+        <VariableReference VariableId="currentRole"/>
+      </Apply>
     </ForAny>
   </Condition>
 </Rule>
@@ -1929,7 +1946,7 @@ Rule:
 ### Example 9: Bundle and SharedVariableDefinition
 
 A `Bundle` is the top-level container for a PDP's complete policy configuration. It
-holds: one or more `Policy` objects, zero or more `SharedVariableDefinition` objects,
+holds: zero or more `Policy` objects, zero or more `SharedVariableDefinition` objects,
 zero or more `ShortIdSet` objects, and an optional `PolicyReference` designating the
 evaluation entry point.
 
@@ -1955,32 +1972,17 @@ to grant office system access.
       Id="urn:example:shared:is-business-hours"
       Version="1.0">
     <Description>True when current time is between 09:00 and 17:00.</Description>
-    <Expression>
-      <Apply FunctionId="{and}">
-        <Apply FunctionId="{integer-greater-than-or-equal}">
-          <Apply FunctionId="{time-hour-from-time}">
-            <Apply FunctionId="{time-one-and-only}">
-              <AttributeDesignator
-                Category="{environment}"
-                AttributeId="{current-time}"
-                MustBePresent="true"/>
-            </Apply>
-          </Apply>
-          <Value DataType="{integer}">9</Value>
-        </Apply>
-        <Apply FunctionId="{integer-less-than}">
-          <Apply FunctionId="{time-hour-from-time}">
-            <Apply FunctionId="{time-one-and-only}">
-              <AttributeDesignator
-                Category="{environment}"
-                AttributeId="{current-time}"
-                MustBePresent="true"/>
-            </Apply>
-          </Apply>
-          <Value DataType="{integer}">17</Value>
-        </Apply>
+    <ShortIdSetReference>urn:example:ids:common</ShortIdSetReference>
+    <Apply FunctionId="{time-in-range}">
+      <Apply FunctionId="{time-one-and-only}">
+        <AttributeDesignator
+            Category="{environment}"
+            AttributeId="{current-time}"
+            MustBePresent="true"/>
       </Apply>
-    </Expression>
+      <Value DataType="{time}">09:00:00</Value>
+      <Value DataType="{time}">17:00:00</Value>
+    </Apply>
   </SharedVariableDefinition>
 
   <Policy PolicyId="urn:example:policy:office-access"
@@ -2014,44 +2016,20 @@ to grant office system access.
         "Id": "urn:example:shared:is-business-hours",
         "Version": "1.0",
         "Description": "True when current time is between 09:00 and 17:00.",
+        "ShortIdSetReference": ["urn:example:ids:common"],
         "Expression": {
           "Apply": {
-            "FunctionId": "{and}",
+            "FunctionId": "{time-in-range}",
             "Argument": [
-              {
-                "Apply": {
-                  "FunctionId": "{integer-greater-than-or-equal}",
-                  "Argument": [
-                    { "Apply": { "FunctionId": "{time-hour-from-time}", "Argument": [
-                        { "Apply": { "FunctionId": "{time-one-and-only}", "Argument": [
-                            { "AttributeDesignator": {
-                                "Category": "{environment}",
-                                "AttributeId": "{current-time}",
-                                "MustBePresent": true
-                            } }
-                        ] } }
-                    ] } },
-                    { "Value": { "DataType": "{integer}", "Value": 9 } }
-                  ]
-                }
-              },
-              {
-                "Apply": {
-                  "FunctionId": "{integer-less-than}",
-                  "Argument": [
-                    { "Apply": { "FunctionId": "{time-hour-from-time}", "Argument": [
-                        { "Apply": { "FunctionId": "{time-one-and-only}", "Argument": [
-                            { "AttributeDesignator": {
-                                "Category": "{environment}",
-                                "AttributeId": "{current-time}",
-                                "MustBePresent": true
-                            } }
-                        ] } }
-                    ] } },
-                    { "Value": { "DataType": "{integer}", "Value": 17 } }
-                  ]
-                }
-              }
+              { "Apply": { "FunctionId": "{time-one-and-only}", "Argument": [
+                  { "AttributeDesignator": {
+                      "Category": "{environment}",
+                      "AttributeId": "{current-time}",
+                      "MustBePresent": true
+                  } }
+              ] } },
+              { "DataType": "{time}", "Value": "09:00:00" },
+              { "DataType": "{time}", "Value": "17:00:00" }
             ]
           }
         }
@@ -2099,38 +2077,23 @@ Bundle:
     - Id: "urn:example:shared:is-business-hours"
       Version: "1.0"
       Description: True when current time is between 09:00 and 17:00.
+      ShortIdSetReference:
+        - "urn:example:ids:common"
       Expression:
         Apply:
-          FunctionId: "{and}"
+          FunctionId: "{time-in-range}"
           Argument:
             - Apply:
-                FunctionId: "{integer-greater-than-or-equal}"
+                FunctionId: "{time-one-and-only}"
                 Argument:
-                  - Apply:
-                      FunctionId: "{time-hour-from-time}"
-                      Argument:
-                        - Apply:
-                            FunctionId: "{time-one-and-only}"
-                            Argument:
-                              - AttributeDesignator:
-                                  Category: "{environment}"
-                                  AttributeId: "{current-time}"
-                                  MustBePresent: true
-                  - Value: 9
-            - Apply:
-                FunctionId: "{integer-less-than}"
-                Argument:
-                  - Apply:
-                      FunctionId: "{time-hour-from-time}"
-                      Argument:
-                        - Apply:
-                            FunctionId: "{time-one-and-only}"
-                            Argument:
-                              - AttributeDesignator:
-                                  Category: "{environment}"
-                                  AttributeId: "{current-time}"
-                                  MustBePresent: true
-                  - Value: 17
+                  - AttributeDesignator:
+                      Category: "{environment}"
+                      AttributeId: "{current-time}"
+                      MustBePresent: true
+            - DataType: "{time}"
+              Value: "09:00:00"
+            - DataType: "{time}"
+              Value: "17:00:00"
 
   Policy:
     - PolicyId: "urn:example:policy:office-access"
@@ -2168,9 +2131,7 @@ Bundle:
   by name (using `NamedArgument`). The `is-business-hours` variable in this example
   has no parameters; a timezone-aware version could accept a timezone string as a
   parameter.
-- The YACAL `Value: 9` (an integer literal) uses the JSON-type inference rule: a
-  bare YAML integer maps to `LiteralIntegerType` without needing an explicit `DataType`
-  property.
+
 
 ---
 
@@ -2180,7 +2141,7 @@ Bundle:
 
 **Schema validation layers**
 
-XACML v4.0 uses two complementary validation layers:
+XACML v4.0 offers two alternative validation paths for its higher-order constraints:
 
 1. **XSD 1.1** (`acal-core-xml-v4.0-schema.xsd`) for structural validation. XSD 1.1
    assertions (`xs:assert`) encode many higher-order constraints directly in the schema.
@@ -2201,7 +2162,7 @@ expression child.
 **Short identifiers in XML**
 
 Short identifier notation `{name}` is used in XML attribute values wherever an
-`IdentifierType` is expected: `PolicyId`, `CombiningAlgId`, `FunctionId`,
+`IdentifierType` is expected: `CombiningAlgId`, `FunctionId`,
 `AttributeId`, `Category`, `DataType`, and so on.
 
 **Profile composition**
@@ -2269,11 +2230,9 @@ YACAL externalizes the same two layers as its peers, in YAML-appropriate form:
 
 YACAL imposes restrictions on YAML features that have no ACAL counterpart:
 
-- `null`, `Null`, `NULL`, `~`, and absent values are forbidden. Use explicit property
-  omission to represent absence.
+- `null`, `Null`, `NULL` and `~` are forbidden as ACAL property values (below the root of a native `application/yaml` `Body` they are content and are accepted). An optional property that is absent is omitted, not set to null.
 - YAML tags, anchors, aliases, merge keys (`<<`), and multi-document streams are
   forbidden.
-- YAML octal integer notation is forbidden.
 
 These restrictions keep the YAML surface aligned with the ACAL abstract model and
 prevent format-specific ambiguities before structural validation.
@@ -2281,9 +2240,8 @@ prevent format-specific ambiguities before structural validation.
 **Short identifiers in YAML**
 
 Short identifiers are especially ergonomic in YACAL because YAML is sparse and
-line-oriented. Full URIs consume entire lines and obscure policy structure. Any
-deployment using the standard ACAL identifier set needs only to reference
-`urn:oasis:names:tc:acal:1.0:core:identifiers` and add local aliases for its own
+line-oriented. Full URIs consume entire lines and obscure policy structure. A deployment using only ACAL Core identifiers needs only to reference
+`urn:oasis:names:tc:acal:1.0:core:identifiers` (and, if it uses short identifiers that a profile's set defines, that set) and add local aliases for its own
 attributes, categories, and functions.
 
 **Profile composition**
@@ -2317,8 +2275,7 @@ changes and additionally translate the serialization format.
   rule-level targeting logic into the enclosing policy's `Target` or merge it into the
   rule's `Condition`.
 - [ ] **Rewrite `Target` expressions**: replace every `<AnyOf><AllOf><Match>` block
-  with an equivalent `<Apply>` boolean expression tree. The `<Match MatchId="...">` maps
-  to the corresponding function `Apply`.
+  with an equivalent `<Apply>` boolean expression tree. A `<Match>` becomes the bag test it performed: for example `string-is-in` for a `string-equal` match (Example 5), or `any-of` over the match function in general.
 - [ ] **Unify obligations and advice**: replace `<ObligationExpressions>` /
   `<AdviceExpressions>` wrapper elements and the `<ObligationExpression>` /
   `<AdviceExpression>` types with `<NoticeExpression>` elements. Set
@@ -2361,8 +2318,7 @@ changes and additionally translate the serialization format.
 
 - [ ] **Remove legacy combining algorithms**: `only-one-applicable` and the legacy
   XACML 3.0 algorithm variants are not present in ACAL 1.0. Replace with a standard
-  ACAL algorithm. The most common replacements are `deny-unless-permit` (previously
-  `first-applicable` in lenient deployments) and `deny-overrides` or `permit-overrides`.
+  ACAL algorithm. The most common replacements are `deny-unless-permit`, `deny-overrides` and `permit-overrides`.
 
 ### XPath and profiles
 
@@ -2397,10 +2353,8 @@ XPath-based `AttributeSelector` must claim the XPath Profile; one that supports
 JSONPath-based `AttributeSelector` must claim the JSONPath Profile. Neither is
 required for core or representation conformance.
 
-Optional features within the core (marked O in the conformance tables of the
-representation specifications) include: `Bundle`, `QuantifiedExpression` types,
-`AttributeSelector`, `EntityAttributeSelector`, `VariableDefinition`,
-`SharedVariableDefinition`, and `PolicyReference`. An implementation that does not
+Optional features within the core (marked O in the conformance table of ACAL Core Section 11.2.1) include: `Bundle`, `QuantifiedExpression` types,
+`AttributeSelector`, `EntityAttributeSelector` and `SharedVariableDefinition`. An implementation that does not
 support an optional feature must handle a document containing that feature in
 accordance with the error-handling rules defined in ACAL Core.
 

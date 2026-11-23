@@ -176,7 +176,7 @@ cd "$INPUT_DIR"
 
 INPUT_FORMAT="gfm+definition_lists"
 if $NUMBER_LINES_IN_CODE_BLOCKS; then
-    INPUT_FORMAT="markdown+header_attributes+definition_lists+fenced_code_attributes"
+    INPUT_FORMAT="markdown+gfm_auto_identifiers+header_attributes+definition_lists+fenced_code_attributes"
 fi
 
 $PANDOC -f "$INPUT_FORMAT" -t html \
