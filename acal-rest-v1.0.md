@@ -1009,7 +1009,7 @@ This profile defines the following extension link relation types ([[RFC8288](#rf
 
 (This annex forms an integral part of this Specification.)
 
-This annex gives the information required to register two media types (the contact email address remains to be supplied by OASIS TC Administration) in the standards tree, by OASIS, under the "Specification Required" policy ([[RFC6838](#rfc6838)] Section 3.1), using the template of [[RFC6838](#rfc6838)] Section 5.6. Each type identifies every document of its representation (a policy, a bundle, a request, a response, a short identifier set or a shared variable definition), as the representation specification defines it; this profile uses only requests and responses. This annex also describes how this profile uses the existing `application/xacml+xml` registration.
+This annex gives the information required to register two media types in the standards tree, by OASIS, under the "Specification Required" policy ([[RFC6838](#rfc6838)] Section 3.1), using the template of [[RFC6838](#rfc6838)] Section 5.6. Each type identifies every document of its representation (a policy, a bundle, a request, a response, a short identifier set or a shared variable definition), as the representation specification defines it; this profile uses only requests and responses. This annex also describes how this profile uses the existing `application/xacml+xml` registration.
 
 ## D.1 The application/jacal+json Media Type
 
@@ -1040,7 +1040,7 @@ Additional information:
 - File extension(s): N/A
 - Macintosh file type code(s): N/A
 
-Person & email address to contact for further information: OASIS ACAL \[XACML\] TC, https://www.oasis-open.org/committees/acal/ (the contact email address is to be supplied by OASIS TC Administration)
+Person & email address to contact for further information: OASIS TC Administration, tc-admin@oasis-open.org
 
 Intended usage: COMMON
 
@@ -1081,7 +1081,7 @@ Additional information:
 - File extension(s): N/A
 - Macintosh file type code(s): N/A
 
-Person & email address to contact for further information: OASIS ACAL \[XACML\] TC, https://www.oasis-open.org/committees/acal/ (the contact email address is to be supplied by OASIS TC Administration)
+Person & email address to contact for further information: OASIS TC Administration, tc-admin@oasis-open.org
 
 Intended usage: COMMON
 

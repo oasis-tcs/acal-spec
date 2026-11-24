@@ -43,7 +43,7 @@ The XACML profile names no media type of its own: it says requests and responses
 
 **Why not reuse an existing type?** The only JSON type in the IANA registry for XACML is `application/vnd.xacml+json`, a vendor-tree registration for the JSON Profile of XACML 3.0. That is a different format from JACAL, and its `version` parameter is the XACML version. (The JSON Profile of XACML itself specifies `application/xacml+json`, but no such type is in the IANA registry.) No YAML type for XACML or ACAL exists. RFC 9512 (2024) registered the `+yaml` structured syntax suffix, so a `+yaml` type can now be registered.
 
-**Who registers them?** OASIS, in the IANA standards tree, under the "Specification Required" policy of RFC 6838 §3.1. OASIS has done this before (`stix+json`, `taxii+json`, `sarif+json`). This is an action for the TC and OASIS TC Administration, not for this document.
+**Who registers them?** OASIS, in the IANA standards tree, under the "Specification Required" policy of RFC 6838 §3.1. OASIS has done this before (`stix+json`, `taxii+json`, `sarif+json`). OASIS files them when the profile reaches Committee Specification; this is an action for OASIS TC Administration, not for this document.
 
 **What to check:** that each template in Annex D follows the RFC 6838 §5.6 field list; that "Encoding considerations: binary" matches `application/json` (RFC 8259) and `application/yaml` (RFC 9512); and that the fragment identifier fields say what RFC 6839 and RFC 9512 require for `+json` and `+yaml` types.
 
@@ -57,7 +57,7 @@ The source's link relation types are `http://docs.oasis-open.org/xacml/ns/relati
 
 A link relation type is a string that the client compares, not an ACAL identifier. RFC 8288 §2.1.2 compares extension relation types as strings, case-insensitively, so the `http` and `https` forms are different relation types, and the identifier equality of ACAL Core §8.18 does not apply. Without a transition rule, a deployed client of the XACML profile would no longer find the PDP. [REST-ACAL] §5.2 therefore lets a server give a link both relation types (RFC 8288 §3.3: one `rel` parameter can hold several), and asks a client to recognize both.
 
-**What to check:** the namespace `https://docs.oasis-open.org/acal/ns/relation/` needs a namespace document from OASIS TC Administration before publication.
+**What to check:** the namespace `https://docs.oasis-open.org/acal/ns/relation/` needs a namespace document, which OASIS TC Administration sets up when the profile is published.
 
 ### The *entry point* is now the *Home Resource*
 
