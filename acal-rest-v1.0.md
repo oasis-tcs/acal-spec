@@ -1003,13 +1003,15 @@ This profile defines the following extension link relation types ([[RFC8288](#rf
 
 : The link target is the PDP Resource ([Section 5.4](#54-pdp-resource)). Deprecated link relation type: `http://docs.oasis-open.org/xacml/ns/relation/pdp`.
 
+The namespace document at `https://docs.oasis-open.org/acal/ns/relation/` describes these link relation types and states the TC's versioning policy for them.
+
 ---
 
 # Annex D IANA Considerations
 
 (This annex forms an integral part of this Specification.)
 
-This annex gives the information required to register two media types in the standards tree, by OASIS, under the "Specification Required" policy ([[RFC6838](#rfc6838)] Section 3.1), using the template of [[RFC6838](#rfc6838)] Section 5.6. Each type identifies every document of its representation (a policy, a bundle, a request, a response, a short identifier set or a shared variable definition), as the representation specification defines it; this profile uses only requests and responses. This annex also describes how this profile uses the existing `application/xacml+xml` registration.
+This annex gives the information required to register two media types in the standards tree, by OASIS, under the "Specification Required" policy ([[RFC6838](#rfc6838)] Section 3.1), using the template of [[RFC6838](#rfc6838)] Section 5.6. Each type identifies every document of its representation (a policy, a bundle, a request, a response, a short identifier set or a shared variable definition), as the representation specification defines it; this profile uses only requests and responses. This annex also describes how this profile uses the existing `application/xacml+xml` registration. The link relation types of [Annex C.2](#c2-link-relation-types) are extension relation types ([[RFC8288](#rfc8288)] Section 2.1.2) and need no IANA registration.
 
 ## D.1 The application/jacal+json Media Type
 

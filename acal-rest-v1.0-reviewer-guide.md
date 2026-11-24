@@ -43,7 +43,7 @@ The XACML profile names no media type of its own: it says requests and responses
 
 **Why not reuse an existing type?** The only JSON type in the IANA registry for XACML is `application/vnd.xacml+json`, a vendor-tree registration for the JSON Profile of XACML 3.0. That is a different format from JACAL, and its `version` parameter is the XACML version. (The JSON Profile of XACML itself specifies `application/xacml+json`, but no such type is in the IANA registry.) No YAML type for XACML or ACAL exists. RFC 9512 (2024) registered the `+yaml` structured syntax suffix, so a `+yaml` type can now be registered.
 
-**Who registers them?** OASIS, in the IANA standards tree, under the "Specification Required" policy of RFC 6838 §3.1. OASIS has done this before (`stix+json`, `taxii+json`, `sarif+json`). OASIS files them when the profile reaches Committee Specification; this is an action for OASIS TC Administration, not for this document.
+**Who registers them?** OASIS, in the IANA standards tree, under the "Specification Required" policy of RFC 6838 §3.1. OASIS has done this before (`stix+json`, `taxii+json`, `sarif+json`). OASIS files them once the templates are final and the addresses they cite are live, that is, once the package is published; this is an action for OASIS TC Administration, not for this document.
 
 **What to check:** that each template in Annex D follows the RFC 6838 §5.6 field list; that "Encoding considerations: binary" matches `application/json` (RFC 8259) and `application/yaml` (RFC 9512); and that the fragment identifier fields say what RFC 6839 and RFC 9512 require for `+json` and `+yaml` types.
 
