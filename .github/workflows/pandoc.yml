@@ -56,7 +56,7 @@ jobs:
       - name: Pandoc HTML generation (all specifications)
         run: |
           set -e
-          for doc in acal-core-v1.0 acal-core-xml-v4.0 acal-core-json-v1.0 acal-core-yaml-v1.0 acal-hierarchical-v1.0 acal-multiple-v1.0 acal-rbac-v1.0; do
+          for doc in acal-core-v1.0 acal-core-xml-v4.0 acal-core-json-v1.0 acal-core-yaml-v1.0 acal-hierarchical-v1.0 acal-multiple-v1.0 acal-rbac-v1.0 acal-rest-v1.0; do
             pandoc/mkdocs.sh --output output "$doc.md"
             mv "output/$doc.html" "output/$doc-draft.html"
           done
@@ -70,7 +70,7 @@ jobs:
       - name: Pandoc PDF generation (all specifications)
         run: |
           set -e
-          for doc in acal-core-v1.0 acal-core-xml-v4.0 acal-core-json-v1.0 acal-core-yaml-v1.0 acal-xpath-v1.0 acal-jsonpath-v1.0 acal-hierarchical-v1.0 acal-multiple-v1.0 acal-rbac-v1.0; do
+          for doc in acal-core-v1.0 acal-core-xml-v4.0 acal-core-json-v1.0 acal-core-yaml-v1.0 acal-xpath-v1.0 acal-jsonpath-v1.0 acal-hierarchical-v1.0 acal-multiple-v1.0 acal-rbac-v1.0 acal-rest-v1.0; do
             chrome --headless=new --no-sandbox --no-pdf-header-footer --print-to-pdf="output/$doc-draft.pdf" "output/$doc-draft.html"
           done
       - name: Upload artifact
@@ -84,6 +84,6 @@ jobs:
       - name: summary
         run: |
           echo "### Check the results:" >> $GITHUB_STEP_SUMMARY
-          for doc in acal-core-v1.0 acal-core-xml-v4.0 acal-core-json-v1.0 acal-core-yaml-v1.0 acal-xpath-v1.0 acal-jsonpath-v1.0 acal-hierarchical-v1.0 acal-multiple-v1.0 acal-rbac-v1.0; do
+          for doc in acal-core-v1.0 acal-core-xml-v4.0 acal-core-json-v1.0 acal-core-yaml-v1.0 acal-xpath-v1.0 acal-jsonpath-v1.0 acal-hierarchical-v1.0 acal-multiple-v1.0 acal-rbac-v1.0 acal-rest-v1.0; do
             echo "- $doc: https://oasis-tcs.github.io/acal-spec/$doc-draft.html | https://oasis-tcs.github.io/acal-spec/$doc-draft.pdf" >> $GITHUB_STEP_SUMMARY
           done
